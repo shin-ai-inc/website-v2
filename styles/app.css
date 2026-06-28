@@ -3191,9 +3191,19 @@ h1, h2, h3, h4 {
 
 /* カード写真 — 上端からブリードして視覚的なアンカーを作る */
 .solution-card__figure {
+  position: relative;
   margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) var(--space-4);
   overflow: hidden;
   aspect-ratio: 5 / 3;
+}
+
+/* 3枚の質感差(抽象/コード/写真)を、各カードのアクセント色で淡く一族化する */
+.solution-card__figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--card-ink) 18%, transparent) 100%);
+  pointer-events: none;
 }
 
 .solution-card__figure img {
@@ -3274,6 +3284,11 @@ h1, h2, h3, h4 {
 @media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
+  }
+  /* 1カラム化で全幅になるカード画像が縦に伸びすぎないよう帯状に固定する */
+  .solution-card__figure {
+    aspect-ratio: auto;
+    height: clamp(150px, 26vw, 200px);
   }
 }
 
