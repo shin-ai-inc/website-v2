@@ -1,9 +1,4 @@
-# Netlify 設定。private リポジトリのまま無料で配信するためのビルド指定。
-# build.mjs が公開allowlistのみを集めた dist/ を生成し、Netlify はそれだけを配信する
-# (内部資料 BRIEF/SECURITY/STRATEGY/partials/ソースCSS は publish 対象に含まれない)。
-# Cloudflare Pages を使う場合は、ダッシュボードで
-#   Build command: node _build/build.mjs / Build output directory: dist
-# を同様に設定する(netlify.toml は CF では参照されない)。
+# Netlify 設定。build.mjs が公開対象のみを集めた dist/ を生成する。
 
 [build]
   command = "node _build/build.mjs"
