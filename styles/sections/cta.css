@@ -16,6 +16,7 @@
   font-size: var(--fs-h2);
   line-height: var(--lh-tight);
   color: #FFFFFF;
+  letter-spacing: 0.07em;
 }
 
 .cta__title-line {

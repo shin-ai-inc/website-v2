@@ -164,7 +164,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   line-height: var(--lh-tight);
   color: var(--ink);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.06em;
 }
 
 /* ---- Layout ---- */
@@ -1545,6 +1545,7 @@ h1, h2, h3, h4 {
   font-size: var(--fs-h2);
   line-height: var(--lh-tight);
   color: #FFFFFF;
+  letter-spacing: 0.07em;
 }
 
 .cta__title-line {
@@ -2196,7 +2197,7 @@ h1, h2, h3, h4 {
 .hero__title {
   font-size: clamp(2rem, 6vw, 5.6rem);
   line-height: 1.12;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.05em;
   margin-bottom: var(--space-5);
 }
 
@@ -2907,7 +2908,7 @@ h1, h2, h3, h4 {
 .page-hero__title {
   font-size: clamp(2rem, 4.8vw, 4.4rem);
   line-height: 1.16;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
 }
 
 .page-hero__title-line {
@@ -3089,7 +3090,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   font-size: clamp(1.85rem, 5vw, 4.8rem);
   line-height: var(--lh-tight);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.10em;
   color: var(--ink);
 }
 
