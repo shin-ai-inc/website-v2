@@ -147,3 +147,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .solution-card {
+    padding: var(--space-4);
+  }
+  .solution-card__figure {
+    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
+  }
+}

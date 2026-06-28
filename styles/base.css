@@ -84,6 +84,17 @@ h1, h2, h3, h4 {
   display: block;
 }
 
+.section__more {
+  margin-top: var(--space-5);
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .section__head {
+    margin-bottom: var(--space-4);
+  }
+}
+
 /* ---- Eyebrow (英字ラベル。ブランドグラデーションの一線で先進性を表現) ---- */
 .eyebrow {
   display: inline-flex;
