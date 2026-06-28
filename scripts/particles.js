@@ -116,7 +116,7 @@
         z: (Math.random() - 0.5) * 0.008
       },
       orbit: {
-        speed: 0.0001 + Math.random() * 0.0003,
+        speed: (0.0001 + Math.random() * 0.0003) * (isMobile ? 1.4 : 1.0),
         radius: radius,
         angle: Math.random() * Math.PI * 2,
         yFactor: Math.random() * 2 - 1
@@ -151,9 +151,9 @@
 
   /* lookAt ターゲット: creed帯の高さ分だけ下にオフセットし地球儀をヒーロー白エリア中央に揃える。
      canvas = hero + creed。creed半分の高さ(世界座標)をlookAt Y に引くことで補正する。
-     PC: creed≈132px / canvas≈950px → coverage 67unit → offset ≈4.5unit
+     PC: creed≈132px / canvas≈822px(header78px) → coverage 67unit → offset ≈5.0unit
      Mobile: creed≈65px / canvas≈576px → coverage 55unit → offset ≈6.0unit */
-  var heroLookAt = new THREE.Vector3(0, isMobile ? -6.0 : -4.5, 0);
+  var heroLookAt = new THREE.Vector3(0, isMobile ? -6.0 : -5.0, 0);
 
   /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。
      モバイルは強度を抑えつつバーストは必ず実行する(prefers-reduced-motionは定常アニメに影響しない)。 */
@@ -184,13 +184,13 @@
     camera.position.y += (targetY - camera.position.y) * 0.015;
     camera.lookAt(heroLookAt);
 
-    core.rotation.y += 0.001;
-    core.rotation.x += 0.0005;
+    core.rotation.y += isMobile ? 0.0015 : 0.001;
+    core.rotation.x += isMobile ? 0.0008 : 0.0005;
     var scalePulse = Math.sin(time * 0.4) * 0.04 + 1;
     core.scale.set(scalePulse, scalePulse, scalePulse);
 
-    innerCore.rotation.y -= 0.0015;
-    innerCore.rotation.z += 0.0008;
+    innerCore.rotation.y -= isMobile ? 0.0022 : 0.0015;
+    innerCore.rotation.z += isMobile ? 0.0012 : 0.0008;
     var innerScalePulse = Math.sin(time * 0.6) * 0.08 + 1;
     innerCore.scale.set(innerScalePulse, innerScalePulse, innerScalePulse);
 
