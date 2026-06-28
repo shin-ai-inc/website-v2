@@ -31,7 +31,7 @@
   display: block;
 }
 
-@media (min-width: 680px) {
+@media (min-width: 640px) {
   .purpose__statement-line {
     white-space: nowrap;
   }
