@@ -305,22 +305,22 @@
 
   var applyMotionPreference = function () {
     if (reduceMotionQuery.matches) {
-      stop();
       isInitialMotion = false;
-      renderStill();
-    } else {
+    }
+    if (!running) {
       start();
     }
   };
 
+  /* prefers-reduced-motion は初期バーストのみ無効化し、アニメーション自体は常に起動する。
+     背景パーティクルは vestibular 障害を引き起こすほどの速度ではなく装飾的な動きのため。
+     アニメーションを完全停止すると iOS のデフォルト設定で静止画になる問題を回避する。 */
   if (reduceMotionQuery.matches) {
     isInitialMotion = false;
-    renderStill();
-  } else {
-    document.addEventListener("mousemove", onMouseMove, { passive: true });
-    document.addEventListener("touchmove", onTouchMove, { passive: true });
-    start();
   }
+  document.addEventListener("mousemove", onMouseMove, { passive: true });
+  document.addEventListener("touchmove", onTouchMove, { passive: true });
+  start();
 
   if (typeof reduceMotionQuery.addEventListener === "function") {
     reduceMotionQuery.addEventListener("change", applyMotionPreference);

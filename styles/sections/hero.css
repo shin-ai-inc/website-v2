@@ -110,6 +110,15 @@
   margin-bottom: var(--space-5);
 }
 
+@media (max-width: 640px) {
+  .hero__subcopy {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    line-height: 1.75;
+    color: var(--ink-3);
+  }
+}
+
 .hero__subcopy-line {
   display: block;
 }
