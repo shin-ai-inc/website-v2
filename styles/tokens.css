@@ -58,11 +58,11 @@
   /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --fs-display: clamp(3rem, 7vw, 6.5rem);
-  --fs-h1: clamp(2.2rem, 5vw, 4.5rem);
-  --fs-h2: clamp(1.55rem, 3.5vw, 2.8rem);
-  --fs-h3: clamp(1.15rem, 1.8vw, 1.45rem);
-  --fs-lead: clamp(1.05rem, 1.6vw, 1.3rem);
+  --fs-display: clamp(2.4rem, 5vw, 5rem);
+  --fs-h1: clamp(2rem, 4vw, 3.8rem);
+  --fs-h2: clamp(1.35rem, 2.5vw, 2.1rem);
+  --fs-h3: clamp(1.05rem, 1.5vw, 1.3rem);
+  --fs-lead: clamp(1rem, 1.3vw, 1.15rem);
   --fs-body: 1.0rem;
   --fs-sm: 0.875rem;
   --fs-eyebrow: 0.8rem;
@@ -82,7 +82,7 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(3rem, 9vw, 9rem);
+  --section-py: clamp(3rem, 6vw, 6rem);
   --container: 1180px;
   --container-narrow: 760px;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
