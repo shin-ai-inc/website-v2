@@ -2589,37 +2589,15 @@ h1, h2, h3, h4 {
   color: var(--charcoal);
 }
 
-/* ---- Hero CTA ---- */
-.hero__cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  align-items: center;
-  margin-top: var(--space-5);
-}
-
-@media (max-width: 480px) {
-  .hero__cta {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .hero__cta-primary,
-  .hero__cta-sub {
-    justify-content: center;
-  }
-}
-
 /* ---- Entrance animation (page load, not scroll) ---- */
 .hero--immersive .hero__eyebrow,
 .hero--immersive .hero__title,
-.hero--immersive .hero__subcopy,
-.hero--immersive .hero__cta {
+.hero--immersive .hero__subcopy {
   animation: heroLineIn 0.9s var(--ease-out) both;
 }
 .hero--immersive .hero__eyebrow  { animation-delay: 0.05s; }
 .hero--immersive .hero__title    { animation-delay: 0.22s; }
 .hero--immersive .hero__subcopy  { animation-delay: 0.44s; }
-.hero--immersive .hero__cta      { animation-delay: 0.62s; }
 @keyframes heroLineIn {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: none; }
