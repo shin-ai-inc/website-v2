@@ -1,4 +1,4 @@
-﻿<main id="main">
+<main id="main">
 
   <!-- ============================================================
        1. Page hero — 会社情報の導入
@@ -15,13 +15,13 @@
         <p class="eyebrow page-hero__eyebrow">Company</p>
 
         <h1 id="about-hero-title" class="page-hero__title">
-          <span class="page-hero__title-line">人を助けたくて、</span>
-          <span class="page-hero__title-line page-hero__title-accent">AIにたどり着いた。</span>
+          <span class="page-hero__title-line">AIの前に、</span>
+          <span class="page-hero__title-line page-hero__title-accent">人がいる。</span>
         </h1>
 
         <p class="page-hero__lead">
-          <span class="page-hero__lead-line">私たちが何を信じ、誰がつくっているのか。</span>
-          <span class="page-hero__lead-line">ShinAIという会社のことを、お話しします。</span>
+          <span class="page-hero__lead-line">ShinAIの出発点は、テクノロジーへの関心ではありません。</span>
+          <span class="page-hero__lead-line">人の仕事が正しく継承されること——その問いから、設計が始まりました。</span>
         </p>
       </div>
     </div>
@@ -35,10 +35,16 @@
     <div class="container purpose__inner reveal">
       <p class="eyebrow eyebrow--center purpose__eyebrow">Purpose</p>
 
-      <h2 id="purpose-title" class="purpose__statement">
-        <span class="purpose__statement-line">AIの力で、</span>
-        <span class="purpose__statement-line">人間らしい時間を取り戻す。</span>
-      </h2>
+      <div class="purpose__quote-frame">
+        <svg class="purpose__quote-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M14 24c-4.4 0-8-3.6-8-8s3.6-8 8-8c1 0 2 .2 2.8.5C13.6 10.2 10 13.8 10 18h4c2.2 0 4 1.8 4 4v2c0 2.2-1.8 4-4 4zm20 0c-4.4 0-8-3.6-8-8s3.6-8 8-8c1 0 2 .2 2.8.5C33.6 10.2 30 13.8 30 18h4c2.2 0 4 1.8 4 4v2c0 2.2-1.8 4-4 4z" fill="currentColor"/>
+        </svg>
+
+        <h2 id="purpose-title" class="purpose__statement">
+          <span class="purpose__statement-line">AIの力で、</span>
+          <span class="purpose__statement-line">人間らしい時間を取り戻す。</span>
+        </h2>
+      </div>
 
       <hr class="rule-copper purpose__rule" aria-hidden="true">
 
@@ -47,11 +53,17 @@
         <span class="purpose__support-line">人が、人にしかできないことへ還ることです。</span>
       </p>
 
-      <p class="about-purpose__note">
-        判断の速さも、検索の正確さも、最後は人の時間を生むための手段にすぎません。
-        私たちは、AIを目的にしません。現場の人が考え、ためらい、誰かと向き合う時間を取り戻す。
-        その一点に、技術を向けています。
-      </p>
+      <div class="purpose__philosophy">
+        <p class="purpose__philosophy-text">
+          判断の速さも、検索の正確さも、<br>
+          最後は人の時間を生むための手段にすぎません。
+        </p>
+        <p class="purpose__philosophy-text">
+          私たちは、AIを目的にしません。<br>
+          現場の人が考え、ためらい、誰かと向き合う時間を取り戻す。<br>
+          その一点に、技術を向けています。
+        </p>
+      </div>
     </div>
   </section>
 
@@ -64,6 +76,9 @@
       <img src="assets/images/about-philosophy-tech.jpg" alt=""
            width="1200" height="400" loading="lazy"
            data-parallax="0.10">
+      <figcaption class="about-photo-break__caption">
+        技術は手段。人の時間を取り戻すために。
+      </figcaption>
     </figure>
   </div>
 
@@ -84,12 +99,12 @@
                alt="柴田昌国 - ShinAI 代表"
                width="400" height="500"
                loading="lazy">
-          <figcaption class="about-message__portrait-cap">Masakuni Shibata</figcaption>
         </figure>
 
         <div class="about-message__body reveal" data-delay="1">
           <p class="about-message__lead">
-            「人を助けたい」その一心で、約7年間 消防の現場に立っていました。
+            「人を助けたい」その一心で、<br>
+            約7年間 消防の現場に立っていました。
           </p>
 
           <p class="about-message__para">
@@ -106,28 +121,10 @@
             現場で静かに使われ続け、働く人の時間と判断を支えるAIです。
           </p>
           <p class="about-message__para">
-            私たちは、納めて終わりにしません。お客様が自らの手でAIを育てられる状態まで伴走します。
+            私たちは、納めて終わりにしません。<br>
+            お客様が自らの手でAIを育てられる状態まで伴走します。<br>
             技術は手段で、目的はいつも人の側にあります。
           </p>
-
-          <ol class="about-career">
-            <li class="about-career__item">
-              <span class="about-career__year">〜 2022</span>
-              <span class="about-career__label">消防士として現場に従事（約7年）</span>
-            </li>
-            <li class="about-career__item">
-              <span class="about-career__year">2023.02</span>
-              <span class="about-career__label">生成AIに可能性を見出し、独学を開始</span>
-            </li>
-            <li class="about-career__item">
-              <span class="about-career__year">2023–2024</span>
-              <span class="about-career__label">東京のAI開発企業で実務（LLM統合・RAG構築）</span>
-            </li>
-            <li class="about-career__item">
-              <span class="about-career__year">2025.01</span>
-              <span class="about-career__label">ShinAI 創業</span>
-            </li>
-          </ol>
 
           <p class="about-message__sign">
             <span class="about-message__sign-role">Founder</span>
@@ -137,109 +134,76 @@
           </p>
         </div>
       </div>
+
+      <!-- 歩み — メッセージの下に統合 -->
+      <div class="about-career-wrap reveal">
+        <p class="about-career-wrap__label">歩み</p>
+        <ol class="about-career">
+          <li class="about-career__item">
+            <span class="about-career__year">〜 2022</span>
+            <span class="about-career__dot" aria-hidden="true"></span>
+            <span class="about-career__label">消防士として現場に従事（約7年）</span>
+          </li>
+          <li class="about-career__item">
+            <span class="about-career__year">2023.02</span>
+            <span class="about-career__dot" aria-hidden="true"></span>
+            <span class="about-career__label">生成AIに可能性を見出し、独学を開始</span>
+          </li>
+          <li class="about-career__item">
+            <span class="about-career__year">2023–24</span>
+            <span class="about-career__dot" aria-hidden="true"></span>
+            <span class="about-career__label">東京のAI開発企業で実務（LLM統合・RAG構築）</span>
+          </li>
+          <li class="about-career__item">
+            <span class="about-career__year">2025.01</span>
+            <span class="about-career__dot" aria-hidden="true"></span>
+            <span class="about-career__label">ShinAI 創業</span>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 
 
   <!-- ============================================================
-       4. 7つのShin — 思想（真・信・伸を主に、残りを静かに添える）
+       4. Team — 経営チーム（コンパクト）
        ============================================================ -->
-  <section class="section" id="shin" aria-labelledby="shin-title">
-    <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Seven Shin</p>
-        <h2 id="shin-title" class="section__title">七つの「Shin」</h2>
-        <p class="section__lead">
-          <span class="section__lead-line">社名に重ねた七つの「しん」。</span>
-          <span class="section__lead-line">なかでも次の三つを、仕事の約束として掲げています。</span>
-        </p>
-      </div>
-
-      <div class="company__shin-feature">
-        <div class="company__shin-card reveal">
-          <span class="company__shin-kanji" aria-hidden="true">真</span>
-          <h3 class="company__person-name">本質に向き合う</h3>
-          <p class="company__shin-words">
-            表面の要望ではなく、本当に解くべき課題を見極めてから手を動かします。
-          </p>
-        </div>
-        <div class="company__shin-card reveal" data-delay="1">
-          <span class="company__shin-kanji" aria-hidden="true">信</span>
-          <h3 class="company__person-name">説明できる技術</h3>
-          <p class="company__shin-words">
-            出典と根拠を示し、人が確かめて承認できるAIをつくります。
-          </p>
-        </div>
-        <div class="company__shin-card reveal" data-delay="2">
-          <span class="company__shin-kanji" aria-hidden="true">伸</span>
-          <h3 class="company__person-name">自走できる状態へ</h3>
-          <p class="company__shin-words">
-            お客様が自ら運用し改善できる力を、最後に残します。
-          </p>
-        </div>
-      </div>
-
-      <dl class="company__shin-all reveal">
-        <div class="company__shin-item">
-          <dt class="company__shin-mark" aria-hidden="true">心</dt>
-          <dd>感性を大切にする</dd>
-        </div>
-        <div class="company__shin-item">
-          <dt class="company__shin-mark" aria-hidden="true">新</dt>
-          <dd>変化に挑み続ける</dd>
-        </div>
-        <div class="company__shin-item">
-          <dt class="company__shin-mark" aria-hidden="true">芯</dt>
-          <dd>ぶれない軸を持つ</dd>
-        </div>
-        <div class="company__shin-item">
-          <dt class="company__shin-mark" aria-hidden="true">紳</dt>
-          <dd>品位ある振る舞い</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       5. Team — 代表 / CTO
-       ============================================================ -->
-  <section class="section section--alt" id="team" aria-labelledby="team-title">
+  <section class="section" id="team" aria-labelledby="team-title">
     <div class="container">
       <div class="section__head reveal">
         <p class="eyebrow">Team</p>
-        <h2 id="team-title" class="section__title">チーム</h2>
+        <h2 id="team-title" class="section__title">経営チーム</h2>
         <p class="section__lead">
           <span class="section__lead-line">現場の判断を知る者と、技術の芯を担う者。</span>
-          <span class="section__lead-line">小さなチームで、責任の所在を明確に進めます。</span>
+          <span class="section__lead-line">小さなチームで、責任の所在を明確に。</span>
         </p>
       </div>
 
-      <div class="company__people">
-        <article class="company__person reveal">
-          <img class="company__portrait" src="assets/images/ceo-masakuni-shibata.png"
-               alt="柴田昌国" width="56" height="56" loading="lazy">
-          <div>
-            <p class="company__person-role">Founder</p>
-            <h3 class="company__person-name">柴田 昌国
-              <span class="company__person-latin">Masakuni Shibata</span>
-            </h3>
-            <p class="company__person-bio">
+      <div class="about-team__grid">
+        <article class="about-team__card reveal">
+          <figure class="about-team__photo">
+            <img src="assets/images/ceo-masakuni-shibata.png"
+                 alt="柴田昌国" width="240" height="300" loading="lazy">
+          </figure>
+          <div class="about-team__info">
+            <p class="about-team__role">Founder</p>
+            <h3 class="about-team__name">柴田 昌国</h3>
+            <p class="about-team__bio">
               元消防士。生成AIの可能性を確信し独学を経て、東京のAI開発企業で実務を積む。
               生成AI戦略・LLM統合・RAG構築・エンタープライズAI実装を専門とする。
             </p>
           </div>
         </article>
 
-        <article class="company__person reveal" data-delay="1">
-          <img class="company__portrait" src="assets/images/photo-cto.jpg"
-               alt="Y氏" width="56" height="56" loading="lazy">
-          <div>
-            <p class="company__person-role">CTO</p>
-            <h3 class="company__person-name">Y 氏
-              <span class="company__person-latin">Chief Technology Officer</span>
-            </h3>
-            <p class="company__person-bio">
+        <article class="about-team__card reveal" data-delay="1">
+          <figure class="about-team__photo">
+            <img src="assets/images/photo-cto.jpg"
+                 alt="Y氏" width="240" height="300" loading="lazy">
+          </figure>
+          <div class="about-team__info">
+            <p class="about-team__role">CTO</p>
+            <h3 class="about-team__name">Y 氏</h3>
+            <p class="about-team__bio">
               大手半導体メーカーの技術者、ならびにAIスタートアップでのエンジニアリング経験を持つ。
               先端技術と実装の現実性を結び、開発の土台を担う。
             </p>
@@ -251,7 +215,7 @@
 
 
   <!-- ============================================================
-       5.5 チーム写真
+       4.5 チーム写真
        ============================================================ -->
   <div class="about-photo-break container reveal">
     <figure class="about-photo-break__frame">
@@ -260,6 +224,116 @@
            data-parallax="0.10">
     </figure>
   </div>
+
+
+  <!-- ============================================================
+       5. 7つのShin — 全7項目アイコン付きカード体系
+       ============================================================ -->
+  <section class="section section--alt" id="shin" aria-labelledby="shin-title">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Seven Shin</p>
+        <h2 id="shin-title" class="section__title">七つの「Shin」に込めた精神</h2>
+        <p class="section__lead">
+          <span class="section__lead-line">ShinAIという名には、七つの「しん」が重なっています。</span>
+          <span class="section__lead-line">三つを実践の約束に、四つを人格の土台として、仕事の全体を貫いています。</span>
+        </p>
+      </div>
+
+      <p class="shin7__group-label reveal">実践の約束</p>
+      <div class="shin7__primary">
+        <div class="shin7__card shin7__card--featured reveal">
+          <div class="shin7__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+              <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            </svg>
+          </div>
+          <span class="shin7__yomi">まこと</span>
+          <span class="shin7__kanji">真</span>
+          <h3 class="shin7__title">本質に向き合う</h3>
+          <p class="shin7__desc">表面の要望ではなく、本当に解くべき課題を見極めてから手を動かします。</p>
+        </div>
+
+        <div class="shin7__card shin7__card--featured reveal" data-delay="1">
+          <div class="shin7__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+            </svg>
+          </div>
+          <span class="shin7__yomi">しん</span>
+          <span class="shin7__kanji">信</span>
+          <h3 class="shin7__title">説明できる技術</h3>
+          <p class="shin7__desc">出典と根拠を示し、人が確かめて承認できるAIをつくります。</p>
+        </div>
+
+        <div class="shin7__card shin7__card--featured reveal" data-delay="2">
+          <div class="shin7__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/>
+            </svg>
+          </div>
+          <span class="shin7__yomi">のびる</span>
+          <span class="shin7__kanji">伸</span>
+          <h3 class="shin7__title">自走できる状態へ</h3>
+          <p class="shin7__desc">お客様が自ら運用し改善できる力を、最後に残します。</p>
+        </div>
+      </div>
+
+      <p class="shin7__group-label reveal">人格の土台</p>
+      <div class="shin7__secondary">
+        <div class="shin7__card reveal">
+          <div class="shin7__icon-wrap shin7__icon-wrap--sub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
+            </svg>
+          </div>
+          <span class="shin7__yomi">こころ</span>
+          <span class="shin7__kanji shin7__kanji--sub">心</span>
+          <h3 class="shin7__title">感性を大切にする</h3>
+          <p class="shin7__desc">数値で測れない「感じ」を、設計の中に持ち込みます。</p>
+        </div>
+
+        <div class="shin7__card reveal" data-delay="1">
+          <div class="shin7__icon-wrap shin7__icon-wrap--sub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+            </svg>
+          </div>
+          <span class="shin7__yomi">しん</span>
+          <span class="shin7__kanji shin7__kanji--sub">新</span>
+          <h3 class="shin7__title">変化に挑み続ける</h3>
+          <p class="shin7__desc">昨日の正解に縛られず、常に最善を問い直します。</p>
+        </div>
+
+        <div class="shin7__card reveal" data-delay="2">
+          <div class="shin7__icon-wrap shin7__icon-wrap--sub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 3v3m0 12v3M3 12h3m12 0h3"/>
+            </svg>
+          </div>
+          <span class="shin7__yomi">しん</span>
+          <span class="shin7__kanji shin7__kanji--sub">芯</span>
+          <h3 class="shin7__title">ぶれない軸を持つ</h3>
+          <p class="shin7__desc">流行に流されず、目的の中心を見失いません。</p>
+        </div>
+
+        <div class="shin7__card reveal" data-delay="3">
+          <div class="shin7__icon-wrap shin7__icon-wrap--sub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5z"/>
+            </svg>
+          </div>
+          <span class="shin7__yomi">しん</span>
+          <span class="shin7__kanji shin7__kanji--sub">紳</span>
+          <h3 class="shin7__title">品位ある振る舞い</h3>
+          <p class="shin7__desc">技術の前に、誠実さと礼儀を持って接します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- ============================================================
@@ -273,34 +347,70 @@
       </div>
 
       <dl class="company__facts reveal">
-        <div>
-          <dt class="company__fact-term">屋号</dt>
+        <div class="company__fact">
+          <dt class="company__fact-term">
+            <svg class="company__fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3 0h.008v.008H18v-.008zm0 3h.008v.008H18v-.008zm0 3h.008v.008H18v-.008z"/>
+            </svg>
+            屋号
+          </dt>
           <dd class="company__fact-desc">ShinAI（シンアイ）</dd>
         </div>
-        <div>
-          <dt class="company__fact-term">設立</dt>
+        <div class="company__fact">
+          <dt class="company__fact-term">
+            <svg class="company__fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+            </svg>
+            設立
+          </dt>
           <dd class="company__fact-desc">2025年1月</dd>
         </div>
-        <div>
-          <dt class="company__fact-term">代表</dt>
+        <div class="company__fact">
+          <dt class="company__fact-term">
+            <svg class="company__fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+            </svg>
+            代表
+          </dt>
           <dd class="company__fact-desc">柴田 昌国</dd>
         </div>
-        <div>
-          <dt class="company__fact-term">活動拠点</dt>
-          <dd class="company__fact-desc">東京都千代田区丸の内3-8-3 Tokyo Innovation Base</dd>
+        <div class="company__fact">
+          <dt class="company__fact-term">
+            <svg class="company__fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z"/>
+            </svg>
+            活動拠点
+          </dt>
+          <dd class="company__fact-desc">東京都千代田区丸の内3-8-3<br>Tokyo Innovation Base</dd>
         </div>
-        <div>
-          <dt class="company__fact-term">所在地</dt>
+        <div class="company__fact">
+          <dt class="company__fact-term">
+            <svg class="company__fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"/>
+            </svg>
+            所在地
+          </dt>
           <dd class="company__fact-desc">群馬県高崎市井野町360-7</dd>
         </div>
-        <div>
-          <dt class="company__fact-term">連絡先</dt>
+        <div class="company__fact">
+          <dt class="company__fact-term">
+            <svg class="company__fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+            </svg>
+            連絡先
+          </dt>
           <dd class="company__fact-desc">
             <a class="about-fact-link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
           </dd>
         </div>
-        <div>
-          <dt class="company__fact-term">受付時間</dt>
+        <div class="company__fact">
+          <dt class="company__fact-term">
+            <svg class="company__fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+            </svg>
+            受付時間
+          </dt>
           <dd class="company__fact-desc">平日 9:00–18:00</dd>
         </div>
       </dl>
@@ -309,7 +419,85 @@
 
 
   <!-- ============================================================
-       7. 最終CTA
+       7. Join — パートナー募集
+       ============================================================ -->
+  <section class="section section--alt" id="join" aria-labelledby="join-title">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Join Us</p>
+        <h2 id="join-title" class="section__title">共に前進できる仲間を、<br>求めています。</h2>
+        <p class="section__lead">
+          <span class="section__lead-line">ShinAIは今、最も重要な成長フェーズにいます。</span>
+          <span class="section__lead-line">技術・営業・デザインそれぞれで、同じ方向を向いて走れる人を探しています。</span>
+        </p>
+      </div>
+
+      <div class="join__grid">
+        <article class="join__card reveal">
+          <span class="join__num">01</span>
+          <div class="join__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"/>
+            </svg>
+          </div>
+          <p class="join__role">Engineer</p>
+          <h3 class="join__title">AIエンジニア</h3>
+          <p class="join__desc">LLM統合・RAG構築・ファインチューニング。技術の本質を理解しながら、現場で動くAIを実装できる方。</p>
+          <ul class="join__tags" aria-label="求めるスキル">
+            <li class="join__tag">Python</li>
+            <li class="join__tag">LLM統合</li>
+            <li class="join__tag">RAG</li>
+            <li class="join__tag">API設計</li>
+          </ul>
+          <a class="btn btn-ghost join__cta" href="contact.html">話を聞いてみる</a>
+        </article>
+
+        <article class="join__card reveal" data-delay="1">
+          <span class="join__num">02</span>
+          <div class="join__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"/>
+            </svg>
+          </div>
+          <p class="join__role">Business</p>
+          <h3 class="join__title">ビジネスパートナー</h3>
+          <p class="join__desc">顧客の課題を聞き、最適な提案へ結びつける力。法人向け営業経験とAI・DXへの関心を持つ方。</p>
+          <ul class="join__tags" aria-label="求めるスキル">
+            <li class="join__tag">法人営業</li>
+            <li class="join__tag">提案設計</li>
+            <li class="join__tag">DX知識</li>
+            <li class="join__tag">課題ヒアリング</li>
+          </ul>
+          <a class="btn btn-ghost join__cta" href="contact.html">話を聞いてみる</a>
+        </article>
+
+        <article class="join__card reveal" data-delay="2">
+          <span class="join__num">03</span>
+          <div class="join__icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/>
+            </svg>
+          </div>
+          <p class="join__role">Design</p>
+          <h3 class="join__title">UI/UXデザイナー</h3>
+          <p class="join__desc">AIプロダクトの体験設計から情報設計まで。複雑な機能をシンプルに届けるデザイン力を持つ方。</p>
+          <ul class="join__tags" aria-label="求めるスキル">
+            <li class="join__tag">Figma</li>
+            <li class="join__tag">UX設計</li>
+            <li class="join__tag">プロダクト思考</li>
+            <li class="join__tag">フロントエンド</li>
+          </ul>
+          <a class="btn btn-ghost join__cta" href="contact.html">話を聞いてみる</a>
+        </article>
+      </div>
+
+      <p class="join__note reveal">正式な雇用形態に限りません。業務委託・副業・共同事業としての参加もご相談ください。</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       8. 最終CTA
        ============================================================ -->
   <section class="section section--ink cta" id="contact" aria-labelledby="cta-title">
     <div class="container">
@@ -321,7 +509,7 @@
           </h2>
           <p class="cta__copy">
             <span class="cta__copy-line">まだ要件が決まっていなくても構いません。</span>
-            <span class="cta__copy-line">現在の業務と知識資産から、適用可能性を整理します。</span>
+            <span class="cta__copy-line">技術より先に、あなたの現場を理解します。</span>
           </p>
         </div>
 
