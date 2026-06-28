@@ -2617,7 +2617,8 @@ h1, h2, h3, h4 {
   }
   .hero {
     min-height: auto;
-    padding-block: var(--space-6) var(--space-4);
+    align-items: flex-start;
+    padding-block: var(--space-5) var(--space-4);
   }
 }
 
