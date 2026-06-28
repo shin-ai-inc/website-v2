@@ -19,7 +19,7 @@
 
 .capability__num {
   display: block;
-  font-family: var(--font-latin);
+  font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-latin);
   color: var(--teal);
