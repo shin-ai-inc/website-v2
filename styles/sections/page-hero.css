@@ -52,7 +52,7 @@
 .page-hero__title {
   font-size: clamp(2rem, 4.8vw, 4.4rem);
   line-height: 1.16;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
 }
 
 .page-hero__title-line {
