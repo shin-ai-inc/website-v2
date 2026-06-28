@@ -69,7 +69,7 @@ h1, h2, h3, h4 {
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
-.section__head { max-width: var(--container-heading); margin-bottom: var(--space-5); }
+.section__head { max-width: var(--container-heading); margin-bottom: var(--space-4); }
 .section__head--center { margin-inline: auto; text-align: center; }
 .section__title {
   font-size: var(--fs-h2);

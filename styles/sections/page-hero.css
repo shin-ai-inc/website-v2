@@ -8,7 +8,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),

@@ -140,8 +140,8 @@
 
 /* ---- 歩み（ブランド藍青の数字で時間軸を示す） ---- */
 .about-career {
-  margin-top: var(--space-6);
-  padding-top: var(--space-5);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--line);
   display: grid;
   gap: var(--space-3);
@@ -186,13 +186,13 @@
 
 /* ---- チーム写真ブレーク ---- */
 .about-photo-break {
-  padding: var(--space-6) 0;
+  padding: var(--space-4) 0;
 }
 
 .about-photo-break__frame {
   overflow: hidden;
   border-radius: var(--r-lg);
-  max-height: 28rem;
+  max-height: 20rem;
   box-shadow: var(--shadow-md);
 }
 
@@ -228,7 +228,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 .shin7__secondary {
@@ -242,7 +242,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-4) var(--space-3);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--paper);
@@ -299,13 +299,13 @@
 
 .shin7__kanji {
   font-family: var(--font-display);
-  font-size: var(--fs-display);
+  font-size: var(--fs-h1);
   line-height: 1;
   color: var(--ink);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 .shin7__kanji--sub {
-  font-size: var(--fs-h1);
+  font-size: var(--fs-h2);
 }
 
 .shin7__title {

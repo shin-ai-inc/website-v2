@@ -84,7 +84,7 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(3rem, 6.5vw, 9rem);
+  --section-py: clamp(2.5rem, 4.5vw, 6.5rem);
   --container: 1360px;
   --container-narrow: 760px;
   --container-text: 680px;
@@ -208,7 +208,7 @@ h1, h2, h3, h4 {
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
-.section__head { max-width: var(--container-heading); margin-bottom: var(--space-5); }
+.section__head { max-width: var(--container-heading); margin-bottom: var(--space-4); }
 .section__head--center { margin-inline: auto; text-align: center; }
 .section__title {
   font-size: var(--fs-h2);
@@ -570,8 +570,8 @@ h1, h2, h3, h4 {
 
 /* ---- 歩み（ブランド藍青の数字で時間軸を示す） ---- */
 .about-career {
-  margin-top: var(--space-6);
-  padding-top: var(--space-5);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--line);
   display: grid;
   gap: var(--space-3);
@@ -616,13 +616,13 @@ h1, h2, h3, h4 {
 
 /* ---- チーム写真ブレーク ---- */
 .about-photo-break {
-  padding: var(--space-6) 0;
+  padding: var(--space-4) 0;
 }
 
 .about-photo-break__frame {
   overflow: hidden;
   border-radius: var(--r-lg);
-  max-height: 28rem;
+  max-height: 20rem;
   box-shadow: var(--shadow-md);
 }
 
@@ -658,7 +658,7 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 .shin7__secondary {
@@ -672,7 +672,7 @@ h1, h2, h3, h4 {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-4) var(--space-3);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--paper);
@@ -729,13 +729,13 @@ h1, h2, h3, h4 {
 
 .shin7__kanji {
   font-family: var(--font-display);
-  font-size: var(--fs-display);
+  font-size: var(--fs-h1);
   line-height: 1;
   color: var(--ink);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 .shin7__kanji--sub {
-  font-size: var(--fs-h1);
+  font-size: var(--fs-h2);
 }
 
 .shin7__title {
@@ -3265,7 +3265,7 @@ h1, h2, h3, h4 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),

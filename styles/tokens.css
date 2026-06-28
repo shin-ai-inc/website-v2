@@ -83,7 +83,7 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(3rem, 6.5vw, 9rem);
+  --section-py: clamp(2.5rem, 4.5vw, 6.5rem);
   --container: 1360px;
   --container-narrow: 760px;
   --container-text: 680px;
