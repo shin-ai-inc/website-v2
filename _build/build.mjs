@@ -12,8 +12,9 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-/* デプロイ前に実ドメインへ置換する唯一の場所。OGP/canonical の絶対URLに使う。 */
-const SITE_URL = "https://www.shinai.example";
+/* デプロイ前に実ドメインへ置換する唯一の場所。OGP/canonical の絶対URLに使う。
+   独自ドメイン取得後はここを更新してビルドし直すこと。 */
+const SITE_URL = "https://shin-ai-inc.github.io/website-v2";
 const OG_IMAGE = SITE_URL + "/assets/images/ogp.png";
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
@@ -69,6 +70,7 @@ const pages = [
     title: "よくある質問｜ShinAI",
     desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。ShinAIへのよくある質問。" },
   { file: "contact.html", part: "contact.html", nav: "contact", hero: false,
+    extraScripts: ['<script src="scripts/contact-form.js" defer></script>'],
     title: "お問い合わせ・無料相談｜ShinAI",
     desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は20〜30分、事前準備は不要です。" },
   { file: "privacy.html", part: "privacy.html", nav: null, hero: false,
@@ -121,6 +123,9 @@ const shell = (page) => {
       '<script src="scripts/particles.js" defer></script>'
     );
   }
+  if (page.extraScripts) {
+    for (const s of page.extraScripts) { scripts.push(s); }
+  }
 
   return `<!doctype html>
 <html lang="ja">
@@ -133,7 +138,7 @@ const shell = (page) => {
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#3A5FEB">
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:type" content="website">

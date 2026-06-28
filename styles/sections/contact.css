@@ -262,11 +262,46 @@
 
 .contact-form__btn {
   width: 100%;
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    opacity var(--dur-1) var(--ease-out);
+}
+
+.contact-form[data-state="sending"] .contact-form__btn {
+  opacity: 0.65;
+  pointer-events: none;
 }
 
 .contact-form__btn-arrow {
   width: 1.1rem;
   height: 1.1rem;
+}
+
+/* ---- 送信フィードバック ---- */
+.contact-form__feedback {
+  padding: var(--space-4);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+
+.contact-form__feedback--success {
+  background: var(--teal-soft);
+  color: var(--c-agent-ink);
+  border: 1px solid rgba(0, 201, 167, 0.30);
+}
+
+.contact-form__feedback--error {
+  background: #FFF0F0;
+  color: #B23A3A;
+  border: 1px solid rgba(178, 58, 58, 0.22);
+}
+
+.contact-form__feedback--error a {
+  color: #B23A3A;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---- ハニーポット ---- */

@@ -83,8 +83,11 @@
           <p class="contact-form-card__lead">いただいた内容を確認のうえ、数営業日以内にご連絡します。</p>
         </div>
 
-        <!-- 送信先はデプロイ時に実エンドポイントへ差し替える（鍵やURLは埋め込まない） -->
-        <form class="contact-form" method="post" action="#" novalidate aria-describedby="contact-form-note">
+        <!-- Formspree: formspree.io でフォームを作成し、YOUR_FORM_ID を実際の ID に置換する -->
+        <form class="contact-form" method="post"
+              action="https://formspree.io/f/YOUR_FORM_ID_HERE"
+              novalidate aria-describedby="contact-form-note">
+          <input type="hidden" name="_subject" value="ShinAI お問い合わせ">
           <!-- ハニーポット: 視覚非表示。人間は入力しない。値があれば送信側で破棄する -->
           <div class="contact-hp" aria-hidden="true">
             <label for="company-website">この欄は入力しないでください</label>
@@ -157,6 +160,15 @@
                 <polyline points="13 6 19 12 13 18"></polyline>
               </svg>
             </button>
+          </div>
+
+          <div id="contact-success" class="contact-form__feedback contact-form__feedback--success" hidden>
+            <strong>送信しました。</strong>内容を確認のうえ、数営業日以内にご連絡します。
+          </div>
+          <div id="contact-error" class="contact-form__feedback contact-form__feedback--error" hidden>
+            送信に問題が発生しました。お手数ですが
+            <a href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
+            より直接ご連絡ください。
           </div>
         </form>
       </div>
