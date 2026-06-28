@@ -51,9 +51,11 @@
 
   /* ---- Typography ---- */
   --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
   --font-latin: "Fraunces", "Zen Old Mincho", serif;
-  /* 企業理念バンド専用。公式HP(shin-ai-inc/website)の --font-sans を完全踏襲 */
+  /* UI ラベル・eyebrow 専用。幾何学的 sans で技術精度感を演出 */
+  --font-label: "Space Grotesk", "Inter", system-ui, sans-serif;
+  /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --fs-display: clamp(3rem, 7vw, 6.5rem);

@@ -53,7 +53,7 @@
 }
 
 .method__label {
-  font-family: var(--font-latin);
+  font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;

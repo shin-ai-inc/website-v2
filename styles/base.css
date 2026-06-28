@@ -100,7 +100,7 @@ h1, h2, h3, h4 {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-family: var(--font-latin);
+  font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
   font-weight: 500;
   letter-spacing: var(--tracking-eyebrow);
