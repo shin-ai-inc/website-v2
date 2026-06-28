@@ -57,14 +57,14 @@
 
   /* 二重コア(藍と青緑のワイヤーフレーム)。現行の二重地球儀構造を継承。 */
   var core = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 12.0 : 7.2, 2),
-    new THREE.MeshBasicMaterial({ color: 0x3a5feb, transparent: true, opacity: isMobile ? 0.18 : 0.15, wireframe: true })
+    new THREE.IcosahedronGeometry(isMobile ? 12.0 : 11.0, 2),
+    new THREE.MeshBasicMaterial({ color: 0x3a5feb, transparent: true, opacity: isMobile ? 0.18 : 0.17, wireframe: true })
   );
   scene.add(core);
 
   var innerCore = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 6.0 : 3.6, 2),
-    new THREE.MeshBasicMaterial({ color: 0x00c9a7, transparent: true, opacity: isMobile ? 0.25 : 0.2, wireframe: true })
+    new THREE.IcosahedronGeometry(isMobile ? 6.0 : 5.5, 2),
+    new THREE.MeshBasicMaterial({ color: 0x00c9a7, transparent: true, opacity: isMobile ? 0.25 : 0.22, wireframe: true })
   );
   scene.add(innerCore);
 
@@ -149,6 +149,12 @@
   var onMouseMove = function (e) { onPointer(e.clientX, e.clientY); };
   var onTouchMove = function (e) { if (e.touches.length > 0) { onPointer(e.touches[0].clientX, e.touches[0].clientY); } };
 
+  /* lookAt ターゲット: creed帯の高さ分だけ下にオフセットし地球儀をヒーロー白エリア中央に揃える。
+     canvas = hero + creed。creed半分の高さ(世界座標)をlookAt Y に引くことで補正する。
+     PC: creed≈75px / canvas≈950px → coverage 67unit → offset ≈2.5unit
+     Mobile: creed≈38px / canvas≈576px → coverage 55unit → offset ≈1.8unit */
+  var heroLookAt = new THREE.Vector3(0, isMobile ? -1.8 : -2.5, 0);
+
   /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。
      モバイルは強度を抑えつつバーストは必ず実行する(prefers-reduced-motionは定常アニメに影響しない)。 */
   var time = 0;
@@ -176,7 +182,7 @@
     targetY = mouseY * 12;
     camera.position.x += (targetX - camera.position.x) * 0.015;
     camera.position.y += (targetY - camera.position.y) * 0.015;
-    camera.lookAt(scene.position);
+    camera.lookAt(heroLookAt);
 
     core.rotation.y += 0.001;
     core.rotation.x += 0.0005;
