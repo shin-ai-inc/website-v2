@@ -52,27 +52,24 @@
 
   /* ---- Typography ---- */
   --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
   --font-latin: "Fraunces", "Zen Old Mincho", serif;
-  /* UI ラベル・eyebrow 専用。幾何学的 sans で技術精度感を演出 */
-  --font-label: "Space Grotesk", "Inter", system-ui, sans-serif;
-  /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
+  /* 企業理念バンド専用。公式HP(shin-ai-inc/website)の --font-sans を完全踏襲 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* SpaceData/Takram 参照スケール。max値はpx換算: display=76px, h1=68px, h2=40px, h3=28px */
-  --fs-display: clamp(3.25rem, 5.2vw, 4.75rem);
-  --fs-h1: clamp(2.75rem, 4.5vw, 4.25rem);
-  --fs-h2: clamp(2rem, 2.5vw, 2.5rem);
-  --fs-h3: clamp(1.5rem, 1.8vw, 1.75rem);
-  --fs-lead: clamp(1.125rem, 1.3vw, 1.25rem);
-  --fs-body: 1rem;
+  --fs-display: clamp(3rem, 7vw, 6.5rem);
+  --fs-h1: clamp(2.2rem, 5vw, 4.5rem);
+  --fs-h2: clamp(1.7rem, 3.5vw, 2.8rem);
+  --fs-h3: clamp(1.15rem, 1.8vw, 1.45rem);
+  --fs-lead: clamp(1.05rem, 1.6vw, 1.3rem);
+  --fs-body: 1.0rem;
   --fs-sm: 0.875rem;
-  --fs-eyebrow: 0.75rem;
+  --fs-eyebrow: 0.8rem;
 
-  --lh-tight: 1.1;
-  --lh-snug: 1.45;
-  --lh-body: 1.9;
-  --tracking-eyebrow: 0.15em;
+  --lh-tight: 1.28;
+  --lh-snug: 1.5;
+  --lh-body: 1.85;
+  --tracking-eyebrow: 0.18em;
   --tracking-latin: 0.04em;
 
   /* ---- Spacing scale ---- */
@@ -84,12 +81,10 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(4.5rem, 7vw, 9rem);
-  --container: 1360px;
+  --section-py: clamp(5rem, 9vw, 9rem);
+  --container: 1180px;
   --container-narrow: 760px;
-  --container-text: 680px;
-  --container-heading: 960px;
-  --gutter: clamp(1.5rem, 3.5vw, 3rem);
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
   --header-h: 78px;            /* sticky ヘッダーの初期高。没入ゾーンの1画面計算に使う */
   --header-h-condensed: 64px;  /* scroll で condense した時の高さ。モバイルナビ天位置も追従させる */
 
@@ -155,9 +150,7 @@ html {
 body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
-  font-weight: 300;
   line-height: var(--lh-body);
-  letter-spacing: 0.05em;
   color: var(--charcoal);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
@@ -179,10 +172,10 @@ ul, ol { list-style: none; padding: 0; }
 /* ---- Headings ---- */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 500;
-  line-height: var(--lh-snug);
+  font-weight: 600;
+  line-height: var(--lh-tight);
   color: var(--ink);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01em;
 }
 
 /* ---- Layout ---- */
@@ -208,23 +201,16 @@ h1, h2, h3, h4 {
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
-.section__head { max-width: var(--container-heading); margin-bottom: var(--space-5); }
+.section__head { max-width: 760px; margin-bottom: var(--space-5); }
 .section__head--center { margin-inline: auto; text-align: center; }
-.section__title {
-  font-size: var(--fs-h2);
-  font-weight: 500;
-  line-height: var(--lh-snug);
-  letter-spacing: 0.03em;
-}
+.section__title { font-size: var(--fs-h2); }
 .section__title-line {
   display: block;
 }
 .section__lead {
   margin-top: var(--space-3);
-  max-width: var(--container-text);
   font-size: var(--fs-lead);
-  line-height: var(--lh-body);
-  letter-spacing: 0.06em;
+  line-height: var(--lh-snug);
   color: var(--ink-3);
 }
 
@@ -232,26 +218,12 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-.section__more {
-  margin-top: var(--space-5);
-  text-align: center;
-}
-
-.text-column { max-width: var(--container-text); }
-.heading-column { max-width: var(--container-heading); }
-
-@media (max-width: 480px) {
-  .section__head {
-    margin-bottom: var(--space-4);
-  }
-}
-
 /* ---- Eyebrow (英字ラベル。ブランドグラデーションの一線で先進性を表現) ---- */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-family: var(--font-label);
+  font-family: var(--font-latin);
   font-size: var(--fs-eyebrow);
   font-weight: 500;
   letter-spacing: var(--tracking-eyebrow);
@@ -1022,7 +994,7 @@ h1, h2, h3, h4 {
 
 .capability__num {
   display: block;
-  font-family: var(--font-label);
+  font-family: var(--font-latin);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-latin);
   color: var(--teal);
@@ -1903,8 +1875,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-creed);
   font-weight: 300;
   font-size: clamp(1.4rem, 3vw, 1.75rem);
-  line-height: 1.6;
-  letter-spacing: 0.14em;
+  line-height: 1.5;
   color: #FFFFFF;
 }
 
@@ -1945,23 +1916,33 @@ h1, h2, h3, h4 {
   font-size: var(--fs-h2);
   line-height: var(--lh-tight);
   color: #FFFFFF;
-  letter-spacing: 0.07em;
 }
 
 .cta__title-line {
   display: block;
 }
 
+@media (max-width: 480px) {
+  .cta__title-line {
+    display: inline;
+  }
+}
+
 .cta__copy {
   margin-top: var(--space-4);
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
-  letter-spacing: 0.06em;
   color: #C7CEDC;
 }
 
 .cta__copy-line {
   display: block;
+}
+
+@media (max-width: 480px) {
+  .cta__copy-line {
+    display: inline;
+  }
 }
 
 .cta__action {
@@ -2004,7 +1985,7 @@ h1, h2, h3, h4 {
 }
 
 .cta__fact-label {
-  font-family: var(--font-label);
+  font-family: var(--font-latin);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
@@ -2033,17 +2014,6 @@ h1, h2, h3, h4 {
   .cta__facts {
     flex-direction: column;
     gap: var(--space-4);
-  }
-}
-
-@media (max-width: 480px) {
-  .cta__btn {
-    width: 100%;
-    max-width: 340px;
-  }
-  .cta__facts {
-    padding-top: var(--space-4);
-    margin-top: var(--space-5);
   }
 }
 
@@ -2601,9 +2571,9 @@ h1, h2, h3, h4 {
 
 /* ---- Title ---- */
 .hero__title {
-  font-size: clamp(1.9rem, 4.5vw, 4.4rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.4rem, 6vw, 5.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
   margin-bottom: var(--space-5);
 }
 
@@ -2626,7 +2596,6 @@ h1, h2, h3, h4 {
   max-width: 40em;
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
-  letter-spacing: 0.06em;
   color: var(--charcoal);
   margin-bottom: var(--space-5);
 }
@@ -3207,7 +3176,7 @@ h1, h2, h3, h4 {
 }
 
 .method__label {
-  font-family: var(--font-label);
+  font-family: var(--font-latin);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
@@ -3271,7 +3240,7 @@ h1, h2, h3, h4 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(5rem, 11vw, 9rem) clamp(3rem, 6vw, 5rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),
@@ -3313,10 +3282,9 @@ h1, h2, h3, h4 {
 }
 
 .page-hero__title {
-  font-size: clamp(1.8rem, 3.8vw, 3.6rem);
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
+  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
 }
 
 .page-hero__title-line {
@@ -3326,6 +3294,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .page-hero__title-line {
+    display: inline;
     white-space: normal;
   }
 }
@@ -3342,7 +3311,6 @@ h1, h2, h3, h4 {
   max-width: 46em;
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
-  letter-spacing: 0.06em;
   color: var(--ink-3);
 }
 
@@ -3352,7 +3320,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 480px) {
   .page-hero__lead-line {
-    display: block;
+    display: inline;
   }
 }
 
@@ -3497,9 +3465,9 @@ h1, h2, h3, h4 {
 .purpose__statement {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.5rem, 3.2vw, 3.4rem);
-  line-height: 1.35;
-  letter-spacing: 0.05em;
+  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  line-height: var(--lh-tight);
+  letter-spacing: 0.02em;
   color: var(--ink);
 }
 
@@ -3521,7 +3489,6 @@ h1, h2, h3, h4 {
 .purpose__support {
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
-  letter-spacing: 0.06em;
   color: var(--ink-3);
 }
 
@@ -3595,9 +3562,19 @@ h1, h2, h3, h4 {
 
 /* カード写真 — 上端からブリードして視覚的なアンカーを作る */
 .solution-card__figure {
+  position: relative;
   margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) var(--space-4);
   overflow: hidden;
   aspect-ratio: 5 / 3;
+}
+
+/* 3枚の質感差(抽象/コード/写真)を、各カードのアクセント色で淡く一族化する */
+.solution-card__figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--card-ink) 18%, transparent) 100%);
+  pointer-events: none;
 }
 
 .solution-card__figure img {
@@ -3679,14 +3656,10 @@ h1, h2, h3, h4 {
   .solutions__grid {
     grid-template-columns: 1fr;
   }
-}
-
-@media (max-width: 480px) {
-  .solution-card {
-    padding: var(--space-4);
-  }
+  /* 1カラム化で全幅になるカード画像が縦に伸びすぎないよう帯状に固定する */
   .solution-card__figure {
-    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
+    aspect-ratio: auto;
+    height: clamp(150px, 26vw, 200px);
   }
 }
 
