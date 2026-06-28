@@ -57,13 +57,13 @@
 
   /* 二重コア(藍と青緑のワイヤーフレーム)。現行の二重地球儀構造を継承。 */
   var core = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 9.2 : 11.0, 2),
+    new THREE.IcosahedronGeometry(isMobile ? 9.2 : 9.0, 2),
     new THREE.MeshBasicMaterial({ color: 0x3a5feb, transparent: true, opacity: isMobile ? 0.18 : 0.17, wireframe: true })
   );
   scene.add(core);
 
   var innerCore = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 4.6 : 5.5, 2),
+    new THREE.IcosahedronGeometry(isMobile ? 4.6 : 4.5, 2),
     new THREE.MeshBasicMaterial({ color: 0x00c9a7, transparent: true, opacity: isMobile ? 0.25 : 0.22, wireframe: true })
   );
   scene.add(innerCore);
@@ -151,9 +151,9 @@
 
   /* lookAt ターゲット: creed帯の高さ分だけ下にオフセットし地球儀をヒーロー白エリア中央に揃える。
      canvas = hero + creed。creed半分の高さ(世界座標)をlookAt Y に引くことで補正する。
-     PC: creed≈75px / canvas≈950px → coverage 67unit → offset ≈2.5unit
-     Mobile: creed≈38px / canvas≈576px → coverage 55unit → offset ≈1.8unit */
-  var heroLookAt = new THREE.Vector3(0, isMobile ? -3.5 : -2.5, 0);
+     PC: creed≈132px / canvas≈950px → coverage 67unit → offset ≈4.5unit
+     Mobile: creed≈65px / canvas≈576px → coverage 55unit → offset ≈6.0unit */
+  var heroLookAt = new THREE.Vector3(0, isMobile ? -6.0 : -4.5, 0);
 
   /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。
      モバイルは強度を抑えつつバーストは必ず実行する(prefers-reduced-motionは定常アニメに影響しない)。 */
