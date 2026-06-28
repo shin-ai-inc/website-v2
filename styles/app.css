@@ -2550,7 +2550,7 @@ h1, h2, h3, h4 {
   letter-spacing: 0.06em;
   color: var(--charcoal);
   margin-top: auto;
-  margin-bottom: 0;
+  margin-bottom: clamp(5rem, 16vh, 9rem);
 }
 
 @media (max-width: 640px) {
