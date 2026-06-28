@@ -45,6 +45,7 @@
 .purpose__support {
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
+  letter-spacing: 0.06em;
   color: var(--ink-3);
 }
 

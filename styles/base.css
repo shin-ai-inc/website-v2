@@ -17,6 +17,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
+  letter-spacing: 0.05em;
   color: var(--charcoal);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
@@ -83,6 +84,7 @@ h1, h2, h3, h4 {
   max-width: var(--container-text);
   font-size: var(--fs-lead);
   line-height: var(--lh-body);
+  letter-spacing: 0.06em;
   color: var(--ink-3);
 }
 
