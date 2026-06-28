@@ -22,12 +22,6 @@
   display: block;
 }
 
-@media (max-width: 480px) {
-  .cta__title-line {
-    display: inline;
-  }
-}
-
 .cta__copy {
   margin-top: var(--space-4);
   font-size: var(--fs-lead);
@@ -37,12 +31,6 @@
 
 .cta__copy-line {
   display: block;
-}
-
-@media (max-width: 480px) {
-  .cta__copy-line {
-    display: inline;
-  }
 }
 
 .cta__action {
@@ -114,5 +102,16 @@
   .cta__facts {
     flex-direction: column;
     gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .cta__btn {
+    width: 100%;
+    max-width: 340px;
+  }
+  .cta__facts {
+    padding-top: var(--space-4);
+    margin-top: var(--space-5);
   }
 }

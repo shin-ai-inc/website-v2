@@ -59,7 +59,7 @@
 
   --fs-display: clamp(3rem, 7vw, 6.5rem);
   --fs-h1: clamp(2.2rem, 5vw, 4.5rem);
-  --fs-h2: clamp(1.7rem, 3.5vw, 2.8rem);
+  --fs-h2: clamp(1.55rem, 3.5vw, 2.8rem);
   --fs-h3: clamp(1.15rem, 1.8vw, 1.45rem);
   --fs-lead: clamp(1.05rem, 1.6vw, 1.3rem);
   --fs-body: 1.0rem;
@@ -81,7 +81,7 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(5rem, 9vw, 9rem);
+  --section-py: clamp(3rem, 9vw, 9rem);
   --container: 1180px;
   --container-narrow: 760px;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
@@ -203,6 +203,17 @@ h1, h2, h3, h4 {
 
 .section__lead-line {
   display: block;
+}
+
+.section__more {
+  margin-top: var(--space-5);
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .section__head {
+    margin-bottom: var(--space-4);
+  }
 }
 
 /* ---- Eyebrow (英字ラベル。ブランドグラデーションの一線で先進性を表現) ---- */
@@ -1538,12 +1549,6 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-@media (max-width: 480px) {
-  .cta__title-line {
-    display: inline;
-  }
-}
-
 .cta__copy {
   margin-top: var(--space-4);
   font-size: var(--fs-lead);
@@ -1553,12 +1558,6 @@ h1, h2, h3, h4 {
 
 .cta__copy-line {
   display: block;
-}
-
-@media (max-width: 480px) {
-  .cta__copy-line {
-    display: inline;
-  }
 }
 
 .cta__action {
@@ -1630,6 +1629,17 @@ h1, h2, h3, h4 {
   .cta__facts {
     flex-direction: column;
     gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .cta__btn {
+    width: 100%;
+    max-width: 340px;
+  }
+  .cta__facts {
+    padding-top: var(--space-4);
+    margin-top: var(--space-5);
   }
 }
 
@@ -2182,7 +2192,7 @@ h1, h2, h3, h4 {
 
 /* ---- Title ---- */
 .hero__title {
-  font-size: clamp(2.4rem, 6vw, 5.6rem);
+  font-size: clamp(2rem, 6vw, 5.6rem);
   line-height: 1.12;
   letter-spacing: -0.01em;
   margin-bottom: var(--space-5);
@@ -2851,7 +2861,7 @@ h1, h2, h3, h4 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(5rem, 11vw, 9rem) clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(3.5rem, 11vw, 9rem) clamp(2rem, 6vw, 5rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),
@@ -2893,7 +2903,7 @@ h1, h2, h3, h4 {
 }
 
 .page-hero__title {
-  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  font-size: clamp(2rem, 4.8vw, 4.4rem);
   line-height: 1.16;
   letter-spacing: -0.02em;
 }
@@ -2905,7 +2915,6 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .page-hero__title-line {
-    display: inline;
     white-space: normal;
   }
 }
@@ -2931,7 +2940,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 480px) {
   .page-hero__lead-line {
-    display: inline;
+    display: block;
   }
 }
 
@@ -3076,7 +3085,7 @@ h1, h2, h3, h4 {
 .purpose__statement {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  font-size: clamp(1.85rem, 5vw, 4.8rem);
   line-height: var(--lh-tight);
   letter-spacing: 0.02em;
   color: var(--ink);
@@ -3256,6 +3265,15 @@ h1, h2, h3, h4 {
 @media (max-width: 940px) {
   .solutions__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .solution-card {
+    padding: var(--space-4);
+  }
+  .solution-card__figure {
+    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
   }
 }
 

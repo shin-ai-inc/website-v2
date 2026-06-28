@@ -8,7 +8,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(5rem, 11vw, 9rem) clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(3.5rem, 11vw, 9rem) clamp(2rem, 6vw, 5rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),
@@ -50,7 +50,7 @@
 }
 
 .page-hero__title {
-  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  font-size: clamp(2rem, 4.8vw, 4.4rem);
   line-height: 1.16;
   letter-spacing: -0.02em;
 }
@@ -62,7 +62,6 @@
 
 @media (max-width: 640px) {
   .page-hero__title-line {
-    display: inline;
     white-space: normal;
   }
 }
@@ -88,6 +87,6 @@
 
 @media (max-width: 480px) {
   .page-hero__lead-line {
-    display: inline;
+    display: block;
   }
 }
