@@ -1,0 +1,113 @@
+/*
+  Section: How We Work (#process)
+  伴走の五段階を時系列で。PCは「フェーズ｜目安」の二列、モバイルは積層リスト。
+  番号を結ぶ細い縦線で、段階の連なりを示す。
+  色・余白・型はトークンのみ参照。
+*/
+
+.process__list {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.process__phase {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-4) var(--space-4) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.process__phase:last-child {
+  border-bottom: 0;
+}
+
+.process__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: var(--z-base);
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-ink);
+  background: var(--paper);
+  font-family: var(--font-latin);
+  font-size: var(--fs-lead);
+  letter-spacing: var(--tracking-latin);
+  color: var(--brand);
+}
+
+/* 番号を貫く細い縦線。段階の連なりを静かに示す */
+.process__list::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 1px;
+  background: linear-gradient(180deg, var(--brand) 0%, var(--teal) 100%);
+  opacity: 0.25;
+  z-index: var(--z-bg);
+}
+
+.process__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  color: var(--ink);
+}
+
+.process__dur {
+  justify-self: end;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.process__note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--mist);
+}
+
+.process__note-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15em;
+  color: var(--teal);
+}
+
+.process__note-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 560px) {
+  .process__phase {
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-3);
+    row-gap: var(--space-1);
+  }
+  .process__num {
+    grid-row: span 2;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .process__dur {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .process__list::before {
+    left: 1.25rem;
+  }
+}

@@ -1,0 +1,53 @@
+/*
+  ShinAI Website v2 — Section: purpose
+  哲学的な静けさのバンド。明朝の大きな一行と、銅の細い罫、支える一文。
+  余白を最優先。詰め込まない。
+*/
+
+.purpose {
+  text-align: center;
+}
+
+.purpose__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.purpose__eyebrow {
+  margin-bottom: var(--space-6);
+}
+
+.purpose__statement {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  line-height: var(--lh-tight);
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.purpose__statement-line {
+  display: block;
+}
+
+@media (min-width: 680px) {
+  .purpose__statement-line {
+    white-space: nowrap;
+  }
+}
+
+.purpose__rule {
+  width: clamp(120px, 22vw, 200px);
+  margin-block: var(--space-7);
+}
+
+.purpose__support {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+  color: var(--ink-3);
+}
+
+.purpose__support-line {
+  display: block;
+}

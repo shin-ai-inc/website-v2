@@ -1,0 +1,179 @@
+/*
+  Section: Who We Are (#company)
+  会社情報・人・七つのShin。写真は持たず、明朝のモノグラムで品位を担う。
+  七つのShinは三つ(真・信・伸)を立て、残りは静かな思想として下に添える。
+  純白・薄陰どちらの地でも成立するよう、面は白の半透明を地とする。
+  色・余白・型はトークンのみ参照。
+*/
+
+/* ---- 会社情報 ---- */
+.company__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-sm);
+}
+
+.company__fact-term {
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--space-1);
+}
+
+.company__fact-desc {
+  font-size: var(--fs-body);
+  line-height: var(--lh-snug);
+  color: var(--ink);
+}
+
+/* ---- 小見出し ---- */
+.company__subhead {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ---- 人 ---- */
+.company__people {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+.company__person {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-sm);
+}
+
+.company__monogram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+}
+
+.company__portrait {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--r-md);
+  object-fit: cover;
+  object-position: top center;
+}
+
+.company__person-role {
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.company__person-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.company__person-latin {
+  display: block;
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-latin);
+  color: var(--mist);
+  margin-top: 0.2em;
+}
+
+.company__person-bio {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+}
+
+/* ---- 七つのShin ---- */
+.company__shin-feature {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.company__shin-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--grad-paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.company__shin-kanji {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.company__shin-words {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--ink-3);
+}
+
+.company__shin-all {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--space-3) var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+.company__shin-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--mist);
+}
+
+.company__shin-mark {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  color: var(--ink-2);
+  line-height: 1;
+}
+
+@media (max-width: 560px) {
+  .company__shin-feature {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,149 @@
+/*
+  Section: Solutions (#solutions)
+  得られる成果で三つに色分け。各カードがセクションコーディングの淡色と
+  アクセント色を --card-bg / --card-ink として受け取り、アイコン・罫・箇条書きへ波及させる。
+  色・余白・型はトークンのみ参照。
+*/
+
+.solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.solution-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+
+.solution-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--grad-brand);
+  opacity: 0;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+
+.solution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.solution-card:hover::before {
+  opacity: 1;
+}
+
+.solution-card--tacit {
+  --card-bg: var(--c-tacit-bg);
+  --card-ink: var(--c-tacit-ink);
+}
+
+.solution-card--agent {
+  --card-bg: var(--c-agent-bg);
+  --card-ink: var(--c-agent-ink);
+}
+
+.solution-card--enable {
+  --card-bg: var(--c-enable-bg);
+  --card-ink: var(--c-enable-ink);
+}
+
+/* カード写真 — 上端からブリードして視覚的なアンカーを作る */
+.solution-card__figure {
+  margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) var(--space-4);
+  overflow: hidden;
+  aspect-ratio: 5 / 3;
+}
+
+.solution-card__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.solution-card:hover .solution-card__figure img {
+  transform: scale(1.04);
+}
+
+.solution-card__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: var(--space-4);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  color: var(--card-ink);
+}
+
+.solution-card__icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.solution-card__title {
+  font-size: var(--fs-h3);
+  color: var(--card-ink);
+  margin-bottom: var(--space-2);
+}
+
+.solution-card__lead {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  margin-bottom: var(--space-4);
+}
+
+.solution-card__divider {
+  height: 1px;
+  border: 0;
+  margin-bottom: var(--space-4);
+  background: var(--card-ink);
+  opacity: 0.18;
+}
+
+.solution-card__items {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: auto;
+}
+
+.solution-card__item {
+  position: relative;
+  padding-left: var(--space-4);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--charcoal);
+}
+
+.solution-card__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--card-ink);
+}
+
+@media (max-width: 940px) {
+  .solutions__grid {
+    grid-template-columns: 1fr;
+  }
+}

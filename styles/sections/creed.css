@@ -1,0 +1,44 @@
+/*
+  Section: creed — ShinAIの企業理念を掲げる帯。
+  公式HP(shin-ai-inc/website)の mission-section を実ソースから完全移植(色相・フォント・寸法)。
+  くっきりした青緑グラデーション帯。太字・白・中庸サイズ、本文相当フォント。
+  PCは一行、768px以下は「真の価値を信じ、」の後で改行。
+*/
+/* z-index は付けない(スタッキング文脈を作らない)。
+   こうすることで帯のグラデーションは背面に、creed__text は前面のパーティクル層よりさらに前へ抜ける。 */
+.creed {
+  position: relative;
+  padding: 2rem 0;
+  text-align: center;
+  background: var(--grad-creed);
+}
+
+.creed__text {
+  position: relative;
+  z-index: var(--z-stack-content);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: var(--font-creed);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  line-height: 1.5;
+  color: #FFFFFF;
+}
+
+.creed__line {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .creed {
+    padding: 1rem 0;
+  }
+  .creed__text {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+  .creed__line {
+    display: block;
+  }
+}

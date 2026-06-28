@@ -1,0 +1,45 @@
+/*
+  Section: capability — 企業AI開発に特化した、技術の芯。
+  既製品の組み合わせではなく、モデル最適化から運用基盤まで自分たちで設計できる主体性を示す濃色帯。
+  番号モチーフは problem/why と共通の語彙を踏襲する(新しい装飾を増やさない)。
+*/
+.capability__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.capability__item {
+  padding: var(--space-5);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.capability__num {
+  display: block;
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-latin);
+  color: var(--teal);
+  margin-bottom: var(--space-2);
+}
+
+.capability__term {
+  font-size: var(--fs-h3);
+  color: #FFFFFF;
+  margin-bottom: var(--space-2);
+}
+
+.capability__desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+@media (max-width: 680px) {
+  .capability__grid {
+    grid-template-columns: 1fr;
+  }
+}

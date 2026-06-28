@@ -1,0 +1,37 @@
+<!--
+  共有ヘッダー(全ページ共通)。オーケストレーターが各ページへ結合する。
+  現在地のリンクには結合時に aria-current="page" を付与する。
+  パス接頭辞 {{BASE}} は結合時に解決(ルート公開なら空、サブパスなら "./" 等)。
+-->
+<header class="site-header" data-site-header>
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href="index.html" aria-label="ShinAI ホーム">
+      <span class="site-header__wordmark">Shin<span class="site-header__wordmark-accent">AI</span></span>
+    </a>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      aria-label="メニューを開く"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <line class="site-header__toggle-bar site-header__toggle-bar--top" x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <line class="site-header__toggle-bar site-header__toggle-bar--mid" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <line class="site-header__toggle-bar site-header__toggle-bar--bot" x1="3" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <nav class="site-header__nav" id="primary-nav" aria-label="グローバルナビゲーション">
+      <ul class="site-header__menu">
+        <li><a class="site-header__link" href="services.html">ソリューション</a></li>
+        <li><a class="site-header__link" href="industries.html">業種別</a></li>
+        <li><a class="site-header__link" href="about.html">会社情報</a></li>
+        <li><a class="site-header__link" href="faq.html">よくある質問</a></li>
+      </ul>
+      <a class="btn btn-primary site-header__cta" href="contact.html">無料相談</a>
+    </nav>
+  </div>
+</header>

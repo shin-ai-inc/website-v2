@@ -1,0 +1,227 @@
+/*
+  ShinAI Website v2 — Section: legal pages (privacy / terms / tokushoho)
+  長文の法的文書を、純白の品位を保ったまま読みやすく。
+  色・余白・型・影・角丸・罫はトークンのみ参照。名前空間は .legal__*。
+*/
+
+.legal {
+  padding-block: 0 var(--section-py);
+}
+
+/* ---- ページ冒頭のタイトル帯 ---- */
+.legal__band {
+  padding-block: var(--space-8) var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+
+.legal__band-inner {
+  max-width: var(--container-narrow);
+}
+
+.legal__title {
+  margin-top: var(--space-3);
+  font-size: var(--fs-h1);
+  color: var(--ink);
+}
+
+.legal__lead {
+  margin-top: var(--space-3);
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+  color: var(--ink-3);
+}
+
+/* タイトル下のブランドグラデーション細線 */
+.legal__rule {
+  width: 64px;
+  height: 2px;
+  margin-top: var(--space-4);
+  border: 0;
+  background: var(--grad-brand);
+  opacity: 0.9;
+}
+
+/* ---- 本文 ---- */
+.legal__body {
+  padding-top: var(--space-7);
+}
+
+.legal__intro {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--charcoal);
+}
+
+.legal__section {
+  margin-top: var(--space-7);
+}
+
+.legal__section:first-of-type {
+  margin-top: 0;
+}
+
+.legal__h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--ink);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.legal__h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-top: var(--space-5);
+}
+
+.legal__p {
+  margin-top: var(--space-3);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--charcoal);
+}
+
+.legal__p + .legal__p {
+  margin-top: var(--space-3);
+}
+
+/* ---- リスト ---- */
+.legal__list {
+  margin-top: var(--space-3);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.legal__list-item {
+  position: relative;
+  padding-left: var(--space-4);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--charcoal);
+}
+
+.legal__list-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(var(--lh-body) * 0.5em);
+  width: 7px;
+  height: 1px;
+  background: var(--brand);
+}
+
+.legal__list--ordered {
+  counter-reset: legal-ol;
+}
+
+.legal__list--ordered .legal__list-item {
+  padding-left: var(--space-5);
+  counter-increment: legal-ol;
+}
+
+.legal__list--ordered .legal__list-item::before {
+  content: counter(legal-ol) ".";
+  top: 0;
+  width: auto;
+  height: auto;
+  background: none;
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  color: var(--brand);
+}
+
+/* ---- 特商法の定義リスト ---- */
+.legal__dl {
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+
+.legal__row {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.legal__dt {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: var(--lh-snug);
+}
+
+.legal__dd {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--charcoal);
+}
+
+/* ---- 連絡先・補足の囲み ---- */
+.legal__note {
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+
+.legal__note-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.legal__note-text {
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--ink-3);
+}
+
+.legal__link {
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--dur-1) var(--ease-out);
+}
+
+.legal__link:hover {
+  text-decoration-color: var(--brand);
+}
+
+/* ---- 制定・改定の小さな注記 ---- */
+.legal__meta {
+  margin-top: var(--space-7);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.legal__meta-item {
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-latin);
+  color: var(--mist);
+}
+
+/* ---- レスポンシブ ---- */
+@media (max-width: 640px) {
+  .legal__band {
+    padding-block: var(--space-7) var(--space-5);
+  }
+  .legal__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+  .legal__dt {
+    color: var(--ink-2);
+  }
+}

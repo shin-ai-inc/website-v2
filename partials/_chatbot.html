@@ -1,0 +1,63 @@
+<!--
+  共有: AIアシスタント起動UI(全ページ共通)。オーケストレーターが各ページ末尾(footer の後)へ結合する。
+  ID は scripts/chatbot.js と一致させること(chatbot-button / chatbot-window / chatbot-close /
+  chatbot-messages / chat-input / chat-send)。インラインJS/ハンドラは書かない。
+-->
+<div class="chatbot" data-chatbot>
+  <button
+    type="button"
+    id="chatbot-button"
+    class="chatbot__launcher"
+    aria-expanded="false"
+    aria-controls="chatbot-window"
+    aria-label="AIアシスタントに質問する"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H9l-4 3v-3H4A1.5 1.5 0 0 1 2.5 15V7A1.5 1.5 0 0 1 4 5.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <circle cx="8.5" cy="11" r="1" fill="currentColor"/>
+      <circle cx="12" cy="11" r="1" fill="currentColor"/>
+      <circle cx="15.5" cy="11" r="1" fill="currentColor"/>
+    </svg>
+    <span class="chatbot__launcher-label">質問する</span>
+  </button>
+
+  <section
+    id="chatbot-window"
+    class="chatbot__window"
+    role="dialog"
+    aria-label="ShinAI AIアシスタント"
+    aria-modal="false"
+  >
+    <header class="chatbot__head">
+      <div class="chatbot__head-text">
+        <p class="chatbot__title">ShinAI アシスタント</p>
+        <p class="chatbot__subtitle">暗黙知のAI化について、気軽にどうぞ</p>
+      </div>
+      <button type="button" id="chatbot-close" class="chatbot__close" aria-label="閉じる">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <div id="chatbot-messages" class="chatbot__messages" aria-live="polite" aria-atomic="false"></div>
+
+    <form class="chatbot__form" data-chatbot-form>
+      <label class="visually-hidden" for="chat-input">メッセージを入力</label>
+      <textarea
+        id="chat-input"
+        class="chatbot__input"
+        rows="1"
+        maxlength="500"
+        placeholder="質問を入力してください"
+        autocomplete="off"
+      ></textarea>
+      <button type="button" id="chat-send" class="chatbot__send" aria-label="送信">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 12l16-7-7 16-2.5-6.5L4 12Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  </section>
+</div>

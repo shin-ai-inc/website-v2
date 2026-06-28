@@ -1,0 +1,119 @@
+/*
+  ShinAI Website v2 — Design Tokens (single source of truth)
+  すべてのセクションCSSはこのトークンのみを参照する。色・余白・型を直接ハードコードしない。
+  美学方針: 純白を基盤に、藍青→青緑のグラデーションで先進性を、オレンジで行動エネルギーを表現。
+*/
+
+:root {
+  /* ---- Color: base (純白基調 + 極淡い藍青のニュアンス) ---- */
+  --paper: #FFFFFF;            /* 純白。全体背景 */
+  --paper-2: #F5F7FF;          /* セクション交互の極淡い藍青 */
+  --paper-3: #EBF0FF;          /* カード境界・微細な面 */
+  --ink: #0C1A36;              /* 深い藍黒。主色・見出し */
+  --ink-2: #1A2E52;            /* 藍の中間 */
+  --ink-3: #4A5A7A;            /* 補助テキスト */
+  --charcoal: #1E2D4A;         /* 本文 */
+  --mist: #6B7A99;             /* キャプション */
+  --line: #E2E8F7;             /* 罫線 */
+  --line-ink: rgba(12, 26, 54, 0.10);
+
+  /* ---- Color: brand (企業カラー。藍青→青緑→エネルギーオレンジ) ---- */
+  --brand: #3A5FEB;            /* プライマリ藍青 */
+  --brand-2: #5476F8;          /* 明るい藍青 */
+  --brand-3: #2044CC;          /* 深い藍青 */
+  --brand-soft: #EBF0FF;       /* 藍青の淡 */
+  --teal: #00C9A7;             /* セカンダリ青緑 */
+  --teal-2: #20E7C4;           /* 明るい青緑 */
+  --teal-soft: #E0FAF5;        /* 青緑の淡 */
+  --energy: #FF8A00;           /* エネルギーオレンジ。CTA・強調 */
+  --energy-2: #FFA533;         /* 明るいオレンジ */
+  --energy-soft: #FFF3E0;      /* オレンジの淡 */
+
+  /* ---- Color: section coding (3ソリューションの色分け) ---- */
+  --c-tacit-bg: #EBF0FF;       /* 暗黙知AI化 — 藍青の淡 */
+  --c-tacit-ink: #2044CC;
+  --c-agent-bg: #E0FAF5;       /* 企業専用エージェント — 青緑の淡 */
+  --c-agent-ink: #007A67;
+  --c-enable-bg: #FFF3E0;      /* 内製化・運用支援 — オレンジの淡 */
+  --c-enable-ink: #CC5E00;
+
+  /* ---- Gradients ---- */
+  --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
+  --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
+  --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
+  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, #060E1E 100%);
+  --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #F5F7FF 70%, #EBF0FF 100%);
+  --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
+  --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
+  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, #060E1E 100%);
+  /* 企業理念バンド。公式HP --gradient-cta-new (#2D4CC8/#00B89F) を完全踏襲(不透明・くっきり) */
+  --grad-creed: linear-gradient(135deg, #2D4CC8 0%, #00B89F 50%, #2D4CC8 100%);
+
+  /* ---- Typography ---- */
+  --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  --font-latin: "Fraunces", "Zen Old Mincho", serif;
+  /* 企業理念バンド専用。公式HP(shin-ai-inc/website)の --font-sans を完全踏襲 */
+  --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --fs-display: clamp(3rem, 7vw, 6.5rem);
+  --fs-h1: clamp(2.2rem, 5vw, 4.5rem);
+  --fs-h2: clamp(1.7rem, 3.5vw, 2.8rem);
+  --fs-h3: clamp(1.15rem, 1.8vw, 1.45rem);
+  --fs-lead: clamp(1.05rem, 1.6vw, 1.3rem);
+  --fs-body: 1.0rem;
+  --fs-sm: 0.875rem;
+  --fs-eyebrow: 0.8rem;
+
+  --lh-tight: 1.28;
+  --lh-snug: 1.5;
+  --lh-body: 1.85;
+  --tracking-eyebrow: 0.18em;
+  --tracking-latin: 0.04em;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4.5rem;
+  --space-8: 6.5rem;
+  --section-py: clamp(5rem, 9vw, 9rem);
+  --container: 1180px;
+  --container-narrow: 760px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --header-h: 78px;            /* sticky ヘッダーの初期高。没入ゾーンの1画面計算に使う */
+
+  /* ---- Radius ---- */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  /* ---- Shadow ---- */
+  --shadow-sm: 0 1px 2px rgba(12, 26, 54, 0.04), 0 2px 8px rgba(12, 26, 54, 0.05);
+  --shadow-md: 0 6px 18px rgba(12, 26, 54, 0.07), 0 2px 6px rgba(12, 26, 54, 0.04);
+  --shadow-lg: 0 22px 48px rgba(12, 26, 54, 0.10), 0 8px 18px rgba(12, 26, 54, 0.06);
+  --shadow-brand: 0 8px 32px rgba(58, 95, 235, 0.22), 0 2px 8px rgba(58, 95, 235, 0.10);
+  --shadow-teal: 0 8px 32px rgba(0, 201, 167, 0.20);
+  --shadow-energy: 0 8px 30px rgba(255, 138, 0, 0.28);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 0.4s;
+  --dur-2: 0.7s;
+  --dur-3: 1.1s;
+
+  /* ---- Layer ---- */
+  --z-bg: 0;
+  --z-base: 1;
+  /* 没入ゾーン内: 信念帯グラデーション(背景) < パーティクル < 全テキスト の順に重ねる */
+  --z-particles: 2;
+  --z-stack-content: 3;
+  --z-header: 50;
+  --z-overlay: 80;
+}

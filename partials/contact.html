@@ -1,0 +1,194 @@
+<!--
+  CONTACT ページ本文（main の中身のみ）。事実・文言は BRIEF.md 10章を一次資料とする。
+  フォームのクライアント検証JSは scripts/ 側で付与する前提。送信先はプレースホルダ。
+-->
+<section class="page-hero" aria-labelledby="contact-hero-title">
+  <div class="container">
+    <div class="page-hero__inner reveal">
+      <nav class="page-hero__breadcrumb" aria-label="パンくず">
+        <a href="index.html">ホーム</a>
+        <span class="page-hero__breadcrumb-sep" aria-hidden="true">›</span>
+        <span aria-current="page">お問い合わせ</span>
+      </nav>
+      <p class="eyebrow page-hero__eyebrow">CONTACT</p>
+      <h1 id="contact-hero-title" class="page-hero__title">
+        まずは、<span class="page-hero__title-accent">話すこと</span>から。
+      </h1>
+      <p class="page-hero__lead">
+        <span class="page-hero__lead-line">要件が固まっていなくても構いません。</span>
+        <span class="page-hero__lead-line">いまの業務と知識資産から、適用の可能性を一緒に整理します。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow" aria-labelledby="flow-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2 id="flow-title" class="section__title">無料相談の流れ</h2>
+      <p class="section__lead">
+        <span class="section__lead-line">オンラインで20〜30分ほど。</span>
+        <span class="section__lead-line">事前の準備や資料は不要です。</span>
+      </p>
+    </div>
+
+    <ol class="contact-flow">
+      <li class="contact-flow__step reveal" data-delay="1">
+        <span class="contact-flow__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20h16"></path>
+            <path d="M14.5 4.5l3 3L8 17l-4 1 1-4z"></path>
+          </svg>
+        </span>
+        <span class="contact-flow__step-label">Step 01</span>
+        <h3 class="contact-flow__title">お申し込み</h3>
+        <p class="contact-flow__text">下のフォームから、いまのお困りごとを簡単にお知らせください。内容に応じて日程を調整します。</p>
+      </li>
+      <li class="contact-flow__step reveal" data-delay="2">
+        <span class="contact-flow__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.5 11.5a7.5 7.5 0 0 1-8 7.5 8 8 0 0 1-3.6-.9L4 19.5l1.4-4A7.5 7.5 0 1 1 20.5 11.5z"></path>
+            <line x1="9" y1="11" x2="15" y2="11"></line>
+            <line x1="9" y1="14" x2="13" y2="14"></line>
+          </svg>
+        </span>
+        <span class="contact-flow__step-label">Step 02</span>
+        <h3 class="contact-flow__title">オンラインで対話</h3>
+        <p class="contact-flow__text">20〜30分ほど、現在の業務と課題をうかがいます。専門用語は使わず、目的の整理から始めます。</p>
+      </li>
+      <li class="contact-flow__step reveal" data-delay="3">
+        <span class="contact-flow__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6"></path>
+            <path d="M10 21h4"></path>
+            <path d="M12 3a6 6 0 0 0-3.8 10.6c.7.6 1.1 1.3 1.2 2.1h5.2c.1-.8.5-1.5 1.2-2.1A6 6 0 0 0 12 3z"></path>
+          </svg>
+        </span>
+        <span class="contact-flow__step-label">Step 03</span>
+        <h3 class="contact-flow__title">適用の整理とご提案</h3>
+        <p class="contact-flow__text">どこから着手できそうか、進め方の見立てをお伝えします。無理に契約を勧めることはありません。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--alt" id="contact-form" aria-labelledby="contact-form-title">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-form-card reveal">
+        <div class="contact-form-card__head">
+          <p class="eyebrow">Inquiry</p>
+          <h2 id="contact-form-title" class="contact-form-card__title">お問い合わせ</h2>
+          <p class="contact-form-card__lead">いただいた内容を確認のうえ、数営業日以内にご連絡します。</p>
+        </div>
+
+        <!-- 送信先はデプロイ時に実エンドポイントへ差し替える（鍵やURLは埋め込まない） -->
+        <form class="contact-form" method="post" action="#" novalidate aria-describedby="contact-form-note">
+          <!-- ハニーポット: 視覚非表示。人間は入力しない。値があれば送信側で破棄する -->
+          <div class="contact-hp" aria-hidden="true">
+            <label for="company-website">この欄は入力しないでください</label>
+            <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="contact-field">
+            <label class="contact-field__label" for="company">
+              会社名・組織名 <span class="contact-req">必須</span>
+            </label>
+            <input class="contact-field__input" type="text" id="company" name="company"
+                   required aria-required="true" maxlength="100"
+                   autocomplete="organization" placeholder="例 ShinAI（個人事業の方は屋号）">
+          </div>
+
+          <div class="contact-field">
+            <label class="contact-field__label" for="name">
+              お名前 <span class="contact-req">必須</span>
+            </label>
+            <input class="contact-field__input" type="text" id="name" name="name"
+                   required aria-required="true" maxlength="50"
+                   autocomplete="name" placeholder="例 山田 太郎">
+          </div>
+
+          <div class="contact-field-row">
+            <div class="contact-field">
+              <label class="contact-field__label" for="email">
+                メールアドレス <span class="contact-req">必須</span>
+              </label>
+              <input class="contact-field__input" type="email" id="email" name="email"
+                     required aria-required="true" maxlength="254"
+                     autocomplete="email" inputmode="email" placeholder="例 name@example.com">
+            </div>
+            <div class="contact-field">
+              <label class="contact-field__label" for="phone">
+                電話番号 <span class="contact-opt">任意</span>
+              </label>
+              <input class="contact-field__input" type="tel" id="phone" name="phone"
+                     maxlength="20" autocomplete="tel" inputmode="tel" placeholder="例 03-1234-5678">
+            </div>
+          </div>
+
+          <div class="contact-field">
+            <label class="contact-field__label" for="message">
+              相談内容 <span class="contact-req">必須</span>
+            </label>
+            <textarea class="contact-field__input contact-field__textarea" id="message" name="message"
+                      required aria-required="true" maxlength="2000" rows="6"
+                      placeholder="現在の業務や、相談したいことをご記入ください。下書きで構いません。"></textarea>
+            <p class="contact-field__hint">専門知識は不要です。曖昧な段階のご相談も歓迎します。</p>
+          </div>
+
+          <div class="contact-consent">
+            <input class="contact-consent__input" type="checkbox" id="privacy-consent" name="privacy-consent"
+                   required aria-required="true">
+            <label class="contact-consent__label" for="privacy-consent">
+              <a class="contact-consent__link" href="privacy.html">個人情報の取り扱い</a>に同意します
+            </label>
+          </div>
+
+          <p class="contact-form__note" id="contact-form-note">
+            送信いただいた情報は、ご相談への対応のみに使用します。
+          </p>
+
+          <div class="contact-form__submit">
+            <button class="btn btn-primary contact-form__btn" type="submit">
+              <span>送信する</span>
+              <svg class="btn__arrow contact-form__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="13 6 19 12 13 18"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-aside reveal" data-delay="1" aria-labelledby="contact-info-title">
+        <h2 id="contact-info-title" class="contact-aside__title">連絡先と活動拠点</h2>
+        <dl class="contact-info">
+          <div class="contact-info__item">
+            <dt class="contact-info__label">メール</dt>
+            <dd class="contact-info__value">
+              <a class="contact-info__link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
+            </dd>
+          </div>
+          <div class="contact-info__item">
+            <dt class="contact-info__label">受付時間</dt>
+            <dd class="contact-info__value">平日 9:00–18:00</dd>
+          </div>
+          <div class="contact-info__item">
+            <dt class="contact-info__label">活動拠点</dt>
+            <dd class="contact-info__value">東京都千代田区丸の内3-8-3 Tokyo Innovation Base</dd>
+          </div>
+          <div class="contact-info__item">
+            <dt class="contact-info__label">所在地</dt>
+            <dd class="contact-info__value">群馬県高崎市井野町360-7 オークスアベニューD201</dd>
+          </div>
+        </dl>
+
+        <div class="contact-chat">
+          <p class="contact-chat__title">チャットでも質問できます</p>
+          <p class="contact-chat__text">画面右下のアシスタントから、その場で気軽にお尋ねいただけます。フォームより手早く確かめたいときにどうぞ。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

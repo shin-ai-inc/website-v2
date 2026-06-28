@@ -1,0 +1,155 @@
+/*
+  ShinAI Website v2 — Section: hero
+  純白の上に三次元パーティクルcanvasを敷き、その上に静かなコピーを重ねる。
+  ShinAI のクリーンなブランドに合わせ、背景は白基調(公式HPと同様)。
+  改行は意味単位。各 line ブロックで mobile でも崩れない。
+*/
+
+/* Hero と 信念バンド(creed)を一つの量子パーティクル場で包む共有レイヤー。
+   白基調。creed の青緑グラデーションだけが下部で立ち上がる。
+   没入ゾーン全体で初見の1画面を満たす(次セクションはスクロールするまで覗かせない)。 */
+.hero-stack {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100lvh - var(--header-h));
+  background: var(--grad-paper);
+}
+
+/* パーティクル場は信念帯グラデーションより前面・全テキストより背面に置く。
+   これで白地のヒーローでも青緑帯の上でも、同じ粒子場が乗って見える(公式HP同様)。 */
+.hero-stack__particles {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-particles);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-stack__particles canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ヒーロー高さは控えめにし、直下の信念バンドを初見の下部に引き上げる
+   (上=価値提案 / 下=信念 を一画面の縦構図にする) */
+.hero {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  min-height: clamp(340px, 52svh, 600px);
+  padding-block: var(--space-7) var(--space-6);
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: var(--z-stack-content);
+  max-width: 880px;
+}
+
+.hero__eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.hero__eyebrow-en {
+  text-transform: none;
+}
+
+.hero__category {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Title ---- */
+.hero__title {
+  font-size: clamp(2.4rem, 6vw, 5.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-5);
+}
+
+.hero__title-line {
+  display: block;
+}
+
+@media (min-width: 520px) {
+  .hero__title-line {
+    white-space: nowrap;
+  }
+}
+
+.hero__title-line--accent {
+  color: var(--teal);
+}
+
+/* ---- Subcopy ---- */
+.hero__subcopy {
+  max-width: 40em;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+  color: var(--charcoal);
+  margin-bottom: var(--space-5);
+}
+
+.hero__subcopy-line {
+  display: block;
+}
+
+/* ---- Immersive variant: 白基調ヒーロー(TOP専用) ----
+   背景は .hero-stack(白)に委譲。ここは透過し、白地の上の量子パーティクル場を見せる。
+   テキストはダーク基調で白地に対して可読。 */
+.hero--immersive {
+  background: transparent;
+  color: var(--ink);
+}
+
+.hero--immersive .hero__category {
+  color: var(--ink-3);
+}
+
+.hero--immersive .hero__title {
+  color: var(--ink);
+}
+
+.hero--immersive .hero__title-line--accent {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero--immersive .hero__subcopy {
+  color: var(--charcoal);
+}
+
+/* ---- Entrance animation (page load, not scroll) ---- */
+.hero--immersive .hero__eyebrow,
+.hero--immersive .hero__title,
+.hero--immersive .hero__subcopy {
+  animation: heroLineIn 0.9s var(--ease-out) both;
+}
+.hero--immersive .hero__eyebrow  { animation-delay: 0.05s; }
+.hero--immersive .hero__title    { animation-delay: 0.22s; }
+.hero--immersive .hero__subcopy  { animation-delay: 0.44s; }
+@keyframes heroLineIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: clamp(440px, 68svh, 580px);
+  }
+}

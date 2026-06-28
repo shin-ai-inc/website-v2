@@ -1,0 +1,272 @@
+<!--
+  FAQ ページ本文（main の中身のみ）。
+  事実・文言は BRIEF.md 10章を一次資料とし、9章の表記ルール（数値は可能性・目標）に従う。
+  アコーディオンはネイティブ details/summary（JS不要・アクセシブル）。クラスは faq.css の契約に従う。
+-->
+<section class="page-hero" aria-labelledby="faq-hero-title">
+  <div class="container">
+    <div class="page-hero__inner reveal">
+      <nav class="page-hero__breadcrumb" aria-label="パンくず">
+        <a href="index.html">ホーム</a>
+        <span class="page-hero__breadcrumb-sep" aria-hidden="true">›</span>
+        <span aria-current="page">よくある質問</span>
+      </nav>
+      <p class="eyebrow page-hero__eyebrow">FAQ</p>
+      <h1 id="faq-hero-title" class="page-hero__title">
+        よくある<span class="page-hero__title-accent">ご質問</span>
+      </h1>
+      <p class="page-hero__lead">
+        <span class="page-hero__lead-line">はじめての相談から費用や進め方まで、</span>
+        <span class="page-hero__lead-line">よくいただく質問にお答えします。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-title" class="section__title">知りたいことから探す</h2>
+      <p class="section__lead">該当する項目を開くと回答が表示されます。</p>
+    </div>
+
+    <div class="faq__groups">
+      <div class="faq-group reveal" data-delay="1">
+        <h3 class="faq-group__title">はじめての方へ</h3>
+        <div class="faq-group__list">
+          <details class="faq-item" open>
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">AIに詳しくなくても相談できますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>はい。専門用語を使わずに、いまの業務とお困りごとから一緒に整理します。何を任せられるかが曖昧な段階でも構いません。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">何から始めればよいですか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>まずは日々の業務のうち、繰り返しが多く判断の型が決まっている作業を一つ取り上げます。小さく試し、効果を確かめてから広げます。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">導入にはどのくらいかかりますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>規模によりますが、小規模なプロトタイプであれば最短2週間程度を目安に形にできる場合があります。検証の結果を見ながら段階的に広げます。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="2">
+        <h3 class="faq-group__title">費用と導入</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">費用はどのくらいですか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>目的と規模で変わるため、小さく始めて段階的に広げる進め方を基本にしています。まずは無料相談で、優先順位と進め方を一緒に整理します。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">中小規模や個人でも導入できますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>はい。最初から大きく作らず、効果の見込める範囲から段階的に導入できます。初期の負担を抑えながら手応えを確かめられます。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">どのくらいの効果が見込めますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>用途によりますが、定型的な作業にかかる時間の削減を狙えます。数値は検証しながら確かめ、過度な期待で進めないようにします。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="3">
+        <h3 class="faq-group__title">開発の進め方</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">プロトタイプから始めるとはどういうことですか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>最初にすべてを決めず、小さく作って実際の業務で確かめ、結果を見ながら拡張します。要件が固まりきらない段階でも前に進められます。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">既存のシステムと連携できますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>API・Webhook・RPAなどを通じて、既存の業務やツールと接続することを想定して設計します。現状の流れをなるべく変えずに組み込みます。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">導入した後のサポートはありますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>稼働後もモニタリングと改善を続けます。使われ方を見ながら精度や使い勝手を調整し、社内で運用・改善できる状態を目指します。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="4">
+        <h3 class="faq-group__title">業種別の活用</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">どんな業種で活用できますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>製造・小売・医療福祉・教育・金融・不動産など、業種を問わず活用イメージがあります。文書や会話、作業記録が蓄積されている領域ほど相性がよい傾向です。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">自社の業務に合うか分かりません。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>具体的な業務をうかがいながら、適用できそうな範囲を一緒に見極めます。合わないと判断した場合は、その旨も率直にお伝えします。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="5">
+        <h3 class="faq-group__title">サービスについて</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">無料相談はどのように進みますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>オンラインで20〜30分ほど、いまの課題と進め方をうかがいます。事前準備は不要です。その場で適用の可能性を一緒に整理します。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">どのようなソリューションがありますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>暗黙知のAI化、企業専用AIエージェント、AI内製化・運用支援の三つを軸に、目的に合わせて組み合わせます。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">セキュリティはどう考えていますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>暗号化・アクセス制御・ログと監査を前提に設計し、オンプレミスやプライベートクラウドにも対応します。最終的な判断は人が行う運用を基本とします。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="5">
+        <h3 class="faq-group__title">その他</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">専任の担当者を置く必要がありますか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>必須ではありません。ただ業務を理解している方に関わっていただけると、現場に合った形に仕上がりやすくなります。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">いつ相談するのがよいですか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>課題の認識があれば十分です。要件が固まっていない段階のほうが、進め方から一緒に設計できます。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">AIの精度はどの程度ですか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>用途によって異なります。評価のしくみを設け、検証しながら改善していく前提で進めます。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">導入後のメンテナンスは必要ですか。</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>業務や知識は変わり続けるため、学習内容を更新し続けるのが理想です。運用の中で無理なく続けられる形を整えます。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--ink" id="cta" aria-labelledby="faq-cta-title">
+  <div class="container cta__inner">
+    <div class="cta__lead reveal">
+      <h2 id="faq-cta-title" class="cta__title">
+        <span class="cta__title-line">疑問が残ったら、</span>
+        <span class="cta__title-line">そのまま話しましょう。</span>
+      </h2>
+      <p class="cta__copy">
+        <span class="cta__copy-line">まだ要件が決まっていなくても構いません。</span>
+        <span class="cta__copy-line">現在の業務と知識資産から、適用の可能性を整理します。</span>
+      </p>
+      <div class="cta__action">
+        <a class="btn cta__btn" href="contact.html">
+          <span>無料相談を申し込む</span>
+          <svg class="btn__arrow cta__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="13 6 19 12 13 18"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <dl class="cta__facts reveal" data-delay="1">
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Mail</dt>
+        <dd class="cta__fact-value"><a class="cta__fact-link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a></dd>
+      </div>
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Hours</dt>
+        <dd class="cta__fact-value">平日 9:00–18:00</dd>
+      </div>
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Consultation</dt>
+        <dd class="cta__fact-value">オンライン 20〜30分・事前準備不要</dd>
+      </div>
+    </dl>
+  </div>
+</section>

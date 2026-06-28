@@ -1,0 +1,55 @@
+/*
+  Section: Why ShinAI (#why)
+  現場で続くための五つの姿勢。番号付きの横並びリスト、アイコンなし。
+  余白と水平罫で静かに区切る。
+  色・余白・型はトークンのみ参照。
+*/
+
+.why__list {
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+}
+
+.why__row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--space-5);
+  padding-block: var(--space-5);
+  align-items: start;
+}
+
+.why__num {
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--mist);
+  padding-top: 0.35em;
+  user-select: none;
+}
+
+.why__rule {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+.why__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-1);
+}
+
+.why__line {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+@media (max-width: 600px) {
+  .why__row {
+    grid-template-columns: 2.5rem 1fr;
+    gap: var(--space-3);
+  }
+}

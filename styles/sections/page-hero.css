@@ -1,0 +1,93 @@
+/*
+  ShinAI Website v2 — Section: page-hero（下層ページ共通の導入部）
+  TOP の没入型ヒーローと差をつけ、下層は静かで整理された導入にする。
+  純白基調に極淡い藍青の諧調。読み手がまず「今どこの話か」を一息で掴める設計。
+*/
+
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(5rem, 11vw, 9rem) clamp(3rem, 6vw, 5rem);
+  background: var(--paper-2);
+  background-image:
+    radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),
+    var(--grad-paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: var(--z-base);
+  max-width: 820px;
+}
+
+.page-hero__breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-sm);
+  color: var(--mist);
+}
+
+.page-hero__breadcrumb a {
+  color: var(--ink-3);
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.page-hero__breadcrumb a:hover {
+  color: var(--brand);
+}
+
+.page-hero__breadcrumb-sep {
+  color: var(--line);
+}
+
+.page-hero__eyebrow {
+  margin-bottom: var(--space-3);
+}
+
+.page-hero__title {
+  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+
+.page-hero__title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .page-hero__title-line {
+    display: inline;
+    white-space: normal;
+  }
+}
+
+.page-hero__title-accent {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-hero__lead {
+  margin-top: var(--space-4);
+  max-width: 46em;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+  color: var(--ink-3);
+}
+
+.page-hero__lead-line {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .page-hero__lead-line {
+    display: inline;
+  }
+}

@@ -1,0 +1,4 @@
+Contact: mailto:shinai.life@gmail.com
+Preferred-Languages: ja, en
+Canonical: https://www.shinai.example/.well-known/security.txt
+Expires: 2027-06-30T00:00:00.000Z

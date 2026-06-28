@@ -1,0 +1,404 @@
+/*
+  Section: CONTACT — 無料相談の流れ・問い合わせフォーム・連絡先。
+  純白基調に淡い諧調。フォームは見やすさとフォーカス可視を最優先。
+  色・余白・型はトークンのみ参照。クラスは .contact- で名前空間化。
+*/
+
+/* ---- 無料相談の流れ（横一列の段階フロー。アイコンを罫でつなぐ） ---- */
+.contact-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.contact-flow__step {
+  position: relative;
+  text-align: center;
+  padding-inline: var(--space-2);
+}
+
+/* 各ステップのアイコン中心を、次のアイコン中心まで罫でつなぐ。
+   不透明なアイコン円が両端を覆い、視覚的にはアイコン間を結ぶ線になる。 */
+.contact-flow__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  width: calc(100% + var(--space-5));
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand-soft), var(--line));
+  z-index: 0;
+}
+
+.contact-flow__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-3);
+  border-radius: 50%;
+  color: var(--brand);
+  background: var(--c-tacit-bg);
+  border: 1px solid var(--line-ink);
+}
+
+.contact-flow__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-flow__step-label {
+  display: block;
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--space-1);
+}
+
+.contact-flow__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+.contact-flow__text {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+  max-width: 22em;
+  margin-inline: auto;
+}
+
+/* ---- レイアウト: フォーム + 連絡先 ---- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* ---- フォームカード ---- */
+.contact-form-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(var(--space-5), 4vw, var(--space-7));
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-form-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--grad-brand);
+}
+
+.contact-form-card__head {
+  margin-bottom: var(--space-5);
+}
+
+.contact-form-card__title {
+  font-size: var(--fs-h2);
+  margin-top: var(--space-2);
+}
+
+.contact-form-card__lead {
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+/* ---- フォーム本体 ---- */
+.contact-form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.contact-field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.contact-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.contact-field__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* 必須・任意は色だけに依存させず文字で示す */
+.contact-req,
+.contact-opt {
+  font-family: var(--font-latin);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  padding: 0.12em 0.6em;
+  border-radius: var(--r-pill);
+  line-height: 1.5;
+}
+
+.contact-req {
+  color: #FFFFFF;
+  background: var(--brand);
+}
+
+.contact-opt {
+  color: var(--ink-3);
+  background: var(--paper-3);
+  border: 1px solid var(--line);
+}
+
+.contact-field__input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-snug);
+  color: var(--charcoal);
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    background-color var(--dur-1) var(--ease-out);
+}
+
+.contact-field__input::placeholder {
+  color: var(--mist);
+  opacity: 0.85;
+}
+
+.contact-field__input:hover {
+  border-color: var(--ink-3);
+}
+
+.contact-field__input:focus {
+  outline: none;
+  border-color: var(--brand);
+  background: var(--paper);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent);
+}
+
+.contact-field__input[aria-invalid="true"] {
+  border-color: #B23A3A;
+  box-shadow: 0 0 0 3px rgba(178, 58, 58, 0.16);
+}
+
+.contact-field__textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.contact-field__hint {
+  font-size: var(--fs-sm);
+  color: var(--mist);
+}
+
+.contact-field__error {
+  font-size: var(--fs-sm);
+  color: #B23A3A;
+}
+
+/* ---- 同意 ---- */
+.contact-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.contact-consent__input {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.contact-consent__label {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--ink-3);
+}
+
+.contact-consent__link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line-ink);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--dur-1) var(--ease-out);
+}
+
+.contact-consent__link:hover {
+  text-decoration-color: var(--brand);
+}
+
+.contact-form__note {
+  font-size: var(--fs-sm);
+  color: var(--mist);
+}
+
+.contact-form__submit {
+  margin-top: var(--space-2);
+}
+
+.contact-form__btn {
+  width: 100%;
+}
+
+.contact-form__btn-arrow {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* ---- ハニーポット ---- */
+.contact-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---- 連絡先・活動拠点 ---- */
+.contact-aside {
+  position: relative;
+  padding: clamp(var(--space-5), 4vw, var(--space-6));
+  background: var(--c-tacit-bg);
+  border: 1px solid var(--line-ink);
+  border-radius: var(--r-xl);
+}
+
+.contact-aside__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-4);
+}
+
+.contact-info {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.contact-info__item {
+  display: grid;
+  gap: var(--space-1);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line-ink);
+}
+
+.contact-info__item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.contact-info__label {
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--c-tacit-ink);
+}
+
+.contact-info__value {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--ink-2);
+}
+
+.contact-info__link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line-ink);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--dur-1) var(--ease-out);
+}
+
+.contact-info__link:hover {
+  text-decoration-color: var(--brand);
+}
+
+.contact-chat {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line-ink);
+}
+
+.contact-chat__title {
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+.contact-chat__text {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+/* ---- レスポンシブ ---- */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .contact-flow {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+  .contact-flow__step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    column-gap: var(--space-4);
+    text-align: left;
+    padding-inline: 0;
+  }
+  .contact-flow__icon {
+    grid-row: 1 / -1;
+    margin-bottom: 0;
+  }
+  .contact-flow__step > :not(.contact-flow__icon) {
+    grid-column: 2;
+  }
+  /* 縦並びでは、アイコン列に沿って次のアイコンまで罫を下ろす */
+  .contact-flow__step:not(:last-child)::after {
+    top: 56px;
+    bottom: calc(-1 * var(--space-5));
+    left: 28px;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--brand-soft), var(--line));
+    transform: translateX(-50%);
+  }
+  .contact-flow__text {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .contact-field-row {
+    grid-template-columns: 1fr;
+  }
+}
