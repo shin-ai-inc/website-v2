@@ -203,3 +203,239 @@
   object-position: center 30%;
   display: block;
 }
+
+/* ---- 七つのShin — 全7項目アイコン付きカード体系 ---- */
+
+.shin7__group-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-label);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--space-4);
+}
+.shin7__group-label::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: var(--grad-brand);
+}
+
+.shin7__primary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.shin7__secondary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.shin7__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+.shin7__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.shin7__card--featured {
+  background: linear-gradient(160deg, var(--brand-soft) 0%, var(--paper) 60%);
+  border-color: color-mix(in srgb, var(--brand) 22%, var(--line));
+}
+
+.shin7__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--grad-brand);
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+.shin7__icon-wrap svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.shin7__icon-wrap--sub {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--paper-3);
+  color: var(--brand);
+  border: 1px solid var(--line);
+}
+.shin7__icon-wrap--sub svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.shin7__yomi {
+  font-family: var(--font-label);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--brand);
+  margin-bottom: var(--space-1);
+}
+
+.shin7__kanji {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: var(--space-3);
+}
+.shin7__kanji--sub {
+  font-size: var(--fs-h1);
+}
+
+.shin7__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+.shin7__desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+/* ---- パートナー募集 ---- */
+
+.join__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+.join__card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+.join__card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--grad-brand);
+}
+.join__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.join__num {
+  font-family: var(--font-label);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--mist);
+  margin-bottom: var(--space-3);
+}
+.join__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+.join__icon-wrap svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+.join__role {
+  font-family: var(--font-label);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: var(--space-1);
+}
+.join__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-3);
+}
+.join__desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+  margin-bottom: var(--space-4);
+  flex: 1;
+}
+.join__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.join__tag {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  padding: 0.22em 0.8em;
+  border-radius: var(--r-pill);
+  background: var(--paper-3);
+  color: var(--ink-3);
+  border: 1px solid var(--line);
+}
+.join__cta {
+  align-self: flex-start;
+  font-size: var(--fs-sm);
+}
+.join__note {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--mist);
+}
+
+@media (max-width: 960px) {
+  .shin7__secondary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 820px) {
+  .shin7__primary {
+    grid-template-columns: 1fr;
+  }
+  .join__grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .shin7__secondary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
