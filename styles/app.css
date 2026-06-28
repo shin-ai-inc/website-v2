@@ -2482,9 +2482,9 @@ h1, h2, h3, h4 {
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   min-height: clamp(340px, 52svh, 600px);
-  padding-block: var(--space-7) var(--space-6);
+  padding-block: var(--space-6) var(--space-6);
   overflow: hidden;
 }
 
@@ -2619,7 +2619,7 @@ h1, h2, h3, h4 {
   .hero {
     min-height: 0;
     align-items: flex-start;
-    padding-block: var(--space-5) var(--space-3);
+    padding-block: 1.25rem var(--space-3);
   }
 }
 
