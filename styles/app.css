@@ -3652,18 +3652,38 @@ h1, h2, h3, h4 {
   background: var(--card-ink);
 }
 
+/* タブレット: 1カラム化。過剰な横伸びを防ぐため最大幅を制限 */
 @media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
+    max-width: 600px;
   }
 }
 
-@media (max-width: 480px) {
+/* モバイル: 写真を非表示にし圧迫感を排除。エンタープライズグレードの情報密度に整理 */
+@media (max-width: 640px) {
+  .solutions {
+    padding-block: var(--space-5);
+  }
+  .solutions__grid {
+    max-width: 100%;
+    gap: var(--space-3);
+  }
   .solution-card {
     padding: var(--space-4);
   }
   .solution-card__figure {
-    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
+    display: none;
+  }
+  .solution-card__lead {
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-3);
+  }
+  .solution-card__divider {
+    margin-bottom: var(--space-3);
+  }
+  .solution-card__items {
+    gap: var(--space-1);
   }
 }
 
