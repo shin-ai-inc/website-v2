@@ -637,6 +637,78 @@ h1, h2, h3, h4 {
   display: block;
 }
 
+/* ---- 七つのShin — 全体俯瞰 matrix ---- */
+.shin7__matrix {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-4), 4vw, var(--space-6));
+  padding: var(--space-4) clamp(var(--space-4), 4vw, var(--space-6));
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  margin-bottom: var(--space-6);
+}
+
+.shin7__matrix-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.shin7__matrix-cat {
+  font-family: var(--font-label);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.shin7__matrix-items {
+  display: flex;
+  gap: clamp(var(--space-3), 3vw, var(--space-5));
+}
+
+.shin7__matrix-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.shin7__matrix-kanji {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.shin7__matrix-yomi {
+  font-size: 0.65rem;
+  color: var(--mist);
+  letter-spacing: 0.04em;
+}
+
+.shin7__matrix-sep {
+  width: 1px;
+  height: 3.5rem;
+  background: var(--line);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+@media (max-width: 600px) {
+  .shin7__matrix {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .shin7__matrix-sep {
+    width: 100%;
+    height: 1px;
+  }
+}
+
 /* ---- 七つのShin — 全7項目アイコン付きカード体系 ---- */
 
 .shin7__group-label {
