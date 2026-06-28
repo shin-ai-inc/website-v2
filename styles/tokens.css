@@ -50,11 +50,11 @@
   --grad-creed: linear-gradient(135deg, #2D4CC8 0%, #00B89F 50%, #2D4CC8 100%);
 
   /* ---- Typography ---- */
-  --font-display: "Inter Tight", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
-  --font-latin: "Inter Tight", sans-serif;
-  /* UI ラベル・eyebrow 専用 */
-  --font-label: "Inter Tight", system-ui, sans-serif;
+  --font-latin: "Fraunces", "Zen Old Mincho", serif;
+  /* UI ラベル・eyebrow 専用。幾何学的 sans で技術精度感を演出 */
+  --font-label: "Space Grotesk", "Inter", system-ui, sans-serif;
   /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
