@@ -43,3 +43,14 @@
     display: block;
   }
 }
+
+@media (max-width: 640px) {
+  .creed {
+    padding: 0.75rem 0;
+  }
+  .creed__text {
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.1em;
+  }
+}

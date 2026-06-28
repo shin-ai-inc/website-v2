@@ -1826,6 +1826,17 @@ h1, h2, h3, h4 {
   }
 }
 
+@media (max-width: 640px) {
+  .creed {
+    padding: 0.75rem 0;
+  }
+  .creed__text {
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.1em;
+  }
+}
+
 
 /* sections/cta.css */
 /*
@@ -2617,6 +2628,18 @@ h1, h2, h3, h4 {
 @media (max-width: 480px) {
   .hero {
     min-height: clamp(440px, 68svh, 580px);
+  }
+}
+
+/* モバイルでは hero-stack の全画面強制を解除し、コンテンツ自然高さにする。
+   creed セクションが直後に続くことで初期画面内に両方が収まる。 */
+@media (max-width: 640px) {
+  .hero-stack {
+    min-height: auto;
+  }
+  .hero {
+    min-height: auto;
+    padding-block: var(--space-6) var(--space-4);
   }
 }
 

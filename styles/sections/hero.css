@@ -191,3 +191,15 @@
     min-height: clamp(440px, 68svh, 580px);
   }
 }
+
+/* モバイルでは hero-stack の全画面強制を解除し、コンテンツ自然高さにする。
+   creed セクションが直後に続くことで初期画面内に両方が収まる。 */
+@media (max-width: 640px) {
+  .hero-stack {
+    min-height: auto;
+  }
+  .hero {
+    min-height: auto;
+    padding-block: var(--space-6) var(--space-4);
+  }
+}
