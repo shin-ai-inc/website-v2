@@ -355,13 +355,13 @@
 }
 
 /* ---- レスポンシブ ---- */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .contact-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 820px) {
   .contact-flow {
     grid-template-columns: 1fr;
     gap: var(--space-5);
@@ -397,7 +397,7 @@
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 480px) {
   .contact-field-row {
     grid-template-columns: 1fr;
   }

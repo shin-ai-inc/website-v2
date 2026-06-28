@@ -82,7 +82,7 @@
   color: var(--charcoal);
 }
 
-@media (max-width: 940px) {
+@media (max-width: 960px) {
   .tech__groups {
     grid-template-columns: 1fr;
   }
