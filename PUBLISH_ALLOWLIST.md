@@ -3,7 +3,12 @@
 このサイトで「Web配信してよいファイル」を定義する。ホストごとの除外設定
 （`_config.yml` / `.vercelignore` 等）は、本書に追従させる。
 
-## 公開する（デプロイ対象）
+## 配信ディレクトリ
+- `node _build/build.mjs` が、下記「公開する」ファイルのみを集めた `dist/` を生成する。
+- Netlify / Cloudflare Pages 等は **`dist/` を publish ディレクトリに指定**して配信する
+  （リポジトリルートを直接配信させない。内部資料の露出を防ぐ）。`dist/` は生成物で .gitignore 済み。
+
+## 公開する（デプロイ対象＝dist/ に入るもの）
 - `*.html`（生成済みの8ページ: index, services, industries, about, faq, contact, privacy, terms）
 - `styles/app.css`（ビルドで結合した本番CSS。各ページはこれのみを参照）
 - `scripts/config.js` `scripts/nav.js` `scripts/main.js` `scripts/particles.js` `scripts/chatbot.js`
@@ -14,6 +19,7 @@
 
 ## 公開しない（必ずデプロイから除外）
 - `BRIEF.md`（制作憲法・内部判断）
+- `STRATEGY.md`（制作手法の体系化・現状レビュー・内部判断）
 - `SECURITY.md`（本セキュリティ設計）
 - `PUBLISH_ALLOWLIST.md`（本書）
 - `partials/`（結合前の断片。最終HTMLのみ公開）

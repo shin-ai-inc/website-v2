@@ -34,7 +34,7 @@
 }
 
 .site-header.is-condensed .site-header__inner {
-  min-height: 64px;
+  min-height: var(--header-h-condensed);
 }
 
 /* ---- Brand wordmark ---- */
@@ -146,7 +146,7 @@
 
   .site-header__nav {
     position: fixed;
-    inset: 78px 0 auto 0;
+    inset: var(--header-h) 0 auto 0;
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-4);
@@ -169,6 +169,11 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+  }
+
+  /* condense 中はヘッダー実高に天位置を追従させる(初期78と縮小64のズレを防ぐ) */
+  .site-header.is-condensed .site-header__nav {
+    top: var(--header-h-condensed);
   }
 
   .site-header__menu {

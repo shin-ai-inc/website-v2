@@ -86,6 +86,19 @@
   --container-narrow: 760px;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
   --header-h: 78px;            /* sticky ヘッダーの初期高。没入ゾーンの1画面計算に使う */
+  --header-h-condensed: 64px;  /* scroll で condense した時の高さ。モバイルナビ天位置も追従させる */
+
+  /* ---- Breakpoints (正準。全セクション共通) ----
+     メディアクエリ条件には CSS 変数を使えないため、下記4値を「唯一の正準」とし、
+     各セクションCSSはこの値のみで @media を書く(中間値を新規に増やさない)。
+     - 480px  phone        : 1カラム化・最小余白
+     - 640px  large phone  : 2カラム→1カラム、行間・番号列の調整
+     - 820px  tablet / nav : グローバルナビのハンバーガー切替点(JS・footerと一致。動かさない)
+     - 960px  wide grid     : 広い3カラム等の折返し */
+  --bp-xs: 480px;
+  --bp-sm: 640px;
+  --bp-md: 820px;
+  --bp-lg: 960px;
 
   /* ---- Radius ---- */
   --r-sm: 8px;
@@ -629,7 +642,7 @@ h1, h2, h3, h4 {
   color: rgba(255, 255, 255, 0.62);
 }
 
-@media (max-width: 680px) {
+@media (max-width: 640px) {
   .capability__grid {
     grid-template-columns: 1fr;
   }
@@ -1052,7 +1065,7 @@ h1, h2, h3, h4 {
   line-height: 1;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
   .company__shin-feature {
     grid-template-columns: 1fr;
   }
@@ -1417,13 +1430,13 @@ h1, h2, h3, h4 {
 }
 
 /* ---- レスポンシブ ---- */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .contact-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 820px) {
   .contact-flow {
     grid-template-columns: 1fr;
     gap: var(--space-5);
@@ -1459,7 +1472,7 @@ h1, h2, h3, h4 {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 480px) {
   .contact-field-row {
     grid-template-columns: 1fr;
   }
@@ -1499,7 +1512,7 @@ h1, h2, h3, h4 {
   display: inline;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   .creed {
     padding: 1rem 0;
   }
@@ -1626,7 +1639,7 @@ h1, h2, h3, h4 {
   text-decoration-color: var(--teal);
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
   .cta__facts {
     flex-direction: column;
     gap: var(--space-4);
@@ -1944,7 +1957,7 @@ h1, h2, h3, h4 {
 }
 
 .site-header.is-condensed .site-header__inner {
-  min-height: 64px;
+  min-height: var(--header-h-condensed);
 }
 
 /* ---- Brand wordmark ---- */
@@ -2056,7 +2069,7 @@ h1, h2, h3, h4 {
 
   .site-header__nav {
     position: fixed;
-    inset: 78px 0 auto 0;
+    inset: var(--header-h) 0 auto 0;
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-4);
@@ -2079,6 +2092,11 @@ h1, h2, h3, h4 {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+  }
+
+  /* condense 中はヘッダー実高に天位置を追従させる(初期78と縮小64のズレを防ぐ) */
+  .site-header.is-condensed .site-header__nav {
+    top: var(--header-h-condensed);
   }
 
   .site-header__menu {
@@ -2192,7 +2210,7 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-@media (min-width: 520px) {
+@media (min-width: 640px) {
   .hero__title-line {
     white-space: nowrap;
   }
@@ -2494,7 +2512,7 @@ h1, h2, h3, h4 {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .industries__grid {
     grid-template-columns: 1fr;
   }
@@ -2806,7 +2824,7 @@ h1, h2, h3, h4 {
   color: var(--ink-3);
 }
 
-@media (max-width: 940px) {
+@media (max-width: 960px) {
   .method__flow {
     grid-template-columns: 1fr;
     gap: var(--space-5);
@@ -3031,7 +3049,7 @@ h1, h2, h3, h4 {
   height: 100%;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
   .process__phase {
     grid-template-columns: auto 1fr;
     column-gap: var(--space-3);
@@ -3086,7 +3104,7 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-@media (min-width: 680px) {
+@media (min-width: 640px) {
   .purpose__statement-line {
     white-space: nowrap;
   }
@@ -3253,7 +3271,7 @@ h1, h2, h3, h4 {
   background: var(--card-ink);
 }
 
-@media (max-width: 940px) {
+@media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
   }
@@ -3345,7 +3363,7 @@ h1, h2, h3, h4 {
   color: var(--charcoal);
 }
 
-@media (max-width: 940px) {
+@media (max-width: 960px) {
   .tech__groups {
     grid-template-columns: 1fr;
   }
@@ -3402,7 +3420,7 @@ h1, h2, h3, h4 {
   color: var(--ink-3);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .why__row {
     grid-template-columns: 2.5rem 1fr;
     gap: var(--space-3);

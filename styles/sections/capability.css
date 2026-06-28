@@ -38,7 +38,7 @@
   color: rgba(255, 255, 255, 0.62);
 }
 
-@media (max-width: 680px) {
+@media (max-width: 640px) {
   .capability__grid {
     grid-template-columns: 1fr;
   }

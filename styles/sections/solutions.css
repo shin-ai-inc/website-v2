@@ -142,7 +142,7 @@
   background: var(--card-ink);
 }
 
-@media (max-width: 940px) {
+@media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
   }

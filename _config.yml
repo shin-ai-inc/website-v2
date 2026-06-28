@@ -2,6 +2,7 @@
 # PUBLISH_ALLOWLIST.md の「公開しない」と一致させること。
 exclude:
   - BRIEF.md
+  - STRATEGY.md
   - SECURITY.md
   - PUBLISH_ALLOWLIST.md
   - README.md
