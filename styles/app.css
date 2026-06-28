@@ -2483,7 +2483,7 @@ h1, h2, h3, h4 {
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   min-height: clamp(340px, 52svh, 600px);
   padding-block: var(--space-6) var(--space-6);
   overflow: hidden;
