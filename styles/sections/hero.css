@@ -74,9 +74,9 @@
 
 /* ---- Title ---- */
 .hero__title {
-  font-size: clamp(2rem, 6vw, 5.6rem);
-  line-height: 1.12;
-  letter-spacing: 0.05em;
+  font-size: clamp(1.9rem, 4.5vw, 4.4rem);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
   margin-bottom: var(--space-5);
 }
 
