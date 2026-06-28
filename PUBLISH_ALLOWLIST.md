@@ -14,6 +14,7 @@
 
 ## 公開しない（必ずデプロイから除外）
 - `BRIEF.md`（制作憲法・内部判断）
+- `STRATEGY.md`（制作手法の体系化・現状レビュー・内部判断）
 - `SECURITY.md`（本セキュリティ設計）
 - `PUBLISH_ALLOWLIST.md`（本書）
 - `partials/`（結合前の断片。最終HTMLのみ公開）
