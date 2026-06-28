@@ -6,7 +6,7 @@
 
   方針(第一原理): 施主が愛する効果はそのまま使い、セキュリティも最高水準に保つ。
   - Three.js は CDN ではなく自己ホスト(scripts/vendor/three.min.js)。script-src 'self' を維持。
-  - 外部追跡・可用性リスクなし。BRIEF 4-2/12-2 を満たす。
+  - 外部追跡・可用性リスクなし。
   堅牢化: prefers-reduced-motion を尊重(静止) / タブ非表示で停止 / dpr 上限2 / 端末で粒子数可変 /
   resize 追従 / リソース dispose。THREE はグローバル(自己ホストのUMD)を参照。自己完結 IIFE。
 */

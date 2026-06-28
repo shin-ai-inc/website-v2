@@ -181,11 +181,8 @@ for (const page of pages) {
   built += 1;
 }
 
-/* ---- 4. 公開専用の dist/ を生成(公開allowlistのファイルのみ) ----
-   Netlify / Cloudflare Pages 等は publish ディレクトリをそのまま配信するため、
-   .vercelignore のような除外を持たない。内部資料(BRIEF/SECURITY/STRATEGY/partials/
-   ソースCSS/_build 等)が混ざらない清浄な出力を作り、これだけを配信させる。
-   配置内容は PUBLISH_ALLOWLIST.md と一致させること。 */
+/* ---- 4. 公開専用の dist/ を生成 ----
+   公開対象のファイルのみを集めた清浄な出力ディレクトリを作る。 */
 const DIST = join(ROOT, "dist");
 rmSync(DIST, { recursive: true, force: true });
 mkdirSync(DIST, { recursive: true });
@@ -197,10 +194,7 @@ const toDist = (rel) => {
 for (const page of pages) toDist(page.file);          // 生成済みHTML(8ページ)
 toDist("styles/app.css");                              // 本番CSS(結合済み)
 cpSync(join(ROOT, "scripts"), join(DIST, "scripts"), { recursive: true }); // 公開JS+vendor
-cpSync(join(ROOT, "assets"), join(DIST, "assets"), {  // 画像・アイコン(CREDITS.md除外)
-  recursive: true,
-  filter: (src) => !src.endsWith("CREDITS.md")
-});
+cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
 for (const f of ["robots.txt", "sitemap.xml", "site.webmanifest"]) toDist(f);
 toDist(".well-known/security.txt");
 copyFileSync(join(ROOT, "deploy", "_headers"), join(DIST, "_headers")); // Netlify/CF用ヘッダ

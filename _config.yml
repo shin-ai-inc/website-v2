@@ -1,10 +1,5 @@
 # GitHub Pages(Jekyll)向け。ここに挙げたものは公開サイトへコピーされない。
-# PUBLISH_ALLOWLIST.md の「公開しない」と一致させること。
 exclude:
-  - BRIEF.md
-  - STRATEGY.md
-  - SECURITY.md
-  - PUBLISH_ALLOWLIST.md
   - README.md
   - partials
   - deploy
@@ -12,8 +7,5 @@ exclude:
   - styles/tokens.css
   - styles/base.css
   - styles/sections
-  - assets/CREDITS.md
-  - "*.NEEDS.md"
   - Gemfile
   - Gemfile.lock
-# 先頭が _ のディレクトリ(_build 等)は Jekyll が既定で無視するが、明示しておく。
