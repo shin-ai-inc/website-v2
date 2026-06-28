@@ -2612,13 +2612,14 @@ h1, h2, h3, h4 {
 /* モバイルでは hero-stack の全画面強制を解除し、コンテンツ自然高さにする。
    creed セクションが直後に続くことで初期画面内に両方が収まる。 */
 @media (max-width: 640px) {
+  /* svh = ブラウザUI込みの保守的なビューポート高さ。地球儀をキャンバス中央=画面中央に揃える。 */
   .hero-stack {
-    height: auto;
+    height: calc(100svh - var(--header-h));
   }
   .hero {
-    min-height: auto;
+    min-height: 0;
     align-items: flex-start;
-    padding-block: var(--space-5) var(--space-4);
+    padding-block: var(--space-5) var(--space-3);
   }
 }
 
