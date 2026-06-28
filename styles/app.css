@@ -52,14 +52,16 @@
 
   /* ---- Typography ---- */
   --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
   --font-latin: "Fraunces", "Zen Old Mincho", serif;
-  /* 企業理念バンド専用。公式HP(shin-ai-inc/website)の --font-sans を完全踏襲 */
+  /* UI ラベル・eyebrow 専用。幾何学的 sans で技術精度感を演出 */
+  --font-label: "Space Grotesk", "Inter", system-ui, sans-serif;
+  /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --fs-display: clamp(3rem, 7vw, 6.5rem);
   --fs-h1: clamp(2.2rem, 5vw, 4.5rem);
-  --fs-h2: clamp(1.7rem, 3.5vw, 2.8rem);
+  --fs-h2: clamp(1.55rem, 3.5vw, 2.8rem);
   --fs-h3: clamp(1.15rem, 1.8vw, 1.45rem);
   --fs-lead: clamp(1.05rem, 1.6vw, 1.3rem);
   --fs-body: 1.0rem;
@@ -81,7 +83,7 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(5rem, 9vw, 9rem);
+  --section-py: clamp(3rem, 9vw, 9rem);
   --container: 1180px;
   --container-narrow: 760px;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
@@ -175,7 +177,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   line-height: var(--lh-tight);
   color: var(--ink);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.06em;
 }
 
 /* ---- Layout ---- */
@@ -218,12 +220,23 @@ h1, h2, h3, h4 {
   display: block;
 }
 
+.section__more {
+  margin-top: var(--space-5);
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .section__head {
+    margin-bottom: var(--space-4);
+  }
+}
+
 /* ---- Eyebrow (英字ラベル。ブランドグラデーションの一線で先進性を表現) ---- */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-family: var(--font-latin);
+  font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
   font-weight: 500;
   letter-spacing: var(--tracking-eyebrow);
@@ -623,7 +636,7 @@ h1, h2, h3, h4 {
 
 .capability__num {
   display: block;
-  font-family: var(--font-latin);
+  font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-latin);
   color: var(--teal);
@@ -1545,16 +1558,11 @@ h1, h2, h3, h4 {
   font-size: var(--fs-h2);
   line-height: var(--lh-tight);
   color: #FFFFFF;
+  letter-spacing: 0.07em;
 }
 
 .cta__title-line {
   display: block;
-}
-
-@media (max-width: 480px) {
-  .cta__title-line {
-    display: inline;
-  }
 }
 
 .cta__copy {
@@ -1566,12 +1574,6 @@ h1, h2, h3, h4 {
 
 .cta__copy-line {
   display: block;
-}
-
-@media (max-width: 480px) {
-  .cta__copy-line {
-    display: inline;
-  }
 }
 
 .cta__action {
@@ -1614,7 +1616,7 @@ h1, h2, h3, h4 {
 }
 
 .cta__fact-label {
-  font-family: var(--font-latin);
+  font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
@@ -1643,6 +1645,17 @@ h1, h2, h3, h4 {
   .cta__facts {
     flex-direction: column;
     gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .cta__btn {
+    width: 100%;
+    max-width: 340px;
+  }
+  .cta__facts {
+    padding-top: var(--space-4);
+    margin-top: var(--space-5);
   }
 }
 
@@ -2200,9 +2213,9 @@ h1, h2, h3, h4 {
 
 /* ---- Title ---- */
 .hero__title {
-  font-size: clamp(2.4rem, 6vw, 5.6rem);
+  font-size: clamp(2rem, 6vw, 5.6rem);
   line-height: 1.12;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.05em;
   margin-bottom: var(--space-5);
 }
 
@@ -2805,7 +2818,7 @@ h1, h2, h3, h4 {
 }
 
 .method__label {
-  font-family: var(--font-latin);
+  font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
@@ -2869,7 +2882,7 @@ h1, h2, h3, h4 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(5rem, 11vw, 9rem) clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(3.5rem, 11vw, 9rem) clamp(2rem, 6vw, 5rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),
@@ -2911,9 +2924,9 @@ h1, h2, h3, h4 {
 }
 
 .page-hero__title {
-  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  font-size: clamp(2rem, 4.8vw, 4.4rem);
   line-height: 1.16;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
 }
 
 .page-hero__title-line {
@@ -2923,7 +2936,6 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .page-hero__title-line {
-    display: inline;
     white-space: normal;
   }
 }
@@ -2949,7 +2961,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 480px) {
   .page-hero__lead-line {
-    display: inline;
+    display: block;
   }
 }
 
@@ -3094,9 +3106,9 @@ h1, h2, h3, h4 {
 .purpose__statement {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  font-size: clamp(1.85rem, 5vw, 4.8rem);
   line-height: var(--lh-tight);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.10em;
   color: var(--ink);
 }
 
@@ -3274,6 +3286,15 @@ h1, h2, h3, h4 {
 @media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .solution-card {
+    padding: var(--space-4);
+  }
+  .solution-card__figure {
+    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
   }
 }
 

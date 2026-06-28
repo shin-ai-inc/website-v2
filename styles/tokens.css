@@ -51,14 +51,16 @@
 
   /* ---- Typography ---- */
   --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
   --font-latin: "Fraunces", "Zen Old Mincho", serif;
-  /* 企業理念バンド専用。公式HP(shin-ai-inc/website)の --font-sans を完全踏襲 */
+  /* UI ラベル・eyebrow 専用。幾何学的 sans で技術精度感を演出 */
+  --font-label: "Space Grotesk", "Inter", system-ui, sans-serif;
+  /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --fs-display: clamp(3rem, 7vw, 6.5rem);
   --fs-h1: clamp(2.2rem, 5vw, 4.5rem);
-  --fs-h2: clamp(1.7rem, 3.5vw, 2.8rem);
+  --fs-h2: clamp(1.55rem, 3.5vw, 2.8rem);
   --fs-h3: clamp(1.15rem, 1.8vw, 1.45rem);
   --fs-lead: clamp(1.05rem, 1.6vw, 1.3rem);
   --fs-body: 1.0rem;
@@ -80,7 +82,7 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(5rem, 9vw, 9rem);
+  --section-py: clamp(3rem, 9vw, 9rem);
   --container: 1180px;
   --container-narrow: 760px;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
