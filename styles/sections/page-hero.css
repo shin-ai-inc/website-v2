@@ -8,7 +8,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(5rem, 11vw, 9rem) clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 4rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),
@@ -50,9 +50,10 @@
 }
 
 .page-hero__title {
-  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
-  line-height: 1.16;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.8rem, 3.8vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
 .page-hero__title-line {
@@ -62,7 +63,6 @@
 
 @media (max-width: 640px) {
   .page-hero__title-line {
-    display: inline;
     white-space: normal;
   }
 }
@@ -79,6 +79,7 @@
   max-width: 46em;
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
+  letter-spacing: 0.06em;
   color: var(--ink-3);
 }
 
@@ -88,6 +89,6 @@
 
 @media (max-width: 480px) {
   .page-hero__lead-line {
-    display: inline;
+    display: block;
   }
 }
