@@ -51,5 +51,10 @@
   .why__row {
     grid-template-columns: 2.5rem 1fr;
     gap: var(--space-3);
+    padding-block: var(--space-3);
+  }
+  .why__title {
+    font-size: var(--fs-body);
+    font-weight: 600;
   }
 }

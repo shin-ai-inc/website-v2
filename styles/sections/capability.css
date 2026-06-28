@@ -40,6 +40,14 @@
 
 @media (max-width: 640px) {
   .capability__grid {
-    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  .capability__item {
+    padding: var(--space-3);
+  }
+  .capability__term {
+    font-size: var(--fs-body);
+    margin-bottom: var(--space-1);
   }
 }

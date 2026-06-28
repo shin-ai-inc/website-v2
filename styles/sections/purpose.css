@@ -42,6 +42,15 @@
   margin-block: var(--space-7);
 }
 
+@media (max-width: 640px) {
+  .purpose__eyebrow {
+    margin-bottom: var(--space-3);
+  }
+  .purpose__rule {
+    margin-block: var(--space-4);
+  }
+}
+
 .purpose__support {
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);

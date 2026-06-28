@@ -101,9 +101,15 @@ h1, h2, h3, h4 {
 .text-column { max-width: var(--container-text); }
 .heading-column { max-width: var(--container-heading); }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+  .section {
+    padding-block: var(--space-4);
+  }
   .section__head {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+  .section__lead-line {
+    display: inline;
   }
 }
 

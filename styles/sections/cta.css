@@ -101,9 +101,13 @@
 }
 
 @media (max-width: 640px) {
+  .cta__action {
+    margin-top: var(--space-4);
+  }
   .cta__facts {
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-3);
+    margin-top: var(--space-5);
   }
 }
 
