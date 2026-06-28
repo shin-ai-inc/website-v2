@@ -49,5 +49,6 @@
   .capability__term {
     font-size: var(--fs-body);
     margin-bottom: var(--space-1);
+    word-break: keep-all;
   }
 }

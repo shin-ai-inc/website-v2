@@ -108,6 +108,9 @@ h1, h2, h3, h4 {
   .section__head {
     margin-bottom: var(--space-3);
   }
+  .section__title {
+    font-size: 1.35rem;
+  }
   .section__lead-line {
     display: inline;
   }

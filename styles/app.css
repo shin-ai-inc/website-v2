@@ -247,6 +247,9 @@ h1, h2, h3, h4 {
   .section__head {
     margin-bottom: var(--space-3);
   }
+  .section__title {
+    font-size: 1.35rem;
+  }
   .section__lead-line {
     display: inline;
   }
@@ -924,6 +927,7 @@ h1, h2, h3, h4 {
   .capability__term {
     font-size: var(--fs-body);
     margin-bottom: var(--space-1);
+    word-break: keep-all;
   }
 }
 
@@ -3516,6 +3520,9 @@ h1, h2, h3, h4 {
 @media (max-width: 640px) {
   .purpose__eyebrow {
     margin-bottom: var(--space-3);
+  }
+  .purpose__statement {
+    font-size: 1.35rem;
   }
   .purpose__rule {
     margin-block: var(--space-4);

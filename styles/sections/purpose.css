@@ -46,6 +46,9 @@
   .purpose__eyebrow {
     margin-bottom: var(--space-3);
   }
+  .purpose__statement {
+    font-size: 1.35rem;
+  }
   .purpose__rule {
     margin-block: var(--space-4);
   }
