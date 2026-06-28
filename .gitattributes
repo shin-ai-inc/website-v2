@@ -1,0 +1,6 @@
+# 改行をLFに固定(ビルド再現性とCSPハッシュ整合のため)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.webp binary

@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShinAI｜企業の暗黙知を、使えるAI資産へ</title>
+  <meta name="description" content="退職や属人化で失われていく企業の判断や知識を、検索・判断支援・業務実行に使える専用AIへ。暗黙知のAI化と企業専用AIエージェントの開発パートナー、ShinAI。">
+  <link rel="canonical" href="https://www.shinai.example/index.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#3A5FEB">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ShinAI">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ShinAI｜企業の暗黙知を、使えるAI資産へ">
+  <meta property="og:description" content="退職や属人化で失われていく企業の判断や知識を、検索・判断支援・業務実行に使える専用AIへ。暗黙知のAI化と企業専用AIエージェントの開発パートナー、ShinAI。">
+  <meta property="og:url" content="https://www.shinai.example/index.html">
+  <meta property="og:image" content="https://www.shinai.example/assets/images/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ShinAI｜企業の暗黙知を、使えるAI資産へ">
+  <meta name="twitter:description" content="退職や属人化で失われていく企業の判断や知識を、検索・判断支援・業務実行に使える専用AIへ。暗黙知のAI化と企業専用AIエージェントの開発パートナー、ShinAI。">
+  <meta name="twitter:image" content="https://www.shinai.example/assets/images/ogp.png">
+
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon.png" sizes="any">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+JP:wght@700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
+  <link rel="stylesheet" href="styles/app.css">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ShinAI","alternateName":"シンアイ","url":"https://www.shinai.example/","email":"shinai.life@gmail.com","slogan":"企業の暗黙知を、使えるAI資産へ。","description":"真の価値を信じ、次世代のために新たな未来を創る。ShinAIは、人の想いとAIをつなぎ、企業の「これまで」を大切に「これから」の変革に伴走する、企業AI開発特化のエンジニアチーム。強化学習・カスタムLLM最適化・RAG・オンプレミス対応により、暗黙知のAI化と企業専用AIエージェントを開発する。","foundingDate":"2025-01","founder":{"@type":"Person","name":"柴田昌国"},"address":{"@type":"PostalAddress","addressCountry":"JP","addressRegion":"群馬県","addressLocality":"高崎市","streetAddress":"井野町360-7"}}</script>
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href="index.html" aria-label="ShinAI ホーム">
+      <span class="site-header__wordmark">Shin<span class="site-header__wordmark-accent">AI</span></span>
+    </a>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      aria-label="メニューを開く"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <line class="site-header__toggle-bar site-header__toggle-bar--top" x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <line class="site-header__toggle-bar site-header__toggle-bar--mid" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <line class="site-header__toggle-bar site-header__toggle-bar--bot" x1="3" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <nav class="site-header__nav" id="primary-nav" aria-label="グローバルナビゲーション">
+      <ul class="site-header__menu">
+        <li><a class="site-header__link" href="services.html">ソリューション</a></li>
+        <li><a class="site-header__link" href="industries.html">業種別</a></li>
+        <li><a class="site-header__link" href="about.html">会社情報</a></li>
+        <li><a class="site-header__link" href="faq.html">よくある質問</a></li>
+      </ul>
+      <a class="btn btn-primary site-header__cta" href="contact.html">無料相談</a>
+    </nav>
+  </div>
+</header>
+
+  <main id="main">
+
+<div class="hero-stack">
+  <div class="hero-stack__particles" id="three-container" aria-hidden="true"></div>
+
+<section class="hero hero--immersive" aria-labelledby="hero-title">
+  <div class="container hero__inner">
+    <p class="eyebrow hero__eyebrow"><span class="hero__eyebrow-en">Tacit Knowledge into AI</span></p>
+    <p class="hero__category">暗黙知のAI化 × 企業専用AIエージェント</p>
+
+    <h1 class="hero__title" id="hero-title">
+      <span class="hero__title-line">企業の暗黙知を、</span>
+      <span class="hero__title-line hero__title-line--accent">使えるAI資産へ。</span>
+    </h1>
+
+    <p class="hero__subcopy">
+      <span class="hero__subcopy-line">長年の判断、現場の勘、積み上げた文書。</span>
+      <span class="hero__subcopy-line">社内に眠る知識を構造化し、検索し、業務で使えるAIに変える。</span>
+    </p>
+  </div>
+</section>
+
+<section class="creed" aria-labelledby="creed-text">
+  <h2 class="creed__text" id="creed-text"><span class="creed__line">「真の価値を信じ、</span><span class="creed__line">次世代のために新たな未来を創る。」</span></h2>
+</section>
+
+</div>
+
+<section class="section section--alt purpose" id="purpose" aria-labelledby="purpose-title">
+  <div class="container purpose__inner">
+    <p class="eyebrow eyebrow--center purpose__eyebrow" id="purpose-title">Our Purpose</p>
+    <p class="purpose__statement">
+      <span class="purpose__statement-line">AIの力で、</span>
+      <span class="purpose__statement-line">人間らしい時間を取り戻す。</span>
+    </p>
+    <hr class="rule-copper purpose__rule" aria-hidden="true">
+    <p class="purpose__support">
+      <span class="purpose__support-line">探す時間、思い出す時間、伝え直す時間。</span>
+      <span class="purpose__support-line">そこをAIに委ねることで、</span>
+      <span class="purpose__support-line">人は考え、決め、向き合うことへ集中できる。</span>
+    </p>
+  </div>
+</section>
+
+<section class="section solutions" id="solutions" aria-labelledby="solutions-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Solutions</p>
+      <h2 class="section__title" id="solutions-title">
+        <span class="section__title-line">暗黙知を、</span>
+        <span class="section__title-line">三つの段階で資産に変える。</span>
+      </h2>
+      <p class="section__lead">
+        <span class="section__lead-line">集めて、つなぎ、現場で使えるところまで。</span>
+        <span class="section__lead-line">成果から逆算した、三つの領域です。</span>
+      </p>
+    </div>
+
+    <div class="solutions__grid">
+      <article class="solution-card solution-card--tacit reveal" data-delay="1">
+        <figure class="solution-card__figure" aria-hidden="true">
+          <img src="assets/images/photo-tacit.jpg" alt="" width="600" height="360" loading="lazy">
+        </figure>
+        <h3 class="solution-card__title">暗黙知のAI化</h3>
+        <p class="solution-card__lead">
+          ベテランの判断、文書、会話、作業の記録を、
+          検索・教育・判断支援に使える形へ変換します。
+        </p>
+        <hr class="solution-card__divider" aria-hidden="true">
+        <ul class="solution-card__items">
+          <li class="solution-card__item">AIエージェント開発・業務自動化</li>
+          <li class="solution-card__item">RAG構築・社内データ活用</li>
+          <li class="solution-card__item">カスタムLLMのファインチューニング</li>
+        </ul>
+      </article>
+
+      <article class="solution-card solution-card--agent reveal" data-delay="2">
+        <figure class="solution-card__figure" aria-hidden="true">
+          <img src="assets/images/photo-agent.jpg" alt="" width="600" height="360" loading="lazy">
+        </figure>
+        <h3 class="solution-card__title">企業専用AIエージェント</h3>
+        <p class="solution-card__lead">
+          社内の知識と既存システムをつなぎ、
+          答えるだけでなく、業務の実行まで支援します。
+        </p>
+        <hr class="solution-card__divider" aria-hidden="true">
+        <ul class="solution-card__items">
+          <li class="solution-card__item">社内知識を踏まえた応答と判断支援</li>
+          <li class="solution-card__item">既存システムとの連携・実行</li>
+          <li class="solution-card__item">業務フローへの自然な組み込み</li>
+        </ul>
+      </article>
+
+      <article class="solution-card solution-card--enable reveal" data-delay="3">
+        <figure class="solution-card__figure" aria-hidden="true">
+          <img src="assets/images/photo-enable.jpg" alt="" width="600" height="360" loading="lazy">
+        </figure>
+        <h3 class="solution-card__title">AI内製化・運用支援</h3>
+        <p class="solution-card__lead">
+          検証の設計から運用ルール、社内チームの育成まで。
+          自分たちで運用・改善できる状態をつくります。
+        </p>
+        <hr class="solution-card__divider" aria-hidden="true">
+        <ul class="solution-card__items">
+          <li class="solution-card__item">PoC設計・精度の評価</li>
+          <li class="solution-card__item">運用ルールと体制づくり</li>
+          <li class="solution-card__item">社内チームへの技術移転</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="section__more reveal" data-delay="3">
+      <a class="btn btn-ghost" href="services.html">
+        ソリューションの詳細を見る
+        <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--ink capability" id="capability" aria-labelledby="capability-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Engineering</p>
+      <h2 class="section__title" id="capability-title">技術を、自分たちの手で。</h2>
+      <p class="section__lead">
+        <span class="section__lead-line">強化学習にも対応する、企業AI開発に特化したエンジニアチーム。</span>
+        <span class="section__lead-line">既製品の組み合わせに留まらず、モデルの最適化から運用基盤まで設計します。</span>
+      </p>
+    </div>
+
+    <ul class="capability__grid">
+      <li class="capability__item reveal">
+        <span class="capability__num" aria-hidden="true">01</span>
+        <h3 class="capability__term">カスタムLLM最適化</h3>
+        <p class="capability__desc">用途に合わせて大規模言語モデルを調整し、自社の文脈に沿った精度を引き出します。</p>
+      </li>
+      <li class="capability__item reveal" data-delay="1">
+        <span class="capability__num" aria-hidden="true">02</span>
+        <h3 class="capability__term">強化学習</h3>
+        <p class="capability__desc">フィードバックから学び続ける仕組みに対応し、使うほど現場に馴染むAIを目指します。</p>
+      </li>
+      <li class="capability__item reveal" data-delay="2">
+        <span class="capability__num" aria-hidden="true">03</span>
+        <h3 class="capability__term">RAG・ベクトル検索</h3>
+        <p class="capability__desc">社内文書を意味で検索し、出典を示しながら答える基盤を構築します。</p>
+      </li>
+      <li class="capability__item reveal" data-delay="3">
+        <span class="capability__num" aria-hidden="true">04</span>
+        <h3 class="capability__term">オンプレミス対応</h3>
+        <p class="capability__desc">データを外に出さない構成にも対応し、機密性の高い環境でも実装できます。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--alt why" id="why" aria-labelledby="why-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Why ShinAI</p>
+      <h2 class="section__title" id="why-title">現場で使われ続けるために。</h2>
+      <p class="section__lead">
+        <span class="section__lead-line">導入して終わりにしない。</span>
+        <span class="section__lead-line">現場に根づき、自走できる状態まで伴走します。</span>
+      </p>
+    </div>
+
+    <div class="why__list">
+      <article class="why__row reveal">
+        <span class="why__num" aria-hidden="true">01</span>
+        <div>
+          <h3 class="why__title">現場理解</h3>
+          <p class="why__line">技術より先に、業務と困りごとを理解します。</p>
+        </div>
+      </article>
+      <hr class="why__rule" aria-hidden="true">
+      <article class="why__row reveal" data-delay="1">
+        <span class="why__num" aria-hidden="true">02</span>
+        <div>
+          <h3 class="why__title">小規模検証</h3>
+          <p class="why__line">小さく試し、効果を確かめてから広げます。</p>
+        </div>
+      </article>
+      <hr class="why__rule" aria-hidden="true">
+      <article class="why__row reveal" data-delay="2">
+        <span class="why__num" aria-hidden="true">03</span>
+        <div>
+          <h3 class="why__title">データ保護</h3>
+          <p class="why__line">暗号化・権限管理・オンプレミスにも対応します。</p>
+        </div>
+      </article>
+      <hr class="why__rule" aria-hidden="true">
+      <article class="why__row reveal" data-delay="3">
+        <span class="why__num" aria-hidden="true">04</span>
+        <div>
+          <h3 class="why__title">本番実装</h3>
+          <p class="why__line">試作で終えず、業務に組み込むところまで作ります。</p>
+        </div>
+      </article>
+      <hr class="why__rule" aria-hidden="true">
+      <article class="why__row reveal" data-delay="4">
+        <span class="why__num" aria-hidden="true">05</span>
+        <div>
+          <h3 class="why__title">技術移転</h3>
+          <p class="why__line">最後は、社内で運用・改善できる状態に。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--ink cta" id="contact" aria-labelledby="cta-title">
+  <div class="container cta__inner">
+    <div class="cta__lead">
+      <h2 class="cta__title" id="cta-title">まず、何をAIに委ねられるかを整理しませんか。</h2>
+      <p class="cta__copy">
+        <span class="cta__copy-line">まだ要件が決まっていなくても構いません。</span>
+        <span class="cta__copy-line">現在の業務と知識資産から、適用できる範囲を一緒に整理します。</span>
+      </p>
+    </div>
+
+    <div class="cta__action">
+      <a class="btn cta__btn" href="contact.html">
+        無料相談を申し込む
+        <svg class="cta__btn-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <dl class="cta__facts">
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Consultation</dt>
+        <dd class="cta__fact-value">無料相談 20〜30分・事前準備は不要です</dd>
+      </div>
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Contact</dt>
+        <dd class="cta__fact-value">
+          <a class="cta__fact-link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
+        </dd>
+      </div>
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Hours</dt>
+        <dd class="cta__fact-value">平日 9:00–18:00</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+  </main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <p class="site-footer__wordmark">Shin<span class="site-footer__wordmark-ai">AI</span></p>
+        <p class="site-footer__essence">企業の暗黙知を、使えるAI資産へ。</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="site-footer__nav-list">
+          <li><a class="site-footer__nav-link" href="services.html">ソリューション</a></li>
+          <li><a class="site-footer__nav-link" href="industries.html">業種別の活用</a></li>
+          <li><a class="site-footer__nav-link" href="about.html">会社情報</a></li>
+          <li><a class="site-footer__nav-link" href="faq.html">よくある質問</a></li>
+          <li><a class="site-footer__nav-link" href="contact.html">無料相談・お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__contact">
+        <p class="site-footer__company-name">ShinAI（シンアイ）</p>
+        <address class="site-footer__address">
+          <span class="site-footer__address-line">活動拠点 東京都千代田区丸の内3-8-3 Tokyo Innovation Base</span>
+          <span class="site-footer__address-line">所在地 群馬県高崎市井野町360-7</span>
+          <span class="site-footer__address-line">受付 平日 9:00–18:00</span>
+          <a class="site-footer__address-link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <nav class="site-footer__legal" aria-label="規約・方針">
+        <a class="site-footer__legal-link" href="privacy.html">プライバシーポリシー</a>
+        <a class="site-footer__legal-link" href="terms.html">利用規約</a>
+      </nav>
+      <p class="site-footer__copyright">© 2025 ShinAI</p>
+    </div>
+  </div>
+</footer>
+
+<div class="chatbot" data-chatbot>
+  <button
+    type="button"
+    id="chatbot-button"
+    class="chatbot__launcher"
+    aria-expanded="false"
+    aria-controls="chatbot-window"
+    aria-label="AIアシスタントに質問する"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H9l-4 3v-3H4A1.5 1.5 0 0 1 2.5 15V7A1.5 1.5 0 0 1 4 5.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <circle cx="8.5" cy="11" r="1" fill="currentColor"/>
+      <circle cx="12" cy="11" r="1" fill="currentColor"/>
+      <circle cx="15.5" cy="11" r="1" fill="currentColor"/>
+    </svg>
+    <span class="chatbot__launcher-label">質問する</span>
+  </button>
+
+  <section
+    id="chatbot-window"
+    class="chatbot__window"
+    role="dialog"
+    aria-label="ShinAI AIアシスタント"
+    aria-modal="false"
+  >
+    <header class="chatbot__head">
+      <div class="chatbot__head-text">
+        <p class="chatbot__title">ShinAI アシスタント</p>
+        <p class="chatbot__subtitle">暗黙知のAI化について、気軽にどうぞ</p>
+      </div>
+      <button type="button" id="chatbot-close" class="chatbot__close" aria-label="閉じる">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <div id="chatbot-messages" class="chatbot__messages" aria-live="polite" aria-atomic="false"></div>
+
+    <form class="chatbot__form" data-chatbot-form>
+      <label class="visually-hidden" for="chat-input">メッセージを入力</label>
+      <textarea
+        id="chat-input"
+        class="chatbot__input"
+        rows="1"
+        maxlength="500"
+        placeholder="質問を入力してください"
+        autocomplete="off"
+      ></textarea>
+      <button type="button" id="chat-send" class="chatbot__send" aria-label="送信">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 12l16-7-7 16-2.5-6.5L4 12Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  </section>
+</div>
+
+  <script src="scripts/config.js" defer></script>
+  <script src="scripts/nav.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+  <script src="scripts/vendor/three.min.js" defer></script>
+  <script src="scripts/particles.js" defer></script>
+  <script src="scripts/chatbot.js" defer></script>
+</body>
+</html>

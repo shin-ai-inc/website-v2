@@ -1,0 +1,12 @@
+BRIEF.md
+SECURITY.md
+PUBLISH_ALLOWLIST.md
+README.md
+partials/
+deploy/
+_build/
+styles/tokens.css
+styles/base.css
+styles/sections/
+assets/CREDITS.md
+*.NEEDS.md

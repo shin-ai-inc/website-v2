@@ -1,0 +1,106 @@
+/*
+  Section: Method (#method)
+  5段階を一本の流れとして見せる。番号マーカーを線でつなぎ、
+  PCは横の連続、モバイルは縦の連続として崩れず積み上がる。
+  連結線はマーカーより下に置き、不透明なマーカー面で重なりを隠す。
+  色・余白・型はトークンのみ参照。
+*/
+
+.method__flow {
+  --method-marker: 3.25rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+}
+
+.method__step {
+  position: relative;
+  text-align: center;
+}
+
+/* 横の連結線(PC): マーカー中心から次のマーカー中心まで */
+.method__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--method-marker) / 2);
+  left: 50%;
+  width: calc(100% + var(--space-4));
+  height: 2px;
+  transform: translateY(-1px);
+  background: var(--grad-brand-line);
+  z-index: var(--z-bg);
+}
+
+.method__marker {
+  position: relative;
+  z-index: var(--z-base);
+  display: grid;
+  place-items: center;
+  width: var(--method-marker);
+  height: var(--method-marker);
+  margin: 0 auto var(--space-3);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.method__num {
+  font-family: var(--font-latin);
+  font-size: var(--fs-h3);
+  letter-spacing: var(--tracking-latin);
+  color: var(--ink);
+}
+
+.method__label {
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--space-1);
+}
+
+.method__name {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-2);
+}
+
+.method__desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--ink-3);
+}
+
+@media (max-width: 940px) {
+  .method__flow {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .method__step {
+    display: flex;
+    gap: var(--space-4);
+    text-align: left;
+  }
+
+  .method__marker {
+    flex: 0 0 var(--method-marker);
+    margin: 0;
+  }
+
+  .method__body {
+    flex: 1;
+    padding-top: var(--space-1);
+  }
+
+  /* 縦の連結線(モバイル) */
+  .method__step:not(:last-child)::after {
+    top: var(--method-marker);
+    left: calc(var(--method-marker) / 2);
+    width: 2px;
+    height: calc(100% + var(--space-5));
+    transform: translateX(-1px);
+    background: linear-gradient(180deg, var(--brand), var(--teal), transparent);
+  }
+}

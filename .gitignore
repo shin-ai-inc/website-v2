@@ -1,0 +1,35 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+.vscode/
+.idea/
+
+# dependencies / build junk
+node_modules/
+dist/
+*.log
+
+# local env / secrets (絶対にコミットしない)
+.env
+.env.*
+*.key
+*.pem
+
+# 作業中の検証用スクリーンショット(ルート直下)。リポジトリには含めない
+/ss*.png
+/c-*.png
+/f-*.png
+/q-*.png
+/r-*.png
+/s-*.png
+/t-*.png
+/u-*.png
+/v-*.png
+/w-*.png
+/x-*.png
+/y-*.png
+/z-*.png
+/full-*.png
+/mobile-*.png
