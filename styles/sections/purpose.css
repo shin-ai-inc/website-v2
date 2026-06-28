@@ -22,8 +22,8 @@
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(1.5rem, 3.2vw, 3.4rem);
-  line-height: var(--lh-snug);
-  letter-spacing: 0.08em;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
   color: var(--ink);
 }
 

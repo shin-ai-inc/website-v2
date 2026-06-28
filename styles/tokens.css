@@ -58,19 +58,20 @@
   /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --fs-display: clamp(2.4rem, 5vw, 5rem);
-  --fs-h1: clamp(2rem, 4vw, 3.8rem);
-  --fs-h2: clamp(1.35rem, 2.5vw, 2.1rem);
-  --fs-h3: clamp(1.05rem, 1.5vw, 1.3rem);
-  --fs-lead: clamp(1rem, 1.3vw, 1.15rem);
-  --fs-body: 1.0rem;
+  /* SpaceData/Takram 参照スケール。max値はpx換算: display=76px, h1=68px, h2=40px, h3=28px */
+  --fs-display: clamp(3.25rem, 5.2vw, 4.75rem);
+  --fs-h1: clamp(2.75rem, 4.5vw, 4.25rem);
+  --fs-h2: clamp(2rem, 2.5vw, 2.5rem);
+  --fs-h3: clamp(1.5rem, 1.8vw, 1.75rem);
+  --fs-lead: clamp(1.125rem, 1.3vw, 1.25rem);
+  --fs-body: 1rem;
   --fs-sm: 0.875rem;
-  --fs-eyebrow: 0.8rem;
+  --fs-eyebrow: 0.75rem;
 
-  --lh-tight: 1.28;
-  --lh-snug: 1.5;
-  --lh-body: 1.85;
-  --tracking-eyebrow: 0.18em;
+  --lh-tight: 1.1;
+  --lh-snug: 1.45;
+  --lh-body: 1.9;
+  --tracking-eyebrow: 0.15em;
   --tracking-latin: 0.04em;
 
   /* ---- Spacing scale ---- */
@@ -82,10 +83,12 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(3rem, 6vw, 6rem);
-  --container: 1180px;
+  --section-py: clamp(4.5rem, 7vw, 9rem);
+  --container: 1360px;
   --container-narrow: 760px;
-  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --container-text: 680px;
+  --container-heading: 960px;
+  --gutter: clamp(1.5rem, 3.5vw, 3rem);
   --header-h: 78px;            /* sticky ヘッダーの初期高。没入ゾーンの1画面計算に使う */
   --header-h-condensed: 64px;  /* scroll で condense した時の高さ。モバイルナビ天位置も追従させる */
 

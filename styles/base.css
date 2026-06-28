@@ -38,10 +38,10 @@ ul, ol { list-style: none; padding: 0; }
 /* ---- Headings ---- */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: var(--lh-tight);
+  font-weight: 500;
+  line-height: var(--lh-snug);
   color: var(--ink);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
 }
 
 /* ---- Layout ---- */
@@ -67,16 +67,22 @@ h1, h2, h3, h4 {
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
-.section__head { max-width: 760px; margin-bottom: var(--space-5); }
+.section__head { max-width: var(--container-heading); margin-bottom: var(--space-5); }
 .section__head--center { margin-inline: auto; text-align: center; }
-.section__title { font-size: var(--fs-h2); }
+.section__title {
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: var(--lh-snug);
+  letter-spacing: 0.03em;
+}
 .section__title-line {
   display: block;
 }
 .section__lead {
   margin-top: var(--space-3);
+  max-width: var(--container-text);
   font-size: var(--fs-lead);
-  line-height: var(--lh-snug);
+  line-height: var(--lh-body);
   color: var(--ink-3);
 }
 
@@ -88,6 +94,9 @@ h1, h2, h3, h4 {
   margin-top: var(--space-5);
   text-align: center;
 }
+
+.text-column { max-width: var(--container-text); }
+.heading-column { max-width: var(--container-heading); }
 
 @media (max-width: 480px) {
   .section__head {
