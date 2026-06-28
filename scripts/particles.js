@@ -153,7 +153,7 @@
      canvas = hero + creed。creed半分の高さ(世界座標)をlookAt Y に引くことで補正する。
      PC: creed≈75px / canvas≈950px → coverage 67unit → offset ≈2.5unit
      Mobile: creed≈38px / canvas≈576px → coverage 55unit → offset ≈1.8unit */
-  var heroLookAt = new THREE.Vector3(0, isMobile ? -1.8 : -2.5, 0);
+  var heroLookAt = new THREE.Vector3(0, isMobile ? -3.5 : -2.5, 0);
 
   /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。
      モバイルは強度を抑えつつバーストは必ず実行する(prefers-reduced-motionは定常アニメに影響しない)。 */
