@@ -7,10 +7,17 @@
   実行: node _build/build.mjs
 */
 import { readFileSync, writeFileSync, readdirSync, cpSync, mkdirSync, rmSync, copyFileSync } from "node:fs";
+import { execSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+
+/* ビルドごとにGitハッシュをURLクエリに付加してブラウザキャッシュを無効化する。 */
+const BUILD_HASH = (() => {
+  try { return execSync("git rev-parse --short HEAD", { cwd: ROOT }).toString().trim(); }
+  catch { return Date.now().toString(36); }
+})();
 
 /* デプロイ前に実ドメインへ置換する唯一の場所。OGP/canonical の絶対URLに使う。
    独自ドメイン取得後はここを更新してビルドし直すこと。 */
@@ -110,17 +117,18 @@ const shell = (page) => {
   const canonical = SITE_URL + "/" + page.file;
   const main = normalizeMain(read("partials/" + page.part));
   const header = markCurrent(headerHtml, page.nav);
+  const v = "?v=" + BUILD_HASH;
   const scripts = [
-    '<script src="scripts/config.js" defer></script>',
-    '<script src="scripts/nav.js" defer></script>',
-    '<script src="scripts/main.js" defer></script>',
-    '<script src="scripts/chatbot.js" defer></script>'
+    `<script src="scripts/config.js${v}" defer></script>`,
+    `<script src="scripts/nav.js${v}" defer></script>`,
+    `<script src="scripts/main.js${v}" defer></script>`,
+    `<script src="scripts/chatbot.js${v}" defer></script>`
   ];
   if (page.hero) {
     /* 施主が愛する流動パーティクル。Three.js は自己ホスト(CDNではない)で script-src 'self' を維持。 */
     scripts.splice(3, 0,
-      '<script src="scripts/vendor/three.min.js" defer></script>',
-      '<script src="scripts/particles.js" defer></script>'
+      `<script src="scripts/vendor/three.min.js${v}" defer></script>`,
+      `<script src="scripts/particles.js${v}" defer></script>`
     );
   }
   if (page.extraScripts) {
@@ -163,7 +171,7 @@ const shell = (page) => {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="styles/app.css${v}">
 
   <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
 </head>
