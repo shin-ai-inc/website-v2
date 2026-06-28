@@ -57,13 +57,13 @@
 
   /* 二重コア(藍と青緑のワイヤーフレーム)。現行の二重地球儀構造を継承。 */
   var core = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 12.0 : 11.0, 2),
+    new THREE.IcosahedronGeometry(isMobile ? 9.2 : 11.0, 2),
     new THREE.MeshBasicMaterial({ color: 0x3a5feb, transparent: true, opacity: isMobile ? 0.18 : 0.17, wireframe: true })
   );
   scene.add(core);
 
   var innerCore = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 6.0 : 5.5, 2),
+    new THREE.IcosahedronGeometry(isMobile ? 4.6 : 5.5, 2),
     new THREE.MeshBasicMaterial({ color: 0x00c9a7, transparent: true, opacity: isMobile ? 0.25 : 0.22, wireframe: true })
   );
   scene.add(innerCore);
