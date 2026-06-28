@@ -22,7 +22,8 @@
   font-family: var(--font-creed);
   font-weight: 300;
   font-size: clamp(1.4rem, 3vw, 1.75rem);
-  line-height: 1.5;
+  line-height: 1.6;
+  letter-spacing: 0.14em;
   color: #FFFFFF;
 }
 
