@@ -99,6 +99,7 @@
   max-width: 40em;
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
+  letter-spacing: 0.06em;
   color: var(--charcoal);
   margin-bottom: var(--space-5);
 }

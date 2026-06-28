@@ -27,6 +27,7 @@
   margin-top: var(--space-4);
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
+  letter-spacing: 0.06em;
   color: #C7CEDC;
 }
 
