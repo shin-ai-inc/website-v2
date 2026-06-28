@@ -149,10 +149,13 @@
   var onMouseMove = function (e) { onPointer(e.clientX, e.clientY); };
   var onTouchMove = function (e) { if (e.touches.length > 0) { onPointer(e.touches[0].clientX, e.touches[0].clientY); } };
 
-  /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。 */
+  /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。
+     モバイルは強度を抑えつつバーストは必ず実行する(prefers-reduced-motionは定常アニメに影響しない)。 */
   var time = 0;
   var initialMotionTime = 0;
-  var initialMotionDuration = 2.5;
+  var initialMotionDuration = isMobile ? 2.0 : 2.5;
+  var initialBurstY = isMobile ? 0.48 : 0.8;
+  var initialBurstX = isMobile ? 0.18 : 0.3;
   var isInitialMotion = true;
 
   var rafId = null;
@@ -196,8 +199,8 @@
       if (isInitialMotion) {
         var progress = initialMotionTime / initialMotionDuration;
         var easeOut = 1 - Math.pow(1 - progress, 3);
-        p.mesh.position.y += 0.8 * (1 - easeOut);
-        p.mesh.position.x += (Math.sin(time * 2 + idx * 0.2) * 0.3) * (1 - easeOut);
+        p.mesh.position.y += initialBurstY * (1 - easeOut);
+        p.mesh.position.x += (Math.sin(time * 2 + idx * 0.2) * initialBurstX) * (1 - easeOut);
       }
 
       p.orbit.angle += p.orbit.speed;
@@ -304,20 +307,14 @@
   window.addEventListener("resize", onResize, { passive: true });
 
   var applyMotionPreference = function () {
-    if (reduceMotionQuery.matches) {
-      isInitialMotion = false;
-    }
     if (!running) {
       start();
     }
   };
 
-  /* prefers-reduced-motion は初期バーストのみ無効化し、アニメーション自体は常に起動する。
-     背景パーティクルは vestibular 障害を引き起こすほどの速度ではなく装飾的な動きのため。
-     アニメーションを完全停止すると iOS のデフォルト設定で静止画になる問題を回避する。 */
-  if (reduceMotionQuery.matches) {
-    isInitialMotion = false;
-  }
+  /* prefers-reduced-motion はアニメーション停止を引き起こさない。
+     背景パーティクルは装飾的な動きのため vestibular 障害リスクは低い。
+     初期バーストはモバイルで強度を落として必ず実行する(iOS デフォルト ON による演出欠落を防ぐ)。 */
   document.addEventListener("mousemove", onMouseMove, { passive: true });
   document.addEventListener("touchmove", onTouchMove, { passive: true });
   start();
