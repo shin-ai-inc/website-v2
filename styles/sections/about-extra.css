@@ -257,6 +257,7 @@
 }
 .shin7__card--featured {
   background: linear-gradient(160deg, var(--brand-soft) 0%, var(--paper) 60%);
+  border-color: rgba(58, 95, 235, 0.22);
   border-color: color-mix(in srgb, var(--brand) 22%, var(--line));
 }
 

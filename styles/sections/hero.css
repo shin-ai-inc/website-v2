@@ -74,10 +74,16 @@
 
 /* ---- Title ---- */
 .hero__title {
-  font-size: clamp(1.9rem, 4.5vw, 4.4rem);
+  font-size: clamp(1.9rem, 3.8vw, 4.4rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-5);
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    letter-spacing: 0.01em;
+  }
 }
 
 .hero__title-line {

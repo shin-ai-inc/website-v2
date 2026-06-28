@@ -61,9 +61,10 @@
   white-space: nowrap;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 820px) {
   .page-hero__title-line {
     white-space: normal;
+    overflow-wrap: break-word;
   }
 }
 

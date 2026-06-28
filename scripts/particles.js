@@ -38,13 +38,18 @@
   var scene = new THREE.Scene();
   var dim = sizeOf();
   var camera = new THREE.PerspectiveCamera(60, dim.w / dim.h, 0.1, 1000);
-  camera.position.z = isMobile ? 42 : 50;
+  camera.position.z = isMobile ? 48 : 58;
 
-  var renderer = new THREE.WebGLRenderer({
-    alpha: true,
-    antialias: !isMobile,
-    powerPreference: "high-performance"
-  });
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: !isMobile,
+      powerPreference: isMobile ? "default" : "high-performance"
+    });
+  } catch (e) {
+    return;
+  }
   renderer.setSize(dim.w, dim.h);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.domElement.setAttribute("aria-hidden", "true");
@@ -63,9 +68,9 @@
   );
   scene.add(innerCore);
 
-  /* 粒子。端末性能で数を抑える。 */
-  var lowSpec = typeof navigator.hardwareConcurrency === "number" ? navigator.hardwareConcurrency <= 4 : isMobile;
-  var particlesCount = lowSpec ? 600 : isMobile ? 900 : 1300;
+  /* 粒子。端末性能で数を抑える。lowSpec = 論理CPUが2以下の超低スペック機のみ。 */
+  var lowSpec = typeof navigator.hardwareConcurrency === "number" ? navigator.hardwareConcurrency <= 2 : false;
+  var particlesCount = isMobile ? 1100 : lowSpec ? 900 : 2000;
   var particles = [];
 
   var geometries = [
@@ -123,7 +128,7 @@
 
   /* 接続線。流れの中で近づいた粒子を細く結ぶ(知識がつながる比喩)。 */
   var connectionLines = [];
-  var lineCount = isMobile ? 24 : 48;
+  var lineCount = isMobile ? 36 : 88;
   for (i = 0; i < lineCount; i += 1) {
     var lineGeo = new THREE.BufferGeometry();
     lineGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(6), 3));
@@ -241,7 +246,7 @@
       var b = particles[(particles.indexOf(a) + 1 + Math.floor(Math.random() * 20)) % particles.length];
       if (a && b) {
         var distance = a.mesh.position.distanceTo(b.mesh.position);
-        if (distance < 15) {
+        if (distance < 20) {
           positions[0] = a.mesh.position.x;
           positions[1] = a.mesh.position.y;
           positions[2] = a.mesh.position.z;
@@ -249,7 +254,7 @@
           positions[4] = b.mesh.position.y;
           positions[5] = b.mesh.position.z;
           ln.geometry.attributes.position.needsUpdate = true;
-          ln.material.opacity = 0.04 * (1 - distance / 15) * (0.7 + 0.3 * Math.sin(time * 2 + li));
+          ln.material.opacity = 0.05 * (1 - distance / 20) * (0.7 + 0.3 * Math.sin(time * 2 + li));
         } else {
           ln.material.opacity = 0;
         }
