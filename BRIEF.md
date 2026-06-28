@@ -97,6 +97,9 @@
 
 ## 8. アクセシビリティ/レスポンシブ
 - モバイル(〜480)、タブレット(〜820)、PC を考慮。レイアウトは grid/flex + clamp。
+- ブレークポイントは正準4値のみを使う（中間値を新規に増やさない。tokens.css に定義・根拠）:
+  `480`(phone) / `640`(large phone・2列→1列) / `820`(tablet・グローバルナビ切替=JS/footerと一致) / `960`(広グリッド折返し)。
+  メディアクエリ条件に CSS 変数は使えないため、各セクションCSSはこの数値で揃える。
 - 見出し階層を正しく（h2→h3）。ランドマーク（header/main/footer/nav/section aria-labelledby）。
 - コントラスト確保。色だけに依存しない（状態はテキスト/形でも示す）。
 - prefers-reduced-motion は base.css で大枠対応済み。重いJS演出は自前でも reduced-motion を尊重。

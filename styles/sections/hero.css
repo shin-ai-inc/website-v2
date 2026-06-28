@@ -84,7 +84,7 @@
   display: block;
 }
 
-@media (min-width: 520px) {
+@media (min-width: 640px) {
   .hero__title-line {
     white-space: nowrap;
   }

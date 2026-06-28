@@ -252,6 +252,20 @@ BRIEF 7章の型を、**目的の階層**で運用する。各セクションは
 
 ---
 
+---
+
+# 更新ログ
+
+## 2026-06-28 レスポンシブ一貫性パス（施主指示「PC・レスポンシブに一貫性を」）
+- B5-a 解決: ブレークポイントを 11種(480〜940)から**正準4値 `480 / 640 / 820 / 960`** に統一。
+  tokens.css に定義・根拠を記載し、BRIEF §8 にも明文化。生成 app.css も4値のみで検証済み。
+- B5-b 解決: モバイルナビの天位置ハードコード(`78px`)と condense 高(`64px`)を
+  `--header-h` / `--header-h-condensed` にトークン化。condense 時もナビ天位置が実高に追従。
+- B3-a 解決: contact の eyebrow を `CONTACT` → `Contact` に統一(全ページ title case)。
+- 注記: パーティクル(`scripts/particles.js`・`vendor/three.min.js`)および全JSは無改変。
+  本パスは CSS と文言のみ。Problem セクション欠落は施主の意図的判断のため変更しない(LP非該当)。
+- 未了(別途・要施主判断): B4-a 色方針(藍＋銅一点 vs 現行藍青→青緑＋オレンジ)、B1-a industries の物語化。
+
 ## 参照
 - 株式会社スペースデータ — https://spacedata.ai （信頼形成の順序: 明言→可視化→証明）
 - Takram — https://www.takram.com （編集的ミニマリズム・情報設計・静かな入口）

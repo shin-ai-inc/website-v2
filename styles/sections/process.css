@@ -92,7 +92,7 @@
   height: 100%;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
   .process__phase {
     grid-template-columns: auto 1fr;
     column-gap: var(--space-3);
