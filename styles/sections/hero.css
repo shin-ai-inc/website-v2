@@ -43,7 +43,7 @@
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  align-items: flex-end;
+  align-items: stretch;
   min-height: clamp(340px, 52svh, 600px);
   padding-block: var(--space-6) var(--space-6);
   overflow: hidden;
@@ -53,6 +53,8 @@
   position: relative;
   z-index: var(--z-stack-content);
   max-width: 880px;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero__eyebrow {
@@ -107,7 +109,8 @@
   line-height: var(--lh-snug);
   letter-spacing: 0.06em;
   color: var(--charcoal);
-  margin-bottom: var(--space-5);
+  margin-top: auto;
+  margin-bottom: 0;
 }
 
 @media (max-width: 640px) {
@@ -116,6 +119,8 @@
     letter-spacing: 0.04em;
     line-height: 1.75;
     color: var(--ink-3);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-5);
   }
 }
 
