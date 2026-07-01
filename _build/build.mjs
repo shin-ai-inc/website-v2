@@ -163,6 +163,7 @@ const shell = (page) => {
   <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
 </head>
 <body>
+  <a class="skip-link" href="#main">メインコンテンツへ</a>
 ${header}
   <main id="main">
 ${main}
