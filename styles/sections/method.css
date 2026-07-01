@@ -43,6 +43,14 @@
   border: 1px solid var(--line-ink);
   background: var(--paper);
   box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+
+.method__step:hover .method__marker {
+  border-color: var(--brand);
+  box-shadow: var(--shadow-md), 0 0 0 3px color-mix(in srgb, var(--brand) 12%, transparent);
 }
 
 .method__num {
@@ -59,6 +67,11 @@
   text-transform: uppercase;
   color: var(--brand);
   margin-bottom: var(--space-1);
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.method__step:hover .method__label {
+  color: var(--teal);
 }
 
 .method__name {
