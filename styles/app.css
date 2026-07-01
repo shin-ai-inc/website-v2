@@ -2958,6 +2958,16 @@ h1, h2, h3, h4 {
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+
+.industries-bridge__item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand-soft);
 }
 
 .industries-bridge__item::before {
