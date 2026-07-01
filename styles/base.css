@@ -59,6 +59,30 @@ h1, h2, h3, h4 {
   position: relative;
   padding-block: var(--section-py);
 }
+/* Subtle atmospheric image overlay for white-background sections */
+.section:not(.section--alt):not(.section--ink) {
+  isolation: isolate;
+}
+.section:not(.section--alt):not(.section--ink)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: -1;
+}
+#purpose::before  { background-image: url('../assets/images/about-philosophy-tech.jpg'); }
+#solutions::before { background-image: url('../assets/images/service-custom-ai-development.jpg'); }
+#team::before     { background-image: url('../assets/images/photo-team.jpg'); }
+#company::before  { background-image: url('../assets/images/about-vision-future.jpg'); }
+#industries::before { background-image: url('../assets/images/about-vision-future.jpg'); }
+#technology::before { background-image: url('../assets/images/about-philosophy-tech.jpg'); }
+#faq::before      { background-image: url('../assets/images/service-consulting-team.jpg'); }
+#flow::before     { background-image: url('../assets/images/service-cocreation-partnership.jpg'); }
+
 .section--alt { background: var(--paper-2); }
 .section--ink {
   background: var(--ink);
