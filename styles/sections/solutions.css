@@ -135,21 +135,20 @@
 }
 
 .solution-card__item {
-  position: relative;
-  padding-left: var(--space-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
   color: var(--charcoal);
 }
 
-.solution-card__item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 0.75rem;
-  height: 1px;
-  background: var(--card-ink);
+.solution-card__check {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.15em;
+  color: var(--card-ink);
 }
 
 @media (max-width: 960px) {
