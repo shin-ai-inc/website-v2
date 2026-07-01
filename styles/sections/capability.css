@@ -1,20 +1,55 @@
 /*
   Section: capability — 企業AI開発に特化した、技術の芯。
   既製品の組み合わせではなく、モデル最適化から運用基盤まで自分たちで設計できる主体性を示す濃色帯。
-  番号モチーフは problem/why と共通の語彙を踏襲する(新しい装飾を増やさない)。
+  アイコン+番号モチーフで各領域を視覚的に区別する。
 */
 .capability__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-5);
+  gap: var(--space-4);
   margin-top: var(--space-6);
 }
 
 .capability__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
   padding: var(--space-5);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--r-lg);
   background: rgba(255, 255, 255, 0.04);
+  transition:
+    background var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out);
+}
+
+.capability__item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.capability__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, rgba(58, 95, 235, 0.18) 0%, rgba(0, 201, 167, 0.14) 100%);
+  color: var(--teal);
+}
+
+.capability__icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.capability__body {
+  flex: 1;
+  min-width: 0;
 }
 
 .capability__num {
@@ -23,7 +58,7 @@
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-latin);
   color: var(--teal);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
 }
 
 .capability__term {
@@ -41,5 +76,9 @@
 @media (max-width: 640px) {
   .capability__grid {
     grid-template-columns: 1fr;
+  }
+  .capability__item {
+    flex-direction: column;
+    gap: var(--space-3);
   }
 }

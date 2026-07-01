@@ -1028,20 +1028,55 @@ h1, h2, h3, h4 {
 /*
   Section: capability — 企業AI開発に特化した、技術の芯。
   既製品の組み合わせではなく、モデル最適化から運用基盤まで自分たちで設計できる主体性を示す濃色帯。
-  番号モチーフは problem/why と共通の語彙を踏襲する(新しい装飾を増やさない)。
+  アイコン+番号モチーフで各領域を視覚的に区別する。
 */
 .capability__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-5);
+  gap: var(--space-4);
   margin-top: var(--space-6);
 }
 
 .capability__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
   padding: var(--space-5);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--r-lg);
   background: rgba(255, 255, 255, 0.04);
+  transition:
+    background var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out);
+}
+
+.capability__item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.capability__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, rgba(58, 95, 235, 0.18) 0%, rgba(0, 201, 167, 0.14) 100%);
+  color: var(--teal);
+}
+
+.capability__icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.capability__body {
+  flex: 1;
+  min-width: 0;
 }
 
 .capability__num {
@@ -1050,7 +1085,7 @@ h1, h2, h3, h4 {
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-latin);
   color: var(--teal);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
 }
 
 .capability__term {
@@ -1068,6 +1103,10 @@ h1, h2, h3, h4 {
 @media (max-width: 640px) {
   .capability__grid {
     grid-template-columns: 1fr;
+  }
+  .capability__item {
+    flex-direction: column;
+    gap: var(--space-3);
   }
 }
 
@@ -1512,7 +1551,19 @@ h1, h2, h3, h4 {
 .contact-flow__step {
   position: relative;
   text-align: center;
-  padding-inline: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+
+.contact-flow__step:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 /* 各ステップのアイコン中心を、次のアイコン中心まで罫でつなぐ。
@@ -1520,9 +1571,9 @@ h1, h2, h3, h4 {
 .contact-flow__step:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: 28px;
-  left: 50%;
-  width: calc(100% + var(--space-5));
+  top: calc(var(--space-5) + 28px);
+  left: calc(50% + var(--space-4));
+  width: calc(100% - var(--space-4));
   height: 2px;
   background: linear-gradient(90deg, var(--brand-soft), var(--line));
   z-index: 0;
@@ -2090,7 +2141,9 @@ h1, h2, h3, h4 {
   color: var(--ink);
   margin-bottom: var(--space-3);
   padding-bottom: var(--space-2);
+  padding-left: var(--space-3);
   border-bottom: 1px solid var(--line);
+  border-left: 3px solid var(--brand);
 }
 
 .faq-group__list {
@@ -2905,13 +2958,29 @@ h1, h2, h3, h4 {
   background: var(--grad-brand);
 }
 
+.industries-bridge__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.industries-bridge__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .industries-bridge__item-title {
   font-family: var(--font-display);
   font-size: var(--fs-h3);
   line-height: var(--lh-snug);
   color: var(--ink);
   margin-bottom: var(--space-2);
-  padding-top: var(--space-1);
 }
 
 .industries-bridge__item-text {
@@ -3400,12 +3469,18 @@ h1, h2, h3, h4 {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-4);
-  padding: var(--space-4) var(--space-4) var(--space-4) 0;
-  border-bottom: 1px solid var(--line);
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
 }
 
-.process__phase:last-child {
-  border-bottom: 0;
+.process__phase:hover {
+  border-color: var(--brand-soft);
+  box-shadow: var(--shadow-sm);
 }
 
 .process__num {
@@ -3825,9 +3900,8 @@ h1, h2, h3, h4 {
 /* sections/why.css */
 /*
   Section: Why ShinAI (#why)
-  現場で続くための五つの姿勢。番号付きの横並びリスト、アイコンなし。
+  現場で続くための五つの姿勢。アイコン付きの横並びリスト。
   余白と水平罫で静かに区切る。
-  色・余白・型はトークンのみ参照。
 */
 
 .why__list {
@@ -3838,20 +3912,27 @@ h1, h2, h3, h4 {
 
 .why__row {
   display: grid;
-  grid-template-columns: 3.5rem 1fr;
-  gap: var(--space-5);
+  grid-template-columns: 3.2rem 1fr;
+  gap: var(--space-4);
   padding-block: var(--space-5);
   align-items: start;
 }
 
-.why__num {
-  font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
-  font-weight: 500;
-  letter-spacing: var(--tracking-eyebrow);
-  color: var(--mist);
-  padding-top: 0.35em;
-  user-select: none;
+.why__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand);
+  flex: 0 0 auto;
+}
+
+.why__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .why__rule {
@@ -3874,8 +3955,16 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .why__row {
-    grid-template-columns: 2.5rem 1fr;
+    grid-template-columns: 2.6rem 1fr;
     gap: var(--space-3);
+  }
+  .why__icon {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+  .why__icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
   }
 }
 

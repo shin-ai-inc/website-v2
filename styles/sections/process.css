@@ -16,12 +16,18 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-4);
-  padding: var(--space-4) var(--space-4) var(--space-4) 0;
-  border-bottom: 1px solid var(--line);
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
 }
 
-.process__phase:last-child {
-  border-bottom: 0;
+.process__phase:hover {
+  border-color: var(--brand-soft);
+  box-shadow: var(--shadow-sm);
 }
 
 .process__num {

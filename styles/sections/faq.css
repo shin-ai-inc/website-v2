@@ -15,7 +15,9 @@
   color: var(--ink);
   margin-bottom: var(--space-3);
   padding-bottom: var(--space-2);
+  padding-left: var(--space-3);
   border-bottom: 1px solid var(--line);
+  border-left: 3px solid var(--brand);
 }
 
 .faq-group__list {
