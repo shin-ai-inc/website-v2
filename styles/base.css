@@ -321,3 +321,15 @@ h1, h2, h3, h4 {
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .site-header, .site-footer, .chatbot, .skip-link,
+  .hero-stack__particles, .stats-bar, .cta, .btn { display: none !important; }
+  .section { padding-block: 1.5em; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+  .site-header__link::after, .eyebrow::before, .eyebrow--center::after { display: none; }
+  img { max-width: 100% !important; page-break-inside: avoid; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
