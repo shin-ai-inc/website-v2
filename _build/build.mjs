@@ -23,6 +23,7 @@ const BUILD_HASH = (() => {
    独自ドメイン取得後はここを更新してビルドし直すこと。 */
 const SITE_URL = "https://shin-ai-inc.github.io/website-v2";
 const OG_IMAGE = SITE_URL + "/assets/images/ogp.png";
+const CONTACT_EMAIL = "shinai.life@gmail.com";
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
 const write = (p, c) => writeFileSync(join(ROOT, p), c, "utf8");
@@ -40,7 +41,8 @@ write("styles/app.css", css);
 
 /* ---- 2. 共有 partial ---- */
 const headerHtml = read("partials/_header.html");
-const footerHtml = read("partials/_footer.html");
+const footerHtml = read("partials/_footer.html")
+  .replace("{{YEAR}}", String(new Date().getFullYear()));
 const chatbotHtml = read("partials/_chatbot.html");
 
 /* 現在地ナビに aria-current を付ける(最初の該当 href へ) */
@@ -53,37 +55,42 @@ const markCurrent = (html, nav) => {
 };
 
 /* partials/<page> の <main> を正規化(既存の main タグを剥がして wrap し直す) */
-const normalizeMain = (raw) => {
-  let s = raw.replace(/<!--[\s\S]*?-->/g, (m) => m); // コメントは保持
-  s = s.replace(/^\s*<main\b[^>]*>/i, "").replace(/<\/main>\s*$/i, "");
-  return s.trim();
-};
+const normalizeMain = (raw) =>
+  raw.replace(/^\s*<main\b[^>]*>/i, "").replace(/<\/main>\s*$/i, "").trim();
 
-/* ---- 3. ページ定義 ---- */
+/* ---- 3. ページ定義(sitemap の changefreq/priority もここで一元管理) ---- */
 const pages = [
   { file: "index.html", part: "index.html", nav: null, hero: true,
+    changefreq: "monthly", priority: "1.0",
     title: "ShinAI｜企業の暗黙知を、使えるAI資産へ",
     desc: "退職や属人化で失われていく企業の判断や知識を、検索・判断支援・業務実行に使える専用AIへ。暗黙知のAI化と企業専用AIエージェントの開発パートナー、ShinAI。" },
   { file: "services.html", part: "services.html", nav: "services", hero: false,
+    changefreq: "monthly", priority: "0.9",
     title: "ソリューション｜ShinAI",
     desc: "暗黙知のAI化、企業専用AIエージェント、AI内製化・運用支援。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。" },
   { file: "industries.html", part: "industries.html", nav: "industries", hero: false,
+    changefreq: "monthly", priority: "0.8",
     title: "業種別の活用｜ShinAI",
     desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知AIでどう変わるかの活用イメージ。" },
   { file: "about.html", part: "about.html", nav: "about", hero: false,
+    changefreq: "monthly", priority: "0.7",
     title: "会社情報｜ShinAI",
     desc: "技術より先に、人を見る。ShinAIの目的、代表メッセージ、七つのShin、体制と会社概要。" },
   { file: "faq.html", part: "faq.html", nav: "faq", hero: false,
+    changefreq: "monthly", priority: "0.6",
     title: "よくある質問｜ShinAI",
     desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。ShinAIへのよくある質問。" },
   { file: "contact.html", part: "contact.html", nav: "contact", hero: false,
+    changefreq: "monthly", priority: "0.8",
     extraScripts: ['<script src="scripts/contact-form.js" defer></script>'],
     title: "お問い合わせ・無料相談｜ShinAI",
     desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は20〜30分、事前準備は不要です。" },
   { file: "privacy.html", part: "privacy.html", nav: null, hero: false,
+    changefreq: "yearly", priority: "0.2",
     title: "プライバシーポリシー｜ShinAI",
     desc: "ShinAIの個人情報の取り扱いについて。" },
   { file: "terms.html", part: "terms.html", nav: null, hero: false,
+    changefreq: "yearly", priority: "0.2",
     title: "利用規約｜ShinAI",
     desc: "ShinAIウェブサイトの利用規約。" }
 ];
@@ -94,7 +101,7 @@ const ldJson = {
   name: "ShinAI",
   alternateName: "シンアイ",
   url: SITE_URL + "/",
-  email: "shinai.life@gmail.com",
+  email: CONTACT_EMAIL,
   slogan: "企業の暗黙知を、使えるAI資産へ。",
   description: "真の価値を信じ、次世代のために新たな未来を創る。ShinAIは、人の想いとAIをつなぎ、企業の「これまで」を大切に「これから」の変革に伴走する、企業AI開発特化のエンジニアチーム。強化学習・カスタムLLM最適化・RAG・オンプレミス対応により、暗黙知のAI化と企業専用AIエージェントを開発する。",
   foundingDate: "2025-01",
@@ -194,7 +201,42 @@ for (const page of pages) {
   built += 1;
 }
 
-/* ---- 4. 公開専用の dist/ を生成 ----
+/* ---- 4. SEO・メタファイル生成(SITE_URL を単一の真実源とする) ---- */
+write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
+
+write("sitemap.xml",
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  pages.map((p) =>
+    `  <url><loc>${SITE_URL}/${p.file}</loc><changefreq>${p.changefreq}</changefreq><priority>${p.priority}</priority></url>`
+  ).join("\n") +
+  "\n</urlset>\n");
+
+write(".well-known/security.txt", [
+  `Contact: mailto:${CONTACT_EMAIL}`,
+  "Preferred-Languages: ja, en",
+  `Canonical: ${SITE_URL}/.well-known/security.txt`,
+  "Expires: 2027-06-30T00:00:00.000Z"
+].join("\n") + "\n");
+
+/* start_url はホスティングのサブパスに追従させる(GH Pages: /website-v2/、独自ドメイン: /)。 */
+const BASE_PATH = new URL(SITE_URL).pathname.replace(/\/?$/, "/");
+write("site.webmanifest", JSON.stringify({
+  name: "ShinAI",
+  short_name: "ShinAI",
+  description: "企業の暗黙知を、使えるAI資産へ。",
+  lang: "ja",
+  start_url: BASE_PATH,
+  display: "standalone",
+  background_color: "#060E1E",
+  theme_color: "#3A5FEB",
+  icons: [
+    { src: "assets/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    { src: "assets/icons/icon-512.png", sizes: "512x512", type: "image/png" }
+  ]
+}, null, 2) + "\n");
+
+/* ---- 5. 公開専用の dist/ を生成 ----
    公開対象のファイルのみを集めた清浄な出力ディレクトリを作る。 */
 const DIST = join(ROOT, "dist");
 rmSync(DIST, { recursive: true, force: true });

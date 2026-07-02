@@ -379,41 +379,17 @@ h1, h2, h3, h4 {
 .reveal[data-delay="4"] { transition-delay: 0.28s; }
 .reveal[data-delay="5"] { transition-delay: 0.35s; }
 
-/* ---- Stats bar ---- */
-.stats-bar {
-  background: var(--ink);
-  background-image: var(--grad-dark);
-  padding: var(--space-5) 0;
-}
-.stats-bar__inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(2rem, 6vw, 5rem);
-  flex-wrap: wrap;
-}
-.stat-item {
-  text-align: center;
-  color: #FFFFFF;
-}
-.stat-item__number {
-  display: block;
-  font-family: var(--font-latin);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  background: var(--grad-brand-vivid);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-.stat-item__label {
-  display: block;
-  font-size: var(--fs-sm);
-  color: rgba(255,255,255,0.55);
-  margin-top: var(--space-1);
-  letter-spacing: 0.04em;
+/* ---- スクロール進捗ライン(main.js が生成する要素) ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--grad-brand);
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  transition: width 0.1s linear;
 }
 
 /* ---- 装飾の細い罫(ブランドグラデーション) ---- */
@@ -673,13 +649,17 @@ h1, h2, h3, h4 {
 
 /* ---- 七つのShin — 全7項目アイコン付きカード体系 ---- */
 
+/* 7枚を平等に見せるため flex で折り返し、端数行(3枚)も中央に据える。
+   カード幅は「4列時の1枚分」で固定し、行を跨いでも大きさを揃える。 */
 .shin7__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-4);
 }
 
 .shin7__card {
+  flex: 0 0 calc((100% - 3 * var(--space-4)) / 4);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -735,6 +715,7 @@ h1, h2, h3, h4 {
   font-size: var(--fs-h3);
   color: var(--ink);
   margin-bottom: var(--space-2);
+  text-wrap: balance;
 }
 .shin7__desc {
   font-size: var(--fs-sm);
@@ -846,18 +827,33 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 960px) {
-  .shin7__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .shin7__card {
+    flex-basis: calc((100% - var(--space-4)) / 2);
+  }
+}
+/* モバイルでは matrix の間隔を詰め、7字を一行に一望させる(折れて1字が孤立するのを防ぐ) */
+@media (max-width: 640px) {
+  .shin7__matrix {
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-2);
+    justify-content: space-evenly;
+  }
+  .shin7__matrix-kanji {
+    font-size: 1.25rem;
+  }
+  .shin7__matrix-yomi {
+    font-size: 0.55rem;
+  }
+  /* 最長8字の見出しがカード幅に一行で収まるサイズ。語中折れを構造的に消す */
+  .shin7__title {
+    font-size: 0.95rem;
+    letter-spacing: 0;
+    white-space: nowrap;
   }
 }
 @media (max-width: 820px) {
   .join__grid {
     grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 640px) {
-  .shin7__grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 

@@ -27,36 +27,13 @@
     return;
   }
 
-  /* --- カウントアップ --- */
-  var animateCounter = function (el) {
-    var raw = el.textContent.trim();
-    var numeric = parseFloat(raw.replace(/[^\d.]/g, ""));
-    if (isNaN(numeric)) return;
-    var suffix = raw.replace(/[\d.]/g, "");
-    var duration = 1400;
-    var start = null;
-    var step = function (ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * numeric) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-
   /* --- Reveal observer --- */
   var observer = new window.IntersectionObserver(function (entries) {
-    var i, el, counters, j;
+    var i;
     for (i = 0; i < entries.length; i += 1) {
       if (entries[i].isIntersecting) {
-        el = entries[i].target;
-        el.classList.add("is-in");
-        counters = el.querySelectorAll(".stat-item__number");
-        for (j = 0; j < counters.length; j += 1) {
-          animateCounter(counters[j]);
-        }
-        observer.unobserve(el);
+        entries[i].target.classList.add("is-in");
+        observer.unobserve(entries[i].target);
       }
     }
   }, {
@@ -70,35 +47,10 @@
     observer.observe(targets[i]);
   }
 
-  /* stat-item 自体が .reveal でない場合への対応 */
-  var statObs = new window.IntersectionObserver(function (entries) {
-    var i;
-    for (i = 0; i < entries.length; i += 1) {
-      if (entries[i].isIntersecting) {
-        animateCounter(entries[i].target);
-        statObs.unobserve(entries[i].target);
-      }
-    }
-  }, { threshold: 0.5 });
-  var statNums = document.querySelectorAll(".stat-item__number");
-  for (i = 0; i < statNums.length; i += 1) {
-    statObs.observe(statNums[i]);
-  }
-
-  /* --- スクロール進捗ライン --- */
+  /* --- スクロール進捗ライン(見た目は base.css の .scroll-progress が持つ) --- */
   var progressBar = document.createElement("div");
+  progressBar.className = "scroll-progress";
   progressBar.setAttribute("aria-hidden", "true");
-  progressBar.style.cssText = [
-    "position:fixed",
-    "top:0",
-    "left:0",
-    "height:2px",
-    "width:0%",
-    "background:linear-gradient(90deg,#3A5FEB,#00C9A7)",
-    "z-index:9999",
-    "pointer-events:none",
-    "transition:width 0.1s linear"
-  ].join(";");
   document.body.appendChild(progressBar);
 
   var updateProgress = function () {

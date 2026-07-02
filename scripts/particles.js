@@ -7,8 +7,9 @@
   方針(第一原理): 施主が愛する効果はそのまま使い、セキュリティも最高水準に保つ。
   - Three.js は CDN ではなく自己ホスト(scripts/vendor/three.min.js)。script-src 'self' を維持。
   - 外部追跡・可用性リスクなし。
-  堅牢化: prefers-reduced-motion を尊重(静止) / タブ非表示で停止 / dpr 上限2 / 端末で粒子数可変 /
-  resize 追従 / リソース dispose。THREE はグローバル(自己ホストのUMD)を参照。自己完結 IIFE。
+  堅牢化: タブ非表示で停止 / dpr 上限2 / 端末で粒子数可変 / resize 追従。
+  prefers-reduced-motion でも停止しない(装飾背景で vestibular リスクが低く、施主が継承を明示した効果のため)。
+  THREE はグローバル(自己ホストのUMD)を参照。自己完結 IIFE。
 */
 (function () {
   "use strict";
@@ -23,7 +24,6 @@
   }
 
   var THREE = window.THREE;
-  var reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   var sizeOf = function () {
     var rect = container.getBoundingClientRect();
@@ -312,29 +312,11 @@
   };
   window.addEventListener("resize", onResize, { passive: true });
 
-  var applyMotionPreference = function () {
-    if (!running) {
-      start();
-    }
-  };
-
-  /* prefers-reduced-motion はアニメーション停止を引き起こさない。
-     背景パーティクルは装飾的な動きのため vestibular 障害リスクは低い。
-     初期バーストはモバイルで強度を落として必ず実行する(iOS デフォルト ON による演出欠落を防ぐ)。 */
   document.addEventListener("mousemove", onMouseMove, { passive: true });
   document.addEventListener("touchmove", onTouchMove, { passive: true });
   start();
 
-  if (typeof reduceMotionQuery.addEventListener === "function") {
-    reduceMotionQuery.addEventListener("change", applyMotionPreference);
-  } else if (typeof reduceMotionQuery.addListener === "function") {
-    reduceMotionQuery.addListener(applyMotionPreference);
-  }
-
   document.addEventListener("visibilitychange", function () {
-    if (reduceMotionQuery.matches) {
-      return;
-    }
     if (document.hidden) {
       stop();
     } else {
