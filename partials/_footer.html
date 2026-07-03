@@ -1,10 +1,11 @@
 <!--
   共有フッター(全ページ共通)。オーケストレーターが各ページへ結合する。
   会社情報の事実は BRIEF.md 10章(確定コンテンツ)に従う。法人未設立のため「株式会社」表記はしない。
+  一望できる低さを保つ(スクロール負荷を残さない): ブランド+横並びナビ / メタ1〜2行 / 規約行。
 -->
 <footer class="site-footer">
   <div class="container">
-    <div class="site-footer__inner">
+    <div class="site-footer__main">
       <div class="site-footer__brand">
         <p class="site-footer__wordmark">Shin<span class="site-footer__wordmark-ai">AI</span></p>
         <p class="site-footer__essence">企業の暗黙知を、使えるAI資産へ。</p>
@@ -19,17 +20,15 @@
           <li><a class="site-footer__nav-link" href="contact.html">無料相談・お問い合わせ</a></li>
         </ul>
       </nav>
-
-      <div class="site-footer__contact">
-        <p class="site-footer__company-name">ShinAI（シンアイ）</p>
-        <address class="site-footer__address">
-          <span class="site-footer__address-line">活動拠点 東京都千代田区丸の内3-8-3 Tokyo Innovation Base</span>
-          <span class="site-footer__address-line">所在地 群馬県高崎市井野町360-7</span>
-          <span class="site-footer__address-line">受付 平日 9:00–18:00</span>
-          <a class="site-footer__address-link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
-        </address>
-      </div>
     </div>
+
+    <address class="site-footer__meta">
+      <span class="site-footer__meta-item">ShinAI（シンアイ）</span>
+      <span class="site-footer__meta-item">活動拠点 東京都千代田区丸の内3-8-3 Tokyo Innovation Base</span>
+      <span class="site-footer__meta-item">所在地 群馬県高崎市井野町360-7</span>
+      <span class="site-footer__meta-item">受付 平日 9:00–18:00</span>
+      <a class="site-footer__meta-link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
+    </address>
 
     <div class="site-footer__bottom">
       <nav class="site-footer__legal" aria-label="規約・方針">
