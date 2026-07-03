@@ -128,7 +128,8 @@
       window.scrollTo(0, this.savedScrollY || 0);
     },
 
-    /* モバイルシートを可視ビューポート(キーボード分を除いた領域)へぴったり合わせる */
+    /* キーボードに隠れる高さを計測し --chat-kb へ。CSSが bottom を持ち上げて
+       入力バーを常にキーボードの真上へ保つ(1プロパティ更新のみで描画が安定する) */
     fitToViewport: function () {
       if (window.innerWidth > 640 || !this.panel.classList.contains("is-open")) {
         this.resetSheet();
@@ -138,16 +139,13 @@
       if (!vv) {
         return;
       }
-      this.panel.style.height = Math.round(vv.height) + "px";
-      this.panel.style.top = Math.round(vv.offsetTop) + "px";
-      this.panel.style.bottom = "auto";
+      var covered = Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop));
+      this.panel.style.setProperty("--chat-kb", covered + "px");
       this.scrollToEnd();
     },
 
     resetSheet: function () {
-      this.panel.style.height = "";
-      this.panel.style.top = "";
-      this.panel.style.bottom = "";
+      this.panel.style.removeProperty("--chat-kb");
     },
 
     /* クライアント側の多層チェック(防御の一層)。 */
