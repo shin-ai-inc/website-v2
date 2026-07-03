@@ -23,12 +23,19 @@
 
 .why__num {
   font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
+  font-size: 1.25rem;
   font-weight: 500;
-  letter-spacing: var(--tracking-eyebrow);
+  letter-spacing: 0.08em;
   color: var(--mist);
-  padding-top: 0.35em;
+  line-height: 1;
+  padding-top: 0.15em;
   user-select: none;
+}
+
+@media (max-width: 640px) {
+  .why__num {
+    font-size: 1rem;
+  }
 }
 
 .why__rule {

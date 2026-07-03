@@ -125,12 +125,16 @@
 }
 
 @media (max-width: 640px) {
+  /* eyebrow はやや控えめに。subcopy はタイトルとの間を空け、地球儀側へ少し下げる */
+  .hero__eyebrow {
+    font-size: 0.62rem;
+  }
   .hero__subcopy {
     font-size: 0.8125rem;
     letter-spacing: 0.04em;
     line-height: 1.75;
     color: var(--ink-3);
-    margin-top: var(--space-4);
+    margin-top: 2.5rem;
     margin-bottom: var(--space-5);
   }
 }

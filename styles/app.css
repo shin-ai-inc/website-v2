@@ -793,13 +793,28 @@ h1, h2, h3 {
   }
 }
 
-/* ---- パートナー募集 ---- */
+/* ---- パートナー募集 ----
+   テキストの箱の羅列にしない。数字の残像・アイコン・役割カラーで
+   「参加したくなる」体温を宿す。色はソリューション3色の体系を継承する */
 
 .join__subhead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
   font-size: var(--fs-h3);
   color: var(--ink);
   text-align: center;
   margin-block: var(--space-6) var(--space-4);
+}
+
+.join__subhead::before,
+.join__subhead::after {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--grad-brand);
+  opacity: 0.9;
 }
 
 .join__merits {
@@ -812,24 +827,66 @@ h1, h2, h3 {
 }
 
 .join__merit {
-  padding: var(--space-4);
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-5) var(--space-4) var(--space-4);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
 }
 
+.join__merit:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.join__merit::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--grad-brand);
+}
+
+/* 大きな番号は「残像」として右上に薄く敷き、情報でなく空気にする */
 .join__merit-num {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
   font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--paper-3);
+  user-select: none;
+}
+
+.join__merit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
   color: var(--brand);
+}
+
+.join__merit-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .join__merit-title {
   font-size: var(--fs-body);
   font-weight: 600;
   color: var(--ink);
-  margin-block: var(--space-1) var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .join__merit-text {
@@ -868,7 +925,21 @@ h1, h2, h3 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--card-accent, var(--grad-brand));
+}
+
+/* 役割カラー: ソリューション3色(藍=技術/青緑=営業/橙=デザイン)を継承 */
+.join__card--engineer {
+  --card-accent: var(--c-tacit-ink);
+  --card-soft: var(--c-tacit-bg);
+}
+.join__card--business {
+  --card-accent: var(--c-agent-ink);
+  --card-soft: var(--c-agent-bg);
+}
+.join__card--design {
+  --card-accent: var(--c-enable-ink);
+  --card-soft: var(--c-enable-bg);
 }
 .join__card:hover {
   transform: translateY(-4px);
@@ -889,8 +960,8 @@ h1, h2, h3 {
   height: 2.8rem;
   margin-bottom: var(--space-3);
   border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
+  background: var(--card-soft, var(--brand-soft));
+  color: var(--card-accent, var(--brand));
 }
 .join__icon-wrap svg {
   width: 1.3rem;
@@ -901,7 +972,7 @@ h1, h2, h3 {
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--card-accent, var(--teal));
   margin-bottom: var(--space-1);
 }
 .join__title {
@@ -933,7 +1004,8 @@ h1, h2, h3 {
   border: 1px solid var(--line);
 }
 .join__cta {
-  align-self: flex-start;
+  align-self: stretch;
+  justify-content: center;
   font-size: var(--fs-sm);
 }
 .join__note {
@@ -1279,26 +1351,27 @@ h1, h2, h3 {
   色・余白・型はトークンのみ参照。
 */
 
-/* ---- 会社情報 ---- */
+/* ---- 会社情報 ----
+   箱で飾らず、正統派の罫線テーブルで静かに示す。行高を絞りスクロール負荷を残さない */
 .company__facts {
+  max-width: 720px;
+  border-top: 1px solid var(--line);
+}
+
+.company__facts > div {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: 9em 1fr;
   gap: var(--space-4);
-  margin-bottom: var(--space-7);
-  padding: var(--space-5);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--shadow-sm);
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--line);
 }
 
 .company__fact-term {
-  font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: var(--space-1);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--mist);
 }
 
 .company__fact-desc {
@@ -1307,13 +1380,12 @@ h1, h2, h3 {
   color: var(--ink);
 }
 
-/* ---- 小見出し ---- */
-.company__subhead {
-  font-size: var(--fs-h3);
-  color: var(--ink);
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--line);
+@media (max-width: 640px) {
+  .company__facts > div {
+    grid-template-columns: 6.5em 1fr;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+  }
 }
 
 /* ---- 人 ---- */
@@ -1333,20 +1405,6 @@ h1, h2, h3 {
   border-radius: var(--r-lg);
   background: rgba(255, 255, 255, 0.72);
   box-shadow: var(--shadow-sm);
-}
-
-.company__monogram {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
 }
 
 .company__portrait {
@@ -1403,68 +1461,6 @@ h1, h2, h3 {
   color: var(--brand);
 }
 
-/* ---- 七つのShin ---- */
-.company__shin-feature {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
-}
-
-.company__shin-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-4);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--grad-paper);
-  box-shadow: var(--shadow-sm);
-}
-
-.company__shin-kanji {
-  font-family: var(--font-display);
-  font-size: var(--fs-display);
-  line-height: 1;
-  color: var(--ink);
-}
-
-.company__shin-words {
-  font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
-  color: var(--ink-3);
-}
-
-.company__shin-all {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  gap: var(--space-3) var(--space-5);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line);
-}
-
-.company__shin-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
-  font-size: var(--fs-sm);
-  color: var(--mist);
-}
-
-.company__shin-mark {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  color: var(--ink-2);
-  line-height: 1;
-}
-
-@media (max-width: 640px) {
-  .company__shin-feature {
-    grid-template-columns: 1fr;
-  }
-}
 
 
 /* sections/contact.css */
@@ -2678,12 +2674,16 @@ h1, h2, h3 {
 }
 
 @media (max-width: 640px) {
+  /* eyebrow はやや控えめに。subcopy はタイトルとの間を空け、地球儀側へ少し下げる */
+  .hero__eyebrow {
+    font-size: 0.62rem;
+  }
   .hero__subcopy {
     font-size: 0.8125rem;
     letter-spacing: 0.04em;
     line-height: 1.75;
     color: var(--ink-3);
-    margin-top: var(--space-4);
+    margin-top: 2.5rem;
     margin-bottom: var(--space-5);
   }
 }
@@ -3812,40 +3812,57 @@ h1, h2, h3 {
   }
 }
 
-/* モバイル: 横スクロールカルーセル。写真を保持しながら縦圧迫を解消する */
+/* モバイル: 横スワイプなしで三つの提供価値を一望できる縦積みコンパクト型。
+   写真は左サムネイルに退避し、拡大せず小画面でも全サービスを開いた瞬間に認知させる */
 @media (max-width: 640px) {
   .solutions {
     padding-block: var(--space-5);
   }
   .solutions__grid {
-    grid-template-columns: repeat(3, min(85vw, 340px));
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    grid-template-columns: 1fr;
     max-width: 100%;
     gap: var(--space-3);
   }
-  .solutions__grid::-webkit-scrollbar {
-    display: none;
-  }
   .solution-card {
-    scroll-snap-align: start;
-    padding: var(--space-4);
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    column-gap: var(--space-3);
+    row-gap: var(--space-1);
+    align-items: start;
+    padding: var(--space-3);
   }
   .solution-card__figure {
-    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
-    aspect-ratio: 5 / 2;
+    grid-column: 1;
+    grid-row: 1 / 4;
+    margin: 0;
+    height: 100%;
+    max-height: 200px;
+    aspect-ratio: auto;
+    border-radius: var(--r-md);
+  }
+  .solution-card__title,
+  .solution-card__lead,
+  .solution-card__items {
+    grid-column: 2;
+  }
+  .solution-card__title {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    margin-bottom: 0;
   }
   .solution-card__lead {
     font-size: var(--fs-sm);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-1);
   }
   .solution-card__divider {
-    margin-bottom: var(--space-3);
+    display: none;
   }
   .solution-card__items {
-    gap: var(--space-1);
+    gap: 0.2rem;
+  }
+  .solution-card__item {
+    font-size: 0.75rem;
+    padding-left: var(--space-3);
   }
 }
 
@@ -3968,12 +3985,19 @@ h1, h2, h3 {
 
 .why__num {
   font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
+  font-size: 1.25rem;
   font-weight: 500;
-  letter-spacing: var(--tracking-eyebrow);
+  letter-spacing: 0.08em;
   color: var(--mist);
-  padding-top: 0.35em;
+  line-height: 1;
+  padding-top: 0.15em;
   user-select: none;
+}
+
+@media (max-width: 640px) {
+  .why__num {
+    font-size: 1rem;
+  }
 }
 
 .why__rule {

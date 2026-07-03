@@ -357,13 +357,28 @@
   }
 }
 
-/* ---- パートナー募集 ---- */
+/* ---- パートナー募集 ----
+   テキストの箱の羅列にしない。数字の残像・アイコン・役割カラーで
+   「参加したくなる」体温を宿す。色はソリューション3色の体系を継承する */
 
 .join__subhead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
   font-size: var(--fs-h3);
   color: var(--ink);
   text-align: center;
   margin-block: var(--space-6) var(--space-4);
+}
+
+.join__subhead::before,
+.join__subhead::after {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--grad-brand);
+  opacity: 0.9;
 }
 
 .join__merits {
@@ -376,24 +391,66 @@
 }
 
 .join__merit {
-  padding: var(--space-4);
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-5) var(--space-4) var(--space-4);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
 }
 
+.join__merit:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.join__merit::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--grad-brand);
+}
+
+/* 大きな番号は「残像」として右上に薄く敷き、情報でなく空気にする */
 .join__merit-num {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
   font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--paper-3);
+  user-select: none;
+}
+
+.join__merit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
   color: var(--brand);
+}
+
+.join__merit-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .join__merit-title {
   font-size: var(--fs-body);
   font-weight: 600;
   color: var(--ink);
-  margin-block: var(--space-1) var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .join__merit-text {
@@ -432,7 +489,21 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--card-accent, var(--grad-brand));
+}
+
+/* 役割カラー: ソリューション3色(藍=技術/青緑=営業/橙=デザイン)を継承 */
+.join__card--engineer {
+  --card-accent: var(--c-tacit-ink);
+  --card-soft: var(--c-tacit-bg);
+}
+.join__card--business {
+  --card-accent: var(--c-agent-ink);
+  --card-soft: var(--c-agent-bg);
+}
+.join__card--design {
+  --card-accent: var(--c-enable-ink);
+  --card-soft: var(--c-enable-bg);
 }
 .join__card:hover {
   transform: translateY(-4px);
@@ -453,8 +524,8 @@
   height: 2.8rem;
   margin-bottom: var(--space-3);
   border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
+  background: var(--card-soft, var(--brand-soft));
+  color: var(--card-accent, var(--brand));
 }
 .join__icon-wrap svg {
   width: 1.3rem;
@@ -465,7 +536,7 @@
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--card-accent, var(--teal));
   margin-bottom: var(--space-1);
 }
 .join__title {
@@ -497,7 +568,8 @@
   border: 1px solid var(--line);
 }
 .join__cta {
-  align-self: flex-start;
+  align-self: stretch;
+  justify-content: center;
   font-size: var(--fs-sm);
 }
 .join__note {
