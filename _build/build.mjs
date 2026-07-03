@@ -22,7 +22,8 @@ const BUILD_HASH = (() => {
 /* デプロイ前に実ドメインへ置換する唯一の場所。OGP/canonical の絶対URLに使う。
    独自ドメイン取得後はここを更新してビルドし直すこと。 */
 const SITE_URL = "https://shin-ai-inc.github.io/website-v2";
-const OG_IMAGE = SITE_URL + "/assets/images/ogp.png";
+/* OGPクローラ(LINE等)はURL単位でキャッシュするため、画像を変えるときはファイル名も変える */
+const OG_IMAGE = SITE_URL + "/assets/images/ogp-logo.png";
 const CONTACT_EMAIL = "shinai.life@gmail.com";
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
