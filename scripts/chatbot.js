@@ -83,11 +83,12 @@
       var willOpen = !this.panel.classList.contains("is-open");
       this.panel.classList.toggle("is-open", willOpen);
       this.button.setAttribute("aria-expanded", willOpen ? "true" : "false");
-      document.body.classList.toggle("chatbot-open", willOpen);
       if (willOpen) {
+        this.lockBackground();
         this.fitToViewport();
         this.scrollToEnd();
       } else {
+        this.unlockBackground();
         this.resetSheet();
       }
       if (willOpen && window.innerWidth > 768) {
@@ -98,8 +99,33 @@
     close: function () {
       this.panel.classList.remove("is-open");
       this.button.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("chatbot-open");
+      this.unlockBackground();
       this.resetSheet();
+    },
+
+    /* 背景ページの固定。iOSはbodyのoverflow:hiddenが効かないため position:fixed 方式で止める */
+    lockBackground: function () {
+      if (window.innerWidth > 640) {
+        return;
+      }
+      this.savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+      document.body.style.position = "fixed";
+      document.body.style.top = -this.savedScrollY + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    },
+
+    unlockBackground: function () {
+      if (document.body.style.position !== "fixed") {
+        return;
+      }
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, this.savedScrollY || 0);
     },
 
     /* モバイルシートを可視ビューポート(キーボード分を除いた領域)へぴったり合わせる */
@@ -114,12 +140,14 @@
       }
       this.panel.style.height = Math.round(vv.height) + "px";
       this.panel.style.top = Math.round(vv.offsetTop) + "px";
+      this.panel.style.bottom = "auto";
       this.scrollToEnd();
     },
 
     resetSheet: function () {
       this.panel.style.height = "";
       this.panel.style.top = "";
+      this.panel.style.bottom = "";
     },
 
     /* クライアント側の多層チェック(防御の一層)。 */

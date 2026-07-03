@@ -71,6 +71,14 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
+/* モバイルは1項目1行の縦組みで整列させる(折返しの偶然に任せない) */
+@media (max-width: 640px) {
+  .site-footer__meta {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+}
+
 .site-footer__meta-link {
   font-size: var(--fs-sm);
   color: rgba(255, 255, 255, 0.72);

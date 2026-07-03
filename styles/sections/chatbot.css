@@ -239,7 +239,8 @@
 
 /* ---- モバイル: フルスクリーンシート ----
    キーボード表示で崩れる小窓をやめ、画面全体のシートにする。
-   実際の高さは chatbot.js が visualViewport に追従させ、入力欄を常にキーボードの上に保つ。 */
+   実際の高さは chatbot.js が visualViewport に追従させ、入力欄を常にキーボードの上に保つ。
+   背景の固定は chatbot.js が body position:fixed 方式で行う(iOSはoverflow:hiddenが効かない)。 */
 @media (max-width: 640px) {
   .chatbot__window {
     position: fixed;
@@ -257,9 +258,12 @@
   }
   .chatbot__messages {
     min-height: 0;
+    /* メッセージ端でのスクロールが背景ページへ連鎖しないように閉じ込める */
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
-  /* シート表示中は背景ページのスクロールを止める */
-  body.chatbot-open {
-    overflow: hidden;
+  /* 16px未満だとiOSがフォーカス時にページ全体をズームしレイアウトが崩壊する */
+  .chatbot__input {
+    font-size: 16px;
   }
 }
