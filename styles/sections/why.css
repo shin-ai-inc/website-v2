@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   max-width: 760px;
+  /* ヘッドの中央揃えに合わせ、リスト塊も画面中央へ置き視線移動を短くする */
+  margin-inline: auto;
 }
 
 .why__row {

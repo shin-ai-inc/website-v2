@@ -88,6 +88,10 @@ h1, h2, h3, h4 {
   letter-spacing: 0.06em;
   color: var(--ink-3);
 }
+/* 中央揃えヘッド内では lead ブロック自体も中央へ(max-width による左アンカーを解く) */
+.section__head--center .section__lead {
+  margin-inline: auto;
+}
 
 .section__lead-line {
   display: block;
