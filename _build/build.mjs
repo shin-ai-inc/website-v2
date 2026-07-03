@@ -56,25 +56,25 @@ const pages = [
   { file: "index.html", part: "index.html", nav: null, hero: true,
     title: "ShinAI｜企業の暗黙知を、使えるAI資産へ",
     desc: "退職や属人化で失われていく企業の判断や知識を、検索・判断支援・業務実行に使える専用AIへ。暗黙知のAI化と企業専用AIエージェントの開発パートナー、ShinAI。" },
-  { file: "services.html", part: "services.html", nav: "services", hero: false,
+  { file: "services.html", part: "services.html", nav: "services", hero: false, breadcrumb: "ソリューション",
     title: "ソリューション｜ShinAI",
     desc: "暗黙知のAI化、企業専用AIエージェント、AI内製化・運用支援。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。" },
-  { file: "industries.html", part: "industries.html", nav: "industries", hero: false,
+  { file: "industries.html", part: "industries.html", nav: "industries", hero: false, breadcrumb: "業種別",
     title: "業種別の活用｜ShinAI",
     desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知AIでどう変わるかの活用イメージ。" },
-  { file: "about.html", part: "about.html", nav: "about", hero: false,
+  { file: "about.html", part: "about.html", nav: "about", hero: false, breadcrumb: "会社情報",
     title: "会社情報｜ShinAI",
     desc: "技術より先に、人を見る。ShinAIの目的、代表メッセージ、七つのShin、体制と会社概要。" },
-  { file: "faq.html", part: "faq.html", nav: "faq", hero: false,
+  { file: "faq.html", part: "faq.html", nav: "faq", hero: false, breadcrumb: "よくある質問",
     title: "よくある質問｜ShinAI",
     desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。ShinAIへのよくある質問。" },
-  { file: "contact.html", part: "contact.html", nav: "contact", hero: false,
+  { file: "contact.html", part: "contact.html", nav: "contact", hero: false, breadcrumb: "お問い合わせ",
     title: "お問い合わせ・無料相談｜ShinAI",
     desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は20〜30分、事前準備は不要です。" },
-  { file: "privacy.html", part: "privacy.html", nav: null, hero: false,
+  { file: "privacy.html", part: "privacy.html", nav: null, hero: false, breadcrumb: "プライバシーポリシー",
     title: "プライバシーポリシー｜ShinAI",
     desc: "ShinAIの個人情報の取り扱いについて。" },
-  { file: "terms.html", part: "terms.html", nav: null, hero: false,
+  { file: "terms.html", part: "terms.html", nav: null, hero: false, breadcrumb: "利用規約",
     title: "利用規約｜ShinAI",
     desc: "ShinAIウェブサイトの利用規約。" }
 ];
@@ -186,7 +186,7 @@ const shell = (page) => {
   <link rel="stylesheet" href="styles/app.css">
 
   <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
-${page.file === "faq.html" ? '  <script type="application/ld+json">' + JSON.stringify(faqLdJson) + '</script>\n' : ''}</head>
+${page.file === "faq.html" ? '  <script type="application/ld+json">' + JSON.stringify(faqLdJson) + '</script>\n' : ''}${page.breadcrumb ? '  <script type="application/ld+json">' + JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"ホーム",item:SITE_URL+"/"},{"@type":"ListItem",position:2,name:page.breadcrumb,item:canonical}]}) + '</script>\n' : ''}</head>
 <body>
   <a class="skip-link" href="#main">メインコンテンツへ</a>
 ${header}
