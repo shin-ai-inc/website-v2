@@ -241,8 +241,9 @@ h1, h2, h3 {
 /* ---- Scroll reveal ---- */
 .js .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  transform: translateY(22px);
+  /* 浮かび上がりは待たせない速度に(dur-3=1.1sは遅く感じるためdur-2=0.7sへ) */
+  transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
 }
 .js .reveal[data-reveal="left"] {
   transform: translateX(-40px);

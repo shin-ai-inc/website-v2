@@ -236,3 +236,30 @@
   .chatbot__launcher-label { display: none; }
   .chatbot__launcher { padding: 0.85rem; }
 }
+
+/* ---- モバイル: フルスクリーンシート ----
+   キーボード表示で崩れる小窓をやめ、画面全体のシートにする。
+   実際の高さは chatbot.js が visualViewport に追従させ、入力欄を常にキーボードの上に保つ。 */
+@media (max-width: 640px) {
+  .chatbot__window {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    transform: translateY(16px);
+    transform-origin: center bottom;
+  }
+  .chatbot__window.is-open {
+    transform: translateY(0);
+  }
+  .chatbot__messages {
+    min-height: 0;
+  }
+  /* シート表示中は背景ページのスクロールを止める */
+  body.chatbot-open {
+    overflow: hidden;
+  }
+}

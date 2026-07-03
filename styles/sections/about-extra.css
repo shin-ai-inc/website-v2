@@ -109,6 +109,16 @@
   margin-top: var(--space-3);
 }
 
+/* モバイルは一回り控えめに(読み物として静かな声量へ) */
+@media (max-width: 640px) {
+  .about-message__lead {
+    font-size: 1rem;
+  }
+  .about-message__para {
+    font-size: 0.8125rem;
+  }
+}
+
 .about-message__sign {
   margin-top: var(--space-5);
   text-align: right;

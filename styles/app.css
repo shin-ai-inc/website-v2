@@ -381,8 +381,9 @@ h1, h2, h3 {
 /* ---- Scroll reveal ---- */
 .js .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  transform: translateY(22px);
+  /* 浮かび上がりは待たせない速度に(dur-3=1.1sは遅く感じるためdur-2=0.7sへ) */
+  transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
 }
 .js .reveal[data-reveal="left"] {
   transform: translateX(-40px);
@@ -543,6 +544,16 @@ h1, h2, h3 {
 
 .about-message__para + .about-message__para {
   margin-top: var(--space-3);
+}
+
+/* モバイルは一回り控えめに(読み物として静かな声量へ) */
+@media (max-width: 640px) {
+  .about-message__lead {
+    font-size: 1rem;
+  }
+  .about-message__para {
+    font-size: 0.8125rem;
+  }
 }
 
 .about-message__sign {
@@ -1361,6 +1372,33 @@ h1, h2, h3 {
   .chatbot__launcher { padding: 0.85rem; }
 }
 
+/* ---- モバイル: フルスクリーンシート ----
+   キーボード表示で崩れる小窓をやめ、画面全体のシートにする。
+   実際の高さは chatbot.js が visualViewport に追従させ、入力欄を常にキーボードの上に保つ。 */
+@media (max-width: 640px) {
+  .chatbot__window {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    transform: translateY(16px);
+    transform-origin: center bottom;
+  }
+  .chatbot__window.is-open {
+    transform: translateY(0);
+  }
+  .chatbot__messages {
+    min-height: 0;
+  }
+  /* シート表示中は背景ページのスクロールを止める */
+  body.chatbot-open {
+    overflow: hidden;
+  }
+}
+
 
 /* sections/company.css */
 /*
@@ -1405,6 +1443,9 @@ h1, h2, h3 {
     grid-template-columns: 6.5em 1fr;
     gap: var(--space-3);
     padding-block: var(--space-2);
+  }
+  .company__fact-desc {
+    font-size: var(--fs-sm);
   }
 }
 
@@ -3888,9 +3929,12 @@ h1, h2, h3 {
     max-width: 100%;
     gap: var(--space-3);
   }
+  /* 写真は72pxの正方サムネイルに固定(縦長クロップを構造的に排除)。
+     見出し+リードをサムネイル右に、対応項目は全幅で下に流す */
   .solution-card {
     display: grid;
-    grid-template-columns: 88px 1fr;
+    grid-template-columns: 72px 1fr;
+    grid-template-rows: auto auto auto;
     column-gap: var(--space-3);
     row-gap: var(--space-1);
     align-items: start;
@@ -3898,31 +3942,36 @@ h1, h2, h3 {
   }
   .solution-card__figure {
     grid-column: 1;
-    grid-row: 1 / 4;
+    grid-row: 1 / 3;
     margin: 0;
-    height: 100%;
-    max-height: 200px;
-    aspect-ratio: auto;
+    width: 72px;
+    height: 72px;
+    aspect-ratio: 1 / 1;
     border-radius: var(--r-md);
   }
-  .solution-card__title,
-  .solution-card__lead,
-  .solution-card__items {
-    grid-column: 2;
-  }
   .solution-card__title {
+    grid-column: 2;
+    grid-row: 1;
     font-size: var(--fs-body);
     font-weight: 600;
     margin-bottom: 0;
+    align-self: center;
   }
   .solution-card__lead {
+    grid-column: 2;
+    grid-row: 2;
     font-size: var(--fs-sm);
-    margin-bottom: var(--space-1);
+    margin-bottom: 0;
   }
   .solution-card__divider {
     display: none;
   }
   .solution-card__items {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px solid color-mix(in srgb, var(--card-ink) 16%, transparent);
     gap: 0.2rem;
   }
   .solution-card__item {

@@ -167,7 +167,7 @@ const shell = (page) => {
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
   <title>${page.title}</title>
   <meta name="description" content="${escapeAttr(page.desc)}">
   <link rel="canonical" href="${canonical}">
