@@ -46,7 +46,8 @@
 /* ---- 人 ---- */
 .company__people {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  /* min(20rem, 100%): 320px級の狭幅でも列最小幅がビューポートを超えない */
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   gap: var(--space-4);
   margin-bottom: var(--space-7);
 }

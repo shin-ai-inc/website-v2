@@ -232,6 +232,28 @@ h1, h2, h3, h4 {
   display: block;
 }
 
+/* ---- 日本語の意味単位改行 ----
+   word-break: auto-phrase は Chromium の形態素解析(BudouX)で文節単位に折り返す。
+   text-wrap: balance/pretty は行長の均整と孤立行(行末の1〜2文字落ち)を防ぐ。
+   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。 */
+h1, h2, h3,
+.section__lead, .page-hero__lead, .purpose__support,
+.about-purpose__note, .cta__text, .shin7__desc,
+.industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note {
+  word-break: auto-phrase;
+}
+h1, h2, h3 {
+  text-wrap: balance;
+}
+.section__lead, .page-hero__lead, .purpose__support, .about-purpose__note,
+.cta__text, .shin7__desc, .industries-bridge__item-text, .industries-bridge__note {
+  text-wrap: pretty;
+}
+/* 意味の切れ目を守る最小語塊。折り返すならこの塊の前で折る(全ブラウザで有効) */
+.nobr {
+  white-space: nowrap;
+}
+
 .section__more {
   margin-top: var(--space-5);
   text-align: center;
@@ -1205,7 +1227,8 @@ h1, h2, h3, h4 {
 /* ---- 人 ---- */
 .company__people {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  /* min(20rem, 100%): 320px級の狭幅でも列最小幅がビューポートを超えない */
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   gap: var(--space-4);
   margin-bottom: var(--space-7);
 }
@@ -3298,6 +3321,13 @@ h1, h2, h3, h4 {
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.02em;
+}
+
+/* 390px幅で最長タイトル行(12字)が一行に収まるサイズ。行末1字の孤立を防ぐ */
+@media (max-width: 480px) {
+  .page-hero__title {
+    font-size: 1.65rem;
+  }
 }
 
 .page-hero__title-line {

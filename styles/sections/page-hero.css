@@ -56,6 +56,13 @@
   letter-spacing: 0.02em;
 }
 
+/* 390px幅で最長タイトル行(12字)が一行に収まるサイズ。行末1字の孤立を防ぐ */
+@media (max-width: 480px) {
+  .page-hero__title {
+    font-size: 1.65rem;
+  }
+}
+
 .page-hero__title-line {
   display: block;
   white-space: nowrap;
