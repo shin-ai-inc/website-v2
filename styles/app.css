@@ -1028,6 +1028,7 @@ h1, h2, h3 {
     gap: var(--space-2);
     padding: var(--space-4) var(--space-2);
     justify-content: space-evenly;
+    margin-bottom: var(--space-4);
   }
   .shin7__matrix-kanji {
     font-size: 1.25rem;
@@ -1035,6 +1036,25 @@ h1, h2, h3 {
   /* ローマ字は下のカードで示す。matrix は漢字のみの一行に純化し「紳」の孤立を防ぐ */
   .shin7__matrix-roman {
     display: none;
+  }
+  /* 縦積み7枚のスクロール負荷を抑える密度調整(可読サイズは維持) */
+  .shin7__card {
+    padding: var(--space-3) var(--space-2);
+  }
+  .shin7__icon-wrap {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: var(--space-2);
+  }
+  .shin7__icon-wrap svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+  .shin7__kanji {
+    margin-bottom: var(--space-1);
+  }
+  .shin7__desc {
+    font-size: 0.75rem;
   }
 }
 @media (max-width: 820px) {
@@ -2151,7 +2171,12 @@ h1, h2, h3 {
 
 .faq-item__q:hover { color: var(--brand); }
 
-.faq-item__q-text { flex: 1; }
+.faq-item__q-text {
+  flex: 1;
+  /* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ */
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
 
 /* 自作マーカー: 横棒(常時) + 縦棒(閉時のみ) = + / - */
 .faq-item__marker {
@@ -2200,6 +2225,8 @@ h1, h2, h3 {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--ink-3);
+  word-break: auto-phrase;
+  text-wrap: pretty;
 }
 
 /* 開く際の入場アニメーション */

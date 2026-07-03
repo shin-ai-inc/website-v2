@@ -57,7 +57,12 @@
 
 .faq-item__q:hover { color: var(--brand); }
 
-.faq-item__q-text { flex: 1; }
+.faq-item__q-text {
+  flex: 1;
+  /* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ */
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
 
 /* 自作マーカー: 横棒(常時) + 縦棒(閉時のみ) = + / - */
 .faq-item__marker {
@@ -106,6 +111,8 @@
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--ink-3);
+  word-break: auto-phrase;
+  text-wrap: pretty;
 }
 
 /* 開く際の入場アニメーション */

@@ -592,6 +592,7 @@
     gap: var(--space-2);
     padding: var(--space-4) var(--space-2);
     justify-content: space-evenly;
+    margin-bottom: var(--space-4);
   }
   .shin7__matrix-kanji {
     font-size: 1.25rem;
@@ -599,6 +600,25 @@
   /* ローマ字は下のカードで示す。matrix は漢字のみの一行に純化し「紳」の孤立を防ぐ */
   .shin7__matrix-roman {
     display: none;
+  }
+  /* 縦積み7枚のスクロール負荷を抑える密度調整(可読サイズは維持) */
+  .shin7__card {
+    padding: var(--space-3) var(--space-2);
+  }
+  .shin7__icon-wrap {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: var(--space-2);
+  }
+  .shin7__icon-wrap svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+  .shin7__kanji {
+    margin-bottom: var(--space-1);
+  }
+  .shin7__desc {
+    font-size: 0.75rem;
   }
 }
 @media (max-width: 820px) {
