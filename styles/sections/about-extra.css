@@ -320,7 +320,93 @@
   color: var(--ink-3);
 }
 
+/* ---- 未来ビジョン ---- */
+
+.vision__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.vision__card {
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.vision__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+.vision__desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+  text-align: left;
+}
+
+@media (max-width: 820px) {
+  .vision__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---- パートナー募集 ---- */
+
+.join__subhead {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  text-align: center;
+  margin-block: var(--space-6) var(--space-4);
+}
+
+.join__merits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.join__merit {
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+}
+
+.join__merit-num {
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--brand);
+}
+
+.join__merit-title {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--ink);
+  margin-block: var(--space-1) var(--space-2);
+}
+
+.join__merit-text {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+@media (max-width: 820px) {
+  .join__merits {
+    grid-template-columns: 1fr;
+  }
+}
 
 .join__grid {
   display: grid;

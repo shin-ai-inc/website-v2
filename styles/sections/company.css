@@ -116,6 +116,20 @@
   color: var(--ink-2);
 }
 
+.company__person-skills {
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--mist);
+}
+
+.company__person-skills-label {
+  display: inline-block;
+  margin-right: var(--space-2);
+  font-weight: 500;
+  color: var(--brand);
+}
+
 /* ---- 七つのShin ---- */
 .company__shin-feature {
   display: grid;
