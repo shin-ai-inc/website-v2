@@ -1,13 +1,13 @@
 /*
-  Footer (.site-footer) — 純白の静かな締め。情報は保ちつつ一望できる低さにし、
-  スクロール負荷を残さない。色・余白・型はトークンのみ参照。
+  Footer (.site-footer) — 深い藍黒の静かな締め。主要ページの末尾 CTA(section--ink)の
+  グラデーション終端色(--ink-deep)と同色にし、直上セクションと途切れなく連続させる。
+  情報は保ちつつ一望できる低さでスクロール負荷を残さない。色・余白・型はトークンのみ参照。
 */
 
 .site-footer {
-  background: var(--paper-2);
-  border-top: 1px solid var(--line);
+  background: var(--ink-deep);
   padding-block: var(--space-5) var(--space-4);
-  color: var(--charcoal);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* ---- ブランド + 横並びナビ ---- */
@@ -25,11 +25,11 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .site-footer__wordmark-ai {
-  background: var(--grad-brand);
+  background: var(--grad-brand-vivid);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -40,7 +40,7 @@
   font-family: var(--font-display);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
-  color: var(--ink-3);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .site-footer__nav-list {
@@ -51,12 +51,12 @@
 
 .site-footer__nav-link {
   font-size: var(--fs-sm);
-  color: var(--ink-2);
+  color: rgba(255, 255, 255, 0.72);
   transition: color var(--dur-1) var(--ease-out);
 }
 
 .site-footer__nav-link:hover {
-  color: var(--brand);
+  color: #FFFFFF;
 }
 
 /* ---- 会社メタ(1〜2行に流す) ---- */
@@ -68,20 +68,20 @@
   font-style: normal;
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
-  color: var(--mist);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .site-footer__meta-link {
   font-size: var(--fs-sm);
-  color: var(--ink-2);
+  color: rgba(255, 255, 255, 0.72);
   text-decoration: underline;
-  text-decoration-color: var(--line);
+  text-decoration-color: rgba(255, 255, 255, 0.28);
   text-underline-offset: 3px;
   transition: text-decoration-color var(--dur-1) var(--ease-out);
 }
 
 .site-footer__meta-link:hover {
-  text-decoration-color: var(--brand);
+  text-decoration-color: var(--teal);
 }
 
 /* ---- 規約・コピーライト ---- */
@@ -93,7 +93,7 @@
   gap: var(--space-2) var(--space-4);
   margin-top: var(--space-4);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .site-footer__legal {
@@ -104,17 +104,17 @@
 
 .site-footer__legal-link {
   font-size: var(--fs-sm);
-  color: var(--mist);
+  color: rgba(255, 255, 255, 0.5);
   transition: color var(--dur-1) var(--ease-out);
 }
 
 .site-footer__legal-link:hover {
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .site-footer__copyright {
   font-family: var(--font-latin);
   font-size: var(--fs-sm);
   letter-spacing: var(--tracking-latin);
-  color: var(--mist);
+  color: rgba(255, 255, 255, 0.45);
 }

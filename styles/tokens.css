@@ -10,6 +10,7 @@
   --paper-2: #F5F7FF;          /* セクション交互の極淡い藍青 */
   --paper-3: #EBF0FF;          /* カード境界・微細な面 */
   --ink: #0C1A36;              /* 深い藍黒。主色・見出し */
+  --ink-deep: #060E1E;         /* 最深の藍黒。grad-dark の終端＝フッター地色 */
   --ink-2: #1A2E52;            /* 藍の中間 */
   --ink-3: #4A5A7A;            /* 補助テキスト */
   --charcoal: #1E2D4A;         /* 本文 */
@@ -41,11 +42,11 @@
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
-  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, #060E1E 100%);
+  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
   --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #F5F7FF 70%, #EBF0FF 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
-  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, #060E1E 100%);
+  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, var(--ink-deep) 100%);
   /* 企業理念バンド。公式HP --gradient-cta-new (#2D4CC8/#00B89F) を完全踏襲(不透明・くっきり) */
   --grad-creed: linear-gradient(135deg, #2D4CC8 0%, #00B89F 50%, #2D4CC8 100%);
 

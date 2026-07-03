@@ -5,7 +5,27 @@
 */
 
 .purpose {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   text-align: center;
+}
+
+/* 背景: 藍(技術)から暖色(人)へ溶ける抽象ブラーを、白の紗で覆って気配だけ残す。
+   主体はあくまで文字。上下は紗を濃くして周囲セクションへ静かに馴染ませる。 */
+.purpose::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(255, 255, 255, 0.86) 45%,
+      rgba(255, 255, 255, 0.96) 100%),
+    url("../assets/images/photo-tacit.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .purpose__inner {

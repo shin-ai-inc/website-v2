@@ -11,6 +11,7 @@
   --paper-2: #F5F7FF;          /* セクション交互の極淡い藍青 */
   --paper-3: #EBF0FF;          /* カード境界・微細な面 */
   --ink: #0C1A36;              /* 深い藍黒。主色・見出し */
+  --ink-deep: #060E1E;         /* 最深の藍黒。grad-dark の終端＝フッター地色 */
   --ink-2: #1A2E52;            /* 藍の中間 */
   --ink-3: #4A5A7A;            /* 補助テキスト */
   --charcoal: #1E2D4A;         /* 本文 */
@@ -42,11 +43,11 @@
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
-  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, #060E1E 100%);
+  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
   --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #F5F7FF 70%, #EBF0FF 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
-  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, #060E1E 100%);
+  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, var(--ink-deep) 100%);
   /* 企業理念バンド。公式HP --gradient-cta-new (#2D4CC8/#00B89F) を完全踏襲(不透明・くっきり) */
   --grad-creed: linear-gradient(135deg, #2D4CC8 0%, #00B89F 50%, #2D4CC8 100%);
 
@@ -2120,15 +2121,15 @@ h1, h2, h3 {
 
 /* sections/footer.css */
 /*
-  Footer (.site-footer) — 純白の静かな締め。情報は保ちつつ一望できる低さにし、
-  スクロール負荷を残さない。色・余白・型はトークンのみ参照。
+  Footer (.site-footer) — 深い藍黒の静かな締め。主要ページの末尾 CTA(section--ink)の
+  グラデーション終端色(--ink-deep)と同色にし、直上セクションと途切れなく連続させる。
+  情報は保ちつつ一望できる低さでスクロール負荷を残さない。色・余白・型はトークンのみ参照。
 */
 
 .site-footer {
-  background: var(--paper-2);
-  border-top: 1px solid var(--line);
+  background: var(--ink-deep);
   padding-block: var(--space-5) var(--space-4);
-  color: var(--charcoal);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* ---- ブランド + 横並びナビ ---- */
@@ -2146,11 +2147,11 @@ h1, h2, h3 {
   font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .site-footer__wordmark-ai {
-  background: var(--grad-brand);
+  background: var(--grad-brand-vivid);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2161,7 +2162,7 @@ h1, h2, h3 {
   font-family: var(--font-display);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
-  color: var(--ink-3);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .site-footer__nav-list {
@@ -2172,12 +2173,12 @@ h1, h2, h3 {
 
 .site-footer__nav-link {
   font-size: var(--fs-sm);
-  color: var(--ink-2);
+  color: rgba(255, 255, 255, 0.72);
   transition: color var(--dur-1) var(--ease-out);
 }
 
 .site-footer__nav-link:hover {
-  color: var(--brand);
+  color: #FFFFFF;
 }
 
 /* ---- 会社メタ(1〜2行に流す) ---- */
@@ -2189,20 +2190,20 @@ h1, h2, h3 {
   font-style: normal;
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
-  color: var(--mist);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .site-footer__meta-link {
   font-size: var(--fs-sm);
-  color: var(--ink-2);
+  color: rgba(255, 255, 255, 0.72);
   text-decoration: underline;
-  text-decoration-color: var(--line);
+  text-decoration-color: rgba(255, 255, 255, 0.28);
   text-underline-offset: 3px;
   transition: text-decoration-color var(--dur-1) var(--ease-out);
 }
 
 .site-footer__meta-link:hover {
-  text-decoration-color: var(--brand);
+  text-decoration-color: var(--teal);
 }
 
 /* ---- 規約・コピーライト ---- */
@@ -2214,7 +2215,7 @@ h1, h2, h3 {
   gap: var(--space-2) var(--space-4);
   margin-top: var(--space-4);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .site-footer__legal {
@@ -2225,19 +2226,19 @@ h1, h2, h3 {
 
 .site-footer__legal-link {
   font-size: var(--fs-sm);
-  color: var(--mist);
+  color: rgba(255, 255, 255, 0.5);
   transition: color var(--dur-1) var(--ease-out);
 }
 
 .site-footer__legal-link:hover {
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .site-footer__copyright {
   font-family: var(--font-latin);
   font-size: var(--fs-sm);
   letter-spacing: var(--tracking-latin);
-  color: var(--mist);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 
@@ -3472,7 +3473,27 @@ h1, h2, h3 {
 */
 
 .purpose {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   text-align: center;
+}
+
+/* 背景: 藍(技術)から暖色(人)へ溶ける抽象ブラーを、白の紗で覆って気配だけ残す。
+   主体はあくまで文字。上下は紗を濃くして周囲セクションへ静かに馴染ませる。 */
+.purpose::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(255, 255, 255, 0.86) 45%,
+      rgba(255, 255, 255, 0.96) 100%),
+    url("../assets/images/photo-tacit.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .purpose__inner {
