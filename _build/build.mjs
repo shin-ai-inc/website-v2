@@ -119,6 +119,25 @@ const ldJson = {
 
 const escapeAttr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 
+/* ---- FAQPage 構造化データ ----
+   外部AI・検索エンジンはFAQを信頼性評価と回答引用に使うため、schema.org/FAQPage を出力する。
+   partial の Q&A を唯一の真実源として自動抽出し、本文との不一致を構造的に防ぐ。 */
+const stripTags = (s) => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+const faqLd = (() => {
+  const raw = read("partials/faq.html");
+  const re = /<span class="faq-item__q-text">([\s\S]*?)<\/span>[\s\S]*?<div class="faq-item__a">([\s\S]*?)<\/div>/g;
+  const mainEntity = [];
+  let m;
+  while ((m = re.exec(raw)) !== null) {
+    mainEntity.push({
+      "@type": "Question",
+      name: stripTags(m[1]),
+      acceptedAnswer: { "@type": "Answer", text: stripTags(m[2]) }
+    });
+  }
+  return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity };
+})();
+
 /* 公開HTMLから HTMLコメントを除去(開発メモを出さない。doctypeは非対象)。 */
 const stripComments = (html) => html.replace(/<!--[\s\S]*?-->/g, "").replace(/\n{3,}/g, "\n\n");
 
@@ -182,7 +201,8 @@ const shell = (page) => {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="styles/app.css${v}">
 
-  <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
+  <script type="application/ld+json">${JSON.stringify(ldJson)}</script>${page.part === "faq.html" ? `
+  <script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""}
 </head>
 <body>
 ${header}

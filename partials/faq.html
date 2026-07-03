@@ -1,7 +1,8 @@
 <!--
   FAQ ページ本文（main の中身のみ）。
   事実・文言は BRIEF.md 10章を一次資料とし、9章の表記ルール（数値は可能性・目標）に従う。
-  回答の実質は旧公開サイト faq.html の内容を継承し、v2 のトーン(読点最小・実務的)で整えた。
+  回答の実質は旧公開サイト faq.html の内容を継承。文体は読点を物理的に減らして流れで読ませ、
+  結びは品位を保って変化をつける（「一緒に〜します」の反復を避ける）。
   アコーディオンはネイティブ details/summary（JS不要・アクセシブル）。
   検索・カテゴリ絞り込みは scripts/faq.js による段階的強化（JSなしでも全問閲覧可能）。
 -->
@@ -33,15 +34,6 @@
     </div>
 
     <div class="faq-controls reveal" data-faq-controls hidden>
-      <div class="faq-search">
-        <svg class="faq-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"/>
-          <line x1="21" y1="21" x2="16.2" y2="16.2"/>
-        </svg>
-        <input type="search" class="faq-search__input" data-faq-search
-               placeholder="キーワードで探す（例: 費用・期間・セキュリティ）"
-               aria-label="質問をキーワードで検索">
-      </div>
       <div class="faq-chips" data-faq-chips role="group" aria-label="カテゴリで絞り込む">
         <button type="button" class="faq-chip is-active" data-faq-filter="all" aria-pressed="true">すべて</button>
         <button type="button" class="faq-chip" data-faq-filter="first" aria-pressed="false">はじめての方へ</button>
@@ -51,9 +43,6 @@
         <button type="button" class="faq-chip" data-faq-filter="service" aria-pressed="false">サービスについて</button>
         <button type="button" class="faq-chip" data-faq-filter="other" aria-pressed="false">その他</button>
       </div>
-      <p class="faq-controls__empty" data-faq-empty hidden>
-        該当する質問が見つかりませんでした。右下のアシスタントか無料相談でそのままお尋ねください。
-      </p>
     </div>
 
     <div class="faq__groups">
@@ -66,8 +55,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>はい。専門用語を使わずにAIでできることとその効果をご説明します。何を任せられるかが曖昧な段階でも構いません。</p>
-              <p>無料相談ではお困りごとをうかがったうえでAIがどう役立てるかをご提案します。</p>
+              <p>はい。専門用語を使わずにAIでできることとその効果をわかりやすくご説明します。何を任せられるかが曖昧な段階でも構いません。</p>
+              <p>無料相談ではお困りごとをうかがったうえでAIがどう役立てるかをご提案いたします。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -77,7 +66,7 @@
             </summary>
             <div class="faq-item__a">
               <p>まずは日々の業務のうち時間がかかっている作業の整理から始めます。データ入力・問い合わせ対応・資料作成などAIで効率化できる業務は意外と多くあります。</p>
-              <p>「何から始めるべきか分からない」段階からのご相談も歓迎です。業務をうかがいながら最適な着手点を一緒に見つけます。</p>
+              <p>「何から始めるべきか分からない」という段階からのご相談も歓迎です。業務をうかがいながら最適な着手点をご提案いたします。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -86,8 +75,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>規模と目的によりますが、小規模なプロトタイプであれば最短2週間程度で形にできる場合があります。</p>
-              <p>小さく作って確かめながら段階的に広げる進め方のため、短い期間で手応えを得ながら進められます。</p>
+              <p>規模と目的にもよりますが小規模なプロトタイプであれば最短2週間程度で形にできる場合があります。</p>
+              <p>小さく作って確かめながら段階的に広げる進め方のため短い期間で手応えを得ながら進められます。</p>
             </div>
           </details>
         </div>
@@ -102,8 +91,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>目的と規模で大きく変わるため、まずプロトタイプで効果を確認してから広げる進め方を基本にしています。初期の投資を抑えて始められます。</p>
-              <p>ご予算と状況に合わせたプランをご提案します。まずは無料相談で優先順位を一緒に整理させてください。</p>
+              <p>目的と規模で大きく変わるため最初にプロトタイプで効果を確認してから広げる進め方を基本としています。初期の投資を抑えて始められます。</p>
+              <p>ご予算と状況に合わせたプランをご提案いたしますのでまずは無料相談でお聞かせください。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -112,8 +101,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>はい。クラウドベースのAI基盤が充実し、中小企業や個人事業の方でも無理なく導入できる環境が整っています。</p>
-              <p>規模に合わせて小さく始めて効果を確認しながら広げるため、初期の負担を抑えて手応えを確かめられます。</p>
+              <p>はい。クラウドベースのAI基盤が充実し中小企業や個人事業の方でも無理なく導入できる環境が整っています。</p>
+              <p>規模に合わせて小さく始めて効果を確認しながら広げるため初期の負担を抑えて手応えを確かめられます。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -122,8 +111,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>用途によりますが、データ入力や資料作成のような定型作業では作業時間を6〜8割ほど削減できたケースもあります。数値は業務によって変わるため過度な期待で進めないようにしています。</p>
-              <p>効果測定のしくみも一緒に構築して投資対効果を確かめられる状態を整えます。</p>
+              <p>用途によりますがデータ入力や資料作成のような定型作業では作業時間を6〜8割ほど削減できたケースもあります。数値は業務によって変わるため過度な期待で進めないよう心がけています。</p>
+              <p>効果測定のしくみもあわせて構築し投資対効果を確かめられる状態を整えてまいります。</p>
             </div>
           </details>
         </div>
@@ -138,8 +127,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>従来の開発ではすべての要件を最初に決める必要がありました。AIの領域は可能性の幅が広く、最初にすべてを決めること自体が難しい場合があります。</p>
-              <p>そこで小さく作って実際の業務で確かめ、結果を見ながら拡張します。初期リスクを抑えつつ現場に本当に合う形へ育てていけます。</p>
+              <p>従来の開発ではすべての要件を最初に決める必要がありました。AIの領域は可能性の幅が広く最初にすべてを決めること自体が難しい場合があります。</p>
+              <p>そこで小さく作って実際の業務で確かめ結果を見ながら拡張していきます。初期のリスクを抑えながら現場に真に合う形へ育てていけます。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -149,7 +138,7 @@
             </summary>
             <div class="faq-item__a">
               <p>はい。API・Webhook・RPAなどを通じて既存の業務やツールと接続する前提で設計します。</p>
-              <p>CRMと連携した顧客対応の支援や基幹システムと連携した需要予測など、いまの流れをなるべく変えずに組み込みます。</p>
+              <p>CRMと連携した顧客対応の支援や基幹システムと連携した需要予測などいまの流れをなるべく変えずに組み込みます。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -158,8 +147,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>あります。導入直後は特に手厚く伴走し、現場が新しい道具に馴染むまでを支えます。</p>
-              <p>その後も定期的なモニタリングと精度の改善を続け、最終的には社内で運用・改善できる状態を目指します。サポートの形はご状況に合わせて調整できます。</p>
+              <p>あります。導入直後は特に手厚く伴走し現場が新しい道具に馴染むまでをお支えします。</p>
+              <p>その後も定期的なモニタリングと精度の改善を続け最終的には社内で運用・改善できる状態を目指します。サポートの形はご状況に合わせて調整いたします。</p>
             </div>
           </details>
         </div>
@@ -184,8 +173,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>熟練者の検査・調整の判断を言語化して共有する仕組みのほか、稼働データからの故障予兆の検知や需要予測などが挙げられます。</p>
-              <p>勘や経験に依存していた判断に根拠と再現性を持たせることで、品質のばらつきと引き継ぎの負担を減らせます。</p>
+              <p>熟練者の検査・調整の判断を言語化して共有する仕組みのほか稼働データからの故障予兆の検知や需要予測などが挙げられます。</p>
+              <p>勘や経験に依存していた判断に根拠と再現性を持たせることで品質のばらつきと引き継ぎの負担を減らせます。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -194,8 +183,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>院内文書や対応記録を出典付きで引ける形に整え、確認の手間や問い合わせを減らす活用が中心です。記録入力の補助や予約管理の効率化などバックオフィス業務でも力を発揮します。</p>
-              <p>最終的な判断は必ず人が行う運用を前提に、現場の負担を減らす道具として設計します。</p>
+              <p>院内文書や対応記録を出典付きで引ける形に整え確認の手間や問い合わせを減らす活用が中心です。記録入力の補助や予約管理の効率化などバックオフィス業務でも力を発揮します。</p>
+              <p>最終的な判断は必ず人が行う運用を前提に現場の負担を減らす道具として設計いたします。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -204,7 +193,7 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>具体的な業務をうかがいながら適用できそうな範囲を一緒に見極めます。合わないと判断した場合はその旨も率直にお伝えします。</p>
+              <p>具体的な業務をうかがいながら適用できそうな範囲を見極めてまいります。合わないと判断した場合はその旨も率直にお伝えします。</p>
             </div>
           </details>
         </div>
@@ -220,7 +209,7 @@
             </summary>
             <div class="faq-item__a">
               <p>オンラインで20〜30分ほど。まず現状の課題と目指したい状態をうかがいます。事前準備は不要です。</p>
-              <p>その場でAI活用の方向性と進め方を一緒に整理します。無理に契約を勧めることはありません。</p>
+              <p>その場でAI活用の方向性と進め方を整理してお伝えします。無理に契約をお勧めすることはありません。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -239,8 +228,8 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>データの暗号化・アクセス制御・ログと監査を前提に複数の層で守る設計にしています。要件に応じてオンプレミスやプライベートクラウドでの構築にも対応します。</p>
-              <p>AIの学習と運用でもデータの匿名化と最小限の利用を徹底し、最終的な判断は人が行う運用を基本とします。</p>
+              <p>データの暗号化・アクセス制御・ログと監査を前提に複数の層で守る設計としています。要件に応じてオンプレミスやプライベートクラウドでの構築にも対応します。</p>
+              <p>AIの学習と運用においてもデータの匿名化と最小限の利用を徹底し最終的な判断は人が行う運用を基本としています。</p>
             </div>
           </details>
         </div>
@@ -264,7 +253,7 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>課題の認識があれば十分です。小さく始めて効果を確認する進め方のため、要件が固まっていない段階のほうが進め方から一緒に設計できます。</p>
+              <p>課題の認識があれば十分です。小さく始めて効果を確認する進め方のため要件が固まっていない段階からでも進め方の設計からお手伝いできます。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -273,7 +262,7 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>用途と設計によって異なります。プロトタイプで効果を測りながら改善を重ねるため、業務に必要な精度を目指して調整を続けられます。</p>
+              <p>用途と設計によって異なります。プロトタイプで効果を測りながら改善を重ねるため業務に必要な精度を目指して調整を続けられます。</p>
             </div>
           </details>
           <details class="faq-item">
@@ -282,7 +271,7 @@
               <span class="faq-item__marker" aria-hidden="true"></span>
             </summary>
             <div class="faq-item__a">
-              <p>業務や知識は変わり続けるため、学習内容の更新を続けるのが理想です。運用支援やメンテナンスの形もご用意しています。無理なく続けられる形を一緒に整えます。</p>
+              <p>業務や知識は変わり続けるため学習内容の更新を続けるのが理想です。運用支援やメンテナンスのプランもご用意していますので無理のない続け方をご提案いたします。</p>
             </div>
           </details>
         </div>
