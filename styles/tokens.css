@@ -67,6 +67,7 @@
   --fs-lead: clamp(0.9rem, 1.3vw, 1.25rem);
   --fs-body: 1rem;
   --fs-sm: 0.875rem;
+  --fs-xs: 0.8rem;             /* フッターのメタ等、控えめな fine-print 用 */
   --fs-eyebrow: 0.75rem;
 
   --lh-tight: 1.1;

@@ -66,13 +66,13 @@
   gap: var(--space-1) var(--space-4);
   margin-top: var(--space-4);
   font-style: normal;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   line-height: var(--lh-snug);
   color: rgba(255, 255, 255, 0.45);
 }
 
 .site-footer__meta-link {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   color: rgba(255, 255, 255, 0.72);
   text-decoration: underline;
   text-decoration-color: rgba(255, 255, 255, 0.28);
