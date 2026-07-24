@@ -85,6 +85,9 @@
   --space-7: 4.5rem;
   --space-8: 6.5rem;
   --section-py: clamp(2.5rem, 4.5vw, 6.5rem);
+  /* モバイル(<=640px)のセクション律動。デスクトップ最小(40px)へ近い呼吸を保ち、
+     「余白の美」を小画面でも崩さない。24pxへの急落を防ぐ単一の真実源。 */
+  --section-py-mobile: clamp(2.25rem, 8vw, 3.25rem);
   --container: 1360px;
   --container-narrow: 760px;
   --container-text: 680px;

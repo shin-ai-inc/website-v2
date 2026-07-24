@@ -100,20 +100,21 @@ const pages = [
 const ldJson = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "ShinAI",
-  alternateName: "シンアイ",
+  name: "シンアイ株式会社",
+  legalName: "シンアイ株式会社",
+  alternateName: ["ShinAI", "シンアイ"],
   url: SITE_URL + "/",
   email: CONTACT_EMAIL,
   slogan: "企業の暗黙知を、使えるAI資産へ。",
   description: "真の価値を信じ、次世代のために新たな未来を創る。ShinAIは、人の想いとAIをつなぎ、企業の「これまで」を大切に「これから」の変革に伴走する、企業AI開発特化のエンジニアチーム。強化学習・カスタムLLM最適化・RAG・オンプレミス対応により、暗黙知のAI化と企業専用AIエージェントを開発する。",
-  foundingDate: "2025-01",
+  foundingDate: "2026-08-08",
   founder: { "@type": "Person", name: "柴田昌国" },
   address: {
     "@type": "PostalAddress",
     addressCountry: "JP",
     addressRegion: "群馬県",
     addressLocality: "高崎市",
-    streetAddress: "井野町360-7"
+    streetAddress: "井野町360-7 オークスアベニューD201"
   }
 };
 

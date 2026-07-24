@@ -146,16 +146,47 @@
 @media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
-    max-width: 600px;
+    max-width: 640px;
+  }
+}
+
+/* タブレット帯(641-960): 縦積みの大画像カードは narrow column + 大画像で間延びする。
+   画像を左へ寄せた横並びメディアカードにして幅を活かし、密度と品位を保つ。
+   位置指定を明示し、col1=画像(全高)/col2=見出し・リード・罫・箇条書き とする。 */
+@media (min-width: 641px) and (max-width: 960px) {
+  .solutions__grid {
+    max-width: 760px;
+  }
+  .solution-card {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    column-gap: var(--space-5);
+  }
+  .solution-card__figure {
+    grid-column: 1;
+    grid-row: 1 / 99;
+    margin: calc(-1 * var(--space-5)) 0 calc(-1 * var(--space-5)) calc(-1 * var(--space-5));
+    aspect-ratio: auto;
+    height: auto;
+    align-self: stretch;
+  }
+  .solution-card__figure img {
+    height: 100%;
+  }
+  .solution-card__title,
+  .solution-card__lead,
+  .solution-card__divider,
+  .solution-card__items {
+    grid-column: 2;
+  }
+  .solution-card__items {
+    margin-top: 0;
   }
 }
 
 /* モバイル: 横スワイプなしで三つの提供価値を一望できる縦積みコンパクト型。
    写真は左サムネイルに退避し、拡大せず小画面でも全サービスを開いた瞬間に認知させる */
 @media (max-width: 640px) {
-  .solutions {
-    padding-block: var(--space-5);
-  }
   .solutions__grid {
     grid-template-columns: 1fr;
     max-width: 100%;

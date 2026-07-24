@@ -86,6 +86,9 @@
   --space-7: 4.5rem;
   --space-8: 6.5rem;
   --section-py: clamp(2.5rem, 4.5vw, 6.5rem);
+  /* モバイル(<=640px)のセクション律動。デスクトップ最小(40px)へ近い呼吸を保ち、
+     「余白の美」を小画面でも崩さない。24pxへの急落を防ぐ単一の真実源。 */
+  --section-py-mobile: clamp(2.25rem, 8vw, 3.25rem);
   --container: 1360px;
   --container-narrow: 760px;
   --container-text: 680px;
@@ -269,10 +272,10 @@ h1, h2, h3 {
 
 @media (max-width: 640px) {
   .section {
-    padding-block: var(--space-4);
+    padding-block: var(--section-py-mobile);
   }
   .section__head {
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
   }
   .section__title {
     font-size: 1.35rem;
@@ -2447,14 +2450,6 @@ h1, h2, h3 {
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* モバイルは1項目1行の縦組みで整列させる(折返しの偶然に任せない) */
-@media (max-width: 640px) {
-  .site-footer__meta {
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-}
-
 .site-footer__meta-link {
   font-size: var(--fs-sm);
   color: rgba(255, 255, 255, 0.72);
@@ -2501,6 +2496,57 @@ h1, h2, h3 {
   font-size: var(--fs-sm);
   letter-spacing: var(--tracking-latin);
   color: rgba(255, 255, 255, 0.45);
+}
+
+/* ---- モバイル(<=640px): 偶然の折返しに任せず、意図した段組みへ ----
+   全 base 規則の後に置き、確実に上書きする(モバイル上書きはファイル末尾が正)。
+   ワードマーク+一文 / 罫線付き2カラムのナビ / 縦組みメタ / 縦組み規約。
+   タップ領域を確保し(min 44px)、上下に呼吸を持たせて品位を保つ。 */
+@media (max-width: 640px) {
+  .site-footer {
+    padding-block: var(--space-6) var(--space-5);
+  }
+
+  .site-footer__main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-5);
+  }
+
+  /* ナビは緩い折返しをやめ、罫で仕切った2カラムの一覧にする。
+     行間ゼロ＋上罫で、5項目が静かなリストとして整列する。 */
+  .site-footer__nav-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--space-4);
+  }
+
+  /* 5項目め(長いラベル)は半幅だと折り返すため、最終行を全幅に伸ばす */
+  .site-footer__nav-list > li:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* タップ領域は padding-block(=56px)が担保するため、字は控えめの fs-sm でよい。
+     最長ラベルも 320px 幅の全幅行に1行で収まり、全幅で破綻しない。 */
+  .site-footer__nav-link {
+    display: block;
+    padding-block: var(--space-3);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  /* メタは1項目1行の縦組み(折返しの偶然に任せない)。行間はやや開けて可読に */
+  .site-footer__meta {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* 規約とコピーライトは縦に積み、左揃えで静かに締める */
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
 }
 
 
@@ -3969,16 +4015,47 @@ h1, h2, h3 {
 @media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
-    max-width: 600px;
+    max-width: 640px;
+  }
+}
+
+/* タブレット帯(641-960): 縦積みの大画像カードは narrow column + 大画像で間延びする。
+   画像を左へ寄せた横並びメディアカードにして幅を活かし、密度と品位を保つ。
+   位置指定を明示し、col1=画像(全高)/col2=見出し・リード・罫・箇条書き とする。 */
+@media (min-width: 641px) and (max-width: 960px) {
+  .solutions__grid {
+    max-width: 760px;
+  }
+  .solution-card {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    column-gap: var(--space-5);
+  }
+  .solution-card__figure {
+    grid-column: 1;
+    grid-row: 1 / 99;
+    margin: calc(-1 * var(--space-5)) 0 calc(-1 * var(--space-5)) calc(-1 * var(--space-5));
+    aspect-ratio: auto;
+    height: auto;
+    align-self: stretch;
+  }
+  .solution-card__figure img {
+    height: 100%;
+  }
+  .solution-card__title,
+  .solution-card__lead,
+  .solution-card__divider,
+  .solution-card__items {
+    grid-column: 2;
+  }
+  .solution-card__items {
+    margin-top: 0;
   }
 }
 
 /* モバイル: 横スワイプなしで三つの提供価値を一望できる縦積みコンパクト型。
    写真は左サムネイルに退避し、拡大せず小画面でも全サービスを開いた瞬間に認知させる */
 @media (max-width: 640px) {
-  .solutions {
-    padding-block: var(--space-5);
-  }
   .solutions__grid {
     grid-template-columns: 1fr;
     max-width: 100%;

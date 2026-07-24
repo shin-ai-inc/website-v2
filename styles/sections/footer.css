@@ -71,14 +71,6 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* モバイルは1項目1行の縦組みで整列させる(折返しの偶然に任せない) */
-@media (max-width: 640px) {
-  .site-footer__meta {
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-}
-
 .site-footer__meta-link {
   font-size: var(--fs-sm);
   color: rgba(255, 255, 255, 0.72);
@@ -125,4 +117,55 @@
   font-size: var(--fs-sm);
   letter-spacing: var(--tracking-latin);
   color: rgba(255, 255, 255, 0.45);
+}
+
+/* ---- モバイル(<=640px): 偶然の折返しに任せず、意図した段組みへ ----
+   全 base 規則の後に置き、確実に上書きする(モバイル上書きはファイル末尾が正)。
+   ワードマーク+一文 / 罫線付き2カラムのナビ / 縦組みメタ / 縦組み規約。
+   タップ領域を確保し(min 44px)、上下に呼吸を持たせて品位を保つ。 */
+@media (max-width: 640px) {
+  .site-footer {
+    padding-block: var(--space-6) var(--space-5);
+  }
+
+  .site-footer__main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-5);
+  }
+
+  /* ナビは緩い折返しをやめ、罫で仕切った2カラムの一覧にする。
+     行間ゼロ＋上罫で、5項目が静かなリストとして整列する。 */
+  .site-footer__nav-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--space-4);
+  }
+
+  /* 5項目め(長いラベル)は半幅だと折り返すため、最終行を全幅に伸ばす */
+  .site-footer__nav-list > li:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* タップ領域は padding-block(=56px)が担保するため、字は控えめの fs-sm でよい。
+     最長ラベルも 320px 幅の全幅行に1行で収まり、全幅で破綻しない。 */
+  .site-footer__nav-link {
+    display: block;
+    padding-block: var(--space-3);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  /* メタは1項目1行の縦組み(折返しの偶然に任せない)。行間はやや開けて可読に */
+  .site-footer__meta {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* 規約とコピーライトは縦に積み、左揃えで静かに締める */
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
 }
