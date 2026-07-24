@@ -52,6 +52,17 @@
   --acc-ink: var(--c-enable-ink);
 }
 
+/* 業種ごとに固有色を与える(AI的な原色循環を脱した8色のエディトリアル・パレット)。
+   並びはHTMLの業種順: 製造/建設/介護/小売/医療福祉/教育/金融/不動産。 */
+.industries-card:nth-of-type(1) { --acc-ink: var(--ind-1-ink); --acc-bg: var(--ind-1-bg); }
+.industries-card:nth-of-type(2) { --acc-ink: var(--ind-2-ink); --acc-bg: var(--ind-2-bg); }
+.industries-card:nth-of-type(3) { --acc-ink: var(--ind-3-ink); --acc-bg: var(--ind-3-bg); }
+.industries-card:nth-of-type(4) { --acc-ink: var(--ind-4-ink); --acc-bg: var(--ind-4-bg); }
+.industries-card:nth-of-type(5) { --acc-ink: var(--ind-5-ink); --acc-bg: var(--ind-5-bg); }
+.industries-card:nth-of-type(6) { --acc-ink: var(--ind-6-ink); --acc-bg: var(--ind-6-bg); }
+.industries-card:nth-of-type(7) { --acc-ink: var(--ind-7-ink); --acc-bg: var(--ind-7-bg); }
+.industries-card:nth-of-type(8) { --acc-ink: var(--ind-8-ink); --acc-bg: var(--ind-8-bg); }
+
 /* ---- Card head ---- */
 .industries-card__head {
   display: flex;

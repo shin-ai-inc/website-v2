@@ -39,6 +39,18 @@
   --c-enable-bg: #FFF3E0;      /* 内製化・運用支援 — オレンジの淡 */
   --c-enable-ink: #CC5E00;
 
+  /* ---- Industry palette (業種別の色分け) ----
+     AIが多用しがちな原色の青×ティールを脱し、落ち着いたエディトリアル調の8色で業種を識別する。
+     各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。 */
+  --ind-1-ink: #4A5D74; --ind-1-bg: #EEF1F5;   /* 製造: 鋼 */
+  --ind-2-ink: #9C6B2E; --ind-2-bg: #F6F0E4;   /* 建設: 黄土 */
+  --ind-3-ink: #9A5A72; --ind-3-bg: #F4EBEF;   /* 介護・専門サービス: 藤鼠 */
+  --ind-4-ink: #B05F42; --ind-4-bg: #F7ECE6;   /* 小売: テラコッタ */
+  --ind-5-ink: #4C7C66; --ind-5-bg: #E9F1EC;   /* 医療福祉: セージ */
+  --ind-6-ink: #565A8E; --ind-6-bg: #EDEDF6;   /* 教育: 藍鼠 */
+  --ind-7-ink: #2F6B57; --ind-7-bg: #E6F0EB;   /* 金融: 深緑 */
+  --ind-8-ink: #7C6151; --ind-8-bg: #F2EDE7;   /* 不動産: 焦茶 */
+
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
@@ -899,7 +911,8 @@ h1, h2, h3 {
 
 .join__merit-title {
   font-size: var(--fs-body);
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--ink);
   margin-bottom: var(--space-2);
 }
@@ -1022,6 +1035,14 @@ h1, h2, h3 {
   align-self: stretch;
   justify-content: center;
   font-size: var(--fs-sm);
+  /* 枠色は hover を待たず最初から役割カラーで示す */
+  border-color: var(--card-accent, var(--brand));
+  color: var(--card-accent, var(--brand));
+}
+.join__cta:hover {
+  border-color: var(--card-accent, var(--brand));
+  color: var(--card-accent, var(--brand));
+  background: color-mix(in srgb, var(--card-accent, var(--brand)) 7%, #FFFFFF);
 }
 .join__note {
   margin-top: var(--space-5);
@@ -2570,36 +2591,6 @@ h1, h2, h3 {
   モバイルは hamburger で nav を展開（nav.js が .is-open を付与）。
 */
 
-/* ---- 最上部のタグライン帯(全ページ共通・非sticky) ----
-   企業名の上位に、事業の姿勢を左右の細線で挟んで静かに掲げる。スクロールで自然に流れ去る。 */
-.site-topbar {
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-
-.site-topbar__tagline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding-block: 0.32rem;
-  font-family: var(--font-label);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  color: var(--ink-3);
-}
-
-.site-topbar__tagline::before,
-.site-topbar__tagline::after {
-  content: "";
-  flex: none;
-  width: 22px;
-  height: 1px;
-  background: var(--grad-brand);
-  opacity: 0.75;
-}
-
 .site-header {
   position: sticky;
   top: 0;
@@ -2636,10 +2627,35 @@ h1, h2, h3 {
 }
 
 /* ---- Brand wordmark ---- */
+/* 企業名の真上にタグラインを小さく重ねる縦積みロックアップ */
 .site-header__brand {
   display: inline-flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
   flex: none;
+}
+
+.site-header__tagline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.site-header__tagline::before,
+.site-header__tagline::after {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 1px;
+  background: var(--grad-brand);
+  opacity: 0.8;
 }
 
 .site-header__wordmark {
@@ -3081,6 +3097,17 @@ h1, h2, h3 {
   --acc-bg: var(--c-enable-bg);
   --acc-ink: var(--c-enable-ink);
 }
+
+/* 業種ごとに固有色を与える(AI的な原色循環を脱した8色のエディトリアル・パレット)。
+   並びはHTMLの業種順: 製造/建設/介護/小売/医療福祉/教育/金融/不動産。 */
+.industries-card:nth-of-type(1) { --acc-ink: var(--ind-1-ink); --acc-bg: var(--ind-1-bg); }
+.industries-card:nth-of-type(2) { --acc-ink: var(--ind-2-ink); --acc-bg: var(--ind-2-bg); }
+.industries-card:nth-of-type(3) { --acc-ink: var(--ind-3-ink); --acc-bg: var(--ind-3-bg); }
+.industries-card:nth-of-type(4) { --acc-ink: var(--ind-4-ink); --acc-bg: var(--ind-4-bg); }
+.industries-card:nth-of-type(5) { --acc-ink: var(--ind-5-ink); --acc-bg: var(--ind-5-bg); }
+.industries-card:nth-of-type(6) { --acc-ink: var(--ind-6-ink); --acc-bg: var(--ind-6-bg); }
+.industries-card:nth-of-type(7) { --acc-ink: var(--ind-7-ink); --acc-bg: var(--ind-7-bg); }
+.industries-card:nth-of-type(8) { --acc-ink: var(--ind-8-ink); --acc-bg: var(--ind-8-bg); }
 
 /* ---- Card head ---- */
 .industries-card__head {
@@ -3638,20 +3665,22 @@ h1, h2, h3 {
 /* カード全体をリンク面にする(どこを押しても遷移) */
 .news__link {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  align-items: stretch;
+  grid-template-columns: 280px 1fr;
+  align-items: center;
   color: inherit;
 }
 
 .news__thumb {
   overflow: hidden;
   background: var(--paper-2);
-  min-height: 100%;
 }
 
+/* 画角は PC・モバイル共通で写真ネイティブの 4:3。aspect-ratio は img 自身に持たせる
+   (コンテナ側に置くと子の height:100% が解決できず潰れるため)。cover でも全体が映る。 */
 .news__thumb img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -3728,15 +3757,10 @@ h1, h2, h3 {
   transform: translate(2px, -2px);
 }
 
-/* モバイル: 画像を上に、本文を下に積む。画像は大きすぎない高さに抑える。 */
+/* モバイル: 画像を上・本文を下に積む。画角は 4:3 のまま(PCと同一)にして写真全体を見せる。 */
 @media (max-width: 640px) {
   .news__link {
     grid-template-columns: 1fr;
-  }
-  .news__thumb {
-    aspect-ratio: 16 / 9;
-    max-height: 190px;
-    min-height: 0;
   }
   .news__body {
     padding: var(--space-4);

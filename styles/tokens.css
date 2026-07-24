@@ -38,6 +38,18 @@
   --c-enable-bg: #FFF3E0;      /* 内製化・運用支援 — オレンジの淡 */
   --c-enable-ink: #CC5E00;
 
+  /* ---- Industry palette (業種別の色分け) ----
+     AIが多用しがちな原色の青×ティールを脱し、落ち着いたエディトリアル調の8色で業種を識別する。
+     各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。 */
+  --ind-1-ink: #4A5D74; --ind-1-bg: #EEF1F5;   /* 製造: 鋼 */
+  --ind-2-ink: #9C6B2E; --ind-2-bg: #F6F0E4;   /* 建設: 黄土 */
+  --ind-3-ink: #9A5A72; --ind-3-bg: #F4EBEF;   /* 介護・専門サービス: 藤鼠 */
+  --ind-4-ink: #B05F42; --ind-4-bg: #F7ECE6;   /* 小売: テラコッタ */
+  --ind-5-ink: #4C7C66; --ind-5-bg: #E9F1EC;   /* 医療福祉: セージ */
+  --ind-6-ink: #565A8E; --ind-6-bg: #EDEDF6;   /* 教育: 藍鼠 */
+  --ind-7-ink: #2F6B57; --ind-7-bg: #E6F0EB;   /* 金融: 深緑 */
+  --ind-8-ink: #7C6151; --ind-8-bg: #F2EDE7;   /* 不動産: 焦茶 */
+
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);

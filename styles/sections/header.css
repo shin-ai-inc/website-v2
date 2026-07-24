@@ -4,36 +4,6 @@
   モバイルは hamburger で nav を展開（nav.js が .is-open を付与）。
 */
 
-/* ---- 最上部のタグライン帯(全ページ共通・非sticky) ----
-   企業名の上位に、事業の姿勢を左右の細線で挟んで静かに掲げる。スクロールで自然に流れ去る。 */
-.site-topbar {
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-
-.site-topbar__tagline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding-block: 0.32rem;
-  font-family: var(--font-label);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  color: var(--ink-3);
-}
-
-.site-topbar__tagline::before,
-.site-topbar__tagline::after {
-  content: "";
-  flex: none;
-  width: 22px;
-  height: 1px;
-  background: var(--grad-brand);
-  opacity: 0.75;
-}
-
 .site-header {
   position: sticky;
   top: 0;
@@ -70,10 +40,35 @@
 }
 
 /* ---- Brand wordmark ---- */
+/* 企業名の真上にタグラインを小さく重ねる縦積みロックアップ */
 .site-header__brand {
   display: inline-flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
   flex: none;
+}
+
+.site-header__tagline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.site-header__tagline::before,
+.site-header__tagline::after {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 1px;
+  background: var(--grad-brand);
+  opacity: 0.8;
 }
 
 .site-header__wordmark {

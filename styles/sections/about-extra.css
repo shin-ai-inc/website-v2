@@ -458,7 +458,8 @@
 
 .join__merit-title {
   font-size: var(--fs-body);
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--ink);
   margin-bottom: var(--space-2);
 }
@@ -581,6 +582,14 @@
   align-self: stretch;
   justify-content: center;
   font-size: var(--fs-sm);
+  /* 枠色は hover を待たず最初から役割カラーで示す */
+  border-color: var(--card-accent, var(--brand));
+  color: var(--card-accent, var(--brand));
+}
+.join__cta:hover {
+  border-color: var(--card-accent, var(--brand));
+  color: var(--card-accent, var(--brand));
+  background: color-mix(in srgb, var(--card-accent, var(--brand)) 7%, #FFFFFF);
 }
 .join__note {
   margin-top: var(--space-5);

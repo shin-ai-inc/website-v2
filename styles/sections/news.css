@@ -31,20 +31,22 @@
 /* カード全体をリンク面にする(どこを押しても遷移) */
 .news__link {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  align-items: stretch;
+  grid-template-columns: 280px 1fr;
+  align-items: center;
   color: inherit;
 }
 
 .news__thumb {
   overflow: hidden;
   background: var(--paper-2);
-  min-height: 100%;
 }
 
+/* 画角は PC・モバイル共通で写真ネイティブの 4:3。aspect-ratio は img 自身に持たせる
+   (コンテナ側に置くと子の height:100% が解決できず潰れるため)。cover でも全体が映る。 */
 .news__thumb img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -121,15 +123,10 @@
   transform: translate(2px, -2px);
 }
 
-/* モバイル: 画像を上に、本文を下に積む。画像は大きすぎない高さに抑える。 */
+/* モバイル: 画像を上・本文を下に積む。画角は 4:3 のまま(PCと同一)にして写真全体を見せる。 */
 @media (max-width: 640px) {
   .news__link {
     grid-template-columns: 1fr;
-  }
-  .news__thumb {
-    aspect-ratio: 16 / 9;
-    max-height: 190px;
-    min-height: 0;
   }
   .news__body {
     padding: var(--space-4);
