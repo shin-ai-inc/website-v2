@@ -80,7 +80,7 @@ const pages = [
   { file: "faq.html", part: "faq.html", nav: "faq", hero: false,
     changefreq: "monthly", priority: "0.6",
     extraScripts: ['<script src="scripts/faq.js" defer></script>'],
-    title: "よくある質問｜ShinAI",
+    title: "よくあるご質問｜ShinAI",
     desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。ShinAIへのよくある質問。" },
   { file: "contact.html", part: "contact.html", nav: "contact", hero: false,
     changefreq: "monthly", priority: "0.8",

@@ -163,6 +163,18 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* モバイルは質問・回答の字を一段落として、スマートで軽快な一覧にする */
+@media (max-width: 640px) {
+  .faq-item__q {
+    font-size: var(--fs-sm);
+    padding-block: var(--space-3);
+    gap: var(--space-3);
+  }
+  .faq-item__a p {
+    font-size: var(--fs-sm);
+  }
+}
+
 @media (max-width: 480px) {
   .faq-item__q,
   .faq-item__a {
