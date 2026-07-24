@@ -109,6 +109,10 @@
     gap: var(--space-3);
     margin-top: var(--space-5);
   }
+  /* ローマ字ラベル(CONTACT/HOURS/CONSULTATION)はモバイルでは省く。値は自明で足りる。 */
+  .cta__fact-label {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {

@@ -191,14 +191,22 @@
   .solutions__grid {
     grid-template-columns: 1fr;
     max-width: 100%;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
+  /* 画面への圧迫を抑えるため、余白・画像・字を一段引き締めてスマートにする。 */
   .solution-card {
-    padding: var(--space-4);
+    padding: var(--space-3);
   }
-  /* 画像は上端フルブリードのバナー。縦の負荷を抑えるため 16:9 に。 */
+  /* 画像は上端フルブリードの薄いバナー(5:2)にして縦の占有を減らす。 */
   .solution-card__figure {
-    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
-    aspect-ratio: 16 / 9;
+    margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3);
+    aspect-ratio: 5 / 2;
+  }
+  .solution-card__title {
+    font-size: var(--fs-body);
+  }
+  .solution-card__lead {
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-3);
   }
 }
