@@ -86,7 +86,7 @@ const pages = [
     changefreq: "monthly", priority: "0.8",
     extraScripts: ['<script src="scripts/contact-form.js" defer></script>'],
     title: "お問い合わせ・無料相談｜ShinAI",
-    desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は20〜30分、事前準備は不要です。" },
+    desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。" },
   { file: "privacy.html", part: "privacy.html", nav: null, hero: false,
     changefreq: "yearly", priority: "0.2",
     title: "プライバシーポリシー｜ShinAI",

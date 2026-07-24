@@ -1,0 +1,137 @@
+/*
+  Section: News (#news) — 活動のお知らせ。
+  画像付きの活動紹介を控えめに一覧する。カード言語は solutions/industries と同系。
+  PCは画像左のメディアカード、モバイルは画像上の積層。色・余白・型はトークンのみ参照。
+*/
+
+.news__list {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 860px;
+}
+
+.news__item {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+
+.news__item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--brand) 24%, var(--line));
+}
+
+/* カード全体をリンク面にする(どこを押しても遷移) */
+.news__link {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  align-items: stretch;
+  color: inherit;
+}
+
+.news__thumb {
+  overflow: hidden;
+  background: var(--paper-2);
+  min-height: 100%;
+}
+
+.news__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.news__item:hover .news__thumb img {
+  transform: scale(1.04);
+}
+
+.news__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+}
+
+.news__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.news__date {
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-latin);
+  color: var(--mist);
+}
+
+.news__tag {
+  font-family: var(--font-label);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 0.15em 0.7em;
+  border-radius: var(--r-pill);
+}
+
+.news__title {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--ink);
+  /* 日本語を文節単位で折り返し、「第/9回」のような不自然な行末孤立を防ぐ */
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
+
+.news__text {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+.news__more {
+  margin-top: var(--space-1);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--brand);
+}
+
+.news__more svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--dur-1) var(--ease-out);
+}
+
+.news__item:hover .news__more svg {
+  transform: translate(2px, -2px);
+}
+
+/* モバイル: 画像を上に、本文を下に積む。画像は大きすぎない高さに抑える。 */
+@media (max-width: 640px) {
+  .news__link {
+    grid-template-columns: 1fr;
+  }
+  .news__thumb {
+    aspect-ratio: 16 / 9;
+    max-height: 190px;
+    min-height: 0;
+  }
+  .news__body {
+    padding: var(--space-4);
+  }
+}
