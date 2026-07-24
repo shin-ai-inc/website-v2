@@ -79,8 +79,10 @@
   width: 2.9rem;
   height: 2.9rem;
   border-radius: var(--r-md);
-  background: var(--acc-bg);
-  color: var(--acc-ink);
+  /* 淡色チップだと沈むため、業種色のグラデチップ+白アイコンで生き生きと立たせる */
+  background: linear-gradient(140deg, var(--acc-ink) 0%, color-mix(in srgb, var(--acc-ink) 74%, #FFFFFF) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 5px 14px color-mix(in srgb, var(--acc-ink) 24%, transparent);
 }
 
 .industries-card__icon svg {

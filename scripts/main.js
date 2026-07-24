@@ -38,8 +38,8 @@
     }
   }, {
     root: null,
-    rootMargin: "0px 0px -8% 0px",
-    threshold: 0.10
+    rootMargin: "0px 0px 14% 0px",
+    threshold: 0
   });
 
   var i;

@@ -503,18 +503,18 @@
   background: var(--card-accent, var(--grad-brand));
 }
 
-/* 役割カラー: ソリューション3色(藍=技術/青緑=営業/橙=デザイン)を継承 */
+/* 役割カラー: AI的な原色を脱し、鮮明な三色(技術=コバルト/事業=翠/デザイン=菫)で識別 */
 .join__card--engineer {
-  --card-accent: var(--c-tacit-ink);
-  --card-soft: var(--c-tacit-bg);
+  --card-accent: var(--ind-1-ink);
+  --card-soft: var(--ind-1-bg);
 }
 .join__card--business {
-  --card-accent: var(--c-agent-ink);
-  --card-soft: var(--c-agent-bg);
+  --card-accent: var(--ind-5-ink);
+  --card-soft: var(--ind-5-bg);
 }
 .join__card--design {
-  --card-accent: var(--c-enable-ink);
-  --card-soft: var(--c-enable-bg);
+  --card-accent: var(--ind-6-ink);
+  --card-soft: var(--ind-6-bg);
 }
 .join__card:hover {
   transform: translateY(-4px);
@@ -568,15 +568,17 @@
   gap: var(--space-2);
   margin-bottom: var(--space-4);
 }
+/* 淡すぎて読めないため、地は白・字は濃色・枠を明確にして視認性を確保 */
 .join__tag {
   font-family: var(--font-label);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 0.22em 0.8em;
+  padding: 0.24em 0.85em;
   border-radius: var(--r-pill);
-  background: var(--paper-3);
-  color: var(--ink-3);
-  border: 1px solid var(--line);
+  background: #FFFFFF;
+  color: var(--ink-2);
+  border: 1px solid var(--line-ink);
 }
 .join__cta {
   align-self: stretch;

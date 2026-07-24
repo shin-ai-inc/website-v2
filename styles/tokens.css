@@ -41,14 +41,14 @@
   /* ---- Industry palette (業種別の色分け) ----
      AIが多用しがちな原色の青×ティールを脱し、落ち着いたエディトリアル調の8色で業種を識別する。
      各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。 */
-  --ind-1-ink: #4A5D74; --ind-1-bg: #EEF1F5;   /* 製造: 鋼 */
-  --ind-2-ink: #9C6B2E; --ind-2-bg: #F6F0E4;   /* 建設: 黄土 */
-  --ind-3-ink: #9A5A72; --ind-3-bg: #F4EBEF;   /* 介護・専門サービス: 藤鼠 */
-  --ind-4-ink: #B05F42; --ind-4-bg: #F7ECE6;   /* 小売: テラコッタ */
-  --ind-5-ink: #4C7C66; --ind-5-bg: #E9F1EC;   /* 医療福祉: セージ */
-  --ind-6-ink: #565A8E; --ind-6-bg: #EDEDF6;   /* 教育: 藍鼠 */
-  --ind-7-ink: #2F6B57; --ind-7-bg: #E6F0EB;   /* 金融: 深緑 */
-  --ind-8-ink: #7C6151; --ind-8-bg: #F2EDE7;   /* 不動産: 焦茶 */
+  --ind-1-ink: #2B5EA6; --ind-1-bg: #E7EEF8;   /* 製造: コバルト */
+  --ind-2-ink: #C87A1C; --ind-2-bg: #F9EFDC;   /* 建設: 琥珀 */
+  --ind-3-ink: #BE4E77; --ind-3-bg: #F8E7EF;   /* 介護・専門サービス: 薔薇 */
+  --ind-4-ink: #C6512F; --ind-4-bg: #F9E7E0;   /* 小売: 朱 */
+  --ind-5-ink: #159B72; --ind-5-bg: #E0F3EB;   /* 医療福祉: 翠 */
+  --ind-6-ink: #6250BE; --ind-6-bg: #ECE8F8;   /* 教育: 菫 */
+  --ind-7-ink: #147C8C; --ind-7-bg: #E0F1F3;   /* 金融: 青緑 */
+  --ind-8-ink: #9C5A38; --ind-8-bg: #F6E9E0;   /* 不動産: 赤褐 */
 
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
