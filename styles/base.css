@@ -195,15 +195,15 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  /* グラデはヒーロー/ロゴ/細罫など象徴箇所へ限定。反復するボタン面は単色ブランドで上質に。 */
-  background: var(--brand);
+  /* CTAはロゴ由来のマゼンタ→バイオレットのグラデで独自性を出す(AIの青→シアンを脱する)。 */
+  background: var(--grad-cta);
   color: #FFF;
-  box-shadow: var(--shadow-brand);
+  box-shadow: var(--shadow-cta);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-brand), 0 16px 40px rgba(58, 95, 235, 0.18);
-  filter: brightness(1.08);
+  box-shadow: var(--shadow-cta), 0 16px 40px rgba(168, 26, 200, 0.22);
+  filter: brightness(1.06);
 }
 
 .btn-ghost {
