@@ -4,28 +4,12 @@
   余白を最優先。詰め込まない。
 */
 
+/* 透過して固定パーティクル場を通す(信念帯と同様の扱い)。isolate と不透明な紗背景を外し、
+   文字の背後を粒子が抜けるようにする。地色は body.is-home のペーパーグラデが担う。 */
 .purpose {
   position: relative;
-  isolation: isolate;
   overflow: hidden;
   text-align: center;
-}
-
-/* 背景: 藍(技術)から暖色(人)へ溶ける抽象ブラーを、白の紗で覆って気配だけ残す。
-   主体はあくまで文字。上下は紗を濃くして周囲セクションへ静かに馴染ませる。 */
-.purpose::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(180deg,
-      rgba(255, 255, 255, 0.96) 0%,
-      rgba(255, 255, 255, 0.86) 45%,
-      rgba(255, 255, 255, 0.96) 100%),
-    url("../assets/images/photo-tacit.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
 .purpose__inner {

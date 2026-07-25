@@ -2880,9 +2880,9 @@ h1, h2, h3 {
 /* Hero と 信念バンド(creed)を一つの量子パーティクル場で包む共有レイヤー。
    白基調。creed の青緑グラデーションだけが下部で立ち上がる。
    没入ゾーン全体で初見の1画面を満たす(次セクションはスクロールするまで覗かせない)。 */
+/* 静的(非配置・非 isolate)にして、内側の信念帯の背景を固定パーティクル場(z:0)の下へ送る。
+   これで creed を top view に収めつつ、粒子が帯の上に乗る(旧サイト同様)。 */
 .hero-stack {
-  position: relative;
-  isolation: isolate;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -4049,28 +4049,12 @@ h1, h2, h3 {
   余白を最優先。詰め込まない。
 */
 
+/* 透過して固定パーティクル場を通す(信念帯と同様の扱い)。isolate と不透明な紗背景を外し、
+   文字の背後を粒子が抜けるようにする。地色は body.is-home のペーパーグラデが担う。 */
 .purpose {
   position: relative;
-  isolation: isolate;
   overflow: hidden;
   text-align: center;
-}
-
-/* 背景: 藍(技術)から暖色(人)へ溶ける抽象ブラーを、白の紗で覆って気配だけ残す。
-   主体はあくまで文字。上下は紗を濃くして周囲セクションへ静かに馴染ませる。 */
-.purpose::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(180deg,
-      rgba(255, 255, 255, 0.96) 0%,
-      rgba(255, 255, 255, 0.86) 45%,
-      rgba(255, 255, 255, 0.96) 100%),
-    url("../assets/images/photo-tacit.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
 .purpose__inner {
