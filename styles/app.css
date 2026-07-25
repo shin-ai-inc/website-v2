@@ -2528,7 +2528,8 @@ h1, h2, h3 {
 }
 
 .site-footer__legal-link {
-  font-size: var(--fs-sm);
+  /* 直上の会社メタ(.site-footer__meta = --fs-xs)とテキストサイズを揃える */
+  font-size: var(--fs-xs);
   color: rgba(255, 255, 255, 0.5);
   transition: color var(--dur-1) var(--ease-out);
 }
