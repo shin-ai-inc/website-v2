@@ -21,10 +21,17 @@
 }
 
 /* パーティクル場をページ全体の固定オーバーレイに。旧サイト同様、セクション背景の「上」・
-   本文コンテンツの「下」(z:0)に置く。静的セクションの背景に粒子が乗り、コンテンツ(z:1)は前面で鮮明。 */
+   本文コンテンツの「下」(z:0)に置く。静的セクションの背景に粒子が乗り、コンテンツ(z:1)は前面で鮮明。
+   高さは 100lvh(large viewport height=アドレスバー格納時で安定)に固定する。モバイルでスクロール中に
+   バーが出入りしても canvas の高さが揺れず、地球儀が拡大・縮小しない。バッファは常に表示と一致させ
+   (particles.js は resize で常時同期)、縦長楕円化を防ぐ。 */
 .site-particles {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
