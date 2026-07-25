@@ -149,12 +149,35 @@
   }
 
   /* タップ領域は padding-block(=56px)が担保するため、字は控えめの fs-sm でよい。
-     最長ラベルも 320px 幅の全幅行に1行で収まり、全幅で破綻しない。 */
+     最長ラベルも 320px 幅の全幅行に1行で収まり、全幅で破綻しない。
+     モバイルは hover が無く静的テキストに見えるため、右端に控えめな山括弧を添えて
+     「タップで各ページへ進む」ことを明示し、押下時は白く反応させる(タップ手応え)。 */
   .site-footer__nav-link {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
     padding-block: var(--space-3);
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.82);
+  }
+
+  .site-footer__nav-link::after {
+    content: "";
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-right: 1.5px solid rgba(255, 255, 255, 0.4);
+    transform: rotate(45deg);
+  }
+
+  .site-footer__nav-link:active {
+    color: #FFFFFF;
+  }
+
+  .site-footer__nav-link:active::after {
+    border-color: #FFFFFF;
   }
 
   /* メタは1項目1行の縦組み(折返しの偶然に任せない)。行間はやや開けて可読に */
