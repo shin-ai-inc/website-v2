@@ -2745,23 +2745,15 @@ h1, h2, h3 {
   color: var(--ink);
 }
 
-.site-header__toggle-bar {
-  transition:
-    transform var(--dur-1) var(--ease-out),
-    opacity var(--dur-1) var(--ease-out);
-  transform-origin: center;
+/* 開閉は回転モーフを使わず、ハンバーガーと静的な×を差し替える(安っぽい変形を排す)。 */
+.site-header__toggle-icon--close {
+  display: none;
 }
-
-.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar--top {
-  transform: translateY(5px) rotate(45deg);
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-icon--menu {
+  display: none;
 }
-
-.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar--mid {
-  opacity: 0;
-}
-
-.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar--bot {
-  transform: translateY(-5px) rotate(-45deg);
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-icon--close {
+  display: block;
 }
 
 /* ---- Responsive ---- */
