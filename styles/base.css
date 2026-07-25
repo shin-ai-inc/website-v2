@@ -35,6 +35,12 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
 ul, ol { list-style: none; padding: 0; }
 
+/* モバイルのタップ遅延(300ms)・ダブルタップ拡大による「タップしても反応しない」を根絶する。
+   操作要素は即座にタップを発火させ、実機での取りこぼしを防ぐ。 */
+a, button, [role="button"], label, summary, input, select, textarea {
+  touch-action: manipulation;
+}
+
 ::selection { background: var(--brand-soft); color: var(--ink); }
 
 /* ---- Headings ---- */
