@@ -55,9 +55,6 @@
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
-  /* CTA専用。実ロゴのマゼンタ(#C305F2)由来。青→シアンのAI手癖を脱し、同系色で締めた
-     マゼンタ→バイオレットで独自性と行動喚起を両立する。 */
-  --grad-cta: linear-gradient(135deg, #C50BDE 0%, #8317C7 100%);
   --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
   --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #F5F7FF 70%, #EBF0FF 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
@@ -141,7 +138,6 @@
   --shadow-md: 0 6px 18px rgba(12, 26, 54, 0.07), 0 2px 6px rgba(12, 26, 54, 0.04);
   --shadow-lg: 0 22px 48px rgba(12, 26, 54, 0.10), 0 8px 18px rgba(12, 26, 54, 0.06);
   --shadow-brand: 0 8px 32px rgba(58, 95, 235, 0.22), 0 2px 8px rgba(58, 95, 235, 0.10);
-  --shadow-cta: 0 8px 30px rgba(168, 26, 200, 0.32), 0 2px 8px rgba(168, 26, 200, 0.16);
   --shadow-teal: 0 8px 32px rgba(0, 201, 167, 0.20);
   --shadow-energy: 0 8px 30px rgba(255, 138, 0, 0.28);
 
@@ -359,15 +355,14 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  /* CTAはロゴ由来のマゼンタ→バイオレットのグラデで独自性を出す(AIの青→シアンを脱する)。 */
-  background: var(--grad-cta);
+  background: var(--grad-brand);
   color: #FFF;
-  box-shadow: var(--shadow-cta);
+  box-shadow: var(--shadow-brand);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-cta), 0 16px 40px rgba(168, 26, 200, 0.22);
-  filter: brightness(1.06);
+  box-shadow: var(--shadow-brand), 0 16px 40px rgba(58, 95, 235, 0.18);
+  filter: brightness(1.08);
 }
 
 .btn-ghost {
