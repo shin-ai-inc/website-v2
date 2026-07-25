@@ -23,7 +23,7 @@ const BUILD_HASH = (() => {
    独自ドメイン取得後はここを更新してビルドし直すこと。 */
 const SITE_URL = "https://shin-ai-inc.github.io/website-v2";
 /* OGPクローラ(LINE等)はURL単位でキャッシュするため、画像を変えるときはファイル名も変える */
-const OG_IMAGE = SITE_URL + "/assets/images/ogp-logo.png";
+const OG_IMAGE = SITE_URL + "/assets/images/ogp-card.png";
 const CONTACT_EMAIL = "shinai.life@gmail.com";
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
@@ -72,7 +72,7 @@ const pages = [
   { file: "industries.html", part: "industries.html", nav: "industries", hero: false,
     changefreq: "monthly", priority: "0.8",
     title: "業種別の活用｜ShinAI",
-    desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知AIでどう変わるかの活用イメージ。" },
+    desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知改善でどう変わるかの活用イメージ。" },
   { file: "about.html", part: "about.html", nav: "about", hero: false,
     changefreq: "monthly", priority: "0.7",
     title: "会社情報｜ShinAI",
