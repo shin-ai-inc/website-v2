@@ -205,7 +205,7 @@ const shell = (page) => {
   <script type="application/ld+json">${JSON.stringify(ldJson)}</script>${page.part === "faq.html" ? `
   <script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""}
 </head>
-<body>
+<body${page.file === "index.html" ? ' class="is-home"' : ""}>
 ${header}
   <main id="main">
 ${main}

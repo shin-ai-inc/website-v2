@@ -72,6 +72,12 @@ h1, h2, h3, h4 {
   background-image: var(--grad-dark);
 }
 .section--ink h1, .section--ink h2, .section--ink h3 { color: #FFFFFF; }
+
+/* ---- トップの持続パーティクル背景 ----
+   地色をブランドのペーパーグラデにし、明色セクションを透過にして固定パーティクル場を通す。
+   暗色セクション(--ink)と footer は地を保ち、粒子の帯にリズムを作る。index限定(body.is-home)。 */
+body.is-home { background: var(--grad-paper); }
+.is-home .section--alt { background: transparent; }
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 

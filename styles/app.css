@@ -232,6 +232,12 @@ h1, h2, h3, h4 {
   background-image: var(--grad-dark);
 }
 .section--ink h1, .section--ink h2, .section--ink h3 { color: #FFFFFF; }
+
+/* ---- トップの持続パーティクル背景 ----
+   地色をブランドのペーパーグラデにし、明色セクションを透過にして固定パーティクル場を通す。
+   暗色セクション(--ink)と footer は地を保ち、粒子の帯にリズムを作る。index限定(body.is-home)。 */
+body.is-home { background: var(--grad-paper); }
+.is-home .section--alt { background: transparent; }
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
@@ -2878,22 +2884,21 @@ h1, h2, h3 {
   flex-direction: column;
   height: calc(100vh - var(--header-h));
   height: calc(100lvh - var(--header-h));
-  background: var(--grad-paper);
+  /* 地色は body.is-home のペーパーグラデ + 固定パーティクルが担うため透過にする。 */
+  background: transparent;
 }
 
-/* パーティクル場は信念帯グラデーションより前面・全テキストより背面に置く。
-   これで白地のヒーローでも青緑帯の上でも、同じ粒子場が乗って見える(公式HP同様)。 */
-.hero-stack__particles {
-  position: absolute;
+/* パーティクル場をページ全体の固定背景に。スクロールしても最背面(z:-1)に留まり続ける(旧サイト同様)。
+   明色セクションは透過、暗色セクション(--ink)は地を持つため、粒子は明色帯にだけ通る。 */
+.site-particles {
+  position: fixed;
   inset: 0;
-  z-index: var(--z-particles);
-  width: 100%;
-  height: 100%;
+  z-index: -1;
   pointer-events: none;
   overflow: hidden;
 }
 
-.hero-stack__particles canvas {
+.site-particles canvas {
   display: block;
   width: 100% !important;
   height: 100% !important;
