@@ -64,7 +64,7 @@ const pages = [
   { file: "index.html", part: "index.html", nav: null, hero: true,
     changefreq: "monthly", priority: "1.0",
     title: "ShinAI｜企業の暗黙知を、使えるAI資産へ",
-    desc: "退職や属人化で失われていく企業の判断や知識を、検索・判断支援・業務実行に使える専用AIへ。暗黙知のAI化と企業専用AIエージェントの開発パートナー、ShinAI。" },
+    desc: "企業の暗黙知を、使えるAI資産へ。退職や属人化で失われる判断や知識を、検索・判断支援・業務実行に使える専用AIに変える開発パートナー、ShinAI。" },
   { file: "services.html", part: "services.html", nav: "services", hero: false,
     changefreq: "monthly", priority: "0.9",
     title: "ソリューション｜ShinAI",
@@ -192,9 +192,9 @@ const shell = (page) => {
   <meta name="twitter:description" content="${escapeAttr(page.desc)}">
   <meta name="twitter:image" content="${OG_IMAGE}">
 
-  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="assets/icons/favicon.png" sizes="any">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" href="assets/icons/favicon.svg?v=${BUILD_HASH}" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon.png?v=${BUILD_HASH}" sizes="any">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=${BUILD_HASH}">
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
