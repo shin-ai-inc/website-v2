@@ -64,7 +64,7 @@ const pages = [
   { file: "index.html", part: "index.html", nav: null, hero: true,
     changefreq: "monthly", priority: "1.0",
     title: "ShinAI｜企業の暗黙知を、使えるAI資産へ",
-    desc: "企業の暗黙知を、使えるAI資産へ。退職や属人化で失われる判断や知識を、検索・判断支援・業務実行に使える専用AIに変える開発パートナー、ShinAI。" },
+    desc: "退職や属人化で失われる判断や知識を、現場で使える専用AIへ。" },
   { file: "services.html", part: "services.html", nav: "services", hero: false,
     changefreq: "monthly", priority: "0.9",
     title: "ソリューション｜ShinAI",
