@@ -293,10 +293,7 @@
     renderer.render(scene, camera);
   };
 
-  /* resize 追従(コンテナ基準)。
-     モバイルはアドレスバーの出入りで高さだけが揺れ、これに追従すると地球儀が拡大縮小して
-     不自然になる。幅が変わらない高さのみの変化(=バー開閉)は無視し、向き変更(幅変化)だけ追従する。 */
-  var lastW = dim.w;
+  /* resize 追従(コンテナ基準)。 */
   var resizeTimer = null;
   var onResize = function () {
     if (resizeTimer !== null) {
@@ -304,10 +301,6 @@
     }
     resizeTimer = window.setTimeout(function () {
       var d = sizeOf();
-      if (isMobile && d.w === lastW) {
-        return;
-      }
-      lastW = d.w;
       camera.aspect = d.w / d.h;
       camera.updateProjectionMatrix();
       renderer.setSize(d.w, d.h);

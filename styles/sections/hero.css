@@ -24,14 +24,7 @@
    本文コンテンツの「下」(z:0)に置く。静的セクションの背景に粒子が乗り、コンテンツ(z:1)は前面で鮮明。 */
 .site-particles {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* 高さは lvh(large viewport height=アドレスバー格納時の高さ)で固定する。
-     モバイルのスクロールでアドレスバーが出入りしても高さが揺れず、地球儀が拡大縮小しない。
-     svh/vh はバー開閉で変動するため使わない。 */
-  height: 100vh;
-  height: 100lvh;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
