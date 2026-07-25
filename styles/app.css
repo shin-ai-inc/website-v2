@@ -233,11 +233,14 @@ h1, h2, h3, h4 {
 }
 .section--ink h1, .section--ink h2, .section--ink h3 { color: #FFFFFF; }
 
-/* ---- トップの持続パーティクル背景 ----
-   地色をブランドのペーパーグラデにし、明色セクションを透過にして固定パーティクル場を通す。
-   暗色セクション(--ink)と footer は地を保ち、粒子の帯にリズムを作る。index限定(body.is-home)。 */
+/* ---- トップの持続パーティクル背景(旧サイト同様「背景の上・本文の下」オーバーレイ) ----
+   固定パーティクル場(.site-particles, z:0)に対し本文(.container)を z:1 で前面へ上げ、
+   セクション背景をその下に置く。暗色・信念帯は静的化して地を粒子の下へ送り、粒子を鮮やかに乗せる。
+   明色/alt は透過にして地(ペーパーグラデ)と粒子を通す。index限定(body.is-home)。 */
 body.is-home { background: var(--grad-paper); }
+.is-home main .container { position: relative; z-index: 1; }
 .is-home .section--alt { background: transparent; }
+.is-home .section--ink { position: static; }
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
@@ -2066,13 +2069,12 @@ h1, h2, h3 {
 */
 /* z-index は付けない(スタッキング文脈を作らない)。
    こうすることで帯のグラデーションは背面に、creed__text は前面のパーティクル層よりさらに前へ抜ける。 */
+/* 静的(非配置)にして背景を固定パーティクル場(z:0)の「下」へ置く。これで粒子が帯の上に
+   鮮やかに乗る(旧サイトの mission-section と同じ仕組み)。creed__text は z:3 で前面・鮮明。 */
 .creed {
-  position: relative;
   padding: 2rem 0;
   text-align: center;
-  /* 帯を半透明にし、背面の固定パーティクル場を透けさせる(施主が愛する表現の復元)。
-     青緑は保ちつつ、粒子が texture として乗って見える濃度に調整。白文字の可読性も維持。 */
-  background: linear-gradient(135deg, rgba(45, 76, 200, 0.74) 0%, rgba(0, 184, 159, 0.74) 50%, rgba(45, 76, 200, 0.74) 100%);
+  background: var(--grad-creed);
 }
 
 .creed__text {
@@ -2890,12 +2892,12 @@ h1, h2, h3 {
   background: transparent;
 }
 
-/* パーティクル場をページ全体の固定背景に。スクロールしても最背面(z:-1)に留まり続ける(旧サイト同様)。
-   明色セクションは透過、暗色セクション(--ink)は地を持つため、粒子は明色帯にだけ通る。 */
+/* パーティクル場をページ全体の固定オーバーレイに。旧サイト同様、セクション背景の「上」・
+   本文コンテンツの「下」(z:0)に置く。静的セクションの背景に粒子が乗り、コンテンツ(z:1)は前面で鮮明。 */
 .site-particles {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }

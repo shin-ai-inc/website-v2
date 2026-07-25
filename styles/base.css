@@ -73,11 +73,14 @@ h1, h2, h3, h4 {
 }
 .section--ink h1, .section--ink h2, .section--ink h3 { color: #FFFFFF; }
 
-/* ---- トップの持続パーティクル背景 ----
-   地色をブランドのペーパーグラデにし、明色セクションを透過にして固定パーティクル場を通す。
-   暗色セクション(--ink)と footer は地を保ち、粒子の帯にリズムを作る。index限定(body.is-home)。 */
+/* ---- トップの持続パーティクル背景(旧サイト同様「背景の上・本文の下」オーバーレイ) ----
+   固定パーティクル場(.site-particles, z:0)に対し本文(.container)を z:1 で前面へ上げ、
+   セクション背景をその下に置く。暗色・信念帯は静的化して地を粒子の下へ送り、粒子を鮮やかに乗せる。
+   明色/alt は透過にして地(ペーパーグラデ)と粒子を通す。index限定(body.is-home)。 */
 body.is-home { background: var(--grad-paper); }
+.is-home main .container { position: relative; z-index: 1; }
 .is-home .section--alt { background: transparent; }
+.is-home .section--ink { position: static; }
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
