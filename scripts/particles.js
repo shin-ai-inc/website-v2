@@ -25,20 +25,27 @@
 
   var THREE = window.THREE;
 
+  var isMobile = window.innerWidth < 768;
+
+  /* モバイルはアドレスバーの出入りで高さだけが揺れる。これに描画を追従させると
+     地球儀が拡大縮小して不自然になるため、高さを初回の「大きいビューポート高さ」で固定し、
+     以後は向き変更(幅変化)時のみ更新する。canvas は中央配置で余剰を切り取るので楕円化しない。 */
+  var stableH = isMobile
+    ? Math.round(Math.max(window.innerHeight, (window.screen && window.screen.height) || 0))
+    : 0;
+
   var sizeOf = function () {
     var rect = container.getBoundingClientRect();
-    return {
-      w: Math.max(1, Math.round(rect.width)),
-      h: Math.max(1, Math.round(rect.height))
-    };
+    var w = Math.max(1, Math.round(rect.width));
+    var h = isMobile ? stableH : Math.round(rect.height);
+    return { w: w, h: Math.max(1, h) };
   };
-
-  var isMobile = window.innerWidth < 768;
 
   var scene = new THREE.Scene();
   var dim = sizeOf();
   var camera = new THREE.PerspectiveCamera(60, dim.w / dim.h, 0.1, 1000);
-  camera.position.z = isMobile ? 48 : 58;
+  /* モバイルはカメラを後退させ地球儀・粒子群を一回り小さく見せる(施主要望の若干サイズダウン)。 */
+  camera.position.z = isMobile ? 56 : 58;
 
   var renderer;
   try {
@@ -293,13 +300,24 @@
     renderer.render(scene, camera);
   };
 
-  /* resize 追従(コンテナ基準)。 */
+  /* resize 追従(コンテナ基準)。
+     モバイルは幅が変わらない高さのみの変化(=アドレスバー開閉)を無視し、地球儀の拡大縮小を防ぐ。
+     向き変更(幅変化)のときだけ stableH を更新して追従する。canvas 非ストレッチ配置のため楕円化しない。 */
+  var lastW = dim.w;
   var resizeTimer = null;
   var onResize = function () {
     if (resizeTimer !== null) {
       window.clearTimeout(resizeTimer);
     }
     resizeTimer = window.setTimeout(function () {
+      var w = Math.max(1, Math.round(container.getBoundingClientRect().width));
+      if (isMobile && w === lastW) {
+        return;
+      }
+      lastW = w;
+      if (isMobile) {
+        stableH = Math.round(Math.max(window.innerHeight, (window.screen && window.screen.height) || 0));
+      }
       var d = sizeOf();
       camera.aspect = d.w / d.h;
       camera.updateProjectionMatrix();

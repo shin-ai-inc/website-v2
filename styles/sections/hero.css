@@ -27,20 +27,21 @@
    (particles.js は resize で常時同期)、縦長楕円化を防ぐ。 */
 .site-particles {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100lvh;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
 
+/* canvas は 100% で引き伸ばさず、固定ピクセルサイズのまま中央に置き overflow で切り取る。
+   これでモバイルのアドレスバー開閉で高さが変わっても、バッファは伸びず(楕円化しない)
+   拡大もしない。描画サイズのロックは particles.js が担う。 */
 .site-particles canvas {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* ヒーロー高さは控えめにし、直下の信念バンドを初見の下部に引き上げる
