@@ -331,7 +331,11 @@
   window.addEventListener("resize", onResize, { passive: true });
 
   document.addEventListener("mousemove", onMouseMove, { passive: true });
-  document.addEventListener("touchmove", onTouchMove, { passive: true });
+  /* モバイルではスクロール自体が touchmove のため、視差にタッチを使うと
+     スクロールのたびに地球儀の画角が動いてしまう。タッチ視差はモバイルで無効化する。 */
+  if (!isMobile) {
+    document.addEventListener("touchmove", onTouchMove, { passive: true });
+  }
   start();
 
   document.addEventListener("visibilitychange", function () {
