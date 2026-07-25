@@ -45,7 +45,7 @@
   var dim = sizeOf();
   var camera = new THREE.PerspectiveCamera(60, dim.w / dim.h, 0.1, 1000);
   /* モバイルはカメラを後退させ地球儀・粒子群を一回り小さく見せる(施主要望の若干サイズダウン)。 */
-  camera.position.z = isMobile ? 56 : 58;
+  camera.position.z = isMobile ? 62 : 58;
 
   var renderer;
   try {
