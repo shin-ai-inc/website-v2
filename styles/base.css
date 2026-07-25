@@ -69,13 +69,14 @@ h1, h2, h3, h4 {
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
-.section__head { max-width: var(--container-heading); margin-bottom: var(--space-4); }
+/* 見出しブロックと本文の間に「間」を作る(space-4→6)。大きな見出しが呼吸できる余白。 */
+.section__head { max-width: var(--container-heading); margin-bottom: var(--space-6); }
 .section__head--center { margin-inline: auto; text-align: center; }
 .section__title {
   font-size: var(--fs-h2);
   font-weight: 500;
-  line-height: var(--lh-snug);
-  letter-spacing: 0.03em;
+  line-height: 1.32;
+  letter-spacing: 0.02em;
 }
 .section__title-line {
   display: block;
@@ -132,10 +133,10 @@ h1, h2, h3 {
     padding-block: var(--section-py-mobile);
   }
   .section__head {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
   }
   .section__title {
-    font-size: 1.35rem;
+    font-size: 1.55rem;
   }
   .section__lead-line {
     display: inline;

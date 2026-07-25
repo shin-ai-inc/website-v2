@@ -72,12 +72,14 @@
   /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Enterprise-grade scale. 日本語明朝体の光学補正済み。max値: display=56px, h1=44px, h2=34px, h3=24px */
-  --fs-display: clamp(2rem, 3.8vw, 3.5rem);
-  --fs-h1: clamp(1.75rem, 3.0vw, 2.75rem);
-  --fs-h2: clamp(1.35rem, 2.2vw, 2.125rem);
-  --fs-h3: clamp(1.1rem, 1.5vw, 1.5rem);
-  --fs-lead: clamp(0.9rem, 1.3vw, 1.25rem);
+  /* Enterprise-grade scale. 日本語明朝体の光学補正済み。
+     セクション見出しは一段大胆に(h2 max 34→42px)。スペースデータ流の大きな見出しを
+     日本語の可読性を保つ範囲で翻案し、階層のコントラストを強める。 */
+  --fs-display: clamp(2.1rem, 4.2vw, 3.75rem);
+  --fs-h1: clamp(1.9rem, 3.4vw, 3rem);
+  --fs-h2: clamp(1.55rem, 2.9vw, 2.625rem);
+  --fs-h3: clamp(1.15rem, 1.6vw, 1.5rem);
+  --fs-lead: clamp(0.95rem, 1.3vw, 1.25rem);
   --fs-body: 1rem;
   --fs-sm: 0.875rem;
   --fs-xs: 0.8rem;             /* フッターのメタ等、控えめな fine-print 用 */
@@ -98,10 +100,12 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(2.5rem, 4.5vw, 6.5rem);
+  /* セクション上下余白。大胆な「間」を作るため上限を引き上げ(6.5→8rem)、
+     大画面ほど呼吸が深くなるよう vw 係数も上げる。 */
+  --section-py: clamp(3rem, 6vw, 8rem);
   /* モバイル(<=640px)のセクション律動。デスクトップ最小(40px)へ近い呼吸を保ち、
      「余白の美」を小画面でも崩さない。24pxへの急落を防ぐ単一の真実源。 */
-  --section-py-mobile: clamp(2.25rem, 8vw, 3.25rem);
+  --section-py-mobile: clamp(2.5rem, 8vw, 3.5rem);
   --container: 1360px;
   --container-narrow: 760px;
   --container-text: 680px;
@@ -225,13 +229,14 @@ h1, h2, h3, h4 {
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
-.section__head { max-width: var(--container-heading); margin-bottom: var(--space-4); }
+/* 見出しブロックと本文の間に「間」を作る(space-4→6)。大きな見出しが呼吸できる余白。 */
+.section__head { max-width: var(--container-heading); margin-bottom: var(--space-6); }
 .section__head--center { margin-inline: auto; text-align: center; }
 .section__title {
   font-size: var(--fs-h2);
   font-weight: 500;
-  line-height: var(--lh-snug);
-  letter-spacing: 0.03em;
+  line-height: 1.32;
+  letter-spacing: 0.02em;
 }
 .section__title-line {
   display: block;
@@ -288,10 +293,10 @@ h1, h2, h3 {
     padding-block: var(--section-py-mobile);
   }
   .section__head {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
   }
   .section__title {
-    font-size: 1.35rem;
+    font-size: 1.55rem;
   }
   .section__lead-line {
     display: inline;
