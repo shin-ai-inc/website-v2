@@ -2070,7 +2070,9 @@ h1, h2, h3 {
   position: relative;
   padding: 2rem 0;
   text-align: center;
-  background: var(--grad-creed);
+  /* 帯を半透明にし、背面の固定パーティクル場を透けさせる(施主が愛する表現の復元)。
+     青緑は保ちつつ、粒子が texture として乗って見える濃度に調整。白文字の可読性も維持。 */
+  background: linear-gradient(135deg, rgba(45, 76, 200, 0.74) 0%, rgba(0, 184, 159, 0.74) 50%, rgba(45, 76, 200, 0.74) 100%);
 }
 
 .creed__text {
