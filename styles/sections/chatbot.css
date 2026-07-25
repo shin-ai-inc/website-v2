@@ -216,7 +216,7 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--r-md);
-  background: var(--grad-brand);
+  background: var(--brand);
   color: #fff;
   transition:
     filter var(--dur-1) var(--ease-out),

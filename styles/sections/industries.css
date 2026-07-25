@@ -86,8 +86,8 @@
 }
 
 .industries-card__icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .industries-card__heading {
@@ -205,7 +205,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 .industries-bridge__item-title {

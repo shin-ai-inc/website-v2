@@ -289,7 +289,7 @@
   height: 3rem;
   margin-bottom: var(--space-3);
   border-radius: var(--r-md);
-  background: var(--grad-brand);
+  background: var(--brand);
   color: #FFFFFF;
   flex-shrink: 0;
 }
@@ -423,7 +423,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 /* 大きな番号は「残像」として右上に薄く敷き、情報でなく空気にする */

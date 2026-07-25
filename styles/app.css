@@ -349,7 +349,8 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  background: var(--grad-brand);
+  /* グラデはヒーロー/ロゴ/細罫など象徴箇所へ限定。反復するボタン面は単色ブランドで上質に。 */
+  background: var(--brand);
   color: #FFF;
   box-shadow: var(--shadow-brand);
 }
@@ -747,7 +748,7 @@ h1, h2, h3 {
   height: 3rem;
   margin-bottom: var(--space-3);
   border-radius: var(--r-md);
-  background: var(--grad-brand);
+  background: var(--brand);
   color: #FFFFFF;
   flex-shrink: 0;
 }
@@ -881,7 +882,7 @@ h1, h2, h3 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 /* 大きな番号は「残像」として右上に薄く敷き、情報でなく空気にする */
@@ -1383,7 +1384,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   border-radius: var(--r-md);
-  background: var(--grad-brand);
+  background: var(--brand);
   color: #fff;
   transition:
     filter var(--dur-1) var(--ease-out),
@@ -1704,7 +1705,7 @@ h1, h2, h3 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 4px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 .contact-form-card__head {
@@ -3152,8 +3153,8 @@ h1, h2, h3 {
 }
 
 .industries-card__icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .industries-card__heading {
@@ -3271,7 +3272,7 @@ h1, h2, h3 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 .industries-bridge__item-title {
@@ -4134,7 +4135,7 @@ h1, h2, h3 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--card-ink);
   opacity: 0;
   transition: opacity var(--dur-1) var(--ease-out);
 }

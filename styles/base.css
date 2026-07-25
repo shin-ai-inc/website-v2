@@ -189,7 +189,8 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  background: var(--grad-brand);
+  /* グラデはヒーロー/ロゴ/細罫など象徴箇所へ限定。反復するボタン面は単色ブランドで上質に。 */
+  background: var(--brand);
   color: #FFF;
   box-shadow: var(--shadow-brand);
 }

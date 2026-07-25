@@ -31,7 +31,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--card-ink);
   opacity: 0;
   transition: opacity var(--dur-1) var(--ease-out);
 }

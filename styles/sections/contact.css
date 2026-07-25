@@ -98,7 +98,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 4px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 .contact-form-card__head {
