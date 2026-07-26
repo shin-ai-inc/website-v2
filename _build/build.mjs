@@ -40,11 +40,39 @@ for (const f of sectionFiles) {
 }
 write("styles/app.css", css);
 
-/* ---- 2. 共有 partial ---- */
-const headerHtml = read("partials/_header.html");
-const footerHtml = read("partials/_footer.html")
-  .replace("{{YEAR}}", String(new Date().getFullYear()));
-const chatbotHtml = read("partials/_chatbot.html");
+/* ---- 2. ロケール定義 ----
+   日本語はサイト直下、英語は /en/ 配下に出力する。既存の日本語URLを一切動かさずに
+   英語版を増設でき、検索エンジンには言語ごとの独立URLとして正しくインデックスされる。
+   dir     … SITE_URL からの出力先(末尾スラッシュ込み)
+   prefix  … ページから見た共有アセット(styles/scripts/assets)への相対接頭辞
+   src     … partial の読み込み元ディレクトリ */
+const LOCALES = [
+  { code: "ja", dir: "", prefix: "", src: "partials", htmlLang: "ja", ogLocale: "ja_JP",
+    switchTo: "en", switchLabel: "English", switchAria: "Switch to English" },
+  { code: "en", dir: "en/", prefix: "../", src: "partials/en", htmlLang: "en", ogLocale: "en_US",
+    switchTo: "ja", switchLabel: "日本語", switchAria: "日本語に切り替える" }
+];
+
+/* 言語切替UI。ヘッダーの {{LANG_SWITCH}} を置き換える。
+   同一ページの他言語版へ1タップで移動する(トップへ飛ばさない)。 */
+const langSwitch = (loc, file) => {
+  const href = loc.code === "ja" ? "en/" + file : "../" + file;
+  return `<a class="site-header__lang" href="${href}" hreflang="${loc.switchTo}" lang="${loc.switchTo}" aria-label="${loc.switchAria}">
+        <svg class="site-header__lang-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span class="site-header__lang-label">${loc.switchLabel}</span>
+      </a>`;
+};
+
+/* ロケールごとの共有 partial(ヘッダー/フッター/チャット)を読む。 */
+const sharedFor = (loc) => ({
+  header: read(loc.src + "/_header.html"),
+  footer: read(loc.src + "/_footer.html").replace("{{YEAR}}", String(new Date().getFullYear())),
+  chatbot: read(loc.src + "/_chatbot.html")
+});
+const shared = Object.fromEntries(LOCALES.map((l) => [l.code, sharedFor(l)]));
 
 /* 現在地ナビに aria-current を付ける(最初の該当 href へ) */
 const markCurrent = (html, nav) => {
@@ -64,37 +92,60 @@ const pages = [
   { file: "index.html", part: "index.html", nav: null, hero: true,
     changefreq: "monthly", priority: "1.0",
     title: "ShinAI｜企業の暗黙知を、使えるAI資産へ",
-    desc: "退職や属人化で失われる判断や知識を、現場で使える専用AIへ。" },
+    desc: "退職や属人化で失われる判断や知識を、現場で使える専用AIへ。",
+    en: { title: "ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+          desc: "The judgment and know-how your company loses to retirement and key-person dependency, rebuilt as private AI that works on the floor. A Japan-based enterprise AI engineering partner." } },
   { file: "services.html", part: "services.html", nav: "services", hero: false,
+    crumb: "ソリューション",
     changefreq: "monthly", priority: "0.9",
     title: "ソリューション｜ShinAI",
-    desc: "暗黙知のAI化、企業専用AIエージェント、AI内製化・運用支援。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。" },
+    desc: "暗黙知のAI化、企業専用AIエージェント、AI内製化・運用支援。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。",
+    en: {crumb: "Solutions",  title: "Solutions | ShinAI",
+          desc: "Tacit knowledge structuring, private enterprise AI agents, and in-house AI enablement. Capture it, connect it, and make it usable where the work happens." } },
   { file: "industries.html", part: "industries.html", nav: "industries", hero: false,
+    crumb: "業種別の活用",
     changefreq: "monthly", priority: "0.8",
     title: "業種別の活用｜ShinAI",
-    desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知改善でどう変わるかの活用イメージ。" },
+    desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知改善でどう変わるかの活用イメージ。",
+    en: {crumb: "Industries",  title: "Industries | ShinAI",
+          desc: "Manufacturing, construction, care and professional services, retail, healthcare, education, finance, and real estate. What breaks in each, and how tacit-knowledge AI changes it." } },
   { file: "about.html", part: "about.html", nav: "about", hero: false,
+    crumb: "会社情報",
     changefreq: "monthly", priority: "0.7",
     title: "会社情報｜ShinAI",
-    desc: "技術より先に、人を見る。ShinAIの目的、代表メッセージ、七つのShin、体制と会社概要。" },
+    desc: "技術より先に、人を見る。ShinAIの目的、代表メッセージ、七つのShin、体制と会社概要。",
+    en: {crumb: "About",  title: "About | ShinAI",
+          desc: "People before technology. Our purpose, a message from the founder, the Seven Shin principles, our team, and company facts." } },
   { file: "faq.html", part: "faq.html", nav: "faq", hero: false,
+    crumb: "よくあるご質問",
     changefreq: "monthly", priority: "0.6",
     extraScripts: ['<script src="scripts/faq.js" defer></script>'],
     title: "よくあるご質問｜ShinAI",
-    desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。ShinAIへのよくある質問。" },
+    desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。ShinAIへのよくある質問。",
+    en: {crumb: "FAQ",  title: "FAQ | ShinAI",
+          desc: "Getting started, cost and rollout, how we build, industry use, our services, and more. Common questions about working with ShinAI." } },
   { file: "contact.html", part: "contact.html", nav: "contact", hero: false,
+    crumb: "お問い合わせ",
     changefreq: "monthly", priority: "0.8",
     extraScripts: ['<script src="scripts/contact-form.js" defer></script>'],
     title: "お問い合わせ・無料相談｜ShinAI",
-    desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。" },
+    desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。",
+    en: {crumb: "Contact",  title: "Contact & Free Consultation | ShinAI",
+          desc: "You do not need defined requirements to talk to us. We map where AI can apply from your current operations and knowledge assets. Free consultation, 30-45 minutes, no preparation needed." } },
   { file: "privacy.html", part: "privacy.html", nav: null, hero: false,
+    crumb: "プライバシーポリシー",
     changefreq: "yearly", priority: "0.2",
     title: "プライバシーポリシー｜ShinAI",
-    desc: "ShinAIの個人情報の取り扱いについて。" },
+    desc: "ShinAIの個人情報の取り扱いについて。",
+    en: {crumb: "Privacy Policy",  title: "Privacy Policy | ShinAI",
+          desc: "How ShinAI handles personal information." } },
   { file: "terms.html", part: "terms.html", nav: null, hero: false,
+    crumb: "利用規約",
     changefreq: "yearly", priority: "0.2",
     title: "利用規約｜ShinAI",
-    desc: "ShinAIウェブサイトの利用規約。" }
+    desc: "ShinAIウェブサイトの利用規約。",
+    en: {crumb: "Terms of Use",  title: "Terms of Use | ShinAI",
+          desc: "Terms of use for the ShinAI website." } }
 ];
 
 const ldJson = {
@@ -118,14 +169,47 @@ const ldJson = {
   }
 };
 
+/* 英語版の Organization。海外の検索・AI検索が読む一次情報になるため、
+   日本語版と同一の事実を英語で記述する(内容を盛らない)。 */
+const ldJsonEn = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "ShinAI Inc.",
+  legalName: "ShinAI Inc.",
+  alternateName: ["ShinAI", "シンアイ株式会社"],
+  url: SITE_URL + "/en/",
+  email: CONTACT_EMAIL,
+  slogan: "Turn your company's tacit knowledge into working AI assets.",
+  description: "ShinAI is a Japan-based engineering team specialising in enterprise AI. We connect human intent with AI, honouring what a company has built while guiding what it becomes next. Through reinforcement learning, custom LLM optimisation, RAG, and on-premise deployment, we turn tacit knowledge into AI and build private enterprise AI agents.",
+  foundingDate: "2026-08-08",
+  founder: { "@type": "Person", name: "Masakuni Shibata" },
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "JP",
+    addressRegion: "Gunma",
+    addressLocality: "Takasaki",
+    streetAddress: "360-7 Ino-machi, Oaks Avenue D201"
+  }
+};
+
+/* 検索結果でのサイト名表示のため、トップページに WebSite を出す。 */
+const websiteLd = (loc) => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "ShinAI",
+  alternateName: loc.code === "ja" ? "シンアイ" : "ShinAI Inc.",
+  inLanguage: loc.htmlLang,
+  url: SITE_URL + "/" + loc.dir
+});
+
 const escapeAttr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 
 /* ---- FAQPage 構造化データ ----
    外部AI・検索エンジンはFAQを信頼性評価と回答引用に使うため、schema.org/FAQPage を出力する。
    partial の Q&A を唯一の真実源として自動抽出し、本文との不一致を構造的に防ぐ。 */
 const stripTags = (s) => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-const faqLd = (() => {
-  const raw = read("partials/faq.html");
+const faqLdFor = (loc) => {
+  const raw = read(loc.src + "/faq.html");
   const re = /<span class="faq-item__q-text">([\s\S]*?)<\/span>[\s\S]*?<div class="faq-item__a">([\s\S]*?)<\/div>/g;
   const mainEntity = [];
   let m;
@@ -136,82 +220,121 @@ const faqLd = (() => {
       acceptedAnswer: { "@type": "Answer", text: stripTags(m[2]) }
     });
   }
-  return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity };
-})();
+  return { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: loc.htmlLang, mainEntity };
+};
+
+/* サブページのパンくず構造化データ(検索結果の階層表示用)。 */
+const breadcrumbLd = (loc, page) => {
+  if (!page.nav && page.file !== "privacy.html" && page.file !== "terms.html") return null;
+  const home = SITE_URL + "/" + loc.dir;
+  const name = loc.code === "ja" ? page.crumb : page.en.crumb;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: loc.code === "ja" ? "ホーム" : "Home", item: home },
+      { "@type": "ListItem", position: 2, name, item: SITE_URL + "/" + loc.dir + page.file }
+    ]
+  };
+};
 
 /* 公開HTMLから HTMLコメントを除去(開発メモを出さない。doctypeは非対象)。 */
 const stripComments = (html) => html.replace(/<!--[\s\S]*?-->/g, "").replace(/\n{3,}/g, "\n\n");
 
-const shell = (page) => {
-  const canonical = SITE_URL + "/" + page.file;
-  const main = normalizeMain(read("partials/" + page.part));
-  const header = markCurrent(headerHtml, page.nav);
+const shell = (page, loc) => {
+  const meta = loc.code === "ja" ? page : page.en;
+  const canonical = SITE_URL + "/" + loc.dir + page.file;
+  const main = normalizeMain(read(loc.src + "/" + page.part));
+  /* replaceAll: partial 冒頭の解説コメント内にもトークン名が現れるため、先頭一致では取り違える。 */
+  const header = markCurrent(shared[loc.code].header, page.nav)
+    .replaceAll("{{LANG_SWITCH}}", langSwitch(loc, page.file));
   const v = "?v=" + BUILD_HASH;
+  /* 英語版は /en/ 配下にあるため、共有アセットへは一段上がる。 */
+  const p = loc.prefix;
   const scripts = [
-    `<script src="scripts/config.js${v}" defer></script>`,
-    `<script src="scripts/nav.js${v}" defer></script>`,
-    `<script src="scripts/main.js${v}" defer></script>`,
-    `<script src="scripts/chatbot.js${v}" defer></script>`
+    `<script src="${p}scripts/config.js${v}" defer></script>`,
+    `<script src="${p}scripts/nav.js${v}" defer></script>`,
+    `<script src="${p}scripts/main.js${v}" defer></script>`,
+    `<script src="${p}scripts/chatbot.js${v}" defer></script>`
   ];
   if (page.hero) {
     /* 施主が愛する流動パーティクル。Three.js は自己ホスト(CDNではない)で script-src 'self' を維持。 */
     scripts.splice(3, 0,
-      `<script src="scripts/vendor/three.min.js${v}" defer></script>`,
-      `<script src="scripts/particles.js${v}" defer></script>`
+      `<script src="${p}scripts/vendor/three.min.js${v}" defer></script>`,
+      `<script src="${p}scripts/particles.js${v}" defer></script>`
     );
   }
   if (page.extraScripts) {
-    for (const s of page.extraScripts) { scripts.push(s); }
+    for (const s of page.extraScripts) { scripts.push(s.replace('src="', 'src="' + p)); }
   }
 
+  /* hreflang: 同一内容の言語別URLを相互申告する。x-default は日本語(本社所在地の言語)。
+     これがないと、英語ページが日本語ページの重複と見なされ英語圏で埋もれる。 */
+  const alternates = LOCALES.map((l) =>
+    `  <link rel="alternate" hreflang="${l.htmlLang}" href="${SITE_URL}/${l.dir}${page.file}">`
+  ).join("\n") + `\n  <link rel="alternate" hreflang="x-default" href="${SITE_URL}/${page.file}">`;
+
+  const crumbLd = breadcrumbLd(loc, page);
+  const structured = [
+    loc.code === "ja" ? ldJson : ldJsonEn,
+    page.file === "index.html" ? websiteLd(loc) : null,
+    page.part === "faq.html" ? faqLdFor(loc) : null,
+    crumbLd
+  ].filter(Boolean)
+   .map((o) => `  <script type="application/ld+json">${JSON.stringify(o)}</script>`)
+   .join("\n");
+
   return `<!doctype html>
-<html lang="ja">
+<html lang="${loc.htmlLang}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
-  <title>${page.title}</title>
-  <meta name="description" content="${escapeAttr(page.desc)}">
+  <title>${meta.title}</title>
+  <meta name="description" content="${escapeAttr(meta.desc)}">
   <link rel="canonical" href="${canonical}">
+${alternates}
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#3A5FEB">
+  <meta name="format-detection" content="telephone=no">
 
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ShinAI">
-  <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="${escapeAttr(page.title)}">
-  <meta property="og:description" content="${escapeAttr(page.desc)}">
+  <meta property="og:locale" content="${loc.ogLocale}">
+  <meta property="og:locale:alternate" content="${LOCALES.find((l) => l.code !== loc.code).ogLocale}">
+  <meta property="og:title" content="${escapeAttr(meta.title)}">
+  <meta property="og:description" content="${escapeAttr(meta.desc)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${OG_IMAGE}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${escapeAttr(page.title)}">
-  <meta name="twitter:description" content="${escapeAttr(page.desc)}">
+  <meta name="twitter:title" content="${escapeAttr(meta.title)}">
+  <meta name="twitter:description" content="${escapeAttr(meta.desc)}">
   <meta name="twitter:image" content="${OG_IMAGE}">
 
-  <link rel="icon" href="assets/icons/favicon.svg?v=${BUILD_HASH}" type="image/svg+xml">
-  <link rel="icon" href="assets/icons/favicon.png?v=${BUILD_HASH}" sizes="any">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=${BUILD_HASH}">
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="${p}assets/icons/favicon.svg?v=${BUILD_HASH}" type="image/svg+xml">
+  <link rel="icon" href="${p}assets/icons/favicon.png?v=${BUILD_HASH}" sizes="any">
+  <link rel="apple-touch-icon" href="${p}assets/icons/apple-touch-icon.png?v=${BUILD_HASH}">
+  <link rel="manifest" href="${p}site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="styles/app.css${v}">
+  <link rel="stylesheet" href="${p}styles/app.css${v}">
 
-  <script type="application/ld+json">${JSON.stringify(ldJson)}</script>${page.part === "faq.html" ? `
-  <script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""}
+${structured}
 </head>
 <body${page.file === "index.html" ? ' class="is-home"' : ""}>
+  <a class="skip-link" href="#main">${loc.code === "ja" ? "メインコンテンツへ" : "Skip to main content"}</a>
 ${header}
   <main id="main">
 ${main}
   </main>
-${footerHtml}
-${chatbotHtml}
+${shared[loc.code].footer}
+${shared[loc.code].chatbot}
   ${scripts.join("\n  ")}
 </body>
 </html>
@@ -219,20 +342,30 @@ ${chatbotHtml}
 };
 
 let built = 0;
-for (const page of pages) {
-  write(page.file, stripComments(shell(page)));
-  built += 1;
+for (const loc of LOCALES) {
+  if (loc.dir) mkdirSync(join(ROOT, loc.dir), { recursive: true });
+  for (const page of pages) {
+    write(loc.dir + page.file, stripComments(shell(page, loc)));
+    built += 1;
+  }
 }
 
 /* ---- 4. SEO・メタファイル生成(SITE_URL を単一の真実源とする) ---- */
 write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
+/* 各URLに全言語版を xhtml:link で併記する(Google が推奨する言語版の申告方法)。
+   HTMLの hreflang と二重に申告することで、英語圏の検索結果に英語版が出る確度を上げる。 */
 write("sitemap.xml",
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
-  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  pages.map((p) =>
-    `  <url><loc>${SITE_URL}/${p.file}</loc><changefreq>${p.changefreq}</changefreq><priority>${p.priority}</priority></url>`
-  ).join("\n") +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
+  LOCALES.flatMap((loc) => pages.map((p) => {
+    const alts = LOCALES.map((l) =>
+      `\n    <xhtml:link rel="alternate" hreflang="${l.htmlLang}" href="${SITE_URL}/${l.dir}${p.file}"/>`
+    ).join("") +
+    `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/${p.file}"/>`;
+    return `  <url>\n    <loc>${SITE_URL}/${loc.dir}${p.file}</loc>` + alts +
+      `\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`;
+  })).join("\n") +
   "\n</urlset>\n");
 
 write(".well-known/security.txt", [
@@ -269,7 +402,9 @@ const toDist = (rel) => {
   mkdirSync(dirname(dest), { recursive: true });
   copyFileSync(join(ROOT, rel), dest);
 };
-for (const page of pages) toDist(page.file);          // 生成済みHTML(8ページ)
+for (const loc of LOCALES) {                           // 生成済みHTML(日本語8 + 英語8)
+  for (const page of pages) toDist(loc.dir + page.file);
+}
 toDist("styles/app.css");                              // 本番CSS(結合済み)
 cpSync(join(ROOT, "scripts"), join(DIST, "scripts"), { recursive: true }); // 公開JS+vendor
 cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });

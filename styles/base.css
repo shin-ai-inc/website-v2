@@ -157,11 +157,13 @@ body.is-home { background: var(--grad-paper); }
 /* ---- 日本語の意味単位改行 ----
    word-break: auto-phrase は Chromium の形態素解析(BudouX)で文節単位に折り返す。
    text-wrap: balance/pretty は行長の均整と孤立行(行末の1〜2文字落ち)を防ぐ。
-   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。 */
-h1, h2, h3,
-.section__lead, .page-hero__lead, .purpose__support,
-.about-purpose__note, .cta__text, .shin7__desc,
-.industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note {
+   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。
+   auto-phrase は日本語専用のため :lang(ja) に限定する(英語版 /en/ には効かせない)。
+   text-wrap の方は言語を問わず有効なので限定しない。 */
+:lang(ja) :is(h1, h2, h3,
+  .section__lead, .page-hero__lead, .purpose__support,
+  .about-purpose__note, .cta__text, .shin7__desc,
+  .industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note) {
   word-break: auto-phrase;
 }
 h1, h2, h3 {

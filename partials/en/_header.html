@@ -1,12 +1,12 @@
 <!--
-  共有ヘッダー(全ページ共通)。オーケストレーターが各ページへ結合する。
+  共有ヘッダー(英語版・全ページ共通)。オーケストレーターが各ページへ結合する。
   現在地のリンクには結合時に aria-current="page" を付与する。
-  パス接頭辞 {{BASE}} は結合時に解決(ルート公開なら空、サブパスなら "./" 等)。
+  {{LANG_SWITCH}} は結合時に言語切替リンクへ置き換わる。
 -->
 <header class="site-header" data-site-header>
   <div class="container site-header__inner">
-    <a class="site-header__brand" href="index.html" aria-label="ShinAI ホーム">
-      <span class="site-header__tagline"><span class="site-header__tagline-text">AIネイティブな構造変革を支援する</span></span>
+    <a class="site-header__brand" href="index.html" aria-label="ShinAI home">
+      <span class="site-header__tagline"><span class="site-header__tagline-text">Structural change, built AI-native</span></span>
       <span class="site-header__wordmark">Shin<span class="site-header__wordmark-accent">AI</span></span>
     </a>
 
@@ -19,7 +19,7 @@
       data-nav-toggle
       aria-expanded="false"
       aria-controls="primary-nav"
-      aria-label="メニューを開く"
+      aria-label="Open menu"
     >
       <svg class="site-header__toggle-icon site-header__toggle-icon--menu" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <line x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -32,14 +32,14 @@
       </svg>
     </button>
 
-    <nav class="site-header__nav" id="primary-nav" aria-label="グローバルナビゲーション">
+    <nav class="site-header__nav" id="primary-nav" aria-label="Global navigation">
       <ul class="site-header__menu">
-        <li><a class="site-header__link" href="services.html">ソリューション</a></li>
-        <li><a class="site-header__link" href="industries.html">業種別</a></li>
-        <li><a class="site-header__link" href="about.html">会社情報</a></li>
-        <li><a class="site-header__link" href="faq.html">よくあるご質問</a></li>
+        <li><a class="site-header__link" href="services.html">Solutions</a></li>
+        <li><a class="site-header__link" href="industries.html">Industries</a></li>
+        <li><a class="site-header__link" href="about.html">About</a></li>
+        <li><a class="site-header__link" href="faq.html">FAQ</a></li>
       </ul>
-      <a class="btn btn-primary site-header__cta" href="contact.html">無料相談</a>
+      <a class="btn btn-primary site-header__cta" href="contact.html">Free consultation</a>
     </nav>
   </div>
 </header>

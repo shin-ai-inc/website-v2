@@ -1,11 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://shin-ai-inc.github.io/website-v2/index.html</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://shin-ai-inc.github.io/website-v2/services.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://shin-ai-inc.github.io/website-v2/industries.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://shin-ai-inc.github.io/website-v2/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shin-ai-inc.github.io/website-v2/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://shin-ai-inc.github.io/website-v2/contact.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://shin-ai-inc.github.io/website-v2/privacy.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
-  <url><loc>https://shin-ai-inc.github.io/website-v2/terms.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/index.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/services.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/industries.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/industries.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/industries.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/industries.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/about.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/faq.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/contact.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/privacy.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/terms.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/en/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/index.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/en/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/services.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/en/industries.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/industries.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/industries.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/industries.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/about.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/en/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/faq.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/contact.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/privacy.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://shin-ai-inc.github.io/website-v2/en/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shin-ai-inc.github.io/website-v2/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shin-ai-inc.github.io/website-v2/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shin-ai-inc.github.io/website-v2/terms.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
 </urlset>

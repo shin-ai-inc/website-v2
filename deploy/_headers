@@ -23,3 +23,7 @@
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
+
+# `/*.html` は直下しか一致しないため、英語版(/en/)にも同じ再検証を明示する
+/en/*.html
+  Cache-Control: public, max-age=0, must-revalidate

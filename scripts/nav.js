@@ -14,6 +14,11 @@
   var toggle = header.querySelector("[data-nav-toggle]");
   var nav = document.getElementById("primary-nav");
 
+  /* 開閉ラベルはページの言語(html[lang])で切り替える。英語版 /en/ も同じスクリプトを共有する。 */
+  var EN = (document.documentElement.getAttribute("lang") || "ja").indexOf("en") === 0;
+  var LABEL_OPEN = EN ? "Open menu" : "メニューを開く";
+  var LABEL_CLOSE = EN ? "Close menu" : "メニューを閉じる";
+
   /* ---- モバイルナビ開閉 ---- */
   if (toggle && nav) {
     var isOpen = false;
@@ -22,7 +27,7 @@
     var setOpen = function (open) {
       isOpen = open;
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      toggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+      toggle.setAttribute("aria-label", open ? LABEL_CLOSE : LABEL_OPEN);
       nav.classList.toggle("is-open", open);
     };
 

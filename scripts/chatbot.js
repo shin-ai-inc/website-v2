@@ -11,6 +11,35 @@
 (function () {
   "use strict";
 
+  /* 表示文言はページの言語(html[lang])で切り替える。英語版 /en/ も同じスクリプトを共有する。
+     危険パターンの検出regexは言語に関係なく全て適用する(攻撃は言語を選ばない)。 */
+  var EN = (document.documentElement.getAttribute("lang") || "ja").indexOf("en") === 0;
+  var T = EN ? {
+    greet: "Hello. This is the ShinAI assistant. Ask anything about turning tacit knowledge into AI, or about applying it to your work.",
+    tooLong: "That message is too long. Please keep it within 500 characters.",
+    refused: "Sorry, we cannot answer that. For a specific enquiry, please use the contact form.",
+    tooFast: "Messages are coming through quickly. Please wait a moment.",
+    notReady: "The AI assistant is not live yet. Send us a note through the contact form and someone will get back to you.",
+    failed: "Sorry, we could not respond just now. Please use the contact form.",
+    offline: "We could not reach the server. Please check your connection, or contact us through the form.",
+    cta: "Go to contact and free consultation",
+    typing: "Typing",
+    cues: ["contact", "consultation", "get in touch", "adopt", "your company", "price",
+           "pricing", "cost", "how long", "timeline", "more detail", "specific", "proposal", "quote"]
+  } : {
+    greet: "こんにちは。ShinAI のアシスタントです。暗黙知のAI化や業務への適用についてお気軽にお尋ねください。",
+    tooLong: "メッセージが長すぎます。500文字以内でお願いします。",
+    refused: "申し訳ありません。その内容には回答できません。具体的なご相談はお問い合わせフォームをご利用ください。",
+    tooFast: "送信が続いています。少しだけお待ちください。",
+    notReady: "ただいまAIアシスタントは準備中です。お問い合わせフォームよりご連絡いただければ、担当より折り返します。",
+    failed: "申し訳ありません。一時的に応答できませんでした。お問い合わせフォームをご利用ください。",
+    offline: "サーバーに接続できませんでした。通信環境をご確認のうえ、お問い合わせフォームよりご連絡ください。",
+    cta: "お問い合わせ・無料相談へ",
+    typing: "入力中",
+    cues: ["お問い合わせ", "無料相談", "ご相談ください", "導入", "御社", "貴社",
+           "料金", "費用", "期間", "詳しく", "具体的", "ご提案"]
+  };
+
   var Chatbot = {
     button: null,
     panel: null,
@@ -73,10 +102,7 @@
     },
 
     greet: function () {
-      this.addMessage(
-        "こんにちは。ShinAI のアシスタントです。暗黙知のAI化や業務への適用についてお気軽にお尋ねください。",
-        "bot"
-      );
+      this.addMessage(T.greet, "bot");
     },
 
     toggle: function () {
@@ -151,7 +177,7 @@
     /* クライアント側の多層チェック(防御の一層)。 */
     validate: function (text) {
       if (text.length > 500) {
-        return "メッセージが長すぎます。500文字以内でお願いします。";
+        return T.tooLong;
       }
       var dangerous = [
         /<script|javascript:|onerror=|onload=|onclick=/i,
@@ -165,7 +191,7 @@
       var i;
       for (i = 0; i < dangerous.length; i += 1) {
         if (dangerous[i].test(text)) {
-          return "申し訳ありません。その内容には回答できません。具体的なご相談はお問い合わせフォームをご利用ください。";
+          return T.refused;
         }
       }
       return null;
@@ -180,7 +206,7 @@
 
       var now = Date.now();
       if (now - this.lastMessageTime < 2000) {
-        this.addMessage("送信が続いています。少しだけお待ちください。", "bot");
+        this.addMessage(T.tooFast, "bot");
         return;
       }
 
@@ -198,10 +224,7 @@
 
       var apiBase = (window.SHINAI_CONFIG && window.SHINAI_CONFIG.chatbotApiBase) || "";
       if (!apiBase) {
-        this.addMessage(
-          "ただいまAIアシスタントは準備中です。お問い合わせフォームよりご連絡いただければ、担当より折り返します。",
-          "bot"
-        );
+        this.addMessage(T.notReady, "bot");
         this.addContactCta();
         return;
       }
@@ -227,13 +250,13 @@
               : (data.response && data.response.response) || "";
             self.typeMessage(String(responseText));
           } else {
-            self.addMessage("申し訳ありません。一時的に応答できませんでした。お問い合わせフォームをご利用ください。", "bot");
+            self.addMessage(T.failed, "bot");
             self.addContactCta();
           }
         }, self.loadingDelay);
       }).catch(function () {
         self.hideTyping();
-        self.addMessage("サーバーに接続できませんでした。通信環境をご確認のうえ、お問い合わせフォームよりご連絡ください。", "bot");
+        self.addMessage(T.offline, "bot");
         self.addContactCta();
       });
     },
@@ -281,13 +304,11 @@
     },
 
     shouldShowCta: function (text) {
-      var cues = [
-        "お問い合わせ", "無料相談", "ご相談ください", "導入", "御社", "貴社",
-        "料金", "費用", "期間", "詳しく", "具体的", "ご提案"
-      ];
+      var cues = T.cues;
+      var hay = EN ? text.toLowerCase() : text;
       var i;
       for (i = 0; i < cues.length; i += 1) {
-        if (text.indexOf(cues[i]) !== -1) {
+        if (hay.indexOf(cues[i]) !== -1) {
           return true;
         }
       }
@@ -301,7 +322,7 @@
       var link = document.createElement("a");
       link.className = "btn btn-primary chatbot__cta-btn";
       link.href = path;
-      link.textContent = "お問い合わせ・無料相談へ";
+      link.textContent = T.cta;
       wrap.appendChild(link);
       this.messages.appendChild(wrap);
       this.scrollToEnd();
@@ -312,7 +333,7 @@
       var el = document.createElement("div");
       el.className = "chatbot__message chatbot__message--bot chatbot__typing";
       el.id = "chatbot-typing";
-      el.setAttribute("aria-label", "入力中");
+      el.setAttribute("aria-label", T.typing);
       var k;
       for (k = 0; k < 3; k += 1) {
         var dot = document.createElement("span");

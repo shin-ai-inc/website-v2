@@ -317,11 +317,13 @@ body.is-home { background: var(--grad-paper); }
 /* ---- 日本語の意味単位改行 ----
    word-break: auto-phrase は Chromium の形態素解析(BudouX)で文節単位に折り返す。
    text-wrap: balance/pretty は行長の均整と孤立行(行末の1〜2文字落ち)を防ぐ。
-   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。 */
-h1, h2, h3,
-.section__lead, .page-hero__lead, .purpose__support,
-.about-purpose__note, .cta__text, .shin7__desc,
-.industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note {
+   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。
+   auto-phrase は日本語専用のため :lang(ja) に限定する(英語版 /en/ には効かせない)。
+   text-wrap の方は言語を問わず有効なので限定しない。 */
+:lang(ja) :is(h1, h2, h3,
+  .section__lead, .page-hero__lead, .purpose__support,
+  .about-purpose__note, .cta__text, .shin7__desc,
+  .industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note) {
   word-break: auto-phrase;
 }
 h1, h2, h3 {
@@ -2467,9 +2469,12 @@ h1, h2, h3 {
 
 .faq-item__q-text {
   flex: 1;
-  /* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ */
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+/* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ(日本語専用) */
+:lang(ja) .faq-item__q-text {
+  word-break: auto-phrase;
 }
 
 /* 自作マーカー: 横棒(常時) + 縦棒(閉時のみ) = + / - */
@@ -2519,8 +2524,11 @@ h1, h2, h3 {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--ink-3);
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+:lang(ja) .faq-item__a p {
+  word-break: auto-phrase;
 }
 
 /* 開く際の入場アニメーション */
@@ -2888,6 +2896,47 @@ h1, h2, h3 {
   padding: 0.6rem 1.3rem;
 }
 
+/* ---- Language switch ---- */
+/* ナビの外(ハンバーガーの手前)に置き、モバイルでもメニューを開かずに1タップで切り替えられる。
+   margin-left:auto でブランドとの間を開き、以降(nav / toggle)を右へ寄せる。 */
+.site-header__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  margin-left: auto;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid var(--line-ink);
+  border-radius: 999px;
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out),
+    background-color var(--dur-1) var(--ease-out);
+}
+
+.site-header__lang-icon {
+  flex: none;
+  opacity: 0.7;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+
+.site-header__lang:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+}
+
+.site-header__lang:hover .site-header__lang-icon {
+  opacity: 1;
+}
+
 /* ---- Mobile toggle ---- */
 .site-header__toggle {
   display: none;
@@ -2924,6 +2973,16 @@ h1, h2, h3 {
 
   .site-header__toggle {
     display: inline-flex;
+  }
+
+  /* ブランド(タグライン付き)・言語切替・ハンバーガーを一行に収める。
+     間隔を詰め、余白の取り合いはタグラインに譲らせる。 */
+  .site-header__inner {
+    gap: var(--space-3);
+  }
+
+  .site-header__lang {
+    padding: 0.4rem 0.7rem;
   }
 
   .site-header__nav {
@@ -2981,6 +3040,19 @@ h1, h2, h3 {
   .site-header__cta {
     margin-top: var(--space-3);
     padding: 0.8rem 1.5rem;
+  }
+}
+
+/* 狭幅では言語切替を地球アイコンだけに畳む。ブランドのタグラインと
+   ハンバーガーが一行に収まらなくなるため、先に文字ラベルを落とす。
+   アイコン単独でも意味は通り、ナビの外にあるので1タップのまま。 */
+@media (max-width: 480px) {
+  .site-header__lang-label {
+    display: none;
+  }
+
+  .site-header__lang {
+    padding: 0.45rem;
   }
 }
 
@@ -3954,9 +4026,12 @@ h1, h2, h3 {
   font-size: var(--fs-h3);
   line-height: var(--lh-snug);
   color: var(--ink);
-  /* 日本語を文節単位で折り返し、「第/9回」のような不自然な行末孤立を防ぐ */
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+/* 日本語を文節単位で折り返し、「第/9回」のような不自然な行末孤立を防ぐ(日本語専用) */
+:lang(ja) .news__title {
+  word-break: auto-phrase;
 }
 
 .news__text {

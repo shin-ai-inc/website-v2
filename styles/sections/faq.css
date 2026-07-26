@@ -109,9 +109,12 @@
 
 .faq-item__q-text {
   flex: 1;
-  /* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ */
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+/* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ(日本語専用) */
+:lang(ja) .faq-item__q-text {
+  word-break: auto-phrase;
 }
 
 /* 自作マーカー: 横棒(常時) + 縦棒(閉時のみ) = + / - */
@@ -161,8 +164,11 @@
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--ink-3);
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+:lang(ja) .faq-item__a p {
+  word-break: auto-phrase;
 }
 
 /* 開く際の入場アニメーション */

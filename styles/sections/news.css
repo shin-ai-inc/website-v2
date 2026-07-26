@@ -92,9 +92,12 @@
   font-size: var(--fs-h3);
   line-height: var(--lh-snug);
   color: var(--ink);
-  /* 日本語を文節単位で折り返し、「第/9回」のような不自然な行末孤立を防ぐ */
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+/* 日本語を文節単位で折り返し、「第/9回」のような不自然な行末孤立を防ぐ(日本語専用) */
+:lang(ja) .news__title {
+  word-break: auto-phrase;
 }
 
 .news__text {

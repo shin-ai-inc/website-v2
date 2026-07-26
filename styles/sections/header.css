@@ -134,6 +134,47 @@
   padding: 0.6rem 1.3rem;
 }
 
+/* ---- Language switch ---- */
+/* ナビの外(ハンバーガーの手前)に置き、モバイルでもメニューを開かずに1タップで切り替えられる。
+   margin-left:auto でブランドとの間を開き、以降(nav / toggle)を右へ寄せる。 */
+.site-header__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  margin-left: auto;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid var(--line-ink);
+  border-radius: 999px;
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out),
+    background-color var(--dur-1) var(--ease-out);
+}
+
+.site-header__lang-icon {
+  flex: none;
+  opacity: 0.7;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+
+.site-header__lang:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+}
+
+.site-header__lang:hover .site-header__lang-icon {
+  opacity: 1;
+}
+
 /* ---- Mobile toggle ---- */
 .site-header__toggle {
   display: none;
@@ -170,6 +211,16 @@
 
   .site-header__toggle {
     display: inline-flex;
+  }
+
+  /* ブランド(タグライン付き)・言語切替・ハンバーガーを一行に収める。
+     間隔を詰め、余白の取り合いはタグラインに譲らせる。 */
+  .site-header__inner {
+    gap: var(--space-3);
+  }
+
+  .site-header__lang {
+    padding: 0.4rem 0.7rem;
   }
 
   .site-header__nav {
@@ -227,5 +278,18 @@
   .site-header__cta {
     margin-top: var(--space-3);
     padding: 0.8rem 1.5rem;
+  }
+}
+
+/* 狭幅では言語切替を地球アイコンだけに畳む。ブランドのタグラインと
+   ハンバーガーが一行に収まらなくなるため、先に文字ラベルを落とす。
+   アイコン単独でも意味は通り、ナビの外にあるので1タップのまま。 */
+@media (max-width: 480px) {
+  .site-header__lang-label {
+    display: none;
+  }
+
+  .site-header__lang {
+    padding: 0.45rem;
   }
 }
