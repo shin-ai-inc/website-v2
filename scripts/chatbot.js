@@ -15,7 +15,7 @@
      危険パターンの検出regexは言語に関係なく全て適用する(攻撃は言語を選ばない)。 */
   var EN = (document.documentElement.getAttribute("lang") || "ja").indexOf("en") === 0;
   var T = EN ? {
-    greet: "Hello. This is the ShinAI assistant. Ask anything about turning tacit knowledge into AI, or about applying it to your work.",
+    greet: "Hello. This is the ShinAI assistant. Ask anything about unlocking tacit knowledge, or about applying it to your work.",
     tooLong: "That message is too long. Please keep it within 500 characters.",
     refused: "Sorry, we cannot answer that. For a specific enquiry, please use the contact form.",
     tooFast: "Messages are coming through quickly. Please wait a moment.",
@@ -27,7 +27,7 @@
     cues: ["contact", "consultation", "get in touch", "adopt", "your company", "price",
            "pricing", "cost", "how long", "timeline", "more detail", "specific", "proposal", "quote"]
   } : {
-    greet: "こんにちは。ShinAI のアシスタントです。暗黙知のAI化や業務への適用についてお気軽にお尋ねください。",
+    greet: "こんにちは。ShinAI のアシスタントです。暗黙知の解消や業務への適用についてお気軽にお尋ねください。",
     tooLong: "メッセージが長すぎます。500文字以内でお願いします。",
     refused: "申し訳ありません。その内容には回答できません。具体的なご相談はお問い合わせフォームをご利用ください。",
     tooFast: "送信が続いています。少しだけお待ちください。",
