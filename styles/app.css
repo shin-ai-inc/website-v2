@@ -325,6 +325,16 @@ h1, h2, h3 {
   white-space: nowrap;
 }
 
+/* モバイル限定の改行。PC等では無視され、640px以下でのみ改行として効く。 */
+.br-sp {
+  display: none;
+}
+@media (max-width: 640px) {
+  .br-sp {
+    display: inline;
+  }
+}
+
 .section__more {
   margin-top: var(--space-5);
   text-align: center;
