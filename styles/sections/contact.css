@@ -8,24 +8,27 @@
 .contact-flow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .contact-flow__step {
   position: relative;
   text-align: center;
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-4);
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  /* --r-lg(22px) は柔らかすぎて資料然としないため、一段締めた角丸にする */
+  border-radius: var(--r-md);
   background: var(--paper);
   box-shadow: var(--shadow-sm);
   transition:
     transform var(--dur-1) var(--ease-out),
-    box-shadow var(--dur-1) var(--ease-out);
+    box-shadow var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
 }
 
 .contact-flow__step:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
+  border-color: rgba(58, 95, 235, 0.22);
   box-shadow: var(--shadow-md);
 }
 
@@ -38,12 +41,12 @@
   content: "";
   position: absolute;
   z-index: 1;
-  top: calc(var(--space-5) + 28px);
-  left: calc(50% + 28px);
-  width: calc(100% + var(--space-5) - 56px);
+  top: calc(var(--space-4) + 22px);
+  left: calc(50% + 22px);
+  width: calc(100% + var(--space-4) - 44px);
   height: 2px;
   background: var(--brand);
-  opacity: 0.4;
+  opacity: 0.6;
   transform: translateY(-50%);
 }
 
@@ -52,30 +55,33 @@
   z-index: 2;
 }
 
+/* 塗りつぶしの淡色円は輪郭が曖昧になるため、白地にブランド色の輪で締める。
+   接続線がこの輪にぴたりと接し、円から円へ渡る構造として読める。 */
 .contact-flow__icon {
   position: relative;
   z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   margin-bottom: var(--space-3);
   border-radius: 50%;
   color: var(--brand);
-  background: var(--c-tacit-bg);
-  border: 1px solid var(--line-ink);
+  background: var(--paper);
+  border: 1.5px solid rgba(58, 95, 235, 0.3);
 }
 
 .contact-flow__icon svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 .contact-flow__step-label {
   display: block;
-  font-family: var(--font-latin);
+  font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
+  font-weight: 500;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--brand);
@@ -83,14 +89,15 @@
 }
 
 .contact-flow__title {
-  font-size: var(--fs-h3);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: var(--lh-snug);
   color: var(--ink);
   margin-bottom: var(--space-2);
 }
 
 .contact-flow__text {
   font-size: var(--fs-sm);
-  line-height: var(--lh-body);
+  line-height: var(--lh-snug);
   color: var(--ink-3);
   max-width: 22em;
   margin-inline: auto;
@@ -428,17 +435,18 @@
     padding: var(--space-4) var(--space-3);
   }
   .contact-flow__icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: var(--space-2);
   }
   .contact-flow__icon svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
   .contact-flow__step:not(:last-child)::after {
-    top: calc(var(--space-4) + 24px);
-    left: calc(50% + 24px);
-    width: calc(100% + var(--space-3) - 48px);
+    top: calc(var(--space-4) + 20px);
+    left: calc(50% + 20px);
+    width: calc(100% + var(--space-3) - 40px);
   }
 }
 
@@ -465,11 +473,6 @@
   .contact-flow__step {
     scroll-snap-align: center;
     padding: var(--space-4) var(--space-3);
-  }
-  .contact-flow__step:not(:last-child)::after {
-    top: calc(var(--space-4) + 24px);
-    left: calc(50% + 24px);
-    width: calc(100% + var(--space-3) - 48px);
   }
 }
 
