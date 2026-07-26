@@ -1697,93 +1697,105 @@ h1, h2, h3 {
   色・余白・型はトークンのみ参照。クラスは .contact- で名前空間化。
 */
 
-/* ---- 無料相談の流れ（横一列の段階フロー。アイコンを罫でつなぐ） ---- */
+/* ---- 無料相談の流れ ----
+   箱を廃したエディトリアルなタイムライン。番号ノードをレールでつなぎ、工程の進行を静かに描く。
+   デスクトップ: 横並び・ノードの高さでレールを渡す。モバイル: 左レールの縦タイムラインへ。
+   ノード径 64px を単一の真実源として位置計算に用いる。 */
 .contact-flow {
+  --node: 64px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
+  gap: clamp(var(--space-4), 3vw, var(--space-6));
 }
 
 .contact-flow__step {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: var(--space-4);
-  border: 1px solid var(--line);
-  /* --r-lg(22px) は柔らかすぎて資料然としないため、一段締めた角丸にする */
-  border-radius: var(--r-md);
-  background: var(--paper);
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform var(--dur-1) var(--ease-out),
-    box-shadow var(--dur-1) var(--ease-out),
-    border-color var(--dur-1) var(--ease-out);
 }
 
-.contact-flow__step:hover {
-  transform: translateY(-2px);
-  border-color: rgba(58, 95, 235, 0.22);
-  box-shadow: var(--shadow-md);
-}
-
-/* ステップ間の送り。アイコンとアイコンのあいだを左から右へ一本の線でつなぎ、
-   工程が地続きであることを目で追えるようにする。
-   カードが不透明な面になったため、素直に引くと線が隣のカードの下へ潜り、
-   次のアイコンへ届く前に切れて見える。z-index で隣のカードより上の層に出す。
-   両端はアイコンの縁ぴったりで止め、円から円へ渡っているように見せる。 */
-.contact-flow__step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  top: calc(var(--space-4) + 22px);
-  left: calc(50% + 22px);
-  width: calc(100% + var(--space-4) - 44px);
-  /* 細く繊細に。太い線は資料然として重い。1pxのヘアラインで工程を上品につなぐ。 */
-  height: 1px;
-  background: var(--brand);
-  opacity: 0.4;
-  transform: translateY(-50%);
-}
-
-/* hover の transform は重なり順を閉じてしまうため、線ごとカードを前面へ出す。 */
-.contact-flow__step:hover {
-  z-index: 2;
-}
-
-/* 塗りつぶしの淡色円は輪郭が曖昧になるため、白地にブランド色の輪で締める。
-   接続線がこの輪にぴたりと接し、円から円へ渡る構造として読める。 */
-.contact-flow__icon {
+/* ノード: アイコンを収めた円 + 右上の番号チップ。工程の「点」を明確に立てる。 */
+.contact-flow__node {
   position: relative;
   z-index: 1;
+  width: var(--node);
+  height: var(--node);
+  margin-bottom: var(--space-4);
+}
+
+.contact-flow__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-bottom: var(--space-3);
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   color: var(--brand);
   background: var(--paper);
-  border: 1.5px solid rgba(58, 95, 235, 0.3);
+  border: 1.5px solid color-mix(in srgb, var(--brand) 32%, transparent);
+  box-shadow: 0 6px 18px rgba(58, 95, 235, 0.10);
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out);
 }
 
 .contact-flow__icon svg {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
 }
 
-.contact-flow__step-label {
-  display: block;
+.contact-flow__step:hover .contact-flow__icon {
+  border-color: var(--brand);
+  transform: translateY(-3px);
+}
+
+/* 右上に小さく番号を添える。進行(01→02→03)を数字で明示する。 */
+.contact-flow__num {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding-inline: 0.35em;
+  border-radius: var(--r-pill);
   font-family: var(--font-label);
-  font-size: var(--fs-eyebrow);
-  font-weight: 500;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: var(--space-1);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  background: var(--brand);
+  border: 2px solid var(--paper);
+}
+
+/* レール: ノード中心の高さで、円の縁から次の円の縁へ渡す。方向を示すブランド→青緑のグラデ。 */
+.contact-flow__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: calc(var(--node) / 2);
+  left: calc(50% + var(--node) / 2 + var(--space-2));
+  width: calc(100% - var(--node) + clamp(var(--space-4), 3vw, var(--space-6)) - var(--space-2) * 2);
+  height: 2px;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--brand) 55%, transparent),
+    color-mix(in srgb, var(--teal) 55%, transparent));
+  transform: translateY(-50%);
+}
+
+.contact-flow__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contact-flow__title {
-  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  font-size: clamp(1.0625rem, 1.2vw, 1.1875rem);
+  font-weight: 600;
   line-height: var(--lh-snug);
   color: var(--ink);
   margin-bottom: var(--space-2);
@@ -1791,7 +1803,7 @@ h1, h2, h3 {
 
 .contact-flow__text {
   font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
+  line-height: var(--lh-body);
   color: var(--ink-3);
   max-width: 22em;
   margin-inline: auto;
@@ -2119,54 +2131,58 @@ h1, h2, h3 {
   }
 }
 
-/* 狭い画面でも縦積みにせず、左から右への流れを保ったまま寸法だけ詰める。
-   アイコンが縮むぶん、線の始点・終点(アイコンの半径)も合わせて詰める。 */
+/* タブレット帯: ノードをやや詰める(横3列は維持)。 */
 @media (max-width: 820px) {
   .contact-flow {
-    gap: var(--space-3);
-  }
-  .contact-flow__step {
-    padding: var(--space-4) var(--space-3);
-  }
-  .contact-flow__icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: var(--space-2);
+    --node: 56px;
   }
   .contact-flow__icon svg {
-    width: 18px;
-    height: 18px;
-  }
-  .contact-flow__step:not(:last-child)::after {
-    top: calc(var(--space-4) + 20px);
-    left: calc(50% + 20px);
-    width: calc(100% + var(--space-3) - 40px);
+    width: 22px;
+    height: 22px;
   }
 }
 
-/* スマートフォン。3列のまま画面に収めると本文が1行3〜4文字になり読めないため、
-   カードの最小幅を確保したうえで横スクロールにする。
-   縦積みにすると流れが上から下になってしまうので、左から右の並びは崩さない。 */
-@media (max-width: 560px) {
+/* スマートフォン: 横スクロールをやめ、左レールの縦タイムラインへ。
+   ノードを左・本文を右に置き、ノード中心を縦のレールが貫く。上から下への流れが自然で溢れない。 */
+@media (max-width: 640px) {
   .contact-flow {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(15rem, 1fr);
-    gap: var(--space-3);
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    /* 影が切れないための上下余白と、端のカードまで寄せ切るための内側余白 */
-    padding-block: var(--space-2);
-    margin-inline: calc(-1 * var(--space-4));
-    padding-inline: var(--space-4);
-    scrollbar-width: none;
-  }
-  .contact-flow::-webkit-scrollbar {
-    display: none;
+    --node: 52px;
+    grid-template-columns: 1fr;
+    gap: 0;
   }
   .contact-flow__step {
-    scroll-snap-align: center;
-    padding: var(--space-4) var(--space-3);
+    display: grid;
+    grid-template-columns: var(--node) 1fr;
+    column-gap: var(--space-4);
+    align-items: start;
+    text-align: left;
+    padding-bottom: var(--space-5);
+  }
+  /* 最終ステップ下の余白は不要(レールも伸ばさない)。 */
+  .contact-flow__step:last-child {
+    padding-bottom: 0;
+  }
+  .contact-flow__node {
+    margin-bottom: 0;
+  }
+  /* 縦レール: ノード中心から次のノードへ、列を貫いて下ろす。 */
+  .contact-flow__step:not(:last-child)::after {
+    top: var(--node);
+    left: calc(var(--node) / 2);
+    width: 2px;
+    height: calc(100% - var(--node));
+    background: linear-gradient(180deg,
+      color-mix(in srgb, var(--brand) 55%, transparent),
+      color-mix(in srgb, var(--teal) 55%, transparent));
+    transform: translateX(-50%);
+  }
+  .contact-flow__body {
+    align-items: flex-start;
+    padding-top: 0.35rem;
+  }
+  .contact-flow__text {
+    max-width: none;
+    margin-inline: 0;
   }
 }
 
