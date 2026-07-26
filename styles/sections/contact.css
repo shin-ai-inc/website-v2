@@ -359,7 +359,8 @@
 .contact-aside {
   position: relative;
   padding: clamp(var(--space-5), 4vw, var(--space-6));
-  background: var(--c-tacit-bg);
+  /* 薄水色(カテゴリ色)ではなく温かいオフホワイト地に。AIっぽさを避け本文と調和させる。 */
+  background: var(--paper-2);
   border: 1px solid var(--line-ink);
   border-radius: var(--r-xl);
 }

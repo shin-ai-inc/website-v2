@@ -8,15 +8,18 @@
 :root {
   /* ---- Color: base (純白基調 + 極淡い藍青のニュアンス) ---- */
   --paper: #FFFFFF;            /* 純白。全体背景 */
-  --paper-2: #F5F7FF;          /* セクション交互の極淡い藍青 */
-  --paper-3: #EBF0FF;          /* カード境界・微細な面 */
+  /* 交互セクションの地色。AI/テックが多用する青みの淡色を脱し、温かいオフホワイト(紙)へ。
+     クールなブランド藍青×青緑を温かい紙地に載せ、エディトリアルで人間的な質感を出す。
+     明度は旧#F5F7FF相当を保ち、--mist等の文字コントラスト(4.5:1)を維持する。 */
+  --paper-2: #FAF8F3;          /* セクション交互の温かいオフホワイト */
+  --paper-3: #F2EFE8;          /* カード境界・微細な面(温かい淡中性色) */
   --ink: #0C1A36;              /* 深い藍黒。主色・見出し */
   --ink-deep: #060E1E;         /* 最深の藍黒。grad-dark の終端＝フッター地色 */
   --ink-2: #1A2E52;            /* 藍の中間 */
   --ink-3: #4A5A7A;            /* 補助テキスト */
   --charcoal: #1E2D4A;         /* 本文 */
   --mist: #637290;             /* キャプション。白地・--paper-2 地の双方で 4.5:1(旧 #6B7A99 は 4.03:1) */
-  --line: #E2E8F7;             /* 罫線 */
+  --line: #E9E4DB;             /* 罫線。青みを抜いた温かい中性ヘアライン */
   --line-ink: rgba(12, 26, 54, 0.10);
 
   /* ---- Color: brand (企業カラー。藍青→青緑→エネルギーオレンジ) ---- */
@@ -57,7 +60,7 @@
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
   --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
-  --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #F5F7FF 70%, #EBF0FF 100%);
+  --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #FAF8F3 70%, #F2EFE8 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
   --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, var(--ink-deep) 100%);
@@ -2052,7 +2055,8 @@ h1, h2, h3 {
 .contact-aside {
   position: relative;
   padding: clamp(var(--space-5), 4vw, var(--space-6));
-  background: var(--c-tacit-bg);
+  /* 薄水色(カテゴリ色)ではなく温かいオフホワイト地に。AIっぽさを避け本文と調和させる。 */
+  background: var(--paper-2);
   border: 1px solid var(--line-ink);
   border-radius: var(--r-xl);
 }
