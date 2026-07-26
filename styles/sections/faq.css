@@ -5,6 +5,44 @@
   色・余白・型はトークンのみ参照。
 */
 
+/* ---- カテゴリ絞り込み(JSによる段階的強化。無効時は非表示のまま全問閲覧可) ---- */
+.faq-controls {
+  margin-bottom: var(--space-5);
+}
+
+.faq-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.faq-chip {
+  padding: 0.4em 1.1em;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background-color var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+
+.faq-chip:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.faq-chip.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #FFFFFF;
+}
+
 .faq__groups {
   display: grid;
   gap: var(--space-6);
@@ -69,7 +107,12 @@
 
 .faq-item__q:hover { color: var(--brand); }
 
-.faq-item__q-text { flex: 1; }
+.faq-item__q-text {
+  flex: 1;
+  /* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ */
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
 
 /* 自作マーカー: 横棒(常時) + 縦棒(閉時のみ) = + / - */
 .faq-item__marker {
@@ -118,6 +161,8 @@
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--ink-3);
+  word-break: auto-phrase;
+  text-wrap: pretty;
 }
 
 /* 開く際の入場アニメーション */
@@ -128,6 +173,18 @@
 @keyframes faq-open {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* モバイルは質問・回答の字を一段落として、スマートで軽快な一覧にする */
+@media (max-width: 640px) {
+  .faq-item__q {
+    font-size: var(--fs-sm);
+    padding-block: var(--space-3);
+    gap: var(--space-3);
+  }
+  .faq-item__a p {
+    font-size: var(--fs-sm);
+  }
 }
 
 @media (max-width: 480px) {

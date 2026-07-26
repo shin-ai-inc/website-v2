@@ -46,6 +46,17 @@
       if (this.closeBtn) {
         this.closeBtn.addEventListener("click", function () { self.close(); });
       }
+
+      /* モバイルのソフトキーボード対策: シートの高さを可視ビューポートへ追従させ、
+         入力欄が常にキーボードの上に見える状態を保つ(iOS/Android共通)。 */
+      if (window.visualViewport) {
+        var syncSheet = function () { self.fitToViewport(); };
+        window.visualViewport.addEventListener("resize", syncSheet);
+        window.visualViewport.addEventListener("scroll", syncSheet);
+      }
+      this.input.addEventListener("focus", function () {
+        window.setTimeout(function () { self.scrollToEnd(); }, 250);
+      });
       this.sendBtn.addEventListener("click", function () { self.send(); });
       this.input.addEventListener("keydown", function (e) {
         if (e.key === "Enter" && !e.shiftKey) {
@@ -63,7 +74,7 @@
 
     greet: function () {
       this.addMessage(
-        "こんにちは。ShinAI のアシスタントです。暗黙知のAI化や、業務への適用について、気軽にお尋ねください。",
+        "こんにちは。ShinAI のアシスタントです。暗黙知のAI化や業務への適用についてお気軽にお尋ねください。",
         "bot"
       );
     },
@@ -72,6 +83,14 @@
       var willOpen = !this.panel.classList.contains("is-open");
       this.panel.classList.toggle("is-open", willOpen);
       this.button.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      if (willOpen) {
+        this.lockBackground();
+        this.fitToViewport();
+        this.scrollToEnd();
+      } else {
+        this.unlockBackground();
+        this.resetSheet();
+      }
       if (willOpen && window.innerWidth > 768) {
         this.input.focus();
       }
@@ -80,6 +99,53 @@
     close: function () {
       this.panel.classList.remove("is-open");
       this.button.setAttribute("aria-expanded", "false");
+      this.unlockBackground();
+      this.resetSheet();
+    },
+
+    /* 背景ページの固定。iOSはbodyのoverflow:hiddenが効かないため position:fixed 方式で止める */
+    lockBackground: function () {
+      if (window.innerWidth > 640) {
+        return;
+      }
+      this.savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+      document.body.style.position = "fixed";
+      document.body.style.top = -this.savedScrollY + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    },
+
+    unlockBackground: function () {
+      if (document.body.style.position !== "fixed") {
+        return;
+      }
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, this.savedScrollY || 0);
+    },
+
+    /* キーボードに隠れる高さを計測し --chat-kb へ。CSSが bottom を持ち上げて
+       入力バーを常にキーボードの真上へ保つ(1プロパティ更新のみで描画が安定する) */
+    fitToViewport: function () {
+      if (window.innerWidth > 640 || !this.panel.classList.contains("is-open")) {
+        this.resetSheet();
+        return;
+      }
+      var vv = window.visualViewport;
+      if (!vv) {
+        return;
+      }
+      var covered = Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop));
+      this.panel.style.setProperty("--chat-kb", covered + "px");
+      this.scrollToEnd();
+    },
+
+    resetSheet: function () {
+      this.panel.style.removeProperty("--chat-kb");
     },
 
     /* クライアント側の多層チェック(防御の一層)。 */

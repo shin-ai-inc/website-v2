@@ -34,3 +34,8 @@ dist/
 /z-*.png
 /full-*.png
 /mobile-*.png
+
+# ローカル検証用ツール(公開リポジトリには含めない)
+/_ss.mjs
+/package.json
+/package-lock.json

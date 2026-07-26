@@ -15,8 +15,8 @@
         <span class="page-hero__title-line">無料相談・</span><span class="page-hero__title-line page-hero__title-accent">お問い合わせ</span>
       </h1>
       <p class="page-hero__lead">
-        <span class="page-hero__lead-line">課題の輪郭が見えていなくても、要件が固まっていなくても構いません。</span>
-        <span class="page-hero__lead-line">いまの業務と状況を聞かせてください。可能性を一緒に整理します。</span>
+        <span class="page-hero__lead-line">課題の輪郭が見えていなくても、<span class="nobr">要件が固まっていなくても構いません。</span></span>
+        <span class="page-hero__lead-line">いまの業務と状況を聞かせてください。<span class="nobr">可能性を一緒に整理します。</span></span>
       </p>
     </div>
   </div>
@@ -28,7 +28,7 @@
       <p class="eyebrow">How it works</p>
       <h2 id="flow-title" class="section__title">無料相談の流れ</h2>
       <p class="section__lead">
-        <span class="section__lead-line">オンラインで20〜30分ほど。</span>
+        <span class="section__lead-line">オンラインで30〜45分ほど。</span>
         <span class="section__lead-line">事前の準備や資料は不要です。</span>
       </p>
     </div>
@@ -43,7 +43,7 @@
         </span>
         <span class="contact-flow__step-label">Step 01</span>
         <h3 class="contact-flow__title">お申し込み</h3>
-        <p class="contact-flow__text">下のフォームから、いまのお困りごとを簡単にお知らせください。内容に応じて日程を調整します。</p>
+        <p class="contact-flow__text">下のフォームから、いまのお困りごとを簡単にお知らせください。内容に応じて日程を調整し、こちらから Zoom 等のオンライン会議リンクをお送りします。</p>
       </li>
       <li class="contact-flow__step reveal" data-delay="2">
         <span class="contact-flow__icon" aria-hidden="true">
@@ -55,7 +55,7 @@
         </span>
         <span class="contact-flow__step-label">Step 02</span>
         <h3 class="contact-flow__title">オンラインで対話</h3>
-        <p class="contact-flow__text">20〜30分ほど、現在の業務と課題をうかがいます。専門用語は使わず、目的の整理から始めます。</p>
+        <p class="contact-flow__text">30〜45分ほど、現在の業務と課題をうかがいます。専門用語は使わず、目的の整理から始めます。</p>
       </li>
       <li class="contact-flow__step reveal" data-delay="3">
         <span class="contact-flow__icon" aria-hidden="true">
@@ -83,8 +83,11 @@
           <p class="contact-form-card__lead">いただいた内容を確認のうえ、数営業日以内にご連絡します。</p>
         </div>
 
-        <!-- 送信先はデプロイ時に実エンドポイントへ差し替える（鍵やURLは埋め込まない） -->
-        <form class="contact-form" method="post" action="#" novalidate aria-describedby="contact-form-note">
+        <!-- Formspree: formspree.io でフォームを作成し、YOUR_FORM_ID を実際の ID に置換する -->
+        <form class="contact-form" method="post"
+              action="https://formspree.io/f/YOUR_FORM_ID_HERE"
+              aria-describedby="contact-form-note">
+          <input type="hidden" name="_subject" value="ShinAI お問い合わせ">
           <!-- ハニーポット: 視覚非表示。人間は入力しない。値があれば送信側で破棄する -->
           <div class="contact-hp" aria-hidden="true">
             <label for="company-website">この欄は入力しないでください</label>
@@ -97,7 +100,7 @@
             </label>
             <input class="contact-field__input" type="text" id="company" name="company"
                    required aria-required="true" maxlength="100"
-                   autocomplete="organization" placeholder="例 ShinAI（個人事業の方は屋号）">
+                   autocomplete="organization" placeholder="例 シンアイ株式会社">
           </div>
 
           <div class="contact-field">
@@ -116,14 +119,14 @@
               </label>
               <input class="contact-field__input" type="email" id="email" name="email"
                      required aria-required="true" maxlength="254"
-                     autocomplete="email" inputmode="email" placeholder="例 name@example.com">
+                     autocomplete="email" inputmode="email" placeholder="例 yamada@example.com">
             </div>
             <div class="contact-field">
               <label class="contact-field__label" for="phone">
                 電話番号 <span class="contact-opt">任意</span>
               </label>
               <input class="contact-field__input" type="tel" id="phone" name="phone"
-                     maxlength="20" autocomplete="tel" inputmode="tel" placeholder="例 03-1234-5678">
+                     maxlength="20" autocomplete="tel" inputmode="tel" placeholder="例 090-1234-5678">
             </div>
           </div>
 
@@ -158,6 +161,15 @@
               </svg>
             </button>
           </div>
+
+          <div id="contact-success" class="contact-form__feedback contact-form__feedback--success" hidden>
+            <strong>送信しました。</strong>内容を確認のうえ、数営業日以内にご連絡します。
+          </div>
+          <div id="contact-error" class="contact-form__feedback contact-form__feedback--error" hidden>
+            送信に問題が発生しました。お手数ですが
+            <a href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
+            より直接ご連絡ください。
+          </div>
         </form>
       </div>
 
@@ -180,7 +192,7 @@
           </div>
           <div class="contact-info__item">
             <dt class="contact-info__label">所在地</dt>
-            <dd class="contact-info__value">群馬県高崎市井野町360-7 オークスアベニューD201</dd>
+            <dd class="contact-info__value">群馬県高崎市井野町360-7 <span class="nobr">オークスアベニューD201</span></dd>
           </div>
         </dl>
 

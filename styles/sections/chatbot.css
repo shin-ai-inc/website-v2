@@ -216,7 +216,7 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--r-md);
-  background: var(--grad-brand);
+  background: var(--brand);
   color: #fff;
   transition:
     filter var(--dur-1) var(--ease-out),
@@ -235,4 +235,78 @@
 @media (max-width: 480px) {
   .chatbot__launcher-label { display: none; }
   .chatbot__launcher { padding: 0.85rem; }
+}
+
+/* ---- モバイル: フルスクリーンのチャット画面(LINE型) ----
+   ヘッダー固定・メッセージが伸縮・入力バーは常に最下部という3層のチャット画面。
+   キーボードは chatbot.js が高さを計測し --chat-kb にセット、bottom だけを持ち上げる
+   (高さ書換より描画が安定し、iOSのキーボードアニメーション中も崩れない)。
+   背景の固定は chatbot.js が body position:fixed 方式で行う(iOSはoverflow:hiddenが効かない)。 */
+@media (max-width: 640px) {
+  .chatbot__window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: var(--chat-kb, 0px);
+    width: 100%;
+    height: auto;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    transform: translateY(16px);
+    transform-origin: center bottom;
+  }
+  .chatbot__window.is-open {
+    transform: none;
+  }
+
+  /* ヘッダーはコンパクトに。副題は畳んで視線をメッセージへ */
+  .chatbot__head {
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+  }
+  .chatbot__subtitle {
+    display: none;
+  }
+
+  .chatbot__messages {
+    min-height: 0;
+    padding: var(--space-3);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 吹き出し: LINE同等の可読サイズと丸み。自分=ブランド青/相手=白 */
+  .chatbot__message {
+    max-width: 80%;
+    padding: 0.65rem 0.95rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    border-radius: 1.1rem;
+  }
+  .chatbot__message--bot {
+    border-bottom-left-radius: 0.3rem;
+  }
+  .chatbot__message--user {
+    background: var(--brand);
+    color: #FFFFFF;
+    border-bottom-right-radius: 0.3rem;
+  }
+
+  /* 入力バー: ピル型入力+丸ボタン。ホームバー領域(safe-area)を確保 */
+  .chatbot__form {
+    padding: var(--space-2) var(--space-3) calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
+  }
+  .chatbot__input {
+    /* 16px未満だとiOSがフォーカス時にページ全体をズームしレイアウトが崩壊する */
+    font-size: 16px;
+    border-radius: var(--r-pill);
+    padding: 0.6rem 1rem;
+  }
+  .chatbot__send {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
 }

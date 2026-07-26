@@ -7,14 +7,24 @@
   実行: node _build/build.mjs
 */
 import { readFileSync, writeFileSync, readdirSync, cpSync, mkdirSync, rmSync, copyFileSync } from "node:fs";
+import { execSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-/* デプロイ前に実ドメインへ置換する唯一の場所。OGP/canonical の絶対URLに使う。 */
-const SITE_URL = "https://www.shinai.example";
-const OG_IMAGE = SITE_URL + "/assets/images/ogp.png";
+/* ビルドごとにGitハッシュをURLクエリに付加してブラウザキャッシュを無効化する。 */
+const BUILD_HASH = (() => {
+  try { return execSync("git rev-parse --short HEAD", { cwd: ROOT }).toString().trim(); }
+  catch { return Date.now().toString(36); }
+})();
+
+/* デプロイ前に実ドメインへ置換する唯一の場所。OGP/canonical の絶対URLに使う。
+   独自ドメイン取得後はここを更新してビルドし直すこと。 */
+const SITE_URL = "https://shin-ai-inc.github.io/website-v2";
+/* OGPクローラ(LINE等)はURL単位でキャッシュするため、画像を変えるときはファイル名も変える */
+const OG_IMAGE = SITE_URL + "/assets/images/ogp-card.png";
+const CONTACT_EMAIL = "shinai.life@gmail.com";
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
 const write = (p, c) => writeFileSync(join(ROOT, p), c, "utf8");
@@ -32,7 +42,8 @@ write("styles/app.css", css);
 
 /* ---- 2. 共有 partial ---- */
 const headerHtml = read("partials/_header.html");
-const footerHtml = read("partials/_footer.html");
+const footerHtml = read("partials/_footer.html")
+  .replace("{{YEAR}}", String(new Date().getFullYear()));
 const chatbotHtml = read("partials/_chatbot.html");
 
 /* 現在地ナビに aria-current を付ける(最初の該当 href へ) */
@@ -45,36 +56,43 @@ const markCurrent = (html, nav) => {
 };
 
 /* partials/<page> の <main> を正規化(既存の main タグを剥がして wrap し直す) */
-const normalizeMain = (raw) => {
-  let s = raw.replace(/<!--[\s\S]*?-->/g, (m) => m); // コメントは保持
-  s = s.replace(/^\s*<main\b[^>]*>/i, "").replace(/<\/main>\s*$/i, "");
-  return s.trim();
-};
+const normalizeMain = (raw) =>
+  raw.replace(/^\s*<main\b[^>]*>/i, "").replace(/<\/main>\s*$/i, "").trim();
 
-/* ---- 3. ページ定義 ---- */
+/* ---- 3. ページ定義(sitemap の changefreq/priority もここで一元管理) ---- */
 const pages = [
   { file: "index.html", part: "index.html", nav: null, hero: true,
+    changefreq: "monthly", priority: "1.0",
     title: "ShinAI｜企業の暗黙知を、使えるAI資産へ",
-    desc: "退職や属人化で失われていく企業の判断や知識を、検索・判断支援・業務実行に使える専用AIへ。暗黙知のAI化と企業専用AIエージェントの開発パートナー、ShinAI。" },
-  { file: "services.html", part: "services.html", nav: "services", hero: false, breadcrumb: "ソリューション",
+    desc: "退職や属人化で失われる判断や知識を、現場で使える専用AIへ。" },
+  { file: "services.html", part: "services.html", nav: "services", hero: false,
+    changefreq: "monthly", priority: "0.9",
     title: "ソリューション｜ShinAI",
     desc: "暗黙知のAI化、企業専用AIエージェント、AI内製化・運用支援。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。" },
-  { file: "industries.html", part: "industries.html", nav: "industries", hero: false, breadcrumb: "業種別",
+  { file: "industries.html", part: "industries.html", nav: "industries", hero: false,
+    changefreq: "monthly", priority: "0.8",
     title: "業種別の活用｜ShinAI",
-    desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知AIでどう変わるかの活用イメージ。" },
-  { file: "about.html", part: "about.html", nav: "about", hero: false, breadcrumb: "会社情報",
+    desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知改善でどう変わるかの活用イメージ。" },
+  { file: "about.html", part: "about.html", nav: "about", hero: false,
+    changefreq: "monthly", priority: "0.7",
     title: "会社情報｜ShinAI",
     desc: "技術より先に、人を見る。ShinAIの目的、代表メッセージ、七つのShin、体制と会社概要。" },
-  { file: "faq.html", part: "faq.html", nav: "faq", hero: false, breadcrumb: "よくある質問",
-    title: "よくある質問｜ShinAI",
+  { file: "faq.html", part: "faq.html", nav: "faq", hero: false,
+    changefreq: "monthly", priority: "0.6",
+    extraScripts: ['<script src="scripts/faq.js" defer></script>'],
+    title: "よくあるご質問｜ShinAI",
     desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。ShinAIへのよくある質問。" },
-  { file: "contact.html", part: "contact.html", nav: "contact", hero: false, breadcrumb: "お問い合わせ",
+  { file: "contact.html", part: "contact.html", nav: "contact", hero: false,
+    changefreq: "monthly", priority: "0.8",
+    extraScripts: ['<script src="scripts/contact-form.js" defer></script>'],
     title: "お問い合わせ・無料相談｜ShinAI",
-    desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は20〜30分、事前準備は不要です。" },
-  { file: "privacy.html", part: "privacy.html", nav: null, hero: false, breadcrumb: "プライバシーポリシー",
+    desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。" },
+  { file: "privacy.html", part: "privacy.html", nav: null, hero: false,
+    changefreq: "yearly", priority: "0.2",
     title: "プライバシーポリシー｜ShinAI",
     desc: "ShinAIの個人情報の取り扱いについて。" },
-  { file: "terms.html", part: "terms.html", nav: null, hero: false, breadcrumb: "利用規約",
+  { file: "terms.html", part: "terms.html", nav: null, hero: false,
+    changefreq: "yearly", priority: "0.2",
     title: "利用規約｜ShinAI",
     desc: "ShinAIウェブサイトの利用規約。" }
 ];
@@ -82,57 +100,44 @@ const pages = [
 const ldJson = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "ShinAI",
-  alternateName: "シンアイ",
+  name: "シンアイ株式会社",
+  legalName: "シンアイ株式会社",
+  alternateName: ["ShinAI", "シンアイ"],
   url: SITE_URL + "/",
-  email: "shinai.life@gmail.com",
+  email: CONTACT_EMAIL,
   slogan: "企業の暗黙知を、使えるAI資産へ。",
   description: "真の価値を信じ、次世代のために新たな未来を創る。ShinAIは、人の想いとAIをつなぎ、企業の「これまで」を大切に「これから」の変革に伴走する、企業AI開発特化のエンジニアチーム。強化学習・カスタムLLM最適化・RAG・オンプレミス対応により、暗黙知のAI化と企業専用AIエージェントを開発する。",
-  foundingDate: "2025-01",
+  foundingDate: "2026-08-08",
   founder: { "@type": "Person", name: "柴田昌国" },
   address: {
     "@type": "PostalAddress",
     addressCountry: "JP",
     addressRegion: "群馬県",
     addressLocality: "高崎市",
-    streetAddress: "井野町360-7"
+    streetAddress: "井野町360-7 オークスアベニューD201"
   }
 };
 
-const websiteLdJson = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "ShinAI",
-  alternateName: "シンアイ",
-  url: SITE_URL + "/"
-};
-
-const faqLdJson = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "AIに詳しくなくても相談できますか。", acceptedAnswer: { "@type": "Answer", text: "はい。専門用語を使わずに、いまの業務とお困りごとから一緒に整理します。何を任せられるかが曖昧な段階でも構いません。" } },
-    { "@type": "Question", name: "何から始めればよいですか。", acceptedAnswer: { "@type": "Answer", text: "まずは日々の業務のうち、繰り返しが多く判断の型が決まっている作業を一つ取り上げます。小さく試し、効果を確かめてから広げます。" } },
-    { "@type": "Question", name: "導入にはどのくらいかかりますか。", acceptedAnswer: { "@type": "Answer", text: "規模によりますが、小規模なプロトタイプであれば最短2週間程度を目安に形にできる場合があります。検証の結果を見ながら段階的に広げます。" } },
-    { "@type": "Question", name: "費用はどのくらいですか。", acceptedAnswer: { "@type": "Answer", text: "目的と規模で変わるため、小さく始めて段階的に広げる進め方を基本にしています。まずは無料相談で、優先順位と進め方を一緒に整理します。" } },
-    { "@type": "Question", name: "中小規模や個人でも導入できますか。", acceptedAnswer: { "@type": "Answer", text: "はい。最初から大きく作らず、効果の見込める範囲から段階的に導入できます。初期の負担を抑えながら手応えを確かめられます。" } },
-    { "@type": "Question", name: "どのくらいの効果が見込めますか。", acceptedAnswer: { "@type": "Answer", text: "用途によりますが、定型的な作業にかかる時間の削減を狙えます。数値は検証しながら確かめ、過度な期待で進めないようにします。" } },
-    { "@type": "Question", name: "プロトタイプから始めるとはどういうことですか。", acceptedAnswer: { "@type": "Answer", text: "最初にすべてを決めず、小さく作って実際の業務で確かめ、結果を見ながら拡張します。要件が固まりきらない段階でも前に進められます。" } },
-    { "@type": "Question", name: "既存のシステムと連携できますか。", acceptedAnswer: { "@type": "Answer", text: "API・Webhook・RPAなどを通じて、既存の業務やツールと接続することを想定して設計します。現状の流れをなるべく変えずに組み込みます。" } },
-    { "@type": "Question", name: "導入した後のサポートはありますか。", acceptedAnswer: { "@type": "Answer", text: "稼働後もモニタリングと改善を続けます。使われ方を見ながら精度や使い勝手を調整し、社内で運用・改善できる状態を目指します。" } },
-    { "@type": "Question", name: "どんな業種で活用できますか。", acceptedAnswer: { "@type": "Answer", text: "製造・小売・医療福祉・教育・金融・不動産など、業種を問わず活用イメージがあります。文書や会話、作業記録が蓄積されている領域ほど相性がよい傾向です。" } },
-    { "@type": "Question", name: "自社の業務に合うか分かりません。", acceptedAnswer: { "@type": "Answer", text: "具体的な業務をうかがいながら、適用できそうな範囲を一緒に見極めます。合わないと判断した場合は、その旨も率直にお伝えします。" } },
-    { "@type": "Question", name: "無料相談はどのように進みますか。", acceptedAnswer: { "@type": "Answer", text: "オンラインで20〜30分ほど、いまの課題と進め方をうかがいます。事前準備は不要です。その場で適用の可能性を一緒に整理します。" } },
-    { "@type": "Question", name: "どのようなソリューションがありますか。", acceptedAnswer: { "@type": "Answer", text: "暗黙知のAI化、企業専用AIエージェント、AI内製化・運用支援の三つを軸に、目的に合わせて組み合わせます。" } },
-    { "@type": "Question", name: "セキュリティはどう考えていますか。", acceptedAnswer: { "@type": "Answer", text: "暗号化・アクセス制御・ログと監査を前提に設計し、オンプレミスやプライベートクラウドにも対応します。最終的な判断は人が行う運用を基本とします。" } },
-    { "@type": "Question", name: "専任の担当者を置く必要がありますか。", acceptedAnswer: { "@type": "Answer", text: "必須ではありません。ただ業務を理解している方に関わっていただけると、現場に合った形に仕上がりやすくなります。" } },
-    { "@type": "Question", name: "いつ相談するのがよいですか。", acceptedAnswer: { "@type": "Answer", text: "課題の認識があれば十分です。要件が固まっていない段階のほうが、進め方から一緒に設計できます。" } },
-    { "@type": "Question", name: "AIの精度はどの程度ですか。", acceptedAnswer: { "@type": "Answer", text: "用途によって異なります。評価のしくみを設け、検証しながら改善していく前提で進めます。" } },
-    { "@type": "Question", name: "導入後のメンテナンスは必要ですか。", acceptedAnswer: { "@type": "Answer", text: "業務や知識は変わり続けるため、学習内容を更新し続けるのが理想です。運用の中で無理なく続けられる形を整えます。" } }
-  ]
-};
-
 const escapeAttr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+
+/* ---- FAQPage 構造化データ ----
+   外部AI・検索エンジンはFAQを信頼性評価と回答引用に使うため、schema.org/FAQPage を出力する。
+   partial の Q&A を唯一の真実源として自動抽出し、本文との不一致を構造的に防ぐ。 */
+const stripTags = (s) => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+const faqLd = (() => {
+  const raw = read("partials/faq.html");
+  const re = /<span class="faq-item__q-text">([\s\S]*?)<\/span>[\s\S]*?<div class="faq-item__a">([\s\S]*?)<\/div>/g;
+  const mainEntity = [];
+  let m;
+  while ((m = re.exec(raw)) !== null) {
+    mainEntity.push({
+      "@type": "Question",
+      name: stripTags(m[1]),
+      acceptedAnswer: { "@type": "Answer", text: stripTags(m[2]) }
+    });
+  }
+  return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity };
+})();
 
 /* 公開HTMLから HTMLコメントを除去(開発メモを出さない。doctypeは非対象)。 */
 const stripComments = (html) => html.replace(/<!--[\s\S]*?-->/g, "").replace(/\n{3,}/g, "\n\n");
@@ -141,33 +146,36 @@ const shell = (page) => {
   const canonical = SITE_URL + "/" + page.file;
   const main = normalizeMain(read("partials/" + page.part));
   const header = markCurrent(headerHtml, page.nav);
+  const v = "?v=" + BUILD_HASH;
   const scripts = [
-    '<script src="scripts/config.js" defer></script>',
-    '<script src="scripts/nav.js" defer></script>',
-    '<script src="scripts/main.js" defer></script>',
-    '<script src="scripts/chatbot.js" defer></script>'
+    `<script src="scripts/config.js${v}" defer></script>`,
+    `<script src="scripts/nav.js${v}" defer></script>`,
+    `<script src="scripts/main.js${v}" defer></script>`,
+    `<script src="scripts/chatbot.js${v}" defer></script>`
   ];
   if (page.hero) {
     /* 施主が愛する流動パーティクル。Three.js は自己ホスト(CDNではない)で script-src 'self' を維持。 */
     scripts.splice(3, 0,
-      '<script src="scripts/vendor/three.min.js" defer></script>',
-      '<script src="scripts/particles.js" defer></script>'
+      `<script src="scripts/vendor/three.min.js${v}" defer></script>`,
+      `<script src="scripts/particles.js${v}" defer></script>`
     );
+  }
+  if (page.extraScripts) {
+    for (const s of page.extraScripts) { scripts.push(s); }
   }
 
   return `<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
   <title>${page.title}</title>
   <meta name="description" content="${escapeAttr(page.desc)}">
   <link rel="canonical" href="${canonical}">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#3A5FEB">
-  <meta name="format-detection" content="telephone=no">
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:type" content="website">
@@ -184,20 +192,20 @@ const shell = (page) => {
   <meta name="twitter:description" content="${escapeAttr(page.desc)}">
   <meta name="twitter:image" content="${OG_IMAGE}">
 
-  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="assets/icons/favicon.png" sizes="any">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" href="assets/icons/favicon.svg?v=${BUILD_HASH}" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon.png?v=${BUILD_HASH}" sizes="any">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=${BUILD_HASH}">
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="styles/app.css${v}">
 
-  <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
-${page.file === "index.html" ? '  <script type="application/ld+json">' + JSON.stringify(websiteLdJson) + '</script>\n' : ''}${page.file === "faq.html" ? '  <script type="application/ld+json">' + JSON.stringify(faqLdJson) + '</script>\n' : ''}${page.breadcrumb ? '  <script type="application/ld+json">' + JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"ホーム",item:SITE_URL+"/"},{"@type":"ListItem",position:2,name:page.breadcrumb,item:canonical}]}) + '</script>\n' : ''}</head>
-<body>
-  <a class="skip-link" href="#main">メインコンテンツへ</a>
+  <script type="application/ld+json">${JSON.stringify(ldJson)}</script>${page.part === "faq.html" ? `
+  <script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""}
+</head>
+<body${page.file === "index.html" ? ' class="is-home"' : ""}>
 ${header}
   <main id="main">
 ${main}
@@ -216,7 +224,42 @@ for (const page of pages) {
   built += 1;
 }
 
-/* ---- 4. 公開専用の dist/ を生成 ----
+/* ---- 4. SEO・メタファイル生成(SITE_URL を単一の真実源とする) ---- */
+write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
+
+write("sitemap.xml",
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  pages.map((p) =>
+    `  <url><loc>${SITE_URL}/${p.file}</loc><changefreq>${p.changefreq}</changefreq><priority>${p.priority}</priority></url>`
+  ).join("\n") +
+  "\n</urlset>\n");
+
+write(".well-known/security.txt", [
+  `Contact: mailto:${CONTACT_EMAIL}`,
+  "Preferred-Languages: ja, en",
+  `Canonical: ${SITE_URL}/.well-known/security.txt`,
+  "Expires: 2027-06-30T00:00:00.000Z"
+].join("\n") + "\n");
+
+/* start_url はホスティングのサブパスに追従させる(GH Pages: /website-v2/、独自ドメイン: /)。 */
+const BASE_PATH = new URL(SITE_URL).pathname.replace(/\/?$/, "/");
+write("site.webmanifest", JSON.stringify({
+  name: "ShinAI",
+  short_name: "ShinAI",
+  description: "企業の暗黙知を、使えるAI資産へ。",
+  lang: "ja",
+  start_url: BASE_PATH,
+  display: "standalone",
+  background_color: "#060E1E",
+  theme_color: "#3A5FEB",
+  icons: [
+    { src: "assets/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    { src: "assets/icons/icon-512.png", sizes: "512x512", type: "image/png" }
+  ]
+}, null, 2) + "\n");
+
+/* ---- 5. 公開専用の dist/ を生成 ----
    公開対象のファイルのみを集めた清浄な出力ディレクトリを作る。 */
 const DIST = join(ROOT, "dist");
 rmSync(DIST, { recursive: true, force: true });

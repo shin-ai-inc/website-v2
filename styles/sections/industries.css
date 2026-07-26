@@ -52,6 +52,17 @@
   --acc-ink: var(--c-enable-ink);
 }
 
+/* 業種ごとに固有色を与える(AI的な原色循環を脱した8色のエディトリアル・パレット)。
+   並びはHTMLの業種順: 製造/建設/介護/小売/医療福祉/教育/金融/不動産。 */
+.industries-card:nth-of-type(1) { --acc-ink: var(--ind-1-ink); --acc-bg: var(--ind-1-bg); }
+.industries-card:nth-of-type(2) { --acc-ink: var(--ind-2-ink); --acc-bg: var(--ind-2-bg); }
+.industries-card:nth-of-type(3) { --acc-ink: var(--ind-3-ink); --acc-bg: var(--ind-3-bg); }
+.industries-card:nth-of-type(4) { --acc-ink: var(--ind-4-ink); --acc-bg: var(--ind-4-bg); }
+.industries-card:nth-of-type(5) { --acc-ink: var(--ind-5-ink); --acc-bg: var(--ind-5-bg); }
+.industries-card:nth-of-type(6) { --acc-ink: var(--ind-6-ink); --acc-bg: var(--ind-6-bg); }
+.industries-card:nth-of-type(7) { --acc-ink: var(--ind-7-ink); --acc-bg: var(--ind-7-bg); }
+.industries-card:nth-of-type(8) { --acc-ink: var(--ind-8-ink); --acc-bg: var(--ind-8-bg); }
+
 /* ---- Card head ---- */
 .industries-card__head {
   display: flex;
@@ -68,13 +79,15 @@
   width: 2.9rem;
   height: 2.9rem;
   border-radius: var(--r-md);
-  background: var(--acc-bg);
-  color: var(--acc-ink);
+  /* 淡色チップだと沈むため、業種色のグラデチップ+白アイコンで生き生きと立たせる */
+  background: linear-gradient(140deg, var(--acc-ink) 0%, color-mix(in srgb, var(--acc-ink) 74%, #FFFFFF) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 5px 14px color-mix(in srgb, var(--acc-ink) 24%, transparent);
 }
 
 .industries-card__icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .industries-card__heading {
@@ -205,7 +218,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 .industries-bridge__icon {

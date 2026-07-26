@@ -7,8 +7,9 @@
   方針(第一原理): 施主が愛する効果はそのまま使い、セキュリティも最高水準に保つ。
   - Three.js は CDN ではなく自己ホスト(scripts/vendor/three.min.js)。script-src 'self' を維持。
   - 外部追跡・可用性リスクなし。
-  堅牢化: prefers-reduced-motion を尊重(静止) / タブ非表示で停止 / dpr 上限2 / 端末で粒子数可変 /
-  resize 追従 / リソース dispose。THREE はグローバル(自己ホストのUMD)を参照。自己完結 IIFE。
+  堅牢化: タブ非表示で停止 / dpr 上限2 / 端末で粒子数可変 / resize 追従。
+  prefers-reduced-motion でも停止しない(装飾背景で vestibular リスクが低く、施主が継承を明示した効果のため)。
+  THREE はグローバル(自己ホストのUMD)を参照。自己完結 IIFE。
 */
 (function () {
   "use strict";
@@ -23,28 +24,39 @@
   }
 
   var THREE = window.THREE;
-  var reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  var isMobile = window.innerWidth < 768;
+
+  /* モバイルはアドレスバーの出入りで高さだけが揺れる。これに描画を追従させると
+     地球儀が拡大縮小して不自然になるため、高さを初回の「大きいビューポート高さ」で固定し、
+     以後は向き変更(幅変化)時のみ更新する。canvas は中央配置で余剰を切り取るので楕円化しない。 */
+  var stableH = isMobile
+    ? Math.round(Math.max(window.innerHeight, (window.screen && window.screen.height) || 0))
+    : 0;
 
   var sizeOf = function () {
     var rect = container.getBoundingClientRect();
-    return {
-      w: Math.max(1, Math.round(rect.width)),
-      h: Math.max(1, Math.round(rect.height))
-    };
+    var w = Math.max(1, Math.round(rect.width));
+    var h = isMobile ? stableH : Math.round(rect.height);
+    return { w: w, h: Math.max(1, h) };
   };
-
-  var isMobile = window.innerWidth < 768;
 
   var scene = new THREE.Scene();
   var dim = sizeOf();
   var camera = new THREE.PerspectiveCamera(60, dim.w / dim.h, 0.1, 1000);
-  camera.position.z = isMobile ? 42 : 50;
+  /* モバイルはカメラを後退させ地球儀・粒子群を一回り小さく見せる(施主要望の若干サイズダウン)。 */
+  camera.position.z = isMobile ? 62 : 58;
 
-  var renderer = new THREE.WebGLRenderer({
-    alpha: true,
-    antialias: !isMobile,
-    powerPreference: "high-performance"
-  });
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: !isMobile,
+      powerPreference: isMobile ? "default" : "high-performance"
+    });
+  } catch (e) {
+    return;
+  }
   renderer.setSize(dim.w, dim.h);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.domElement.setAttribute("aria-hidden", "true");
@@ -52,20 +64,20 @@
 
   /* 二重コア(藍と青緑のワイヤーフレーム)。現行の二重地球儀構造を継承。 */
   var core = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 7.6 : 7.2, 2),
-    new THREE.MeshBasicMaterial({ color: 0x3a5feb, transparent: true, opacity: 0.15, wireframe: true })
+    new THREE.IcosahedronGeometry(isMobile ? 9.2 : 9.0, 2),
+    new THREE.MeshBasicMaterial({ color: 0x3a5feb, transparent: true, opacity: isMobile ? 0.18 : 0.17, wireframe: true })
   );
   scene.add(core);
 
   var innerCore = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 3.8 : 3.6, 2),
-    new THREE.MeshBasicMaterial({ color: 0x00c9a7, transparent: true, opacity: 0.2, wireframe: true })
+    new THREE.IcosahedronGeometry(isMobile ? 4.6 : 4.5, 2),
+    new THREE.MeshBasicMaterial({ color: 0x00c9a7, transparent: true, opacity: isMobile ? 0.25 : 0.22, wireframe: true })
   );
   scene.add(innerCore);
 
-  /* 粒子。端末性能で数を抑える。 */
-  var lowSpec = typeof navigator.hardwareConcurrency === "number" ? navigator.hardwareConcurrency <= 4 : isMobile;
-  var particlesCount = lowSpec ? 600 : isMobile ? 900 : 1300;
+  /* 粒子。端末性能で数を抑える。lowSpec = 論理CPUが2以下の超低スペック機のみ。 */
+  var lowSpec = typeof navigator.hardwareConcurrency === "number" ? navigator.hardwareConcurrency <= 2 : false;
+  var particlesCount = isMobile ? 1100 : lowSpec ? 900 : 2000;
   var particles = [];
 
   var geometries = [
@@ -111,7 +123,7 @@
         z: (Math.random() - 0.5) * 0.008
       },
       orbit: {
-        speed: 0.0001 + Math.random() * 0.0003,
+        speed: (0.0001 + Math.random() * 0.0003) * (isMobile ? 1.4 : 1.0),
         radius: radius,
         angle: Math.random() * Math.PI * 2,
         yFactor: Math.random() * 2 - 1
@@ -123,7 +135,7 @@
 
   /* 接続線。流れの中で近づいた粒子を細く結ぶ(知識がつながる比喩)。 */
   var connectionLines = [];
-  var lineCount = isMobile ? 24 : 48;
+  var lineCount = isMobile ? 36 : 88;
   for (i = 0; i < lineCount; i += 1) {
     var lineGeo = new THREE.BufferGeometry();
     lineGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(6), 3));
@@ -144,10 +156,20 @@
   var onMouseMove = function (e) { onPointer(e.clientX, e.clientY); };
   var onTouchMove = function (e) { if (e.touches.length > 0) { onPointer(e.touches[0].clientX, e.touches[0].clientY); } };
 
-  /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。 */
+  /* lookAt ターゲット: creed帯の高さ分だけ下にオフセットし地球儀をヒーロー白エリア中央に揃える。
+     canvas = hero + creed。creed半分の高さ(世界座標)をlookAt Y に引くことで補正する。
+     PC: creed≈132px / canvas≈822px(header78px) → coverage 67unit → offset ≈5.0unit
+     Mobile: creed≈65px / canvas≈576px → coverage 55unit → offset ≈6.0unit */
+  /* モバイルは lookAt Y を少し上げ(=-6.0→-4.5)、地球儀の画面上の位置を若干下げる(施主要望)。 */
+  var heroLookAt = new THREE.Vector3(0, isMobile ? -4.5 : -5.0, 0);
+
+  /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。
+     モバイルは強度を抑えつつバーストは必ず実行する(prefers-reduced-motionは定常アニメに影響しない)。 */
   var time = 0;
   var initialMotionTime = 0;
-  var initialMotionDuration = 2.5;
+  var initialMotionDuration = isMobile ? 2.0 : 2.5;
+  var initialBurstY = isMobile ? 0.48 : 0.8;
+  var initialBurstX = isMobile ? 0.18 : 0.3;
   var isInitialMotion = true;
 
   var rafId = null;
@@ -168,15 +190,15 @@
     targetY = mouseY * 12;
     camera.position.x += (targetX - camera.position.x) * 0.015;
     camera.position.y += (targetY - camera.position.y) * 0.015;
-    camera.lookAt(scene.position);
+    camera.lookAt(heroLookAt);
 
-    core.rotation.y += 0.001;
-    core.rotation.x += 0.0005;
+    core.rotation.y += isMobile ? 0.0015 : 0.001;
+    core.rotation.x += isMobile ? 0.0008 : 0.0005;
     var scalePulse = Math.sin(time * 0.4) * 0.04 + 1;
     core.scale.set(scalePulse, scalePulse, scalePulse);
 
-    innerCore.rotation.y -= 0.0015;
-    innerCore.rotation.z += 0.0008;
+    innerCore.rotation.y -= isMobile ? 0.0022 : 0.0015;
+    innerCore.rotation.z += isMobile ? 0.0012 : 0.0008;
     var innerScalePulse = Math.sin(time * 0.6) * 0.08 + 1;
     innerCore.scale.set(innerScalePulse, innerScalePulse, innerScalePulse);
 
@@ -191,8 +213,8 @@
       if (isInitialMotion) {
         var progress = initialMotionTime / initialMotionDuration;
         var easeOut = 1 - Math.pow(1 - progress, 3);
-        p.mesh.position.y += 0.8 * (1 - easeOut);
-        p.mesh.position.x += (Math.sin(time * 2 + idx * 0.2) * 0.3) * (1 - easeOut);
+        p.mesh.position.y += initialBurstY * (1 - easeOut);
+        p.mesh.position.x += (Math.sin(time * 2 + idx * 0.2) * initialBurstX) * (1 - easeOut);
       }
 
       p.orbit.angle += p.orbit.speed;
@@ -241,7 +263,7 @@
       var b = particles[(particles.indexOf(a) + 1 + Math.floor(Math.random() * 20)) % particles.length];
       if (a && b) {
         var distance = a.mesh.position.distanceTo(b.mesh.position);
-        if (distance < 15) {
+        if (distance < 20) {
           positions[0] = a.mesh.position.x;
           positions[1] = a.mesh.position.y;
           positions[2] = a.mesh.position.z;
@@ -249,7 +271,7 @@
           positions[4] = b.mesh.position.y;
           positions[5] = b.mesh.position.z;
           ln.geometry.attributes.position.needsUpdate = true;
-          ln.material.opacity = 0.04 * (1 - distance / 15) * (0.7 + 0.3 * Math.sin(time * 2 + li));
+          ln.material.opacity = 0.05 * (1 - distance / 20) * (0.7 + 0.3 * Math.sin(time * 2 + li));
         } else {
           ln.material.opacity = 0;
         }
@@ -279,13 +301,24 @@
     renderer.render(scene, camera);
   };
 
-  /* resize 追従(コンテナ基準)。 */
+  /* resize 追従(コンテナ基準)。
+     モバイルは幅が変わらない高さのみの変化(=アドレスバー開閉)を無視し、地球儀の拡大縮小を防ぐ。
+     向き変更(幅変化)のときだけ stableH を更新して追従する。canvas 非ストレッチ配置のため楕円化しない。 */
+  var lastW = dim.w;
   var resizeTimer = null;
   var onResize = function () {
     if (resizeTimer !== null) {
       window.clearTimeout(resizeTimer);
     }
     resizeTimer = window.setTimeout(function () {
+      var w = Math.max(1, Math.round(container.getBoundingClientRect().width));
+      if (isMobile && w === lastW) {
+        return;
+      }
+      lastW = w;
+      if (isMobile) {
+        stableH = Math.round(Math.max(window.innerHeight, (window.screen && window.screen.height) || 0));
+      }
       var d = sizeOf();
       camera.aspect = d.w / d.h;
       camera.updateProjectionMatrix();
@@ -298,35 +331,15 @@
   };
   window.addEventListener("resize", onResize, { passive: true });
 
-  var applyMotionPreference = function () {
-    if (reduceMotionQuery.matches) {
-      stop();
-      isInitialMotion = false;
-      renderStill();
-    } else {
-      start();
-    }
-  };
-
-  if (reduceMotionQuery.matches) {
-    isInitialMotion = false;
-    renderStill();
-  } else {
-    document.addEventListener("mousemove", onMouseMove, { passive: true });
+  document.addEventListener("mousemove", onMouseMove, { passive: true });
+  /* モバイルではスクロール自体が touchmove のため、視差にタッチを使うと
+     スクロールのたびに地球儀の画角が動いてしまう。タッチ視差はモバイルで無効化する。 */
+  if (!isMobile) {
     document.addEventListener("touchmove", onTouchMove, { passive: true });
-    start();
   }
-
-  if (typeof reduceMotionQuery.addEventListener === "function") {
-    reduceMotionQuery.addEventListener("change", applyMotionPreference);
-  } else if (typeof reduceMotionQuery.addListener === "function") {
-    reduceMotionQuery.addListener(applyMotionPreference);
-  }
+  start();
 
   document.addEventListener("visibilitychange", function () {
-    if (reduceMotionQuery.matches) {
-      return;
-    }
     if (document.hidden) {
       stop();
     } else {

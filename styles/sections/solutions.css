@@ -31,7 +31,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--card-ink);
   opacity: 0;
   transition: opacity var(--dur-1) var(--ease-out);
 }
@@ -151,9 +151,11 @@
   color: var(--card-ink);
 }
 
+/* タブレット: 1カラム化。過剰な横伸びを防ぐため最大幅を制限 */
 @media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
+    max-width: 640px;
   }
   /* 1カラム化で全幅になるカード画像が縦に伸びすぎないよう帯状に固定する */
   .solution-card__figure {
@@ -162,11 +164,63 @@
   }
 }
 
-@media (max-width: 480px) {
+/* タブレット帯(641-960): 縦積みの大画像カードは narrow column + 大画像で間延びする。
+   画像を左へ寄せた横並びメディアカードにして幅を活かし、密度と品位を保つ。
+   位置指定を明示し、col1=画像(全高)/col2=見出し・リード・罫・箇条書き とする。 */
+@media (min-width: 641px) and (max-width: 960px) {
+  .solutions__grid {
+    max-width: 760px;
+  }
   .solution-card {
-    padding: var(--space-4);
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    column-gap: var(--space-5);
   }
   .solution-card__figure {
-    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
+    grid-column: 1;
+    grid-row: 1 / 99;
+    margin: calc(-1 * var(--space-5)) 0 calc(-1 * var(--space-5)) calc(-1 * var(--space-5));
+    aspect-ratio: auto;
+    height: auto;
+    align-self: stretch;
+  }
+  .solution-card__figure img {
+    height: 100%;
+  }
+  .solution-card__title,
+  .solution-card__lead,
+  .solution-card__divider,
+  .solution-card__items {
+    grid-column: 2;
+  }
+  .solution-card__items {
+    margin-top: 0;
+  }
+}
+
+/* モバイル: PC同様の「画像上・本文下」を1カラムで踏襲する。
+   72pxサムネイル横並びは長文リードの左に空白を生み崩れるため廃止。
+   バナー画像はやや低めに抑え、長文でも均整を保つ。 */
+@media (max-width: 640px) {
+  .solutions__grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: var(--space-3);
+  }
+  /* 画面への圧迫を抑えるため、余白・画像・字を一段引き締めてスマートにする。 */
+  .solution-card {
+    padding: var(--space-3);
+  }
+  /* 画像は上端フルブリードの薄いバナー(5:2)にして縦の占有を減らす。 */
+  .solution-card__figure {
+    margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3);
+    aspect-ratio: 5 / 2;
+  }
+  .solution-card__title {
+    font-size: var(--fs-body);
+  }
+  .solution-card__lead {
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-3);
   }
 }

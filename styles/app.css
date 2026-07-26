@@ -11,6 +11,7 @@
   --paper-2: #F5F7FF;          /* セクション交互の極淡い藍青 */
   --paper-3: #EBF0FF;          /* カード境界・微細な面 */
   --ink: #0C1A36;              /* 深い藍黒。主色・見出し */
+  --ink-deep: #060E1E;         /* 最深の藍黒。grad-dark の終端＝フッター地色 */
   --ink-2: #1A2E52;            /* 藍の中間 */
   --ink-3: #4A5A7A;            /* 補助テキスト */
   --charcoal: #1E2D4A;         /* 本文 */
@@ -38,15 +39,27 @@
   --c-enable-bg: #FFF3E0;      /* 内製化・運用支援 — オレンジの淡 */
   --c-enable-ink: #CC5E00;
 
+  /* ---- Industry palette (業種別の色分け) ----
+     AIが多用しがちな原色の青×ティールを脱し、落ち着いたエディトリアル調の8色で業種を識別する。
+     各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。 */
+  --ind-1-ink: #2B5EA6; --ind-1-bg: #E7EEF8;   /* 製造: コバルト */
+  --ind-2-ink: #C87A1C; --ind-2-bg: #F9EFDC;   /* 建設: 琥珀 */
+  --ind-3-ink: #BE4E77; --ind-3-bg: #F8E7EF;   /* 介護・専門サービス: 薔薇 */
+  --ind-4-ink: #C6512F; --ind-4-bg: #F9E7E0;   /* 小売: 朱 */
+  --ind-5-ink: #159B72; --ind-5-bg: #E0F3EB;   /* 医療福祉: 翠 */
+  --ind-6-ink: #6250BE; --ind-6-bg: #ECE8F8;   /* 教育: 菫 */
+  --ind-7-ink: #147C8C; --ind-7-bg: #E0F1F3;   /* 金融: 青緑 */
+  --ind-8-ink: #9C5A38; --ind-8-bg: #F6E9E0;   /* 不動産: 赤褐 */
+
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
-  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, #060E1E 100%);
+  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
   --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #F5F7FF 70%, #EBF0FF 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
-  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, #060E1E 100%);
+  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, var(--ink-deep) 100%);
   /* 企業理念バンド。公式HP --gradient-cta-new (#2D4CC8/#00B89F) を完全踏襲(不透明・くっきり) */
   --grad-creed: linear-gradient(135deg, #2D4CC8 0%, #00B89F 50%, #2D4CC8 100%);
 
@@ -59,14 +72,17 @@
   /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* SpaceData/Takram 参照スケール。max値はpx換算: display=76px, h1=68px, h2=40px, h3=28px */
-  --fs-display: clamp(3.25rem, 5.2vw, 4.75rem);
-  --fs-h1: clamp(2.75rem, 4.5vw, 4.25rem);
-  --fs-h2: clamp(2rem, 2.5vw, 2.5rem);
-  --fs-h3: clamp(1.5rem, 1.8vw, 1.75rem);
-  --fs-lead: clamp(1.125rem, 1.3vw, 1.25rem);
+  /* Enterprise-grade scale. 日本語明朝体の光学補正済み。
+     セクション見出しは一段大胆に(h2 max 34→42px)。スペースデータ流の大きな見出しを
+     日本語の可読性を保つ範囲で翻案し、階層のコントラストを強める。 */
+  --fs-display: clamp(2.1rem, 4.2vw, 3.75rem);
+  --fs-h1: clamp(1.9rem, 3.4vw, 3rem);
+  --fs-h2: clamp(1.55rem, 2.9vw, 2.625rem);
+  --fs-h3: clamp(1.15rem, 1.6vw, 1.5rem);
+  --fs-lead: clamp(0.95rem, 1.3vw, 1.25rem);
   --fs-body: 1rem;
   --fs-sm: 0.875rem;
+  --fs-xs: 0.8rem;             /* フッターのメタ等、控えめな fine-print 用 */
   --fs-eyebrow: 0.75rem;
 
   --lh-tight: 1.1;
@@ -84,7 +100,12 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(4.5rem, 7vw, 9rem);
+  /* セクション上下余白。大胆な「間」を作るため上限を引き上げ(6.5→8rem)、
+     大画面ほど呼吸が深くなるよう vw 係数も上げる。 */
+  --section-py: clamp(3rem, 6vw, 8rem);
+  /* モバイル(<=640px)のセクション律動。デスクトップ最小(40px)へ近い呼吸を保ち、
+     「余白の美」を小画面でも崩さない。24pxへの急落を防ぐ単一の真実源。 */
+  --section-py-mobile: clamp(2.5rem, 8vw, 3.5rem);
   --container: 1360px;
   --container-narrow: 760px;
   --container-text: 680px;
@@ -191,6 +212,12 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
 ul, ol { list-style: none; padding: 0; }
 
+/* モバイルのタップ遅延(300ms)・ダブルタップ拡大による「タップしても反応しない」を根絶する。
+   操作要素は即座にタップを発火させ、実機での取りこぼしを防ぐ。 */
+a, button, [role="button"], label, summary, input, select, textarea {
+  touch-action: manipulation;
+}
+
 ::selection { background: var(--brand-soft); color: var(--ink); }
 
 /* ---- Headings ---- */
@@ -246,16 +273,26 @@ h1, h2, h3, h4 {
   background-image: var(--grad-dark);
 }
 .section--ink h1, .section--ink h2, .section--ink h3 { color: #FFFFFF; }
+
+/* ---- トップの持続パーティクル背景(旧サイト同様「背景の上・本文の下」オーバーレイ) ----
+   固定パーティクル場(.site-particles, z:0)に対し本文(.container)を z:1 で前面へ上げ、
+   セクション背景をその下に置く。暗色・信念帯は静的化して地を粒子の下へ送り、粒子を鮮やかに乗せる。
+   明色/alt は透過にして地(ペーパーグラデ)と粒子を通す。index限定(body.is-home)。 */
+body.is-home { background: var(--grad-paper); }
+.is-home main .container { position: relative; z-index: 1; }
+.is-home .section--alt { background: transparent; }
+.is-home .section--ink { position: static; }
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
-.section__head { max-width: var(--container-heading); margin-bottom: var(--space-5); }
+/* 見出しブロックと本文の間に「間」を作る(space-4→6)。大きな見出しが呼吸できる余白。 */
+.section__head { max-width: var(--container-heading); margin-bottom: var(--space-6); }
 .section__head--center { margin-inline: auto; text-align: center; }
 .section__title {
   font-size: var(--fs-h2);
   font-weight: 500;
-  line-height: var(--lh-snug);
-  letter-spacing: 0.03em;
+  line-height: 1.32;
+  letter-spacing: 0.02em;
 }
 .section__title-line {
   display: block;
@@ -268,9 +305,35 @@ h1, h2, h3, h4 {
   letter-spacing: 0.06em;
   color: var(--ink-3);
 }
+/* 中央揃えヘッド内では lead ブロック自体も中央へ(max-width による左アンカーを解く) */
+.section__head--center .section__lead {
+  margin-inline: auto;
+}
 
 .section__lead-line {
   display: block;
+}
+
+/* ---- 日本語の意味単位改行 ----
+   word-break: auto-phrase は Chromium の形態素解析(BudouX)で文節単位に折り返す。
+   text-wrap: balance/pretty は行長の均整と孤立行(行末の1〜2文字落ち)を防ぐ。
+   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。 */
+h1, h2, h3,
+.section__lead, .page-hero__lead, .purpose__support,
+.about-purpose__note, .cta__text, .shin7__desc,
+.industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note {
+  word-break: auto-phrase;
+}
+h1, h2, h3 {
+  text-wrap: balance;
+}
+.section__lead, .page-hero__lead, .purpose__support, .about-purpose__note,
+.cta__text, .shin7__desc, .industries-bridge__item-text, .industries-bridge__note {
+  text-wrap: pretty;
+}
+/* 意味の切れ目を守る最小語塊。折り返すならこの塊の前で折る(全ブラウザで有効) */
+.nobr {
+  white-space: nowrap;
 }
 
 .section__more {
@@ -281,9 +344,18 @@ h1, h2, h3, h4 {
 .text-column { max-width: var(--container-text); }
 .heading-column { max-width: var(--container-heading); }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+  .section {
+    padding-block: var(--section-py-mobile);
+  }
   .section__head {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .section__title {
+    font-size: 1.55rem;
+  }
+  .section__lead-line {
+    display: inline;
   }
 }
 
@@ -386,8 +458,9 @@ h1, h2, h3, h4 {
 /* ---- Scroll reveal ---- */
 .js .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  transform: translateY(18px);
+  /* スクロールに機敏に追従させるため速く(dur-1=0.4s)。発火も早める(main.js の rootMargin)。 */
+  transition: opacity var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
 }
 .js .reveal[data-reveal="left"] {
   transform: translateX(-40px);
@@ -411,41 +484,17 @@ h1, h2, h3, h4 {
 .reveal[data-delay="4"] { transition-delay: 0.28s; }
 .reveal[data-delay="5"] { transition-delay: 0.35s; }
 
-/* ---- Stats bar ---- */
-.stats-bar {
-  background: var(--ink);
-  background-image: var(--grad-dark);
-  padding: var(--space-5) 0;
-}
-.stats-bar__inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(2rem, 6vw, 5rem);
-  flex-wrap: wrap;
-}
-.stat-item {
-  text-align: center;
-  color: #FFFFFF;
-}
-.stat-item__number {
-  display: block;
-  font-family: var(--font-latin);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  background: var(--grad-brand-vivid);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-.stat-item__label {
-  display: block;
-  font-size: var(--fs-sm);
-  color: rgba(255,255,255,0.55);
-  margin-top: var(--space-1);
-  letter-spacing: 0.04em;
+/* ---- スクロール進捗ライン(main.js が生成する要素) ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--grad-brand);
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  transition: width 0.1s linear;
 }
 
 /* ---- 装飾の細い罫(ブランドグラデーション) ---- */
@@ -477,60 +526,22 @@ h1, h2, h3, h4 {
 /* sections/about-extra.css */
 /*
   ShinAI Website v2 — Section: about-extra（about.html 専用の補助レイアウト）
-  Purpose 深掘り / 代表メッセージ / 歩み / チーム / 写真ブレーク / 七つのShin / 募集。
+  既存セクションCSS（purpose/company/why/cta/page-hero）で賄えない要素のみを所有する。
+  すべて .about- で名前空間化し、トークンのみ参照する。既存CSSは変更しない。
+  対象: Purpose 深掘りの一文 / 代表メッセージ（肖像プレースホルダ＋本文＋歩み）。
 */
 
-/* ---- Purpose 装飾クォートマーク ---- */
-.purpose__quote-frame {
-  position: relative;
-}
-.purpose__quote-mark {
-  position: absolute;
-  top: -1.2em;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2.4rem;
-  height: 2.4rem;
-  color: var(--brand);
-  opacity: 0.12;
-}
-
-/* ---- Purpose 哲学ブロック（中央寄せ） ---- */
-.purpose__philosophy {
-  max-width: 32em;
-  margin: var(--space-7) auto 0;
-  padding: var(--space-5) var(--space-6);
-  border-left: 2px solid color-mix(in srgb, var(--brand) 30%, transparent);
-  background: color-mix(in srgb, var(--brand) 3%, transparent);
-  border-radius: 0 var(--r-md) var(--r-md) 0;
-}
-.purpose__philosophy-text {
+/* ---- Purpose 深掘りの静かな一文 ---- */
+.about-purpose__note {
+  max-width: 30em;
+  margin: var(--space-6) auto 0;
   font-size: var(--fs-body);
   line-height: var(--lh-body);
-  color: var(--ink-2);
-}
-.purpose__philosophy-text + .purpose__philosophy-text {
-  margin-top: var(--space-3);
+  color: var(--ink-3);
+  text-align: left;
 }
 
-/* ---- 会社概要のアイコン付き項目 ---- */
-.company__fact {
-  display: flex;
-  flex-direction: column;
-}
-.company__fact-icon {
-  width: 1.1rem;
-  height: 1.1rem;
-  vertical-align: -0.15em;
-  margin-right: var(--space-2);
-  color: var(--brand);
-  opacity: 0.6;
-  flex-shrink: 0;
-}
-.company__fact-term {
-  display: flex;
-  align-items: center;
-}
+/* ---- 会社概要の連絡先リンク ---- */
 .about-fact-link {
   color: var(--ink);
   text-decoration: underline;
@@ -538,6 +549,7 @@ h1, h2, h3, h4 {
   text-underline-offset: 3px;
   transition: text-decoration-color var(--dur-1) var(--ease-out);
 }
+
 .about-fact-link:hover {
   text-decoration-color: var(--brand);
 }
@@ -585,6 +597,21 @@ h1, h2, h3, h4 {
   object-fit: cover;
 }
 
+.about-message__monogram {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 8vw, 4.6rem);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.about-message__portrait-cap {
+  font-family: var(--font-latin);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
 .about-message__body {
   display: flex;
   flex-direction: column;
@@ -606,6 +633,16 @@ h1, h2, h3, h4 {
 
 .about-message__para + .about-message__para {
   margin-top: var(--space-3);
+}
+
+/* モバイルは一回り控えめに(読み物として静かな声量へ) */
+@media (max-width: 640px) {
+  .about-message__lead {
+    font-size: 1rem;
+  }
+  .about-message__para {
+    font-size: 0.8125rem;
+  }
 }
 
 .about-message__sign {
@@ -637,31 +674,20 @@ h1, h2, h3, h4 {
   margin-top: 0.2em;
 }
 
-/* ---- 歩みタイムライン ---- */
-.about-career-wrap {
-  margin-top: var(--space-6);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line);
-}
-.about-career-wrap__label {
-  font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: var(--space-4);
-}
-
+/* ---- 歩み（ブランド藍青の数字で時間軸を示す） ---- */
 .about-career {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
   display: grid;
   gap: var(--space-3);
 }
 
 .about-career__item {
   display: grid;
-  grid-template-columns: 6.5rem auto 1fr;
+  grid-template-columns: 7.5rem 1fr;
   gap: var(--space-3);
-  align-items: center;
+  align-items: baseline;
 }
 
 .about-career__year {
@@ -669,81 +695,11 @@ h1, h2, h3, h4 {
   font-size: var(--fs-sm);
   letter-spacing: var(--tracking-latin);
   color: var(--brand);
-  white-space: nowrap;
-}
-
-.about-career__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--grad-brand);
-  flex-shrink: 0;
 }
 
 .about-career__label {
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
-  color: var(--ink-2);
-}
-
-/* ---- チームカード（写真付き） ---- */
-.about-team__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
-}
-
-.about-team__card {
-  display: flex;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--paper);
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform var(--dur-1) var(--ease-out),
-    box-shadow var(--dur-1) var(--ease-out);
-}
-.about-team__card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.about-team__photo {
-  flex-shrink: 0;
-  width: 5.5rem;
-  height: 5.5rem;
-  border-radius: var(--r-md);
-  overflow: hidden;
-  border: 1px solid var(--line);
-}
-.about-team__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.about-team__role {
-  font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--brand);
-}
-
-.about-team__name {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  color: var(--ink);
-  margin-top: var(--space-1);
-  margin-bottom: var(--space-2);
-}
-
-.about-team__bio {
-  font-size: var(--fs-sm);
-  line-height: var(--lh-body);
   color: var(--ink-2);
 }
 
@@ -755,9 +711,6 @@ h1, h2, h3, h4 {
     aspect-ratio: 16 / 9;
     max-height: 16rem;
   }
-  .about-team__grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 480px) {
@@ -765,33 +718,17 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
     gap: var(--space-1);
   }
-  .about-career__dot {
-    display: none;
-  }
-  .purpose__philosophy {
-    padding: var(--space-4);
-  }
-  .about-team__card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .about-team__photo {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
 }
 
-/* ---- 写真ブレーク ---- */
+/* ---- チーム写真ブレーク ---- */
 .about-photo-break {
-  padding: var(--space-6) 0;
+  padding: var(--space-4) 0;
 }
 
 .about-photo-break__frame {
-  position: relative;
   overflow: hidden;
   border-radius: var(--r-lg);
-  max-height: 28rem;
+  max-height: 20rem;
   box-shadow: var(--shadow-md);
 }
 
@@ -803,58 +740,60 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-.about-photo-break__caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: var(--space-5) var(--space-5) var(--space-4);
-  background: linear-gradient(0deg, rgba(12, 26, 54, 0.55) 0%, transparent 100%);
-  font-family: var(--font-display);
-  font-size: var(--fs-sm);
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.88);
-}
-
-/* ---- 七つのShin ---- */
-
-.shin7__group-label {
+/* ---- 七つのShin — 全体俯瞰 matrix（7字を平等に一列表示） ---- */
+.shin7__matrix {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(var(--space-4), 5vw, var(--space-7));
+  padding: var(--space-5) clamp(var(--space-4), 5vw, var(--space-7));
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  margin-bottom: var(--space-6);
+}
+
+.shin7__matrix-item {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
-  font-family: var(--font-label);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
+  gap: 0.35em;
+}
+
+.shin7__matrix-kanji {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.shin7__matrix-roman {
+  font-family: var(--font-latin);
+  font-size: 0.62rem;
+  color: var(--mist);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: var(--space-4);
-}
-.shin7__group-label::before {
-  content: "";
-  width: 26px;
-  height: 1px;
-  background: var(--grad-brand);
 }
 
-.shin7__primary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  margin-bottom: var(--space-5);
-}
+/* ---- 七つのShin — 全7項目アイコン付きカード体系 ---- */
 
-.shin7__secondary {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+/* 7枚を平等に見せるため flex で折り返し、端数行(3枚)も中央に据える。
+   カード幅は「4列時の1枚分」で固定し、行を跨いでも大きさを揃える。 */
+.shin7__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-4);
 }
 
 .shin7__card {
+  flex: 0 0 calc((100% - 3 * var(--space-4)) / 4);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-4) var(--space-3);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--paper);
@@ -867,10 +806,6 @@ h1, h2, h3, h4 {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
-.shin7__card--featured {
-  background: linear-gradient(160deg, var(--brand-soft) 0%, var(--paper) 60%);
-  border-color: color-mix(in srgb, var(--brand) 22%, var(--line));
-}
 
 .shin7__icon-wrap {
   display: inline-flex;
@@ -880,7 +815,7 @@ h1, h2, h3, h4 {
   height: 3rem;
   margin-bottom: var(--space-3);
   border-radius: var(--r-md);
-  background: var(--grad-brand);
+  background: var(--brand);
   color: #FFFFFF;
   flex-shrink: 0;
 }
@@ -888,41 +823,32 @@ h1, h2, h3, h4 {
   width: 1.4rem;
   height: 1.4rem;
 }
-.shin7__icon-wrap--sub {
-  width: 2.5rem;
-  height: 2.5rem;
-  background: var(--paper-3);
-  color: var(--brand);
-  border: 1px solid var(--line);
-}
-.shin7__icon-wrap--sub svg {
-  width: 1.2rem;
-  height: 1.2rem;
-}
 
-.shin7__yomi {
-  font-family: var(--font-label);
+.shin7__roman {
+  font-family: var(--font-latin);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
   color: var(--brand);
   margin-bottom: var(--space-1);
 }
 
 .shin7__kanji {
   font-family: var(--font-display);
-  font-size: var(--fs-display);
+  font-size: var(--fs-h2);
   line-height: 1;
   color: var(--ink);
-  margin-bottom: var(--space-3);
-}
-.shin7__kanji--sub {
-  font-size: var(--fs-h1);
+  margin-bottom: var(--space-2);
 }
 
+/* 見出しは一文の言明。文節改行+均整で読ませる */
 .shin7__title {
-  font-size: var(--fs-h3);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: var(--lh-snug);
   color: var(--ink);
   margin-bottom: var(--space-2);
+  text-wrap: balance;
 }
 .shin7__desc {
   font-size: var(--fs-sm);
@@ -930,7 +856,151 @@ h1, h2, h3, h4 {
   color: var(--ink-3);
 }
 
-/* ---- パートナー募集 ---- */
+/* ---- 未来ビジョン ---- */
+
+.vision__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.vision__card {
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.vision__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+.vision__desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+  text-align: left;
+}
+
+@media (max-width: 820px) {
+  .vision__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- パートナー募集 ----
+   テキストの箱の羅列にしない。数字の残像・アイコン・役割カラーで
+   「参加したくなる」体温を宿す。色はソリューション3色の体系を継承する */
+
+.join__subhead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  text-align: center;
+  margin-block: var(--space-6) var(--space-4);
+}
+
+.join__subhead::before,
+.join__subhead::after {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--grad-brand);
+  opacity: 0.9;
+}
+
+.join__merits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.join__merit {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+
+.join__merit:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.join__merit::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--brand);
+}
+
+/* 大きな番号は「残像」として右上に薄く敷き、情報でなく空気にする */
+.join__merit-num {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-family: var(--font-latin);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--paper-3);
+  user-select: none;
+}
+
+.join__merit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.join__merit-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.join__merit-title {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+.join__merit-text {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+@media (max-width: 820px) {
+  .join__merits {
+    grid-template-columns: 1fr;
+  }
+}
 
 .join__grid {
   display: grid;
@@ -956,7 +1026,21 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--card-accent, var(--grad-brand));
+}
+
+/* 役割カラー: AI的な原色を脱し、鮮明な三色(技術=コバルト/事業=翠/デザイン=菫)で識別 */
+.join__card--engineer {
+  --card-accent: var(--ind-1-ink);
+  --card-soft: var(--ind-1-bg);
+}
+.join__card--business {
+  --card-accent: var(--ind-5-ink);
+  --card-soft: var(--ind-5-bg);
+}
+.join__card--design {
+  --card-accent: var(--ind-6-ink);
+  --card-soft: var(--ind-6-bg);
 }
 .join__card:hover {
   transform: translateY(-4px);
@@ -977,8 +1061,8 @@ h1, h2, h3, h4 {
   height: 2.8rem;
   margin-bottom: var(--space-3);
   border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
+  background: var(--card-soft, var(--brand-soft));
+  color: var(--card-accent, var(--brand));
 }
 .join__icon-wrap svg {
   width: 1.3rem;
@@ -989,7 +1073,7 @@ h1, h2, h3, h4 {
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--card-accent, var(--teal));
   margin-bottom: var(--space-1);
 }
 .join__title {
@@ -1010,19 +1094,30 @@ h1, h2, h3, h4 {
   gap: var(--space-2);
   margin-bottom: var(--space-4);
 }
+/* 淡すぎて読めないため、地は白・字は濃色・枠を明確にして視認性を確保 */
 .join__tag {
   font-family: var(--font-label);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 0.22em 0.8em;
+  padding: 0.24em 0.85em;
   border-radius: var(--r-pill);
-  background: var(--paper-3);
-  color: var(--ink-3);
-  border: 1px solid var(--line);
+  background: #FFFFFF;
+  color: var(--ink-2);
+  border: 1px solid var(--line-ink);
 }
 .join__cta {
-  align-self: flex-start;
+  align-self: stretch;
+  justify-content: center;
   font-size: var(--fs-sm);
+  /* 枠色は hover を待たず最初から役割カラーで示す */
+  border-color: var(--card-accent, var(--brand));
+  color: var(--card-accent, var(--brand));
+}
+.join__cta:hover {
+  border-color: var(--card-accent, var(--brand));
+  color: var(--card-accent, var(--brand));
+  background: color-mix(in srgb, var(--card-accent, var(--brand)) 7%, #FFFFFF);
 }
 .join__note {
   margin-top: var(--space-5);
@@ -1034,21 +1129,48 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 960px) {
-  .shin7__secondary {
-    grid-template-columns: repeat(2, 1fr);
+  .shin7__card {
+    flex-basis: calc((100% - var(--space-4)) / 2);
+  }
+}
+/* モバイルでは matrix の間隔を詰め、7字を一行に一望させる(折れて1字が孤立するのを防ぐ) */
+@media (max-width: 640px) {
+  .shin7__matrix {
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-2);
+    justify-content: space-evenly;
+    margin-bottom: var(--space-4);
+  }
+  .shin7__matrix-kanji {
+    font-size: 1.25rem;
+  }
+  /* ローマ字は下のカードで示す。matrix は漢字のみの一行に純化し「紳」の孤立を防ぐ */
+  .shin7__matrix-roman {
+    display: none;
+  }
+  /* 縦積み7枚のスクロール負荷を抑える密度調整(可読サイズは維持) */
+  .shin7__card {
+    padding: var(--space-3) var(--space-2);
+  }
+  .shin7__icon-wrap {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: var(--space-2);
+  }
+  .shin7__icon-wrap svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+  .shin7__kanji {
+    margin-bottom: var(--space-1);
+  }
+  .shin7__desc {
+    font-size: 0.75rem;
   }
 }
 @media (max-width: 820px) {
-  .shin7__primary {
-    grid-template-columns: 1fr;
-  }
   .join__grid {
     grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 640px) {
-  .shin7__secondary {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1131,7 +1253,16 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .capability__grid {
-    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  .capability__item {
+    padding: var(--space-3);
+  }
+  .capability__term {
+    font-size: var(--fs-body);
+    margin-bottom: var(--space-1);
+    word-break: keep-all;
   }
   .capability__item {
     flex-direction: column;
@@ -1359,7 +1490,7 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   border-radius: var(--r-md);
-  background: var(--grad-brand);
+  background: var(--brand);
   color: #fff;
   transition:
     filter var(--dur-1) var(--ease-out),
@@ -1380,6 +1511,80 @@ h1, h2, h3, h4 {
   .chatbot__launcher { padding: 0.85rem; }
 }
 
+/* ---- モバイル: フルスクリーンのチャット画面(LINE型) ----
+   ヘッダー固定・メッセージが伸縮・入力バーは常に最下部という3層のチャット画面。
+   キーボードは chatbot.js が高さを計測し --chat-kb にセット、bottom だけを持ち上げる
+   (高さ書換より描画が安定し、iOSのキーボードアニメーション中も崩れない)。
+   背景の固定は chatbot.js が body position:fixed 方式で行う(iOSはoverflow:hiddenが効かない)。 */
+@media (max-width: 640px) {
+  .chatbot__window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: var(--chat-kb, 0px);
+    width: 100%;
+    height: auto;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    transform: translateY(16px);
+    transform-origin: center bottom;
+  }
+  .chatbot__window.is-open {
+    transform: none;
+  }
+
+  /* ヘッダーはコンパクトに。副題は畳んで視線をメッセージへ */
+  .chatbot__head {
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+  }
+  .chatbot__subtitle {
+    display: none;
+  }
+
+  .chatbot__messages {
+    min-height: 0;
+    padding: var(--space-3);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 吹き出し: LINE同等の可読サイズと丸み。自分=ブランド青/相手=白 */
+  .chatbot__message {
+    max-width: 80%;
+    padding: 0.65rem 0.95rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    border-radius: 1.1rem;
+  }
+  .chatbot__message--bot {
+    border-bottom-left-radius: 0.3rem;
+  }
+  .chatbot__message--user {
+    background: var(--brand);
+    color: #FFFFFF;
+    border-bottom-right-radius: 0.3rem;
+  }
+
+  /* 入力バー: ピル型入力+丸ボタン。ホームバー領域(safe-area)を確保 */
+  .chatbot__form {
+    padding: var(--space-2) var(--space-3) calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
+  }
+  .chatbot__input {
+    /* 16px未満だとiOSがフォーカス時にページ全体をズームしレイアウトが崩壊する */
+    font-size: 16px;
+    border-radius: var(--r-pill);
+    padding: 0.6rem 1rem;
+  }
+  .chatbot__send {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+}
+
 
 /* sections/company.css */
 /*
@@ -1390,26 +1595,27 @@ h1, h2, h3, h4 {
   色・余白・型はトークンのみ参照。
 */
 
-/* ---- 会社情報 ---- */
+/* ---- 会社情報 ----
+   箱で飾らず、正統派の罫線テーブルで静かに示す。行高を絞りスクロール負荷を残さない */
 .company__facts {
+  max-width: 720px;
+  border-top: 1px solid var(--line);
+}
+
+.company__facts > div {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: 9em 1fr;
   gap: var(--space-4);
-  margin-bottom: var(--space-7);
-  padding: var(--space-5);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--shadow-sm);
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--line);
 }
 
 .company__fact-term {
-  font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: var(--space-1);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--mist);
 }
 
 .company__fact-desc {
@@ -1418,19 +1624,22 @@ h1, h2, h3, h4 {
   color: var(--ink);
 }
 
-/* ---- 小見出し ---- */
-.company__subhead {
-  font-size: var(--fs-h3);
-  color: var(--ink);
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--line);
+@media (max-width: 640px) {
+  .company__facts > div {
+    grid-template-columns: 6.5em 1fr;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+  }
+  .company__fact-desc {
+    font-size: var(--fs-sm);
+  }
 }
 
 /* ---- 人 ---- */
 .company__people {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  /* min(20rem, 100%): 320px級の狭幅でも列最小幅がビューポートを超えない */
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   gap: var(--space-4);
   margin-bottom: var(--space-7);
 }
@@ -1443,20 +1652,6 @@ h1, h2, h3, h4 {
   border-radius: var(--r-lg);
   background: rgba(255, 255, 255, 0.72);
   box-shadow: var(--shadow-sm);
-}
-
-.company__monogram {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
 }
 
 .company__portrait {
@@ -1499,68 +1694,20 @@ h1, h2, h3, h4 {
   color: var(--ink-2);
 }
 
-/* ---- 七つのShin ---- */
-.company__shin-feature {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
-}
-
-.company__shin-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-4);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--grad-paper);
-  box-shadow: var(--shadow-sm);
-}
-
-.company__shin-kanji {
-  font-family: var(--font-display);
-  font-size: var(--fs-display);
-  line-height: 1;
-  color: var(--ink);
-}
-
-.company__shin-words {
+.company__person-skills {
+  margin-top: var(--space-2);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
-  color: var(--ink-3);
-}
-
-.company__shin-all {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  gap: var(--space-3) var(--space-5);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line);
-}
-
-.company__shin-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
-  font-size: var(--fs-sm);
   color: var(--mist);
 }
 
-.company__shin-mark {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  color: var(--ink-2);
-  line-height: 1;
+.company__person-skills-label {
+  display: inline-block;
+  margin-right: var(--space-2);
+  font-weight: 500;
+  color: var(--brand);
 }
 
-@media (max-width: 640px) {
-  .company__shin-feature {
-    grid-template-columns: 1fr;
-  }
-}
 
 
 /* sections/contact.css */
@@ -1676,7 +1823,7 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 4px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 .contact-form-card__head {
@@ -1840,11 +1987,46 @@ h1, h2, h3, h4 {
 
 .contact-form__btn {
   width: 100%;
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    opacity var(--dur-1) var(--ease-out);
+}
+
+.contact-form[data-state="sending"] .contact-form__btn {
+  opacity: 0.65;
+  pointer-events: none;
 }
 
 .contact-form__btn-arrow {
   width: 1.1rem;
   height: 1.1rem;
+}
+
+/* ---- 送信フィードバック ---- */
+.contact-form__feedback {
+  padding: var(--space-4);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+
+.contact-form__feedback--success {
+  background: var(--teal-soft);
+  color: var(--c-agent-ink);
+  border: 1px solid rgba(0, 201, 167, 0.30);
+}
+
+.contact-form__feedback--error {
+  background: #FFF0F0;
+  color: #B23A3A;
+  border: 1px solid rgba(178, 58, 58, 0.22);
+}
+
+.contact-form__feedback--error a {
+  color: #B23A3A;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---- ハニーポット ---- */
@@ -1991,8 +2173,9 @@ h1, h2, h3, h4 {
 */
 /* z-index は付けない(スタッキング文脈を作らない)。
    こうすることで帯のグラデーションは背面に、creed__text は前面のパーティクル層よりさらに前へ抜ける。 */
+/* 静的(非配置)にして背景を固定パーティクル場(z:0)の「下」へ置く。これで粒子が帯の上に
+   鮮やかに乗る(旧サイトの mission-section と同じ仕組み)。creed__text は z:3 で前面・鮮明。 */
 .creed {
-  position: relative;
   padding: 2rem 0;
   text-align: center;
   background: var(--grad-creed);
@@ -2003,12 +2186,12 @@ h1, h2, h3, h4 {
   z-index: var(--z-stack-content);
   max-width: 1000px;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   font-family: var(--font-creed);
   font-weight: 300;
-  font-size: clamp(1.4rem, 3vw, 1.75rem);
-  line-height: 1.6;
-  letter-spacing: 0.14em;
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: 0.13em;
   color: #FFFFFF;
 }
 
@@ -2021,11 +2204,23 @@ h1, h2, h3, h4 {
     padding: 1rem 0;
   }
   .creed__text {
-    padding: 0.9rem;
-    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
   .creed__line {
     display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .creed {
+    padding: 0.75rem 0;
+  }
+  .creed__text {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -2134,9 +2329,17 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 640px) {
+  .cta__action {
+    margin-top: var(--space-4);
+  }
   .cta__facts {
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+  /* ローマ字ラベル(CONTACT/HOURS/CONSULTATION)はモバイルでは省く。値は自明で足りる。 */
+  .cta__fact-label {
+    display: none;
   }
 }
 
@@ -2159,6 +2362,44 @@ h1, h2, h3, h4 {
   マーカーは自作の線(+ / -)で、開閉を形と動きの両方で示す(色だけに依存しない)。
   色・余白・型はトークンのみ参照。
 */
+
+/* ---- カテゴリ絞り込み(JSによる段階的強化。無効時は非表示のまま全問閲覧可) ---- */
+.faq-controls {
+  margin-bottom: var(--space-5);
+}
+
+.faq-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.faq-chip {
+  padding: 0.4em 1.1em;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background-color var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+
+.faq-chip:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.faq-chip.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #FFFFFF;
+}
 
 .faq__groups {
   display: grid;
@@ -2224,7 +2465,12 @@ h1, h2, h3, h4 {
 
 .faq-item__q:hover { color: var(--brand); }
 
-.faq-item__q-text { flex: 1; }
+.faq-item__q-text {
+  flex: 1;
+  /* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ */
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
 
 /* 自作マーカー: 横棒(常時) + 縦棒(閉時のみ) = + / - */
 .faq-item__marker {
@@ -2273,6 +2519,8 @@ h1, h2, h3, h4 {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--ink-3);
+  word-break: auto-phrase;
+  text-wrap: pretty;
 }
 
 /* 開く際の入場アニメーション */
@@ -2285,6 +2533,18 @@ h1, h2, h3, h4 {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* モバイルは質問・回答の字を一段落として、スマートで軽快な一覧にする */
+@media (max-width: 640px) {
+  .faq-item__q {
+    font-size: var(--fs-sm);
+    padding-block: var(--space-3);
+    gap: var(--space-3);
+  }
+  .faq-item__a p {
+    font-size: var(--fs-sm);
+  }
+}
+
 @media (max-width: 480px) {
   .faq-item__q,
   .faq-item__a {
@@ -2295,22 +2555,24 @@ h1, h2, h3, h4 {
 
 /* sections/footer.css */
 /*
-  Footer (.site-footer) — 純白の落ち着いた締め。情報は静かに、迷わず。
-  色・余白・型はトークンのみ参照。
+  Footer (.site-footer) — 深い藍黒の静かな締め。主要ページの末尾 CTA(section--ink)の
+  グラデーション終端色(--ink-deep)と同色にし、直上セクションと途切れなく連続させる。
+  情報は保ちつつ一望できる低さでスクロール負荷を残さない。色・余白・型はトークンのみ参照。
 */
 
 .site-footer {
-  background: var(--paper-2);
-  border-top: 1px solid var(--line);
+  background: var(--ink-deep);
   padding-block: var(--space-5) var(--space-4);
-  color: var(--charcoal);
+  color: rgba(255, 255, 255, 0.78);
 }
 
-.site-footer__inner {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1.2fr;
-  gap: var(--space-4);
-  align-items: start;
+/* ---- ブランド + 横並びナビ ---- */
+.site-footer__main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-3) var(--space-6);
 }
 
 .site-footer__wordmark {
@@ -2318,11 +2580,12 @@ h1, h2, h3, h4 {
   font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--ink);
+  line-height: 1;
+  color: #FFFFFF;
 }
 
 .site-footer__wordmark-ai {
-  background: var(--grad-brand);
+  background: var(--grad-brand-vivid);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2333,65 +2596,60 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
-  color: var(--ink-3);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .site-footer__nav-list {
-  display: grid;
-  gap: var(--space-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
 }
 
 .site-footer__nav-link {
   font-size: var(--fs-sm);
-  color: var(--ink-2);
+  color: rgba(255, 255, 255, 0.72);
   transition: color var(--dur-1) var(--ease-out);
 }
 
 .site-footer__nav-link:hover {
-  color: var(--brand);
+  color: #FFFFFF;
 }
 
-.site-footer__company-name {
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: var(--space-2);
-}
-
-.site-footer__address {
-  display: grid;
-  gap: var(--space-1);
+/* ---- 会社メタ(1〜2行に流す) ---- */
+.site-footer__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin-top: var(--space-4);
   font-style: normal;
-}
-
-.site-footer__address-line {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   line-height: var(--lh-snug);
-  color: var(--mist);
+  color: rgba(255, 255, 255, 0.45);
 }
 
-.site-footer__address-link {
-  font-size: var(--fs-sm);
-  color: var(--ink-2);
+.site-footer__meta-link {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.72);
   text-decoration: underline;
-  text-decoration-color: var(--line);
+  text-decoration-color: rgba(255, 255, 255, 0.28);
   text-underline-offset: 3px;
   transition: text-decoration-color var(--dur-1) var(--ease-out);
 }
 
-.site-footer__address-link:hover {
-  text-decoration-color: var(--brand);
+.site-footer__meta-link:hover {
+  text-decoration-color: var(--teal);
 }
 
+/* ---- 規約・コピーライト ---- */
 .site-footer__bottom {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2) var(--space-4);
   margin-top: var(--space-4);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .site-footer__legal {
@@ -2401,38 +2659,94 @@ h1, h2, h3, h4 {
 }
 
 .site-footer__legal-link {
-  font-size: var(--fs-sm);
-  color: var(--mist);
+  /* 直上の会社メタ(.site-footer__meta = --fs-xs)とテキストサイズを揃える */
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.5);
   transition: color var(--dur-1) var(--ease-out);
 }
 
 .site-footer__legal-link:hover {
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .site-footer__copyright {
   font-family: var(--font-latin);
   font-size: var(--fs-sm);
   letter-spacing: var(--tracking-latin);
-  color: var(--mist);
+  color: rgba(255, 255, 255, 0.45);
 }
 
-@media (max-width: 820px) {
-  .site-footer__inner {
-    grid-template-columns: 1fr 1fr;
+/* ---- モバイル(<=640px): 偶然の折返しに任せず、意図した段組みへ ----
+   全 base 規則の後に置き、確実に上書きする(モバイル上書きはファイル末尾が正)。
+   ワードマーク+一文 / 罫線付き2カラムのナビ / 縦組みメタ / 縦組み規約。
+   タップ領域を確保し(min 44px)、上下に呼吸を持たせて品位を保つ。 */
+@media (max-width: 640px) {
+  .site-footer {
+    padding-block: var(--space-6) var(--space-5);
   }
-  .site-footer__brand {
+
+  .site-footer__main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-5);
+  }
+
+  /* ナビは緩い折返しをやめ、罫で仕切った2カラムの一覧にする。
+     行間ゼロ＋上罫で、5項目が静かなリストとして整列する。 */
+  .site-footer__nav-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--space-4);
+  }
+
+  /* 5項目め(長いラベル)は半幅だと折り返すため、最終行を全幅に伸ばす */
+  .site-footer__nav-list > li:last-child {
     grid-column: 1 / -1;
   }
-}
 
-@media (max-width: 480px) {
-  .site-footer__inner {
-    grid-template-columns: 1fr;
+  /* タップ領域は padding-block(=56px)が担保するため、字は控えめの fs-sm でよい。
+     最長ラベルも 320px 幅の全幅行に1行で収まり、全幅で破綻しない。
+     モバイルは hover が無く静的テキストに見えるため、右端に控えめな山括弧を添えて
+     「タップで各ページへ進む」ことを明示し、押下時は白く反応させる(タップ手応え)。 */
+  .site-footer__nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-block: var(--space-3);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.82);
   }
+
+  .site-footer__nav-link::after {
+    content: "";
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-right: 1.5px solid rgba(255, 255, 255, 0.4);
+    transform: rotate(45deg);
+  }
+
+  .site-footer__nav-link:active {
+    color: #FFFFFF;
+  }
+
+  .site-footer__nav-link:active::after {
+    border-color: #FFFFFF;
+  }
+
+  /* メタは1項目1行の縦組み(折返しの偶然に任せない)。行間はやや開けて可読に */
+  .site-footer__meta {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* 規約とコピーライトは縦に積み、左揃えで静かに締める */
   .site-footer__bottom {
     flex-direction: column;
     align-items: flex-start;
+    gap: var(--space-3);
   }
 }
 
@@ -2459,7 +2773,9 @@ h1, h2, h3, h4 {
 }
 
 .site-header.is-condensed {
-  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  /* スクロール追従時は不透明にする。下部の暗色セクション(CTA・フッターの会社情報)が
+     磨りガラス越しに透けて「文字が重なって見える」のを防ぐ。トップでは従来の透過を保つ。 */
+  background: var(--paper);
   border-bottom-color: var(--line-ink);
   box-shadow: var(--shadow-sm);
 }
@@ -2478,10 +2794,35 @@ h1, h2, h3, h4 {
 }
 
 /* ---- Brand wordmark ---- */
+/* 企業名の真上にタグラインを小さく重ねる縦積みロックアップ */
 .site-header__brand {
   display: inline-flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
   flex: none;
+}
+
+.site-header__tagline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.site-header__tagline::before,
+.site-header__tagline::after {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 1px;
+  background: var(--grad-brand);
+  opacity: 0.8;
 }
 
 .site-header__wordmark {
@@ -2553,33 +2894,34 @@ h1, h2, h3, h4 {
   flex: none;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--r-sm);
   color: var(--ink);
 }
 
-.site-header__toggle-bar {
-  transition:
-    transform var(--dur-1) var(--ease-out),
-    opacity var(--dur-1) var(--ease-out);
-  transform-origin: center;
+/* 開閉は回転モーフを使わず、ハンバーガーと静的な×を差し替える(安っぽい変形を排す)。 */
+.site-header__toggle-icon--close {
+  display: none;
 }
-
-.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar--top {
-  transform: translateY(5px) rotate(45deg);
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-icon--menu {
+  display: none;
 }
-
-.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar--mid {
-  opacity: 0;
-}
-
-.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar--bot {
-  transform: translateY(-5px) rotate(-45deg);
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-icon--close {
+  display: block;
 }
 
 /* ---- Responsive ---- */
 @media (max-width: 820px) {
+  /* モバイルでは磨りガラスをやめ常時不透明にする。追従ヘッダーが下部の暗色情報に
+     被った際の透け重なり(および iOS の sticky+blur 描画不具合)を根絶する。 */
+  .site-header,
+  .site-header.is-condensed {
+    background: var(--paper);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .site-header__toggle {
     display: inline-flex;
   }
@@ -2589,8 +2931,8 @@ h1, h2, h3, h4 {
     inset: var(--header-h) 0 auto 0;
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-4);
-    padding: var(--space-5) var(--gutter) var(--space-6);
+    gap: var(--space-3);
+    padding: var(--space-3) var(--gutter) var(--space-4);
     background: var(--paper);
     border-bottom: 1px solid var(--line-ink);
     box-shadow: var(--shadow-md);
@@ -2619,12 +2961,15 @@ h1, h2, h3, h4 {
   .site-header__menu {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-2);
+    gap: 0;
   }
 
+  /* 罫で仕切ったコンパクトな一覧。字は本文サイズ・行間を締め、面積を抑えつつ
+     タップ領域(約46px)は padding-block で確保する。 */
   .site-header__link {
     display: block;
-    font-size: var(--fs-lead);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-snug);
     padding-block: var(--space-2);
     border-bottom: 1px solid var(--line);
   }
@@ -2634,8 +2979,8 @@ h1, h2, h3, h4 {
   }
 
   .site-header__cta {
-    margin-top: var(--space-2);
-    padding: 0.85rem 1.5rem;
+    margin-top: var(--space-3);
+    padding: 0.8rem 1.5rem;
   }
 }
 
@@ -2651,33 +2996,40 @@ h1, h2, h3, h4 {
 /* Hero と 信念バンド(creed)を一つの量子パーティクル場で包む共有レイヤー。
    白基調。creed の青緑グラデーションだけが下部で立ち上がる。
    没入ゾーン全体で初見の1画面を満たす(次セクションはスクロールするまで覗かせない)。 */
+/* 静的(非配置・非 isolate)にして、内側の信念帯の背景を固定パーティクル場(z:0)の下へ送る。
+   これで creed を top view に収めつつ、粒子が帯の上に乗る(旧サイト同様)。 */
 .hero-stack {
-  position: relative;
-  isolation: isolate;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - var(--header-h));
-  min-height: calc(100lvh - var(--header-h));
-  background: var(--grad-paper);
+  height: calc(100vh - var(--header-h));
+  height: calc(100lvh - var(--header-h));
+  /* 地色は body.is-home のペーパーグラデ + 固定パーティクルが担うため透過にする。 */
+  background: transparent;
 }
 
-/* パーティクル場は信念帯グラデーションより前面・全テキストより背面に置く。
-   これで白地のヒーローでも青緑帯の上でも、同じ粒子場が乗って見える(公式HP同様)。 */
-.hero-stack__particles {
-  position: absolute;
+/* パーティクル場をページ全体の固定オーバーレイに。旧サイト同様、セクション背景の「上」・
+   本文コンテンツの「下」(z:0)に置く。静的セクションの背景に粒子が乗り、コンテンツ(z:1)は前面で鮮明。
+   高さは 100lvh(large viewport height=アドレスバー格納時で安定)に固定する。モバイルでスクロール中に
+   バーが出入りしても canvas の高さが揺れず、地球儀が拡大・縮小しない。バッファは常に表示と一致させ
+   (particles.js は resize で常時同期)、縦長楕円化を防ぐ。 */
+.site-particles {
+  position: fixed;
   inset: 0;
-  z-index: var(--z-particles);
-  width: 100%;
-  height: 100%;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
 
-.hero-stack__particles canvas {
+/* canvas は 100% で引き伸ばさず、固定ピクセルサイズのまま中央に置き overflow で切り取る。
+   これでモバイルのアドレスバー開閉で高さが変わっても、バッファは伸びず(楕円化しない)
+   拡大もしない。描画サイズのロックは particles.js が担う。 */
+.site-particles canvas {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* ヒーロー高さは控えめにし、直下の信念バンドを初見の下部に引き上げる
@@ -2686,9 +3038,9 @@ h1, h2, h3, h4 {
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   min-height: clamp(340px, 52svh, 600px);
-  padding-block: var(--space-7) var(--space-6);
+  padding-block: var(--space-6) var(--space-6);
   overflow: hidden;
 }
 
@@ -2696,6 +3048,8 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: var(--z-stack-content);
   max-width: 880px;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero__eyebrow {
@@ -2717,10 +3071,16 @@ h1, h2, h3, h4 {
 
 /* ---- Title ---- */
 .hero__title {
-  font-size: clamp(1.9rem, 4.5vw, 4.4rem);
+  font-size: clamp(1.9rem, 3.4vw, 3.75rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-5);
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    letter-spacing: 0.01em;
+  }
 }
 
 .hero__title-line {
@@ -2738,13 +3098,40 @@ h1, h2, h3, h4 {
 }
 
 /* ---- Subcopy ---- */
+/* margin-bottom: calc(43.3vh - 212px) はヘッダー78px・creed132px・padding48px×2を考慮した
+   globe_bottom(hero-stack×0.567) から60px上に subcopy_top を揃える比例式。
+   大小どの画面高さでも「積み上げた文書。/ AIへ変える。」が地球儀下端に重なる。 */
 .hero__subcopy {
   max-width: 40em;
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
   letter-spacing: 0.06em;
   color: var(--charcoal);
-  margin-bottom: var(--space-5);
+  margin-top: auto;
+  margin-bottom: max(0px, calc(43.3vh - 212px));
+}
+
+/* 820px以下はcreed高さが79pxに変わるため定数を補正(212→159)。
+   640px以下でflex-startに戻るため margin-top/bottomを明示リセット。 */
+@media (max-width: 820px) {
+  .hero__subcopy {
+    margin-bottom: max(0px, calc(43.3vh - 159px));
+  }
+}
+
+@media (max-width: 640px) {
+  /* eyebrow はやや控えめに。subcopy はタイトルとの間を空け、地球儀側へ少し下げる */
+  .hero__eyebrow {
+    font-size: 0.62rem;
+  }
+  .hero__subcopy {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    line-height: 1.75;
+    color: var(--ink-3);
+    margin-top: 2.5rem;
+    margin-bottom: var(--space-5);
+  }
 }
 
 .hero__subcopy-line {
@@ -2795,6 +3182,38 @@ h1, h2, h3, h4 {
 @media (max-width: 480px) {
   .hero {
     min-height: clamp(440px, 68svh, 580px);
+  }
+}
+
+/* モバイルでは hero-stack の全画面強制を解除し、コンテンツ自然高さにする。
+   creed セクションが直後に続くことで初期画面内に両方が収まる。 */
+@media (max-width: 640px) {
+  /* svh = ブラウザUI込みの保守的なビューポート高さ。地球儀をキャンバス中央=画面中央に揃える。 */
+  .hero-stack {
+    height: calc(100svh - var(--header-h));
+  }
+  .hero {
+    min-height: 0;
+    align-items: flex-start;
+    padding-block: 1.25rem var(--space-3);
+  }
+}
+
+/* ランドスケープモバイル(高さ500px以下): creedが折れないよう hero-stack を auto高さに。 */
+@media (max-height: 500px) {
+  .hero-stack {
+    height: auto;
+    min-height: calc(100svh - var(--header-h));
+  }
+  .hero {
+    min-height: 0;
+  }
+  .creed {
+    padding: 0.5rem 0;
+  }
+  .creed__text {
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -2854,6 +3273,17 @@ h1, h2, h3, h4 {
   --acc-ink: var(--c-enable-ink);
 }
 
+/* 業種ごとに固有色を与える(AI的な原色循環を脱した8色のエディトリアル・パレット)。
+   並びはHTMLの業種順: 製造/建設/介護/小売/医療福祉/教育/金融/不動産。 */
+.industries-card:nth-of-type(1) { --acc-ink: var(--ind-1-ink); --acc-bg: var(--ind-1-bg); }
+.industries-card:nth-of-type(2) { --acc-ink: var(--ind-2-ink); --acc-bg: var(--ind-2-bg); }
+.industries-card:nth-of-type(3) { --acc-ink: var(--ind-3-ink); --acc-bg: var(--ind-3-bg); }
+.industries-card:nth-of-type(4) { --acc-ink: var(--ind-4-ink); --acc-bg: var(--ind-4-bg); }
+.industries-card:nth-of-type(5) { --acc-ink: var(--ind-5-ink); --acc-bg: var(--ind-5-bg); }
+.industries-card:nth-of-type(6) { --acc-ink: var(--ind-6-ink); --acc-bg: var(--ind-6-bg); }
+.industries-card:nth-of-type(7) { --acc-ink: var(--ind-7-ink); --acc-bg: var(--ind-7-bg); }
+.industries-card:nth-of-type(8) { --acc-ink: var(--ind-8-ink); --acc-bg: var(--ind-8-bg); }
+
 /* ---- Card head ---- */
 .industries-card__head {
   display: flex;
@@ -2870,13 +3300,15 @@ h1, h2, h3, h4 {
   width: 2.9rem;
   height: 2.9rem;
   border-radius: var(--r-md);
-  background: var(--acc-bg);
-  color: var(--acc-ink);
+  /* 淡色チップだと沈むため、業種色のグラデチップ+白アイコンで生き生きと立たせる */
+  background: linear-gradient(140deg, var(--acc-ink) 0%, color-mix(in srgb, var(--acc-ink) 74%, #FFFFFF) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 5px 14px color-mix(in srgb, var(--acc-ink) 24%, transparent);
 }
 
 .industries-card__icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .industries-card__heading {
@@ -3007,7 +3439,7 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--brand);
 }
 
 .industries-bridge__icon {
@@ -3427,6 +3859,143 @@ h1, h2, h3, h4 {
 }
 
 
+/* sections/news.css */
+/*
+  Section: News (#news) — 活動のお知らせ。
+  画像付きの活動紹介を控えめに一覧する。カード言語は solutions/industries と同系。
+  PCは画像左のメディアカード、モバイルは画像上の積層。色・余白・型はトークンのみ参照。
+*/
+
+.news__list {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 860px;
+}
+
+.news__item {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+
+.news__item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--brand) 24%, var(--line));
+}
+
+/* カード全体をリンク面にする(どこを押しても遷移) */
+.news__link {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: center;
+  color: inherit;
+}
+
+.news__thumb {
+  overflow: hidden;
+  background: var(--paper-2);
+}
+
+/* 画角は PC・モバイル共通で写真ネイティブの 4:3。aspect-ratio は img 自身に持たせる
+   (コンテナ側に置くと子の height:100% が解決できず潰れるため)。cover でも全体が映る。 */
+.news__thumb img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.news__item:hover .news__thumb img {
+  transform: scale(1.04);
+}
+
+.news__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+}
+
+.news__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.news__date {
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-latin);
+  color: var(--mist);
+}
+
+.news__tag {
+  font-family: var(--font-label);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 0.15em 0.7em;
+  border-radius: var(--r-pill);
+}
+
+.news__title {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--ink);
+  /* 日本語を文節単位で折り返し、「第/9回」のような不自然な行末孤立を防ぐ */
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
+
+.news__text {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-3);
+}
+
+.news__more {
+  margin-top: var(--space-1);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--brand);
+}
+
+.news__more svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--dur-1) var(--ease-out);
+}
+
+.news__item:hover .news__more svg {
+  transform: translate(2px, -2px);
+}
+
+/* モバイル: 画像を上・本文を下に積む。画角は 4:3 のまま(PCと同一)にして写真全体を見せる。 */
+@media (max-width: 640px) {
+  .news__link {
+    grid-template-columns: 1fr;
+  }
+  .news__body {
+    padding: var(--space-4);
+  }
+}
+
+
 /* sections/page-hero.css */
 /*
   ShinAI Website v2 — Section: page-hero（下層ページ共通の導入部）
@@ -3438,7 +4007,7 @@ h1, h2, h3, h4 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),
@@ -3480,10 +4049,17 @@ h1, h2, h3, h4 {
 }
 
 .page-hero__title {
-  font-size: clamp(1.8rem, 3.8vw, 3.6rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.02em;
+}
+
+/* 390px幅で最長タイトル行(12字)が一行に収まるサイズ。行末1字の孤立を防ぐ */
+@media (max-width: 480px) {
+  .page-hero__title {
+    font-size: 1.65rem;
+  }
 }
 
 .page-hero__title-line {
@@ -3491,9 +4067,10 @@ h1, h2, h3, h4 {
   white-space: nowrap;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 820px) {
   .page-hero__title-line {
     white-space: normal;
+    overflow-wrap: break-word;
   }
 }
 
@@ -3653,7 +4230,11 @@ h1, h2, h3, h4 {
   余白を最優先。詰め込まない。
 */
 
+/* 透過して固定パーティクル場を通す(信念帯と同様の扱い)。isolate と不透明な紗背景を外し、
+   文字の背後を粒子が抜けるようにする。地色は body.is-home のペーパーグラデが担う。 */
 .purpose {
+  position: relative;
+  overflow: hidden;
   text-align: center;
 }
 
@@ -3670,7 +4251,7 @@ h1, h2, h3, h4 {
 .purpose__statement {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.5rem, 3.2vw, 3.4rem);
+  font-size: clamp(1.4rem, 2.4vw, 2.5rem);
   line-height: 1.35;
   letter-spacing: 0.05em;
   color: var(--ink);
@@ -3689,6 +4270,18 @@ h1, h2, h3, h4 {
 .purpose__rule {
   width: clamp(120px, 22vw, 200px);
   margin-block: var(--space-7);
+}
+
+@media (max-width: 640px) {
+  .purpose__eyebrow {
+    margin-bottom: var(--space-3);
+  }
+  .purpose__statement {
+    font-size: 1.35rem;
+  }
+  .purpose__rule {
+    margin-block: var(--space-4);
+  }
 }
 
 .purpose__support {
@@ -3737,7 +4330,7 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--grad-brand);
+  background: var(--card-ink);
   opacity: 0;
   transition: opacity var(--dur-1) var(--ease-out);
 }
@@ -3857,9 +4450,11 @@ h1, h2, h3, h4 {
   color: var(--card-ink);
 }
 
+/* タブレット: 1カラム化。過剰な横伸びを防ぐため最大幅を制限 */
 @media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
+    max-width: 640px;
   }
   /* 1カラム化で全幅になるカード画像が縦に伸びすぎないよう帯状に固定する */
   .solution-card__figure {
@@ -3868,12 +4463,64 @@ h1, h2, h3, h4 {
   }
 }
 
-@media (max-width: 480px) {
+/* タブレット帯(641-960): 縦積みの大画像カードは narrow column + 大画像で間延びする。
+   画像を左へ寄せた横並びメディアカードにして幅を活かし、密度と品位を保つ。
+   位置指定を明示し、col1=画像(全高)/col2=見出し・リード・罫・箇条書き とする。 */
+@media (min-width: 641px) and (max-width: 960px) {
+  .solutions__grid {
+    max-width: 760px;
+  }
   .solution-card {
-    padding: var(--space-4);
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    column-gap: var(--space-5);
   }
   .solution-card__figure {
-    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
+    grid-column: 1;
+    grid-row: 1 / 99;
+    margin: calc(-1 * var(--space-5)) 0 calc(-1 * var(--space-5)) calc(-1 * var(--space-5));
+    aspect-ratio: auto;
+    height: auto;
+    align-self: stretch;
+  }
+  .solution-card__figure img {
+    height: 100%;
+  }
+  .solution-card__title,
+  .solution-card__lead,
+  .solution-card__divider,
+  .solution-card__items {
+    grid-column: 2;
+  }
+  .solution-card__items {
+    margin-top: 0;
+  }
+}
+
+/* モバイル: PC同様の「画像上・本文下」を1カラムで踏襲する。
+   72pxサムネイル横並びは長文リードの左に空白を生み崩れるため廃止。
+   バナー画像はやや低めに抑え、長文でも均整を保つ。 */
+@media (max-width: 640px) {
+  .solutions__grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: var(--space-3);
+  }
+  /* 画面への圧迫を抑えるため、余白・画像・字を一段引き締めてスマートにする。 */
+  .solution-card {
+    padding: var(--space-3);
+  }
+  /* 画像は上端フルブリードの薄いバナー(5:2)にして縦の占有を減らす。 */
+  .solution-card__figure {
+    margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3);
+    aspect-ratio: 5 / 2;
+  }
+  .solution-card__title {
+    font-size: var(--fs-body);
+  }
+  .solution-card__lead {
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-3);
   }
 }
 
@@ -3987,39 +4634,42 @@ h1, h2, h3, h4 {
 /* sections/why.css */
 /*
   Section: Why ShinAI (#why)
-  現場で続くための五つの姿勢。アイコン付きの横並びリスト。
+  現場で続くための五つの姿勢。番号付きの横並びリスト、アイコンなし。
   余白と水平罫で静かに区切る。
+  色・余白・型はトークンのみ参照。
 */
 
 .why__list {
   display: flex;
   flex-direction: column;
   max-width: 760px;
+  /* ヘッドの中央揃えに合わせ、リスト塊も画面中央へ置き視線移動を短くする */
+  margin-inline: auto;
 }
 
 .why__row {
   display: grid;
-  grid-template-columns: 3.2rem 1fr;
-  gap: var(--space-4);
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--space-5);
   padding-block: var(--space-5);
   align-items: start;
 }
 
-.why__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
-  flex: 0 0 auto;
+.why__num {
+  font-family: var(--font-latin);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--mist);
+  line-height: 1;
+  padding-top: 0.15em;
+  user-select: none;
 }
 
-.why__icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+@media (max-width: 640px) {
+  .why__num {
+    font-size: 1rem;
+  }
 }
 
 .why__rule {
@@ -4042,16 +4692,13 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .why__row {
-    grid-template-columns: 2.6rem 1fr;
+    grid-template-columns: 2.5rem 1fr;
     gap: var(--space-3);
+    padding-block: var(--space-3);
   }
-  .why__icon {
-    width: 2.6rem;
-    height: 2.6rem;
-  }
-  .why__icon svg {
-    width: 1.2rem;
-    height: 1.2rem;
+  .why__title {
+    font-size: var(--fs-body);
+    font-weight: 600;
   }
 }
 

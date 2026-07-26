@@ -22,6 +22,7 @@
     var setOpen = function (open) {
       isOpen = open;
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
       nav.classList.toggle("is-open", open);
     };
 

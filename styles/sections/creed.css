@@ -6,8 +6,9 @@
 */
 /* z-index は付けない(スタッキング文脈を作らない)。
    こうすることで帯のグラデーションは背面に、creed__text は前面のパーティクル層よりさらに前へ抜ける。 */
+/* 静的(非配置)にして背景を固定パーティクル場(z:0)の「下」へ置く。これで粒子が帯の上に
+   鮮やかに乗る(旧サイトの mission-section と同じ仕組み)。creed__text は z:3 で前面・鮮明。 */
 .creed {
-  position: relative;
   padding: 2rem 0;
   text-align: center;
   background: var(--grad-creed);
@@ -18,12 +19,12 @@
   z-index: var(--z-stack-content);
   max-width: 1000px;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   font-family: var(--font-creed);
   font-weight: 300;
-  font-size: clamp(1.4rem, 3vw, 1.75rem);
-  line-height: 1.6;
-  letter-spacing: 0.14em;
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: 0.13em;
   color: #FFFFFF;
 }
 
@@ -36,10 +37,22 @@
     padding: 1rem 0;
   }
   .creed__text {
-    padding: 0.9rem;
-    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
   .creed__line {
     display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .creed {
+    padding: 0.75rem 0;
+  }
+  .creed__text {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
   }
 }

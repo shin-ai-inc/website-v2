@@ -52,6 +52,12 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
 ul, ol { list-style: none; padding: 0; }
 
+/* モバイルのタップ遅延(300ms)・ダブルタップ拡大による「タップしても反応しない」を根絶する。
+   操作要素は即座にタップを発火させ、実機での取りこぼしを防ぐ。 */
+a, button, [role="button"], label, summary, input, select, textarea {
+  touch-action: manipulation;
+}
+
 ::selection { background: var(--brand-soft); color: var(--ink); }
 
 /* ---- Headings ---- */
@@ -107,16 +113,26 @@ h1, h2, h3, h4 {
   background-image: var(--grad-dark);
 }
 .section--ink h1, .section--ink h2, .section--ink h3 { color: #FFFFFF; }
+
+/* ---- トップの持続パーティクル背景(旧サイト同様「背景の上・本文の下」オーバーレイ) ----
+   固定パーティクル場(.site-particles, z:0)に対し本文(.container)を z:1 で前面へ上げ、
+   セクション背景をその下に置く。暗色・信念帯は静的化して地を粒子の下へ送り、粒子を鮮やかに乗せる。
+   明色/alt は透過にして地(ペーパーグラデ)と粒子を通す。index限定(body.is-home)。 */
+body.is-home { background: var(--grad-paper); }
+.is-home main .container { position: relative; z-index: 1; }
+.is-home .section--alt { background: transparent; }
+.is-home .section--ink { position: static; }
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
 
-.section__head { max-width: var(--container-heading); margin-bottom: var(--space-5); }
+/* 見出しブロックと本文の間に「間」を作る(space-4→6)。大きな見出しが呼吸できる余白。 */
+.section__head { max-width: var(--container-heading); margin-bottom: var(--space-6); }
 .section__head--center { margin-inline: auto; text-align: center; }
 .section__title {
   font-size: var(--fs-h2);
   font-weight: 500;
-  line-height: var(--lh-snug);
-  letter-spacing: 0.03em;
+  line-height: 1.32;
+  letter-spacing: 0.02em;
 }
 .section__title-line {
   display: block;
@@ -129,9 +145,35 @@ h1, h2, h3, h4 {
   letter-spacing: 0.06em;
   color: var(--ink-3);
 }
+/* 中央揃えヘッド内では lead ブロック自体も中央へ(max-width による左アンカーを解く) */
+.section__head--center .section__lead {
+  margin-inline: auto;
+}
 
 .section__lead-line {
   display: block;
+}
+
+/* ---- 日本語の意味単位改行 ----
+   word-break: auto-phrase は Chromium の形態素解析(BudouX)で文節単位に折り返す。
+   text-wrap: balance/pretty は行長の均整と孤立行(行末の1〜2文字落ち)を防ぐ。
+   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。 */
+h1, h2, h3,
+.section__lead, .page-hero__lead, .purpose__support,
+.about-purpose__note, .cta__text, .shin7__desc,
+.industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note {
+  word-break: auto-phrase;
+}
+h1, h2, h3 {
+  text-wrap: balance;
+}
+.section__lead, .page-hero__lead, .purpose__support, .about-purpose__note,
+.cta__text, .shin7__desc, .industries-bridge__item-text, .industries-bridge__note {
+  text-wrap: pretty;
+}
+/* 意味の切れ目を守る最小語塊。折り返すならこの塊の前で折る(全ブラウザで有効) */
+.nobr {
+  white-space: nowrap;
 }
 
 .section__more {
@@ -142,9 +184,18 @@ h1, h2, h3, h4 {
 .text-column { max-width: var(--container-text); }
 .heading-column { max-width: var(--container-heading); }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+  .section {
+    padding-block: var(--section-py-mobile);
+  }
   .section__head {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .section__title {
+    font-size: 1.55rem;
+  }
+  .section__lead-line {
+    display: inline;
   }
 }
 
@@ -247,8 +298,9 @@ h1, h2, h3, h4 {
 /* ---- Scroll reveal ---- */
 .js .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  transform: translateY(18px);
+  /* スクロールに機敏に追従させるため速く(dur-1=0.4s)。発火も早める(main.js の rootMargin)。 */
+  transition: opacity var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
 }
 .js .reveal[data-reveal="left"] {
   transform: translateX(-40px);
@@ -272,41 +324,17 @@ h1, h2, h3, h4 {
 .reveal[data-delay="4"] { transition-delay: 0.28s; }
 .reveal[data-delay="5"] { transition-delay: 0.35s; }
 
-/* ---- Stats bar ---- */
-.stats-bar {
-  background: var(--ink);
-  background-image: var(--grad-dark);
-  padding: var(--space-5) 0;
-}
-.stats-bar__inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(2rem, 6vw, 5rem);
-  flex-wrap: wrap;
-}
-.stat-item {
-  text-align: center;
-  color: #FFFFFF;
-}
-.stat-item__number {
-  display: block;
-  font-family: var(--font-latin);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  background: var(--grad-brand-vivid);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-.stat-item__label {
-  display: block;
-  font-size: var(--fs-sm);
-  color: rgba(255,255,255,0.55);
-  margin-top: var(--space-1);
-  letter-spacing: 0.04em;
+/* ---- スクロール進捗ライン(main.js が生成する要素) ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--grad-brand);
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  transition: width 0.1s linear;
 }
 
 /* ---- 装飾の細い罫(ブランドグラデーション) ---- */

@@ -6,26 +6,27 @@
   色・余白・型はトークンのみ参照。
 */
 
-/* ---- 会社情報 ---- */
+/* ---- 会社情報 ----
+   箱で飾らず、正統派の罫線テーブルで静かに示す。行高を絞りスクロール負荷を残さない */
 .company__facts {
+  max-width: 720px;
+  border-top: 1px solid var(--line);
+}
+
+.company__facts > div {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: 9em 1fr;
   gap: var(--space-4);
-  margin-bottom: var(--space-7);
-  padding: var(--space-5);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--shadow-sm);
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--line);
 }
 
 .company__fact-term {
-  font-family: var(--font-latin);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: var(--space-1);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--mist);
 }
 
 .company__fact-desc {
@@ -34,19 +35,22 @@
   color: var(--ink);
 }
 
-/* ---- 小見出し ---- */
-.company__subhead {
-  font-size: var(--fs-h3);
-  color: var(--ink);
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--line);
+@media (max-width: 640px) {
+  .company__facts > div {
+    grid-template-columns: 6.5em 1fr;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+  }
+  .company__fact-desc {
+    font-size: var(--fs-sm);
+  }
 }
 
 /* ---- 人 ---- */
 .company__people {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  /* min(20rem, 100%): 320px級の狭幅でも列最小幅がビューポートを超えない */
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   gap: var(--space-4);
   margin-bottom: var(--space-7);
 }
@@ -59,20 +63,6 @@
   border-radius: var(--r-lg);
   background: rgba(255, 255, 255, 0.72);
   box-shadow: var(--shadow-sm);
-}
-
-.company__monogram {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
 }
 
 .company__portrait {
@@ -115,65 +105,17 @@
   color: var(--ink-2);
 }
 
-/* ---- 七つのShin ---- */
-.company__shin-feature {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
-}
-
-.company__shin-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-4);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--grad-paper);
-  box-shadow: var(--shadow-sm);
-}
-
-.company__shin-kanji {
-  font-family: var(--font-display);
-  font-size: var(--fs-display);
-  line-height: 1;
-  color: var(--ink);
-}
-
-.company__shin-words {
+.company__person-skills {
+  margin-top: var(--space-2);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
-  color: var(--ink-3);
-}
-
-.company__shin-all {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  gap: var(--space-3) var(--space-5);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line);
-}
-
-.company__shin-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
-  font-size: var(--fs-sm);
   color: var(--mist);
 }
 
-.company__shin-mark {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  color: var(--ink-2);
-  line-height: 1;
+.company__person-skills-label {
+  display: inline-block;
+  margin-right: var(--space-2);
+  font-weight: 500;
+  color: var(--brand);
 }
 
-@media (max-width: 640px) {
-  .company__shin-feature {
-    grid-template-columns: 1fr;
-  }
-}

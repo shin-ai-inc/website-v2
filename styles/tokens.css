@@ -10,6 +10,7 @@
   --paper-2: #F5F7FF;          /* セクション交互の極淡い藍青 */
   --paper-3: #EBF0FF;          /* カード境界・微細な面 */
   --ink: #0C1A36;              /* 深い藍黒。主色・見出し */
+  --ink-deep: #060E1E;         /* 最深の藍黒。grad-dark の終端＝フッター地色 */
   --ink-2: #1A2E52;            /* 藍の中間 */
   --ink-3: #4A5A7A;            /* 補助テキスト */
   --charcoal: #1E2D4A;         /* 本文 */
@@ -37,15 +38,27 @@
   --c-enable-bg: #FFF3E0;      /* 内製化・運用支援 — オレンジの淡 */
   --c-enable-ink: #CC5E00;
 
+  /* ---- Industry palette (業種別の色分け) ----
+     AIが多用しがちな原色の青×ティールを脱し、落ち着いたエディトリアル調の8色で業種を識別する。
+     各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。 */
+  --ind-1-ink: #2B5EA6; --ind-1-bg: #E7EEF8;   /* 製造: コバルト */
+  --ind-2-ink: #C87A1C; --ind-2-bg: #F9EFDC;   /* 建設: 琥珀 */
+  --ind-3-ink: #BE4E77; --ind-3-bg: #F8E7EF;   /* 介護・専門サービス: 薔薇 */
+  --ind-4-ink: #C6512F; --ind-4-bg: #F9E7E0;   /* 小売: 朱 */
+  --ind-5-ink: #159B72; --ind-5-bg: #E0F3EB;   /* 医療福祉: 翠 */
+  --ind-6-ink: #6250BE; --ind-6-bg: #ECE8F8;   /* 教育: 菫 */
+  --ind-7-ink: #147C8C; --ind-7-bg: #E0F1F3;   /* 金融: 青緑 */
+  --ind-8-ink: #9C5A38; --ind-8-bg: #F6E9E0;   /* 不動産: 赤褐 */
+
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
-  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, #060E1E 100%);
+  --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
   --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #F5F7FF 70%, #EBF0FF 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
-  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, #060E1E 100%);
+  --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, var(--ink-deep) 100%);
   /* 企業理念バンド。公式HP --gradient-cta-new (#2D4CC8/#00B89F) を完全踏襲(不透明・くっきり) */
   --grad-creed: linear-gradient(135deg, #2D4CC8 0%, #00B89F 50%, #2D4CC8 100%);
 
@@ -58,14 +71,17 @@
   /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* SpaceData/Takram 参照スケール。max値はpx換算: display=76px, h1=68px, h2=40px, h3=28px */
-  --fs-display: clamp(3.25rem, 5.2vw, 4.75rem);
-  --fs-h1: clamp(2.75rem, 4.5vw, 4.25rem);
-  --fs-h2: clamp(2rem, 2.5vw, 2.5rem);
-  --fs-h3: clamp(1.5rem, 1.8vw, 1.75rem);
-  --fs-lead: clamp(1.125rem, 1.3vw, 1.25rem);
+  /* Enterprise-grade scale. 日本語明朝体の光学補正済み。
+     セクション見出しは一段大胆に(h2 max 34→42px)。スペースデータ流の大きな見出しを
+     日本語の可読性を保つ範囲で翻案し、階層のコントラストを強める。 */
+  --fs-display: clamp(2.1rem, 4.2vw, 3.75rem);
+  --fs-h1: clamp(1.9rem, 3.4vw, 3rem);
+  --fs-h2: clamp(1.55rem, 2.9vw, 2.625rem);
+  --fs-h3: clamp(1.15rem, 1.6vw, 1.5rem);
+  --fs-lead: clamp(0.95rem, 1.3vw, 1.25rem);
   --fs-body: 1rem;
   --fs-sm: 0.875rem;
+  --fs-xs: 0.8rem;             /* フッターのメタ等、控えめな fine-print 用 */
   --fs-eyebrow: 0.75rem;
 
   --lh-tight: 1.1;
@@ -83,7 +99,12 @@
   --space-6: 3rem;
   --space-7: 4.5rem;
   --space-8: 6.5rem;
-  --section-py: clamp(4.5rem, 7vw, 9rem);
+  /* セクション上下余白。大胆な「間」を作るため上限を引き上げ(6.5→8rem)、
+     大画面ほど呼吸が深くなるよう vw 係数も上げる。 */
+  --section-py: clamp(3rem, 6vw, 8rem);
+  /* モバイル(<=640px)のセクション律動。デスクトップ最小(40px)へ近い呼吸を保ち、
+     「余白の美」を小画面でも崩さない。24pxへの急落を防ぐ単一の真実源。 */
+  --section-py-mobile: clamp(2.5rem, 8vw, 3.5rem);
   --container: 1360px;
   --container-narrow: 760px;
   --container-text: 680px;

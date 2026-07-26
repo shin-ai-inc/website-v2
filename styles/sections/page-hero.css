@@ -8,7 +8,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
   background: var(--paper-2);
   background-image:
     radial-gradient(80% 120% at 88% -10%, color-mix(in srgb, var(--c-tacit-bg) 60%, transparent) 0%, transparent 60%),
@@ -50,10 +50,17 @@
 }
 
 .page-hero__title {
-  font-size: clamp(1.8rem, 3.8vw, 3.6rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.02em;
+}
+
+/* 390px幅で最長タイトル行(12字)が一行に収まるサイズ。行末1字の孤立を防ぐ */
+@media (max-width: 480px) {
+  .page-hero__title {
+    font-size: 1.65rem;
+  }
 }
 
 .page-hero__title-line {
@@ -61,9 +68,10 @@
   white-space: nowrap;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 820px) {
   .page-hero__title-line {
     white-space: normal;
+    overflow-wrap: break-word;
   }
 }
 

@@ -4,7 +4,11 @@
   余白を最優先。詰め込まない。
 */
 
+/* 透過して固定パーティクル場を通す(信念帯と同様の扱い)。isolate と不透明な紗背景を外し、
+   文字の背後を粒子が抜けるようにする。地色は body.is-home のペーパーグラデが担う。 */
 .purpose {
+  position: relative;
+  overflow: hidden;
   text-align: center;
 }
 
@@ -21,7 +25,7 @@
 .purpose__statement {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.5rem, 3.2vw, 3.4rem);
+  font-size: clamp(1.4rem, 2.4vw, 2.5rem);
   line-height: 1.35;
   letter-spacing: 0.05em;
   color: var(--ink);
@@ -40,6 +44,18 @@
 .purpose__rule {
   width: clamp(120px, 22vw, 200px);
   margin-block: var(--space-7);
+}
+
+@media (max-width: 640px) {
+  .purpose__eyebrow {
+    margin-bottom: var(--space-3);
+  }
+  .purpose__statement {
+    font-size: 1.35rem;
+  }
+  .purpose__rule {
+    margin-block: var(--space-4);
+  }
 }
 
 .purpose__support {

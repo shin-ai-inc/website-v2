@@ -8,33 +8,40 @@
 /* Hero と 信念バンド(creed)を一つの量子パーティクル場で包む共有レイヤー。
    白基調。creed の青緑グラデーションだけが下部で立ち上がる。
    没入ゾーン全体で初見の1画面を満たす(次セクションはスクロールするまで覗かせない)。 */
+/* 静的(非配置・非 isolate)にして、内側の信念帯の背景を固定パーティクル場(z:0)の下へ送る。
+   これで creed を top view に収めつつ、粒子が帯の上に乗る(旧サイト同様)。 */
 .hero-stack {
-  position: relative;
-  isolation: isolate;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - var(--header-h));
-  min-height: calc(100lvh - var(--header-h));
-  background: var(--grad-paper);
+  height: calc(100vh - var(--header-h));
+  height: calc(100lvh - var(--header-h));
+  /* 地色は body.is-home のペーパーグラデ + 固定パーティクルが担うため透過にする。 */
+  background: transparent;
 }
 
-/* パーティクル場は信念帯グラデーションより前面・全テキストより背面に置く。
-   これで白地のヒーローでも青緑帯の上でも、同じ粒子場が乗って見える(公式HP同様)。 */
-.hero-stack__particles {
-  position: absolute;
+/* パーティクル場をページ全体の固定オーバーレイに。旧サイト同様、セクション背景の「上」・
+   本文コンテンツの「下」(z:0)に置く。静的セクションの背景に粒子が乗り、コンテンツ(z:1)は前面で鮮明。
+   高さは 100lvh(large viewport height=アドレスバー格納時で安定)に固定する。モバイルでスクロール中に
+   バーが出入りしても canvas の高さが揺れず、地球儀が拡大・縮小しない。バッファは常に表示と一致させ
+   (particles.js は resize で常時同期)、縦長楕円化を防ぐ。 */
+.site-particles {
+  position: fixed;
   inset: 0;
-  z-index: var(--z-particles);
-  width: 100%;
-  height: 100%;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
 
-.hero-stack__particles canvas {
+/* canvas は 100% で引き伸ばさず、固定ピクセルサイズのまま中央に置き overflow で切り取る。
+   これでモバイルのアドレスバー開閉で高さが変わっても、バッファは伸びず(楕円化しない)
+   拡大もしない。描画サイズのロックは particles.js が担う。 */
+.site-particles canvas {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* ヒーロー高さは控えめにし、直下の信念バンドを初見の下部に引き上げる
@@ -43,9 +50,9 @@
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   min-height: clamp(340px, 52svh, 600px);
-  padding-block: var(--space-7) var(--space-6);
+  padding-block: var(--space-6) var(--space-6);
   overflow: hidden;
 }
 
@@ -53,6 +60,8 @@
   position: relative;
   z-index: var(--z-stack-content);
   max-width: 880px;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero__eyebrow {
@@ -74,10 +83,16 @@
 
 /* ---- Title ---- */
 .hero__title {
-  font-size: clamp(1.9rem, 4.5vw, 4.4rem);
+  font-size: clamp(1.9rem, 3.4vw, 3.75rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-5);
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    letter-spacing: 0.01em;
+  }
 }
 
 .hero__title-line {
@@ -95,13 +110,40 @@
 }
 
 /* ---- Subcopy ---- */
+/* margin-bottom: calc(43.3vh - 212px) はヘッダー78px・creed132px・padding48px×2を考慮した
+   globe_bottom(hero-stack×0.567) から60px上に subcopy_top を揃える比例式。
+   大小どの画面高さでも「積み上げた文書。/ AIへ変える。」が地球儀下端に重なる。 */
 .hero__subcopy {
   max-width: 40em;
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
   letter-spacing: 0.06em;
   color: var(--charcoal);
-  margin-bottom: var(--space-5);
+  margin-top: auto;
+  margin-bottom: max(0px, calc(43.3vh - 212px));
+}
+
+/* 820px以下はcreed高さが79pxに変わるため定数を補正(212→159)。
+   640px以下でflex-startに戻るため margin-top/bottomを明示リセット。 */
+@media (max-width: 820px) {
+  .hero__subcopy {
+    margin-bottom: max(0px, calc(43.3vh - 159px));
+  }
+}
+
+@media (max-width: 640px) {
+  /* eyebrow はやや控えめに。subcopy はタイトルとの間を空け、地球儀側へ少し下げる */
+  .hero__eyebrow {
+    font-size: 0.62rem;
+  }
+  .hero__subcopy {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    line-height: 1.75;
+    color: var(--ink-3);
+    margin-top: 2.5rem;
+    margin-bottom: var(--space-5);
+  }
 }
 
 .hero__subcopy-line {
@@ -152,5 +194,37 @@
 @media (max-width: 480px) {
   .hero {
     min-height: clamp(440px, 68svh, 580px);
+  }
+}
+
+/* モバイルでは hero-stack の全画面強制を解除し、コンテンツ自然高さにする。
+   creed セクションが直後に続くことで初期画面内に両方が収まる。 */
+@media (max-width: 640px) {
+  /* svh = ブラウザUI込みの保守的なビューポート高さ。地球儀をキャンバス中央=画面中央に揃える。 */
+  .hero-stack {
+    height: calc(100svh - var(--header-h));
+  }
+  .hero {
+    min-height: 0;
+    align-items: flex-start;
+    padding-block: 1.25rem var(--space-3);
+  }
+}
+
+/* ランドスケープモバイル(高さ500px以下): creedが折れないよう hero-stack を auto高さに。 */
+@media (max-height: 500px) {
+  .hero-stack {
+    height: auto;
+    min-height: calc(100svh - var(--header-h));
+  }
+  .hero {
+    min-height: 0;
+  }
+  .creed {
+    padding: 0.5rem 0;
+  }
+  .creed__text {
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
   }
 }

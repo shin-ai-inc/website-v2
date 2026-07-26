@@ -1,38 +1,41 @@
 /*
   Section: Why ShinAI (#why)
-  現場で続くための五つの姿勢。アイコン付きの横並びリスト。
+  現場で続くための五つの姿勢。番号付きの横並びリスト、アイコンなし。
   余白と水平罫で静かに区切る。
+  色・余白・型はトークンのみ参照。
 */
 
 .why__list {
   display: flex;
   flex-direction: column;
   max-width: 760px;
+  /* ヘッドの中央揃えに合わせ、リスト塊も画面中央へ置き視線移動を短くする */
+  margin-inline: auto;
 }
 
 .why__row {
   display: grid;
-  grid-template-columns: 3.2rem 1fr;
-  gap: var(--space-4);
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--space-5);
   padding-block: var(--space-5);
   align-items: start;
 }
 
-.why__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: var(--r-md);
-  background: var(--brand-soft);
-  color: var(--brand);
-  flex: 0 0 auto;
+.why__num {
+  font-family: var(--font-latin);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--mist);
+  line-height: 1;
+  padding-top: 0.15em;
+  user-select: none;
 }
 
-.why__icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+@media (max-width: 640px) {
+  .why__num {
+    font-size: 1rem;
+  }
 }
 
 .why__rule {
@@ -55,15 +58,12 @@
 
 @media (max-width: 640px) {
   .why__row {
-    grid-template-columns: 2.6rem 1fr;
+    grid-template-columns: 2.5rem 1fr;
     gap: var(--space-3);
+    padding-block: var(--space-3);
   }
-  .why__icon {
-    width: 2.6rem;
-    height: 2.6rem;
-  }
-  .why__icon svg {
-    width: 1.2rem;
-    height: 1.2rem;
+  .why__title {
+    font-size: var(--fs-body);
+    font-weight: 600;
   }
 }
