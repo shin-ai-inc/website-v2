@@ -97,6 +97,8 @@ h1, h2, h3, h4 {
 body.is-home { background: var(--grad-paper); }
 .is-home main .container { position: relative; z-index: 1; }
 .is-home .section--alt { background: transparent; }
+/* Why ShinAI はオフホワイトに見えるため純白地に(粒子はその上に継承)。 */
+.is-home .why { background: var(--paper); }
 .is-home .section--ink { position: static; }
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
