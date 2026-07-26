@@ -62,15 +62,18 @@
   renderer.domElement.setAttribute("aria-hidden", "true");
   container.appendChild(renderer.domElement);
 
-  /* 二重コア(藍と青緑のワイヤーフレーム)。現行の二重地球儀構造を継承。 */
+  /* 二重コア(藍と青緑のワイヤーフレーム)。現行の二重地球儀構造を継承。
+     大画面PCでは分割数を1段上げ(2→3)、網目を細かく上品にする。線幅はWebGL仕様でほぼ1px固定のため
+     網目セルの細かさで調整する。モバイルは小さく見えるため従来の2を維持。 */
+  var coreDetail = isMobile ? 2 : 3;
   var core = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 9.2 : 9.0, 2),
+    new THREE.IcosahedronGeometry(isMobile ? 9.2 : 9.0, coreDetail),
     new THREE.MeshBasicMaterial({ color: 0x3a5feb, transparent: true, opacity: isMobile ? 0.18 : 0.17, wireframe: true })
   );
   scene.add(core);
 
   var innerCore = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(isMobile ? 4.6 : 4.5, 2),
+    new THREE.IcosahedronGeometry(isMobile ? 4.6 : 4.5, coreDetail),
     new THREE.MeshBasicMaterial({ color: 0x00c9a7, transparent: true, opacity: isMobile ? 0.25 : 0.22, wireframe: true })
   );
   scene.add(innerCore);
