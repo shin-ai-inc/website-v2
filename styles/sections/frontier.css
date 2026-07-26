@@ -29,6 +29,25 @@
   text-align: center;
 }
 
+/* eyebrow と「新サービス」バッジを一行に並べる。バッジで新規提供であることを一目で示す。 */
+.frontier__eyebrow-row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.frontier__badge {
+  font-family: var(--font-label);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 0.2em 0.85em;
+  border-radius: var(--r-pill);
+  color: var(--ink);
+  background: var(--teal-2);
+  white-space: nowrap;
+}
+
 .frontier__headline {
   font-family: var(--font-display);
   font-weight: 500;
@@ -55,21 +74,6 @@
   line-height: var(--lh-body);
   letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.55);
-}
-
-/* 「フィジカルAI」を語の中で静かに際立たせる小チップ。青緑で先進の温度を一点だけ。 */
-.frontier__tag {
-  display: inline-block;
-  font-family: var(--font-label);
-  font-size: 0.82em;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  padding: 0.1em 0.7em;
-  margin-inline: 0.15em;
-  border-radius: var(--r-pill);
-  border: 1px solid rgba(32, 231, 196, 0.4);
-  color: var(--teal-2);
-  white-space: nowrap;
 }
 
 /* 淡いゴースト型CTA。濃地に馴染ませ、hoverで青緑に開く。 */
