@@ -29,17 +29,27 @@
   box-shadow: var(--shadow-md);
 }
 
-/* 各ステップのアイコン中心を、次のアイコン中心まで罫でつなぐ。
-   不透明なアイコン円が両端を覆い、視覚的にはアイコン間を結ぶ線になる。 */
+/* ステップ間の送り。アイコンとアイコンのあいだを左から右へ一本の線でつなぎ、
+   工程が地続きであることを目で追えるようにする。
+   カードが不透明な面になったため、素直に引くと線が隣のカードの下へ潜り、
+   次のアイコンへ届く前に切れて見える。z-index で隣のカードより上の層に出す。
+   両端はアイコンの縁ぴったりで止め、円から円へ渡っているように見せる。 */
 .contact-flow__step:not(:last-child)::after {
   content: "";
   position: absolute;
+  z-index: 1;
   top: calc(var(--space-5) + 28px);
-  left: calc(50% + var(--space-4));
-  width: calc(100% - var(--space-4));
+  left: calc(50% + 28px);
+  width: calc(100% + var(--space-5) - 56px);
   height: 2px;
-  background: linear-gradient(90deg, var(--brand-soft), var(--line));
-  z-index: 0;
+  background: var(--brand);
+  opacity: 0.4;
+  transform: translateY(-50%);
+}
+
+/* hover の transform は重なり順を閉じてしまうため、線ごとカードを前面へ出す。 */
+.contact-flow__step:hover {
+  z-index: 2;
 }
 
 .contact-flow__icon {
@@ -408,39 +418,58 @@
   }
 }
 
+/* 狭い画面でも縦積みにせず、左から右への流れを保ったまま寸法だけ詰める。
+   アイコンが縮むぶん、線の始点・終点(アイコンの半径)も合わせて詰める。 */
 @media (max-width: 820px) {
   .contact-flow {
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-    max-width: 30rem;
-    margin-inline: auto;
+    gap: var(--space-3);
   }
   .contact-flow__step {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    column-gap: var(--space-4);
-    text-align: left;
-    padding-inline: 0;
+    padding: var(--space-4) var(--space-3);
   }
   .contact-flow__icon {
-    grid-row: 1 / -1;
-    margin-bottom: 0;
+    width: 48px;
+    height: 48px;
   }
-  .contact-flow__step > :not(.contact-flow__icon) {
-    grid-column: 2;
+  .contact-flow__icon svg {
+    width: 20px;
+    height: 20px;
   }
-  /* 縦並びでは、アイコン列に沿って次のアイコンまで罫を下ろす */
   .contact-flow__step:not(:last-child)::after {
-    top: 56px;
-    bottom: calc(-1 * var(--space-5));
-    left: 28px;
-    width: 2px;
-    height: auto;
-    background: linear-gradient(180deg, var(--brand-soft), var(--line));
-    transform: translateX(-50%);
+    top: calc(var(--space-4) + 24px);
+    left: calc(50% + 24px);
+    width: calc(100% + var(--space-3) - 48px);
   }
-  .contact-flow__text {
-    margin-inline: 0;
+}
+
+/* スマートフォン。3列のまま画面に収めると本文が1行3〜4文字になり読めないため、
+   カードの最小幅を確保したうえで横スクロールにする。
+   縦積みにすると流れが上から下になってしまうので、左から右の並びは崩さない。 */
+@media (max-width: 560px) {
+  .contact-flow {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(15rem, 1fr);
+    gap: var(--space-3);
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    /* 影が切れないための上下余白と、端のカードまで寄せ切るための内側余白 */
+    padding-block: var(--space-2);
+    margin-inline: calc(-1 * var(--space-4));
+    padding-inline: var(--space-4);
+    scrollbar-width: none;
+  }
+  .contact-flow::-webkit-scrollbar {
+    display: none;
+  }
+  .contact-flow__step {
+    scroll-snap-align: center;
+    padding: var(--space-4) var(--space-3);
+  }
+  .contact-flow__step:not(:last-child)::after {
+    top: calc(var(--space-4) + 24px);
+    left: calc(50% + 24px);
+    width: calc(100% + var(--space-3) - 48px);
   }
 }
 
