@@ -810,17 +810,29 @@ h1, h2, h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 3.25rem;
+  height: 3.25rem;
   margin-bottom: var(--space-3);
   border-radius: var(--r-md);
-  background: var(--brand);
+  /* 単色は簡素に見えるため、ブランドの藍青→青緑グラデ+奥行きの影で上質なチップに。
+     7つのShinは一つの名の側面のため、色は統一する。 */
+  background: var(--grad-brand);
   color: #FFFFFF;
+  box-shadow:
+    0 6px 16px color-mix(in srgb, var(--brand) 28%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   flex-shrink: 0;
+  transition: transform var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
+}
+.shin7__card:hover .shin7__icon-wrap {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 22px color-mix(in srgb, var(--brand) 34%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .shin7__icon-wrap svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .shin7__roman {
