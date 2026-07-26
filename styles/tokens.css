@@ -7,18 +7,19 @@
 :root {
   /* ---- Color: base (純白基調 + 極淡い藍青のニュアンス) ---- */
   --paper: #FFFFFF;            /* 純白。全体背景 */
-  /* 交互セクションの地色。AI/テックが多用する青みの淡色を脱し、温かいオフホワイト(紙)へ。
-     クールなブランド藍青×青緑を温かい紙地に載せ、エディトリアルで人間的な質感を出す。
-     明度は旧#F5F7FF相当を保ち、--mist等の文字コントラスト(4.5:1)を維持する。 */
-  --paper-2: #FAF8F3;          /* セクション交互の温かいオフホワイト */
-  --paper-3: #F2EFE8;          /* カード境界・微細な面(温かい淡中性色) */
+  /* 交互セクションの地色。フラットな青ベタ(AIっぽさ)を脱し、白基調から極薄の
+     ブランド藍青〜青緑へ流れるグラデ(--grad-section)を主に用いる。
+     --paper-2/-3 は color-mix や小面(ピル・枠)用の単色フォールバックとして残す。
+     明度は高く保ち、--mist等の文字コントラスト(4.5:1)を維持する。 */
+  --paper-2: #F3F5FA;          /* 淡いクール中性(単色フォールバック) */
+  --paper-3: #E9EEF6;          /* カード境界・微細な面 */
   --ink: #0C1A36;              /* 深い藍黒。主色・見出し */
   --ink-deep: #060E1E;         /* 最深の藍黒。grad-dark の終端＝フッター地色 */
   --ink-2: #1A2E52;            /* 藍の中間 */
   --ink-3: #4A5A7A;            /* 補助テキスト */
   --charcoal: #1E2D4A;         /* 本文 */
   --mist: #637290;             /* キャプション。白地・--paper-2 地の双方で 4.5:1(旧 #6B7A99 は 4.03:1) */
-  --line: #E9E4DB;             /* 罫線。青みを抜いた温かい中性ヘアライン */
+  --line: #E4E8F1;             /* 罫線。淡いクール中性ヘアライン */
   --line-ink: rgba(12, 26, 54, 0.10);
 
   /* ---- Color: brand (企業カラー。藍青→青緑→エネルギーオレンジ) ---- */
@@ -59,7 +60,10 @@
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
   --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
-  --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #FAF8F3 70%, #F2EFE8 100%);
+  --grad-paper: radial-gradient(160% 120% at 50% 0%, #FFFFFF 0%, #F5F7FC 68%, #EFF6F5 100%);
+  /* セクション地色。白基調から極薄の藍青〜青緑へ斜めに流れる。フラットな青ベタを避け、
+     グラデの奥行きで「AI青ベタ」の没個性を脱する。明色セクション・ページ見出しに用いる。 */
+  --grad-section: linear-gradient(152deg, #FFFFFF 0%, #FFFFFF 30%, #F2F5FC 68%, #ECF6F4 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
   --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, var(--ink-deep) 100%);

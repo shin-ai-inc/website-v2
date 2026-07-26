@@ -82,7 +82,7 @@ h1, h2, h3, h4 {
   position: relative;
   padding-block: var(--section-py);
 }
-.section--alt { background: var(--paper-2); }
+.section--alt { background: var(--grad-section); }
 .section--ink {
   background: var(--ink);
   color: #E7EAF1;
