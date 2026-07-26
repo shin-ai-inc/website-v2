@@ -99,6 +99,14 @@ const ldJson = {
   }
 };
 
+const websiteLdJson = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "ShinAI",
+  alternateName: "シンアイ",
+  url: SITE_URL + "/"
+};
+
 const faqLdJson = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -157,6 +165,7 @@ const shell = (page) => {
   <link rel="canonical" href="${canonical}">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#3A5FEB">
+  <meta name="format-detection" content="telephone=no">
 
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -186,7 +195,7 @@ const shell = (page) => {
   <link rel="stylesheet" href="styles/app.css">
 
   <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
-${page.file === "faq.html" ? '  <script type="application/ld+json">' + JSON.stringify(faqLdJson) + '</script>\n' : ''}${page.breadcrumb ? '  <script type="application/ld+json">' + JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"ホーム",item:SITE_URL+"/"},{"@type":"ListItem",position:2,name:page.breadcrumb,item:canonical}]}) + '</script>\n' : ''}</head>
+${page.file === "index.html" ? '  <script type="application/ld+json">' + JSON.stringify(websiteLdJson) + '</script>\n' : ''}${page.file === "faq.html" ? '  <script type="application/ld+json">' + JSON.stringify(faqLdJson) + '</script>\n' : ''}${page.breadcrumb ? '  <script type="application/ld+json">' + JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"ホーム",item:SITE_URL+"/"},{"@type":"ListItem",position:2,name:page.breadcrumb,item:canonical}]}) + '</script>\n' : ''}</head>
 <body>
   <a class="skip-link" href="#main">メインコンテンツへ</a>
 ${header}
