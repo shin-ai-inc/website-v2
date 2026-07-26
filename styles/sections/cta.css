@@ -39,9 +39,12 @@
   margin-top: var(--space-6);
 }
 
+/* オレンジ地の白文字は 2.36:1(淡端は 1.73:1)で AA に遠く届かない。
+   ブランドのオレンジ #FF8A00 はそのままに、文字を濃紺へ替えて 7.30:1 を確保する。
+   矢印SVGは currentColor なので追従する。 */
 .cta__btn {
   background: var(--grad-energy);
-  color: #FFFFFF;
+  color: var(--ink);
   box-shadow: var(--shadow-energy);
   padding-inline: var(--space-5);
 }

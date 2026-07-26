@@ -247,7 +247,7 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  background: var(--grad-brand);
+  background: var(--grad-brand-btn);
   color: #FFF;
   box-shadow: var(--shadow-brand);
 }

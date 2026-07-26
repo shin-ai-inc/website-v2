@@ -70,8 +70,9 @@
   transition: color var(--dur-1) var(--ease-out);
 }
 
+/* hover 時も明色地。--teal は白地 2.12:1 で AA を満たさないため濃いティールを使う */
 .method__step:hover .method__label {
-  color: var(--teal);
+  color: var(--c-agent-ink);
 }
 
 .method__name {

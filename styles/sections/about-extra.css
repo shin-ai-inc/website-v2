@@ -547,7 +547,8 @@
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--card-accent, var(--teal));
+  /* フォールバックは --teal(白地 2.12:1)ではなく濃いティール。役割クラスが無い場合も AA を保つ */
+  color: var(--card-accent, var(--c-agent-ink));
   margin-bottom: var(--space-1);
 }
 .join__title {

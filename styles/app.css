@@ -15,7 +15,7 @@
   --ink-2: #1A2E52;            /* 藍の中間 */
   --ink-3: #4A5A7A;            /* 補助テキスト */
   --charcoal: #1E2D4A;         /* 本文 */
-  --mist: #6B7A99;             /* キャプション */
+  --mist: #637290;             /* キャプション。白地・--paper-2 地の双方で 4.5:1(旧 #6B7A99 は 4.03:1) */
   --line: #E2E8F7;             /* 罫線 */
   --line-ink: rgba(12, 26, 54, 0.10);
 
@@ -37,22 +37,27 @@
   --c-agent-bg: #E0FAF5;       /* 企業専用エージェント — 青緑の淡 */
   --c-agent-ink: #007A67;
   --c-enable-bg: #FFF3E0;      /* 内製化・運用支援 — オレンジの淡 */
-  --c-enable-ink: #CC5E00;
+  --c-enable-ink: #B55300;     /* 淡橙地で 4.5:1 を満たす濃度(旧 #CC5E00 は 3.70:1) */
 
   /* ---- Industry palette (業種別の色分け) ----
      AIが多用しがちな原色の青×ティールを脱し、落ち着いたエディトリアル調の8色で業種を識別する。
-     各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。 */
+     各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。
+     ink は色相・彩度を保ったまま、白地と対の淡地の両方で 4.5:1 を満たす明度に調整済み。 */
   --ind-1-ink: #2B5EA6; --ind-1-bg: #E7EEF8;   /* 製造: コバルト */
-  --ind-2-ink: #C87A1C; --ind-2-bg: #F9EFDC;   /* 建設: 琥珀 */
-  --ind-3-ink: #BE4E77; --ind-3-bg: #F8E7EF;   /* 介護・専門サービス: 薔薇 */
-  --ind-4-ink: #C6512F; --ind-4-bg: #F9E7E0;   /* 小売: 朱 */
-  --ind-5-ink: #159B72; --ind-5-bg: #E0F3EB;   /* 医療福祉: 翠 */
+  --ind-2-ink: #9C5F16; --ind-2-bg: #F9EFDC;   /* 建設: 琥珀 */
+  --ind-3-ink: #B3426B; --ind-3-bg: #F8E7EF;   /* 介護・専門サービス: 薔薇 */
+  --ind-4-ink: #B2492A; --ind-4-bg: #F9E7E0;   /* 小売: 朱 */
+  --ind-5-ink: #117B5A; --ind-5-bg: #E0F3EB;   /* 医療福祉: 翠 */
   --ind-6-ink: #6250BE; --ind-6-bg: #ECE8F8;   /* 教育: 菫 */
-  --ind-7-ink: #147C8C; --ind-7-bg: #E0F1F3;   /* 金融: 青緑 */
-  --ind-8-ink: #9C5A38; --ind-8-bg: #F6E9E0;   /* 不動産: 赤褐 */
+  --ind-7-ink: #137686; --ind-7-bg: #E0F1F3;   /* 金融: 青緑 */
+  --ind-8-ink: #9B5A38; --ind-8-bg: #F6E9E0;   /* 不動産: 赤褐 */
 
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
+  /* ボタン専用。--grad-brand の白文字はティール端が 2.12:1 で AA を満たさないため、
+     ティール端だけを沈めた版を使う。装飾の罫・下線は --grad-brand のまま(文字ではないため)。
+     hover の brightness(1.08) を掛けた状態でも 4.5:1 を保つ濃度にしてある。 */
+  --grad-brand-btn: linear-gradient(135deg, #3A5FEB 0%, #007C67 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
   --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
@@ -407,7 +412,7 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  background: var(--grad-brand);
+  background: var(--grad-brand-btn);
   color: #FFF;
   box-shadow: var(--shadow-brand);
 }
@@ -1075,7 +1080,8 @@ h1, h2, h3 {
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--card-accent, var(--teal));
+  /* フォールバックは --teal(白地 2.12:1)ではなく濃いティール。役割クラスが無い場合も AA を保つ */
+  color: var(--card-accent, var(--c-agent-ink));
   margin-bottom: var(--space-1);
 }
 .join__title {
@@ -2269,9 +2275,12 @@ h1, h2, h3 {
   margin-top: var(--space-6);
 }
 
+/* オレンジ地の白文字は 2.36:1(淡端は 1.73:1)で AA に遠く届かない。
+   ブランドのオレンジ #FF8A00 はそのままに、文字を濃紺へ替えて 7.30:1 を確保する。
+   矢印SVGは currentColor なので追従する。 */
 .cta__btn {
   background: var(--grad-energy);
-  color: #FFFFFF;
+  color: var(--ink);
   box-shadow: var(--shadow-energy);
   padding-inline: var(--space-5);
 }
@@ -3882,8 +3891,9 @@ h1, h2, h3 {
   transition: color var(--dur-1) var(--ease-out);
 }
 
+/* hover 時も明色地。--teal は白地 2.12:1 で AA を満たさないため濃いティールを使う */
 .method__step:hover .method__label {
-  color: var(--teal);
+  color: var(--c-agent-ink);
 }
 
 .method__name {

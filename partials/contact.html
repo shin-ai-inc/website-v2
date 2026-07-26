@@ -83,7 +83,12 @@
           <p class="contact-form-card__lead">いただいた内容を確認のうえ、数営業日以内にご連絡します。</p>
         </div>
 
-        <!-- Formspree: formspree.io でフォームを作成し、YOUR_FORM_ID を実際の ID に置換する -->
+        <!-- TODO(公開前・必須): 送信先が未設定。action の YOUR_FORM_ID_HERE を実IDへ置換すること。
+             未設定の間は contact-form.js が mailto へフォールバックするためエラーにはならないが、
+             フォームからの問い合わせはメールクライアント任せになり取りこぼしが出る。
+             ドメイン取得後に Formspree(または後継の送信先)でフォームを作成し、
+             日本語版と英語版(partials/en/contact.html)の両方を同時に更新する。
+             CSP の connect-src / form-action も送信先に合わせて見直すこと(_build/build.mjs と deploy/_headers)。 -->
         <form class="contact-form" method="post"
               action="https://formspree.io/f/YOUR_FORM_ID_HERE"
               aria-describedby="contact-form-note">
