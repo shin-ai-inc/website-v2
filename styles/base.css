@@ -94,11 +94,12 @@ h1, h2, h3, h4 {
    固定パーティクル場(.site-particles, z:0)に対し本文(.container)を z:1 で前面へ上げ、
    セクション背景をその下に置く。暗色・信念帯は静的化して地を粒子の下へ送り、粒子を鮮やかに乗せる。
    明色/alt は透過にして地(ペーパーグラデ)と粒子を通す。index限定(body.is-home)。 */
-body.is-home { background: var(--grad-paper); }
+/* トップの地色は純白。交互セクションを透過にして固定パーティクルを全面に通す。
+   以前の淡いグラデ地は深い位置でオフホワイトに見えたため純白へ純化。 */
+body.is-home { background: var(--paper); }
 .is-home main .container { position: relative; z-index: 1; }
+/* Why を含む全 alt セクションは透過。粒子を他セクションと同じ強さで見せる。 */
 .is-home .section--alt { background: transparent; }
-/* Why ShinAI: 不透明白は粒子を覆い隠すため半透明白に。地色の色みを白へ寄せつつ粒子を透けさせる。 */
-.is-home .why { background: rgba(255, 255, 255, 0.55); }
 .is-home .section--ink { position: static; }
 .section--ink .section__lead { color: rgba(255, 255, 255, 0.62); }
 .section--ink .eyebrow { color: var(--teal); }
