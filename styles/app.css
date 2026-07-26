@@ -54,10 +54,6 @@
 
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
-  /* ボタン専用。--grad-brand の白文字はティール端が 2.12:1 で AA を満たさないため、
-     ティール端だけを沈めた版を使う。装飾の罫・下線は --grad-brand のまま(文字ではないため)。
-     hover の brightness(1.08) を掛けた状態でも 4.5:1 を保つ濃度にしてある。 */
-  --grad-brand-btn: linear-gradient(135deg, #3A5FEB 0%, #007C67 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
   --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
@@ -247,30 +243,6 @@ h1, h2, h3, h4 {
   position: relative;
   padding-block: var(--section-py);
 }
-/* Subtle atmospheric image overlay for white-background sections */
-.section:not(.section--alt):not(.section--ink) {
-  isolation: isolate;
-}
-.section:not(.section--alt):not(.section--ink)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: -1;
-}
-#purpose::before  { background-image: url('../assets/images/about-philosophy-tech.jpg'); }
-#solutions::before { background-image: url('../assets/images/service-custom-ai-development.jpg'); }
-#team::before     { background-image: url('../assets/images/photo-team.jpg'); }
-#company::before  { background-image: url('../assets/images/about-vision-future.jpg'); }
-#industries::before { background-image: url('../assets/images/about-vision-future.jpg'); }
-#technology::before { background-image: url('../assets/images/about-philosophy-tech.jpg'); }
-#faq::before      { background-image: url('../assets/images/service-consulting-team.jpg'); }
-#flow::before     { background-image: url('../assets/images/service-cocreation-partnership.jpg'); }
-
 .section--alt { background: var(--paper-2); }
 .section--ink {
   background: var(--ink);
@@ -412,7 +384,7 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  background: var(--grad-brand-btn);
+  background: var(--grad-brand);
   color: #FFF;
   box-shadow: var(--shadow-brand);
 }
@@ -3748,17 +3720,6 @@ h1, h2, h3 {
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
   color: var(--ink-2);
-}
-
-/* 地の文と同色だとリンクだと気づかれないため、明示的に色と下線を与える。 */
-.industries-bridge__note a {
-  color: var(--brand-3);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
-.industries-bridge__note a:hover {
-  color: var(--brand);
 }
 
 /* ---- Responsive ---- */

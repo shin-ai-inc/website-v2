@@ -53,10 +53,6 @@
 
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
-  /* ボタン専用。--grad-brand の白文字はティール端が 2.12:1 で AA を満たさないため、
-     ティール端だけを沈めた版を使う。装飾の罫・下線は --grad-brand のまま(文字ではないため)。
-     hover の brightness(1.08) を掛けた状態でも 4.5:1 を保つ濃度にしてある。 */
-  --grad-brand-btn: linear-gradient(135deg, #3A5FEB 0%, #007C67 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
   --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
