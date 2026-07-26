@@ -1737,9 +1737,10 @@ h1, h2, h3 {
   top: calc(var(--space-4) + 22px);
   left: calc(50% + 22px);
   width: calc(100% + var(--space-4) - 44px);
-  height: 2px;
+  /* 細く繊細に。太い線は資料然として重い。1pxのヘアラインで工程を上品につなぐ。 */
+  height: 1px;
   background: var(--brand);
-  opacity: 0.6;
+  opacity: 0.4;
   transform: translateY(-50%);
 }
 
@@ -2775,183 +2776,119 @@ h1, h2, h3 {
 /* sections/frontier.css */
 /*
   Section: frontier — フィジカルAI研究開発(PoC)。差別化の芯。
-  「暗黙知には、言葉にできるものと、身体に残るものがある」という物語の延長として、
-  ソフトウェア領域(RAG/LLM)の先にある実世界側の研究開発を提示する。
-  淡色帯だが、上端のブランドグラデーション罫とカードの色面で「別格の領域」として立てる。
+  三つの提供価値(受託メニュー)の外側にある研究開発領域を、濃色帯に「一つの言明」として静かに立てる。
+  情報を足さず引く。抽象的な技術カードを重ねず、核心を一息で伝える。色・余白・型はトークンのみ参照。
 */
 .frontier {
   position: relative;
   overflow: hidden;
 }
 
-/* 上端の細いブランド罫。淡色セクションが続いても「ここから別の話」と分かる合図。 */
+/* 上端の細いブランド罫。淡色/濃色の境で「ここから別の話」と分かる静かな合図。 */
 .frontier::before {
   content: "";
   position: absolute;
   inset-inline: 0;
   top: 0;
-  height: 2px;
+  height: 1px;
   background: var(--grad-brand-line);
+  opacity: 0.7;
 }
 
-.frontier__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-}
-
-.frontier__card {
-  position: relative;
+/* 中央に絞った縦組みのロックアップ。余白で格を作る。 */
+.frontier__inner {
+  max-width: 46rem;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
-  padding: var(--space-5);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--paper);
-  transition:
-    border-color var(--dur-1) var(--ease-out),
-    box-shadow var(--dur-1) var(--ease-out),
-    transform var(--dur-1) var(--ease-out);
+  align-items: center;
+  text-align: center;
 }
 
-.frontier__card:hover {
-  border-color: rgba(58, 95, 235, 0.28);
-  box-shadow: 0 10px 30px rgba(12, 26, 54, 0.08);
-  transform: translateY(-3px);
+.frontier__headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h2);
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+  margin-top: var(--space-4);
 }
 
-.frontier__icon {
+.frontier__lead {
+  margin-top: var(--space-5);
+  max-width: 34em;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-body);
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.frontier__meta {
+  margin-top: var(--space-3);
+  max-width: 34em;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* 「フィジカルAI」を語の中で静かに際立たせる小チップ。青緑で先進の温度を一点だけ。 */
+.frontier__tag {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-size: 0.82em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.1em 0.7em;
+  margin-inline: 0.15em;
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(32, 231, 196, 0.4);
+  color: var(--teal-2);
+  white-space: nowrap;
+}
+
+/* 淡いゴースト型CTA。濃地に馴染ませ、hoverで青緑に開く。 */
+.frontier__cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 2.9rem;
-  height: 2.9rem;
-  margin-bottom: var(--space-3);
-  border-radius: var(--r-md);
-  background: linear-gradient(135deg, rgba(58, 95, 235, 0.12) 0%, rgba(0, 201, 167, 0.12) 100%);
-  color: var(--brand-3);
-}
-
-.frontier__icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.frontier__title {
-  font-size: var(--fs-h3);
-  color: var(--ink);
-  margin-bottom: var(--space-2);
-}
-
-.frontier__desc {
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding: 0.8rem 1.7rem;
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-size: var(--fs-sm);
-  line-height: var(--lh-body);
-  color: var(--charcoal);
-}
-
-/* 研究段階であることの明示帯。過度な期待を招かないための但し書きであり、
-   同時に共同研究・実証パートナーへの入口でもある。 */
-.frontier__note {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  margin-top: var(--space-5);
-  padding: var(--space-4) var(--space-5);
-  border: 1px solid rgba(58, 95, 235, 0.18);
-  border-radius: var(--r-lg);
-  background: linear-gradient(135deg, rgba(58, 95, 235, 0.05) 0%, rgba(0, 201, 167, 0.05) 100%);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-body);
-  color: var(--charcoal);
-}
-
-.frontier__note-icon {
-  flex: 0 0 auto;
-  display: inline-flex;
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-top: 0.15rem;
-  color: var(--brand);
-}
-
-.frontier__note-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.frontier__note-link {
-  color: var(--brand-3);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
-.frontier__note-link:hover {
-  color: var(--brand);
-}
-
-/* 濃色版。ソリューションページでは淡色が続く流れの中に濃い帯として置き、
-   研究開発領域が「受託メニューの一つ」ではないことを見た目で示す。 */
-.frontier--ink .frontier__card {
-  border-color: rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.frontier--ink .frontier__card:hover {
-  border-color: rgba(255, 255, 255, 0.20);
-  box-shadow: none;
-  background: rgba(255, 255, 255, 0.07);
-}
-
-.frontier--ink .frontier__icon {
-  background: linear-gradient(135deg, rgba(58, 95, 235, 0.24) 0%, rgba(0, 201, 167, 0.20) 100%);
-  color: var(--teal-2);
-}
-
-.frontier--ink .frontier__title {
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: #FFFFFF;
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out),
+    background-color var(--dur-1) var(--ease-out);
 }
 
-.frontier--ink .frontier__desc {
-  color: rgba(255, 255, 255, 0.62);
+.frontier__cta svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--dur-1) var(--ease-out);
 }
 
-.frontier--ink .frontier__note {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.frontier--ink .frontier__note-icon {
+.frontier__cta:hover {
+  border-color: var(--teal-2);
   color: var(--teal-2);
+  background: rgba(32, 231, 196, 0.06);
 }
 
-.frontier--ink .frontier__note-link {
-  color: var(--teal-2);
-}
-
-.frontier--ink .frontier__note-link:hover {
-  color: #FFFFFF;
-}
-
-@media (max-width: 900px) {
-  .frontier__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-    margin-top: var(--space-4);
-  }
+.frontier__cta:hover svg {
+  transform: translateX(3px);
 }
 
 @media (max-width: 640px) {
-  .frontier__card {
-    padding: var(--space-4);
+  .frontier__headline {
+    font-size: 1.4rem;
   }
-  .frontier__title {
+  .frontier__lead {
     font-size: var(--fs-body);
-    word-break: keep-all;
-  }
-  .frontier__note {
-    padding: var(--space-3) var(--space-4);
     margin-top: var(--space-4);
   }
 }

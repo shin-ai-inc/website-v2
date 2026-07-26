@@ -44,9 +44,10 @@
   top: calc(var(--space-4) + 22px);
   left: calc(50% + 22px);
   width: calc(100% + var(--space-4) - 44px);
-  height: 2px;
+  /* 細く繊細に。太い線は資料然として重い。1pxのヘアラインで工程を上品につなぐ。 */
+  height: 1px;
   background: var(--brand);
-  opacity: 0.6;
+  opacity: 0.4;
   transform: translateY(-50%);
 }
 
