@@ -48,9 +48,11 @@ write("styles/app.css", css);
    src     … partial の読み込み元ディレクトリ */
 const LOCALES = [
   { code: "ja", dir: "", prefix: "", src: "partials", htmlLang: "ja", ogLocale: "ja_JP",
-    switchTo: "en", switchLabel: "English", switchAria: "Switch to English" },
+    switchTo: "en", switchLabel: "English", switchAria: "Switch to English",
+    manifestDesc: "企業の暗黙知を、使えるAI資産へ。" },
   { code: "en", dir: "en/", prefix: "../", src: "partials/en", htmlLang: "en", ogLocale: "en_US",
-    switchTo: "ja", switchLabel: "日本語", switchAria: "日本語に切り替える" }
+    switchTo: "ja", switchLabel: "日本語", switchAria: "日本語に切り替える",
+    manifestDesc: "Turning your company's tacit knowledge into working AI assets." }
 ];
 
 /* 言語切替UI。ヘッダーの {{LANG_SWITCH}} を置き換える。
@@ -318,7 +320,7 @@ ${alternates}
   <link rel="icon" href="${p}assets/icons/favicon.svg?v=${BUILD_HASH}" type="image/svg+xml">
   <link rel="icon" href="${p}assets/icons/favicon.png?v=${BUILD_HASH}" sizes="any">
   <link rel="apple-touch-icon" href="${p}assets/icons/apple-touch-icon.png?v=${BUILD_HASH}">
-  <link rel="manifest" href="${p}site.webmanifest">
+  <link rel="manifest" href="site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -375,22 +377,26 @@ write(".well-known/security.txt", [
   "Expires: 2027-06-30T00:00:00.000Z"
 ].join("\n") + "\n");
 
-/* start_url はホスティングのサブパスに追従させる(GH Pages: /website-v2/、独自ドメイン: /)。 */
+/* start_url はホスティングのサブパスに追従させる(GH Pages: /website-v2/、独自ドメイン: /)。
+   ロケールごとに manifest を分けて生成する(icons/manifest はページと同階層に置き、
+   href はプレフィックスなしの相対参照にする。英語版で日本語のPWA名/説明が出ないように)。 */
 const BASE_PATH = new URL(SITE_URL).pathname.replace(/\/?$/, "/");
-write("site.webmanifest", JSON.stringify({
-  name: "ShinAI",
-  short_name: "ShinAI",
-  description: "企業の暗黙知を、使えるAI資産へ。",
-  lang: "ja",
-  start_url: BASE_PATH,
-  display: "standalone",
-  background_color: "#060E1E",
-  theme_color: "#3A5FEB",
-  icons: [
-    { src: "assets/icons/icon-192.png", sizes: "192x192", type: "image/png" },
-    { src: "assets/icons/icon-512.png", sizes: "512x512", type: "image/png" }
-  ]
-}, null, 2) + "\n");
+for (const loc of LOCALES) {
+  write(loc.dir + "site.webmanifest", JSON.stringify({
+    name: "ShinAI",
+    short_name: "ShinAI",
+    description: loc.manifestDesc,
+    lang: loc.htmlLang,
+    start_url: BASE_PATH + loc.dir,
+    display: "standalone",
+    background_color: "#060E1E",
+    theme_color: "#3A5FEB",
+    icons: [
+      { src: loc.prefix + "assets/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { src: loc.prefix + "assets/icons/icon-512.png", sizes: "512x512", type: "image/png" }
+    ]
+  }, null, 2) + "\n");
+}
 
 /* ---- 5. 公開専用の dist/ を生成 ----
    公開対象のファイルのみを集めた清浄な出力ディレクトリを作る。 */
@@ -408,7 +414,8 @@ for (const loc of LOCALES) {                           // 生成済みHTML(日�
 toDist("styles/app.css");                              // 本番CSS(結合済み)
 cpSync(join(ROOT, "scripts"), join(DIST, "scripts"), { recursive: true }); // 公開JS+vendor
 cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
-for (const f of ["robots.txt", "sitemap.xml", "site.webmanifest"]) toDist(f);
+for (const f of ["robots.txt", "sitemap.xml"]) toDist(f);
+for (const loc of LOCALES) toDist(loc.dir + "site.webmanifest");
 toDist(".well-known/security.txt");
 copyFileSync(join(ROOT, "deploy", "_headers"), join(DIST, "_headers")); // Netlify/CF用ヘッダ
 
