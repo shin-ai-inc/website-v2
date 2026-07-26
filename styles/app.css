@@ -15,7 +15,7 @@
   --ink-2: #1A2E52;            /* 藍の中間 */
   --ink-3: #4A5A7A;            /* 補助テキスト */
   --charcoal: #1E2D4A;         /* 本文 */
-  --mist: #6B7A99;             /* キャプション */
+  --mist: #637290;             /* キャプション。白地・--paper-2 地の双方で 4.5:1(旧 #6B7A99 は 4.03:1) */
   --line: #E2E8F7;             /* 罫線 */
   --line-ink: rgba(12, 26, 54, 0.10);
 
@@ -37,22 +37,27 @@
   --c-agent-bg: #E0FAF5;       /* 企業専用エージェント — 青緑の淡 */
   --c-agent-ink: #007A67;
   --c-enable-bg: #FFF3E0;      /* 内製化・運用支援 — オレンジの淡 */
-  --c-enable-ink: #CC5E00;
+  --c-enable-ink: #B55300;     /* 淡橙地で 4.5:1 を満たす濃度(旧 #CC5E00 は 3.70:1) */
 
   /* ---- Industry palette (業種別の色分け) ----
      AIが多用しがちな原色の青×ティールを脱し、落ち着いたエディトリアル調の8色で業種を識別する。
-     各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。 */
+     各色は濃(ink=ラベル/アイコン/罫)と淡(bg=面/after状態)の対で持つ。順序はページ上の業種順。
+     ink は色相・彩度を保ったまま、白地と対の淡地の両方で 4.5:1 を満たす明度に調整済み。 */
   --ind-1-ink: #2B5EA6; --ind-1-bg: #E7EEF8;   /* 製造: コバルト */
-  --ind-2-ink: #C87A1C; --ind-2-bg: #F9EFDC;   /* 建設: 琥珀 */
-  --ind-3-ink: #BE4E77; --ind-3-bg: #F8E7EF;   /* 介護・専門サービス: 薔薇 */
-  --ind-4-ink: #C6512F; --ind-4-bg: #F9E7E0;   /* 小売: 朱 */
-  --ind-5-ink: #159B72; --ind-5-bg: #E0F3EB;   /* 医療福祉: 翠 */
+  --ind-2-ink: #9C5F16; --ind-2-bg: #F9EFDC;   /* 建設: 琥珀 */
+  --ind-3-ink: #B3426B; --ind-3-bg: #F8E7EF;   /* 介護・専門サービス: 薔薇 */
+  --ind-4-ink: #B2492A; --ind-4-bg: #F9E7E0;   /* 小売: 朱 */
+  --ind-5-ink: #117B5A; --ind-5-bg: #E0F3EB;   /* 医療福祉: 翠 */
   --ind-6-ink: #6250BE; --ind-6-bg: #ECE8F8;   /* 教育: 菫 */
-  --ind-7-ink: #147C8C; --ind-7-bg: #E0F1F3;   /* 金融: 青緑 */
-  --ind-8-ink: #9C5A38; --ind-8-bg: #F6E9E0;   /* 不動産: 赤褐 */
+  --ind-7-ink: #137686; --ind-7-bg: #E0F1F3;   /* 金融: 青緑 */
+  --ind-8-ink: #9B5A38; --ind-8-bg: #F6E9E0;   /* 不動産: 赤褐 */
 
   /* ---- Gradients ---- */
   --grad-brand: linear-gradient(135deg, #3A5FEB 0%, #00C9A7 100%);
+  /* ボタン専用。--grad-brand の白文字はティール端が 2.12:1 で AA を満たさないため、
+     ティール端だけを沈めた版を使う。装飾の罫・下線は --grad-brand のまま(文字ではないため)。
+     hover の brightness(1.08) を掛けた状態でも 4.5:1 を保つ濃度にしてある。 */
+  --grad-brand-btn: linear-gradient(135deg, #3A5FEB 0%, #007C67 100%);
   --grad-brand-vivid: linear-gradient(135deg, #5476F8 0%, #20E7C4 100%);
   --grad-energy: linear-gradient(135deg, #FF8A00 0%, #FFB833 100%);
   --grad-dark: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, #0C1A36 48%, var(--ink-deep) 100%);
@@ -167,6 +172,23 @@
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 9999;
+  padding: var(--space-2) var(--space-4);
+  background: var(--brand);
+  color: #FFFFFF;
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: top var(--dur-1) var(--ease-out);
+}
+.skip-link:focus {
+  top: var(--space-2);
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
@@ -225,6 +247,30 @@ h1, h2, h3, h4 {
   position: relative;
   padding-block: var(--section-py);
 }
+/* Subtle atmospheric image overlay for white-background sections */
+.section:not(.section--alt):not(.section--ink) {
+  isolation: isolate;
+}
+.section:not(.section--alt):not(.section--ink)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: -1;
+}
+#purpose::before  { background-image: url('../assets/images/about-philosophy-tech.jpg'); }
+#solutions::before { background-image: url('../assets/images/service-custom-ai-development.jpg'); }
+#team::before     { background-image: url('../assets/images/photo-team.jpg'); }
+#company::before  { background-image: url('../assets/images/about-vision-future.jpg'); }
+#industries::before { background-image: url('../assets/images/about-vision-future.jpg'); }
+#technology::before { background-image: url('../assets/images/about-philosophy-tech.jpg'); }
+#faq::before      { background-image: url('../assets/images/service-consulting-team.jpg'); }
+#flow::before     { background-image: url('../assets/images/service-cocreation-partnership.jpg'); }
+
 .section--alt { background: var(--paper-2); }
 .section--ink {
   background: var(--ink);
@@ -276,11 +322,13 @@ body.is-home { background: var(--grad-paper); }
 /* ---- 日本語の意味単位改行 ----
    word-break: auto-phrase は Chromium の形態素解析(BudouX)で文節単位に折り返す。
    text-wrap: balance/pretty は行長の均整と孤立行(行末の1〜2文字落ち)を防ぐ。
-   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。 */
-h1, h2, h3,
-.section__lead, .page-hero__lead, .purpose__support,
-.about-purpose__note, .cta__text, .shin7__desc,
-.industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note {
+   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。
+   auto-phrase は日本語専用のため :lang(ja) に限定する(英語版 /en/ には効かせない)。
+   text-wrap の方は言語を問わず有効なので限定しない。 */
+:lang(ja) :is(h1, h2, h3,
+  .section__lead, .page-hero__lead, .purpose__support,
+  .about-purpose__note, .cta__text, .shin7__desc,
+  .industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note) {
   word-break: auto-phrase;
 }
 h1, h2, h3 {
@@ -364,7 +412,7 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  background: var(--grad-brand);
+  background: var(--grad-brand-btn);
   color: #FFF;
   box-shadow: var(--shadow-brand);
 }
@@ -467,6 +515,18 @@ h1, h2, h3 {
     transition-duration: 0.001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .site-header, .site-footer, .chatbot, .skip-link,
+  .hero-stack__particles, .stats-bar, .cta, .btn { display: none !important; }
+  .section { padding-block: 1.5em; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+  .site-header__link::after, .eyebrow::before, .eyebrow--center::after { display: none; }
+  img { max-width: 100% !important; page-break-inside: avoid; }
+  h1, h2, h3 { page-break-after: avoid; }
 }
 
 
@@ -1020,7 +1080,8 @@ h1, h2, h3 {
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--card-accent, var(--teal));
+  /* フォールバックは --teal(白地 2.12:1)ではなく濃いティール。役割クラスが無い場合も AA を保つ */
+  color: var(--card-accent, var(--c-agent-ink));
   margin-bottom: var(--space-1);
 }
 .join__title {
@@ -1126,20 +1187,55 @@ h1, h2, h3 {
 /*
   Section: capability — 企業AI開発に特化した、技術の芯。
   既製品の組み合わせではなく、モデル最適化から運用基盤まで自分たちで設計できる主体性を示す濃色帯。
-  番号モチーフは problem/why と共通の語彙を踏襲する(新しい装飾を増やさない)。
+  アイコン+番号モチーフで各領域を視覚的に区別する。
 */
 .capability__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-5);
+  gap: var(--space-4);
   margin-top: var(--space-6);
 }
 
 .capability__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
   padding: var(--space-5);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--r-lg);
   background: rgba(255, 255, 255, 0.04);
+  transition:
+    background var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out);
+}
+
+.capability__item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.capability__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, rgba(58, 95, 235, 0.18) 0%, rgba(0, 201, 167, 0.14) 100%);
+  color: var(--teal);
+}
+
+.capability__icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.capability__body {
+  flex: 1;
+  min-width: 0;
 }
 
 .capability__num {
@@ -1148,7 +1244,7 @@ h1, h2, h3 {
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-latin);
   color: var(--teal);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
 }
 
 .capability__term {
@@ -1175,6 +1271,10 @@ h1, h2, h3 {
     font-size: var(--fs-body);
     margin-bottom: var(--space-1);
     word-break: keep-all;
+  }
+  .capability__item {
+    flex-direction: column;
+    gap: var(--space-3);
   }
 }
 
@@ -1635,7 +1735,19 @@ h1, h2, h3 {
 .contact-flow__step {
   position: relative;
   text-align: center;
-  padding-inline: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+
+.contact-flow__step:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 /* 各ステップのアイコン中心を、次のアイコン中心まで罫でつなぐ。
@@ -1643,9 +1755,9 @@ h1, h2, h3 {
 .contact-flow__step:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: 28px;
-  left: 50%;
-  width: calc(100% + var(--space-5));
+  top: calc(var(--space-5) + 28px);
+  left: calc(50% + var(--space-4));
+  width: calc(100% - var(--space-4));
   height: 2px;
   background: linear-gradient(90deg, var(--brand-soft), var(--line));
   z-index: 0;
@@ -2163,9 +2275,12 @@ h1, h2, h3 {
   margin-top: var(--space-6);
 }
 
+/* オレンジ地の白文字は 2.36:1(淡端は 1.73:1)で AA に遠く届かない。
+   ブランドのオレンジ #FF8A00 はそのままに、文字を濃紺へ替えて 7.30:1 を確保する。
+   矢印SVGは currentColor なので追従する。 */
 .cta__btn {
   background: var(--grad-energy);
-  color: #FFFFFF;
+  color: var(--ink);
   box-shadow: var(--shadow-energy);
   padding-inline: var(--space-5);
 }
@@ -2303,11 +2418,23 @@ h1, h2, h3 {
 }
 
 .faq-group__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--fs-h3);
   color: var(--ink);
   margin-bottom: var(--space-3);
   padding-bottom: var(--space-2);
+  padding-left: var(--space-3);
   border-bottom: 1px solid var(--line);
+  border-left: 3px solid var(--brand);
+}
+
+.faq-group__icon {
+  flex-shrink: 0;
+  width: 1.3em;
+  height: 1.3em;
+  color: var(--brand);
 }
 
 .faq-group__list {
@@ -2351,9 +2478,12 @@ h1, h2, h3 {
 
 .faq-item__q-text {
   flex: 1;
-  /* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ */
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+/* 質問文を文節単位で折り返し、行末の「か。」等の孤立を防ぐ(日本語専用) */
+:lang(ja) .faq-item__q-text {
+  word-break: auto-phrase;
 }
 
 /* 自作マーカー: 横棒(常時) + 縦棒(閉時のみ) = + / - */
@@ -2403,8 +2533,11 @@ h1, h2, h3 {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--ink-3);
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+:lang(ja) .faq-item__a p {
+  word-break: auto-phrase;
 }
 
 /* 開く際の入場アニメーション */
@@ -2635,6 +2768,191 @@ h1, h2, h3 {
 }
 
 
+/* sections/frontier.css */
+/*
+  Section: frontier — フィジカルAI研究開発(PoC)。差別化の芯。
+  「暗黙知には、言葉にできるものと、身体に残るものがある」という物語の延長として、
+  ソフトウェア領域(RAG/LLM)の先にある実世界側の研究開発を提示する。
+  淡色帯だが、上端のブランドグラデーション罫とカードの色面で「別格の領域」として立てる。
+*/
+.frontier {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 上端の細いブランド罫。淡色セクションが続いても「ここから別の話」と分かる合図。 */
+.frontier::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  background: var(--grad-brand-line);
+}
+
+.frontier__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.frontier__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out);
+}
+
+.frontier__card:hover {
+  border-color: rgba(58, 95, 235, 0.28);
+  box-shadow: 0 10px 30px rgba(12, 26, 54, 0.08);
+  transform: translateY(-3px);
+}
+
+.frontier__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, rgba(58, 95, 235, 0.12) 0%, rgba(0, 201, 167, 0.12) 100%);
+  color: var(--brand-3);
+}
+
+.frontier__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.frontier__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+.frontier__desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--charcoal);
+}
+
+/* 研究段階であることの明示帯。過度な期待を招かないための但し書きであり、
+   同時に共同研究・実証パートナーへの入口でもある。 */
+.frontier__note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid rgba(58, 95, 235, 0.18);
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, rgba(58, 95, 235, 0.05) 0%, rgba(0, 201, 167, 0.05) 100%);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--charcoal);
+}
+
+.frontier__note-icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.15rem;
+  color: var(--brand);
+}
+
+.frontier__note-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.frontier__note-link {
+  color: var(--brand-3);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.frontier__note-link:hover {
+  color: var(--brand);
+}
+
+/* 濃色版。ソリューションページでは淡色が続く流れの中に濃い帯として置き、
+   研究開発領域が「受託メニューの一つ」ではないことを見た目で示す。 */
+.frontier--ink .frontier__card {
+  border-color: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.frontier--ink .frontier__card:hover {
+  border-color: rgba(255, 255, 255, 0.20);
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.frontier--ink .frontier__icon {
+  background: linear-gradient(135deg, rgba(58, 95, 235, 0.24) 0%, rgba(0, 201, 167, 0.20) 100%);
+  color: var(--teal-2);
+}
+
+.frontier--ink .frontier__title {
+  color: #FFFFFF;
+}
+
+.frontier--ink .frontier__desc {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.frontier--ink .frontier__note {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.frontier--ink .frontier__note-icon {
+  color: var(--teal-2);
+}
+
+.frontier--ink .frontier__note-link {
+  color: var(--teal-2);
+}
+
+.frontier--ink .frontier__note-link:hover {
+  color: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+  .frontier__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+}
+
+@media (max-width: 640px) {
+  .frontier__card {
+    padding: var(--space-4);
+  }
+  .frontier__title {
+    font-size: var(--fs-body);
+    word-break: keep-all;
+  }
+  .frontier__note {
+    padding: var(--space-3) var(--space-4);
+    margin-top: var(--space-4);
+  }
+}
+
+
 /* sections/header.css */
 /*
   ShinAI Website v2 — Section: site header
@@ -2772,6 +3090,47 @@ h1, h2, h3 {
   padding: 0.6rem 1.3rem;
 }
 
+/* ---- Language switch ---- */
+/* ナビの外(ハンバーガーの手前)に置き、モバイルでもメニューを開かずに1タップで切り替えられる。
+   margin-left:auto でブランドとの間を開き、以降(nav / toggle)を右へ寄せる。 */
+.site-header__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  margin-left: auto;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid var(--line-ink);
+  border-radius: 999px;
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out),
+    background-color var(--dur-1) var(--ease-out);
+}
+
+.site-header__lang-icon {
+  flex: none;
+  opacity: 0.7;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+
+.site-header__lang:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+}
+
+.site-header__lang:hover .site-header__lang-icon {
+  opacity: 1;
+}
+
 /* ---- Mobile toggle ---- */
 .site-header__toggle {
   display: none;
@@ -2808,6 +3167,16 @@ h1, h2, h3 {
 
   .site-header__toggle {
     display: inline-flex;
+  }
+
+  /* ブランド(タグライン付き)・言語切替・ハンバーガーを一行に収める。
+     間隔を詰め、余白の取り合いはタグラインに譲らせる。 */
+  .site-header__inner {
+    gap: var(--space-3);
+  }
+
+  .site-header__lang {
+    padding: 0.4rem 0.7rem;
   }
 
   .site-header__nav {
@@ -2865,6 +3234,19 @@ h1, h2, h3 {
   .site-header__cta {
     margin-top: var(--space-3);
     padding: 0.8rem 1.5rem;
+  }
+}
+
+/* 狭幅では言語切替を地球アイコンだけに畳む。ブランドのタグラインと
+   ハンバーガーが一行に収まらなくなるため、先に文字ラベルを落とす。
+   アイコン単独でも意味は通り、ナビの外にあるので1タップのまま。 */
+@media (max-width: 480px) {
+  .site-header__lang-label {
+    display: none;
+  }
+
+  .site-header__lang {
+    padding: 0.45rem;
   }
 }
 
@@ -3252,9 +3634,11 @@ h1, h2, h3 {
 
 .industries-card__state--before .industries-card__state-label::before {
   content: "";
-  width: 14px;
-  height: 1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--mist);
+  opacity: 0.7;
 }
 
 .industries-card__state--after .industries-card__state-label {
@@ -3263,8 +3647,9 @@ h1, h2, h3 {
 
 .industries-card__state--after .industries-card__state-label::before {
   content: "";
-  width: 14px;
-  height: 1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--acc-ink);
 }
 
@@ -3303,6 +3688,16 @@ h1, h2, h3 {
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+
+.industries-bridge__item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand-soft);
 }
 
 .industries-bridge__item::before {
@@ -3313,13 +3708,29 @@ h1, h2, h3 {
   background: var(--brand);
 }
 
+.industries-bridge__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.industries-bridge__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .industries-bridge__item-title {
   font-family: var(--font-display);
   font-size: var(--fs-h3);
   line-height: var(--lh-snug);
   color: var(--ink);
   margin-bottom: var(--space-2);
-  padding-top: var(--space-1);
 }
 
 .industries-bridge__item-text {
@@ -3339,16 +3750,36 @@ h1, h2, h3 {
   color: var(--ink-2);
 }
 
+/* 地の文と同色だとリンクだと気づかれないため、明示的に色と下線を与える。 */
+.industries-bridge__note a {
+  color: var(--brand-3);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.industries-bridge__note a:hover {
+  color: var(--brand);
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 820px) {
+  .industries__grid {
+    grid-template-columns: 1fr;
+  }
   .industries-bridge__list {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .industries__grid {
-    grid-template-columns: 1fr;
+@media (max-width: 480px) {
+  .industries-card {
+    padding: var(--space-4);
+  }
+  .industries-card__state {
+    padding: var(--space-2) var(--space-3);
+  }
+  .industries-bridge__item {
+    padding: var(--space-4);
   }
 }
 
@@ -3629,6 +4060,14 @@ h1, h2, h3 {
   border: 1px solid var(--line-ink);
   background: var(--paper);
   box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+
+.method__step:hover .method__marker {
+  border-color: var(--brand);
+  box-shadow: var(--shadow-md), 0 0 0 3px color-mix(in srgb, var(--brand) 12%, transparent);
 }
 
 .method__num {
@@ -3645,6 +4084,12 @@ h1, h2, h3 {
   text-transform: uppercase;
   color: var(--brand);
   margin-bottom: var(--space-1);
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+/* hover 時も明色地。--teal は白地 2.12:1 で AA を満たさないため濃いティールを使う */
+.method__step:hover .method__label {
+  color: var(--c-agent-ink);
 }
 
 .method__name {
@@ -3787,9 +4232,12 @@ h1, h2, h3 {
   font-size: var(--fs-h3);
   line-height: var(--lh-snug);
   color: var(--ink);
-  /* 日本語を文節単位で折り返し、「第/9回」のような不自然な行末孤立を防ぐ */
-  word-break: auto-phrase;
   text-wrap: pretty;
+}
+
+/* 日本語を文節単位で折り返し、「第/9回」のような不自然な行末孤立を防ぐ(日本語専用) */
+:lang(ja) .news__title {
+  word-break: auto-phrase;
 }
 
 .news__text {
@@ -3953,12 +4401,18 @@ h1, h2, h3 {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-4);
-  padding: var(--space-4) var(--space-4) var(--space-4) 0;
-  border-bottom: 1px solid var(--line);
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
 }
 
-.process__phase:last-child {
-  border-bottom: 0;
+.process__phase:hover {
+  border-color: var(--brand-soft);
+  box-shadow: var(--shadow-sm);
 }
 
 .process__num {
@@ -4188,9 +4642,19 @@ h1, h2, h3 {
 
 /* カード写真 — 上端からブリードして視覚的なアンカーを作る */
 .solution-card__figure {
+  position: relative;
   margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) var(--space-4);
   overflow: hidden;
   aspect-ratio: 5 / 3;
+}
+
+/* 3枚の質感差(抽象/コード/写真)を、各カードのアクセント色で淡く一族化する */
+.solution-card__figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--card-ink) 18%, transparent) 100%);
+  pointer-events: none;
 }
 
 .solution-card__figure img {
@@ -4251,21 +4715,20 @@ h1, h2, h3 {
 }
 
 .solution-card__item {
-  position: relative;
-  padding-left: var(--space-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
   color: var(--charcoal);
 }
 
-.solution-card__item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 0.75rem;
-  height: 1px;
-  background: var(--card-ink);
+.solution-card__check {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.15em;
+  color: var(--card-ink);
 }
 
 /* タブレット: 1カラム化。過剰な横伸びを防ぐため最大幅を制限 */
@@ -4273,6 +4736,11 @@ h1, h2, h3 {
   .solutions__grid {
     grid-template-columns: 1fr;
     max-width: 640px;
+  }
+  /* 1カラム化で全幅になるカード画像が縦に伸びすぎないよう帯状に固定する */
+  .solution-card__figure {
+    aspect-ratio: auto;
+    height: clamp(150px, 26vw, 200px);
   }
 }
 
@@ -4360,6 +4828,16 @@ h1, h2, h3 {
   border-radius: var(--r-lg);
   background: var(--group-bg);
   box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+
+.tech__group:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--group-ink) 20%, var(--line));
 }
 
 .tech__group--build {
@@ -4382,8 +4860,7 @@ h1, h2, h3 {
   color: var(--group-ink);
   margin-bottom: var(--space-4);
   padding-bottom: var(--space-2);
-  border-bottom: 1px solid;
-  border-color: var(--group-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--group-ink) 30%, transparent);
 }
 
 .tech__chips {
@@ -4400,6 +4877,11 @@ h1, h2, h3 {
   border-radius: var(--r-md);
   background: var(--paper);
   border: 1px solid var(--line);
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+
+.tech__chip:hover {
+  border-color: color-mix(in srgb, var(--group-ink) 30%, var(--line));
 }
 
 .tech__chip-icon {

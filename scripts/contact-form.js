@@ -10,6 +10,31 @@
   var form = document.querySelector(".contact-form");
   if (!form) return;
 
+  /* 表示文言はページの言語(html[lang])で切り替える。英語版は /en/ 配下にあり
+     同じスクリプトを共有するため、文言をここに閉じ込めて重複配信を避ける。 */
+  var EN = (document.documentElement.getAttribute("lang") || "ja").indexOf("en") === 0;
+  var T = EN ? {
+    sending: "Sending...",
+    sent: "Sent",
+    send: "Send",
+    subject: "[ShinAI enquiry] ",
+    company: "[Company or organisation]",
+    name: "[Name]",
+    email: "[Email address]",
+    phone: "[Phone]",
+    message: "[Enquiry]"
+  } : {
+    sending: "送信中...",
+    sent: "送信しました",
+    send: "送信する",
+    subject: "[ShinAI お問い合わせ] ",
+    company: "【会社名・組織名】",
+    name: "【お名前】",
+    email: "【メールアドレス】",
+    phone: "【電話番号】",
+    message: "【相談内容】"
+  };
+
   var ENDPOINT = form.getAttribute("action");
   var FALLBACK_EMAIL = "shinai.life@gmail.com";
   var isConfigured = ENDPOINT &&
@@ -26,9 +51,9 @@
     if (!submitBtn) return;
     submitBtn.disabled = (state === "sending");
     if (btnSpan) {
-      if (state === "sending")    btnSpan.textContent = "送信中...";
-      else if (state === "success") btnSpan.textContent = "送信しました";
-      else                         btnSpan.textContent = "送信する";
+      if (state === "sending")      btnSpan.textContent = T.sending;
+      else if (state === "success") btnSpan.textContent = T.sent;
+      else                          btnSpan.textContent = T.send;
     }
   };
 
@@ -42,13 +67,13 @@
       var el = form.querySelector("[name='" + name + "']");
       return el ? (el.value || "") : "";
     };
-    var subject = encodeURIComponent("[ShinAI お問い合わせ] " + get("company") + " / " + get("name"));
+    var subject = encodeURIComponent(T.subject + get("company") + " / " + get("name"));
     var body = encodeURIComponent(
-      "【会社名・組織名】\n" + get("company") + "\n\n" +
-      "【お名前】\n" + get("name") + "\n\n" +
-      "【メールアドレス】\n" + get("email") + "\n\n" +
-      "【電話番号】\n" + get("phone") + "\n\n" +
-      "【相談内容】\n" + get("message")
+      T.company + "\n" + get("company") + "\n\n" +
+      T.name + "\n" + get("name") + "\n\n" +
+      T.email + "\n" + get("email") + "\n\n" +
+      T.phone + "\n" + get("phone") + "\n\n" +
+      T.message + "\n" + get("message")
     );
     return "mailto:" + FALLBACK_EMAIL + "?subject=" + subject + "&body=" + body;
   };

@@ -1,6 +1,7 @@
 <!--
-  TOP(index.html)の <main> 中身。オーケストレーターが共有シェルへ結合する。
-  没入型ヒーロー+信念バンド(共有パーティクル場・hero-stack) → Purpose → Solutions → Engineering(capability) → Why → CTA。
+  TOP(en/index.html)の <main> 中身。オーケストレーターが共有シェルへ結合する。
+  構造は日本語版 partials/index.html と一対一で対応させること(片方だけ触らない)。
+  画像・アセットは /en/ から一段上がるため ../ 接頭辞を付ける。
 -->
 <!-- 量子パーティクル場をページ全体の固定背景に(スクロールしても持続)。hero/creed/明色セクションは透過で透ける。 -->
 <div id="three-container" class="site-particles" aria-hidden="true"></div>
@@ -9,13 +10,13 @@
 <section class="hero hero--immersive" aria-labelledby="hero-title">
   <div class="container hero__inner">
     <h1 class="hero__title" id="hero-title">
-      <span class="hero__title-line">企業の暗黙知を、</span>
-      <span class="hero__title-line hero__title-line--accent">使えるAI資産へ。</span>
+      <span class="hero__title-line">Your company's tacit knowledge,</span>
+      <span class="hero__title-line hero__title-line--accent">rebuilt as working AI.</span>
     </h1>
 
     <p class="hero__subcopy">
-      <span class="hero__subcopy-line">長年の判断、手が覚えた技、積み上げた文書。</span>
-      <span class="hero__subcopy-line">社内に眠る知識を、現場で活かしていく。</span>
+      <span class="hero__subcopy-line">Years of judgment. Skill the hands remember. Documents no one has time to read.</span>
+      <span class="hero__subcopy-line">We put the knowledge sleeping inside your company back to work.</span>
     </p>
   </div>
 </section>
@@ -23,7 +24,7 @@
 
 <!-- 信念帯: 初見画面(top view)に収めるため hero-stack 内へ。静的なので固定パーティクルが帯の上に乗る。 -->
 <section class="creed" aria-labelledby="creed-text">
-  <h2 class="creed__text" id="creed-text"><span class="creed__line">「真の価値を信じ、</span><span class="creed__line">次世代のために新たな未来を創る。」</span></h2>
+  <h2 class="creed__text" id="creed-text"><span class="creed__line">"Believe in true value,</span> <span class="creed__line">and build a new future for the next generation."</span></h2>
 </section>
 
 </div><!-- /.hero-stack -->
@@ -32,13 +33,13 @@
   <div class="container purpose__inner">
     <p class="eyebrow eyebrow--center purpose__eyebrow" id="purpose-title">Our Purpose</p>
     <p class="purpose__statement">
-      <span class="purpose__statement-line">AIで</span>
-      <span class="purpose__statement-line">人間らしい時間を取り戻す。</span>
+      <span class="purpose__statement-line">Use AI to give people</span>
+      <span class="purpose__statement-line">their human hours back.</span>
     </p>
     <hr class="rule-copper purpose__rule" aria-hidden="true">
     <p class="purpose__support">
-      <span class="purpose__support-line">調査、分析、思考の拡張。</span>
-      <span class="purpose__support-line">AIが担うことで人は創造と判断へ向かう。</span>
+      <span class="purpose__support-line">Research, analysis, the widening of thought.</span>
+      <span class="purpose__support-line">When AI carries these, people turn to creating and deciding.</span>
     </p>
   </div>
 </section>
@@ -48,68 +49,68 @@
     <div class="section__head reveal">
       <p class="eyebrow">Solutions</p>
       <h2 class="section__title" id="solutions-title">
-        <span class="section__title-line">暗黙知を三段階で</span>
-        <span class="section__title-line">資産に変える。</span>
+        <span class="section__title-line">Three stages that turn tacit</span>
+        <span class="section__title-line">knowledge into an asset.</span>
       </h2>
-      <p class="section__lead">構想から現場稼働まで一貫して設計します。</p>
+      <p class="section__lead">We design the whole path, from first concept to live operation.</p>
     </div>
 
     <div class="solutions__grid">
       <article class="solution-card solution-card--tacit reveal" data-delay="1">
         <figure class="solution-card__figure" aria-hidden="true">
-          <img src="assets/images/photo-tacit.jpg" alt="" width="600" height="360" loading="lazy">
+          <img src="../assets/images/photo-tacit.jpg" alt="" width="600" height="360" loading="lazy">
         </figure>
-        <h3 class="solution-card__title">暗黙知のAI化</h3>
+        <h3 class="solution-card__title">Tacit knowledge into AI</h3>
         <p class="solution-card__lead">
-          積み上げてきた判断・文書・会話を
-          現場で動く知識基盤に変換します。
+          We convert the judgment, documents and conversations
+          you have accumulated into a knowledge base that works.
         </p>
         <hr class="solution-card__divider" aria-hidden="true">
         <ul class="solution-card__items">
-          <li class="solution-card__item">AIエージェント開発・業務自動化</li>
-          <li class="solution-card__item">RAG構築・社内データ活用</li>
-          <li class="solution-card__item">LLMのファインチューニング</li>
+          <li class="solution-card__item">AI agent development and process automation</li>
+          <li class="solution-card__item">RAG systems built on your internal data</li>
+          <li class="solution-card__item">LLM fine-tuning</li>
         </ul>
       </article>
 
       <article class="solution-card solution-card--agent reveal" data-delay="2">
         <figure class="solution-card__figure" aria-hidden="true">
-          <img src="assets/images/photo-agent.jpg" alt="" width="600" height="360" loading="lazy">
+          <img src="../assets/images/photo-agent.jpg" alt="" width="600" height="360" loading="lazy">
         </figure>
-        <h3 class="solution-card__title">企業専用AIエージェント</h3>
+        <h3 class="solution-card__title">Private enterprise AI agents</h3>
         <p class="solution-card__lead">
-          社内知識と既存システムをつなぎ
-          業務を実行するAIをつくります。
+          We connect your internal knowledge to your existing systems
+          and build AI that carries out the work.
         </p>
         <hr class="solution-card__divider" aria-hidden="true">
         <ul class="solution-card__items">
-          <li class="solution-card__item">社内知識を踏まえた応答と判断支援</li>
-          <li class="solution-card__item">既存システムとの連携・実行</li>
-          <li class="solution-card__item">業務フローへの自然な組み込み</li>
+          <li class="solution-card__item">Answers and decision support grounded in your own knowledge</li>
+          <li class="solution-card__item">Integration and execution across existing systems</li>
+          <li class="solution-card__item">A natural fit into how the work already flows</li>
         </ul>
       </article>
 
       <article class="solution-card solution-card--enable reveal" data-delay="3">
         <figure class="solution-card__figure" aria-hidden="true">
-          <img src="assets/images/photo-enable.jpg" alt="" width="600" height="360" loading="lazy">
+          <img src="../assets/images/photo-enable.jpg" alt="" width="600" height="360" loading="lazy">
         </figure>
-        <h3 class="solution-card__title">AI内製化・運用支援</h3>
+        <h3 class="solution-card__title">In-house AI enablement</h3>
         <p class="solution-card__lead">
-          検証の設計から運用・チーム育成まで。
-          貴社が自走できる状態をつくります。
+          From designing the evaluation to running it and growing the team.
+          We leave you able to carry it forward yourselves.
         </p>
         <hr class="solution-card__divider" aria-hidden="true">
         <ul class="solution-card__items">
-          <li class="solution-card__item">PoC設計・精度の評価</li>
-          <li class="solution-card__item">運用ルールと体制づくり</li>
-          <li class="solution-card__item">社内チームへの技術移転</li>
+          <li class="solution-card__item">PoC design and accuracy evaluation</li>
+          <li class="solution-card__item">Operating rules and team structure</li>
+          <li class="solution-card__item">Technical handover to your own engineers</li>
         </ul>
       </article>
     </div>
 
     <div class="section__more reveal" data-delay="3">
       <a class="btn btn-ghost" href="services.html">
-        ソリューションの詳細を見る
+        Explore our solutions
         <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -124,13 +125,13 @@
     <div class="section__head reveal">
       <p class="eyebrow">Physical AI — R&amp;D</p>
       <h2 class="section__title" id="frontier-title">
-        <span class="section__title-line">言葉にならない技は、</span>
-        <span class="section__title-line">身体に残る。</span>
+        <span class="section__title-line">The skill that never became</span>
+        <span class="section__title-line">words stays in the hands.</span>
       </h2>
       <p class="section__lead">
-        <span class="section__lead-line">文書や会話は、<span class="nobr">AIで扱えるようになりました。</span></span>
-        <span class="section__lead-line"><span class="nobr">けれど熟練者の手の動き、力加減、</span><span class="nobr">目で見て決める判断は、</span><span class="nobr">どこにも書かれていません。</span></span>
-        <span class="section__lead-line"><span class="nobr">ShinAIは、その先を研究しています。</span></span>
+        <span class="section__lead-line">Documents and conversations are within reach of AI now.</span>
+        <span class="section__lead-line">But the way a veteran's hand moves, how much pressure they apply, what they decide from a glance — none of that was ever written down.</span>
+        <span class="section__lead-line">That is what we are researching.</span>
       </p>
     </div>
 
@@ -146,8 +147,8 @@
             <circle cx="16" cy="17" r="1.6"></circle>
           </svg>
         </span>
-        <h3 class="frontier__title">動作と作業の知能化</h3>
-        <p class="frontier__desc">熟練者の動きをセンサーと映像で捉え、強化学習で再現可能な形にする。手順書に落とせなかった技を、機械が扱える知識へ。</p>
+        <h3 class="frontier__title">Motion and task intelligence</h3>
+        <p class="frontier__desc">Capturing how skilled workers move, through sensors and video, and using reinforcement learning to make it reproducible. Skill that never fit in a manual, turned into knowledge a machine can work with.</p>
       </article>
 
       <article class="frontier__card reveal" data-delay="2">
@@ -159,8 +160,8 @@
             <path d="M12 13.6 v6"></path>
           </svg>
         </span>
-        <h3 class="frontier__title">現場センシングと判断</h3>
-        <p class="frontier__desc">設備の稼働音、振動、温度、画像。現実世界から届く連続的な信号を読み、異常の兆しや品質のばらつきを人より早く捉える仕組みを検証しています。</p>
+        <h3 class="frontier__title">Sensing and judgment on site</h3>
+        <p class="frontier__desc">The sound of a machine running, vibration, temperature, images. We are testing systems that read the continuous signals coming off the real world and catch early signs of failure or drift in quality sooner than a person can.</p>
       </article>
 
       <article class="frontier__card reveal" data-delay="3">
@@ -171,8 +172,8 @@
             <path d="M4 10 h3 M4 14 h3 M17 10 h3 M17 14 h3"></path>
           </svg>
         </span>
-        <h3 class="frontier__title">エッジでの実機実装</h3>
-        <p class="frontier__desc">通信の途切れる場所でも止まらないよう、機器の上でAIを動かす。クラウドに送れないデータを、その場で処理する構成を試しています。</p>
+        <h3 class="frontier__title">Running on the edge</h3>
+        <p class="frontier__desc">Putting AI on the equipment itself, so it keeps working where the network does not. We are trialling designs that process data on the spot when it cannot be sent to the cloud.</p>
       </article>
     </div>
 
@@ -184,7 +185,7 @@
           <line x1="12" y1="7.8" x2="12.01" y2="7.8"></line>
         </svg>
       </span>
-      <span>フィジカルAIは研究開発（PoC）段階の領域です。完成した製品としてではなく、現場をお持ちの企業と<span class="nobr">共同で検証しながら進めています。</span><a class="frontier__note-link" href="contact.html">共同研究・実証のパートナー</a>を募集しています。</span>
+      <span>Physical AI is at the research and proof-of-concept stage. We do not present it as a finished product — we develop it jointly with companies that have a real site to test on. We are looking for <a class="frontier__note-link" href="contact.html">joint research and pilot partners</a>.</span>
     </p>
   </div>
 </section>
@@ -194,32 +195,32 @@
     <div class="section__head reveal">
       <p class="eyebrow">Engineering</p>
       <h2 class="section__title" id="capability-title">
-        <span class="section__title-line">高度な技術を、</span>
-        <span class="section__title-line">現場の成果に変える。</span>
+        <span class="section__title-line">Advanced technique,</span>
+        <span class="section__title-line">turned into results on the floor.</span>
       </h2>
-      <p class="section__lead"><span class="nobr">精度から運用まで</span><span class="nobr">自分たちで設計し</span><span class="nobr">現場で動く基盤をつくります。</span></p>
+      <p class="section__lead">From accuracy through to operation, we design it ourselves and build a base that runs in the real workplace.</p>
     </div>
 
     <ul class="capability__grid">
       <li class="capability__item reveal">
         <span class="capability__num" aria-hidden="true">01</span>
-        <h3 class="capability__term">カスタム<wbr>LLM最適化</h3>
-        <p class="capability__desc">用途に合わせて大規模言語モデルを調整し、自社の文脈に沿った精度を引き出します。</p>
+        <h3 class="capability__term">Custom LLM optimisation</h3>
+        <p class="capability__desc">We tune large language models to your purpose and draw out accuracy that follows your own context.</p>
       </li>
       <li class="capability__item reveal" data-delay="1">
         <span class="capability__num" aria-hidden="true">02</span>
-        <h3 class="capability__term">強化学習</h3>
-        <p class="capability__desc">フィードバックから学び続ける仕組みに対応し、使うほど現場に馴染むAIを目指します。</p>
+        <h3 class="capability__term">Reinforcement learning</h3>
+        <p class="capability__desc">We support systems that keep learning from feedback, so the AI settles further into your workplace the more it is used.</p>
       </li>
       <li class="capability__item reveal" data-delay="2">
         <span class="capability__num" aria-hidden="true">03</span>
-        <h3 class="capability__term">RAG・<wbr>ベクトル検索</h3>
-        <p class="capability__desc">社内文書を意味で検索し、出典を示しながら答える基盤を構築します。</p>
+        <h3 class="capability__term">RAG and vector search</h3>
+        <p class="capability__desc">We build a base that searches your documents by meaning and answers while showing its sources.</p>
       </li>
       <li class="capability__item reveal" data-delay="3">
         <span class="capability__num" aria-hidden="true">04</span>
-        <h3 class="capability__term">オンプレミス<wbr>対応</h3>
-        <p class="capability__desc">データを外に出さない構成にも対応し、機密性の高い環境でも実装できます。</p>
+        <h3 class="capability__term">On-premise deployment</h3>
+        <p class="capability__desc">We support architectures where no data leaves your walls, so this works even in highly confidential environments.</p>
       </li>
     </ul>
   </div>
@@ -230,12 +231,12 @@
     <div class="section__head section__head--center reveal">
       <p class="eyebrow eyebrow--center">Why ShinAI</p>
       <h2 class="section__title" id="why-title">
-        <span class="section__title-line">根づいてはじめて</span>
-        <span class="section__title-line">価値になる。</span>
+        <span class="section__title-line">It only becomes value</span>
+        <span class="section__title-line">once it takes root.</span>
       </h2>
       <p class="section__lead">
-        <span class="section__lead-line">導入して終わりにしない。</span>
-        <span class="section__lead-line">現場に根づき<span class="nobr">自走できる状態まで伴走します。</span></span>
+        <span class="section__lead-line">Delivery is not the finish line.</span>
+        <span class="section__lead-line">We stay with you until it is rooted in the work and runs under your own power.</span>
       </p>
     </div>
 
@@ -243,48 +244,48 @@
       <article class="why__row reveal">
         <span class="why__num" aria-hidden="true">01</span>
         <div>
-          <h3 class="why__title">現場理解</h3>
-          <p class="why__line">技術より先に業務を理解する。</p>
+          <h3 class="why__title">Understanding the work</h3>
+          <p class="why__line">We learn the operation before we reach for the technology.</p>
         </div>
       </article>
       <hr class="why__rule" aria-hidden="true">
       <article class="why__row reveal" data-delay="1">
         <span class="why__num" aria-hidden="true">02</span>
         <div>
-          <h3 class="why__title">小規模検証</h3>
-          <p class="why__line">小さく試し、効果を確かめてから広げます。</p>
+          <h3 class="why__title">Small-scale proof</h3>
+          <p class="why__line">We try it small, confirm the effect, then widen it.</p>
         </div>
       </article>
       <hr class="why__rule" aria-hidden="true">
       <article class="why__row reveal" data-delay="2">
         <span class="why__num" aria-hidden="true">03</span>
         <div>
-          <h3 class="why__title">データ保護</h3>
-          <p class="why__line">暗号化・権限管理・オンプレミスにも対応します。</p>
+          <h3 class="why__title">Data protection</h3>
+          <p class="why__line">Encryption, access control, and on-premise options.</p>
         </div>
       </article>
       <hr class="why__rule" aria-hidden="true">
       <article class="why__row reveal" data-delay="3">
         <span class="why__num" aria-hidden="true">04</span>
         <div>
-          <h3 class="why__title">本番実装</h3>
-          <p class="why__line">試作で終えず業務に組み込むところまで作る。</p>
+          <h3 class="why__title">Production, not demos</h3>
+          <p class="why__line">We do not stop at a prototype. We build it into the work.</p>
         </div>
       </article>
       <hr class="why__rule" aria-hidden="true">
       <article class="why__row reveal" data-delay="4">
         <span class="why__num" aria-hidden="true">05</span>
         <div>
-          <h3 class="why__title">技術移転</h3>
-          <p class="why__line">最後は社内で自走できる状態に。</p>
+          <h3 class="why__title">Technical handover</h3>
+          <p class="why__line">In the end, your own team can carry it.</p>
         </div>
       </article>
       <hr class="why__rule" aria-hidden="true">
       <article class="why__row reveal" data-delay="5">
         <span class="why__num" aria-hidden="true">06</span>
         <div>
-          <h3 class="why__title">研究開発</h3>
-          <p class="why__line">文書に残らない知の領域を、研究しています。</p>
+          <h3 class="why__title">Research</h3>
+          <p class="why__line">We study the knowledge that documents never captured.</p>
         </div>
       </article>
     </div>
@@ -295,24 +296,24 @@
   <div class="container">
     <div class="section__head reveal">
       <p class="eyebrow">News</p>
-      <h2 class="section__title" id="news-title">活動のお知らせ</h2>
+      <h2 class="section__title" id="news-title">News and activity</h2>
     </div>
 
     <ul class="news__list">
       <li class="news__item reveal">
         <a class="news__link" href="https://www.takasakicci.or.jp/wp-content/uploads/10e20d83033f92bf661ee933237cc623.pdf" target="_blank" rel="noopener noreferrer">
           <figure class="news__thumb">
-            <img src="assets/images/news-takasaki-press.jpg" alt="高崎商工会議所 第9回合同プレス発表会で登壇するShinAI代表 柴田昌国" width="1000" height="750" loading="lazy">
+            <img src="../assets/images/news-takasaki-press.jpg" alt="ShinAI founder Masakuni Shibata speaking at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry" width="1000" height="750" loading="lazy">
           </figure>
           <div class="news__body">
             <div class="news__meta">
               <time class="news__date" datetime="2025-12-05">2025.12.05</time>
-              <span class="news__tag">登壇</span>
+              <span class="news__tag">Speaking</span>
             </div>
-            <h3 class="news__title">高崎商工会議所 第9回合同プレス発表会に登壇しました</h3>
-            <p class="news__text">「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みを発表しました。</p>
+            <h3 class="news__title">We spoke at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry</h3>
+            <p class="news__text">We presented ShinAI's work, carried by the belief that AI should give people their human hours back.</p>
             <span class="news__more">
-              プレスリリースを見る（PDF）
+              Read the press release (PDF, Japanese)
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M7 17 L17 7"/><path d="M8 7 h9 v9"/>
               </svg>
@@ -327,16 +328,16 @@
 <section class="section section--ink cta" id="contact" aria-labelledby="cta-title">
   <div class="container cta__inner">
     <div class="cta__lead">
-      <h2 class="cta__title" id="cta-title">ご一緒に未来を創ります。</h2>
+      <h2 class="cta__title" id="cta-title">Let us build what comes next, together.</h2>
       <p class="cta__copy">
-        <span class="cta__copy-line">まだ要件が決まっていなくても構いません。</span>
-        <span class="cta__copy-line">業務の現状から最初の一手を一緒に考えます。</span>
+        <span class="cta__copy-line">You do not need defined requirements to start.</span>
+        <span class="cta__copy-line">We will find the first move from where your work stands today.</span>
       </p>
     </div>
 
     <div class="cta__action">
       <a class="btn cta__btn" href="contact.html">
-        無料相談を申し込む
+        Book a free consultation
         <svg class="cta__btn-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -346,7 +347,7 @@
     <dl class="cta__facts">
       <div class="cta__fact">
         <dt class="cta__fact-label">Consultation</dt>
-        <dd class="cta__fact-value">無料相談 30〜45分・事前準備は不要です</dd>
+        <dd class="cta__fact-value">Free, 30–45 minutes, no preparation needed</dd>
       </div>
       <div class="cta__fact">
         <dt class="cta__fact-label">Contact</dt>
@@ -356,7 +357,7 @@
       </div>
       <div class="cta__fact">
         <dt class="cta__fact-label">Hours</dt>
-        <dd class="cta__fact-value">平日 9:00–18:00</dd>
+        <dd class="cta__fact-value">Weekdays 9:00–18:00 JST</dd>
       </div>
     </dl>
   </div>

@@ -1,22 +1,23 @@
 <!--
-  CONTACT ページ本文（main の中身のみ）。事実・文言は BRIEF.md 10章を一次資料とする。
-  フォームのクライアント検証JSは scripts/ 側で付与する前提。送信先はプレースホルダ。
+  CONTACT ページ本文（英語版・main の中身のみ）。日本語版 partials/contact.html と1対1で対応させる。
+  Formspree の送信先IDは日本語版と同じものを使う（_subject だけ英語で区別する）。
+  成功・失敗メッセージの ID は scripts/contact-form.js と一致させること。
 -->
 <section class="page-hero" aria-labelledby="contact-hero-title">
   <div class="container">
     <div class="page-hero__inner reveal">
-      <nav class="page-hero__breadcrumb" aria-label="パンくず">
-        <a href="index.html">ホーム</a>
+      <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
         <span class="page-hero__breadcrumb-sep" aria-hidden="true">›</span>
-        <span aria-current="page">お問い合わせ</span>
+        <span aria-current="page">Contact</span>
       </nav>
       <p class="eyebrow page-hero__eyebrow">Contact</p>
       <h1 id="contact-hero-title" class="page-hero__title">
-        <span class="page-hero__title-line">無料相談・</span><span class="page-hero__title-line page-hero__title-accent">お問い合わせ</span>
+        <span class="page-hero__title-line">Free consultation</span> <span class="page-hero__title-line page-hero__title-accent">and enquiries</span>
       </h1>
       <p class="page-hero__lead">
-        <span class="page-hero__lead-line">課題の輪郭が見えていなくても、<span class="nobr">要件が固まっていなくても構いません。</span></span>
-        <span class="page-hero__lead-line">いまの業務と状況を聞かせてください。<span class="nobr">可能性を一緒に整理します。</span></span>
+        <span class="page-hero__lead-line">It is fine if the shape of the problem is still unclear, and fine if nothing is settled.</span>
+        <span class="page-hero__lead-line">Tell us about the work as it stands. We will map the possibilities with you.</span>
       </p>
     </div>
   </div>
@@ -26,10 +27,10 @@
   <div class="container">
     <div class="section__head reveal">
       <p class="eyebrow">How it works</p>
-      <h2 id="flow-title" class="section__title">無料相談の流れ</h2>
+      <h2 id="flow-title" class="section__title">How the free consultation goes</h2>
       <p class="section__lead">
-        <span class="section__lead-line">オンラインで30〜45分ほど。</span>
-        <span class="section__lead-line">事前の準備や資料は不要です。</span>
+        <span class="section__lead-line">Online, around 30 to 45 minutes.</span>
+        <span class="section__lead-line">No preparation or documents needed.</span>
       </p>
     </div>
 
@@ -42,8 +43,8 @@
           </svg>
         </span>
         <span class="contact-flow__step-label">Step 01</span>
-        <h3 class="contact-flow__title">お申し込み</h3>
-        <p class="contact-flow__text">下のフォームから、いまのお困りごとを簡単にお知らせください。内容に応じて日程を調整し、こちらから Zoom 等のオンライン会議リンクをお送りします。</p>
+        <h3 class="contact-flow__title">Get in touch</h3>
+        <p class="contact-flow__text">Use the form below to tell us briefly what is troubling you. We will arrange a time that works for you and send you a Zoom or similar meeting link.</p>
       </li>
       <li class="contact-flow__step reveal" data-delay="2">
         <span class="contact-flow__icon" aria-hidden="true">
@@ -54,8 +55,8 @@
           </svg>
         </span>
         <span class="contact-flow__step-label">Step 02</span>
-        <h3 class="contact-flow__title">オンラインで対話</h3>
-        <p class="contact-flow__text">30〜45分ほど、現在の業務と課題をうかがいます。専門用語は使わず、目的の整理から始めます。</p>
+        <h3 class="contact-flow__title">Talk it through online</h3>
+        <p class="contact-flow__text">For 30 to 45 minutes we listen to your current work and its difficulties. No jargon, starting from what you are trying to achieve.</p>
       </li>
       <li class="contact-flow__step reveal" data-delay="3">
         <span class="contact-flow__icon" aria-hidden="true">
@@ -66,8 +67,8 @@
           </svg>
         </span>
         <span class="contact-flow__step-label">Step 03</span>
-        <h3 class="contact-flow__title">適用の整理とご提案</h3>
-        <p class="contact-flow__text">どこから着手できそうか、進め方の見立てをお伝えします。</p>
+        <h3 class="contact-flow__title">Where to apply it, and how</h3>
+        <p class="contact-flow__text">We tell you where we think you could begin and how it would proceed.</p>
       </li>
     </ol>
   </div>
@@ -79,87 +80,84 @@
       <div class="contact-form-card reveal">
         <div class="contact-form-card__head">
           <p class="eyebrow">Inquiry</p>
-          <h2 id="contact-form-title" class="contact-form-card__title">お問い合わせ</h2>
-          <p class="contact-form-card__lead">いただいた内容を確認のうえ、数営業日以内にご連絡します。</p>
+          <h2 id="contact-form-title" class="contact-form-card__title">Send us a message</h2>
+          <p class="contact-form-card__lead">We read everything that comes in and reply within a few business days.</p>
         </div>
 
         <!-- TODO(公開前・必須): 送信先が未設定。action の YOUR_FORM_ID_HERE を実IDへ置換すること。
-             未設定の間は contact-form.js が mailto へフォールバックするためエラーにはならないが、
-             フォームからの問い合わせはメールクライアント任せになり取りこぼしが出る。
-             ドメイン取得後に Formspree(または後継の送信先)でフォームを作成し、
-             日本語版と英語版(partials/en/contact.html)の両方を同時に更新する。
-             CSP の connect-src / form-action も送信先に合わせて見直すこと(_build/build.mjs と deploy/_headers)。 -->
+             日本語版 partials/contact.html と必ず同時に更新する(送信先IDは共通、_subject だけ別)。
+             詳細は日本語版の同じ位置のコメントを参照。 -->
         <form class="contact-form" method="post"
               action="https://formspree.io/f/YOUR_FORM_ID_HERE"
               aria-describedby="contact-form-note">
-          <input type="hidden" name="_subject" value="ShinAI お問い合わせ">
+          <input type="hidden" name="_subject" value="ShinAI enquiry (EN)">
           <!-- ハニーポット: 視覚非表示。人間は入力しない。値があれば送信側で破棄する -->
           <div class="contact-hp" aria-hidden="true">
-            <label for="company-website">この欄は入力しないでください</label>
+            <label for="company-website">Please leave this field empty</label>
             <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off">
           </div>
 
           <div class="contact-field">
             <label class="contact-field__label" for="company">
-              会社名・組織名 <span class="contact-req">必須</span>
+              Company or organisation <span class="contact-req">required</span>
             </label>
             <input class="contact-field__input" type="text" id="company" name="company"
                    required aria-required="true" maxlength="100"
-                   autocomplete="organization" placeholder="例 シンアイ株式会社">
+                   autocomplete="organization" placeholder="e.g. Acme Industries">
           </div>
 
           <div class="contact-field">
             <label class="contact-field__label" for="name">
-              お名前 <span class="contact-req">必須</span>
+              Your name <span class="contact-req">required</span>
             </label>
             <input class="contact-field__input" type="text" id="name" name="name"
                    required aria-required="true" maxlength="50"
-                   autocomplete="name" placeholder="例 山田 太郎">
+                   autocomplete="name" placeholder="e.g. Alex Morgan">
           </div>
 
           <div class="contact-field-row">
             <div class="contact-field">
               <label class="contact-field__label" for="email">
-                メールアドレス <span class="contact-req">必須</span>
+                Email address <span class="contact-req">required</span>
               </label>
               <input class="contact-field__input" type="email" id="email" name="email"
                      required aria-required="true" maxlength="254"
-                     autocomplete="email" inputmode="email" placeholder="例 yamada@example.com">
+                     autocomplete="email" inputmode="email" placeholder="e.g. alex@example.com">
             </div>
             <div class="contact-field">
               <label class="contact-field__label" for="phone">
-                電話番号 <span class="contact-opt">任意</span>
+                Phone <span class="contact-opt">optional</span>
               </label>
               <input class="contact-field__input" type="tel" id="phone" name="phone"
-                     maxlength="20" autocomplete="tel" inputmode="tel" placeholder="例 090-1234-5678">
+                     maxlength="20" autocomplete="tel" inputmode="tel" placeholder="e.g. +81 90 1234 5678">
             </div>
           </div>
 
           <div class="contact-field">
             <label class="contact-field__label" for="message">
-              相談内容 <span class="contact-req">必須</span>
+              What would you like to discuss <span class="contact-req">required</span>
             </label>
             <textarea class="contact-field__input contact-field__textarea" id="message" name="message"
                       required aria-required="true" maxlength="2000" rows="6"
-                      placeholder="現在の業務や、相談したいことをご記入ください。下書きで構いません。"></textarea>
-            <p class="contact-field__hint">専門知識は不要です。曖昧な段階のご相談も歓迎します。</p>
+                      placeholder="Tell us about your current work and what you would like to talk through. A rough draft is fine."></textarea>
+            <p class="contact-field__hint">No technical knowledge needed. Enquiries at a vague stage are genuinely welcome.</p>
           </div>
 
           <div class="contact-consent">
             <input class="contact-consent__input" type="checkbox" id="privacy-consent" name="privacy-consent"
                    required aria-required="true">
             <label class="contact-consent__label" for="privacy-consent">
-              <a class="contact-consent__link" href="privacy.html">個人情報の取り扱い</a>に同意します
+              I agree to the <a class="contact-consent__link" href="privacy.html">handling of personal information</a>
             </label>
           </div>
 
           <p class="contact-form__note" id="contact-form-note">
-            送信いただいた情報は、ご相談への対応のみに使用します。
+            What you send is used only to respond to your enquiry.
           </p>
 
           <div class="contact-form__submit">
             <button class="btn btn-primary contact-form__btn" type="submit">
-              <span>送信する</span>
+              <span>Send</span>
               <svg class="btn__arrow contact-form__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="13 6 19 12 13 18"></polyline>
@@ -168,42 +166,41 @@
           </div>
 
           <div id="contact-success" class="contact-form__feedback contact-form__feedback--success" hidden>
-            <strong>送信しました。</strong>内容を確認のうえ、数営業日以内にご連絡します。
+            <strong>Message sent.</strong> We will read it and reply within a few business days.
           </div>
           <div id="contact-error" class="contact-form__feedback contact-form__feedback--error" hidden>
-            送信に問題が発生しました。お手数ですが
-            <a href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
-            より直接ご連絡ください。
+            Something went wrong while sending. Please write to us directly at
+            <a href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>.
           </div>
         </form>
       </div>
 
       <aside class="contact-aside reveal" data-delay="1" aria-labelledby="contact-info-title">
-        <h2 id="contact-info-title" class="contact-aside__title">連絡先と活動拠点</h2>
+        <h2 id="contact-info-title" class="contact-aside__title">Contact and locations</h2>
         <dl class="contact-info">
           <div class="contact-info__item">
-            <dt class="contact-info__label">メール</dt>
+            <dt class="contact-info__label">Email</dt>
             <dd class="contact-info__value">
               <a class="contact-info__link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a>
             </dd>
           </div>
           <div class="contact-info__item">
-            <dt class="contact-info__label">受付時間</dt>
-            <dd class="contact-info__value">平日 9:00–18:00</dd>
+            <dt class="contact-info__label">Hours</dt>
+            <dd class="contact-info__value">Weekdays 9:00–18:00 JST</dd>
           </div>
           <div class="contact-info__item">
-            <dt class="contact-info__label">活動拠点</dt>
-            <dd class="contact-info__value">東京都千代田区丸の内3-8-3 Tokyo Innovation Base</dd>
+            <dt class="contact-info__label">Tokyo base</dt>
+            <dd class="contact-info__value">Tokyo Innovation Base, 3-8-3 Marunouchi, Chiyoda-ku, Tokyo</dd>
           </div>
           <div class="contact-info__item">
-            <dt class="contact-info__label">所在地</dt>
-            <dd class="contact-info__value">群馬県高崎市井野町360-7 <span class="nobr">オークスアベニューD201</span></dd>
+            <dt class="contact-info__label">Registered office</dt>
+            <dd class="contact-info__value">360-7 Ino-machi, Takasaki, Gunma <span class="nobr">Oaks Avenue D201</span></dd>
           </div>
         </dl>
 
         <div class="contact-chat">
-          <p class="contact-chat__title">チャットでも質問できます</p>
-          <p class="contact-chat__text">画面右下のアシスタントから、その場で気軽にお尋ねいただけます。フォームより手早く確かめたいときにどうぞ。</p>
+          <p class="contact-chat__title">You can also chat with us</p>
+          <p class="contact-chat__text">The assistant at the bottom right of the screen takes questions on the spot. Use it when you want a quicker answer than the form.</p>
         </div>
       </aside>
     </div>

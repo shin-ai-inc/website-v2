@@ -7,6 +7,23 @@
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 9999;
+  padding: var(--space-2) var(--space-4);
+  background: var(--brand);
+  color: #FFFFFF;
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: top var(--dur-1) var(--ease-out);
+}
+.skip-link:focus {
+  top: var(--space-2);
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
@@ -65,6 +82,30 @@ h1, h2, h3, h4 {
   position: relative;
   padding-block: var(--section-py);
 }
+/* Subtle atmospheric image overlay for white-background sections */
+.section:not(.section--alt):not(.section--ink) {
+  isolation: isolate;
+}
+.section:not(.section--alt):not(.section--ink)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: -1;
+}
+#purpose::before  { background-image: url('../assets/images/about-philosophy-tech.jpg'); }
+#solutions::before { background-image: url('../assets/images/service-custom-ai-development.jpg'); }
+#team::before     { background-image: url('../assets/images/photo-team.jpg'); }
+#company::before  { background-image: url('../assets/images/about-vision-future.jpg'); }
+#industries::before { background-image: url('../assets/images/about-vision-future.jpg'); }
+#technology::before { background-image: url('../assets/images/about-philosophy-tech.jpg'); }
+#faq::before      { background-image: url('../assets/images/service-consulting-team.jpg'); }
+#flow::before     { background-image: url('../assets/images/service-cocreation-partnership.jpg'); }
+
 .section--alt { background: var(--paper-2); }
 .section--ink {
   background: var(--ink);
@@ -116,11 +157,13 @@ body.is-home { background: var(--grad-paper); }
 /* ---- 日本語の意味単位改行 ----
    word-break: auto-phrase は Chromium の形態素解析(BudouX)で文節単位に折り返す。
    text-wrap: balance/pretty は行長の均整と孤立行(行末の1〜2文字落ち)を防ぐ。
-   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。 */
-h1, h2, h3,
-.section__lead, .page-hero__lead, .purpose__support,
-.about-purpose__note, .cta__text, .shin7__desc,
-.industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note {
+   いずれも未対応ブラウザでは従来の折り返しへ無害にフォールバックする。
+   auto-phrase は日本語専用のため :lang(ja) に限定する(英語版 /en/ には効かせない)。
+   text-wrap の方は言語を問わず有効なので限定しない。 */
+:lang(ja) :is(h1, h2, h3,
+  .section__lead, .page-hero__lead, .purpose__support,
+  .about-purpose__note, .cta__text, .shin7__desc,
+  .industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note) {
   word-break: auto-phrase;
 }
 h1, h2, h3 {
@@ -204,7 +247,7 @@ h1, h2, h3 {
 }
 
 .btn-primary {
-  background: var(--grad-brand);
+  background: var(--grad-brand-btn);
   color: #FFF;
   box-shadow: var(--shadow-brand);
 }
@@ -307,4 +350,16 @@ h1, h2, h3 {
     transition-duration: 0.001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .site-header, .site-footer, .chatbot, .skip-link,
+  .hero-stack__particles, .stats-bar, .cta, .btn { display: none !important; }
+  .section { padding-block: 1.5em; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+  .site-header__link::after, .eyebrow::before, .eyebrow--center::after { display: none; }
+  img { max-width: 100% !important; page-break-inside: avoid; }
+  h1, h2, h3 { page-break-after: avoid; }
 }

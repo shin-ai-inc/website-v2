@@ -1,0 +1,337 @@
+<!--
+  FAQ ページ本文（英語版・main の中身のみ）。日本語版 partials/faq.html と1対1で対応させる。
+  アコーディオンはネイティブ details/summary（JS不要・アクセシブル）。
+  検索・カテゴリ絞り込みは scripts/faq.js による段階的強化（JSなしでも全問閲覧可能）。
+  ここの Q&A は FAQPage 構造化データの唯一の真実源になる（build.mjs が抽出する）。
+-->
+<section class="page-hero" aria-labelledby="faq-hero-title">
+  <div class="container">
+    <div class="page-hero__inner reveal">
+      <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="page-hero__breadcrumb-sep" aria-hidden="true">›</span>
+        <span aria-current="page">FAQ</span>
+      </nav>
+      <p class="eyebrow page-hero__eyebrow">FAQ</p>
+      <h1 id="faq-hero-title" class="page-hero__title">
+        Your questions, <span class="page-hero__title-accent">one by one.</span>
+      </h1>
+      <p class="page-hero__lead">
+        <span class="page-hero__lead-line">From a first conversation through to cost and method, here are the questions we hear most.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-title" class="section__title">Find what you want to know</h2>
+      <p class="section__lead">Open any item to read the answer.</p>
+    </div>
+
+    <div class="faq-controls reveal" data-faq-controls hidden>
+      <div class="faq-chips" data-faq-chips role="group" aria-label="Filter by category">
+        <button type="button" class="faq-chip is-active" data-faq-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="faq-chip" data-faq-filter="first" aria-pressed="false">Getting started</button>
+        <button type="button" class="faq-chip" data-faq-filter="cost" aria-pressed="false">Cost and rollout</button>
+        <button type="button" class="faq-chip" data-faq-filter="dev" aria-pressed="false">How we build</button>
+        <button type="button" class="faq-chip" data-faq-filter="industry" aria-pressed="false">By industry</button>
+        <button type="button" class="faq-chip" data-faq-filter="service" aria-pressed="false">Our services</button>
+        <button type="button" class="faq-chip" data-faq-filter="other" aria-pressed="false">Other</button>
+      </div>
+    </div>
+
+    <div class="faq__groups">
+      <div class="faq-group reveal" data-delay="1" data-faq-group="first">
+        <h3 class="faq-group__title">Getting started</h3>
+        <div class="faq-group__list">
+          <details class="faq-item" open>
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Can we talk to you without knowing much about AI?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Yes. We explain what AI can do and what it changes without reaching for jargon. It is fine to arrive unsure about what could be handed over.</p>
+              <p>In the free consultation we listen to what is troubling you and suggest where AI could help.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Where should we begin?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>We start by mapping the daily work that takes the most time. Data entry, answering enquiries, preparing documents. There are usually more of these than people expect.</p>
+              <p>Coming to us at the "we do not know where to start" stage is genuinely welcome. We listen to the work and suggest an easy place to begin.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">How long does it take to get something running?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>It depends on scale and purpose, but a small prototype can sometimes take shape in as little as two weeks.</p>
+              <p>Because we build small, confirm, then widen in stages, you get a sense of whether it works early on.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="2" data-faq-group="cost">
+        <h3 class="faq-group__title">Cost and rollout</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">What does it cost?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>It varies a great deal with purpose and scale, so our default is to confirm the effect with a prototype first and widen from there. That keeps the initial investment low.</p>
+              <p>We will propose a plan that fits your budget and situation. Tell us about it in a free consultation.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Can smaller companies or sole traders adopt this?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Yes. Cloud AI infrastructure has matured to the point where smaller companies and independent operators can adopt it without strain.</p>
+              <p>We start small at a scale that suits you and widen as the effect is confirmed, so the early burden stays low while you find out whether it works.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">What kind of effect can we expect?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>It depends on the use. For routine work such as data entry and document preparation, there have been cases of cutting roughly 60 to 80 percent of the time spent. The figure shifts with the work, so we are careful not to proceed on inflated expectations.</p>
+              <p>We build the means of measuring the effect alongside the system, so you can check it against what it costs.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="3" data-faq-group="dev">
+        <h3 class="faq-group__title">How we build</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">What does "starting from a prototype" mean?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Traditional development required every requirement to be settled up front. AI covers such a wide range of possibility that settling everything first can be difficult in itself.</p>
+              <p>So we build small, test it against the real work, and extend as the results come in. Early risk stays contained while the thing grows into something that fits the floor.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Can it connect to our existing systems?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Yes. We design on the assumption of connecting to your current work and tools through APIs, webhooks, RPA and similar.</p>
+              <p>Customer support linked to your CRM, demand forecasting linked to your core systems. We build it in while changing your current flow as little as possible.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Is there support after go-live?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>There is. The period right after launch gets the closest attention, and we stay with you until the floor is comfortable with the new tool.</p>
+              <p>After that we continue regular monitoring and accuracy improvement, aiming for a state where your own people can run and improve it. The shape of the support adjusts to your situation.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="4" data-faq-group="industry">
+        <h3 class="faq-group__title">By industry</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Which industries can use this?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Manufacturing, construction, retail, healthcare and welfare, education, finance, real estate. There is an application in any sector. The fit tends to be strongest wherever documents, conversations and work records have accumulated.</p>
+              <p>The specifics by sector are gathered on the <a href="industries.html">Industries</a> page.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Could you give an example in manufacturing?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Putting a veteran's inspection and adjustment decisions into words so they can be shared, plus detecting early signs of failure from operating data, and demand forecasting.</p>
+              <p>Giving grounds and repeatability to judgments that used to rest on instinct reduces both variation in quality and the weight of handover.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">How does this apply in healthcare and welfare?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Mostly in shaping internal documents and case records so they can be cited with their sources, which cuts double-checking and enquiries. It also helps in back-office work such as assisting with record entry and streamlining appointment management.</p>
+              <p>We design it as a tool that lightens the load on the floor, always with a human making the final call.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">We are not sure it suits our work.</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>We listen to the specifics of your work and identify where it could apply. If we judge that it does not suit you, we will say so plainly.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="5" data-faq-group="service">
+        <h3 class="faq-group__title">Our services</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">How does the free consultation work?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Online, around 30 to 45 minutes. We begin by listening to your current difficulties and the state you want to reach. No preparation is needed.</p>
+              <p>On the call we set out a direction for using AI and how it would proceed.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">What solutions do you offer?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Three pillars, combined to suit the purpose: turning tacit knowledge into AI, private enterprise AI agents, and in-house AI enablement. Alongside them, we carry out research and development in physical AI.</p>
+              <p>What each involves and how it proceeds is on the <a href="services.html">Solutions</a> page.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">What is physical AI?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>AI that works with movement and signals from the real world rather than documents and conversations. How a skilled worker's hand moves, how much pressure they apply, the sound and vibration of a machine running — information that was never put into words. We capture it with sensors and use methods such as reinforcement learning to make it something a machine can work with.</p>
+              <p>We treat this as a research and proof-of-concept area, developed jointly with companies that have a real site, starting from small trials. There is more on the <a href="services.html#frontier">Solutions</a> page.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Where does a physical AI trial begin?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>With a few weeks of feasibility work: whether the data can be captured at all, and whether the accuracy would be enough for the work. If the prospect does not hold up at that stage, we say so plainly.</p>
+              <p>You do not need to bring in new equipment or robots. We start by working out together how much can be learned from the machines and cameras you already have.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">How do you approach security?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>We design in layers, with data encryption, access control, logging and audit as the baseline. Where requirements call for it we build on-premise or in a private cloud.</p>
+              <p>In training and operation alike we hold to anonymisation and minimal use of data, and we keep a person making the final decision.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="faq-group reveal" data-delay="5" data-faq-group="other">
+        <h3 class="faq-group__title">Other</h3>
+        <div class="faq-group__list">
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Do we need to assign a dedicated person?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Not necessarily. Because we work alongside you, the shift to running it yourselves can happen in stages that suit your structure. Having someone who understands the work involved does make the result fit the floor more closely.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">When is the right time to get in touch?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Recognising the problem is enough. Since we start small and confirm the effect, we can help design the approach itself even before requirements are settled.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">How accurate is the AI?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>It varies with the use and the design. Because we measure the effect on a prototype and improve from there, we can keep tuning towards the accuracy the work actually requires.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span class="faq-item__q-text">Does it need maintenance after launch?</span>
+              <span class="faq-item__marker" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__a">
+              <p>Work and knowledge keep changing, so ideally what the system has learned keeps being updated. We offer operational support and maintenance plans, and will propose a way of continuing that does not strain you.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--ink" id="cta" aria-labelledby="faq-cta-title">
+  <div class="container cta__inner">
+    <div class="cta__lead reveal">
+      <h2 id="faq-cta-title" class="cta__title">
+        <span class="cta__title-line">If a question remains,</span>
+        <span class="cta__title-line">we would like to hear it.</span>
+      </h2>
+      <p class="cta__copy">
+        <span class="cta__copy-line">We will work through your current difficulties together.</span>
+        <span class="cta__copy-line">It is fine if nothing is settled yet.</span>
+      </p>
+      <div class="cta__action">
+        <a class="btn cta__btn" href="contact.html">
+          <span>Book a free consultation</span>
+          <svg class="btn__arrow cta__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="13 6 19 12 13 18"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <dl class="cta__facts reveal" data-delay="1">
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Mail</dt>
+        <dd class="cta__fact-value"><a class="cta__fact-link" href="mailto:shinai.life@gmail.com">shinai.life@gmail.com</a></dd>
+      </div>
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Hours</dt>
+        <dd class="cta__fact-value">Weekdays 9:00–18:00 JST</dd>
+      </div>
+      <div class="cta__fact">
+        <dt class="cta__fact-label">Consultation</dt>
+        <dd class="cta__fact-value">Online, 30–45 min, no preparation</dd>
+      </div>
+    </dl>
+  </div>
+</section>

@@ -13,6 +13,18 @@ ShinAI コーポレートサイト（再構築版）。マルチページ・静�
   CDNではなく自ドメイン配信で script-src 'self' を維持）。
 - AIアシスタント: `scripts/chatbot.js`（バックエンドAPI経由。鍵はクライアントに持たない）。
 
+## 多言語対応（英語版）
+- 英語版の本文は `partials/en/<page>.html`、共有部品は `partials/en/_header.html` /
+  `_footer.html` / `_chatbot.html`（日本語版と同じファイル構成をミラー）。
+- ビルド出力は `en/` 配下（例: `en/index.html`）。日本語版のURLは動かさず、英語版を
+  `/en/` 配下に増設する構成（`_build/build.mjs` の `LOCALES` で定義）。
+- ヘッダーに言語切替リンクを自動挿入（地球儀アイコン、同一ページの他言語版へ1タップ遷移）。
+- SEO: 各ページに `hreflang`（ja/en/x-default）・`canonical`・`og:locale` を言語別に出力し、
+  `sitemap.xml` にも `xhtml:link` で言語版を併記。
+- PWAマニフェストは `site.webmanifest`（日本語）と `en/site.webmanifest`（英語）を別々に生成。
+- 新しい言語を追加する場合は `_build/build.mjs` の `LOCALES` 配列にエントリを追加し、
+  `partials/<code>/` 配下に翻訳済みpartialを用意する。
+
 ## ビルド
 ```
 node _build/build.mjs

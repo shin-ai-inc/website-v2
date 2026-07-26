@@ -147,9 +147,11 @@
 
 .industries-card__state--before .industries-card__state-label::before {
   content: "";
-  width: 14px;
-  height: 1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--mist);
+  opacity: 0.7;
 }
 
 .industries-card__state--after .industries-card__state-label {
@@ -158,8 +160,9 @@
 
 .industries-card__state--after .industries-card__state-label::before {
   content: "";
-  width: 14px;
-  height: 1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--acc-ink);
 }
 
@@ -198,6 +201,16 @@
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+
+.industries-bridge__item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand-soft);
 }
 
 .industries-bridge__item::before {
@@ -208,13 +221,29 @@
   background: var(--brand);
 }
 
+.industries-bridge__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.industries-bridge__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .industries-bridge__item-title {
   font-family: var(--font-display);
   font-size: var(--fs-h3);
   line-height: var(--lh-snug);
   color: var(--ink);
   margin-bottom: var(--space-2);
-  padding-top: var(--space-1);
 }
 
 .industries-bridge__item-text {
@@ -234,15 +263,35 @@
   color: var(--ink-2);
 }
 
+/* 地の文と同色だとリンクだと気づかれないため、明示的に色と下線を与える。 */
+.industries-bridge__note a {
+  color: var(--brand-3);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.industries-bridge__note a:hover {
+  color: var(--brand);
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 820px) {
+  .industries__grid {
+    grid-template-columns: 1fr;
+  }
   .industries-bridge__list {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .industries__grid {
-    grid-template-columns: 1fr;
+@media (max-width: 480px) {
+  .industries-card {
+    padding: var(--space-4);
+  }
+  .industries-card__state {
+    padding: var(--space-2) var(--space-3);
+  }
+  .industries-bridge__item {
+    padding: var(--space-4);
   }
 }
