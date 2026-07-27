@@ -23,7 +23,7 @@ const BUILD_HASH = (() => {
    独自ドメイン取得後はここを更新してビルドし直すこと。 */
 const SITE_URL = "https://shin-ai-inc.github.io/website-v2";
 /* OGPクローラ(LINE等)はURL単位でキャッシュするため、画像を変えるときはファイル名も変える */
-const OG_IMAGE = SITE_URL + "/assets/images/ogp-card.png";
+const OG_IMAGE = SITE_URL + "/assets/images/ogp-card-logo.png";
 const CONTACT_EMAIL = "shinai.life@gmail.com";
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
