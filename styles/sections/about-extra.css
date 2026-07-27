@@ -438,34 +438,18 @@
   background: var(--brand);
 }
 
-/* 大きな番号は「残像」として右上に薄く敷き、情報でなく空気にする */
+/* 旧公開サイト同様、装飾アイコンを置かず番号を見出しの上に据える。
+   ブランド色の細い数字で、静かに順序を示すだけの控えめな導入にする。 */
 .join__merit-num {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
+  display: block;
+  margin-bottom: var(--space-3);
   font-family: var(--font-latin);
-  font-size: 2.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1;
-  color: var(--paper-3);
-  user-select: none;
-}
-
-.join__merit-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.6rem;
-  height: 2.6rem;
-  margin-bottom: var(--space-3);
-  border-radius: var(--r-md);
-  background: var(--brand-soft);
+  letter-spacing: 0.04em;
   color: var(--brand);
-}
-
-.join__merit-icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  user-select: none;
 }
 
 .join__merit-title {

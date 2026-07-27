@@ -202,10 +202,13 @@
    72pxサムネイル横並びは長文リードの左に空白を生み崩れるため廃止。
    バナー画像はやや低めに抑え、長文でも均整を保つ。 */
 @media (max-width: 640px) {
+  /* 旧公開サイト同様、カードを画面端いっぱいに広げず左右にゆとりを持たせる。
+     コンテナのガター内でさらに内側へ寄せ、圧迫感を和らげる。 */
   .solutions__grid {
     grid-template-columns: 1fr;
     max-width: 100%;
     gap: var(--space-3);
+    padding-inline: var(--space-2);
   }
   /* 画面への圧迫を抑えるため、余白・画像・字を一段引き締めてスマートにする。 */
   .solution-card {
