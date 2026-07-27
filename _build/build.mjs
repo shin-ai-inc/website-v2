@@ -310,12 +310,16 @@ ${alternates}
   <meta property="og:description" content="${escapeAttr(meta.desc)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${OG_IMAGE}">
+  <meta property="og:image:secure_url" content="${OG_IMAGE}">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ShinAI">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeAttr(meta.title)}">
   <meta name="twitter:description" content="${escapeAttr(meta.desc)}">
   <meta name="twitter:image" content="${OG_IMAGE}">
+  <meta name="twitter:image:alt" content="ShinAI">
 
   <link rel="icon" href="${p}assets/icons/favicon.svg?v=${BUILD_HASH}" type="image/svg+xml">
   <link rel="icon" href="${p}assets/icons/favicon.png?v=${BUILD_HASH}" sizes="any">
