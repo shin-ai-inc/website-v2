@@ -3284,7 +3284,14 @@ h1, h2, h3 {
    (particles.js は resize で常時同期)、縦長楕円化を防ぐ。 */
 .site-particles {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* 高さを動的ビューポート(inset:0=bottom追従)にすると、モバイルでアドレスバーが
+     開閉するたび入れ物の高さが変わり、中央配置のcanvas中心が上下にずれる(=スクロールで
+     地球儀が動く)。100lvh(大ビューポート高で安定)に固定し、入れ物の中心を不動にする。 */
+  height: 100vh;
+  height: 100lvh;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
