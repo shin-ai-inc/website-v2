@@ -1820,6 +1820,15 @@ h1, h2, h3 {
   box-shadow: var(--shadow-sm);
 }
 
+/* 肖像の隣のテキスト塊。縦flexにして、末尾の専門領域を
+   margin-top:auto で下端へ寄せ、2枚のカードの視覚的な底を揃える。 */
+.company__person > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
 .company__portrait {
   flex-shrink: 0;
   width: 3.5rem;
@@ -1862,10 +1871,19 @@ h1, h2, h3 {
 }
 
 .company__person-skills {
-  margin-top: var(--space-2);
+  /* カード高さが揃うよう、経歴とスキルの間を伸縮域にして下端へ寄せる */
+  margin-top: auto;
+  padding-top: var(--space-3);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
   color: var(--mist);
+}
+
+/* 「ビジ/ネスプロセス最適化」のように語の途中で割れるのを防ぐ。
+   読点の後でのみ折り返させ、各領域名は塊のまま保つ。 */
+:lang(ja) .company__person-skills {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .company__person-skills-label {

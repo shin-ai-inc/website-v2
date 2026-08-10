@@ -228,19 +228,28 @@ const personLd = {
   givenName: "昌国",
   familyName: "柴田",
   alternateName: ["柴田 昌国", "しばた まさくに", "Masakuni Shibata"],
-  jobTitle: "代表取締役",
-  description: "シンアイ株式会社 代表取締役。元消防士として約7年従事したのち、2023年2月から生成AIの可能性を確信しプログラミングを独学で習得。東京のAIシステム開発企業での実務を経て、2025年1月にShinAIを創業し、2026年8月に法人化。企業の暗黙知をAI資産へ変える支援に取り組む。",
+  /* 経営者であると同時に自ら手を動かすAIエンジニアであることが差別化の核。
+     検索・AI検索の双方が「肩書きだけの代表」と誤認しないよう両方を宣言する。 */
+  jobTitle: ["代表取締役", "AIエンジニア"],
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "AIエンジニア",
+    occupationalCategory: "AIエンジニア",
+    description: "上場企業から中小企業まで、AIシステムの受託開発とAI導入支援に従事。生成AIサービスの企画設計、RAG構築、AI活用戦略の立案を自ら手がける。"
+  },
+  description: "シンアイ株式会社 代表取締役／AIエンジニア。元消防士として約7年従事したのち、2023年2月から生成AIの可能性を確信しプログラミングを独学で習得。東京のAIシステム開発企業での実務を経て、2025年1月にShinAIを創業し、2026年8月に法人化。上場企業から中小企業まで、生成AIサービスの企画設計、RAG構築、AI活用戦略の立案を自ら手がけ、企業の暗黙知をAI資産へ変える支援に取り組む。",
   worksFor: { "@id": SITE_URL + "/#organization" },
   url: SITE_URL + "/about.html",
   image: SITE_URL + "/assets/images/ceo-masakuni-shibata.png",
   knowsAbout: [
+    "生成AIサービスの企画設計",
+    "RAG構築",
+    "AI活用戦略の立案",
+    "ビジネスプロセス最適化",
     "暗黙知のAI化",
     "企業専用AIエージェント開発",
-    "生成AI戦略",
-    "RAG構築",
-    "大規模言語モデル(LLM)の統合",
-    "エンタープライズAI実装",
-    "ビジネスプロセス最適化"
+    "AIシステムの受託開発",
+    "AI導入支援"
   ],
   nationality: { "@type": "Country", name: "日本" },
   workLocation: {
@@ -262,19 +271,26 @@ const personLdEn = {
   givenName: "Masakuni",
   familyName: "Shibata",
   alternateName: ["柴田昌国", "柴田 昌国"],
-  jobTitle: "Founder and CEO",
-  description: "Founder and CEO of ShinAI Inc. A former firefighter of some seven years, he became convinced of what generative AI could do in February 2023 and taught himself to program. After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 and incorporated it in August 2026. He works on turning the tacit knowledge inside companies into working AI assets.",
+  jobTitle: ["Founder and CEO", "AI Engineer"],
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "AI Engineer",
+    occupationalCategory: "AI Engineer",
+    description: "Builds AI systems and leads AI adoption for clients ranging from listed companies to small and mid-sized firms. Hands-on across generative AI service design, RAG development, and AI strategy."
+  },
+  description: "Founder, CEO, and AI engineer at ShinAI Inc. A former firefighter of some seven years, he became convinced of what generative AI could do in February 2023 and taught himself to program. After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 and incorporated it in August 2026. He works hands-on across generative AI service design, RAG development, and AI strategy, turning the tacit knowledge inside companies into working AI assets.",
   worksFor: { "@id": SITE_URL + "/#organization" },
   url: SITE_URL + "/en/about.html",
   image: SITE_URL + "/assets/images/ceo-masakuni-shibata.png",
   knowsAbout: [
+    "Generative AI service design",
+    "Retrieval-augmented generation (RAG)",
+    "AI strategy",
+    "Business process optimisation",
     "Tacit knowledge structuring with AI",
     "Private enterprise AI agents",
-    "Generative AI strategy",
-    "Retrieval-augmented generation (RAG)",
-    "Large language model integration",
-    "Enterprise AI implementation",
-    "Business process optimisation"
+    "Custom AI system development",
+    "AI adoption support"
   ],
   nationality: { "@type": "Country", name: "Japan" },
   workLocation: {
