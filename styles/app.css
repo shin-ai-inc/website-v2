@@ -976,6 +976,8 @@ h1, h2, h3 {
 
 /* 旧公開サイト同様、装飾アイコンを置かず番号を見出しの上に据える。
    ブランド色の細い数字で、静かに順序を示すだけの控えめな導入にする。 */
+/* 番号は面積が小さく、淡すぎると視認できないため、桜の色相を保ちつつ
+   白地で読める濃度に留める(左辺の--grad-sakuraと同系統)。 */
 .join__merit-num {
   display: block;
   margin-bottom: var(--space-3);
@@ -984,7 +986,7 @@ h1, h2, h3 {
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.04em;
-  color: var(--brand);
+  color: #E48AA8;
   user-select: none;
 }
 

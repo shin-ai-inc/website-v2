@@ -169,7 +169,27 @@ const ldJson = {
     addressRegion: "群馬県",
     addressLocality: "高崎市",
     streetAddress: "井野町360-7 オークスアベニューD201"
-  }
+  },
+  /* 事業を提供する地理範囲の宣言。本店は群馬県高崎市だが、対応は全国。
+     AI検索が「群馬 AI導入支援」等へ分解して探索する際、住所だけでなく
+     「その地域を対象に事業を行う主体」であることを機械可読な事実として示す。
+     コピーは一切変えずに地域シグナルを補う手段。 */
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "群馬県" },
+    { "@type": "AdministrativeArea", name: "北関東" },
+    { "@type": "Country", name: "日本" }
+  ],
+  knowsAbout: [
+    "暗黙知のAI化",
+    "企業専用AIエージェント開発",
+    "生成AI導入支援",
+    "RAG構築",
+    "大規模言語モデル(LLM)の最適化",
+    "オンプレミスAI",
+    "製造業のAI活用",
+    "技術継承",
+    "フィジカルAI"
+  ]
 };
 
 /* 英語版の Organization。海外の検索・AI検索が読む一次情報になるため、
@@ -192,7 +212,23 @@ const ldJsonEn = {
     addressRegion: "Gunma",
     addressLocality: "Takasaki",
     streetAddress: "360-7 Ino-machi, Oaks Avenue D201"
-  }
+  },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Gunma" },
+    { "@type": "AdministrativeArea", name: "Kita-Kanto" },
+    { "@type": "Country", name: "Japan" }
+  ],
+  knowsAbout: [
+    "Tacit knowledge structuring with AI",
+    "Private enterprise AI agents",
+    "Generative AI adoption",
+    "Retrieval-augmented generation (RAG)",
+    "Large language model optimisation",
+    "On-premise AI",
+    "AI for manufacturing",
+    "Skill transfer and succession",
+    "Physical AI"
+  ]
 };
 
 /* 検索結果でのサイト名表示のため、トップページに WebSite を出す。 */
