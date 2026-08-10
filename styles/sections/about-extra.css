@@ -294,7 +294,8 @@
   width: 3.25rem;
   height: 3.25rem;
   margin-bottom: var(--space-3);
-  border-radius: var(--r-md);
+  /* 七つのShinは思想を表す章標のため、直角基調のなかで唯一の例外として円形にする。 */
+  border-radius: 50%;
   /* 単色は簡素に見えるため、ブランドの藍青→青緑グラデ+奥行きの影で上質なチップに。
      7つのShinは一つの名の側面のため、色は統一する。 */
   background: var(--grad-brand);
