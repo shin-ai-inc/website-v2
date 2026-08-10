@@ -207,11 +207,16 @@
   .faq-item__a p {
     font-size: var(--fs-sm);
   }
-  /* :lang(ja) .faq-item__a p の方が詳細度が高く、直前のwordBreak: normal指定は
-     実際には無効化されていた(実測で確認)。同等以上の詳細度で確実に上書きする。 */
+  /* 狭幅では改行位置を一切制御せず、行幅いっぱいまで文章を続ける。
+     auto-phrase(文節改行)も pretty(行長の均整) も、狭い横幅では
+     不自然な折り返しと余白を生むため無効化する。
+     :lang(ja) セレクタの方が詳細度が高いため、同等の詳細度で上書きする。 */
   :lang(ja) .faq-item__a p {
     word-break: normal;
-    text-wrap: pretty;
+    text-wrap: wrap;
+  }
+  .faq-item__a p {
+    text-wrap: wrap;
   }
 }
 

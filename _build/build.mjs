@@ -173,15 +173,18 @@ const pages = [
 const ldJson = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": SITE_URL + "/#organization",
   name: "シンアイ株式会社",
   legalName: "シンアイ株式会社",
-  alternateName: ["ShinAI", "シンアイ"],
+  /* 指名検索の表記ゆれ(シンアイ/ShinAI/シンアイ株式会社)を同一主体として束ねる。 */
+  alternateName: ["ShinAI", "シンアイ", "ShinAI Inc.", "シンアイ"],
   url: SITE_URL + "/",
   email: CONTACT_EMAIL,
   slogan: "企業の暗黙知を、使えるAI資産へ。",
   description: "真の価値を信じ、次世代のために新たな未来を創る。ShinAIは、人の想いとAIをつなぎ、企業の「これまで」を大切に「これから」の変革に伴走する、企業AI開発特化のエンジニアチーム。強化学習・カスタムLLM最適化・RAG・オンプレミス対応により、暗黙知のAI化と企業専用AIエージェントを開発する。あわせて、文書に残らない現場の技を扱うフィジカルAIの研究開発（PoC）に取り組む。",
   foundingDate: "2026-08-08",
-  founder: { "@type": "Person", name: "柴田昌国" },
+  founder: { "@id": SITE_URL + "/about.html#founder" },
+  employee: { "@id": SITE_URL + "/about.html#founder" },
   address: {
     "@type": "PostalAddress",
     addressCountry: "JP",
@@ -211,20 +214,96 @@ const ldJson = {
   ]
 };
 
+/* 代表個人を独立したエンティティとして宣言する。
+   「シンアイ 柴田昌国」「ShinAI 柴田」等の指名検索に対し、
+   名前の文字列一致ではなく「シンアイ株式会社の代表である柴田昌国」という
+   関係(worksFor/founder の相互参照)を機械可読な事実として示す。
+   about.html に実体を置き、他ページからは @id で参照する。 */
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": SITE_URL + "/about.html#founder",
+  name: "柴田昌国",
+  /* 姓名の分割表記と、検索で使われる表記ゆれを併記する。 */
+  givenName: "昌国",
+  familyName: "柴田",
+  alternateName: ["柴田 昌国", "しばた まさくに", "Masakuni Shibata"],
+  jobTitle: "代表取締役",
+  description: "シンアイ株式会社 代表取締役。元消防士として約7年従事したのち、2023年2月から生成AIの可能性を確信しプログラミングを独学で習得。東京のAIシステム開発企業での実務を経て、2025年1月にShinAIを創業し、2026年8月に法人化。企業の暗黙知をAI資産へ変える支援に取り組む。",
+  worksFor: { "@id": SITE_URL + "/#organization" },
+  url: SITE_URL + "/about.html",
+  image: SITE_URL + "/assets/images/ceo-masakuni-shibata.png",
+  knowsAbout: [
+    "暗黙知のAI化",
+    "企業専用AIエージェント開発",
+    "生成AI戦略",
+    "RAG構築",
+    "大規模言語モデル(LLM)の統合",
+    "エンタープライズAI実装",
+    "ビジネスプロセス最適化"
+  ],
+  nationality: { "@type": "Country", name: "日本" },
+  workLocation: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "JP",
+      addressRegion: "群馬県",
+      addressLocality: "高崎市"
+    }
+  }
+};
+
+const personLdEn = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": SITE_URL + "/about.html#founder",
+  name: "Masakuni Shibata",
+  givenName: "Masakuni",
+  familyName: "Shibata",
+  alternateName: ["柴田昌国", "柴田 昌国"],
+  jobTitle: "Founder and CEO",
+  description: "Founder and CEO of ShinAI Inc. A former firefighter of some seven years, he became convinced of what generative AI could do in February 2023 and taught himself to program. After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 and incorporated it in August 2026. He works on turning the tacit knowledge inside companies into working AI assets.",
+  worksFor: { "@id": SITE_URL + "/#organization" },
+  url: SITE_URL + "/en/about.html",
+  image: SITE_URL + "/assets/images/ceo-masakuni-shibata.png",
+  knowsAbout: [
+    "Tacit knowledge structuring with AI",
+    "Private enterprise AI agents",
+    "Generative AI strategy",
+    "Retrieval-augmented generation (RAG)",
+    "Large language model integration",
+    "Enterprise AI implementation",
+    "Business process optimisation"
+  ],
+  nationality: { "@type": "Country", name: "Japan" },
+  workLocation: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "JP",
+      addressRegion: "Gunma",
+      addressLocality: "Takasaki"
+    }
+  }
+};
+
 /* 英語版の Organization。海外の検索・AI検索が読む一次情報になるため、
    日本語版と同一の事実を英語で記述する(内容を盛らない)。 */
 const ldJsonEn = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": SITE_URL + "/#organization",
   name: "ShinAI Inc.",
   legalName: "ShinAI Inc.",
-  alternateName: ["ShinAI", "シンアイ株式会社"],
+  alternateName: ["ShinAI", "シンアイ株式会社", "シンアイ"],
   url: SITE_URL + "/en/",
   email: CONTACT_EMAIL,
   slogan: "Turn your company's tacit knowledge into working AI assets.",
   description: "ShinAI is a Japan-based engineering team specialising in enterprise AI. We connect human intent with AI, honouring what a company has built while guiding what it becomes next. Through reinforcement learning, custom LLM optimisation, RAG, and on-premise deployment, we turn tacit knowledge into AI and build private enterprise AI agents. We also carry out physical AI research and development (PoC) for the skill that documents never captured.",
   foundingDate: "2026-08-08",
-  founder: { "@type": "Person", name: "Masakuni Shibata" },
+  founder: { "@id": SITE_URL + "/about.html#founder" },
+  employee: { "@id": SITE_URL + "/about.html#founder" },
   address: {
     "@type": "PostalAddress",
     addressCountry: "JP",
@@ -307,7 +386,6 @@ const breadcrumbLd = (loc, page) => {
    「いつ・誰が・どこで」を伴った事実として引用できる形で申告する。 */
 const articleLd = (loc, page, canonical) => {
   const meta = loc.code === "ja" ? page : page.en;
-  const org = loc.code === "ja" ? "シンアイ株式会社" : "ShinAI Inc.";
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -317,8 +395,10 @@ const articleLd = (loc, page, canonical) => {
     datePublished: page.article.date,
     dateModified: page.article.date,
     image: SITE_URL + "/" + page.article.image,
-    author: { "@type": "Organization", name: org, url: SITE_URL + "/" + loc.dir },
-    publisher: { "@type": "Organization", name: org, url: SITE_URL + "/" + loc.dir },
+    author: { "@id": SITE_URL + "/#organization" },
+    publisher: { "@id": SITE_URL + "/#organization" },
+    /* 登壇者を代表個人へ紐付け、指名検索での実績の裏付けにする。 */
+    about: { "@id": SITE_URL + "/about.html#founder" },
     mainEntityOfPage: { "@type": "WebPage", "@id": canonical }
   };
 };
@@ -369,6 +449,9 @@ const shell = (page, loc) => {
   const structured = [
     loc.code === "ja" ? ldJson : ldJsonEn,
     page.file === "index.html" ? websiteLd(loc) : null,
+    /* 代表individualの実体は about.html にのみ置く(重複申告を避ける)。
+       他ページの founder/employee は @id 参照でここへ解決される。 */
+    page.file === "about.html" ? (loc.code === "ja" ? personLd : personLdEn) : null,
     page.part === "faq.html" ? faqLdFor(loc) : null,
     page.article ? articleLd(loc, page, canonical) : null,
     crumbLd
