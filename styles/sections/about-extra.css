@@ -137,6 +137,7 @@
   font-size: var(--fs-h3);
   color: var(--ink);
   margin-top: var(--space-1);
+  margin-left: var(--space-2);
 }
 
 .about-message__sign-latin {
@@ -184,6 +185,10 @@
   .about-message__portrait {
     aspect-ratio: 16 / 9;
     max-height: 16rem;
+  }
+  /* 横長トリミングで頭頂部が切れないよう基準を上寄りに。 */
+  .about-message__portrait img {
+    object-position: 50% 10%;
   }
 }
 
