@@ -193,13 +193,15 @@
   margin-inline: auto;
 }
 
+/* 丸角+上辺カラーバーの定型(いわゆる「AIっぽい」意匠)を避け、
+   右上を切り落とした角ばった輪郭+折り紙的な三角アクセントへ(join__meritと同意匠)。 */
 .industries-bridge__item {
   padding: var(--space-5);
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  border-radius: 2px;
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
   background: var(--paper);
   position: relative;
-  overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition:
     transform var(--dur-1) var(--ease-out),
@@ -216,9 +218,12 @@
 .industries-bridge__item::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: var(--brand);
+  top: 0;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--grad-brand);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
 
 .industries-bridge__icon {
@@ -228,7 +233,7 @@
   width: 3rem;
   height: 3rem;
   margin-bottom: var(--space-3);
-  border-radius: var(--r-md);
+  border-radius: 4px;
   background: var(--brand-soft);
   color: var(--brand);
 }
