@@ -1,4 +1,4 @@
 Contact: mailto:shinai.life@gmail.com
 Preferred-Languages: ja, en
-Canonical: https://shin-ai-inc.github.io/website-v2/.well-known/security.txt
+Canonical: https://shinai-inc.jp/.well-known/security.txt
 Expires: 2027-06-30T00:00:00.000Z

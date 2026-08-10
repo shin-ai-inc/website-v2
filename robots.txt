@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shin-ai-inc.github.io/website-v2/sitemap.xml
+Sitemap: https://shinai-inc.jp/sitemap.xml
