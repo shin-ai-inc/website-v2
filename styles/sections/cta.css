@@ -44,7 +44,7 @@
    矢印SVGは currentColor なので追従する。 */
 .cta__btn {
   background: var(--grad-energy);
-  color: var(--ink);
+  color: #FFFFFF;
   box-shadow: var(--shadow-energy);
   padding-inline: var(--space-5);
 }

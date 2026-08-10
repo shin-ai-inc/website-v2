@@ -172,7 +172,7 @@
 }
 
 .faq-item__a {
-  padding: 0 var(--space-5) var(--space-4);
+  padding: var(--space-2) var(--space-5) var(--space-4);
   color: var(--charcoal);
 }
 
@@ -206,8 +206,12 @@
   }
   .faq-item__a p {
     font-size: var(--fs-sm);
-    /* 狭幅では文節ごとの改行(auto-phrase)がかえって読みにくいため通常の折り返しへ戻す。 */
+  }
+  /* :lang(ja) .faq-item__a p の方が詳細度が高く、直前のwordBreak: normal指定は
+     実際には無効化されていた(実測で確認)。同等以上の詳細度で確実に上書きする。 */
+  :lang(ja) .faq-item__a p {
     word-break: normal;
+    text-wrap: pretty;
   }
 }
 
