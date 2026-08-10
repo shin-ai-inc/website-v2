@@ -2333,6 +2333,10 @@ h1, h2, h3 {
 .cta__btn {
   background: var(--grad-energy);
   color: #FFFFFF;
+  /* 白地に白文字は同じfont-weightでも太く見える視覚効果(irradiation)があるため
+     .btnの500から下げ、スマートな印象に調整。 */
+  font-weight: 400;
+  letter-spacing: 0.01em;
   box-shadow: var(--shadow-energy);
   padding-inline: var(--space-5);
 }
