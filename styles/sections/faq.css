@@ -190,6 +190,8 @@
   }
   .faq-item__a p {
     font-size: var(--fs-sm);
+    /* 狭幅では文節ごとの改行(auto-phrase)がかえって読みにくいため通常の折り返しへ戻す。 */
+    word-break: normal;
   }
 }
 

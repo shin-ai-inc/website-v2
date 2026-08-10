@@ -2602,6 +2602,8 @@ h1, h2, h3 {
   }
   .faq-item__a p {
     font-size: var(--fs-sm);
+    /* 狭幅では文節ごとの改行(auto-phrase)がかえって読みにくいため通常の折り返しへ戻す。 */
+    word-break: normal;
   }
 }
 
@@ -2636,7 +2638,7 @@ h1, h2, h3 {
 }
 
 .site-footer__wordmark {
-  font-family: var(--font-latin);
+  font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: 0.02em;
