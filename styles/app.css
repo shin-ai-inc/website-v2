@@ -3441,7 +3441,11 @@ h1, h2, h3 {
   color: var(--ink);
 }
 
+/* hero__title-lineのdisplay:blockを継承すると背景がコンテナ全幅に伸び、
+   左詰めの短い文字は勾配のごく初期(=ほぼ単色ブルー)しか映さない。
+   inline-blockで文字幅に絞り、藍青→青緑が実際に変化して見えるようにする。 */
 .hero--immersive .hero__title-line--accent {
+  display: inline-block;
   background: var(--grad-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -4356,8 +4360,12 @@ h1, h2, h3 {
   }
 }
 
+/* page-hero__title-lineのdisplay:blockを継承すると背景がコンテナ全幅に伸び、
+   左詰めの短い文字は勾配のごく初期(=ほぼ単色ブルー)しか映さない。
+   inline-blockで文字幅に絞り、藍青→青緑が実際に変化して見えるようにする。 */
 .page-hero__title-accent {
-  background: var(--grad-brand);
+  display: inline-block;
+  background: linear-gradient(90deg, var(--brand) 0%, var(--teal) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

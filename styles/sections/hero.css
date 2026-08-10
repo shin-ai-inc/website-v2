@@ -173,7 +173,11 @@
   color: var(--ink);
 }
 
+/* hero__title-lineのdisplay:blockを継承すると背景がコンテナ全幅に伸び、
+   左詰めの短い文字は勾配のごく初期(=ほぼ単色ブルー)しか映さない。
+   inline-blockで文字幅に絞り、藍青→青緑が実際に変化して見えるようにする。 */
 .hero--immersive .hero__title-line--accent {
+  display: inline-block;
   background: var(--grad-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
