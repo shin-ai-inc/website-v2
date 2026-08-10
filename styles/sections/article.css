@@ -1,0 +1,153 @@
+/*
+  ShinAI Website v2 — Section: article
+  お知らせの個別記事。読み物として静かに読める本文組みにする。
+  色・余白・型はトークンのみ参照。角は直角(--r-* が 0px)を継承する。
+*/
+
+/* ---- ページ見出し帯の内側(日付・タグ・タイトル) ---- */
+.article__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.article__date {
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-latin);
+  color: var(--mist);
+}
+
+.article__tag {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 0.2em 0.9em;
+  border: 1px solid var(--line-ink);
+  color: var(--ink-2);
+  background: #FFFFFF;
+}
+
+.article__title {
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  max-width: var(--container-heading);
+}
+
+/* 日本語見出しは文節で折り返す。text-wrap:balance は行長を揃えようとして
+   「第/9回」のような数詞の直前で割ってしまうため使わない。 */
+:lang(ja) .article__title {
+  word-break: auto-phrase;
+}
+
+/* ---- 本文 ---- */
+.article__figure {
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.article__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article__body {
+  max-width: var(--container-text);
+}
+
+.article__lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-body);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: var(--space-5);
+}
+
+.article__para {
+  font-size: var(--fs-body);
+  line-height: 2;
+  color: var(--ink-3);
+}
+
+.article__para + .article__para {
+  margin-top: var(--space-4);
+}
+
+:lang(ja) :is(.article__lead, .article__para, .article__note) {
+  word-break: auto-phrase;
+}
+
+.article__lead, .article__para, .article__note {
+  text-wrap: pretty;
+}
+
+.article__rule {
+  height: 1px;
+  border: 0;
+  background: var(--line);
+  margin-block: var(--space-6);
+}
+
+.article__note {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--mist);
+  margin-bottom: var(--space-4);
+}
+
+.article__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.article__ext {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* ---- 一覧へ戻る ---- */
+.article__nav {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+.article__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.article__back svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  transition: transform var(--dur-1) var(--ease-out);
+}
+
+.article__back:hover {
+  color: var(--teal);
+}
+
+.article__back:hover svg {
+  transform: translateX(-3px);
+}
+
+@media (max-width: 640px) {
+  .article__figure {
+    margin-bottom: var(--space-5);
+  }
+  .article__para {
+    line-height: 1.9;
+  }
+}

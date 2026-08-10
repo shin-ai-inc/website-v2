@@ -49,6 +49,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://shinai-inc.jp/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shinai-inc.jp/news.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shinai-inc.jp/en/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shinai-inc.jp/news.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shinai-inc.jp/news-20251205-takasaki-press.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shinai-inc.jp/news-20251205-takasaki-press.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shinai-inc.jp/en/news-20251205-takasaki-press.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shinai-inc.jp/news-20251205-takasaki-press.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://shinai-inc.jp/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://shinai-inc.jp/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shinai-inc.jp/en/privacy.html"/>
@@ -111,6 +127,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shinai-inc.jp/contact.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shinai-inc.jp/en/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shinai-inc.jp/news.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shinai-inc.jp/en/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shinai-inc.jp/news.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shinai-inc.jp/en/news-20251205-takasaki-press.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://shinai-inc.jp/news-20251205-takasaki-press.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shinai-inc.jp/en/news-20251205-takasaki-press.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shinai-inc.jp/news-20251205-takasaki-press.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://shinai-inc.jp/en/privacy.html</loc>

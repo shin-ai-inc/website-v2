@@ -135,6 +135,25 @@ const pages = [
     desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。",
     en: {crumb: "Contact",  title: "Contact & Free Consultation | ShinAI",
           desc: "You do not need defined requirements to talk to us. We map where AI can apply from your current operations and knowledge assets. Free consultation, 30-45 minutes, no preparation needed." } },
+  { file: "news.html", part: "news.html", nav: "news", hero: false,
+    crumb: "お知らせ",
+    changefreq: "monthly", priority: "0.6",
+    title: "お知らせ｜ShinAI",
+    desc: "シンアイ株式会社の登壇・発表・活動のお知らせ。群馬県高崎市を拠点に、暗黙知のAI化と企業専用AIエージェント開発に取り組んでいます。",
+    en: {crumb: "News",  title: "News | ShinAI",
+          desc: "Talks, announcements, and activities from ShinAI Inc. Based in Takasaki, Gunma, working on tacit-knowledge AI and private enterprise AI agents." } },
+  { file: "news-20251205-takasaki-press.html", part: "news-20251205-takasaki-press.html",
+    nav: "news", hero: false,
+    crumb: "高崎商工会議所 第9回合同プレス発表会に登壇",
+    crumbParent: { name: "お知らせ", file: "news.html" },
+    article: { date: "2025-12-05", image: "assets/images/news-takasaki-press.jpg" },
+    changefreq: "yearly", priority: "0.5",
+    title: "高崎商工会議所 第9回合同プレス発表会に登壇しました｜ShinAI",
+    desc: "2025年12月5日、高崎商工会議所の第9回合同プレス発表会にShinAI代表 柴田昌国が登壇し、「AIで人間らしい時間を取り戻す」という想いのもと、群馬県高崎市を拠点とする取り組みを発表しました。",
+    en: {crumb: "Talk at the 9th Takasaki CCI joint press conference",
+          crumbParent: { name: "News", file: "news.html" },
+          title: "Talk at the 9th Takasaki CCI Joint Press Conference | ShinAI",
+          desc: "On 5 December 2025, ShinAI founder Masakuni Shibata spoke at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry, presenting the company's work under the idea of using AI to give people their human hours back." } },
   { file: "privacy.html", part: "privacy.html", nav: null, hero: false,
     crumb: "プライバシーポリシー",
     changefreq: "yearly", priority: "0.2",
@@ -262,18 +281,45 @@ const faqLdFor = (loc) => {
   return { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: loc.htmlLang, mainEntity };
 };
 
-/* サブページのパンくず構造化データ(検索結果の階層表示用)。 */
+/* サブページのパンくず構造化データ(検索結果の階層表示用)。
+   crumbParent を持つページ(お知らせの個別記事等)は 3階層で申告する。 */
 const breadcrumbLd = (loc, page) => {
   if (!page.nav && page.file !== "privacy.html" && page.file !== "terms.html") return null;
   const home = SITE_URL + "/" + loc.dir;
-  const name = loc.code === "ja" ? page.crumb : page.en.crumb;
+  const meta = loc.code === "ja" ? page : page.en;
+  const items = [
+    { "@type": "ListItem", position: 1, name: loc.code === "ja" ? "ホーム" : "Home", item: home }
+  ];
+  if (meta.crumbParent) {
+    items.push({ "@type": "ListItem", position: 2, name: meta.crumbParent.name,
+                 item: SITE_URL + "/" + loc.dir + meta.crumbParent.file });
+  }
+  items.push({ "@type": "ListItem", position: items.length + 1, name: meta.crumb,
+               item: SITE_URL + "/" + loc.dir + page.file });
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: loc.code === "ja" ? "ホーム" : "Home", item: home },
-      { "@type": "ListItem", position: 2, name, item: SITE_URL + "/" + loc.dir + page.file }
-    ]
+    itemListElement: items
+  };
+};
+
+/* お知らせ記事の NewsArticle。登壇・発表という一次情報を、AI検索が
+   「いつ・誰が・どこで」を伴った事実として引用できる形で申告する。 */
+const articleLd = (loc, page, canonical) => {
+  const meta = loc.code === "ja" ? page : page.en;
+  const org = loc.code === "ja" ? "シンアイ株式会社" : "ShinAI Inc.";
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: meta.crumb,
+    description: meta.desc,
+    inLanguage: loc.htmlLang,
+    datePublished: page.article.date,
+    dateModified: page.article.date,
+    image: SITE_URL + "/" + page.article.image,
+    author: { "@type": "Organization", name: org, url: SITE_URL + "/" + loc.dir },
+    publisher: { "@type": "Organization", name: org, url: SITE_URL + "/" + loc.dir },
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonical }
   };
 };
 
@@ -324,6 +370,7 @@ const shell = (page, loc) => {
     loc.code === "ja" ? ldJson : ldJsonEn,
     page.file === "index.html" ? websiteLd(loc) : null,
     page.part === "faq.html" ? faqLdFor(loc) : null,
+    page.article ? articleLd(loc, page, canonical) : null,
     crumbLd
   ].filter(Boolean)
    .map((o) => `  <script type="application/ld+json">${JSON.stringify(o)}</script>`)
