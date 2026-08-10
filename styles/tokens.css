@@ -65,6 +65,8 @@
      グラデの奥行きで「AI青ベタ」の没個性を脱する。明色セクション・ページ見出しに用いる。 */
   --grad-section: linear-gradient(152deg, #FFFFFF 0%, #FFFFFF 30%, #F2F5FC 68%, #ECF6F4 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
+  /* 薄桜色グラデ。カードの左辺アクセント等、単色ブルーを避けたい箇所向け。 */
+  --grad-sakura: linear-gradient(180deg, #FFEAF1 0%, #FFB4CC 100%);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
   --grad-ink: radial-gradient(140% 120% at 18% 0%, #1A3266 0%, var(--ink) 48%, var(--ink-deep) 100%);
   /* 企業理念バンド。公式HP --gradient-cta-new (#2D4CC8/#00B89F) を完全踏襲(不透明・くっきり) */

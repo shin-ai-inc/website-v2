@@ -69,7 +69,8 @@
   flex-shrink: 0;
   width: 3.5rem;
   height: 3.5rem;
-  border-radius: var(--r-md);
+  /* CTOのYマーク(SVG内で既に円形)に合わせ、代表写真も丸枠に統一。 */
+  border-radius: 50%;
   object-fit: cover;
   object-position: top center;
 }

@@ -424,7 +424,6 @@
   position: relative;
   padding: var(--space-5) var(--space-4) var(--space-4) calc(var(--space-4) + 2px);
   border: 1px solid var(--line);
-  border-left: 2px solid var(--brand);
   border-radius: 0;
   background: var(--paper);
   box-shadow: var(--shadow-sm);
@@ -436,6 +435,14 @@
 .join__merit:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+}
+
+.join__merit::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--grad-sakura);
 }
 
 /* 旧公開サイト同様、装飾アイコンを置かず番号を見出しの上に据える。
@@ -499,17 +506,18 @@
   background: var(--card-accent, var(--grad-brand));
 }
 
-/* 役割カラー: AI的な原色を脱し、鮮明な三色(技術=コバルト/事業=翠/デザイン=菫)で識別 */
+/* 役割カラー: AI的な原色を脱し、鮮明な三色(技術=コバルト/事業=翠/デザイン=菫)で識別。
+   業種ページ用のinkそのままだと重いため、白を混ぜてやや明るいトーンへ。 */
 .join__card--engineer {
-  --card-accent: var(--ind-1-ink);
+  --card-accent: color-mix(in srgb, var(--ind-1-ink) 82%, #FFFFFF);
   --card-soft: var(--ind-1-bg);
 }
 .join__card--business {
-  --card-accent: var(--ind-5-ink);
+  --card-accent: color-mix(in srgb, var(--ind-5-ink) 82%, #FFFFFF);
   --card-soft: var(--ind-5-bg);
 }
 .join__card--design {
-  --card-accent: var(--ind-6-ink);
+  --card-accent: color-mix(in srgb, var(--ind-6-ink) 82%, #FFFFFF);
   --card-soft: var(--ind-6-bg);
 }
 .join__card:hover {

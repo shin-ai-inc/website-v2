@@ -79,10 +79,13 @@
   width: 2.9rem;
   height: 2.9rem;
   border-radius: var(--r-md);
-  /* 淡色チップだと沈むため、業種色のグラデチップ+白アイコンで生き生きと立たせる */
-  background: linear-gradient(140deg, var(--acc-ink) 0%, color-mix(in srgb, var(--acc-ink) 74%, #FFFFFF) 100%);
+  /* 淡色チップだと沈むため業種色のグラデ+白アイコンで立たせるが、
+     --acc-ink(文字用に濃い)そのままだと重い印象になるため白を混ぜて明るく。 */
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--acc-ink) 80%, #FFFFFF) 0%,
+    color-mix(in srgb, var(--acc-ink) 52%, #FFFFFF) 100%);
   color: #FFFFFF;
-  box-shadow: 0 5px 14px color-mix(in srgb, var(--acc-ink) 24%, transparent);
+  box-shadow: 0 5px 14px color-mix(in srgb, var(--acc-ink) 18%, transparent);
 }
 
 .industries-card__icon svg {
@@ -198,7 +201,6 @@
 .industries-bridge__item {
   padding: var(--space-5) var(--space-5) var(--space-5) calc(var(--space-5) + 2px);
   border: 1px solid var(--line);
-  border-left: 2px solid var(--brand);
   border-radius: 0;
   background: var(--paper);
   position: relative;
@@ -212,6 +214,14 @@
 .industries-bridge__item:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+}
+
+.industries-bridge__item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--grad-sakura);
 }
 
 .industries-bridge__icon {
