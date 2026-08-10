@@ -3409,7 +3409,7 @@ h1, h2, h3 {
 }
 
 @media (max-width: 640px) {
-  /* eyebrow はやや控えめに。subcopy はタイトルとの間を空け、地球儀側へ少し下げる */
+  /* eyebrow はやや控えめに。subcopy は地球儀(固定パーティクル場)の下まで押し下げる。 */
   .hero__eyebrow {
     font-size: 0.62rem;
   }
@@ -3418,7 +3418,7 @@ h1, h2, h3 {
     letter-spacing: 0.04em;
     line-height: 1.75;
     color: var(--ink-3);
-    margin-top: 2.5rem;
+    margin-top: 16rem;
     margin-bottom: var(--space-5);
   }
 }
