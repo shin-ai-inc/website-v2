@@ -39,10 +39,10 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  color: var(--brand);
+  color: var(--teal);
   background: var(--paper);
-  border: 1.5px solid color-mix(in srgb, var(--brand) 32%, transparent);
-  box-shadow: 0 6px 18px rgba(58, 95, 235, 0.10);
+  border: 1.5px solid color-mix(in srgb, var(--teal) 32%, transparent);
+  box-shadow: 0 6px 18px rgba(0, 201, 167, 0.10);
   transition:
     border-color var(--dur-1) var(--ease-out),
     transform var(--dur-1) var(--ease-out);
@@ -54,11 +54,11 @@
 }
 
 .contact-flow__step:hover .contact-flow__icon {
-  border-color: var(--brand);
+  border-color: var(--teal);
   transform: translateY(-3px);
 }
 
-/* 右上に小さく番号を添える。進行(01→02→03)を数字で明示する。 */
+/* 右上に小さく番号を添える。進行(01→02→03)を数字で明示する強い強調のため単色でなくグラデーションで。 */
 .contact-flow__num {
   position: absolute;
   top: -4px;
@@ -75,7 +75,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #FFFFFF;
-  background: var(--brand);
+  background: var(--grad-brand);
   border: 2px solid var(--paper);
 }
 
@@ -140,7 +140,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 4px;
-  background: var(--brand);
+  background: var(--grad-brand);
 }
 
 .contact-form-card__head {
@@ -195,9 +195,10 @@
   line-height: 1.5;
 }
 
+/* 必須=行動喚起なのでブランド青ではなくエネルギーオレンジで意味を持たせる。 */
 .contact-req {
   color: #FFFFFF;
-  background: var(--brand);
+  background: var(--energy);
 }
 
 .contact-opt {
