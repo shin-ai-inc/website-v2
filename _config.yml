@@ -1,4 +1,10 @@
 # GitHub Pages(Jekyll)向け。ここに挙げたものは公開サイトへコピーされない。
+
+# Jekyllはドット始まりのディレクトリを既定で除外するため、明示的に戻す。
+# これがないと security.txt(RFC 9116)が404になる。
+include:
+  - .well-known
+
 exclude:
   - README.md
   - partials

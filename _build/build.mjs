@@ -19,12 +19,13 @@ const BUILD_HASH = (() => {
   catch { return Date.now().toString(36); }
 })();
 
-/* デプロイ前に実ドメインへ置換する唯一の場所。OGP/canonical の絶対URLに使う。
-   独自ドメイン取得後はここを更新してビルドし直すこと。 */
-const SITE_URL = "https://shin-ai-inc.github.io/website-v2";
+/* 実ドメインを置く唯一の場所。OGP/canonical の絶対URLに使う。 */
+const SITE_URL = "https://shinai-inc.jp";
 /* OGPクローラ(LINE等)はURL単位でキャッシュするため、画像を変えるときはファイル名も変える */
 const OG_IMAGE = SITE_URL + "/assets/images/ogp-card-logo.png";
-const CONTACT_EMAIL = "shinai.life@gmail.com";
+const CONTACT_EMAIL = "contact@shinai-inc.jp";
+/* RFC 9116の脆弱性報告窓口。一般問い合わせ(CONTACT_EMAIL)とは意図的に分けている。 */
+const SECURITY_CONTACT_EMAIL = "support@shinai-inc.jp";
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
 const write = (p, c) => writeFileSync(join(ROOT, p), c, "utf8");
@@ -375,7 +376,7 @@ write("sitemap.xml",
   "\n</urlset>\n");
 
 write(".well-known/security.txt", [
-  `Contact: mailto:${CONTACT_EMAIL}`,
+  `Contact: mailto:${SECURITY_CONTACT_EMAIL}`,
   "Preferred-Languages: ja, en",
   `Canonical: ${SITE_URL}/.well-known/security.txt`,
   "Expires: 2027-06-30T00:00:00.000Z"

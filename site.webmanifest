@@ -3,7 +3,7 @@
   "short_name": "ShinAI",
   "description": "企業の暗黙知を、使えるAI資産へ。",
   "lang": "ja",
-  "start_url": "/website-v2/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#060E1E",
   "theme_color": "#3A5FEB",

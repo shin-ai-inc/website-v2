@@ -36,7 +36,7 @@
   };
 
   var ENDPOINT = form.getAttribute("action");
-  var FALLBACK_EMAIL = "shinai.life@gmail.com";
+  var FALLBACK_EMAIL = "contact@shinai-inc.jp";
   var isConfigured = ENDPOINT &&
     ENDPOINT !== "#" &&
     ENDPOINT.indexOf("YOUR_FORM_ID") === -1;
