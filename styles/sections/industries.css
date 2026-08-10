@@ -194,12 +194,12 @@
 }
 
 /* 丸角+上辺カラーバーの定型(いわゆる「AIっぽい」意匠)を避け、
-   右上を切り落とした角ばった輪郭+折り紙的な三角アクセントへ(join__meritと同意匠)。 */
+   直角+左辺のアクセント線という、引用ブロックに近い見慣れた形へ(join__meritと同意匠)。 */
 .industries-bridge__item {
-  padding: var(--space-5);
+  padding: var(--space-5) var(--space-5) var(--space-5) calc(var(--space-5) + 2px);
   border: 1px solid var(--line);
-  border-radius: 2px;
-  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  border-left: 2px solid var(--brand);
+  border-radius: 0;
   background: var(--paper);
   position: relative;
   box-shadow: var(--shadow-sm);
@@ -213,17 +213,6 @@
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
   border-color: var(--brand-soft);
-}
-
-.industries-bridge__item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 22px;
-  height: 22px;
-  background: var(--grad-brand);
-  clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
 
 .industries-bridge__icon {
