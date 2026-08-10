@@ -183,12 +183,13 @@
     grid-template-columns: 1fr;
   }
   .about-message__portrait {
-    aspect-ratio: 16 / 9;
-    max-height: 16rem;
+    /* 16:9だと首から肩が見切れ不自然だったため、肩口まで収まる4:3へ。 */
+    aspect-ratio: 4 / 3;
+    max-height: 22rem;
   }
-  /* 横長トリミングで頭頂部が切れないよう基準を上寄りに。 */
+  /* 頭頂部が切れないよう基準を上寄りに。 */
   .about-message__portrait img {
-    object-position: 50% 10%;
+    object-position: 50% 6%;
   }
 }
 
