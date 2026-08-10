@@ -710,9 +710,9 @@ h1, h2, h3 {
     grid-template-columns: 1fr;
   }
   .about-message__portrait {
-    /* 16:9だと首から肩が見切れ不自然だったため、肩口まで収まる4:3へ。 */
-    aspect-ratio: 4 / 3;
-    max-height: 22rem;
+    /* 4:3でも胸元が見切れたため、肩から胸まで収まる1:1へ。 */
+    aspect-ratio: 1 / 1;
+    max-height: 24rem;
   }
   /* 頭頂部が切れないよう基準を上寄りに。 */
   .about-message__portrait img {
