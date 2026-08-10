@@ -102,9 +102,9 @@ const pages = [
     crumb: "ソリューション",
     changefreq: "monthly", priority: "0.9",
     title: "ソリューション｜ShinAI",
-    desc: "暗黙知のAI化、企業専用AIエージェント、AI内製化・運用支援、そしてフィジカルAIの研究開発（PoC）。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。",
+    desc: "暗黙知のAI化、企業専用AIエージェント、AI化伴走支援、そしてフィジカルAIの研究開発（PoC）。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。",
     en: {crumb: "Solutions",  title: "Solutions | ShinAI",
-          desc: "Tacit knowledge structuring, private enterprise AI agents, in-house AI enablement, and physical AI research (PoC). Capture it, connect it, and make it usable where the work happens." } },
+          desc: "Tacit knowledge structuring, private enterprise AI agents, hands-on support for AI-driven transformation, and physical AI research (PoC). Capture it, connect it, and make it usable where the work happens." } },
   { file: "industries.html", part: "industries.html", nav: "industries", hero: false,
     crumb: "業種別の活用",
     changefreq: "monthly", priority: "0.8",
@@ -244,9 +244,15 @@ const breadcrumbLd = (loc, page) => {
 /* 公開HTMLから HTMLコメントを除去(開発メモを出さない。doctypeは非対象)。 */
 const stripComments = (html) => html.replace(/<!--[\s\S]*?-->/g, "").replace(/\n{3,}/g, "\n\n");
 
+/* index.html は "/" と "/index.html" の両方で200を返すため、正規URLを
+   ディレクトリ形式("/", "/en/")に統一する。両方を実体として残したまま
+   canonical/hreflang/sitemap を一方へ集約し、重複コンテンツ評価を防ぐ。 */
+const urlFor = (file, dir) =>
+  SITE_URL + "/" + dir + (file === "index.html" ? "" : file);
+
 const shell = (page, loc) => {
   const meta = loc.code === "ja" ? page : page.en;
-  const canonical = SITE_URL + "/" + loc.dir + page.file;
+  const canonical = urlFor(page.file, loc.dir);
   const main = normalizeMain(read(loc.src + "/" + page.part));
   /* replaceAll: partial 冒頭の解説コメント内にもトークン名が現れるため、先頭一致では取り違える。 */
   const header = markCurrent(shared[loc.code].header, page.nav)
@@ -274,8 +280,8 @@ const shell = (page, loc) => {
   /* hreflang: 同一内容の言語別URLを相互申告する。x-default は日本語(本社所在地の言語)。
      これがないと、英語ページが日本語ページの重複と見なされ英語圏で埋もれる。 */
   const alternates = LOCALES.map((l) =>
-    `  <link rel="alternate" hreflang="${l.htmlLang}" href="${SITE_URL}/${l.dir}${page.file}">`
-  ).join("\n") + `\n  <link rel="alternate" hreflang="x-default" href="${SITE_URL}/${page.file}">`;
+    `  <link rel="alternate" hreflang="${l.htmlLang}" href="${urlFor(page.file, l.dir)}">`
+  ).join("\n") + `\n  <link rel="alternate" hreflang="x-default" href="${urlFor(page.file, "")}">`;
 
   const crumbLd = breadcrumbLd(loc, page);
   const structured = [
@@ -367,10 +373,10 @@ write("sitemap.xml",
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
   LOCALES.flatMap((loc) => pages.map((p) => {
     const alts = LOCALES.map((l) =>
-      `\n    <xhtml:link rel="alternate" hreflang="${l.htmlLang}" href="${SITE_URL}/${l.dir}${p.file}"/>`
+      `\n    <xhtml:link rel="alternate" hreflang="${l.htmlLang}" href="${urlFor(p.file, l.dir)}"/>`
     ).join("") +
-    `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/${p.file}"/>`;
-    return `  <url>\n    <loc>${SITE_URL}/${loc.dir}${p.file}</loc>` + alts +
+    `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor(p.file, "")}"/>`;
+    return `  <url>\n    <loc>${urlFor(p.file, loc.dir)}</loc>` + alts +
       `\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`;
   })).join("\n") +
   "\n</urlset>\n");
