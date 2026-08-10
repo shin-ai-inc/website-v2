@@ -134,11 +134,13 @@
   --bp-md: 820px;
   --bp-lg: 960px;
 
-  /* ---- Radius ---- */
-  --r-sm: 8px;
-  --r-md: 14px;
-  --r-lg: 22px;
-  --r-xl: 32px;
+  /* ---- Radius ----
+     Providence(spacedata)を参考に直角に近い値へ(旧: 8/14/22/32px)。
+     ピル型(--r-pill)はタグ・ナビトグル等の意図的な形状のため対象外。 */
+  --r-sm: 3px;
+  --r-md: 4px;
+  --r-lg: 6px;
+  --r-xl: 8px;
   --r-pill: 999px;
 
   /* ---- Shadow ---- */
@@ -265,15 +267,6 @@ h1, h2, h3, h4 {
 /* トップの地色は純白。交互セクションを透過にして固定パーティクルを全面に通す。
    以前の淡いグラデ地は深い位置でオフホワイトに見えたため純白へ純化。 */
 body.is-home { background: var(--paper); }
-/* Providence(spacedata)を参考に、トップページのみ角丸を直角に近い値へ試験的に縮小。
-   ブランドカラー(グラデーション)の量は変えず、角の形状だけを先進的な印象へ。
-   ピル型(--r-pill)はタグ・ナビトグル等の意図的な形状のため対象外。 */
-body.is-home {
-  --r-sm: 3px;
-  --r-md: 4px;
-  --r-lg: 6px;
-  --r-xl: 8px;
-}
 .is-home main .container { position: relative; z-index: 1; }
 /* Why を含む全 alt セクションは透過。粒子を他セクションと同じ強さで見せる。 */
 .is-home .section--alt { background: transparent; }

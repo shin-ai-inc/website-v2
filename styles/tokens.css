@@ -133,11 +133,13 @@
   --bp-md: 820px;
   --bp-lg: 960px;
 
-  /* ---- Radius ---- */
-  --r-sm: 8px;
-  --r-md: 14px;
-  --r-lg: 22px;
-  --r-xl: 32px;
+  /* ---- Radius ----
+     Providence(spacedata)を参考に直角に近い値へ(旧: 8/14/22/32px)。
+     ピル型(--r-pill)はタグ・ナビトグル等の意図的な形状のため対象外。 */
+  --r-sm: 3px;
+  --r-md: 4px;
+  --r-lg: 6px;
+  --r-xl: 8px;
   --r-pill: 999px;
 
   /* ---- Shadow ---- */
