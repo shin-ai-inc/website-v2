@@ -245,6 +245,13 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    /* 閉じている間は描画対象から外す。visibility:hidden だけだと iOS Safari が
+       translateX(100%) で画面右外に出た fixed 要素をスクロール可能領域と解釈し、
+       ページを横に動かせてしまう(左右ずれ)。content-visibility でレイアウト自体を
+       行わせないことで、待機中のドロワーが領域を生まないようにする。
+       html/body に overflow-x を掛ける対処は position:sticky のヘッダーを
+       壊すため採らない。 */
+    content-visibility: hidden;
     transition:
       opacity var(--dur-1) var(--ease-out),
       transform var(--dur-1) var(--ease-out),
@@ -256,6 +263,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    content-visibility: visible;
   }
 
   /* condense 中はヘッダー実高に天位置を追従させる(初期78と縮小64のズレを防ぐ) */
