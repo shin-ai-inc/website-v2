@@ -268,15 +268,38 @@
   color: var(--ink-3);
 }
 
+/* 3つの悩みが1つの答えへ収束することを、縦線→矢印で視覚化する。
+   罫線で区切るのではなく、視線を下の一文へ導く仕掛けにする。 */
+.industries-bridge__converge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: var(--space-6);
+  color: #E48AA8;
+}
+
+.industries-bridge__converge-line {
+  display: block;
+  width: 1px;
+  height: var(--space-6);
+  background: linear-gradient(180deg, transparent, #E48AA8);
+}
+
+.industries-bridge__converge-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: -0.35rem;
+}
+
 .industries-bridge__note {
   max-width: var(--container-narrow);
-  margin: var(--space-6) auto 0;
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line);
+  /* 矢印が導線になるため、従来の区切り罫は外す。 */
+  margin: var(--space-4) auto 0;
   text-align: center;
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
-  color: var(--ink-2);
+  color: var(--ink);
 }
 
 /* ---- Responsive ---- */
