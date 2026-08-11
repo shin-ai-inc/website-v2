@@ -1439,6 +1439,9 @@ h1, h2, h3 {
     font-size: var(--fs-body);
     margin-bottom: var(--space-1);
     word-break: keep-all;
+    /* keep-all は長い連なりを1行に伸ばし画面外へはみ出させる。
+       収まらない時だけ折り返せるようにする安全弁。 */
+    overflow-wrap: anywhere;
   }
   .capability__item {
     flex-direction: column;
@@ -1889,10 +1892,19 @@ h1, h2, h3 {
   color: var(--mist);
 }
 
-/* 各領域名は HTML 側で nobr により塊にしてあるため、通常は読点の後だけで折り返る。
-   overflow-wrap: anywhere を併用すると nobr ごと分断されるので指定しない。 */
+/* 各領域名は HTML 側で nobr により塊にしてあるため、通常は読点の後だけで折り返る。 */
 :lang(ja) .company__person-skills {
   word-break: keep-all;
+}
+
+/* 狭幅では keep-all のままだと読点を含まない長い連なりが1行に伸び続け、
+   画面外へはみ出して横スクロールを起こす。収まりを最優先し、
+   どこでも折り返せるようにする(nobr の解除だけでは keep-all が残るため不十分)。 */
+@media (max-width: 480px) {
+  :lang(ja) .company__person-skills {
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
 }
 
 
