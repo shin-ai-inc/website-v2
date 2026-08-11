@@ -1880,11 +1880,19 @@ h1, h2, h3 {
   color: var(--mist);
 }
 
-/* 「ビジ/ネスプロセス最適化」のように語の途中で割れるのを防ぐ。
-   読点の後でのみ折り返させ、各領域名は塊のまま保つ。 */
+/* 各領域名は HTML 側で nobr により塊にしてあるため、通常は読点の後だけで折り返る。
+   overflow-wrap: anywhere を併用すると nobr ごと分断されるので指定しない。 */
 :lang(ja) .company__person-skills {
   word-break: keep-all;
-  overflow-wrap: anywhere;
+}
+
+/* ごく狭い画面では最長の項目が1行に収まらず画面外へはみ出す。
+   はみ出しは可読性を大きく損なうため、この幅に限り nobr の拘束を解いて
+   折り返しを許可する(語中で割れるより、収まる方を優先する)。 */
+@media (max-width: 360px) {
+  :lang(ja) .company__person-skills .nobr {
+    white-space: normal;
+  }
 }
 
 .company__person-skills-label {
