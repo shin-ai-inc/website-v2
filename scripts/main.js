@@ -12,6 +12,32 @@
   var root = document.documentElement;
   root.classList.add("js");
 
+  /* 新しいページへ進んだときは必ず先頭から見せる。
+     reveal 表示でページ高さが後から伸びるため、iOS Safari 等が読み込み途中の
+     高さのまま前ページのスクロール位置を復元し、記事が途中から表示されることがある。
+     戻る/進む(back_forward)のときはブラウザの復元を尊重し、
+     新規遷移(navigate)のときだけ明示的に先頭へ送る。 */
+  var navType = (function () {
+    var entries = window.performance && window.performance.getEntriesByType
+      ? window.performance.getEntriesByType("navigation")
+      : null;
+    if (entries && entries.length) { return entries[0].type; }
+    /* 旧 API へのフォールバック(2=TYPE_BACK_FORWARD)。 */
+    if (window.performance && window.performance.navigation) {
+      return window.performance.navigation.type === 2 ? "back_forward" : "navigate";
+    }
+    return "navigate";
+  })();
+
+  if (navType !== "back_forward" && !window.location.hash) {
+    window.scrollTo(0, 0);
+    /* 画像やフォントの読み込みで高さが確定した後にずれることがあるため、
+       描画確定の直後にもう一度だけ先頭を保証する。 */
+    window.requestAnimationFrame(function () {
+      if (!window.location.hash) { window.scrollTo(0, 0); }
+    });
+  }
+
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var targets = document.querySelectorAll(".reveal");
 
