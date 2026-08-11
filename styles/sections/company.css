@@ -130,14 +130,6 @@
   word-break: keep-all;
 }
 
-/* ごく狭い画面では最長の項目が1行に収まらず画面外へはみ出す。
-   はみ出しは可読性を大きく損なうため、この幅に限り nobr の拘束を解いて
-   折り返しを許可する(語中で割れるより、収まる方を優先する)。 */
-@media (max-width: 360px) {
-  :lang(ja) .company__person-skills .nobr {
-    white-space: normal;
-  }
-}
 
 .company__person-skills-label {
   display: inline-block;
