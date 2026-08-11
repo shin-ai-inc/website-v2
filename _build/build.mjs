@@ -96,8 +96,12 @@ const pages = [
     changefreq: "monthly", priority: "1.0",
     title: "ShinAI｜企業の暗黙知を、使えるAI資産へ",
     desc: "退職や属人化で失われる判断や知識を、現場で使える専用AIへ。文書に残らない現場の技を扱うフィジカルAIの研究開発（PoC）にも取り組んでいます。",
+    /* SNS共有のプレビューは一瞬で読まれる。課題の描写から入らず
+       「何をする会社か」を先頭で言い切る。検索結果用のdescとは役割が違う。 */
+    ogDesc: "企業の構造変革を支援するAI企業｜シンアイ株式会社　企画設計・開発・運用まで一気通貫支援",
     en: { title: "ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
-          desc: "The judgment and know-how your company loses to retirement and key-person dependency, rebuilt as private AI that works on the floor. A Japan-based enterprise AI engineering partner, researching physical AI for the skill documents never captured." } },
+          desc: "The judgment and know-how your company loses to retirement and key-person dependency, rebuilt as private AI that works on the floor. A Japan-based enterprise AI engineering partner, researching physical AI for the skill documents never captured.",
+          ogDesc: "An AI company supporting structural change in business | ShinAI Inc. End-to-end support from service design through development to operations." } },
   { file: "services.html", part: "services.html", nav: "services", hero: false,
     crumb: "ソリューション",
     changefreq: "monthly", priority: "0.9",
@@ -496,7 +500,7 @@ ${alternates}
   <meta property="og:locale" content="${loc.ogLocale}">
   <meta property="og:locale:alternate" content="${LOCALES.find((l) => l.code !== loc.code).ogLocale}">
   <meta property="og:title" content="${escapeAttr(meta.title)}">
-  <meta property="og:description" content="${escapeAttr(meta.desc)}">
+  <meta property="og:description" content="${escapeAttr(meta.ogDesc || meta.desc)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${OG_IMAGE}">
   <meta property="og:image:secure_url" content="${OG_IMAGE}">
@@ -506,12 +510,12 @@ ${alternates}
   <meta property="og:image:alt" content="ShinAI">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeAttr(meta.title)}">
-  <meta name="twitter:description" content="${escapeAttr(meta.desc)}">
+  <meta name="twitter:description" content="${escapeAttr(meta.ogDesc || meta.desc)}">
   <meta name="twitter:image" content="${OG_IMAGE}">
   <meta name="twitter:image:alt" content="ShinAI">
 
-  <link rel="icon" href="${p}assets/icons/favicon.svg?v=${BUILD_HASH}" type="image/svg+xml">
-  <link rel="icon" href="${p}assets/icons/favicon.png?v=${BUILD_HASH}" sizes="any">
+  <link rel="icon" href="${p}favicon.ico" sizes="any">
+  <link rel="icon" href="${p}assets/icons/favicon.png?v=${BUILD_HASH}" type="image/png" sizes="256x256">
   <link rel="apple-touch-icon" href="${p}assets/icons/apple-touch-icon.png?v=${BUILD_HASH}">
   <link rel="manifest" href="site.webmanifest">
 
@@ -607,7 +611,10 @@ for (const loc of LOCALES) {                           // 生成済みHTML(日�
 toDist("styles/app.css");                              // 本番CSS(結合済み)
 cpSync(join(ROOT, "scripts"), join(DIST, "scripts"), { recursive: true }); // 公開JS+vendor
 cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
-for (const f of ["robots.txt", "sitemap.xml"]) toDist(f);
+/* favicon.ico はルート直下に置く。多くのブラウザ・検索エンジン・SNSは
+   HTMLの<link rel="icon">を読まず /favicon.ico を直接取得しにいくため、
+   ここが404だとタブや一覧にアイコンが出ない。 */
+for (const f of ["robots.txt", "sitemap.xml", "favicon.ico"]) toDist(f);
 for (const loc of LOCALES) toDist(loc.dir + "site.webmanifest");
 toDist(".well-known/security.txt");
 copyFileSync(join(ROOT, "deploy", "_headers"), join(DIST, "_headers")); // Netlify/CF用ヘッダ
