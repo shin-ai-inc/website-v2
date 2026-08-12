@@ -17,9 +17,10 @@ compatibility_date = "2026-08-01"
 # カスタムドメイン側に敷いた統制をすべて迂回されうる。
 workers_dev = false
 
-# 公開先。DNSはCloudflare管理下にあるため、ここでルートを張る。
+# 公開先。custom_domain にすると、CloudflareがDNSレコード(AAAA)も自動作成する。
+# pattern 形式(custom_domain = false)ではルートだけが張られ、DNSは別途手当てが必要になる。
 routes = [
-  { pattern = "api.shinai-inc.jp/api/chatbot", custom_domain = false, zone_name = "shinai-inc.jp" }
+  { pattern = "api.shinai-inc.jp", custom_domain = true }
 ]
 
 [vars]
@@ -27,9 +28,10 @@ routes = [
 ALLOWED_ORIGINS = "https://shinai-inc.jp,https://www.shinai-inc.jp"
 # 想定ホスト。これ以外(workers.dev等)からの到達を拒否する多層防御。
 API_HOST = "api.shinai-inc.jp"
-# 日次上限。許容月額1,500円(約$10)/30日 ÷ 1件約$0.0015 から導出。
+# 日次上限。許容月額1,500円(約$10)/30日 ÷ 1件約$0.0004 から導出。
+# 検索で根拠を絞る設計にしたことで1件あたりが約8分の1になり、上限を広げられた。
 # 再デプロイなしで調整できるよう変数化している。
-DAILY_LIMIT = "300"
+DAILY_LIMIT = "800"
 MODEL = "gpt-4o-mini"
 MAX_TOKENS = "400"
 

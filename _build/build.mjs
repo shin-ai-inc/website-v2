@@ -10,6 +10,8 @@ import { readFileSync, writeFileSync, readdirSync, cpSync, mkdirSync, rmSync, co
 import { execSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { chunkPage } from "./chunk.mjs";
+import { encodeVector, normalizeVector } from "../api/lib/vector.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -655,28 +657,48 @@ writeFileSync(
    ビルドで毎回作り直すため、サイトを直せば知識も自動で追従する
    (手書きのFAQを別に持つと必ず本体と乖離し、AIが古い事実を配る)。
    公開HTMLからの抽出なので、機密が混入する経路が構造的に存在しない。 */
+/* 会社概要の定義リストだけは常時同梱にする。最も問われ、かつ最も短い。 */
+const PIN_DL_PAGES = new Set(["about.html"]);
+
 const knowledgeFor = (loc) => {
-  const docs = [];
+  const chunks = [];
   for (const page of pages) {
     const meta = loc.code === "ja" ? page : page.en;
-    const html = read(loc.dir + page.file);
-    const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
-    if (!main) continue;
-    /* script/style/svg は本文でない。除去してからタグを剥がす。 */
-    const text = stripTags(
-      main[1]
-        .replace(/<(script|style|svg)\b[\s\S]*?<\/\1>/gi, " ")
-        .replace(/<!--[\s\S]*?-->/g, " ")
-    );
-    if (text.length < 50) continue;   // 実質的な中身がないページは載せない
-    docs.push({
-      path: page.file,
+    chunks.push(...chunkPage(read(loc.dir + page.file), {
       title: meta.title,
       url: urlFor(page.file, loc.dir),
-      text
-    });
+      slug: page.file.replace(/\.html$/, ""),
+      pinDl: PIN_DL_PAGES.has(page.file)
+    }));
   }
-  return { locale: loc.code, generatedAt: BUILD_HASH, docs };
+  return { locale: loc.code, generatedAt: BUILD_HASH, chunks };
+};
+
+/* 埋め込みはビルド時に一度だけ確定させる。実行時に要るのは質問1件分の変換だけになり、
+   Worker は外部の索引を持たずに済む(同期ずれも障害点も増えない)。
+   鍵が無い環境ではベクトルを付けずに進める。検索は字面のみへ穏やかに縮退し、
+   ビルドは止まらない(公開手順を鍵の有無に縛らない)。 */
+const EMBED_MODEL = "text-embedding-3-small";
+const EMBED_DIMS = 512;
+
+const embedChunks = async (chunks) => {
+  const key = process.env.OPENAI_API_KEY;
+  if (!key) return false;
+  /* 題と本文を合わせて1件とする。題は検索の的として効きが強い。 */
+  const res = await fetch("https://api.openai.com/v1/embeddings", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${key}` },
+    body: JSON.stringify({
+      model: EMBED_MODEL,
+      input: chunks.map((c) => `${c.title}\n${c.text}`),
+      dimensions: EMBED_DIMS
+    })
+  });
+  if (!res.ok) throw new Error(`embeddings failed: ${res.status} ${await res.text()}`);
+  for (const item of (await res.json()).data) {
+    chunks[item.index].vec = encodeVector(normalizeVector(item.embedding));
+  }
+  return true;
 };
 
 /* Worker が import で同梱するため api/ 直下へ置く(こちらが実体)。
@@ -684,11 +706,17 @@ const knowledgeFor = (loc) => {
 mkdirSync(join(DIST, "api"), { recursive: true });
 for (const loc of LOCALES) {
   const kb = knowledgeFor(loc);
+  const embedded = await embedChunks(kb.chunks);
+  kb.embedModel = embedded ? EMBED_MODEL : null;
+  kb.embedDims = embedded ? EMBED_DIMS : 0;
   const body = JSON.stringify(kb, null, 2);
   writeFileSync(join(ROOT, "api", `knowledge.${loc.code}.json`), body, "utf8");
   writeFileSync(join(DIST, "api", `knowledge.${loc.code}.json`), body, "utf8");
-  const chars = kb.docs.reduce((n, d) => n + d.text.length, 0);
-  console.log(`knowledge.${loc.code}.json: ${kb.docs.length}件 / ${chars}字`);
+  const chars = kb.chunks.reduce((n, c) => n + c.text.length, 0);
+  console.log(
+    `knowledge.${loc.code}.json: ${kb.chunks.length}チャンク / ${chars}字 / ` +
+    (embedded ? `ベクトルあり(${EMBED_DIMS}次元)` : "ベクトルなし(字面検索のみ)")
+  );
 }
 
 console.log("built pages:", built);

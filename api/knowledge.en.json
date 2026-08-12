@@ -1,66 +1,759 @@
 {
   "locale": "en",
-  "generatedAt": "f2bd6d6",
-  "docs": [
+  "generatedAt": "729b178",
+  "chunks": [
     {
-      "path": "index.html",
+      "id": "index#0",
+      "title": "会社概要｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "Consultation: Free, 30–45 minutes, no preparation needed\nContact: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST"
+    },
+    {
+      "id": "index#1",
       "title": "ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "Your company's tacit knowledge, rebuilt as working AI. Years of judgment. Skill the hands remember. Documents no one has time to read. We put the knowledge sleeping inside your company back to work. \"Believe in true value, and build a new future for the next generation.\" Our Purpose Use AI to give people their human hours back. Research, analysis, the widening of thought. When AI carries these, people turn to creating and deciding. Solutions Three stages that turn tacit knowledge into an asset. We design the whole path, from first concept to live operation. Unlocking tacit knowledge We convert the judgment, documents and conversations you have accumulated into a knowledge base that works. Collecting and structuring your internal knowledge RAG systems built on your internal data LLM fine-tuning Private AI agent development We connect your internal knowledge to your existing systems and build AI that carries out the work. Answers and decision support grounded in your own knowledge Integration and execution across existing systems A natural fit into how the work already flows Hands-on support for AI-driven transformation From designing the evaluation to running it and growing the team. We leave you able to carry it forward yourselves. PoC design and accuracy evaluation Operating rules and team structure Technical handover to your own engineers Explore our solutions Engineering Advanced technique, turned into results on the floor. From accuracy through to operation, we design it ourselves and build a base that runs in the real workplace. 01 Custom LLM optimisation We tune large language models to your purpose and draw out accuracy that follows your own context. 02 Reinforcement learning We support systems that keep learning from feedback, so the AI settles further into your workplace the more it is used. 03 RAG and vector search We build a base that searches your documents by meaning and answers while showing its sources. 04 On-premise deployment We support architectures where no data leaves your walls, so this works even in highly confidential environments. Why ShinAI It only becomes value once it takes root. Delivery is not the finish line. We stay with you until it is rooted in the work and runs under your own power. 01 Understanding the work We learn the operation before we reach for the technology. 02 Small-scale proof We try it small, confirm the effect, then widen it. 03 Data protection Encryption, access control, and on-premise options. 04 Production, not demos We do not stop at a prototype. We build it into the work. 05 Technical handover In the end, your own team can carry it. News News and activity 2025.12.05 Speaking We spoke at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry We presented ShinAI's work, carried by the belief that AI should give people their human hours back. Read more Let us build what comes next, together. You do not need defined requirements to start. We take stock of how your work runs today and propose the measures that move it forward. Book a free consultation Consultation Free, 30–45 minutes, no preparation needed Contact contact@shinai-inc.jp Hours Weekdays 9:00–18:00 JST"
+      "text": "Your company's tacit knowledge, \n rebuilt as working AI. \n\n Years of judgment. Skill the hands remember. Documents no one has time to read. \n We put the knowledge sleeping inside your company back to work."
     },
     {
-      "path": "services.html",
+      "id": "index#2",
+      "title": "\"Believe in true value, and build a new future for the next generation.\"｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "Our Purpose \n \n Use AI to give people \n their human hours back. \n\n Research, analysis, the widening of thought. \n When AI carries these, people turn to creating and deciding. \n\n Solutions"
+    },
+    {
+      "id": "index#3",
+      "title": "Three stages that turn tacit \n knowledge into an asset.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We design the whole path, from first concept to live operation."
+    },
+    {
+      "id": "index#4",
+      "title": "Unlocking tacit knowledge｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We convert the judgment, documents and conversations\n you have accumulated into a knowledge base that works.\n\n Collecting and structuring your internal knowledge \n RAG systems built on your internal data \n LLM fine-tuning"
+    },
+    {
+      "id": "index#5",
+      "title": "Private AI agent development｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We connect your internal knowledge to your existing systems\n and build AI that carries out the work.\n\n Answers and decision support grounded in your own knowledge \n Integration and execution across existing systems \n A natural fit into how the work already flows"
+    },
+    {
+      "id": "index#6",
+      "title": "Hands-on support for AI-driven transformation｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "From designing the evaluation to running it and growing the team.\n We leave you able to carry it forward yourselves.\n\n PoC design and accuracy evaluation \n Operating rules and team structure \n Technical handover to your own engineers \n\n Explore our solutions\n\n Engineering"
+    },
+    {
+      "id": "index#7",
+      "title": "Advanced technique, \n turned into results on the floor.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "From accuracy through to operation, we design it ourselves and build a base that runs in the real workplace. \n\n 01"
+    },
+    {
+      "id": "index#8",
+      "title": "Custom LLM optimisation｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We tune large language models to your purpose and draw out accuracy that follows your own context. \n\n 02"
+    },
+    {
+      "id": "index#9",
+      "title": "Reinforcement learning｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We support systems that keep learning from feedback, so the AI settles further into your workplace the more it is used. \n\n 03"
+    },
+    {
+      "id": "index#10",
+      "title": "RAG and vector search｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We build a base that searches your documents by meaning and answers while showing its sources. \n\n 04"
+    },
+    {
+      "id": "index#11",
+      "title": "On-premise deployment｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We support architectures where no data leaves your walls, so this works even in highly confidential environments. \n\n Why ShinAI"
+    },
+    {
+      "id": "index#12",
+      "title": "It only becomes value \n once it takes root.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "Delivery is not the finish line. \n We stay with you until it is rooted in the work and runs under your own power. \n\n 01"
+    },
+    {
+      "id": "index#13",
+      "title": "Understanding the work｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We learn the operation before we reach for the technology. \n\n 02"
+    },
+    {
+      "id": "index#14",
+      "title": "Small-scale proof｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We try it small, confirm the effect, then widen it. \n\n 03"
+    },
+    {
+      "id": "index#15",
+      "title": "Data protection｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "Encryption, access control, and on-premise options. \n\n 04"
+    },
+    {
+      "id": "index#16",
+      "title": "Production, not demos｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We do not stop at a prototype. We build it into the work. \n\n 05"
+    },
+    {
+      "id": "index#17",
+      "title": "Technical handover｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "In the end, your own team can carry it. \n\n News"
+    },
+    {
+      "id": "index#18",
+      "title": "We spoke at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "We presented ShinAI's work, carried by the belief that AI should give people their human hours back. \n \n Read more"
+    },
+    {
+      "id": "index#19",
+      "title": "Let us build what comes next, together.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "You do not need defined requirements to start. \n We take stock of how your work runs today and propose the measures that move it forward. \n\n Book a free consultation"
+    },
+    {
+      "id": "services#0",
       "title": "Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
-      "text": "Home › Solutions Solutions Try it, deepen it, then run it yourselves. Start with a small proof, embed the knowledge deeply, and finish with something your own team can run. ShinAI roots AI in your organisation across three stages. Beyond them, we research physical AI — the skill on a floor that documents never captured. What We Offer Three kinds of value we deliver We divide our work by the outcome it produces. Begin wherever sits closest to the problem you actually have. Unlocking tacit knowledge A veteran's instinct and criteria for judgment live only in their head, and they leave when that person retires. We convert conversations, documents and work records into a form you can search, teach from, and lean on when deciding. \"Only one person knows that\" becomes knowledge anyone in the organisation can draw on. Collecting and structuring your internal knowledge RAG systems that put your internal data to work LLM optimisation and tuning Private AI agent development General-purpose AI does not know your context, so it goes unused on the floor and quietly becomes a formality. We connect your internal knowledge to your existing systems and build a private agent that not only answers but carries the work through. Hand it enquiries and routine tasks, and people are free to concentrate on judgment and conversation. Answers and decision support grounded in your own knowledge Integration with existing systems and APIs Support from search all the way to execution Hands-on support for AI-driven transformation We do not treat go-live as the end of the job. We stay alongside you through PoC design, accuracy evaluation, operating rules, and growing your internal team. In time you will run and improve it without us. We hand over the technology and let it take root. PoC design and evaluation design Operating rules and guidelines Team development and technical handover Physical AI New service On-site skill, into AI. How a hand moves, how much pressure to apply, what a glance decides. We capture the on-site skill that lives in no document — through sensors and video — and put it into a form AI can work with. A new service that extends tacit-knowledge AI into the physical floor. We start from a small trial and design it around your site. Talk to us about this service ShinAI Method How knowledge starts moving Gather what is scattered, connect it by meaning, give it grounding, put it to work. Five stages, and at the end it moves in-house. 01 Capture Collect Gather conversations, documents and work history, bringing scattered knowledge into one place. 02 Structure Organise Sort the knowledge, the conditions behind decisions, and the relationships, then connect them by meaning. 03 Ground Give evidence Connect to RAG so sources can be traced, and every answer carries something behind it. 04 Act Execute Agents support search, judgment, and the work itself. 05 Transfer Hand over Pass it to a team that can operate and improve it from the inside. Technology &amp; Security Build it, guard it, never hand over too much We build while measuring accuracy, protect data and permissions, and leave the final call to a person. Three stances hold together a design you can trust with your work. Build RAG and internal search LLM optimisation and tuning Evaluation design that measures accuracy Protect On-premise and private cloud Access control Logging and audit Keep people in charge Final approval rests with a person Reasoning shown, not hidden Authority delegated in stages How We Work Small trial to production, then over to you We do not build big at the start. We move on as the effect is confirmed. The durations below are guides only and vary with scale and purpose. 1 Framing the problem and requirements approx. 1–2 weeks 2 Working prototype approx. 2–4 weeks 3 Validation on real operational data approx. 2–6 weeks 4 Production build approx. 1–3 months or more 5 In-house capability and ongoing improvement ongoing These durations are estimates. We look at the result of each stage together and decide whether to go on. Get Started Talk to us about your tacit knowledge Even when requirements are still vague, we can work it out together. We will find the first move from the knowledge you already hold. Book a free consultation Contact contact@shinai-inc.jp Hours Weekdays 9:00–18:00 JST Consultation 30–45 min, no preparation needed"
+      "text": "Home \n › \n Solutions \n \n Solutions \n \n Try it, deepen it, \n then run it yourselves. \n\n Start with a small proof, embed the knowledge deeply, and finish with something your own team can run. \n ShinAI roots AI in your organisation across three stages. \n Beyond them, we research physical AI — the skill on a floor that documents never captured. \n\n What We Offer"
     },
     {
-      "path": "industries.html",
+      "id": "services#1",
+      "title": "Three kinds of value we deliver｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "We divide our work by the outcome it produces. \n Begin wherever sits closest to the problem you actually have."
+    },
+    {
+      "id": "services#2",
+      "title": "Unlocking tacit knowledge｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "A veteran's instinct and criteria for judgment live only in their head, and they leave when that person retires.\n We convert conversations, documents and work records into a form you can search, teach from, and lean on when deciding.\n \"Only one person knows that\" becomes knowledge anyone in the organisation can draw on.\n\n Collecting and structuring your internal knowledge \n RAG systems that put your internal data to work \n LLM optimisation and tuning"
+    },
+    {
+      "id": "services#3",
+      "title": "Private AI agent development｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "General-purpose AI does not know your context, so it goes unused on the floor and quietly becomes a formality.\n We connect your internal knowledge to your existing systems and build a private agent that not only answers but carries the work through.\n Hand it enquiries and routine tasks, and people are free to concentrate on judgment and conversation.\n\n Answers and decision support grounded in your own knowledge \n Integration with existing systems and APIs \n Support from search all the way to execution"
+    },
+    {
+      "id": "services#4",
+      "title": "Hands-on support for AI-driven transformation｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "We do not treat go-live as the end of the job.\n We stay alongside you through PoC design, accuracy evaluation, operating rules, and growing your internal team.\n In time you will run and improve it without us. We hand over the technology and let it take root.\n\n PoC design and evaluation design \n Operating rules and guidelines \n Team development and technical handover \n\n Physical AI \n New service"
+    },
+    {
+      "id": "services#5",
+      "title": "On-site skill, into AI.｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "How a hand moves, how much pressure to apply, what a glance decides. We capture the on-site skill that lives in no document — through sensors and video — and put it into a form AI can work with.\n\n A new service that extends tacit-knowledge AI into the physical floor. We start from a small trial and design it around your site.\n\n Talk to us about this service \n\n ShinAI Method"
+    },
+    {
+      "id": "services#6",
+      "title": "How knowledge starts moving｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "Gather what is scattered, connect it by meaning, give it grounding, put it to work. \n Five stages, and at the end it moves in-house. \n\n 01 \n \n Capture"
+    },
+    {
+      "id": "services#7",
+      "title": "Collect｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "Gather conversations, documents and work history, bringing scattered knowledge into one place. \n\n 02 \n \n Structure"
+    },
+    {
+      "id": "services#8",
+      "title": "Organise｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "Sort the knowledge, the conditions behind decisions, and the relationships, then connect them by meaning. \n\n 03 \n \n Ground"
+    },
+    {
+      "id": "services#9",
+      "title": "Give evidence｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "Connect to RAG so sources can be traced, and every answer carries something behind it. \n\n 04 \n \n Act"
+    },
+    {
+      "id": "services#10",
+      "title": "Execute｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "Agents support search, judgment, and the work itself. \n\n 05 \n \n Transfer"
+    },
+    {
+      "id": "services#11",
+      "title": "Hand over｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "Pass it to a team that can operate and improve it from the inside. \n\n Technology & Security"
+    },
+    {
+      "id": "services#12",
+      "title": "Build it, guard it, never hand over too much｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "We build while measuring accuracy, protect data and permissions, and leave the final call to a person. \n Three stances hold together a design you can trust with your work."
+    },
+    {
+      "id": "services#13",
+      "title": "Build｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "RAG and internal search \n\n LLM optimisation and tuning \n\n Evaluation design that measures accuracy"
+    },
+    {
+      "id": "services#14",
+      "title": "Protect｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "On-premise and private cloud \n\n Access control \n\n Logging and audit"
+    },
+    {
+      "id": "services#15",
+      "title": "Keep people in charge｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "Final approval rests with a person \n\n Reasoning shown, not hidden \n\n Authority delegated in stages \n\n How We Work"
+    },
+    {
+      "id": "services#16",
+      "title": "Small trial to production, \n then over to you｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "We do not build big at the start. We move on as the effect is confirmed. \n The durations below are guides only and vary with scale and purpose. \n\n 1 \n Framing the problem and requirements \n approx. 1–2 weeks \n\n 2 \n Working prototype \n approx. 2–4 weeks \n\n 3 \n Validation on real operational data \n approx. 2–6 weeks \n\n 4 \n Production build \n approx. 1–3 months or more \n\n 5 \n In-house capability and ongoing improvement \n ongoing \n\n These durations are estimates. We look at the result of each stage together and decide whether to go on. \n\n Get Started"
+    },
+    {
+      "id": "services#17",
+      "title": "Talk to us about your tacit knowledge｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "Even when requirements are still vague, we can work it out together. \n We will find the first move from the knowledge you already hold. \n\n Book a free consultation \n\n Contact \n contact@shinai-inc.jp \n\n Hours \n Weekdays 9:00–18:00 JST \n\n Consultation \n 30–45 min, no preparation needed"
+    },
+    {
+      "id": "industries#0",
       "title": "Industries | ShinAI",
       "url": "https://shinai-inc.jp/en/industries.html",
-      "text": "Home › Industries Industries Every industry holds knowledge no one can see. Knowledge staying invisible is the one problem every industry shares. Here is how that knowledge becomes visible and usable in each kind of workplace. Use Cases How it applies, by industry The same problem shows up differently in each sector. We pair the difficulty you will recognise with what changes once tacit knowledge is addressed. Manufacturing Expert judgment, turned into a standard anyone can use What you will recognise The knack for inspection and adjustment is never put into words, so quality varies and the craft passes only through a few veterans. What changes For example, an AI that estimates quotes from drawings and past project data. Inspection records and the knack behind decisions become structured too, so newer staff judge by the same standard. Construction Procedures asleep on a shelf, pulled out on site What you will recognise Safety know-how and on-site response depend on individual experience, while the manual stays on the shelf unread. What changes For example, an AI that drafts daily site reports from photos and notes. Past incidents and procedures also surface through conversation, so the information you need is one question away. Care and professional services Nuance that lives only in people, turned into knowledge What you will recognise A veteran's care decisions and the nuance of client relationships never reach the records, and leave with them when they retire. What changes For example, an AI that drafts handover notes and assessments from care records. Daily records and conversations also become knowledge, answering questions of judgment. The load comes down. Retail Each store's instinct, made a shared strength What you will recognise A feel for service and assortment stays sealed inside each store, and enquiries eat into the day. What changes For example, an AI that connects your CRM data with service records. Product knowledge and service history come together into a guide that supports both staff questions and customer response. Healthcare and welfare Scattered information, gathered with its sources What you will recognise Specialist knowledge and past cases sit scattered, and the hours dissolve into simply looking for what you need. What changes For example, an AI that eliminates manual entry from charts and referral letters. Internal documents and case records also become searchable with their sources attached, cutting double-checking and transcription errors. Education One teacher's craft, everyone's asset What you will recognise The craft of teaching and building materials stays with the individual, so quality varies between classes and training sessions. What changes For example, an AI that suggests student-specific learning advice from past teaching records. Materials and know-how also become a shared asset that underpins learning support shaped to each student. Finance Grounds for a decision, put into explainable form What you will recognise The reasoning behind assessments and client advice goes unspoken, making accountability and handover a weight to carry. What changes For example, an underwriting support AI that cites criteria and past approvals with their grounds, supporting the work in a form you can explain. The final call stays with a person. Real estate Scattered detail, searched across the whole What you will recognise Property detail and a feel for negotiation sit apart in each agent's head, so enquiries stall. What changes For example, an AI that drafts a first pass of the key-facts disclosure from property documents. Contact history also searches alongside it, so answers and proposals come together quickly. Beyond Industry Different industries, the same root problem. Knowledge stuck with one person, uncertainty about where to start, worry over connecting existing systems. The shape differs by industry, but the root problem is always the same. Tacit knowledge stuck with one person Years of instinct and criteria live only in one head, and no handover document reproduces them. Not sure where to start You feel the problem, but can't tell which part of the operation to structure first, so nothing moves. Worried about connecting existing systems Your data already lives in a CRM or core system, and it's unclear whether AI can connect without replacing it. ShinAI works from your current operations and knowledge assets to find the shape that fits your company."
+      "text": "Home \n › \n Industries \n\n Industries \n\n Every industry holds \n knowledge no one can see. \n\n Knowledge staying invisible is the one problem every industry shares. \n Here is how that knowledge becomes visible and usable in each kind of workplace. \n\n Use Cases"
     },
     {
-      "path": "about.html",
+      "id": "industries#1",
+      "title": "How it applies, by industry｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "The same problem shows up differently in each sector. \n We pair the difficulty you will recognise with what changes once tacit knowledge is addressed. \n\n Manufacturing"
+    },
+    {
+      "id": "industries#2",
+      "title": "Expert judgment, turned into a standard anyone can use｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "What you will recognise \n The knack for inspection and adjustment is never put into words, so quality varies and the craft passes only through a few veterans. \n\n What changes \n For example, an AI that estimates quotes from drawings and past project data. Inspection records and the knack behind decisions become structured too, so newer staff judge by the same standard. \n\n Construction"
+    },
+    {
+      "id": "industries#3",
+      "title": "Procedures asleep on a shelf, pulled out on site｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "What you will recognise \n Safety know-how and on-site response depend on individual experience, while the manual stays on the shelf unread. \n\n What changes \n For example, an AI that drafts daily site reports from photos and notes. Past incidents and procedures also surface through conversation, so the information you need is one question away. \n\n Care and professional services"
+    },
+    {
+      "id": "industries#4",
+      "title": "Nuance that lives only in people, turned into knowledge｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "What you will recognise \n A veteran's care decisions and the nuance of client relationships never reach the records, and leave with them when they retire. \n\n What changes \n For example, an AI that drafts handover notes and assessments from care records. Daily records and conversations also become knowledge, answering questions of judgment. The load comes down. \n\n Retail"
+    },
+    {
+      "id": "industries#5",
+      "title": "Each store's instinct, made a shared strength｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "What you will recognise \n A feel for service and assortment stays sealed inside each store, and enquiries eat into the day. \n\n What changes \n For example, an AI that connects your CRM data with service records. Product knowledge and service history come together into a guide that supports both staff questions and customer response. \n\n Healthcare and welfare"
+    },
+    {
+      "id": "industries#6",
+      "title": "Scattered information, gathered with its sources｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "What you will recognise \n Specialist knowledge and past cases sit scattered, and the hours dissolve into simply looking for what you need. \n\n What changes \n For example, an AI that eliminates manual entry from charts and referral letters. Internal documents and case records also become searchable with their sources attached, cutting double-checking and transcription errors. \n\n Education"
+    },
+    {
+      "id": "industries#7",
+      "title": "One teacher's craft, everyone's asset｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "What you will recognise \n The craft of teaching and building materials stays with the individual, so quality varies between classes and training sessions. \n\n What changes \n For example, an AI that suggests student-specific learning advice from past teaching records. Materials and know-how also become a shared asset that underpins learning support shaped to each student. \n\n Finance"
+    },
+    {
+      "id": "industries#8",
+      "title": "Grounds for a decision, put into explainable form｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "What you will recognise \n The reasoning behind assessments and client advice goes unspoken, making accountability and handover a weight to carry. \n\n What changes \n For example, an underwriting support AI that cites criteria and past approvals with their grounds, supporting the work in a form you can explain. The final call stays with a person. \n\n Real estate"
+    },
+    {
+      "id": "industries#9",
+      "title": "Scattered detail, searched across the whole｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "What you will recognise \n Property detail and a feel for negotiation sit apart in each agent's head, so enquiries stall. \n\n What changes \n For example, an AI that drafts a first pass of the key-facts disclosure from property documents. Contact history also searches alongside it, so answers and proposals come together quickly. \n\n Beyond Industry"
+    },
+    {
+      "id": "industries#10",
+      "title": "Different industries, the same root problem.｜Industries | ShinAI",
+      "url": "https://shinai-inc.jp/en/industries.html",
+      "text": "Knowledge stuck with one person, uncertainty about where to start, worry over connecting existing systems. \n The shape differs by industry, but the root problem is always the same. \n\n Tacit knowledge stuck with one person \n Years of instinct and criteria live only in one head, and no handover document reproduces them. \n\n Not sure where to start \n You feel the problem, but can't tell which part of the operation to structure first, so nothing moves. \n\n Worried about connecting existing systems \n Your data already lives in a CRM or core system, and it's unclear whether AI can connect without replacing it. \n\n ShinAI works from your current operations and knowledge assets to find the shape that fits your company."
+    },
+    {
+      "id": "about#0",
+      "title": "会社概要｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Name: ShinAI Inc. （シンアイ株式会社）\nFounded: 1 January 2025 (as a sole proprietorship)\nIncorporated: 8 August 2026\nFounder: Masakuni Shibata\nWhat we do: Unlocking tacit knowledge; private AI agent development; hands-on support for AI-driven transformation;\n physical AI research and development (PoC)\nCoverage: Nationwide from Gunma, Japan (online available)\nRegistered office: 360-7 Ino-machi, Takasaki, Gunma Oaks Avenue D201\nContact: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST",
+      "pin": true
+    },
+    {
+      "id": "about#1",
       "title": "About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
-      "text": "Home › About Company Before the AI, there is a person. ShinAI did not begin from an interest in technology. It began from a question: how can people work in a more human way? Purpose Use AI to give people their human hours back. What lies beyond efficiency is not more work. It is people returning to what only people can do. Our aim is not to optimise operations. When AI carries information processing and routine judgment, people can concentrate on the higher work of creating, deciding, and building relationships. Our technology is pointed at supporting that kind of change in a company. Overview Company overview Name ShinAI Inc. （シンアイ株式会社） Founded 1 January 2025 (as a sole proprietorship) Incorporated 8 August 2026 Founder Masakuni Shibata What we do Unlocking tacit knowledge; private AI agent development; hands-on support for AI-driven transformation; physical AI research and development (PoC) Coverage Nationwide from Gunma, Japan (online available) Registered office 360-7 Ino-machi, Takasaki, Gunma Oaks Avenue D201 Contact contact@shinai-inc.jp Hours Weekdays 9:00–18:00 JST Message A message from the founder Masakuni Shibata \"I wanted to save people in trouble.\"That single wish kept me on the front line as a firefighter for some seven years. Facing lives day after day, I also came to know the limits of what one person can do. Was there a way to help far more people? I carried that question with me for years. The answer was AI. When I encountered generative AI in February 2023, I became certain it could let me help many more people — not as a technology that replaces people, but as a means to widen what they are capable of. What we take on is rebuilding the very workings of a company with AI at its foundation. Not efficiency, but optimisation — that is where the essence lies. Technology is never the goal, only the means. Beyond it lies a future where people reclaim their human time and give themselves to value of a higher order. \"Believe in true value, and build a new future for the next generation.\"It is this conviction that keeps us moving forward. 〜 2023 Served as a firefighter (approx. 7 years) 2023.02 Saw the potential in generative AI and began teaching himself 2024–2025 Practitioner at a Tokyo AI systems development company (LLM integration, RAG) 2025.01.01 Started ShinAI as a sole proprietorship 2026.08.08 Incorporated as ShinAI Inc. Founder Masakuni Shibata 柴田 昌国 Seven Shin The spirit behind the seven Shin Seven Japanese words read \"shin\" gather inside the name ShinAI. 真 Truth 信 Trust 伸 Growth 心 Heart 新 New 芯 Core 紳 Integrity Truth 真 See to the essence, and deliver value through honest engineering. We are not swayed by surface trends. We keep pursuing the solution that is genuinely needed. Trust 信 Build trust, and deepen the bond between people and technology. We build relationships with transparency and honesty, and go on providing technology that can be believed in. Growth 伸 Draw out latent potential, and keep evolving together. We support our clients' growth and keep learning ourselves, so that we extend into the future side by side. Heart 心 Honour sensibility, and create AI that touches the heart. We hold to more than the technology, caring about human feeling and values, and offering solutions that create empathy. New 新 Meet change head on, and open the future through innovation. Unbound by precedent, we keep taking on new possibilities, and in doing so open the door to what comes next. Core 芯 Hold an unwavering centre, and carry the core of what comes next. With principle and engineering strength that the times cannot shake, we become something the next generation can rest on. Integrity 紳 Conduct ourselves with grace and respect, and let trust follow. We act with high ethics and dignity, and remain a company that society can respect. Future Vision Toward a society people and technology create together ShinAI is working toward a future where technology walks alongside human creativity and kindness. Through AI that resonates with human sensibility, with the diversity of society, and with the sustainability of the planet, we solve problems with technology that can be believed in, and keep delivering value as a company people choose. Time set free By automating routine work with AI, we make room for creative work and for time with the people who matter. The aim is an environment where people concentrate on the value only they can create. Technology with empathy AI that understands human feeling and values and stays close to them. Through solutions that carry heart as well as technique, we build a future where people and technology are in harmony. Contribution to society We use AI to help solve the problems society faces and to create a better future. With worthwhile technology that everyone can benefit from, we work toward a sustainable society. Team The team Professionals with deep expertise and a record of delivery, working on the problems companies bring to us. Founder / AI Engineer Masakuni Shibata 柴田 昌国 A former firefighter of some seven years. In February 2023, about two months after ChatGPT was released, he became convinced of what AI could do and taught himself to program. After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 under the principle of believing in true value and building a new future for the next generation. In August 2026, he incorporated the company as ShinAI Inc. He still works hands-on as an AI engineer, designing, building, and running AI systems for clients from listed companies to small and mid-sized firms. Areas of expertiseGenerative AI service design, RAG development, AI strategy, business process optimisation Chief Technology Officer Y Chief Technology Officer Brings experience as an engineer at a major semiconductor manufacturer together with engineering work at an AI startup. Leads AI development that holds leading-edge technique and practical usefulness in the same hand. Join Us — partners wanted The future we are building with ShinAI Come and take part in projects creating a new future with the power of AI. What working on a ShinAI project offers 01 Hands on the leading edge Constant access to the newest AI technology, in an environment where it is used on real projects. Current LLMs and RAG techniques, applied in practice. 02 Freedom to make your ideas real A culture where you propose your own ideas and get to build them. Creative thinking is respected, and ambitious projects are open to you. 03 Flexible ways of working Remote work, contract engagements, and other arrangements that fit your life. We build relationships focused on the project and the result. Skills we are currently looking for 01 Engineer AI engineer For those with experience building generative AI models or RAG systems. Bring your knowledge of LLMs, natural language processing and reinforcement learning to leading-edge AI work. LLM RAG Python Reinforcement learning Apply 02 Business Enterprise sales The ability to hear a client's problem and connect it to the right proposal. We welcome those with B2B sales experience and a genuine interest in AI and digital transformation. B2B sales Proposal design DX knowledge Discovery Apply 03 Design UX/UI designer From experience design for AI products through to information architecture. We are looking for someone who thinks in human-centred terms and can hold usability and beauty together. UX design UI design Web and app Apply This is not limited to formal employment. Contract work, side projects and joint ventures are all worth a conversation."
+      "text": "Home \n › \n About \n\n Company \n\n Before the AI, \n there is a person. \n\n ShinAI did not begin from an interest in technology. \n It began from a question: how can people work in a more human way? \n\n Purpose"
     },
     {
-      "path": "faq.html",
+      "id": "about#2",
+      "title": "Use AI to give people \n their human hours back.｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "What lies beyond efficiency is not more work. \n It is people returning to what only people can do. \n\n Our aim is not to optimise operations. When AI carries information processing and routine judgment, people can concentrate on the higher work of creating, deciding, and building relationships. Our technology is pointed at supporting that kind of change in a company.\n\n Overview"
+    },
+    {
+      "id": "about#3",
+      "title": "A message from the founder｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Masakuni Shibata \n\n \"I wanted to save people in trouble.\" That single wish kept me on the front line as a firefighter for some seven years.\n\n Facing lives day after day, I also came to know the limits of what one person can do.\n Was there a way to help far more people? I carried that question with me for years.\n\n The answer was AI. When I encountered generative AI in February 2023, I became certain it could let me help many more people —\n not as a technology that replaces people, but as a means to widen what they are capable of.\n\n What we take on is rebuilding the very workings of a company with AI at its foundation.\n Not efficiency, but optimisation — that is where the essence lies.\n\n Technology is never the goal, only the means.\n Beyond it lies a future where people reclaim their human time and give themselves to value of a higher order.\n\n \"Believe in true value, and build a new future for the next generation.\" It is this conviction that keeps us moving forward.\n\n 〜 2023 \n Served as a firefighter (approx. 7 years) \n\n 2023.02 \n Saw the potential in generative AI and began teaching himself \n\n 2024–2025 \n Practitioner at a Tokyo AI systems development company (LLM integration, RAG) \n\n 2025.01.01 \n Started ShinAI as a sole proprietorship \n\n 2026.08.08 \n Incorporated as ShinAI Inc. \n\n Founder \n Masakuni Shibata\n 柴田 昌国 \n\n Seven Shin"
+    },
+    {
+      "id": "about#4",
+      "title": "The spirit behind the seven Shin｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Seven Japanese words read \"shin\" gather inside the name ShinAI. \n\n 真 \n Truth \n\n 信 \n Trust \n\n 伸 \n Growth \n\n 心 \n Heart \n\n 新 \n New \n\n 芯 \n Core \n\n 紳 \n Integrity \n\n Truth \n 真"
+    },
+    {
+      "id": "about#5",
+      "title": "See to the essence, and deliver value through honest engineering.｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "We are not swayed by surface trends. We keep pursuing the solution that is genuinely needed. \n\n Trust \n 信"
+    },
+    {
+      "id": "about#6",
+      "title": "Build trust, and deepen the bond between people and technology.｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "We build relationships with transparency and honesty, and go on providing technology that can be believed in. \n\n Growth \n 伸"
+    },
+    {
+      "id": "about#7",
+      "title": "Draw out latent potential, and keep evolving together.｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "We support our clients' growth and keep learning ourselves, so that we extend into the future side by side. \n\n Heart \n 心"
+    },
+    {
+      "id": "about#8",
+      "title": "Honour sensibility, and create AI that touches the heart.｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "We hold to more than the technology, caring about human feeling and values, and offering solutions that create empathy. \n\n New \n 新"
+    },
+    {
+      "id": "about#9",
+      "title": "Meet change head on, and open the future through innovation.｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Unbound by precedent, we keep taking on new possibilities, and in doing so open the door to what comes next. \n\n Core \n 芯"
+    },
+    {
+      "id": "about#10",
+      "title": "Hold an unwavering centre, and carry the core of what comes next.｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "With principle and engineering strength that the times cannot shake, we become something the next generation can rest on. \n\n Integrity \n 紳"
+    },
+    {
+      "id": "about#11",
+      "title": "Conduct ourselves with grace and respect, and let trust follow.｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "We act with high ethics and dignity, and remain a company that society can respect. \n\n Future Vision"
+    },
+    {
+      "id": "about#12",
+      "title": "Toward a society people and technology create together｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "ShinAI is working toward a future where technology walks alongside human creativity and kindness. Through AI that resonates with human sensibility, with the diversity of society, and with the sustainability of the planet, we solve problems with technology that can be believed in, and keep delivering value as a company people choose."
+    },
+    {
+      "id": "about#13",
+      "title": "Time set free｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "By automating routine work with AI, we make room for creative work and for time with the people who matter. The aim is an environment where people concentrate on the value only they can create."
+    },
+    {
+      "id": "about#14",
+      "title": "Technology with empathy｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "AI that understands human feeling and values and stays close to them. Through solutions that carry heart as well as technique, we build a future where people and technology are in harmony."
+    },
+    {
+      "id": "about#15",
+      "title": "Contribution to society｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "We use AI to help solve the problems society faces and to create a better future. With worthwhile technology that everyone can benefit from, we work toward a sustainable society. \n\n Team"
+    },
+    {
+      "id": "about#16",
+      "title": "The team｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Professionals with deep expertise and a record of delivery, working on the problems companies bring to us. \n\n Founder / AI Engineer"
+    },
+    {
+      "id": "about#17",
+      "title": "Masakuni Shibata\n 柴田 昌国｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "A former firefighter of some seven years. In February 2023, about two months after ChatGPT was released, he became convinced of what AI could do and taught himself to program. After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 under the principle of believing in true value and building a new future for the next generation. In August 2026, he incorporated the company as ShinAI Inc. He still works hands-on as an AI engineer, designing, building, and running AI systems for clients from listed companies to small and mid-sized firms.\n \n Areas of expertise Generative AI service design, RAG development, AI strategy, business process optimisation \n\n Chief Technology Officer"
+    },
+    {
+      "id": "about#18",
+      "title": "Y\n Chief Technology Officer｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Brings experience as an engineer at a major semiconductor manufacturer together with engineering work at an AI startup. Leads AI development that holds leading-edge technique and practical usefulness in the same hand.\n\n Join Us — partners wanted"
+    },
+    {
+      "id": "about#19",
+      "title": "The future we are building with ShinAI｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Come and take part in projects creating a new future with the power of AI."
+    },
+    {
+      "id": "about#20",
+      "title": "What working on a ShinAI project offers｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "01 \n Hands on the leading edge \n Constant access to the newest AI technology, in an environment where it is used on real projects. Current LLMs and RAG techniques, applied in practice. \n\n 02 \n Freedom to make your ideas real \n A culture where you propose your own ideas and get to build them. Creative thinking is respected, and ambitious projects are open to you. \n\n 03 \n Flexible ways of working \n Remote work, contract engagements, and other arrangements that fit your life. We build relationships focused on the project and the result."
+    },
+    {
+      "id": "about#21",
+      "title": "AI engineer｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "For those with experience building generative AI models or RAG systems. Bring your knowledge of LLMs, natural language processing and reinforcement learning to leading-edge AI work. \n \n LLM \n RAG \n Python \n Reinforcement learning \n \n Apply \n\n 02 \n\n Business"
+    },
+    {
+      "id": "about#22",
+      "title": "Enterprise sales｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "The ability to hear a client's problem and connect it to the right proposal. We welcome those with B2B sales experience and a genuine interest in AI and digital transformation. \n \n B2B sales \n Proposal design \n DX knowledge \n Discovery \n \n Apply \n\n 03 \n\n Design"
+    },
+    {
+      "id": "about#23",
+      "title": "UX/UI designer｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "From experience design for AI products through to information architecture. We are looking for someone who thinks in human-centred terms and can hold usability and beauty together. \n \n UX design \n UI design \n Web and app \n \n Apply \n\n This is not limited to formal employment. Contract work, side projects and joint ventures are all worth a conversation."
+    },
+    {
+      "id": "faq#0",
+      "title": "Can we talk to you without knowing much about AI?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Can we talk to you without knowing much about AI?\nYes. We explain what AI can do and what it changes without reaching for jargon. It is fine to arrive unsure about what could be handed over. \n In the free consultation we listen to what is troubling you and suggest where AI could help."
+    },
+    {
+      "id": "faq#1",
+      "title": "Where should we begin?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Where should we begin?\nWe start by mapping the daily work that takes the most time. Data entry, answering enquiries, preparing documents. There are usually more of these than people expect. \n Coming to us at the \"we do not know where to start\" stage is genuinely welcome. We listen to the work and suggest an easy place to begin."
+    },
+    {
+      "id": "faq#2",
+      "title": "How long does it take to get something running?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "How long does it take to get something running?\nIt depends on scale and purpose, but a small prototype can sometimes take shape in as little as a month. \n Because we build small, confirm, then widen in stages, you get a sense of whether it works early on."
+    },
+    {
+      "id": "faq#3",
+      "title": "What does it cost?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "What does it cost?\nIt varies a great deal with purpose and scale, so our default is to confirm the effect with a prototype first and widen from there. That keeps the initial investment low. \n We will propose a plan that fits your budget and situation. Tell us about it in a free consultation."
+    },
+    {
+      "id": "faq#4",
+      "title": "Can smaller companies or sole traders adopt this?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Can smaller companies or sole traders adopt this?\nYes. Cloud AI infrastructure has matured to the point where smaller companies and independent operators can adopt it without strain. \n We start small at a scale that suits you and widen as the effect is confirmed, so the early burden stays low while you find out whether it works."
+    },
+    {
+      "id": "faq#5",
+      "title": "What kind of effect can we expect?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "What kind of effect can we expect?\nIt depends on the use. For routine work such as data entry and document preparation, there have been cases of cutting roughly 60 to 80 percent of the time spent. The figure shifts with the work, so we are careful not to proceed on inflated expectations. \n We build the means of measuring the effect alongside the system, so you can check it against what it costs."
+    },
+    {
+      "id": "faq#6",
+      "title": "What does \"starting from a prototype\" mean?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "What does \"starting from a prototype\" mean?\nTraditional development required every requirement to be settled up front. AI covers such a wide range of possibility that settling everything first can be difficult in itself. \n So we build small, test it against the real work, and extend as the results come in. Early risk stays contained while the thing grows into something that fits the floor."
+    },
+    {
+      "id": "faq#7",
+      "title": "Can it connect to our existing systems?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Can it connect to our existing systems?\nYes. We design on the assumption of connecting to your current work and tools through APIs, webhooks, RPA and similar. \n Customer support linked to your CRM, demand forecasting linked to your core systems. We build it in while changing your current flow as little as possible."
+    },
+    {
+      "id": "faq#8",
+      "title": "Is there support after go-live?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Is there support after go-live?\nThere is. The period right after launch gets the closest attention, and we stay with you until the floor is comfortable with the new tool. \n After that we continue regular monitoring and accuracy improvement, aiming for a state where your own people can run and improve it. The shape of the support adjusts to your situation."
+    },
+    {
+      "id": "faq#9",
+      "title": "Which industries can use this?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Which industries can use this?\nManufacturing, construction, retail, healthcare and welfare, education, finance, real estate. There is an application in any sector. The fit tends to be strongest wherever documents, conversations and work records have accumulated. \n The specifics by sector are gathered on the Industries page."
+    },
+    {
+      "id": "faq#10",
+      "title": "Could you give an example in manufacturing?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Could you give an example in manufacturing?\nPutting a veteran's inspection and adjustment decisions into words so they can be shared, plus detecting early signs of failure from operating data, and demand forecasting. \n Giving grounds and repeatability to judgments that used to rest on instinct reduces both variation in quality and the weight of handover."
+    },
+    {
+      "id": "faq#11",
+      "title": "How does this apply in healthcare and welfare?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "How does this apply in healthcare and welfare?\nMostly in shaping internal documents and case records so they can be cited with their sources, which cuts double-checking and enquiries. It also helps in back-office work such as assisting with record entry and streamlining appointment management. \n We design it as a tool that lightens the load on the floor, always with a human making the final call."
+    },
+    {
+      "id": "faq#12",
+      "title": "We are not sure it suits our work.｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "We are not sure it suits our work.\nWe listen to the specifics of your work and identify where it could apply. If we judge that it does not suit you, we will say so plainly."
+    },
+    {
+      "id": "faq#13",
+      "title": "How does the free consultation work?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "How does the free consultation work?\nOnline, around 30 to 45 minutes. We begin by listening to your current difficulties and the state you want to reach. No preparation is needed. \n On the call we set out a direction for using AI and how it would proceed."
+    },
+    {
+      "id": "faq#14",
+      "title": "What solutions do you offer?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "What solutions do you offer?\nThree pillars, combined to suit the purpose: unlocking tacit knowledge, private AI agent development, and hands-on support for AI-driven transformation. Alongside them, we carry out research and development in physical AI. \n What each involves and how it proceeds is on the Solutions page."
+    },
+    {
+      "id": "faq#15",
+      "title": "What is physical AI?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "What is physical AI?\nAI that works with movement and signals from the real world rather than documents and conversations. How a skilled worker's hand moves, how much pressure they apply, the sound and vibration of a machine running — information that was never put into words. We capture it with sensors and use methods such as reinforcement learning to make it something a machine can work with. \n We treat this as a research and proof-of-concept area, developed jointly with companies that have a real site, starting from small trials. There is more on the Solutions page."
+    },
+    {
+      "id": "faq#16",
+      "title": "Where does a physical AI trial begin?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Where does a physical AI trial begin?\nWith a few weeks of feasibility work: whether the data can be captured at all, and whether the accuracy would be enough for the work. If the prospect does not hold up at that stage, we say so plainly. \n You do not need to bring in new equipment or robots. We start by working out together how much can be learned from the machines and cameras you already have."
+    },
+    {
+      "id": "faq#17",
+      "title": "How do you approach security?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "How do you approach security?\nWe design in layers, with data encryption, access control, logging and audit as the baseline. Where requirements call for it we build on-premise or in a private cloud. \n In training and operation alike we hold to anonymisation and minimal use of data, and we keep a person making the final decision."
+    },
+    {
+      "id": "faq#18",
+      "title": "Do we need to assign a dedicated person?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Do we need to assign a dedicated person?\nNot necessarily. Because we work alongside you, the shift to running it yourselves can happen in stages that suit your structure. Having someone who understands the work involved does make the result fit the floor more closely."
+    },
+    {
+      "id": "faq#19",
+      "title": "When is the right time to get in touch?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "When is the right time to get in touch?\nRecognising the problem is enough. Since we start small and confirm the effect, we can help design the approach itself even before requirements are settled."
+    },
+    {
+      "id": "faq#20",
+      "title": "How accurate is the AI?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "How accurate is the AI?\nIt varies with the use and the design. Because we measure the effect on a prototype and improve from there, we can keep tuning towards the accuracy the work actually requires."
+    },
+    {
+      "id": "faq#21",
+      "title": "Does it need maintenance after launch?｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Does it need maintenance after launch?\nWork and knowledge keep changing, so ideally what the system has learned keeps being updated. We offer operational support and maintenance plans, and will propose a way of continuing that does not strain you."
+    },
+    {
+      "id": "faq#22",
+      "title": "会社概要｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Mail: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST\nConsultation: Online, 30–45 min, no preparation"
+    },
+    {
+      "id": "faq#23",
       "title": "FAQ | ShinAI",
       "url": "https://shinai-inc.jp/en/faq.html",
-      "text": "Home › FAQ FAQ Your questions, one by one. From a first conversation through to cost and method, here are the questions we hear most. Questions Find what you want to know Open any item to read the answer. All Getting started Cost and rollout How we build By industry Our services Other Getting started Can we talk to you without knowing much about AI? Yes. We explain what AI can do and what it changes without reaching for jargon. It is fine to arrive unsure about what could be handed over. In the free consultation we listen to what is troubling you and suggest where AI could help. Where should we begin? We start by mapping the daily work that takes the most time. Data entry, answering enquiries, preparing documents. There are usually more of these than people expect. Coming to us at the \"we do not know where to start\" stage is genuinely welcome. We listen to the work and suggest an easy place to begin. How long does it take to get something running? It depends on scale and purpose, but a small prototype can sometimes take shape in as little as a month. Because we build small, confirm, then widen in stages, you get a sense of whether it works early on. Cost and rollout What does it cost? It varies a great deal with purpose and scale, so our default is to confirm the effect with a prototype first and widen from there. That keeps the initial investment low. We will propose a plan that fits your budget and situation. Tell us about it in a free consultation. Can smaller companies or sole traders adopt this? Yes. Cloud AI infrastructure has matured to the point where smaller companies and independent operators can adopt it without strain. We start small at a scale that suits you and widen as the effect is confirmed, so the early burden stays low while you find out whether it works. What kind of effect can we expect? It depends on the use. For routine work such as data entry and document preparation, there have been cases of cutting roughly 60 to 80 percent of the time spent. The figure shifts with the work, so we are careful not to proceed on inflated expectations. We build the means of measuring the effect alongside the system, so you can check it against what it costs. How we build What does \"starting from a prototype\" mean? Traditional development required every requirement to be settled up front. AI covers such a wide range of possibility that settling everything first can be difficult in itself. So we build small, test it against the real work, and extend as the results come in. Early risk stays contained while the thing grows into something that fits the floor. Can it connect to our existing systems? Yes. We design on the assumption of connecting to your current work and tools through APIs, webhooks, RPA and similar. Customer support linked to your CRM, demand forecasting linked to your core systems. We build it in while changing your current flow as little as possible. Is there support after go-live? There is. The period right after launch gets the closest attention, and we stay with you until the floor is comfortable with the new tool. After that we continue regular monitoring and accuracy improvement, aiming for a state where your own people can run and improve it. The shape of the support adjusts to your situation. By industry Which industries can use this? Manufacturing, construction, retail, healthcare and welfare, education, finance, real estate. There is an application in any sector. The fit tends to be strongest wherever documents, conversations and work records have accumulated. The specifics by sector are gathered on the Industries page. Could you give an example in manufacturing? Putting a veteran's inspection and adjustment decisions into words so they can be shared, plus detecting early signs of failure from operating data, and demand forecasting. Giving grounds and repeatability to judgments that used to rest on instinct reduces both variation in quality and the weight of handover. How does this apply in healthcare and welfare? Mostly in shaping internal documents and case records so they can be cited with their sources, which cuts double-checking and enquiries. It also helps in back-office work such as assisting with record entry and streamlining appointment management. We design it as a tool that lightens the load on the floor, always with a human making the final call. We are not sure it suits our work. We listen to the specifics of your work and identify where it could apply. If we judge that it does not suit you, we will say so plainly. Our services How does the free consultation work? Online, around 30 to 45 minutes. We begin by listening to your current difficulties and the state you want to reach. No preparation is needed. On the call we set out a direction for using AI and how it would proceed. What solutions do you offer? Three pillars, combined to suit the purpose: unlocking tacit knowledge, private AI agent development, and hands-on support for AI-driven transformation. Alongside them, we carry out research and development in physical AI. What each involves and how it proceeds is on the Solutions page. What is physical AI? AI that works with movement and signals from the real world rather than documents and conversations. How a skilled worker's hand moves, how much pressure they apply, the sound and vibration of a machine running — information that was never put into words. We capture it with sensors and use methods such as reinforcement learning to make it something a machine can work with. We treat this as a research and proof-of-concept area, developed jointly with companies that have a real site, starting from small trials. There is more on the Solutions page. Where does a physical AI trial begin? With a few weeks of feasibility work: whether the data can be captured at all, and whether the accuracy would be enough for the work. If the prospect does not hold up at that stage, we say so plainly. You do not need to bring in new equipment or robots. We start by working out together how much can be learned from the machines and cameras you already have. How do you approach security? We design in layers, with data encryption, access control, logging and audit as the baseline. Where requirements call for it we build on-premise or in a private cloud. In training and operation alike we hold to anonymisation and minimal use of data, and we keep a person making the final decision. Other Do we need to assign a dedicated person? Not necessarily. Because we work alongside you, the shift to running it yourselves can happen in stages that suit your structure. Having someone who understands the work involved does make the result fit the floor more closely. When is the right time to get in touch? Recognising the problem is enough. Since we start small and confirm the effect, we can help design the approach itself even before requirements are settled. How accurate is the AI? It varies with the use and the design. Because we measure the effect on a prototype and improve from there, we can keep tuning towards the accuracy the work actually requires. Does it need maintenance after launch? Work and knowledge keep changing, so ideally what the system has learned keeps being updated. We offer operational support and maintenance plans, and will propose a way of continuing that does not strain you. Let us build what comes next, together. We will work through your current difficulties together. It is fine if nothing is settled yet. Book a free consultation Mail contact@shinai-inc.jp Hours Weekdays 9:00–18:00 JST Consultation Online, 30–45 min, no preparation"
+      "text": "Home \n › \n FAQ \n \n FAQ \n \n Your questions, one by one. \n\n From a first conversation through to cost and method, here are the questions we hear most. \n\n Questions"
     },
     {
-      "path": "contact.html",
+      "id": "faq#24",
+      "title": "Find what you want to know｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "Open any item to read the answer. \n\n All \n Getting started \n Cost and rollout \n How we build \n By industry \n Our services \n Other"
+    },
+    {
+      "id": "faq#25",
+      "title": "Let us build what comes next, together.｜FAQ | ShinAI",
+      "url": "https://shinai-inc.jp/en/faq.html",
+      "text": "We will work through your current difficulties together. \n It is fine if nothing is settled yet. \n\n Book a free consultation"
+    },
+    {
+      "id": "contact#0",
+      "title": "会社概要｜Contact & Free Consultation | ShinAI",
+      "url": "https://shinai-inc.jp/en/contact.html",
+      "text": "Email: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST\nCoverage: Nationwide from Gunma, Japan (online available)\nRegistered office: 360-7 Ino-machi, Takasaki, Gunma Oaks Avenue D201"
+    },
+    {
+      "id": "contact#1",
       "title": "Contact & Free Consultation | ShinAI",
       "url": "https://shinai-inc.jp/en/contact.html",
-      "text": "Home › Contact Contact Free consultation and enquiries It is fine if the shape of the problem is still unclear, and fine if nothing is settled. Tell us about the work as it stands. We will map the possibilities with you. How it works How the free consultation goes Online, around 30 to 45 minutes. No preparation or documents needed. 01 Get in touch Use the form below to tell us briefly what is troubling you. We will arrange a time that works for you and send you a Zoom or similar meeting link. 02 Talk it through online For 30 to 45 minutes we listen to your current work and its difficulties. No jargon, starting from what you are trying to achieve. 03 Where to apply it, and how We tell you where we think you could begin and how it would proceed. Inquiry Send us a message We read everything that comes in and reply within a few business days. Please leave this field empty Company or organisation required Your name required Email address required Phone optional What would you like to discuss required No technical knowledge needed. Enquiries at a vague stage are genuinely welcome. I agree to the handling of personal information What you send is used only to respond to your enquiry. Send Message sent. We will read it and reply within a few business days. Something went wrong while sending. Please write to us directly at contact@shinai-inc.jp. Contact and coverage Email contact@shinai-inc.jp Hours Weekdays 9:00–18:00 JST Coverage Nationwide from Gunma, Japan (online available) Registered office 360-7 Ino-machi, Takasaki, Gunma Oaks Avenue D201 You can also chat with us The assistant at the bottom right of the screen takes questions on the spot. Use it when you want a quicker answer than the form."
+      "text": "Home \n › \n Contact \n \n Contact \n \n Free consultation and enquiries \n\n It is fine if the shape of the problem is still unclear, and fine if nothing is settled. \n Tell us about the work as it stands. We will map the possibilities with you. \n\n How it works"
     },
     {
-      "path": "news.html",
+      "id": "contact#2",
+      "title": "How the free consultation goes｜Contact & Free Consultation | ShinAI",
+      "url": "https://shinai-inc.jp/en/contact.html",
+      "text": "Online, around 30 to 45 minutes. \n No preparation or documents needed. \n\n 01"
+    },
+    {
+      "id": "contact#3",
+      "title": "Get in touch｜Contact & Free Consultation | ShinAI",
+      "url": "https://shinai-inc.jp/en/contact.html",
+      "text": "Use the form below to tell us briefly what is troubling you. We will arrange a time that works for you and send you a Zoom or similar meeting link. \n\n 02"
+    },
+    {
+      "id": "contact#4",
+      "title": "Talk it through online｜Contact & Free Consultation | ShinAI",
+      "url": "https://shinai-inc.jp/en/contact.html",
+      "text": "For 30 to 45 minutes we listen to your current work and its difficulties. No jargon, starting from what you are trying to achieve. \n\n 03"
+    },
+    {
+      "id": "contact#5",
+      "title": "Where to apply it, and how｜Contact & Free Consultation | ShinAI",
+      "url": "https://shinai-inc.jp/en/contact.html",
+      "text": "We tell you where we think you could begin and how it would proceed. \n\n Inquiry"
+    },
+    {
+      "id": "contact#6",
+      "title": "Send us a message｜Contact & Free Consultation | ShinAI",
+      "url": "https://shinai-inc.jp/en/contact.html",
+      "text": "We read everything that comes in and reply within a few business days. \n\n Please leave this field empty \n\n Company or organisation required \n\n Your name required \n\n Email address required \n\n Phone optional \n\n What would you like to discuss required \n\n No technical knowledge needed. Enquiries at a vague stage are genuinely welcome. \n\n I agree to the handling of personal information \n\n What you send is used only to respond to your enquiry.\n\n Send \n\n Message sent. We will read it and reply within a few business days.\n\n Something went wrong while sending. Please write to us directly at\n contact@shinai-inc.jp ."
+    },
+    {
+      "id": "contact#7",
+      "title": "Contact and coverage｜Contact & Free Consultation | ShinAI",
+      "url": "https://shinai-inc.jp/en/contact.html",
+      "text": "You can also chat with us \n The assistant at the bottom right of the screen takes questions on the spot. Use it when you want a quicker answer than the form."
+    },
+    {
+      "id": "news#0",
       "title": "News | ShinAI",
       "url": "https://shinai-inc.jp/en/news.html",
-      "text": "Home › News News Keeping a record of the work. Talks, announcements, and what we have been working on. Archive Announcements 2025.12.05 Talk Speaking at the 9th Takasaki CCI joint press conference We presented ShinAI's work under the idea of using AI to give people their human hours back. Read more"
+      "text": "Home \n › \n News \n\n News \n\n Keeping \n a record of the work. \n\n Talks, announcements, and what we have been working on. \n\n Archive"
     },
     {
-      "path": "news-20251205-takasaki-press.html",
+      "id": "news#1",
+      "title": "Speaking at the 9th Takasaki CCI joint press conference｜News | ShinAI",
+      "url": "https://shinai-inc.jp/en/news.html",
+      "text": "We presented ShinAI's work under the idea of using AI to give people their human hours back. \n \n Read more"
+    },
+    {
+      "id": "news-20251205-takasaki-press#0",
       "title": "Talk at the 9th Takasaki CCI Joint Press Conference | ShinAI",
       "url": "https://shinai-inc.jp/en/news-20251205-takasaki-press.html",
-      "text": "Home › News › Talk at the 9th Takasaki CCI joint press conference 2025.12.05 Talk Speaking at the 9th Takasaki CCI joint press conference On 5 December 2025, ShinAI founder Masakuni Shibata spoke at the 9th joint press conference hosted by the Takasaki Chamber of Commerce and Industry. The talk presented ShinAI's work under a single idea: using AI to give people their human hours back. What we work on is the knowledge that stays inside a company without ever being written down. Years of judgment, skill the hands remember, documents piled up over time. All of it belongs to the company, and yet none of it is in a form anyone can pull out when it is needed. Often it simply leaves when a person does. From our base in Takasaki, Gunma, ShinAI helps companies structure that tacit knowledge and turn it into AI that works where the work happens. Efficiency is not the goal in itself. When AI takes on information processing and routine judgment, people can return to what only people can do: creating, deciding, and building relationships. That is what we mean by optimisation. The press release from the day is available on the Takasaki Chamber of Commerce and Industry website (in Japanese). View the press release (PDF) Back to all news"
+      "text": "Home \n › \n News \n › \n Talk at the 9th Takasaki CCI joint press conference \n\n 2025.12.05 \n Talk \n\n Speaking at the 9th Takasaki CCI joint press conference \n\n On 5 December 2025, ShinAI founder Masakuni Shibata spoke at the 9th joint press conference hosted by the Takasaki Chamber of Commerce and Industry.\n\n The talk presented ShinAI's work under a single idea: using AI to give people their human hours back.\n\n What we work on is the knowledge that stays inside a company without ever being written down. Years of judgment, skill the hands remember, documents piled up over time. All of it belongs to the company, and yet none of it is in a form anyone can pull out when it is needed. Often it simply leaves when a person does.\n\n From our base in Takasaki, Gunma, ShinAI helps companies structure that tacit knowledge and turn it into AI that works where the work happens. Efficiency is not the goal in itself. When AI takes on information processing and routine judgment, people can return to what only people can do: creating, deciding, and building relationships. That is what we mean by optimisation.\n\n The press release from the day is available on the Takasaki Chamber of Commerce and Industry website (in Japanese).\n\n View the press release (PDF)\n\n Back to all news"
     },
     {
-      "path": "privacy.html",
+      "id": "privacy#0",
       "title": "Privacy Policy | ShinAI",
       "url": "https://shinai-inc.jp/en/privacy.html",
-      "text": "Privacy Policy Privacy Policy ShinAI Inc. (\"we\", \"the Company\") obtains personal information only within the scope our business requires, and handles it appropriately and securely. This policy sets out how personal information is handled in the services we provide and on this website. 1. Information we collect We may collect the following information. Information you provide when making an enquiry or requesting a free consultation: company or organisation name, your name, email address, telephone number, and the substance of your enquiry Information relating to your use of this site (access activity, environment, and similar information that does not directly identify an individual) The content of enquiries entered into the AI assistant 2. Purposes of use We use the information we collect within the scope of the following purposes. To respond to enquiries and consultations, and to contact you To propose and provide services, and to perform contracts To improve the quality of our services and this site 3. Disclosure to third parties Except where required by law, we do not provide personal information to third parties without the consent of the individual concerned. Where we outsource part of our work, we exercise appropriate oversight. 4. Use of external services Some features of this site, such as the AI assistant, may use external AI services to generate responses. In such cases we handle your information only to the extent necessary and take care over its secure management. 5. Security management To prevent the leakage, loss or damage of personal information, we take reasonable security measures including access control and encryption of communications. 6. Requests for disclosure, correction or deletion Where an individual requests disclosure, correction, suspension of use, or deletion of their personal information, we will verify their identity and respond in accordance with the law. 7. Revisions to this policy We may review and revise the contents of this policy as necessary. Where a significant change is made, we will give notice on this site. Contact for privacy enquiries For enquiries about the handling of personal information, please write to contact@shinai-inc.jp. We receive enquiries on weekdays, 9:00–18:00 JST. Language This is a translation provided for convenience. The Japanese version is the original and prevails in the event of any discrepancy. Established 8 August 2026 ShinAI Inc."
+      "text": "Privacy Policy \n Privacy Policy \n \n ShinAI Inc. (\"we\", \"the Company\") obtains personal information only within\n the scope our business requires, and handles it appropriately and securely.\n\n This policy sets out how personal information is handled in the services we provide\n and on this website."
     },
     {
-      "path": "terms.html",
+      "id": "privacy#1",
+      "title": "1. Information we collect｜Privacy Policy | ShinAI",
+      "url": "https://shinai-inc.jp/en/privacy.html",
+      "text": "We may collect the following information. \n \n Information you provide when making an enquiry or requesting a free consultation: company or organisation name, your name, email address, telephone number, and the substance of your enquiry \n Information relating to your use of this site (access activity, environment, and similar information that does not directly identify an individual) \n The content of enquiries entered into the AI assistant"
+    },
+    {
+      "id": "privacy#2",
+      "title": "2. Purposes of use｜Privacy Policy | ShinAI",
+      "url": "https://shinai-inc.jp/en/privacy.html",
+      "text": "We use the information we collect within the scope of the following purposes. \n \n To respond to enquiries and consultations, and to contact you \n To propose and provide services, and to perform contracts \n To improve the quality of our services and this site"
+    },
+    {
+      "id": "privacy#3",
+      "title": "3. Disclosure to third parties｜Privacy Policy | ShinAI",
+      "url": "https://shinai-inc.jp/en/privacy.html",
+      "text": "Except where required by law, we do not provide personal information to third parties\n without the consent of the individual concerned. Where we outsource part of our work,\n we exercise appropriate oversight."
+    },
+    {
+      "id": "privacy#4",
+      "title": "4. Use of external services｜Privacy Policy | ShinAI",
+      "url": "https://shinai-inc.jp/en/privacy.html",
+      "text": "Some features of this site, such as the AI assistant, may use external AI services to generate responses.\n In such cases we handle your information only to the extent necessary and take care over its secure management."
+    },
+    {
+      "id": "privacy#5",
+      "title": "5. Security management｜Privacy Policy | ShinAI",
+      "url": "https://shinai-inc.jp/en/privacy.html",
+      "text": "To prevent the leakage, loss or damage of personal information, we take reasonable\n security measures including access control and encryption of communications."
+    },
+    {
+      "id": "privacy#6",
+      "title": "6. Requests for disclosure, correction or deletion｜Privacy Policy | ShinAI",
+      "url": "https://shinai-inc.jp/en/privacy.html",
+      "text": "Where an individual requests disclosure, correction, suspension of use, or deletion of\n their personal information, we will verify their identity and respond in accordance with the law."
+    },
+    {
+      "id": "privacy#7",
+      "title": "7. Revisions to this policy｜Privacy Policy | ShinAI",
+      "url": "https://shinai-inc.jp/en/privacy.html",
+      "text": "We may review and revise the contents of this policy as necessary.\n Where a significant change is made, we will give notice on this site.\n\n Contact for privacy enquiries \n \n For enquiries about the handling of personal information, please write to\n contact@shinai-inc.jp .\n We receive enquiries on weekdays, 9:00–18:00 JST.\n\n Language \n \n This is a translation provided for convenience. The\n Japanese version \n is the original and prevails in the event of any discrepancy.\n\n Established 8 August 2026 \n ShinAI Inc."
+    },
+    {
+      "id": "terms#0",
       "title": "Terms of Use | ShinAI",
       "url": "https://shinai-inc.jp/en/terms.html",
-      "text": "Terms of Use Terms of Use These terms set out the conditions for using this website, operated by ShinAI Inc. (\"we\", \"the Company\"). By using this site, you are deemed to have agreed to these terms. 1. Copyright Rights in the text, images, design and other information published on this site belong to the Company or to the rightful holder. Please refrain from reproducing, republishing, altering or distributing them without permission. 2. Information published here While we take care over the accuracy of the information on this site, we do not warrant its completeness or its fitness for any particular purpose. The contents of this site may be changed or removed without notice. 3. About the AI assistant The AI assistant on this site is intended for general guidance. Its answers are for reference. Formal proposals and the terms of any contract are confirmed through individual consultation. 4. Prohibited conduct The following conduct is prohibited when using this site. Infringing the rights of the Company or of any third party Interfering with the operation of this site, or attempting unauthorised access Transmitting false information 5. Disclaimer To the extent permitted by law, the Company accepts no liability for damage arising from the use of this site or from any inability to use it. 6. Governing law The interpretation and application of these terms are governed by the laws of Japan. Enquiries For enquiries about these terms, please write to contact@shinai-inc.jp. Language This is a translation provided for convenience. The Japanese version is the original and prevails in the event of any discrepancy. Established 8 August 2026 ShinAI Inc."
+      "text": "Terms of Use \n Terms of Use \n \n These terms set out the conditions for using this website, operated by\n ShinAI Inc. (\"we\", \"the Company\").\n\n By using this site, you are deemed to have agreed to these terms."
+    },
+    {
+      "id": "terms#1",
+      "title": "1. Copyright｜Terms of Use | ShinAI",
+      "url": "https://shinai-inc.jp/en/terms.html",
+      "text": "Rights in the text, images, design and other information published on this site\n belong to the Company or to the rightful holder.\n Please refrain from reproducing, republishing, altering or distributing them without permission."
+    },
+    {
+      "id": "terms#2",
+      "title": "2. Information published here｜Terms of Use | ShinAI",
+      "url": "https://shinai-inc.jp/en/terms.html",
+      "text": "While we take care over the accuracy of the information on this site,\n we do not warrant its completeness or its fitness for any particular purpose.\n The contents of this site may be changed or removed without notice."
+    },
+    {
+      "id": "terms#3",
+      "title": "3. About the AI assistant｜Terms of Use | ShinAI",
+      "url": "https://shinai-inc.jp/en/terms.html",
+      "text": "The AI assistant on this site is intended for general guidance.\n Its answers are for reference. Formal proposals and the terms of any contract\n are confirmed through individual consultation."
+    },
+    {
+      "id": "terms#4",
+      "title": "4. Prohibited conduct｜Terms of Use | ShinAI",
+      "url": "https://shinai-inc.jp/en/terms.html",
+      "text": "The following conduct is prohibited when using this site. \n \n Infringing the rights of the Company or of any third party \n Interfering with the operation of this site, or attempting unauthorised access \n Transmitting false information"
+    },
+    {
+      "id": "terms#5",
+      "title": "5. Disclaimer｜Terms of Use | ShinAI",
+      "url": "https://shinai-inc.jp/en/terms.html",
+      "text": "To the extent permitted by law, the Company accepts no liability for damage arising\n from the use of this site or from any inability to use it."
+    },
+    {
+      "id": "terms#6",
+      "title": "6. Governing law｜Terms of Use | ShinAI",
+      "url": "https://shinai-inc.jp/en/terms.html",
+      "text": "The interpretation and application of these terms are governed by the laws of Japan.\n\n Enquiries \n \n For enquiries about these terms, please write to\n contact@shinai-inc.jp .\n\n Language \n \n This is a translation provided for convenience. The\n Japanese version \n is the original and prevails in the event of any discrepancy.\n\n Established 8 August 2026 \n ShinAI Inc."
     }
-  ]
+  ],
+  "embedModel": null,
+  "embedDims": 0
 }

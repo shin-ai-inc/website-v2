@@ -12,13 +12,11 @@ import {
   MAX_MESSAGE_CHARS
 } from "../api/lib/guard.mjs";
 
-const KB = {
-  locale: "ja",
-  docs: [{
-    path: "index.html", title: "ShinAI", url: "https://shinai-inc.jp/",
-    text: "シンアイ株式会社は群馬県高崎市を拠点に、企業の暗黙知をAI資産へ変える支援を行う。連絡先 contact@shinai-inc.jp"
-  }]
-};
+/* 検索層が選んだ根拠の並び。buildSystemPrompt はこれだけを受け取る。 */
+const KB = [{
+  id: "index#0", title: "会社概要｜ShinAI", url: "https://shinai-inc.jp/",
+  text: "シンアイ株式会社は群馬県高崎市を拠点に、企業の暗黙知をAI資産へ変える支援を行う。連絡先 contact@shinai-inc.jp"
+}];
 
 /* ---- 入力の分類 ---- */
 
@@ -69,7 +67,8 @@ test("知識を含み、越権を禁じる規範を持つ", () => {
 
 test("知識に無いことは答えない指示を含む(幻覚の抑止)", () => {
   const p = buildSystemPrompt(KB, "ja");
-  assert.ok(/わからない|お問い合わせ|不明/.test(p), "不明時の逃げ道を指示する");
+  assert.ok(/問い合わせ/.test(p), "不明時の逃げ道を指示する");
+  assert.ok(/推測/.test(p), "推測で補うことを禁じる");
 });
 
 test("言語ごとに指示が切り替わる", () => {

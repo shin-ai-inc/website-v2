@@ -16,8 +16,42 @@ import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
 import { classifyInput, buildSystemPrompt, sanitizeAnswer } from "./lib/guard.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
+import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
+import { normalizeVector } from "./lib/vector.mjs";
 import KB_JA from "./knowledge.ja.json";
 import KB_EN from "./knowledge.en.json";
+
+/* 索引はモジュールの評価時に一度だけ組む。Worker のインスタンスは
+   複数のリクエストで使い回されるため、実質的に起動時の1回で済む。 */
+const INDEX = { ja: buildIndex(KB_JA.chunks), en: buildIndex(KB_EN.chunks) };
+
+/* 渡す根拠の件数。増やすほど取りこぼしは減るが、埋もれの再発と費用増を招く。
+   平均110字なので6件でも700字程度に収まる。 */
+const TOP_K = 6;
+
+/**
+ * 質問を埋め込みへ変換する。失敗しても検索は字面のみで成立するため、
+ * ここで止めない(埋め込みの不調で全体が沈黙する方が実害が大きい)。
+ */
+const embedQuery = async (text, env, model, dims) => {
+  if (!model) return null;
+  try {
+    const res = await fetch("https://api.openai.com/v1/embeddings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({ model, input: text, dimensions: dims })
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const vec = data.data?.[0]?.embedding;
+    return vec ? Float32Array.from(normalizeVector(vec)) : null;
+  } catch {
+    return null;
+  }
+};
 
 /* 利用者に返す定型文。内部の事情(どの規則に当たったか)は一切明かさない。 */
 const REPLY = {
@@ -164,10 +198,14 @@ export default {
       return json({ success: true, response: reply.busy }, 200, origin);
     }
 
-    /* --- 応答生成 --- */
+    /* --- 検索: 質問に関係する根拠だけを選ぶ --- */
     const kb = locale === "en" ? KB_EN : KB_JA;
     const started = Date.now();
     try {
+      const queryVec = await embedQuery(parsed.value.message, env, kb.embedModel, kb.embedDims);
+      const picked = hybridSearch(parsed.value.message, queryVec, INDEX[locale], { k: TOP_K });
+      const systemPrompt = buildSystemPrompt(picked, locale);
+
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -176,12 +214,10 @@ export default {
         },
         body: JSON.stringify({
           model: env.MODEL || "gpt-4o-mini",
-          /* 知識は system、利用者入力は user。同一文字列に連結しないことで
-             モデルの指示階層を働かせ、入力が指示に化けるのを防ぐ。
-             知識を必ず先頭に置き、時刻等の可変要素を混ぜない
-             (混ぜるとOpenAIのプロンプトキャッシュが永久に効かず課金が数倍になる)。 */
+          /* 根拠は system、利用者入力は user。同一文字列に連結しないことで
+             モデルの指示階層を働かせ、入力が指示に化けるのを防ぐ。 */
           messages: [
-            { role: "system", content: buildSystemPrompt(kb, locale) },
+            { role: "system", content: systemPrompt },
             { role: "user", content: parsed.value.message }
           ],
           max_tokens: Number(env.MAX_TOKENS || 400),
@@ -211,6 +247,10 @@ export default {
         locale,
         blocked: screened.blocked,
         blockReason: screened.reason || null,
+        /* 検索が何を根拠に選んだか。答えの質が落ちたとき、生成と検索の
+           どちらが原因かをログだけで切り分けられる(本文は残さない)。 */
+        hits: picked.map((c) => c.id),
+        dense: Boolean(queryVec),
         inputTokens: usage.prompt_tokens || 0,
         outputTokens: usage.completion_tokens || 0,
         cachedTokens: usage.prompt_tokens_details?.cached_tokens || 0,
