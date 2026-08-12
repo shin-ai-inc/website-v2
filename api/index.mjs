@@ -13,7 +13,7 @@
   秘密はコードに置かない。OPENAI_API_KEY は wrangler secret でのみ投入する。
 */
 import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
-import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer } from "./lib/guard.mjs";
+import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed } from "./lib/guard.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
@@ -271,7 +271,11 @@ export default {
 
       const data = await res.json();
       const usage = data.usage || {};
-      const answer = sanitizeAnswer(data.choices?.[0]?.message?.content || "");
+      const answer = sanitizeAnswer(data.choices?.[0]?.message?.content || "",
+        /* 挨拶は相手が使った言い方に揃える。使っていなければ落とす。
+           モデルは応対例の「こんにちは！」を場面に関わらず写すため、
+           ここで整える。 */
+        { greeting: greetingUsed(parsed.value.message), greeted: false });
 
       /* --- 統制3: 出力ゲート(結果で捕まえる) --- */
       const screened = screenAnswer(answer, locale);

@@ -117,11 +117,11 @@ export function classifyInput(raw) {
 const OFFER_SLOT = "{{OFFER}}";
 
 export const OFFERS_JA = [
-  "どのようなことをお知りになりたいでしょうか。",
+  "どのようなことをお知りになりたいでしょうか？",
   "お困りのことがあれば、わかる範囲でお答えいたします。",
-  "どういったことでお悩みでしょうか。",
+  "どういったことでお悩みでしょうか？",
   "はい、承ります。どうぞお聞かせください。",
-  "気になっていることをお聞かせいただけますでしょうか。"
+  "気になっていることをお聞かせいただけますでしょうか？"
 ];
 
 export const OFFERS_EN = [
@@ -162,6 +162,9 @@ const RULES_JA = [
   "- 名乗るのは、挨拶されたときと名前を尋ねられたときだけ。",
   "- 「資料」「記載がありません」はこちらの内部の言い方で、訪問者に通じない。使わない。",
   "- 読点を減らす。意味の切れ目にだけ打つ。",
+  "- 挨拶は「こんにちは！」のように「！」で結ぶ。句点で閉じると素っ気なく響く。",
+  "- 挨拶されていないのに挨拶で書き出さない。相手が「こんばんは」なら「こんばんは！」と合わせる。",
+  "- 問いかけは「？」で結ぶ。「〜でしょうか。」と句点で閉じない。",
   "- 人物を「彼」「彼女」で受けない。氏名か役職で受ける。",
   "",
   "してはいけないこと:",
@@ -183,7 +186,7 @@ const RULES_JA = [
   "応対の例（この調子で書く）:",
   "",
   "訪問者: こんにちは",
-  "あなた: こんにちは。" + OFFER_SLOT,
+  "あなた: こんにちは！" + OFFER_SLOT,
   "",
 
   "訪問者: 製造業ですが使えますか",
@@ -236,6 +239,7 @@ const RULES_EN = [
   "How to speak:",
   "- Never use our internal vocabulary. Words like material or knowledge base mean nothing to a visitor.",
   "   Say instead that you do not have that information to hand.",
+  "- Greet only when greeted, and mirror what the visitor used. Do not open a plain question with Hello.",
   "- Refer to people by name or role, never by he or she.",
   "   The material does not state anyone's pronouns, so a pronoun is a guess about a real person.",
   "   Write Mr Shibata, the founder, or the CTO instead, and repeat the name where a pronoun would go.",
@@ -261,7 +265,7 @@ const RULES_EN = [
   "Worked examples (match this manner):",
   "",
   "Visitor: Hello",
-  "You: Hello. " + OFFER_SLOT,
+  "You: Hello! " + OFFER_SLOT,
   "",
   "Visitor: We are a manufacturer. Would this work for us?",
   "You: Yes. Manufacturers use it to put an experienced inspector's judgement into words others can follow, and to catch signs of failure in machine data. It gives grounds to calls that used to rest on instinct, which makes handing down skill easier.",
@@ -333,6 +337,47 @@ const LEAK_PATTERNS = [
 const PRONOUN_SUBJECT = /(^|[。\n]\s*)(?:彼|彼女)(?:は|も)/g;
 const PRONOUN_OTHER = /(?:彼|彼女)(が|の|を|に|へ|と|も|は)/g;
 
+/* 終止符の細部。ここを句点で閉じると、人が書いた文には見えない。
+
+   問いかけを「〜でしょうか。」と閉じ、挨拶を「こんにちは。」と閉じるのは、
+   意味は通るが温度がない。規範にも書いたが、細部ほど生成は揺れるため、
+   ここでも整える。文の途中の「か。」は対象にしない（文末だけを見る）。 */
+const QUESTION_PERIOD = /(でしょうか|ますか|ですか|ませんか)。(?=\s|$)/g;
+const GREETING_PERIOD = /^(こんにちは|こんばんは|おはようございます|はじめまして|はい、承ります)。/;
+
+/* 挨拶の語。挨拶されていないのに挨拶を返すのは、応対の型をなぞっている印。 */
+const GREETING_WORDS = /(こんにちは|こんばんは|おはよう|はじめまして|はろー|ハロー|hello|hi there)/i;
+
+/* 応答の頭に付いた挨拶。相手が挨拶していないときは落とす。
+   応対例に挨拶の往復を書いた結果、「何者ですか」にまで
+   「こんにちは！」が付いた(実測)。 */
+const LEADING_GREETING = /^(こんにちは|こんばんは|おはようございます|はじめまして|hello|hi)[！!。、,\s]+/i;
+
+/** 利用者の発言が挨拶を含むか。呼び出し側が判定に使う。 */
+export function hasGreeting(text) {
+  return GREETING_WORDS.test(typeof text === "string" ? text : "");
+}
+
+/* 利用者が使った挨拶と、返すべき言い方の対応。
+   応対例に「こんにちは！」と書いてあるため、モデルは場面を問わずそれを写す。
+   「こんばんは」に「こんにちは」と返していた(実測)。
+   相手の言葉に合わせることは判定できるのだから、こちら側の仕事にする。 */
+const GREETING_FORMS = [
+  [/こんばんは|good evening/i, "こんばんは"],
+  [/おはよう|good morning/i, "おはようございます"],
+  [/はじめまして|初めまして/, "はじめまして"],
+  [/こんにちは|hello|hi there|good afternoon/i, "こんにちは"]
+];
+
+/** 利用者が使った挨拶を、返す形で取り出す。無ければ null。 */
+export function greetingUsed(text) {
+  const s = typeof text === "string" ? text : "";
+  for (const [pattern, form] of GREETING_FORMS) {
+    if (pattern.test(s)) return form;
+  }
+  return null;
+}
+
 /* 問い返しを落としたあとに、これだけの中身が残るなら付け足しだったと判断する。
    残らないなら、その問いかけ自体が用件だったのだから触らない。 */
 const MIN_ANSWER_WITHOUT_CLOSER = 10;
@@ -346,8 +391,17 @@ const CLOSER_TIC = /\s*(何か)?(他に|ほかに)?[^。\n]{0,12}(お困りの�
  * クライアントは textContent で描画するのでHTMLは実行されないが、
  * 生の断片が本文に見えること自体が品位を損なうため、ここで落とす。
  */
-export function sanitizeAnswer(raw) {
+export function sanitizeAnswer(raw, options = {}) {
   let text = typeof raw === "string" ? raw : "";
+
+  /* 挨拶されていないのに挨拶で書き出さない。
+     句読点を整える前に落とす（落とした後に続く語が文頭になるため）。 */
+  if (options.greeting) {
+    /* 相手が使った挨拶に揃える。頭に挨拶が無ければ何もしない。 */
+    text = text.replace(LEADING_GREETING, options.greeting + "！");
+  } else if (options.greeted === false) {
+    text = text.replace(LEADING_GREETING, "");
+  }
 
   for (const pattern of LEAK_PATTERNS) {
     if (pattern.test(text)) {
@@ -376,6 +430,9 @@ export function sanitizeAnswer(raw) {
      日本語は主語を省けるため、文頭のそれは落とすだけで自然な文になる。
      格助詞が続いて落とせない場合だけ「同氏」へ置き換える。 */
   text = text.replace(PRONOUN_SUBJECT, "$1").replace(PRONOUN_OTHER, "同氏$1");
+
+  /* 終止符を整える。挨拶は「！」、問いかけは「？」。 */
+  text = text.replace(QUESTION_PERIOD, "$1？").replace(GREETING_PERIOD, "$1！").trim();
 
   /* 「資料」はこちらの内部の言い方で、訪問者には何を指すのか分からない。
      規範でも禁じているが、断りの文脈でとくに出やすいため、ここでも言い換える。

@@ -8,7 +8,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer,
+  classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, hasGreeting, greetingUsed,
   MAX_MESSAGE_CHARS
 } from "../api/lib/guard.mjs";
 
@@ -176,8 +176,9 @@ test("末尾の型どおりの問い返しを落とす", () => {
 });
 
 test("挨拶への短い返しでは問いかけを残す(それ自体が用件)", () => {
-  const greet = "こんにちは。何かお困りのことがありましたら、わかる範囲でお答えいたします。";
-  assert.equal(sanitizeAnswer(greet), greet);
+  const out = sanitizeAnswer("こんにちは。何かお困りのことがありましたら、わかる範囲でお答えいたします。");
+  assert.match(out, /^こんにちは！/, "挨拶は感嘆符で結ぶ");
+  assert.match(out, /お困りのこと/, "用件を促す一文は残す");
 });
 
 test("「記載がありません」という内部の言い方を残さない", () => {
@@ -202,9 +203,10 @@ test("短い事実回答でも末尾の問い返しを落とす(長さで判断�
   assert.match(out, /シンアイ株式会社/);
 });
 
-test("問いかけ自体が用件のときは触らない", () => {
-  const only = "何かお困りのことはございませんか。";
-  assert.equal(sanitizeAnswer(only), only);
+test("問いかけ自体が用件のときは落とさない", () => {
+  const out = sanitizeAnswer("何かお困りのことはございませんか。");
+  assert.match(out, /お困りのこと/, "これ自体が用件なので残す");
+  assert.ok(out.endsWith("？"), "問いかけは疑問符で結ぶ");
 });
 
 /* ---- 用件を促す一文の入れ替え ---- */
@@ -225,4 +227,73 @@ test("候補は複数あり、種を変えれば別の一文になる", () => {
   const seen = new Set([0, 1, 2, 3, 4].map((i) => pickOffer("ja", i)));
   assert.ok(seen.size >= 4, `毎回同じでは変化にならない: ${seen.size}種`);
   assert.ok(pickOffer("en", 0) !== pickOffer("ja", 0), "言語で切り替わる");
+});
+
+/* ---- 終止符の細部 ---- */
+
+test("問いかけを句点で閉じない", () => {
+  const cases = [
+    ["どのようなことをお知りになりたいでしょうか。", "でしょうか？"],
+    ["ご相談は初めてですか。", "ですか？"],
+    ["何かお探しではありませんか。", "ませんか？"]
+  ];
+  for (const [input, expected] of cases) {
+    assert.ok(sanitizeAnswer(input).endsWith(expected), sanitizeAnswer(input));
+  }
+});
+
+test("挨拶を句点で閉じない", () => {
+  assert.match(sanitizeAnswer("こんにちは。どういったことでお悩みでしょうか？"), /^こんにちは！/);
+  assert.match(sanitizeAnswer("はじめまして。ご質問をどうぞ。"), /^はじめまして！/);
+});
+
+test("文の途中の「か。」は触らない", () => {
+  const s = "使えるかどうか。まずは無料相談で確かめます。";
+  assert.equal(sanitizeAnswer(s), s);
+});
+
+test("挨拶でない書き出しは変えない", () => {
+  const s = "費用は目的と規模で変わります。";
+  assert.equal(sanitizeAnswer(s), s);
+});
+
+test("挨拶されていないときは、頭の挨拶を落とす", () => {
+  const out = sanitizeAnswer("こんにちは！私はShinAIサポートAIです。", { greeted: false });
+  assert.match(out, /^私はShinAIサポートAI/, out);
+});
+
+test("挨拶されたときは残す", () => {
+  const out = sanitizeAnswer("こんにちは。どういったことでお悩みでしょうか。", { greeted: true });
+  assert.match(out, /^こんにちは！/);
+});
+
+test("落とした結果、次の挨拶が文頭になれば感嘆符で結ぶ", () => {
+  const out = sanitizeAnswer("こんにちは！はじめまして。ご質問をどうぞ。", { greeted: false });
+  assert.match(out, /^はじめまして！/, out);
+});
+
+test("挨拶の有無を判定する", () => {
+  assert.equal(hasGreeting("こんばんは"), true);
+  assert.equal(hasGreeting("Hello"), true);
+  assert.equal(hasGreeting("費用はいくらですか"), false);
+});
+
+test("相手が使った挨拶に合わせる", () => {
+  const cases = [
+    ["こんばんは", "こんばんは！"],
+    ["おはようございます", "おはようございます！"],
+    ["はじめまして", "はじめまして！"],
+    ["こんにちは", "こんにちは！"]
+  ];
+  for (const [visitor, expected] of cases) {
+    const out = sanitizeAnswer("こんにちは！どういったことでお悩みでしょうか。",
+      { greeting: greetingUsed(visitor), greeted: false });
+    assert.ok(out.startsWith(expected), `${visitor} -> ${out}`);
+  }
+});
+
+test("挨拶を取り出す", () => {
+  assert.equal(greetingUsed("こんばんは"), "こんばんは");
+  assert.equal(greetingUsed("Good morning"), "おはようございます");
+  assert.equal(greetingUsed("費用はいくらですか"), null);
 });
