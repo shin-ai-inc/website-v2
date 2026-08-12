@@ -148,3 +148,40 @@ test("会社への正当な質問を作業依頼と誤らない", () => {
     assert.equal(classifyInput(s).verdict, "allow", `過剰検知: ${s}`);
   }
 });
+
+test("内部の言い方「資料」を訪問者の言葉へ置き換える", () => {
+  const cases = [
+    "申し訳ございませんが、従業員数に関する具体的な情報は資料に記載されておりません。",
+    "会社資料には土日対応の記載がありません。",
+    "資料には記述が含まれておりません。"
+  ];
+  for (const c of cases) {
+    const out = sanitizeAnswer(c);
+    assert.ok(!out.includes("資料"), `「資料」が残る: ${out}`);
+  }
+});
+
+test("置き換えても文意が壊れない", () => {
+  const out = sanitizeAnswer("資料には平日9:00から18:00と書かれています。");
+  assert.ok(!out.includes("資料"));
+  assert.match(out, /平日9:00から18:00/);
+});
+
+test("末尾の型どおりの問い返しを落とす", () => {
+  const long = "導入は規模と目的によりますが、小規模なプロトタイプであれば最短1ヶ月ほどで形にできる場合があります。" +
+               "小さく確かめながら広げる進め方です。何か他にお困りのことはございませんか。";
+  const out = sanitizeAnswer(long);
+  assert.ok(!out.includes("お困りのこと"), `問い返しが残る: ${out}`);
+  assert.match(out, /1ヶ月/, "本文は保つ");
+});
+
+test("挨拶への短い返しでは問いかけを残す(それ自体が用件)", () => {
+  const greet = "こんにちは。何かお困りのことがありましたら、わかる範囲でお答えいたします。";
+  assert.equal(sanitizeAnswer(greet), greet);
+});
+
+test("「記載がありません」という内部の言い方を残さない", () => {
+  const out = sanitizeAnswer("土日の打ち合わせについては、特に記載がありませんので、分かりかねます。");
+  assert.ok(!out.includes("記載"), out);
+  assert.match(out, /土日の打ち合わせ/);
+});

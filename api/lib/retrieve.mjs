@@ -46,10 +46,32 @@ const QUERY_STOPWORDS = [
   "教えて", "知りたい", "でしょう", "ですが", "します", "したい"
 ];
 
+/* 訪問者の言葉と、サイトの言葉のずれを埋める。
+
+   なぜ必要か。サービス紹介の本文には「サービス」という語が一度も出てこない
+   (「暗黙知の解消支援」「企業専用AIエージェント開発」と具体名で書かれている)。
+   字面一致では原理的に繋がらず、「どんなサービスがありますか」に対して
+   その語を多用するプライバシーポリシーが上位を占めた(実測)。
+
+   本来これは埋め込みが解く。ベクトルを同梱すれば言い換えは意味で繋がるため、
+   この表はその代わりの手当てであり、増やし続けるものではない。
+   訪問者が使うのにサイトが使わない、数少ない語だけを置く。 */
+const QUERY_SYNONYMS = [
+  ["サービス", "ソリューション 支援 開発"],
+  ["料金", "費用"],
+  ["価格", "費用"],
+  ["実績", "活用 導入"],
+  ["事例", "活用 導入"]
+];
+
 /** 質問から話題を指さない言い回しを落とす。資料側には適用しない。 */
 export function stripFunctionWords(text) {
   let s = typeof text === "string" ? text : "";
   for (const w of QUERY_STOPWORDS) s = s.split(w).join(" ");
+  /* 言い換えは置換でなく追加。元の語も手がかりとして残す。 */
+  for (const [term, extra] of QUERY_SYNONYMS) {
+    if (s.includes(term)) s += " " + extra;
+  }
   return s;
 }
 
@@ -81,7 +103,7 @@ export function buildIndex(chunks) {
        長いのに補正を免れる(検証で実際に短文へ勝った)。 */
     return {
       chunk, grams,
-      len: normalize(`${chunk.title} ${chunk.text}`).length || 1,
+      len: Math.max(LEN_FLOOR, normalize(`${chunk.title} ${chunk.text}`).length),
       vec: chunk.vec ? decodeVector(chunk.vec) : null
     };
   });
@@ -91,6 +113,14 @@ export function buildIndex(chunks) {
 /* この割合を超えるチャンクに現れる2文字組は、話題を区別しないので数えない。
    3割強に出る語は、日本語では助詞・語尾・定型の言い回しにあたる。 */
 const COMMON_GRAM_RATIO = 0.35;
+
+/* 長さ補正の下限。これより短いチャンクを、さらに短いというだけで優遇しない。
+
+   なぜ要るか。平方根で割る補正は、極端に短い断片に効きすぎる。
+   「どんなサービスがありますか」に対し、40字程度の工程見出し(収集・構造化など)が、
+   170字ある本命のサービス説明を上回った。短いことは、精密であることを意味しない。
+   ある長さから下は、断片であって記述ではない。 */
+const LEN_FLOOR = 150;
 
 /* 割合による足切りを効かせる最小の母数。 */
 const MIN_CORPUS_FOR_RATIO = 20;
