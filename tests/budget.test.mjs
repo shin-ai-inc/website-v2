@@ -96,3 +96,30 @@ test("英語出力も同じ規範で検査する", () => {
     false, "正常な英語案内は通す"
   );
 });
+
+/* ---- 経緯を知らない出来事への謝罪 ---- */
+
+test("苦情への謝罪は止め、人へ渡す案内に差し替える", () => {
+  const r = screenAnswer("ご不快な思いをさせてしまい、大変申し訳ございません。責任者が対応いたします。", "ja");
+  assert.equal(r.blocked, true);
+  assert.equal(r.reason, "unverified_apology");
+  assert.match(r.text, /お問い合わせフォーム/);
+  assert.ok(!/申し訳/.test(r.text), "差し替え文でも詫びない");
+});
+
+test("通常の断り文は謝罪とみなさない(過剰検知で案内を殺さない)", () => {
+  const r = screenAnswer("申し訳ありませんが、その点は資料に記載がございません。", "ja");
+  assert.equal(r.blocked, false);
+});
+
+test("英語でも経緯不明の謝罪を止める", () => {
+  assert.equal(screenAnswer("We apologise for the inconvenience caused.", "en").blocked, true);
+});
+
+test("謝罪表現の活用形を取りこぼさない", () => {
+  for (const s of ["ご不便をおかけしていることに対し、心よりお詫び申し上げます。",
+                   "ご迷惑をおかけしました。", "この度は誠に申し訳ございませんでした。",
+                   "ご不満をお感じになられているとのこと、申し訳ございません。"]) {
+    assert.equal(screenAnswer(s, "ja").blocked, true, `止まらない: ${s}`);
+  }
+});

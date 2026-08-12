@@ -92,10 +92,33 @@ test("実データで検索が要点を当てる(字面のみでも成立する�
     ["商号を教えてください", /シンアイ株式会社/],
     ["費用はどのくらいかかりますか", /費用|料金|無料相談|見積/],
     ["製造業で使えますか", /製造/],
-    ["問い合わせ先を教えてください", /contact@shinai-inc\.jp|お問い合わせ/]
+    ["問い合わせ先を教えてください", /contact@shinai-inc\.jp|お問い合わせ/],
+    /* 稀少な固有名詞が、日本語の定型的な言い回しに押し流されないこと。
+       「どんな」「ですか」を数えていた頃、この質問は代表の経歴を落として
+       無関係なFAQを6件返した。 */
+    ["柴田さんはどんな経歴の方ですか", /消防|独学|エンジニア/],
+    ["代表はAIエンジニアなのですか", /AIエンジニア/],
+    ["高崎商工会議所での登壇について教えてください", /高崎商工会議所/]
   ];
   for (const [q, expected] of cases) {
     const text = hybridSearch(q, null, index, { k: 6 }).map((c) => c.text).join("\n");
     assert.match(text, expected, `「${q}」の根拠が選ばれていない`);
   }
+});
+
+test("人物の役職を取り違えない(語をまたぐ偶然の一致に負けない)", () => {
+  const index = buildIndex(loadKb().chunks);
+  for (const q of ["柴田さんの経歴と役職を教えてください", "代表はどんな人ですか"]) {
+    const hits = hybridSearch(q, null, index, { k: 6 });
+    const top = hits.find((c) => !c.pin);
+    assert.match(top.title, /柴田|代表/, `「${q}」で ${top.title.split("\n")[0]} が1位になった`);
+  }
+});
+
+test("CTOを尋ねたら該当者のチャンクが選ばれる", () => {
+  const index = buildIndex(loadKb().chunks);
+  const hits = hybridSearch("CTOはどなたですか", null, index, { k: 6 });
+  const top = hits.find((c) => !c.pin);
+  assert.match(top.text, /最高技術責任者/);
+  assert.ok(!/柴田/.test(top.text), "代表の記述を返してはいけない");
 });

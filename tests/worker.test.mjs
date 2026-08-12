@@ -93,3 +93,19 @@ test("極端に長い出力を切り詰める(コストと表示の保護)", () 
   const long = "あ".repeat(5000);
   assert.ok(sanitizeAnswer(long).length < 2100, "上限で切る");
 });
+
+/* ---- 表示の体裁(クライアントは textContent で描画する) ---- */
+
+test("Markdownのリンクは表題とURLの両方を残して記号だけ落とす", () => {
+  const out = sanitizeAnswer("詳細は[お問い合わせフォーム](https://shinai-inc.jp/contact.html)へ。");
+  assert.ok(!out.includes("["), "角括弧が残らない");
+  assert.match(out, /お問い合わせフォーム/);
+  assert.match(out, /https:\/\/shinai-inc\.jp\/contact\.html/);
+});
+
+test("強調・見出し・箇条書きの記号が画面に出ない", () => {
+  const out = sanitizeAnswer("## 事業内容\n**暗黙知の解消支援**\n- 収集\n- 構造化");
+  assert.ok(!/[#*]/.test(out), `記号が残っている: ${out}`);
+  assert.match(out, /暗黙知の解消支援/);
+  assert.match(out, /・収集/);
+});

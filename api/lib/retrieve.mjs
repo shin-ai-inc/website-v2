@@ -7,10 +7,11 @@
   「資料にない」と答えた(実測)。渡せることと、見つけられることは別である。
   そこで、質問に関係するチャンクだけを選んで渡す。
 
-  なぜベクトルDBを使わないか。
-  チャンクは百件程度で、埋め込みの利点(意味の近さ)より、外部依存・鍵・
-  同期ずれ・埋め込み費用の負債が上回る。この規模では字面の一致で十分に当たる。
-  必要になったら、この層だけを差し替えればよい(index.mjs は選定結果しか見ない)。
+  なぜベクトルDBを立てないか。
+  チャンクは百件程度で、全件との内積は1ミリ秒に満たない。埋め込みはビルド時に
+  確定して同梱するため、実行時に要るのは質問1件分の変換だけ。外部DBは鍵・
+  同期ずれ・障害点・費用を増やすだけで、この規模では何も速くしない。
+  数千件を超えたら、この層だけを差し替えればよい(index.mjs は選定結果しか見ない)。
 
   なぜ文字バイグラムか。
   日本語は語の区切りが自明でなく、形態素解析器を入れると辞書とWorkerの容量が要る。
@@ -26,6 +27,30 @@ export function normalize(text) {
     .toLowerCase()
     .replace(/[\s　]+/g, "")
     .replace(/[、。・,.:：;；!！?？"'`（）()「」『』【】\[\]\-–—_/\\|~〜]/g, "");
+}
+
+/* 質問文から落とす言い回し。話題を一切区別しない語だけを挙げる。
+
+   なぜ必要か。IDF は「資料の中での珍しさ」を測る。ところが資料は平叙文の集まりで、
+   疑問詞や依頼表現はそこにほとんど現れない。結果、話題を何も指していない
+   「どんな」が最も珍しい語として最大の重みを得て、「柴田」を押し流した(実測)。
+   質問文にしか出ない言い回しは、資料側の統計では正しく減点できない。
+
+   長い表現から順に消す(「ますか」を先に消すと「教えてください」が崩れる、
+   といった取りこぼしを避ける)。 */
+const QUERY_STOPWORDS = [
+  "教えてください", "教えて下さい", "ください", "下さい", "お願いします",
+  "について", "に関して", "ですか", "でしょうか", "ましょうか", "ますか",
+  "どのような", "どのくらい", "どれくらい", "どんな", "どちら", "どなた",
+  "いくら", "どこ", "いつ", "だれ", "誰", "なぜ", "どう", "どの",
+  "教えて", "知りたい", "でしょう", "ですが", "します", "したい"
+];
+
+/** 質問から話題を指さない言い回しを落とす。資料側には適用しない。 */
+export function stripFunctionWords(text) {
+  let s = typeof text === "string" ? text : "";
+  for (const w of QUERY_STOPWORDS) s = s.split(w).join(" ");
+  return s;
 }
 
 /** 2文字組の集合。1文字しかない語も取りこぼさないため単独で1件とする。 */
@@ -51,10 +76,34 @@ export function buildIndex(chunks) {
     for (const g of grams) df.set(g, (df.get(g) || 0) + 1);
     /* ベクトルは索引を組むときに一度だけ復号する。
        質問ごとに復号すると、件数×次元の展開を毎回繰り返すことになる。 */
-    return { chunk, grams, vec: chunk.vec ? decodeVector(chunk.vec) : null };
+    /* 長さの補正には実際の字数を使う。一意な2文字組の数で割ると、
+       同じ言い回しの繰り返しで嵩んだ文章ほど一意組が少なくなり、
+       長いのに補正を免れる(検証で実際に短文へ勝った)。 */
+    return {
+      chunk, grams,
+      len: normalize(`${chunk.title} ${chunk.text}`).length || 1,
+      vec: chunk.vec ? decodeVector(chunk.vec) : null
+    };
   });
   return { entries, df, total: entries.length };
 }
+
+/* この割合を超えるチャンクに現れる2文字組は、話題を区別しないので数えない。
+   3割強に出る語は、日本語では助詞・語尾・定型の言い回しにあたる。 */
+const COMMON_GRAM_RATIO = 0.35;
+
+/* 割合による足切りを効かせる最小の母数。 */
+const MIN_CORPUS_FOR_RATIO = 20;
+
+/* 格助詞。これを含む2文字組は、語の切れ目をまたいだ偶然の並びである確率が高い。
+
+   なぜ捨てるか。「柴田さんの経歴と役職」を尋ねたとき、別人(CTO)の紹介文が
+   1位になった。一致していたのは「の経」ただ一つで、
+   「エンジニアリング(の経)験」という語をまたぐ断片だった。
+   こうした断片は資料に稀にしか現れないため、IDFはこれを最も価値ある手がかりと
+   見なし、本命の「柴田」を上回らせる。稀少さは、必ずしも情報量ではない。
+   結果、代表を最高技術責任者と紹介する誤答が生じた。 */
+const PARTICLES = new Set(["の", "を", "に", "は", "が", "と", "へ", "も", "や", "で"]);
 
 /* 一致が皆無に等しいチャンクを混ぜない下限。
    雑音を渡すとモデルが引きずられ、関係のない話題へ流れる。 */
@@ -69,7 +118,7 @@ export function selectChunks(query, index, options = {}) {
   const k = options.k || 6;
   const entries = index && index.entries ? index.entries : [];
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
-  const q = bigrams(query);
+  const q = bigrams(stripFunctionWords(query));
 
   if (!q.size) return pinned.slice(0, k);
 
@@ -81,17 +130,27 @@ export function selectChunks(query, index, options = {}) {
 function scoreLexical(q, index) {
   const entries = index && index.entries ? index.entries : [];
   const scored = [];
-  for (const { chunk, grams } of entries) {
+  for (const { chunk, grams, len } of entries) {
     if (chunk.pin) continue;
     let score = 0;
     for (const g of q) {
       if (!grams.has(g)) continue;
-      /* 珍しい語ほど強い手がかり。どのチャンクにもある語は効かせない。 */
-      score += Math.log(1 + index.total / (index.df.get(g) || 1));
+      if (PARTICLES.has(g[0]) || PARTICLES.has(g[1])) continue;
+      const df = index.df.get(g) || 1;
+      /* 多くのチャンクに現れる2文字組は捨てる。日本語の疑問文は
+         「どんな」「ですか」で埋まっており、これを数えると、
+         どのFAQにも共通する言い回しが、稀少で決定的な固有名詞を押し流す
+         (「柴田さんはどんな経歴の方ですか」で経歴の記述を落とした実例がある)。 */
+      /* 件数が少ないうちは割合に意味がない(3件中2件は「頻出」ではない)。
+         十分な母数があるときだけ効かせる。 */
+      if (index.total >= MIN_CORPUS_FOR_RATIO && df > index.total * COMMON_GRAM_RATIO) continue;
+      /* log(N/df)。log(1 + N/df) だと頻出語にも下駄を履かせてしまい、
+         稀少語との差が6倍程度しか開かない。 */
+      score += Math.log(index.total / df);
     }
-    /* 長いチャンクが語数だけで勝たないよう、規模で割る。
+    /* 長いチャンクが語数だけで勝たないよう、字数で割る。
        線形で割ると短文が勝ちすぎるため平方根にする。 */
-    score /= Math.sqrt(grams.size || 1);
+    score /= Math.sqrt(len);
     if (score > MIN_SCORE) scored.push({ chunk, score });
   }
 
@@ -126,7 +185,7 @@ export function hybridSearch(query, queryVec, index, options = {}) {
   const k = options.k || 6;
   const entries = index && index.entries ? index.entries : [];
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
-  const q = bigrams(query);
+  const q = bigrams(stripFunctionWords(query));
   if (!q.size) return pinned.slice(0, k);
 
   const lexical = scoreLexical(q, index).slice(0, ARM_DEPTH);

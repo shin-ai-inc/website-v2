@@ -72,7 +72,17 @@ export function chunkPage(html, page) {
     }
   );
 
-  /* 2) 定義リスト。項目名と値の対応が命なので、行として綴じる。
+  /* 2) article。定義上そこで完結した一単位であり、HTMLが境界を宣言している。
+        見出しで割ると誤る。人物カードは役職が氏名の見出しより前に置かれるため、
+        見出し基準では各人の役職が一つ前の人のチャンク末尾に付き、
+        代表を最高技術責任者と紹介する誤答が実際に起きた。 */
+  body = body.replace(/<article\b[^>]*>([\s\S]*?)<\/article>/gi, (_, inner) => {
+    const h = inner.match(/<h[234]\b[^>]*>([\s\S]*?)<\/h[234]>/i);
+    push(h ? h[1] : "", inner);
+    return " ";
+  });
+
+  /* 3) 定義リスト。項目名と値の対応が命なので、行として綴じる。
         会社概要は最も問われるうえ短いので、常時同梱(pin)にする。 */
   body = body.replace(/<dl\b[^>]*>([\s\S]*?)<\/dl>/gi, (_, inner) => {
     const lines = [];
@@ -89,7 +99,7 @@ export function chunkPage(html, page) {
     return " ";
   });
 
-  /* 3) 残りを見出しで割る。見出しの直前までが前節の本文。 */
+  /* 4) 残りを見出しで割る。見出しの直前までが前節の本文。 */
   const parts = body.split(/(<h[23]\b[^>]*>[\s\S]*?<\/h[23]>)/i);
   let heading = "";
   let buffer = parts[0] || "";

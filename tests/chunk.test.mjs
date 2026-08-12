@@ -90,3 +90,21 @@ test("実サイト: どのチャンクも過大にならない(埋もれの再�
     assert.ok(c.text.length <= 1200, `${c.title} が ${c.text.length}字と長すぎる`);
   }
 });
+
+test("article は見出しでなくその境界で切る(役職が前の人へずれない)", () => {
+  /* 人物カードは役職が氏名の見出しより前に置かれる。見出しで割ると
+     各人の役職が一つ前の人の末尾に付き、代表をCTOと紹介する誤答になった。 */
+  const chunks = chunkPage(wrap(`
+    <h2>メンバー紹介</h2>
+    <article><p>代表 / AIエンジニア</p><h3>柴田 昌国</h3>
+      <p>元消防士として約7年従事し、独学でAI開発を習得しました。</p></article>
+    <article><p>最高技術責任者（CTO）</p><h3>Y 氏</h3>
+      <p>大手半導体メーカーとAIスタートアップでの経験を持っています。</p></article>
+  `), PAGE);
+  const shibata = chunks.find((c) => /柴田/.test(c.title));
+  assert.ok(shibata, "氏名が題になっている");
+  assert.match(shibata.text, /代表/);
+  assert.ok(!shibata.text.includes("最高技術責任者"), "他者の役職が混ざってはいけない");
+  const y = chunks.find((c) => /Y 氏/.test(c.title));
+  assert.match(y.text, /最高技術責任者/);
+});
