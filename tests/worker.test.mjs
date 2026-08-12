@@ -185,3 +185,13 @@ test("「記載がありません」という内部の言い方を残さない",
   assert.ok(!out.includes("記載"), out);
   assert.match(out, /土日の打ち合わせ/);
 });
+
+test("人物を代名詞で受けない(文頭は落とし、続く場合は同氏へ)", () => {
+  const out = sanitizeAnswer("代表は柴田昌国です。彼は大手企業での経験を持ちます。");
+  assert.ok(!/彼/.test(out), out);
+  assert.match(out, /大手企業での経験を持ちます/);
+
+  const mid = sanitizeAnswer("彼の経歴は消防からAIへと続きます。");
+  assert.ok(!/彼/.test(mid), mid);
+  assert.match(mid, /同氏の経歴/);
+});
