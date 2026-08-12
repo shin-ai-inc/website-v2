@@ -13,7 +13,7 @@
   秘密はコードに置かない。OPENAI_API_KEY は wrangler secret でのみ投入する。
 */
 import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
-import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed } from "./lib/guard.mjs";
+import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed, greetingOnly, greetingReply } from "./lib/guard.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
@@ -195,6 +195,14 @@ export default {
     if (verdict.verdict === "crisis") {
       audit({ event: "crisis_reply", ip: ipHash });
       return json({ success: true, response: reply.crisis }, 200, origin);
+    }
+    /* 挨拶だけの入力は、問いかけを返さずここで完結させる。
+       生成に委ねると疑問形で用件を促し、鬱陶しく感じられる。
+       OpenAIを呼ばないので費用も待ち時間もない。 */
+    if (greetingOnly(parsed.value.message)) {
+      audit({ event: "greeting_reply", ip: ipHash, locale });
+      return json({ success: true, response: greetingReply(parsed.value.message, locale) },
+        200, origin);
     }
     if (verdict.verdict === "offtask") {
       audit({ event: "offtask_input", ip: ipHash });

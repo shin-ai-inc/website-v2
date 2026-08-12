@@ -369,6 +369,51 @@ const GREETING_FORMS = [
   [/こんにちは|hello|hi there|good afternoon/i, "こんにちは"]
 ];
 
+/* 挨拶だけの入力に、問いかけで返さない。
+
+   挨拶は用件ではなく社交の入り口である。そこへ「どういったことでお悩みでしょうか」
+   と返すと、相手は答える義務を負う。人の受付は、まず挨拶を返して間を置く。
+   パネルを開いた時点で案内文も見せており、同じ趣旨を二度、しかも疑問形で
+   押し出すことになる。
+
+   返すのは、答えを求めない平叙文にする。相手は返さなくてよい。
+   挨拶だけかどうかは入力から判定できるので、生成に委ねずここで決める
+   (OpenAIを呼ばないため、費用もかからず待ち時間もない)。 */
+const GREETING_REPLIES_JA = [
+  "ご覧いただきありがとうございます。",
+  "お立ち寄りいただきありがとうございます。",
+  "ゆっくりご覧ください。",
+  "ShinAIサポートAIです。気になることがあれば、いつでもどうぞ。"
+];
+
+const GREETING_REPLIES_EN = [
+  "Thank you for stopping by.",
+  "Good to have you here.",
+  "Please take your time looking around.",
+  "I am the ShinAI support AI. Ask whenever something comes to mind."
+];
+
+/** 挨拶と記号だけの入力か。用件が続いていれば false。 */
+export function greetingOnly(text) {
+  const s = (typeof text === "string" ? text : "").trim();
+  if (!s || !GREETING_WORDS.test(s)) return false;
+  const rest = s
+    .replace(/こんにちは|こんばんは|おはようございます|おはよう|はじめまして|初めまして/g, "")
+    .replace(/hello|hi there|hi|good (morning|afternoon|evening)/gi, "")
+    .replace(/[\s　。、！!？?~〜ー・,.]/g, "");
+  return rest.length === 0;
+}
+
+/** 挨拶だけの入力への返し。相手が使った言い方に合わせ、問いかけない。 */
+export function greetingReply(text, locale, seed) {
+  const list = locale === "en" ? GREETING_REPLIES_EN : GREETING_REPLIES_JA;
+  const n = typeof seed === "number"
+    ? Math.abs(Math.floor(seed)) : Math.floor(Math.random() * list.length);
+  /* 日本語は感嘆符のあとに空白を置かない。英語は置く。 */
+  if (locale === "en") return `Hello! ${list[n % list.length]}`;
+  return `${greetingUsed(text) || "こんにちは"}！${list[n % list.length]}`;
+}
+
 /** 利用者が使った挨拶を、返す形で取り出す。無ければ null。 */
 export function greetingUsed(text) {
   const s = typeof text === "string" ? text : "";
