@@ -13,7 +13,7 @@
   秘密はコードに置かない。OPENAI_API_KEY は wrangler secret でのみ投入する。
 */
 import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
-import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed, greetingOnly, greetingReply } from "./lib/guard.mjs";
+import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed, greetingOnly, pickGreetingClose } from "./lib/guard.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
@@ -196,14 +196,6 @@ export default {
       audit({ event: "crisis_reply", ip: ipHash });
       return json({ success: true, response: reply.crisis }, 200, origin);
     }
-    /* 挨拶だけの入力は、問いかけを返さずここで完結させる。
-       生成に委ねると疑問形で用件を促し、鬱陶しく感じられる。
-       OpenAIを呼ばないので費用も待ち時間もない。 */
-    if (greetingOnly(parsed.value.message)) {
-      audit({ event: "greeting_reply", ip: ipHash, locale });
-      return json({ success: true, response: greetingReply(parsed.value.message, locale) },
-        200, origin);
-    }
     if (verdict.verdict === "offtask") {
       audit({ event: "offtask_input", ip: ipHash });
       return json({ success: true, response: reply.offtask }, 200, origin);
@@ -247,7 +239,12 @@ export default {
       const picked = hybridSearch(parsed.value.message, queryVec, INDEX[locale], { k: TOP_K });
       /* 用件を促す一文は呼び出しごとに変える。モデルは前の応答を知らないため、
          ここで変えないと同じ一文が続き、画面上で単調になる（実際にそう見えた）。 */
-      const systemPrompt = buildSystemPrompt(picked, locale, pickOffer(locale));
+      /* 挨拶だけの相手には問い返さない。締めに配る一文を平叙文にし、
+         生成が疑問形になった場合は後処理で置き換える（性質は保証し、
+         言い回しは生成に任せる）。 */
+      const onlyGreeting = greetingOnly(parsed.value.message);
+      const close = onlyGreeting ? pickGreetingClose(locale) : pickOffer(locale);
+      const systemPrompt = buildSystemPrompt(picked, locale, close);
 
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
@@ -283,7 +280,11 @@ export default {
         /* 挨拶は相手が使った言い方に揃える。使っていなければ落とす。
            モデルは応対例の「こんにちは！」を場面に関わらず写すため、
            ここで整える。 */
-        { greeting: greetingUsed(parsed.value.message), greeted: false });
+        {
+          greeting: greetingUsed(parsed.value.message),
+          greeted: false,
+          declarativeClose: onlyGreeting ? close : null
+        });
 
       /* --- 統制3: 出力ゲート(結果で捕まえる) --- */
       const screened = screenAnswer(answer, locale);

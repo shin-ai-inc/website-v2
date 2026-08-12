@@ -408,14 +408,12 @@ export function greetingOnly(text) {
   return rest.length === 0;
 }
 
-/** 挨拶だけの入力への返し。相手が使った言い方に合わせ、問いかけない。 */
-export function greetingReply(text, locale, seed) {
+/** 挨拶だけのときに使う、答えを求めない締めの一文。 */
+export function pickGreetingClose(locale, seed) {
   const list = locale === "en" ? GREETING_REPLIES_EN : GREETING_REPLIES_JA;
   const n = typeof seed === "number"
     ? Math.abs(Math.floor(seed)) : Math.floor(Math.random() * list.length);
-  /* 日本語は感嘆符のあとに空白を置かない。英語は置く。 */
-  if (locale === "en") return `Hello! ${list[n % list.length]}`;
-  return `${greetingUsed(text) || "こんにちは"}！${list[n % list.length]}`;
+  return list[n % list.length];
 }
 
 /** 利用者が使った挨拶を、返す形で取り出す。無ければ null。 */
@@ -482,6 +480,19 @@ export function sanitizeAnswer(raw, options = {}) {
 
   /* 終止符を整える。挨拶は「！」、問いかけは「？」。 */
   text = text.replace(QUESTION_PERIOD, "$1？").replace(GREETING_PERIOD, "$1！").trim();
+
+  /* 挨拶だけの相手に問い返さない。
+     応答そのものは生成に任せる（定型4種では、いずれ同じ文が繰り返し見える）。
+     ただし「答えを求めない」という性質だけは、生成の揺れに委ねない。
+     末尾が問いかけになっていたら、平叙文へ置き換える。 */
+  if (options.declarativeClose) {
+    const parts = text.trim().split(/(?<=[。．！!？?])/).filter((x) => x.trim());
+    if (parts.length && /[？?]\s*$/.test(parts[parts.length - 1])) {
+      parts[parts.length - 1] = options.declarativeClose;
+      text = parts.join("");
+    }
+  }
+
 
   /* 「資料」はこちらの内部の言い方で、訪問者には何を指すのか分からない。
      規範でも禁じているが、断りの文脈でとくに出やすいため、ここでも言い換える。

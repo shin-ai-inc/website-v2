@@ -8,7 +8,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, hasGreeting, greetingUsed, greetingOnly, greetingReply,
+  classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, hasGreeting, greetingUsed, greetingOnly, pickGreetingClose,
   MAX_MESSAGE_CHARS
 } from "../api/lib/guard.mjs";
 
@@ -309,20 +309,24 @@ test("挨拶だけかどうかを判定する", () => {
   }
 });
 
-test("挨拶への返しは問いかけない", () => {
-  for (let i = 0; i < 4; i += 1) {
-    const out = greetingReply("こんばんは", "ja", i);
-    assert.match(out, /^こんばんは！/, "相手の言い方に合わせる");
-    assert.ok(!out.includes("？"), `問いかけない: ${out}`);
-  }
+test("挨拶への返しが問いかけで終わったら平叙文へ置き換える", () => {
+  const close = pickGreetingClose("ja", 0);
+  const out = sanitizeAnswer("こんにちは。どういったことでお悩みでしょうか。",
+    { greeting: "こんにちは", greeted: false, declarativeClose: close });
+  assert.match(out, /^こんにちは！/);
+  assert.ok(!out.includes("？"), `問い返さない: ${out}`);
+  assert.ok(out.includes(close), out);
 });
 
-test("挨拶への返しは複数の言い方を持つ", () => {
-  const seen = new Set([0, 1, 2, 3].map((i) => greetingReply("こんにちは", "ja", i)));
-  assert.ok(seen.size >= 3, `単調では改善にならない: ${seen.size}種`);
+test("問いかけでなければ生成のまま通す", () => {
+  const out = sanitizeAnswer("こんにちは。ご質問はこちらで承ります。",
+    { greeting: "こんにちは", greeted: false, declarativeClose: pickGreetingClose("ja", 0) });
+  assert.match(out, /ご質問はこちらで承ります。$/, out);
 });
 
-test("日本語は感嘆符のあとに空白を置かない", () => {
-  assert.match(greetingReply("こんにちは", "ja", 0), /^こんにちは！[^\s]/);
-  assert.match(greetingReply("Hello", "en", 0), /^Hello! \S/);
+test("締めの言い方は複数ある", () => {
+  const seen = new Set([0, 1, 2, 3].map((i) => pickGreetingClose("ja", i)));
+  assert.ok(seen.size >= 3, `${seen.size}種`);
 });
+
+
