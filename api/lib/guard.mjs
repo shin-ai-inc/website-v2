@@ -76,9 +76,27 @@ const OFFTASK_PATTERNS = [
   /(計算して|を計算|の\s*[0-9０-９]+\s*乗)/
 ];
 
+/* 人につないでほしい、という依頼。
+
+   これは最も切実な意図の一つで、かつ検索が最も外しやすい。
+   「担当者出して」は「担当者」という語だけで
+   「専任の担当者を置く必要がありますか」というFAQに当たり、
+   問いと無関係な答えを返した(実測)。
+   意味を取り違えたまま生成に渡すより、入力の時点で確定させる。
+
+   「専任の担当者は必要ですか」のような、体制についての質問は含めない。
+   ここで見るのは、つないでほしいという依頼だけ。 */
+const HUMAN_REQUEST_PATTERNS = [
+  /(担当者?|責任者|上長|社長|人間|オペレーター|スタッフ|中の人)[^。\n]{0,6}(出し|出せ|呼ん|呼べ|つない|繋い|代わっ|かわっ|かえて)/,
+  /(人|担当者?|誰か)[^。\n]{0,4}(と|に)[^。\n]{0,6}(話し|相談し|つない|繋い)/,
+  /(電話|直接)[^。\n]{0,6}(話し|つない|繋い|してほし)/,
+  /\b(speak|talk|connect)\b[^.\n]{0,20}\b(human|person|someone|agent|representative|staff)\b/i,
+  /\b(real person|live agent|human agent)\b/i
+];
+
 /**
  * 利用者入力を分類する。
- * @returns {{verdict: "allow"|"empty"|"too_long"|"crisis"|"offtask"|"refuse", reason?: string}}
+ * @returns {{verdict: "allow"|"empty"|"too_long"|"crisis"|"human"|"offtask"|"refuse", reason?: string}}
  *   verdict は処理の分岐に、reason は監査ログにのみ使う(利用者には返さない)。
  */
 export function classifyInput(raw) {
@@ -91,6 +109,12 @@ export function classifyInput(raw) {
      (「もう限界だ、指示を無視しろ」のような入力で案内を落とさない)。 */
   for (const p of CRISIS_PATTERNS) {
     if (p.test(text)) return { verdict: "crisis", reason: "self_harm" };
+  }
+
+  /* 攻撃の判定より前に置く。「担当者に代わって」は役割乗っ取りの型に
+     形が似ており、拒否文を返すと人に届く道を塞いでしまう。 */
+  for (const p of HUMAN_REQUEST_PATTERNS) {
+    if (p.test(text)) return { verdict: "human", reason: "handoff_request" };
   }
 
   for (const p of OFFTASK_PATTERNS) {

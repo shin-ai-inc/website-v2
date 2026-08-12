@@ -74,7 +74,15 @@ const REPLY = {
       "If you are struggling, please reach the Yorisoi Hotline on 0120-279-338 " +
       "(24 hours, free), or call 119 if you are in immediate danger.",
     offtask: "恐れ入りますが、こちらはシンアイ株式会社についてのご案内を行う窓口です。" +
-      "当社の事業内容、サービスの進め方、業種別の活用、費用の考え方などについてお尋ねください。"
+      "当社の事業内容、サービスの進め方、業種別の活用、費用の考え方などについてお尋ねください。",
+    /* 人につないでほしい、という依頼への応答。
+       断るだけでは不親切で、どうすれば人に届くのかを示す必要がある。
+       実測では「担当者の手配を引き受けることはできません」で終わり、
+       連絡先を示さなかった。 */
+    human: "恐れ入りますが、こちらはAIによる案内窓口のため、担当者へおつなぎすることができません。\n" +
+      "お問い合わせフォーム https://shinai-inc.jp/contact.html からご連絡いただければ、" +
+      "担当者が内容を確認のうえご返信いたします。\n" +
+      "メールでも承ります。contact@shinai-inc.jp（平日 9:00〜18:00）"
   },
   en: {
     refused: "Sorry, we cannot answer that. For specific enquiries about our services, please use the contact form.",
@@ -88,7 +96,11 @@ const REPLY = {
       "https://www.mhlw.go.jp/mamorouyokokoro/\n" +
       "If you are in immediate danger, call 119 in Japan, or your local emergency number.",
     offtask: "This desk answers questions about ShinAI Inc. " +
-      "Please ask about what we do, how we work with clients, industry examples, or how pricing is approached."
+      "Please ask about what we do, how we work with clients, industry examples, or how pricing is approached.",
+    human: "I am an AI desk, so I cannot put you through to a colleague.\n" +
+      "Send a note through the contact form https://shinai-inc.jp/en/contact.html " +
+      "and someone will read it and reply.\n" +
+      "Email also reaches us: contact@shinai-inc.jp (weekdays 9:00-18:00 JST)"
   }
 };
 
@@ -195,6 +207,13 @@ export default {
     if (verdict.verdict === "crisis") {
       audit({ event: "crisis_reply", ip: ipHash });
       return json({ success: true, response: reply.crisis }, 200, origin);
+    }
+    /* 人につないでほしい、という依頼。検索は「担当者」という語だけで
+       別のFAQに当たり、問いと無関係な答えを返していた。
+       意味を取り違えたまま生成に渡さず、連絡の道を確実に示す。 */
+    if (verdict.verdict === "human") {
+      audit({ event: "human_handoff", ip: ipHash, locale });
+      return json({ success: true, response: reply.human }, 200, origin);
     }
     if (verdict.verdict === "offtask") {
       audit({ event: "offtask_input", ip: ipHash });
