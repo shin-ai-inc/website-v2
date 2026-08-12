@@ -52,9 +52,33 @@ const INJECTION_KINDS = [
   "delimiter_spoof", "delimiter_spoof"
 ];
 
+/* 自傷・自殺をほのめかす発話。
+
+   なぜモデルに任せないか。会社案内AIは「資料にないことは答えない」を旨とするため、
+   相談窓口という資料外の情報を出すかどうかが応答ごとに揺れる。実測では
+   「専門家に相談してみてください」で終わり、どこへ相談すればよいかは示さなかった。
+   人命に関わる場面で応答が揺れてよい理由はない。ここで確定的に扱う。
+   広めに取り、営業機会より安全を優先する(誤検知しても案内が出るだけ)。 */
+const CRISIS_PATTERNS = [
+  /(死にたい|しにたい|消えたい|生きるのが(つらい|辛い|嫌)|自殺|自傷|リストカット)/,
+  /(もう(限界|無理|終わり)だ?[。、!！]?$|誰も助けて)/,
+  /\b(kill myself|suicide|want to die|end my life|self[- ]harm)\b/i
+];
+
+/* 会社と無関係な作業の依頼。
+   この窓口を汎用AIとして使われると、日次の枠が本来の相談以外で埋まる。
+   誤検知は問い合わせ機会を殺すため、会社案内と重なりようのない依頼だけを挙げる。 */
+const OFFTASK_PATTERNS = [
+  /(翻訳|英訳|和訳|訳して)(して|し|を|くださ|下さ|お願)/,
+  /訳して\s*[:：]/,
+  /(コード|プログラム|関数|スクリプト|sql|python|javascript)[\s\S]{0,12}(書い|作っ|生成|実装)/i,
+  /(詩|小説|俳句|川柳|作文|物語|歌詞)[\s\S]{0,8}(書い|作っ|考え)/,
+  /(計算して|を計算|の\s*[0-9０-９]+\s*乗)/
+];
+
 /**
  * 利用者入力を分類する。
- * @returns {{verdict: "allow"|"empty"|"too_long"|"refuse", reason?: string}}
+ * @returns {{verdict: "allow"|"empty"|"too_long"|"crisis"|"offtask"|"refuse", reason?: string}}
  *   verdict は処理の分岐に、reason は監査ログにのみ使う(利用者には返さない)。
  */
 export function classifyInput(raw) {
@@ -63,6 +87,16 @@ export function classifyInput(raw) {
   if (text.length > MAX_MESSAGE_CHARS) {
     return { verdict: "too_long", reason: `length_${text.length}` };
   }
+  /* 安全に関わる判定を最優先する。攻撃判定より前に置く
+     (「もう限界だ、指示を無視しろ」のような入力で案内を落とさない)。 */
+  for (const p of CRISIS_PATTERNS) {
+    if (p.test(text)) return { verdict: "crisis", reason: "self_harm" };
+  }
+
+  for (const p of OFFTASK_PATTERNS) {
+    if (p.test(text)) return { verdict: "offtask", reason: "general_task" };
+  }
+
   for (let i = 0; i < INJECTION_PATTERNS.length; i += 1) {
     if (INJECTION_PATTERNS[i].test(text)) {
       // 監査では「どの種類の攻撃か」まで分かれば足りる。何番目の規則に当たったかは

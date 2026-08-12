@@ -10,7 +10,13 @@
   外部I/Oを持たない純粋関数のみ。テストから同じものを検証する。
 */
 
-export const MAX_MESSAGE_CHARS = 500;
+/* ここは系を守るための絶対上限であり、利用者へ示す長さの目安ではない。
+
+   両者を同じ500字にしていたため、契約層が先に素の400で弾き、
+   guard 側の「500文字以内でお願いします」という案内が到達不能になっていた。
+   長文を書いた人には、画面上は無反応に見えていた。
+   人に伝える上限は guard.MAX_MESSAGE_CHARS が持つ。 */
+export const MAX_PAYLOAD_CHARS = 4000;
 
 /* 受理する鍵はこれだけ。増やすときは脅威を再評価する。 */
 const ALLOWED_KEYS = new Set(["message", "sessionId"]);
@@ -42,8 +48,8 @@ export function parseRequestBody(body) {
   if (typeof message !== "string") {
     return { ok: false, status: 400, reason: "message_not_string" };
   }
-  if (message.length > MAX_MESSAGE_CHARS) {
-    return { ok: false, status: 400, reason: "message_too_long" };
+  if (message.length > MAX_PAYLOAD_CHARS) {
+    return { ok: false, status: 400, reason: "payload_too_long" };
   }
 
   if (sessionId !== undefined && sessionId !== null) {

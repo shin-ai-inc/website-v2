@@ -8,7 +8,7 @@
 */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseRequestBody, resolveOrigin, MAX_MESSAGE_CHARS } from "../api/lib/contract.mjs";
+import { parseRequestBody, resolveOrigin, MAX_PAYLOAD_CHARS } from "../api/lib/contract.mjs";
 
 const ALLOWED = ["https://shinai-inc.jp", "https://www.shinai-inc.jp"];
 
@@ -59,7 +59,7 @@ test("message の型を厳格に見る(JSON型混同を防ぐ)", () => {
 });
 
 test("長すぎる message をサーバ側で拒否する(クライアント上限は迂回される)", () => {
-  const r = parseRequestBody({ message: "あ".repeat(MAX_MESSAGE_CHARS + 1) });
+  const r = parseRequestBody({ message: "あ".repeat(MAX_PAYLOAD_CHARS + 1) });
   assert.equal(r.ok, false);
   assert.equal(r.status, 400);
 });
@@ -96,4 +96,12 @@ test("許可外オリジンには何も返さない", () => {
 test("部分一致で許可しない(前方後方の偽装を防ぐ)", () => {
   assert.equal(resolveOrigin("https://notshinai-inc.jp", ALLOWED), null);
   assert.equal(resolveOrigin("https://shinai-inc.jp.attacker.net", ALLOWED), null);
+});
+
+test("案内すべき長さ超過は契約層で弾かない(丁寧な案内へ到達させる)", () => {
+  /* 契約層と guard の上限を同じ値にしていたため、契約層が素の400で先に弾き、
+     「500文字以内でお願いします」という案内が到達不能になっていた。
+     長文を書いた利用者には、画面上は無反応に見えていた。 */
+  const r = parseRequestBody({ message: "あ".repeat(600) });
+  assert.equal(r.ok, true, "600字は契約層を通し、guard が案内を返す");
 });

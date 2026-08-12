@@ -59,13 +59,36 @@ const REPLY = {
     refused: "申し訳ありません。その内容にはお答えできません。サービスや導入について、具体的なご相談はお問い合わせフォームからお願いいたします。",
     tooLong: "恐れ入りますが、メッセージが長すぎます。500文字以内でお願いします。",
     busy: "申し訳ありません。本日はお問い合わせが集中しております。お問い合わせフォームからご連絡いただければ、担当者より折り返しご案内いたします。",
-    error: "申し訳ありません。一時的に応答できませんでした。お問い合わせフォームをご利用ください。"
+    error: "申し訳ありません。一時的に応答できませんでした。お問い合わせフォームをご利用ください。",
+    /* この窓口は会社案内のためのもので、力になれることが限られている。
+       だからこそ、確かな相談先を具体的に示すところまでを役割とする。
+       電話番号は変わりうるため、公的な案内ページを主に据える。 */
+    crisis: "おつらい状況のなかで、言葉にしてくださってありがとうございます。" +
+      "ここは会社案内の窓口のため、力になれることが限られています。" +
+      "話を聞いてくれる窓口が各地にありますので、どうかそちらを頼ってください。\n" +
+      "よりそいホットライン 0120-279-338（24時間・通話無料）\n" +
+      "厚生労働省の相談窓口一覧 https://www.mhlw.go.jp/mamorouyokokoro/\n" +
+      "いますぐ危険がある場合は 119 番へご連絡ください。\n" +
+      /* 応答の言語はページ側で決まるため、日本語ページに英語で書き込まれた
+         訴えには日本語で返ることになる。この文だけは、読めなければ意味がない。 */
+      "If you are struggling, please reach the Yorisoi Hotline on 0120-279-338 " +
+      "(24 hours, free), or call 119 if you are in immediate danger.",
+    offtask: "恐れ入りますが、こちらはシンアイ株式会社についてのご案内を行う窓口です。" +
+      "当社の事業内容、サービスの進め方、業種別の活用、費用の考え方などについてお尋ねください。"
   },
   en: {
     refused: "Sorry, we cannot answer that. For specific enquiries about our services, please use the contact form.",
     tooLong: "That message is too long. Please keep it within 500 characters.",
     busy: "We are receiving a high volume of enquiries today. Please reach out through the contact form and we will get back to you.",
-    error: "Sorry, we could not respond just now. Please use the contact form."
+    error: "Sorry, we could not respond just now. Please use the contact form.",
+    crisis: "Thank you for putting this into words. This is a company enquiry desk, " +
+      "so there is little we can do here, but please reach someone who can help.\n" +
+      "In Japan: Yorisoi Hotline 0120-279-338 (24 hours, free), " +
+      "or the Ministry of Health, Labour and Welfare directory " +
+      "https://www.mhlw.go.jp/mamorouyokokoro/\n" +
+      "If you are in immediate danger, call 119 in Japan, or your local emergency number.",
+    offtask: "This desk answers questions about ShinAI Inc. " +
+      "Please ask about what we do, how we work with clients, industry examples, or how pricing is approached."
   }
 };
 
@@ -166,6 +189,16 @@ export default {
     }
     if (verdict.verdict === "empty") {
       return json({ success: false }, 400, origin);
+    }
+    /* 安全に関わる応答は生成に賭けない。定型で確実に窓口を示す。
+       OpenAIを呼ばないため、混雑や障害の影響も受けない。 */
+    if (verdict.verdict === "crisis") {
+      audit({ event: "crisis_reply", ip: ipHash });
+      return json({ success: true, response: reply.crisis }, 200, origin);
+    }
+    if (verdict.verdict === "offtask") {
+      audit({ event: "offtask_input", ip: ipHash });
+      return json({ success: true, response: reply.offtask }, 200, origin);
     }
     if (verdict.verdict === "refuse") {
       audit({ event: "refused_input", kind: verdict.reason, ip: ipHash });
