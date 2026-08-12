@@ -235,7 +235,10 @@
 
       this.showTyping();
 
-      window.fetch(apiBase.replace(/\/+$/, "") + "/api/chatbot", {
+      /* 応答言語はページの言語に合わせる。渡さないと英語ページに日本語で返る。
+         送るのは message と sessionId のみ(サーバはそれ以外のキーを拒否する)。 */
+      var endpoint = apiBase.replace(/\/+$/, "") + "/api/chatbot" + (EN ? "?lang=en" : "");
+      window.fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, sessionId: this.sessionId })
@@ -244,11 +247,9 @@
       }).then(function (data) {
         window.setTimeout(function () {
           self.hideTyping();
-          if (data && data.success) {
-            var responseText = typeof data.response === "string"
-              ? data.response
-              : (data.response && data.response.response) || "";
-            self.typeMessage(String(responseText));
+          /* サーバの応答契約は { success: boolean, response: string } の一形のみ。 */
+          if (data && data.success && typeof data.response === "string") {
+            self.typeMessage(data.response);
           } else {
             self.addMessage(T.failed, "bot");
             self.addContactCta();

@@ -1,0 +1,49 @@
+# ShinAI サポートAI — Cloudflare Worker 設定
+#
+# デプロイ:
+#   1) node _build/build.mjs        知識ベースを生成し api/ へ配置する
+#   2) cd api && npx wrangler deploy
+#
+# 秘密は絶対にここへ書かない。投入は次のコマンドのみ:
+#   npx wrangler secret put OPENAI_API_KEY
+#   npx wrangler secret put IP_SALT
+
+name = "shinai-chat"
+main = "index.mjs"
+compatibility_date = "2026-08-01"
+
+# 既定の *.workers.dev ルートを無効化する。
+# このゾーンはWAF・レート制限が適用されないため、開けたままだと
+# カスタムドメイン側に敷いた統制をすべて迂回されうる。
+workers_dev = false
+
+# 公開先。DNSはCloudflare管理下にあるため、ここでルートを張る。
+routes = [
+  { pattern = "api.shinai-inc.jp/api/chatbot", custom_domain = false, zone_name = "shinai-inc.jp" }
+]
+
+[vars]
+# 受理するオリジン。ワイルドカードは使わない。
+ALLOWED_ORIGINS = "https://shinai-inc.jp,https://www.shinai-inc.jp"
+# 想定ホスト。これ以外(workers.dev等)からの到達を拒否する多層防御。
+API_HOST = "api.shinai-inc.jp"
+# 日次上限。許容月額1,500円(約$10)/30日 ÷ 1件約$0.0015 から導出。
+# 再デプロイなしで調整できるよう変数化している。
+DAILY_LIMIT = "300"
+MODEL = "gpt-4o-mini"
+MAX_TOKENS = "400"
+
+# 日次予算メーター。単一インスタンスで全体を数え、
+# IP単位の制限では止まらない低速分散を捕捉する。
+[[durable_objects.bindings]]
+name = "BUDGET"
+class_name = "BudgetMeter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["BudgetMeter"]
+
+# 知識ベース(build.mjs が生成)を同梱するための設定。
+# 実体は api/knowledge.*.json。ビルドのたびに更新される。
+[build]
+command = ""

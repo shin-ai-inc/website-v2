@@ -27,6 +27,31 @@ const CONTACT_EMAIL = "contact@shinai-inc.jp";
 /* RFC 9116の脆弱性報告窓口。一般問い合わせ(CONTACT_EMAIL)とは意図的に分けている。 */
 const SECURITY_CONTACT_EMAIL = "support@shinai-inc.jp";
 
+/* チャットAPIのオリジン。connect-src の許可先であり、クライアントの接続先でもある。 */
+const API_ORIGIN = "https://api.shinai-inc.jp";
+
+/* ---- CSP は単一の定義から生成する ----
+   以前は各HTMLの <meta> と deploy/_headers に同じ内容が独立して存在し、
+   片方だけ直すと障害が潜伏する状態だった(metaだけ直すとホスティング移行時に
+   無言で壊れ、_headersだけ直すと今すぐ壊れる)。ここを唯一の出所にする。
+   meta形式は frame-ancestors と report-uri を解釈しないため、
+   応答ヘッダ側にのみ足す(下の CSP_HEADER)。 */
+const CSP_DIRECTIVES = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "img-src 'self' data:",
+  `connect-src 'self' https://formspree.io ${API_ORIGIN}`,
+  "base-uri 'self'",
+  "form-action 'self' https://formspree.io",
+  "object-src 'none'"
+];
+const CSP_META = CSP_DIRECTIVES.join("; ");
+const CSP_HEADER = CSP_DIRECTIVES
+  .concat(["frame-ancestors 'none'", "upgrade-insecure-requests"])
+  .join("; ");
+
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
 const write = (p, c) => writeFileSync(join(ROOT, p), c, "utf8");
 
@@ -492,7 +517,7 @@ ${alternates}
   <meta name="theme-color" content="#3A5FEB">
   <meta name="format-detection" content="telephone=no">
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="${CSP_META}">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:type" content="website">
@@ -617,7 +642,54 @@ cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
 for (const f of ["robots.txt", "sitemap.xml", "favicon.ico"]) toDist(f);
 for (const loc of LOCALES) toDist(loc.dir + "site.webmanifest");
 toDist(".well-known/security.txt");
-copyFileSync(join(ROOT, "deploy", "_headers"), join(DIST, "_headers")); // Netlify/CF用ヘッダ
+/* 応答ヘッダ(Netlify/Cloudflare Pages形式)。CSPは上の単一定義から差し込み、
+   deploy/_headers 側の {{CSP}} を置換する。二重管理をここで断つ。 */
+writeFileSync(
+  join(DIST, "_headers"),
+  read("deploy/_headers").replace("{{CSP}}", CSP_HEADER),
+  "utf8"
+);
+
+/* ---- 8. チャットボットの知識ベース ----
+   公開ページの本文だけを抜き出し、AIが参照する唯一の事実源とする。
+   ビルドで毎回作り直すため、サイトを直せば知識も自動で追従する
+   (手書きのFAQを別に持つと必ず本体と乖離し、AIが古い事実を配る)。
+   公開HTMLからの抽出なので、機密が混入する経路が構造的に存在しない。 */
+const knowledgeFor = (loc) => {
+  const docs = [];
+  for (const page of pages) {
+    const meta = loc.code === "ja" ? page : page.en;
+    const html = read(loc.dir + page.file);
+    const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+    if (!main) continue;
+    /* script/style/svg は本文でない。除去してからタグを剥がす。 */
+    const text = stripTags(
+      main[1]
+        .replace(/<(script|style|svg)\b[\s\S]*?<\/\1>/gi, " ")
+        .replace(/<!--[\s\S]*?-->/g, " ")
+    );
+    if (text.length < 50) continue;   // 実質的な中身がないページは載せない
+    docs.push({
+      path: page.file,
+      title: meta.title,
+      url: urlFor(page.file, loc.dir),
+      text
+    });
+  }
+  return { locale: loc.code, generatedAt: BUILD_HASH, docs };
+};
+
+/* Worker が import で同梱するため api/ 直下へ置く(こちらが実体)。
+   dist/ 側にも出すのは、生成物をテストと目視で確認できるようにするため。 */
+mkdirSync(join(DIST, "api"), { recursive: true });
+for (const loc of LOCALES) {
+  const kb = knowledgeFor(loc);
+  const body = JSON.stringify(kb, null, 2);
+  writeFileSync(join(ROOT, "api", `knowledge.${loc.code}.json`), body, "utf8");
+  writeFileSync(join(DIST, "api", `knowledge.${loc.code}.json`), body, "utf8");
+  const chars = kb.docs.reduce((n, d) => n + d.text.length, 0);
+  console.log(`knowledge.${loc.code}.json: ${kb.docs.length}件 / ${chars}字`);
+}
 
 console.log("built pages:", built);
 console.log("app.css sections:", sectionFiles.length);

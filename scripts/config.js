@@ -9,7 +9,9 @@
 (function () {
   "use strict";
   window.SHINAI_CONFIG = {
-    chatbotApiBase: "",
+    /* Cloudflare Worker(api/)の公開URL。鍵ではないのでここに置いてよい。
+       未デプロイ・障害時は chatbot 側が「準備中」として問い合わせへ誘導する。 */
+    chatbotApiBase: "https://api.shinai-inc.jp",
     contactPath: "contact.html"
   };
 })();

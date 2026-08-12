@@ -39,3 +39,8 @@ dist/
 /_ss.mjs
 /package.json
 /package-lock.json
+
+# Cloudflare Workers のローカル秘密と作業領域(絶対にコミットしない)
+.dev.vars
+.dev.vars.*
+.wrangler/
