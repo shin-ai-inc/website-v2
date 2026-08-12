@@ -11,15 +11,17 @@ import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildIndex, hybridSearch } from "../api/lib/retrieve.mjs";
+import { chunkPage } from "../_build/chunk.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const KB_PATH = join(ROOT, "dist", "api", "knowledge.ja.json");
+const kbPath = (locale) => join(ROOT, "dist", "api", `knowledge.${locale}.json`);
 
-const loadKb = () => {
-  if (!existsSync(KB_PATH)) {
+const loadKb = (locale = "ja") => {
+  const path = kbPath(locale);
+  if (!existsSync(path)) {
     throw new Error("知識ベースが未生成。先に node _build/build.mjs を実行する。");
   }
-  return JSON.parse(readFileSync(KB_PATH, "utf8"));
+  return JSON.parse(readFileSync(path, "utf8"));
 };
 
 test("チャンクが生成され、想定ページを網羅している", () => {
@@ -42,8 +44,20 @@ test("各チャンクが題名・URL・本文を持つ", () => {
 });
 
 test("チャンクが埋もれる大きさにならない(全文投入で失敗した設計へ戻さない)", () => {
-  for (const c of loadKb().chunks) {
-    assert.ok(c.text.length <= 1200, `${c.id} が ${c.text.length}字と長すぎる`);
+  /* 日英の双方を見る。片方しか見ない検査は、もう片方を守らない。
+     実際、英語版の代表メッセージが1,350字に達していたが検知できなかった。 */
+  for (const locale of ["ja", "en"]) {
+    for (const c of loadKb(locale).chunks) {
+      assert.ok(c.text.length <= 1000,
+        `${locale}: ${c.id} が ${c.text.length}字と長すぎる`);
+    }
+  }
+});
+
+test("英語側も題名・URL・本文を備える", () => {
+  for (const c of loadKb("en").chunks) {
+    assert.ok(c.id && c.title && c.text, `${c.id}: 欠けがない`);
+    assert.ok(c.url.startsWith("https://"), `${c.id}: 絶対URL`);
   }
 });
 
@@ -121,4 +135,31 @@ test("CTOを尋ねたら該当者のチャンクが選ばれる", () => {
   const top = hits.find((c) => !c.pin);
   assert.match(top.text, /最高技術責任者/);
   assert.ok(!/柴田/.test(top.text), "代表の記述を返してはいけない");
+});
+
+test("公開HTMLと知識ベースが乖離していない(ビルド忘れの検知)", () => {
+  /* 知識ベースは生成物だが、リポジトリに入っている。ページを直して
+     ビルドを忘れたまま Worker をデプロイすると、AIは古い事実を配り続ける。
+     壊れ方が静かなので、機械で見張る。 */
+  const kb = loadKb();
+  const pages = [
+    ["about.html", "https://shinai-inc.jp/about.html"],
+    ["faq.html", "https://shinai-inc.jp/faq.html"],
+    ["services.html", "https://shinai-inc.jp/services.html"]
+  ];
+  for (const [file, url] of pages) {
+    const html = readFileSync(join(ROOT, "dist", file), "utf8");
+    const fresh = chunkPage(html, {
+      title: "x", url, slug: file.replace(/\.html$/, ""),
+      pinDl: file === "about.html"
+    });
+    const committed = kb.chunks.filter((c) => c.url === url);
+    assert.equal(committed.length, fresh.length,
+      `${file}: 公開HTMLは${fresh.length}件だが知識ベースは${committed.length}件。` +
+      "node _build/build.mjs を実行すること");
+    const freshText = fresh.map((c) => c.text).join("\n");
+    const committedText = committed.map((c) => c.text).join("\n");
+    assert.equal(committedText, freshText,
+      `${file}: 本文が公開HTMLと一致しない。node _build/build.mjs を実行すること`);
+  }
 });

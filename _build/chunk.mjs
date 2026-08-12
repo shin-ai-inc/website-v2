@@ -32,6 +32,28 @@ const strip = (s) => s
 /* これ未満は見出しの残骸や飾り文で、根拠として使えない。 */
 const MIN_CHARS = 24;
 
+/* これを超えたら文の切れ目で割る。長い塊は、その中の事実を埋もれさせる
+   （この設計はもともとそれを避けるためにある）。
+   代表メッセージのような長い散文が英語版で1,350字に達し、上限を破っていた。 */
+const MAX_CHARS = 700;
+
+/** 長い本文を、文の切れ目を保ったまま分ける。文の途中では切らない。 */
+function splitLong(text) {
+  if (text.length <= MAX_CHARS) return [text];
+  const sentences = text.split(/(?<=[。．.!?！？])\s*/);
+  const parts = [];
+  let buffer = "";
+  for (const sentence of sentences) {
+    if (buffer && (buffer + sentence).length > MAX_CHARS) {
+      parts.push(buffer.trim());
+      buffer = "";
+    }
+    buffer += sentence;
+  }
+  if (buffer.trim()) parts.push(buffer.trim());
+  return parts;
+}
+
 /**
  * 1ページ分のHTMLからチャンク配列を作る。
  * @param {string} html 公開済みHTML全文
@@ -49,13 +71,16 @@ export function chunkPage(html, page) {
        「商号: シンアイ株式会社」は24字に満たないが、最も問われる記述である。 */
     if (t.length < MIN_CHARS && !(extra && extra.pin)) return;
     if (!t) return;
-    chunks.push({
-      id: `${page.slug}#${chunks.length}`,
-      title: title ? `${strip(title)}｜${page.title}` : page.title,
-      url: page.url,
-      text: t,
-      ...extra
-    });
+    const heading = title ? `${strip(title)}｜${page.title}` : page.title;
+    for (const part of splitLong(t)) {
+      chunks.push({
+        id: `${page.slug}#${chunks.length}`,
+        title: heading,
+        url: page.url,
+        text: part,
+        ...extra
+      });
+    }
   };
 
   /* 1) FAQ。1問1答で切ると、質問文がそのまま検索の的になる。 */

@@ -64,10 +64,29 @@ const QUERY_SYNONYMS = [
   ["事例", "活用 導入"]
 ];
 
+/* 英語の機能語。日本語側と同じ理由で落とす。
+
+   これが無いと「How much does it cost?」で how / much / does / it が数えられ、
+   決め手である cost を押し流す。実際、費用の項目ではなく
+   目次の見出しが1位になっていた。
+   語として扱うぶん日本語より判定は容易で、一致した語をそのまま除く。 */
+const QUERY_STOPWORDS_EN = new Set([
+  "the", "a", "an", "is", "are", "was", "were", "be", "been", "do", "does", "did",
+  "can", "could", "will", "would", "should", "may", "might", "have", "has", "had",
+  "what", "which", "who", "whom", "whose", "when", "where", "why", "how",
+  "i", "we", "you", "they", "it", "he", "she", "my", "our", "your", "their",
+  "of", "to", "in", "on", "at", "for", "with", "from", "by", "about", "into",
+  "and", "or", "but", "if", "then", "than", "so", "as", "that", "this", "these",
+  "there", "here", "much", "many", "some", "any", "please", "tell", "me", "us",
+  "get", "got", "like", "want", "need", "know", "just", "also", "very"
+]);
+
 /** 質問から話題を指さない言い回しを落とす。資料側には適用しない。 */
 export function stripFunctionWords(text) {
   let s = typeof text === "string" ? text : "";
   for (const w of QUERY_STOPWORDS) s = s.split(w).join(" ");
+  s = s.replace(/[a-zA-Z]{1,8}/g,
+    (w) => (QUERY_STOPWORDS_EN.has(w.toLowerCase()) ? " " : w));
   /* 言い換えは置換でなく追加。元の語も手がかりとして残す。 */
   for (const [term, extra] of QUERY_SYNONYMS) {
     if (s.includes(term)) s += " " + extra;
@@ -75,13 +94,43 @@ export function stripFunctionWords(text) {
   return s;
 }
 
-/** 2文字組の集合。1文字しかない語も取りこぼさないため単独で1件とする。 */
-export function bigrams(text) {
-  const s = normalize(text);
+/* 英語の語尾を落として、活用の違いで一致を逃さないようにする。
+   manufacturers と manufacturing、solution と solutions は同じ話題である。
+   索引側と質問側の双方に同じ処理をかけること（片側だけでは一致しなくなる）。
+   語幹が短くなりすぎると別語と衝突するため、4文字を下限とする。 */
+function stem(word) {
+  for (const suffix of ["ing", "ies", "ed", "es", "s"]) {
+    if (word.length - suffix.length >= 4 && word.endsWith(suffix)) {
+      return suffix === "ies" ? word.slice(0, -3) + "y" : word.slice(0, -suffix.length);
+    }
+  }
+  return word;
+}
+
+/**
+ * 照合の単位を作る。言語によって単位が違う。
+ *
+ * 日本語は語の区切りが自明でないため、2文字組で測る。
+ * 英語は空白で語が切れているのだから、語のまま扱えばよい。
+ * 英語まで2文字組に刻むと、cost が co / os / st という頻出の断片になり、
+ * 意味を失う。実際、英語版で「How much does it cost?」が費用の項目に当たらず、
+ * 無関係なフィジカルAIの項目を拾っていた。
+ *
+ * 副次的に、日本語の文中の RAG や PoC も語のまま扱われるようになる
+ * （ra / ag と刻むより確かな手がかりになる）。
+ */
+export function terms(text) {
   const out = new Set();
-  if (!s) return out;
-  if (s.length === 1) { out.add(s); return out; }
-  for (let i = 0; i < s.length - 1; i += 1) out.add(s.slice(i, i + 2));
+  const base = (typeof text === "string" ? text : "").normalize("NFKC").toLowerCase();
+  if (!base) return out;
+
+  /* 先に英数字の語を取り出す。2文字未満は雑音なので落とす。 */
+  for (const word of base.match(/[a-z0-9]{2,}/g) || []) out.add(stem(word));
+
+  /* 残りを日本語として2文字組にする。英数字を抜いた上で約物と空白を落とす。 */
+  const cjk = normalize(base.replace(/[a-z0-9]+/g, " "));
+  if (cjk.length === 1) out.add(cjk);
+  for (let i = 0; i < cjk.length - 1; i += 1) out.add(cjk.slice(i, i + 2));
   return out;
 }
 
@@ -93,8 +142,11 @@ export function buildIndex(chunks) {
   const list = Array.isArray(chunks) ? chunks : [];
   const df = new Map();
   const entries = list.map((chunk) => {
-    /* 見出しは本文より情報密度が高い。2回数えて重みを与える。 */
-    const grams = bigrams(`${chunk.title} ${chunk.title} ${chunk.text}`);
+    /* 見出しは本文より情報密度が高い。ただし同じ語を二度並べても、
+       集合に入れる以上は一度きりになる（そう書いてあったが効いていなかった）。
+       重みは、見出しに現れた語を別に持ち、スコアの段で与える。 */
+    const titleGrams = terms(chunk.title);
+    const grams = terms(`${chunk.title} ${chunk.text}`);
     for (const g of grams) df.set(g, (df.get(g) || 0) + 1);
     /* ベクトルは索引を組むときに一度だけ復号する。
        質問ごとに復号すると、件数×次元の展開を毎回繰り返すことになる。 */
@@ -102,7 +154,7 @@ export function buildIndex(chunks) {
        同じ言い回しの繰り返しで嵩んだ文章ほど一意組が少なくなり、
        長いのに補正を免れる(検証で実際に短文へ勝った)。 */
     return {
-      chunk, grams,
+      chunk, grams, titleGrams,
       len: Math.max(LEN_FLOOR, normalize(`${chunk.title} ${chunk.text}`).length),
       vec: chunk.vec ? decodeVector(chunk.vec) : null
     };
@@ -135,6 +187,9 @@ const MIN_CORPUS_FOR_RATIO = 20;
    結果、代表を最高技術責任者と紹介する誤答が生じた。 */
 const PARTICLES = new Set(["の", "を", "に", "は", "が", "と", "へ", "も", "や", "で"]);
 
+/* 見出しに現れた語の重み。 */
+const TITLE_WEIGHT = 2.5;
+
 /* 一致が皆無に等しいチャンクを混ぜない下限。
    雑音を渡すとモデルが引きずられ、関係のない話題へ流れる。 */
 const MIN_SCORE = 0.02;
@@ -148,7 +203,7 @@ export function selectChunks(query, index, options = {}) {
   const k = options.k || 6;
   const entries = index && index.entries ? index.entries : [];
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
-  const q = bigrams(stripFunctionWords(query));
+  const q = terms(stripFunctionWords(query));
 
   if (!q.size) return pinned.slice(0, k);
 
@@ -160,7 +215,7 @@ export function selectChunks(query, index, options = {}) {
 function scoreLexical(q, index) {
   const entries = index && index.entries ? index.entries : [];
   const scored = [];
-  for (const { chunk, grams, len } of entries) {
+  for (const { chunk, grams, titleGrams, len } of entries) {
     if (chunk.pin) continue;
     let score = 0;
     for (const g of q) {
@@ -176,7 +231,11 @@ function scoreLexical(q, index) {
       if (index.total >= MIN_CORPUS_FOR_RATIO && df > index.total * COMMON_GRAM_RATIO) continue;
       /* log(N/df)。log(1 + N/df) だと頻出語にも下駄を履かせてしまい、
          稀少語との差が6倍程度しか開かない。 */
-      score += Math.log(index.total / df);
+      const idf = Math.log(index.total / df);
+      /* 見出しに現れた語は、その項目が何を扱うかを直に示す。
+         「What does it cost?」という見出しを持つ項目が、
+         同じ語を本文で一度触れただけの目次に負けていた。 */
+      score += titleGrams.has(g) ? idf * TITLE_WEIGHT : idf;
     }
     /* 長いチャンクが語数だけで勝たないよう、字数で割る。
        線形で割ると短文が勝ちすぎるため平方根にする。 */
@@ -215,7 +274,7 @@ export function hybridSearch(query, queryVec, index, options = {}) {
   const k = options.k || 6;
   const entries = index && index.entries ? index.entries : [];
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
-  const q = bigrams(stripFunctionWords(query));
+  const q = terms(stripFunctionWords(query));
   if (!q.size) return pinned.slice(0, k);
 
   const lexical = scoreLexical(q, index).slice(0, ARM_DEPTH);

@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "cc2c530",
+  "generatedAt": "ffe9c33",
   "chunks": [
     {
       "id": "index#0",
@@ -294,7 +294,7 @@
       "id": "industries#10",
       "title": "Different industries, the same root problem.｜Industries | ShinAI",
       "url": "https://shinai-inc.jp/en/industries.html",
-      "text": "Knowledge stuck with one person, uncertainty about where to start, worry over connecting existing systems. \n The shape differs by industry, but the root problem is always the same. \n\n Tacit knowledge stuck with one person \n Years of instinct and criteria live only in one head, and no handover document reproduces them. \n\n Not sure where to start \n You feel the problem, but can't tell which part of the operation to structure first, so nothing moves. \n\n Worried about connecting existing systems \n Your data already lives in a CRM or core system, and it's unclear whether AI can connect without replacing it. \n\n ShinAI works from your current operations and knowledge assets to find the shape that fits your company."
+      "text": "Knowledge stuck with one person, uncertainty about where to start, worry over connecting existing systems.The shape differs by industry, but the root problem is always the same.Tacit knowledge stuck with one person \n Years of instinct and criteria live only in one head, and no handover document reproduces them.Not sure where to start \n You feel the problem, but can't tell which part of the operation to structure first, so nothing moves.Worried about connecting existing systems \n Your data already lives in a CRM or core system, and it's unclear whether AI can connect without replacing it.ShinAI works from your current operations and knowledge assets to find the shape that fits your company."
     },
     {
       "id": "about#0",
@@ -318,131 +318,143 @@
       "id": "about#3",
       "title": "Masakuni Shibata\n 柴田 昌国｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
-      "text": "Founder / AI Engineer \n Masakuni Shibata\n 柴田 昌国 \n\n A former firefighter of some seven years. In February 2023, about two months after ChatGPT was released, he became convinced of what AI could do and taught himself to program. After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 under the principle of believing in true value and building a new future for the next generation. In August 2026, he incorporated the company as ShinAI Inc. He still works hands-on as an AI engineer, designing, building, and running AI systems for clients from listed companies to small and mid-sized firms.\n \n Areas of expertise Generative AI service design, RAG development, AI strategy, business process optimisation"
+      "text": "Founder / AI Engineer \n Masakuni Shibata\n 柴田 昌国 \n\n A former firefighter of some seven years.In February 2023, about two months after ChatGPT was released, he became convinced of what AI could do and taught himself to program.After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 under the principle of believing in true value and building a new future for the next generation.In August 2026, he incorporated the company as ShinAI Inc.He still works hands-on as an AI engineer, designing, building, and running AI systems for clients from listed companies to small and mid-sized firms."
     },
     {
       "id": "about#4",
+      "title": "Masakuni Shibata\n 柴田 昌国｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Areas of expertise Generative AI service design, RAG development, AI strategy, business process optimisation"
+    },
+    {
+      "id": "about#5",
       "title": "Y\n Chief Technology Officer｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Chief Technology Officer \n Y\n Chief Technology Officer \n\n Brings experience as an engineer at a major semiconductor manufacturer together with engineering work at an AI startup. Leads AI development that holds leading-edge technique and practical usefulness in the same hand."
     },
     {
-      "id": "about#5",
+      "id": "about#6",
       "title": "AI engineer｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "01 \n\n Engineer \n AI engineer \n For those with experience building generative AI models or RAG systems. Bring your knowledge of LLMs, natural language processing and reinforcement learning to leading-edge AI work. \n \n LLM \n RAG \n Python \n Reinforcement learning \n \n Apply"
     },
     {
-      "id": "about#6",
+      "id": "about#7",
       "title": "Enterprise sales｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "02 \n\n Business \n Enterprise sales \n The ability to hear a client's problem and connect it to the right proposal. We welcome those with B2B sales experience and a genuine interest in AI and digital transformation. \n \n B2B sales \n Proposal design \n DX knowledge \n Discovery \n \n Apply"
     },
     {
-      "id": "about#7",
+      "id": "about#8",
       "title": "UX/UI designer｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "03 \n\n Design \n UX/UI designer \n From experience design for AI products through to information architecture. We are looking for someone who thinks in human-centred terms and can hold usability and beauty together. \n \n UX design \n UI design \n Web and app \n \n Apply"
     },
     {
-      "id": "about#8",
+      "id": "about#9",
       "title": "会社概要｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Name: ShinAI Inc. （シンアイ株式会社）\nFounded: 1 January 2025 (as a sole proprietorship)\nIncorporated: 8 August 2026\nFounder: Masakuni Shibata\nWhat we do: Unlocking tacit knowledge; private AI agent development; hands-on support for AI-driven transformation;\n physical AI research and development (PoC)\nCoverage: Nationwide from Gunma, Japan (online available)\nRegistered office: 360-7 Ino-machi, Takasaki, Gunma Oaks Avenue D201\nContact: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST",
       "pin": true
     },
     {
-      "id": "about#9",
+      "id": "about#10",
       "title": "About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Home \n › \n About \n\n Company \n\n Before the AI, \n there is a person. \n\n ShinAI did not begin from an interest in technology. \n It began from a question: how can people work in a more human way? \n\n Purpose"
     },
     {
-      "id": "about#10",
+      "id": "about#11",
       "title": "Use AI to give people \n their human hours back.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "What lies beyond efficiency is not more work. \n It is people returning to what only people can do. \n\n Our aim is not to optimise operations. When AI carries information processing and routine judgment, people can concentrate on the higher work of creating, deciding, and building relationships. Our technology is pointed at supporting that kind of change in a company.\n\n Overview"
     },
     {
-      "id": "about#11",
+      "id": "about#12",
       "title": "A message from the founder｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
-      "text": "Masakuni Shibata \n\n \"I wanted to save people in trouble.\" That single wish kept me on the front line as a firefighter for some seven years.\n\n Facing lives day after day, I also came to know the limits of what one person can do.\n Was there a way to help far more people? I carried that question with me for years.\n\n The answer was AI. When I encountered generative AI in February 2023, I became certain it could let me help many more people —\n not as a technology that replaces people, but as a means to widen what they are capable of.\n\n What we take on is rebuilding the very workings of a company with AI at its foundation.\n Not efficiency, but optimisation — that is where the essence lies.\n\n Technology is never the goal, only the means.\n Beyond it lies a future where people reclaim their human time and give themselves to value of a higher order.\n\n \"Believe in true value, and build a new future for the next generation.\" It is this conviction that keeps us moving forward.\n\n 〜 2023 \n Served as a firefighter (approx. 7 years) \n\n 2023.02 \n Saw the potential in generative AI and began teaching himself \n\n 2024–2025 \n Practitioner at a Tokyo AI systems development company (LLM integration, RAG) \n\n 2025.01.01 \n Started ShinAI as a sole proprietorship \n\n 2026.08.08 \n Incorporated as ShinAI Inc. \n\n Founder \n Masakuni Shibata\n 柴田 昌国 \n\n Seven Shin"
+      "text": "Masakuni Shibata \n\n \"I wanted to save people in trouble.\" That single wish kept me on the front line as a firefighter for some seven years.Facing lives day after day, I also came to know the limits of what one person can do.Was there a way to help far more people?I carried that question with me for years.The answer was AI.When I encountered generative AI in February 2023, I became certain it could let me help many more people —\n not as a technology that replaces people, but as a means to widen what they are capable of.What we take on is rebuilding the very workings of a company with AI at its foundation.Not efficiency, but optimisation — that is where the essence lies."
     },
     {
-      "id": "about#12",
+      "id": "about#13",
+      "title": "A message from the founder｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Technology is never the goal, only the means.Beyond it lies a future where people reclaim their human time and give themselves to value of a higher order.\"Believe in true value, and build a new future for the next generation.\" It is this conviction that keeps us moving forward.〜 2023 \n Served as a firefighter (approx.7 years) \n\n 2023.02 \n Saw the potential in generative AI and began teaching himself \n\n 2024–2025 \n Practitioner at a Tokyo AI systems development company (LLM integration, RAG) \n\n 2025.01.01 \n Started ShinAI as a sole proprietorship \n\n 2026.08.08 \n Incorporated as ShinAI Inc.Founder \n Masakuni Shibata\n 柴田 昌国 \n\n Seven Shin"
+    },
+    {
+      "id": "about#14",
       "title": "The spirit behind the seven Shin｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Seven Japanese words read \"shin\" gather inside the name ShinAI. \n\n 真 \n Truth \n\n 信 \n Trust \n\n 伸 \n Growth \n\n 心 \n Heart \n\n 新 \n New \n\n 芯 \n Core \n\n 紳 \n Integrity \n\n Truth \n 真"
     },
     {
-      "id": "about#13",
+      "id": "about#15",
       "title": "See to the essence, and deliver value through honest engineering.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We are not swayed by surface trends. We keep pursuing the solution that is genuinely needed. \n\n Trust \n 信"
     },
     {
-      "id": "about#14",
+      "id": "about#16",
       "title": "Build trust, and deepen the bond between people and technology.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We build relationships with transparency and honesty, and go on providing technology that can be believed in. \n\n Growth \n 伸"
     },
     {
-      "id": "about#15",
+      "id": "about#17",
       "title": "Draw out latent potential, and keep evolving together.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We support our clients' growth and keep learning ourselves, so that we extend into the future side by side. \n\n Heart \n 心"
     },
     {
-      "id": "about#16",
+      "id": "about#18",
       "title": "Honour sensibility, and create AI that touches the heart.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We hold to more than the technology, caring about human feeling and values, and offering solutions that create empathy. \n\n New \n 新"
     },
     {
-      "id": "about#17",
+      "id": "about#19",
       "title": "Meet change head on, and open the future through innovation.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Unbound by precedent, we keep taking on new possibilities, and in doing so open the door to what comes next. \n\n Core \n 芯"
     },
     {
-      "id": "about#18",
+      "id": "about#20",
       "title": "Hold an unwavering centre, and carry the core of what comes next.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "With principle and engineering strength that the times cannot shake, we become something the next generation can rest on. \n\n Integrity \n 紳"
     },
     {
-      "id": "about#19",
+      "id": "about#21",
       "title": "Conduct ourselves with grace and respect, and let trust follow.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We act with high ethics and dignity, and remain a company that society can respect. \n\n Future Vision"
     },
     {
-      "id": "about#20",
+      "id": "about#22",
       "title": "Toward a society people and technology create together｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "ShinAI is working toward a future where technology walks alongside human creativity and kindness. Through AI that resonates with human sensibility, with the diversity of society, and with the sustainability of the planet, we solve problems with technology that can be believed in, and keep delivering value as a company people choose.\n\n Team"
     },
     {
-      "id": "about#21",
+      "id": "about#23",
       "title": "The team｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Professionals with deep expertise and a record of delivery, working on the problems companies bring to us. \n\n Join Us — partners wanted"
     },
     {
-      "id": "about#22",
+      "id": "about#24",
       "title": "The future we are building with ShinAI｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Come and take part in projects creating a new future with the power of AI."
     },
     {
-      "id": "about#23",
+      "id": "about#25",
       "title": "What working on a ShinAI project offers｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "01 \n Hands on the leading edge \n Constant access to the newest AI technology, in an environment where it is used on real projects. Current LLMs and RAG techniques, applied in practice. \n\n 02 \n Freedom to make your ideas real \n A culture where you propose your own ideas and get to build them. Creative thinking is respected, and ambitious projects are open to you. \n\n 03 \n Flexible ways of working \n Remote work, contract engagements, and other arrangements that fit your life. We build relationships focused on the project and the result."
     },
     {
-      "id": "about#24",
+      "id": "about#26",
       "title": "Skills we are currently looking for｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "This is not limited to formal employment. Contract work, side projects and joint ventures are all worth a conversation."
@@ -667,10 +679,16 @@
       "id": "news-20251205-takasaki-press#0",
       "title": "Talk at the 9th Takasaki CCI Joint Press Conference | ShinAI",
       "url": "https://shinai-inc.jp/en/news-20251205-takasaki-press.html",
-      "text": "On 5 December 2025, ShinAI founder Masakuni Shibata spoke at the 9th joint press conference hosted by the Takasaki Chamber of Commerce and Industry.\n\n The talk presented ShinAI's work under a single idea: using AI to give people their human hours back.\n\n What we work on is the knowledge that stays inside a company without ever being written down. Years of judgment, skill the hands remember, documents piled up over time. All of it belongs to the company, and yet none of it is in a form anyone can pull out when it is needed. Often it simply leaves when a person does.\n\n From our base in Takasaki, Gunma, ShinAI helps companies structure that tacit knowledge and turn it into AI that works where the work happens. Efficiency is not the goal in itself. When AI takes on information processing and routine judgment, people can return to what only people can do: creating, deciding, and building relationships. That is what we mean by optimisation.\n\n The press release from the day is available on the Takasaki Chamber of Commerce and Industry website (in Japanese).\n\n View the press release (PDF)\n\n Back to all news"
+      "text": "On 5 December 2025, ShinAI founder Masakuni Shibata spoke at the 9th joint press conference hosted by the Takasaki Chamber of Commerce and Industry.The talk presented ShinAI's work under a single idea: using AI to give people their human hours back.What we work on is the knowledge that stays inside a company without ever being written down.Years of judgment, skill the hands remember, documents piled up over time.All of it belongs to the company, and yet none of it is in a form anyone can pull out when it is needed.Often it simply leaves when a person does."
     },
     {
       "id": "news-20251205-takasaki-press#1",
+      "title": "Talk at the 9th Takasaki CCI Joint Press Conference | ShinAI",
+      "url": "https://shinai-inc.jp/en/news-20251205-takasaki-press.html",
+      "text": "From our base in Takasaki, Gunma, ShinAI helps companies structure that tacit knowledge and turn it into AI that works where the work happens.Efficiency is not the goal in itself.When AI takes on information processing and routine judgment, people can return to what only people can do: creating, deciding, and building relationships.That is what we mean by optimisation.The press release from the day is available on the Takasaki Chamber of Commerce and Industry website (in Japanese).View the press release (PDF)\n\n Back to all news"
+    },
+    {
+      "id": "news-20251205-takasaki-press#2",
       "title": "Talk at the 9th Takasaki CCI Joint Press Conference | ShinAI",
       "url": "https://shinai-inc.jp/en/news-20251205-takasaki-press.html",
       "text": "Home \n › \n News \n › \n Talk at the 9th Takasaki CCI joint press conference \n\n 2025.12.05 \n Talk \n\n Speaking at the 9th Takasaki CCI joint press conference"

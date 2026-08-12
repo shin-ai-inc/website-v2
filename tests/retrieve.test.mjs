@@ -6,7 +6,7 @@
 */
 import test from "node:test";
 import assert from "node:assert/strict";
-import { normalize, bigrams, buildIndex, selectChunks } from "../api/lib/retrieve.mjs";
+import { normalize, terms, buildIndex, selectChunks } from "../api/lib/retrieve.mjs";
 
 const CHUNKS = [
   { id: "about#profile", title: "会社概要", url: "/about.html", pin: true,
@@ -23,16 +23,32 @@ test("normalize: 全角英数と大小文字と空白の揺れを吸収する", 
   assert.equal(normalize("ＳｈｉｎＡＩ　株式会社"), normalize("shinai株式会社"));
 });
 
-test("bigrams: n文字からn-1個の2文字組を作る", () => {
-  assert.deepEqual([...bigrams("あいうえ")], ["あい", "いう", "うえ"]);
+test("terms: 日本語はn文字からn-1個の2文字組にする", () => {
+  assert.deepEqual([...terms("あいうえ")], ["あい", "いう", "うえ"]);
 });
 
-test("bigrams: 1文字は単独で1件として扱う(取りこぼさない)", () => {
-  assert.deepEqual([...bigrams("A")], ["a"]);
+test("terms: 英語は語のまま扱う(cost を co/os/st に刻まない)", () => {
+  const t = terms("How much does it cost?");
+  assert.ok(t.has("cost"), "語として保つ");
+  assert.ok(!t.has("os"), "断片へ刻まない");
 });
 
-test("bigrams: 空文字は空", () => {
-  assert.equal(bigrams("").size, 0);
+test("terms: 日本語に混じる英字も語として扱う", () => {
+  const t = terms("RAG構築の実績はありますか");
+  assert.ok(t.has("rag"));
+  assert.ok(t.has("構築"), "日本語側は2文字組のまま");
+});
+
+test("terms: 1文字の語も取りこぼさない", () => {
+  assert.deepEqual([...terms("あ")], ["あ"]);
+});
+
+test("terms: 1文字の英字は雑音として落とす", () => {
+  assert.equal(terms("a").size, 0);
+});
+
+test("terms: 空文字は空", () => {
+  assert.equal(terms("").size, 0);
 });
 
 test("selectChunks: 質問に最も一致するチャンクが1位に来る", () => {

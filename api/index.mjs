@@ -284,6 +284,11 @@ export default {
            どちらが原因かをログだけで切り分けられる(本文は残さない)。 */
         hits: picked.map((c) => c.id),
         dense: Boolean(queryVec),
+        /* クライアントが生成する乱数の識別子。個人情報を含まない。
+           同じ会話の複数の問いを結び付けるためだけに使う
+           （「この対話の答えがおかしい」と報告を受けたとき、
+             どのやり取りだったかを追えないと調べようがない）。 */
+        session: parsed.value.sessionId,
         inputTokens: usage.prompt_tokens || 0,
         outputTokens: usage.completion_tokens || 0,
         cachedTokens: usage.prompt_tokens_details?.cached_tokens || 0,

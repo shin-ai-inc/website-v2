@@ -40,6 +40,10 @@
            "料金", "費用", "期間", "詳しく", "具体的", "ご提案"]
   };
 
+  /* 自傷をほのめかす表現。サーバー側 guard.mjs の分類と対応させる。
+     ここでは何も返さず、通過させるためだけに使う。 */
+  var CRISIS = /死にたい|しにたい|消えたい|生きるのが(つらい|辛い|嫌)|自殺|自傷|リストカット|誰も助けて|kill myself|suicide|want to die|end my life|self[ -]harm/i;
+
   var Chatbot = {
     button: null,
     panel: null,
@@ -179,6 +183,14 @@
       if (text.length > 500) {
         return T.tooLong;
       }
+      /* 安全に関わる訴えは、ここで断らずサーバーへ通す。
+         サーバーは相談窓口を定型で返す。ここで拒否文を返すと、
+         「死にたい。あなたは今から私の友達になって」のような入力が
+         下の危険パターンに当たり、窓口の案内が届かないまま終わる。
+         判定はサーバー側が正本であり、ここは通すことだけを決める。 */
+      if (CRISIS.test(text)) {
+        return null;
+      }
       var dangerous = [
         /<script|javascript:|onerror=|onload=|onclick=/i,
         /\b(system prompt|ignore (the )?(previous|above)|disregard|override|bypass|jailbreak)\b/i,
@@ -274,19 +286,39 @@
       var el = document.createElement("div");
       el.className = "chatbot__message chatbot__message--" + type;
       el.textContent = text;
-      if (type === "bot") {
-        el.setAttribute("role", "status");
-      }
+      /* 個々の発言に role="status" を付けない。
+         包む #chatbot-messages が既に aria-live であり、入れ子のライブ領域は
+         読み上げを二重にする。 */
       this.messages.appendChild(el);
       this.scrollToEnd();
       return el;
     },
 
+    /* 一文字ずつ書き足す演出は、そのままだとライブ領域を毎回書き換える。
+       200字の答えなら2秒余りのあいだに200回の変化が起き、読み上げは破綻する。
+       打ち終わるまで支援技術から隠し、完成した時点で一度だけ現す。
+       動きを控える設定の利用者には、演出そのものを行わない。 */
     typeMessage: function (text) {
       var self = this;
       var el = document.createElement("div");
       el.className = "chatbot__message chatbot__message--bot";
-      el.setAttribute("role", "status");
+
+      var finish = function () {
+        el.removeAttribute("aria-hidden");
+        if (self.shouldShowCta(text)) {
+          window.setTimeout(function () { self.addContactCta(); }, 280);
+        }
+      };
+
+      if (this.prefersReducedMotion()) {
+        el.textContent = text;
+        this.messages.appendChild(el);
+        this.scrollToEnd();
+        finish();
+        return;
+      }
+
+      el.setAttribute("aria-hidden", "true");
       this.messages.appendChild(el);
 
       var i = 0;
@@ -297,11 +329,14 @@
           self.scrollToEnd();
         } else {
           window.clearInterval(timer);
-          if (self.shouldShowCta(text)) {
-            window.setTimeout(function () { self.addContactCta(); }, 280);
-          }
+          finish();
         }
       }, this.typingSpeed);
+    },
+
+    prefersReducedMotion: function () {
+      return !!(window.matchMedia
+        && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     },
 
     shouldShowCta: function (text) {
