@@ -108,3 +108,30 @@ test("article は見出しでなくその境界で切る(役職が前の人へ�
   const y = chunks.find((c) => /Y 氏/.test(c.title));
   assert.match(y.text, /最高技術責任者/);
 });
+
+/* ---- 応答に出さない記述 ---- */
+
+test("番地から先を落とし、拠点だけを残す", () => {
+  const chunks = chunkPage(wrap(
+    "<dl><div><dt>所在地</dt><dd>群馬県高崎市井野町360-7 オークスアベニューD201</dd></div></dl>"), PAGE);
+  assert.match(chunks[0].text, /所在地: 群馬県高崎市$/m);
+  assert.ok(!chunks[0].text.includes("井野町"));
+  assert.ok(!chunks[0].text.includes("オークス"));
+});
+
+test("英語側も同じ扱いにする", () => {
+  const chunks = chunkPage(wrap(
+    "<dl><div><dt>Registered office</dt><dd>360-7 Ino-machi, Takasaki, Gunma Oaks Avenue D201</dd></div></dl>"),
+    { title: "About", url: "/en/about.html", slug: "about", pinDl: true });
+  assert.match(chunks[0].text, /Takasaki, Gunma$/m);
+  assert.ok(!/Ino-machi|Oaks/.test(chunks[0].text));
+});
+
+test("実サイト: 知識ベースの元となる分割に番地が残らない", () => {
+  for (const file of ["about.html", "contact.html"]) {
+    const html = readFileSync(join(process.cwd(), "dist", file), "utf8");
+    for (const c of chunkPage(html, { title: "x", url: "/" + file, slug: "x", pinDl: true })) {
+      assert.ok(!/井野町|オークス/.test(c.text), `${file}: ${c.id} に番地が残る`);
+    }
+  }
+});

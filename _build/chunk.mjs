@@ -14,7 +14,31 @@
   乖離しようがない。
 */
 
-const strip = (s) => s
+/* チャットの応答に出さない記述。
+
+   秘密ではない。番地はサイトにも登記にも載っており、そこは変えない。
+   ただし「どこにありますか」と尋ねた訪問者が欲しいのは拠点であって、
+   部屋番号までではない。会いに来るための情報は、問い合わせを経て人が渡す。
+
+   出力側で言い換えるのではなく、知識の生成時点で落とす。
+   モデルに見せなければ、答えようがない。 */
+const REDACTIONS = [
+  [/群馬県高崎市井野町[^\s、。]*(\s*オークスアベニュー\S*)?/g, "群馬県高崎市"],
+  [/[0-9]+-[0-9]+\s*Ino-machi,\s*Takasaki,\s*Gunma(\s*Oaks\s*Avenue\s*\S*)?/gi,
+   "Takasaki, Gunma"]
+];
+
+/** 応答に出さない記述を落とす。分割の前後どちらでも同じ結果になる。 */
+export function redact(text) {
+  let out = typeof text === "string" ? text : "";
+  for (const [pattern, replacement] of REDACTIONS) out = out.replace(pattern, replacement);
+  return out;
+}
+
+/* 落とす処理はタグを剥がしたあとに行う。HTMLのままだと、
+   「井野町360-7」と「オークスアベニュー」がタグで分断されていて、
+   前半だけが落ちて後半が残る（実際にそうなった）。 */
+const strip = (s) => redact(String(s)
   .replace(/<(script|style|svg)\b[\s\S]*?<\/\1>/gi, " ")
   .replace(/<!--[\s\S]*?-->/g, " ")
   .replace(/<br\s*\/?>/gi, " ")
@@ -27,7 +51,7 @@ const strip = (s) => s
   .replace(/&#39;/g, "'")
   .replace(/[ \t　]+/g, " ")
   .replace(/\n\s*\n\s*\n+/g, "\n\n")
-  .trim();
+  .trim());
 
 /* これ未満は見出しの残骸や飾り文で、根拠として使えない。 */
 const MIN_CHARS = 24;

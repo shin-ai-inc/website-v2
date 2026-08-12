@@ -163,3 +163,15 @@ test("公開HTMLと知識ベースが乖離していない(ビルド忘れの検
       `${file}: 本文が公開HTMLと一致しない。node _build/build.mjs を実行すること`);
   }
 });
+
+test("番地から先が知識ベースに入らない(日英とも)", () => {
+  /* 秘密ではなくサイトにも載っているが、チャットからは出さないと決めた記述。
+     出力側で言い換えるのではなく、モデルへ渡す前に落とす。 */
+  for (const locale of ["ja", "en"]) {
+    const all = loadKb(locale).chunks.map((c) => c.text).join(" ");
+    for (const fragment of ["井野町", "オークス", "Ino-machi", "Oaks Avenue"]) {
+      assert.ok(!all.includes(fragment), `${locale}: 「${fragment}」が残っている`);
+    }
+    assert.ok(/高崎|Takasaki/.test(all), `${locale}: 拠点は残す`);
+  }
+});

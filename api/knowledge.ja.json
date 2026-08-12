@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "108fc3a",
+  "generatedAt": "3ef7976",
   "chunks": [
     {
       "id": "index#0",
@@ -405,7 +405,7 @@
       "id": "about#8",
       "title": "会社概要｜会社情報｜ShinAI",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "商号: シンアイ株式会社（ShinAI）\n創業: 令和7年1月1日（個人事業）\n設立: 令和8年8月8日\n代表: 柴田 昌国\n事業内容: 暗黙知の解消支援／企業専用AIエージェント開発／AI化伴走支援／\r\n フィジカルAIの研究開発（PoC）\n対応地域: 群馬県を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市井野町360-7 オークスアベニューD201\n連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00",
+      "text": "商号: シンアイ株式会社（ShinAI）\n創業: 令和7年1月1日（個人事業）\n設立: 令和8年8月8日\n代表: 柴田 昌国\n事業内容: 暗黙知の解消支援／企業専用AIエージェント開発／AI化伴走支援／\r\n フィジカルAIの研究開発（PoC）\n対応地域: 群馬県を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市\n連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00",
       "pin": true,
       "vec": "+/wDAg36+wj8+wf7B/v4APb9//gCBQf9CQMB/QL4Av7/Bf3+BAIA/gQABgX9/vkB/QT7APv59QYJAgIIBP7+AgICAgz99gAG//8AAv0IAQP1C/b9CPb5APYE+AX2BgYCAwEEAAL6BQv5BPr8AgX2APoB8wACAf38+wsDCv77Bfv4+v79A/wC9/4B+fgGBv79+wX78wL/Avz68/YG/AH9+QUI+wL7Afv99QD7/vwHA/sFAvj9+QL3A/v4AwQA/QAADAwK+wD8/vv/8wEIAvwM/vwCC/MFAvz/+f78AfoF+QMBCf76BfkEAPgAAfwF/wMBBAAIAQP8BP8D/Qj7Bfb8+QD//gQBBP/7BP4EDgYD/QEE/v8C+QP2CfoE/P3/Av/3+wID+/37APkI/wICCv3++AUP9QMF/P/+Av7++QT+B/oB/Pv99AkE/AT9C/sDAPsFAv39/PcA9Ab//gIBAQT59gL69v3/+PwG9/0G/P/9+AID/AkE//0A9wYC/gACA/v+AP4EAfsGEPoA///5AgD/BPn+AwD8BP8A/AkC9wQH/f7/Avz7A/T/9fn7BQAC+QH/+f0AA///9wIA+/f59AH/Bfn/BP0FDvwC/v72CAL++w7++v0DAgX1AAT39QUG+fv8+vv/BAkD/gn/AQUBD/8G/gn49Ar5//0M9P8E/AIABwc="
     },
@@ -707,7 +707,7 @@
       "id": "contact#0",
       "title": "会社概要｜お問い合わせ・無料相談｜ShinAI",
       "url": "https://shinai-inc.jp/contact.html",
-      "text": "メール: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00\n対応地域: 群馬県を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市井野町360-7 オークスアベニューD201",
+      "text": "メール: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00\n対応地域: 群馬県を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市",
       "vec": "+/0HBw32+AcB+wT4Bf/3/fT7A/n/Awn+CAYE/gj2/vv/BPj9CAUC/gL/CAX+APcBAAX9Afr29wcIAwAHBfoCAwD//wMA9wAF/QAC/P0C/gP2Cfb9Bfb9APgC8Qf4CQEEAwAGAQT3BQoAAPkBAgPz/fwA9wEGAfv9+w0CCP38BQH1/P7/A/z7+/4C/PwGA/r59wb59gT7Avn08fcJ/AT6+AgJ/AD6BPwA+P38/QAGBvwGBvsG+wL7Avv3CAP8/P4DCgoI+vz8////8gAF/v0HAv4CDvQBBP/5/f/7//kI+wMDCv/8B/kGAf0A/wAJ//8BAf8E/gL4Bv4DAwL+BfQA+v8E/gUGA//7BfwBBgYH+v0EAP0C+vz7B/v//fgAAQH7/wYF/Pr2Af4N/QMHAwL/9/4L9gcC/f4BAP39+AYECP4G+/r98wIEAAT8CPkE+v8GBgD7//oA9QQA/AEB/wH3+gL9/fsF9v0B9gAH/wH++AAB+Q8E+v79/AcEA/8EBfn+A/8DBv0BDv0B/gT+AgQA/vb//v//Av38/gYB7QEF/v8E//z9APcA+vn7BP77+QD/9gECAf8B+QT++vf99AP9CvgACP8ECPwAAf/4CwEA/gj9+f4FAwb4BQT39wAG9vb89/n9BAsIAQoAAQEEDf8C/AL59Abz+vsJ+P8B/f/+Agg="
     },
     {
