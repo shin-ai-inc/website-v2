@@ -377,20 +377,24 @@ const GREETING_FORMS = [
    押し出すことになる。
 
    返すのは、答えを求めない平叙文にする。相手は返さなくてよい。
+   ただし「ゆっくりご覧ください」のような回遊を促す言葉は使わない。
+   チャットを開いた人は見て回りたいのではなく、話したいのである。
+   何をする窓口かを言い切る（「こちらでお受けいたします」）ほうが、
+   「いつでもどうぞ」のような曖昧な誘いより自然に届く。
    挨拶だけかどうかは入力から判定できるので、生成に委ねずここで決める
    (OpenAIを呼ばないため、費用もかからず待ち時間もない)。 */
 const GREETING_REPLIES_JA = [
-  "ご覧いただきありがとうございます。",
-  "お立ち寄りいただきありがとうございます。",
-  "ゆっくりご覧ください。",
-  "ShinAIサポートAIです。気になることがあれば、いつでもどうぞ。"
+  "気になることがあれば、こちらでお受けいたします。",
+  "ShinAIサポートAIです。ご質問はこちらで承ります。",
+  "ご質問がありましたら、こちらで承ります。",
+  "ご質問やお困りごとは、こちらでお受けいたします。"
 ];
 
 const GREETING_REPLIES_EN = [
-  "Thank you for stopping by.",
-  "Good to have you here.",
-  "Please take your time looking around.",
-  "I am the ShinAI support AI. Ask whenever something comes to mind."
+  "If a question comes to mind, I can take it here.",
+  "I am the ShinAI support AI. Questions about the company are welcome here.",
+  "Happy to take any questions you have.",
+  "Anything you would like to know, I can take it here."
 ];
 
 /** 挨拶と記号だけの入力か。用件が続いていれば false。 */
