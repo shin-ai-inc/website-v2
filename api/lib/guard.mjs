@@ -282,6 +282,10 @@ const LEAK_PATTERNS = [
 const PRONOUN_SUBJECT = /(^|[。\n]\s*)(?:彼|彼女)(?:は|も)/g;
 const PRONOUN_OTHER = /(?:彼|彼女)(が|の|を|に|へ|と|も|は)/g;
 
+/* 問い返しを落としたあとに、これだけの中身が残るなら付け足しだったと判断する。
+   残らないなら、その問いかけ自体が用件だったのだから触らない。 */
+const MIN_ANSWER_WITHOUT_CLOSER = 10;
+
 /* 末尾に付く型どおりの問い返し。文末に現れたものだけを見る
    (本文中で「ご不明な点があれば」と述べるのは自然なため)。 */
 const CLOSER_TIC = /\s*(何か)?(他に|ほかに)?[^。\n]{0,12}(お困りのこと|ご不明な点|ご質問)[^。\n]{0,16}(ございません|ありません|あります)か[。．?？]?\s*$/;
@@ -304,10 +308,17 @@ export function sanitizeAnswer(raw) {
 
      「何か他にお困りのことはございませんか」を毎回付けると、
      答えではなく手順を実行している文章になる。規範で二度禁じても残ったため、
-     ここで落とす。ただし、それ自体が用件である短い応答(挨拶への返し)は残す。 */
+     ここで落とす。
+
+     判断は「落としたあとに答えが残るか」で行う。
+     当初は全体が60字を超えることを条件にしていたが、
+     「所在地は◯◯です。何か他にお困りのことはございませんか。」のような
+     短い事実回答がすり抜けた。長さは、それが付け足しかどうかを表さない。
+     挨拶への返しは「〜お答えいたします」という平叙文で、そもそも判定に当たらない。 */
   const trimmed = typeof text === "string" ? text.trim() : "";
-  if (trimmed.length > 60) {
-    text = trimmed.replace(CLOSER_TIC, "");
+  const withoutCloser = trimmed.replace(CLOSER_TIC, "").trim();
+  if (withoutCloser.length >= MIN_ANSWER_WITHOUT_CLOSER) {
+    text = withoutCloser;
   }
 
   /* 人物を代名詞で受けない。企業紹介の日本語では「彼は」と書かない。

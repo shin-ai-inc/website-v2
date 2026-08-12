@@ -195,3 +195,14 @@ test("人物を代名詞で受けない(文頭は落とし、続く場合は同�
   assert.ok(!/彼/.test(mid), mid);
   assert.match(mid, /同氏の経歴/);
 });
+
+test("短い事実回答でも末尾の問い返しを落とす(長さで判断しない)", () => {
+  const out = sanitizeAnswer("商号はシンアイ株式会社（ShinAI）です。何か他にお困りのことはございませんか。");
+  assert.ok(!out.includes("お困り"), out);
+  assert.match(out, /シンアイ株式会社/);
+});
+
+test("問いかけ自体が用件のときは触らない", () => {
+  const only = "何かお困りのことはございませんか。";
+  assert.equal(sanitizeAnswer(only), only);
+});
