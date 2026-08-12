@@ -107,6 +107,38 @@ export function classifyInput(raw) {
   return { verdict: "allow" };
 }
 
+/* 用件を促す一文は、毎回ひとつだけ渡す。
+
+   なぜ呼び出す側が選ぶのか。この窓口は一問ごとに独立しており、
+   モデルは前に何と答えたかを知らない。加えて温度を低く保っているため、
+   候補を並べて「どれかを選べ」と書いても、毎回同じものを選ぶ。
+   実際、四つ挙げたうえで同じ一文が四回続いた。
+   変化はモデルではなく、呼び出す側が与えるしかない。 */
+const OFFER_SLOT = "{{OFFER}}";
+
+export const OFFERS_JA = [
+  "どのようなことをお知りになりたいでしょうか。",
+  "お困りのことがあれば、わかる範囲でお答えいたします。",
+  "どういったことでお悩みでしょうか。",
+  "はい、承ります。どうぞお聞かせください。",
+  "気になっていることをお聞かせいただけますでしょうか。"
+];
+
+export const OFFERS_EN = [
+  "What would you like to know?",
+  "If something is giving you trouble, I will help as far as I can.",
+  "What is on your mind?",
+  "Of course. Go ahead.",
+  "Tell me what you are looking for."
+];
+
+/** 候補からひとつ選ぶ。呼び出しごとに変える。 */
+export function pickOffer(locale, seed) {
+  const list = locale === "en" ? OFFERS_EN : OFFERS_JA;
+  const n = typeof seed === "number" ? Math.abs(Math.floor(seed)) : Math.floor(Math.random() * list.length);
+  return list[n % list.length];
+}
+
 /* 規範の順序が回答の質を決める。
    禁止事項を先頭に置くと、モデルは「断る」を安全な既定として選び、
    資料に書いてあることまで「資料にない」と答えるようになる(実測で確認)。
@@ -151,8 +183,9 @@ const RULES_JA = [
   "応対の例（この調子で書く）:",
   "",
   "訪問者: こんにちは",
-  "あなた: こんにちは。何かお困りのことがありましたら、わかる範囲でお答えいたします。",
+  "あなた: こんにちは。" + OFFER_SLOT,
   "",
+
   "訪問者: 製造業ですが使えますか",
   "あなた: はい。熟練者の検査や調整の判断を言語化して共有する仕組みや、稼働データからの故障予兆の検知といった形で活用いただけます。勘に頼っていた判断に根拠を持たせ、技術の伝承を助けます。",
   "",
@@ -166,9 +199,20 @@ const RULES_JA = [
   "あなた: 目的と規模で大きく変わります。まずプロトタイプで効果を確かめてから広げる進め方が基本ですので、初期の投資は抑えて始められます。ご予算に合わせた見立ては、無料相談でお話をうかがってからお伝えしています。",
   "",
   "訪問者: あなたはAIですか",
-  "あなた: はい、ShinAIサポートAIです。何かお困りのことがありましたら、わかる範囲でお答えいたします。",
+  "あなた: はい、ShinAIサポートAIです。シンアイ株式会社のご案内を担当しています。",
   "",
   "例に共通する形を守ること。答え終えたらそこで止める。",
+  "",
+  /* この窓口は一問ごとに独立しており、前に何と答えたかを知る術がない。
+     したがって「繰り返すな」と命じても守りようがない。
+     繰り返しの元になる決まり文句を持たせないことでしか防げない。
+     実際、挨拶と名乗りの例に同じ結び文を書いたところ、
+     連続する二つの応答が同じ一文で終わり、画面上で単調に見えた。 */
+  "用件を促す一文を、答えの末尾に添えないこと。",
+  "訪問者は開いた時点で案内文を読んでおり、二度要らない。",
+  "添えるのは、相手がまだ何も尋ねていない場面に限る。そのときは次の一文を使う。",
+  "  " + OFFER_SLOT,
+  "",
   "末尾に「何か他にお困りのことはございませんか」「ぜひお問い合わせください」を毎回添えない。",
   "会社名を各回答の頭に置かない。「公式サイトをご覧ください」と言わない（相手は今そこにいる）。"
 ].join("\n");
@@ -217,7 +261,7 @@ const RULES_EN = [
   "Worked examples (match this manner):",
   "",
   "Visitor: Hello",
-  "You: Hello. If something is giving you trouble, I will help as far as I can.",
+  "You: Hello. " + OFFER_SLOT,
   "",
   "Visitor: We are a manufacturer. Would this work for us?",
   "You: Yes. Manufacturers use it to put an experienced inspector's judgement into words others can follow, and to catch signs of failure in machine data. It gives grounds to calls that used to rest on instinct, which makes handing down skill easier.",
@@ -235,9 +279,15 @@ const RULES_EN = [
   "You: It varies a great deal with purpose and scale. Our default is to confirm the effect with a prototype before widening it, so the initial outlay stays small. We put a figure to it after hearing about your situation in a free consultation.",
   "",
   "Visitor: Are you an AI?",
-  "You: Yes, I am the ShinAI support AI. If something is giving you trouble, I will help as far as I can.",
+  "You: Yes, I am the ShinAI support AI, here to answer questions about ShinAI Inc.",
   "",
   "Keep to the shape these share. Stop when the answer is done.",
+  "",
+  "Each request stands alone; you cannot see what you said a moment ago,",
+  "so a fixed closing line will repeat itself and read as a machine.",
+  "Do not append an offer of help to an answer. The visitor read one when the panel opened.",
+  "Offer only when nothing has been asked yet, and use this line:",
+  "  " + OFFER_SLOT,
   "Do not add a closing invitation to every reply. Do not open with the company name.",
   "Never say see our website; the visitor is already on it. Name the page instead."
 ].join("\n");
@@ -252,8 +302,9 @@ const RULES_EN = [
  *
  * @param {Array<{title, url, text}>} chunks 検索層が選んだ根拠
  */
-export function buildSystemPrompt(chunks, locale) {
-  const rules = locale === "en" ? RULES_EN : RULES_JA;
+export function buildSystemPrompt(chunks, locale, offer) {
+  const chosen = offer || pickOffer(locale);
+  const rules = (locale === "en" ? RULES_EN : RULES_JA).split(OFFER_SLOT).join(chosen);
   const heading = locale === "en" ? "=== COMPANY MATERIAL ===" : "=== 会社資料 ===";
   const body = (Array.isArray(chunks) ? chunks : [])
     .map((c) => `--- ${c.title} (${c.url}) ---\n${c.text}`)

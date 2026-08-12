@@ -13,7 +13,7 @@
   秘密はコードに置かない。OPENAI_API_KEY は wrangler secret でのみ投入する。
 */
 import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
-import { classifyInput, buildSystemPrompt, sanitizeAnswer } from "./lib/guard.mjs";
+import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer } from "./lib/guard.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
@@ -237,7 +237,9 @@ export default {
     try {
       const queryVec = await embedQuery(parsed.value.message, env, kb.embedModel, kb.embedDims);
       const picked = hybridSearch(parsed.value.message, queryVec, INDEX[locale], { k: TOP_K });
-      const systemPrompt = buildSystemPrompt(picked, locale);
+      /* 用件を促す一文は呼び出しごとに変える。モデルは前の応答を知らないため、
+         ここで変えないと同じ一文が続き、画面上で単調になる（実際にそう見えた）。 */
+      const systemPrompt = buildSystemPrompt(picked, locale, pickOffer(locale));
 
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",

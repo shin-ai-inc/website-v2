@@ -8,7 +8,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  classifyInput, buildSystemPrompt, sanitizeAnswer,
+  classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer,
   MAX_MESSAGE_CHARS
 } from "../api/lib/guard.mjs";
 
@@ -205,4 +205,24 @@ test("短い事実回答でも末尾の問い返しを落とす(長さで判断�
 test("問いかけ自体が用件のときは触らない", () => {
   const only = "何かお困りのことはございませんか。";
   assert.equal(sanitizeAnswer(only), only);
+});
+
+/* ---- 用件を促す一文の入れ替え ---- */
+
+test("渡した一文がそのまま規範に入る", () => {
+  const p = buildSystemPrompt(KB, "ja", "どういったことでお悩みでしょうか。");
+  assert.ok(p.includes("どういったことでお悩みでしょうか。"));
+  assert.ok(!p.includes("{{OFFER}}"), "差し込みの目印が残らない");
+});
+
+test("渡さなくても目印は残らない", () => {
+  for (const locale of ["ja", "en"]) {
+    assert.ok(!buildSystemPrompt(KB, locale).includes("{{OFFER}}"), locale);
+  }
+});
+
+test("候補は複数あり、種を変えれば別の一文になる", () => {
+  const seen = new Set([0, 1, 2, 3, 4].map((i) => pickOffer("ja", i)));
+  assert.ok(seen.size >= 4, `毎回同じでは変化にならない: ${seen.size}種`);
+  assert.ok(pickOffer("en", 0) !== pickOffer("ja", 0), "言語で切り替わる");
 });
