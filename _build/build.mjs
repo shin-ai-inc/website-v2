@@ -683,7 +683,18 @@ const EMBED_DIMS = 512;
 
 const embedChunks = async (chunks) => {
   const key = process.env.OPENAI_API_KEY;
-  if (!key) return false;
+  if (!key) {
+    /* 静かに縮退させない。鍵を渡したつもりで渡っていない取り違えが実際に起きた。
+       縮退それ自体は正しい振る舞いだが、気づけないまま公開されると
+       検索の精度だけが落ちた状態が続く。 */
+    console.warn(
+      "\n[注意] OPENAI_API_KEY が渡っていないため、ベクトルを付けずに生成します。" +
+      "\n       検索は字面のみで動作します（言い換えは繋がりません）。" +
+      "\n       有効にするには、鍵の設定とビルドを同じコマンドで実行してください:" +
+      "\n         $env:OPENAI_API_KEY = Read-Host \"OpenAI APIキー\"; node _build/build.mjs\n"
+    );
+    return false;
+  }
   /* 題と本文を合わせて1件とする。題は検索の的として効きが強い。 */
   const res = await fetch("https://api.openai.com/v1/embeddings", {
     method: "POST",
