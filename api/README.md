@@ -166,9 +166,11 @@ python tools/audit_replies.py  # 公開中のAPIへ18問を投げ、機械が書
 渡し忘れるとベクトルなしで生成され、検索は静かに字面だけへ落ちる（一度そうなった）。
 ビルドは警告を出すが、見落とさないこと。
 
+現在地を問わないよう絶対パスで書く（`api/` の中から実行して失敗した例がある）。
+
 ```powershell
-$env:OPENAI_API_KEY = Read-Host "OpenAI APIキー"; node _build/build.mjs
-cd api; npx wrangler deploy; cd ..; Remove-Item Env:OPENAI_API_KEY
+Set-Location C:\Users\masa\shinai-website-v2; $env:OPENAI_API_KEY = Read-Host "OpenAI APIキー"; node _build/build.mjs
+Set-Location C:\Users\masa\shinai-website-v2\api; npx wrangler deploy; Set-Location ..; Remove-Item Env:OPENAI_API_KEY
 ```
 
 有効化で繋がるようになった例。いずれも文字の重なりが無く、字面検索では届かない。
