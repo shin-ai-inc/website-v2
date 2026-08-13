@@ -9,6 +9,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, hasGreeting, greetingUsed, greetingOnly, pickGreetingClose,
+  emojiTone, pickEmojiReply,
   MAX_MESSAGE_CHARS
 } from "../api/lib/guard.mjs";
 
@@ -330,6 +331,50 @@ test("締めの言い方は複数ある", () => {
 });
 
 
+
+/* ---- 絵文字だけの入力 ---- */
+
+test("絵文字だけの入力を情の種類で分ける", () => {
+  assert.equal(emojiTone("❤️"), "positive");
+  assert.equal(emojiTone("👍"), "positive");
+  assert.equal(emojiTone("😊😊"), "positive");
+  assert.equal(emojiTone("🙋"), "attention");
+  assert.equal(emojiTone("🙋‍♂️"), "attention");
+  assert.equal(emojiTone("🤔"), "question");
+  assert.equal(emojiTone("😢"), "negative");
+  assert.equal(emojiTone("👋"), "greeting");
+  assert.equal(emojiTone("🍣"), "neutral");
+  assert.equal(emojiTone("❤️ ！"), "positive", "記号が混じっても絵文字だけとみなす");
+});
+
+test("文字が伴う入力は絵文字だけとみなさない", () => {
+  for (const s of ["❤️ 費用はいくらですか", "大好き", "", "こんにちは"]) {
+    assert.equal(emojiTone(s), null, s);
+  }
+});
+
+test("絵文字への返しは情に沿い、肯定には問い返さない", () => {
+  const yes = pickEmojiReply("positive", "ja", 0);
+  assert.ok(!yes.includes("？"), yes);
+  assert.match(yes, /^ありがとうございます！/, yes);
+
+  assert.ok(pickEmojiReply("attention", "ja", 0).includes("？"), "用があるなら促す");
+  assert.ok(!pickEmojiReply("negative", "ja", 0).includes("？"), "つらい相手に問い返さない");
+  for (const tone of ["positive", "attention", "question", "negative", "greeting", "neutral"]) {
+    assert.ok(pickEmojiReply(tone, "en", 0).length > 0, tone);
+  }
+});
+
+test("絵文字への返しは言い方が複数ある", () => {
+  const seen = new Set([0, 1, 2, 3].map((i) => pickEmojiReply("positive", "ja", i)));
+  assert.ok(seen.size >= 3, `${seen.size}種`);
+});
+
+test("絵文字だけの入力を専用の分類にする", () => {
+  assert.equal(classifyInput("❤️").verdict, "emoji");
+  assert.equal(classifyInput("🙋").verdict, "emoji");
+  assert.equal(classifyInput("こんにちは").verdict, "allow");
+});
 
 /* ---- 人につないでほしい、という依頼 ---- */
 

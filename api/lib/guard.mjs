@@ -96,7 +96,7 @@ const HUMAN_REQUEST_PATTERNS = [
 
 /**
  * 利用者入力を分類する。
- * @returns {{verdict: "allow"|"empty"|"too_long"|"crisis"|"human"|"offtask"|"refuse", reason?: string}}
+ * @returns {{verdict: "allow"|"empty"|"too_long"|"crisis"|"emoji"|"human"|"offtask"|"refuse", reason?: string, tone?: string}}
  *   verdict は処理の分岐に、reason は監査ログにのみ使う(利用者には返さない)。
  */
 export function classifyInput(raw) {
@@ -110,6 +110,10 @@ export function classifyInput(raw) {
   for (const p of CRISIS_PATTERNS) {
     if (p.test(text)) return { verdict: "crisis", reason: "self_harm" };
   }
+
+  /* 絵文字だけなら検索に渡す語がない。生成へ流すと根拠なしの拒否になる。 */
+  const tone = emojiTone(text);
+  if (tone) return { verdict: "emoji", reason: `emoji_${tone}`, tone };
 
   /* 攻撃の判定より前に置く。「担当者に代わって」は役割乗っ取りの型に
      形が似ており、拒否文を返すと人に届く道を塞いでしまう。 */
@@ -435,6 +439,112 @@ export function greetingOnly(text) {
 /** 挨拶だけのときに使う、答えを求めない締めの一文。 */
 export function pickGreetingClose(locale, seed) {
   const list = locale === "en" ? GREETING_REPLIES_EN : GREETING_REPLIES_JA;
+  const n = typeof seed === "number"
+    ? Math.abs(Math.floor(seed)) : Math.floor(Math.random() * list.length);
+  return list[n % list.length];
+}
+
+/* 絵文字だけの入力。
+
+   絵文字には検索に渡す語がない。そのまま生成へ流すと、根拠が一つも
+   当たらないまま「お答えできません」を返していた（❤️に拒否文を返した）。
+   拒否は内容を断る言葉であり、好意に返す言葉ではない。
+
+   絵文字は用件ではなく情の表明である。何を言われたかではなく、
+   どの情かだけを見て、harness 側で返しを決める。判定は入力から
+   確定できるので生成に賭ける理由がなく、費用も待ち時間も生じない。 */
+const EMOJI_CHAR = /[\p{Extended_Pictographic}\p{Emoji_Presentation}]/u;
+const EMOJI_NOISE = new RegExp(
+  "[\\p{Extended_Pictographic}\\p{Emoji_Presentation}\\p{Emoji_Modifier}"
+  + "\\p{Regional_Indicator}\\u200d\\ufe0f\\ufe0e]|[0-9#*]\\ufe0f?\\u20e3", "gu");
+
+/* 種類ごとの代表字。合成（🙋‍♂️ など）は先頭の基底文字で決まるため、
+   基底だけを並べれば足りる。並び順は判定順であり、先に当たったものを採る。 */
+const EMOJI_TONES = [
+  ["greeting", "👋🙌"],
+  ["attention", "🙋🙇🆘🔔"],
+  ["question", "❓❔🤔🧐"],
+  ["negative", "😢😭😞😔😥😰😱😡🤬💢👎"],
+  ["positive", "❤🩷🧡💛💚💙💜🖤🤍💕💖💗💘💝💓😊😄😁😆😂🤣🥰😍🥹👍👏🙏✨🎉🎊💪😌🙂"]
+];
+
+const EMOJI_REPLIES_JA = {
+  positive: [
+    "ありがとうございます！お役に立てるよう努めます。",
+    "ありがとうございます！そう言っていただけると励みになります。",
+    "ありがとうございます！嬉しく思います。",
+    "ありがとうございます！これからも丁寧にお答えしてまいります。"
+  ],
+  greeting: GREETING_REPLIES_JA,
+  attention: [
+    "はい、承ります。どういったことでしょうか？",
+    "はい、お聞かせください。どのようなことをお知りになりたいでしょうか？",
+    "はい、承ります。気になっていることをお聞かせいただけますでしょうか？",
+    "はい、どうぞ。どのようなご相談でしょうか？"
+  ],
+  question: [
+    "どのようなことをお知りになりたいでしょうか？",
+    "気になっていることをお聞かせいただけますでしょうか？",
+    "どういったことでお悩みでしょうか？",
+    "どのあたりが分かりにくかったでしょうか？"
+  ],
+  negative: [
+    "お困りのことがありましたら、わかる範囲でお答えいたします。",
+    "うまくいかないことがございましたら、こちらでお受けいたします。",
+    "気がかりなことがあれば、お聞かせください。",
+    "お力になれることがあれば、こちらでお受けいたします。"
+  ],
+  neutral: GREETING_REPLIES_JA
+};
+
+const EMOJI_REPLIES_EN = {
+  positive: [
+    "Thank you. I will do my best to be useful.",
+    "Thank you, that is kind of you.",
+    "Thank you. Glad this was helpful.",
+    "Thank you. I will keep doing my best here."
+  ],
+  greeting: GREETING_REPLIES_EN,
+  attention: [
+    "Yes, of course. What would you like to know?",
+    "Go ahead. What can I look into for you?",
+    "Yes, please tell me what you have in mind.",
+    "Happy to help. What would you like to ask?"
+  ],
+  question: [
+    "What would you like to know?",
+    "Please tell me what you have in mind.",
+    "What part would you like me to explain?",
+    "Which part was unclear?"
+  ],
+  negative: [
+    "If something is troubling you, I will answer as far as I can.",
+    "If anything is not going well, I can take it here.",
+    "If something is on your mind, please tell me.",
+    "If there is anything I can help with, I can take it here."
+  ],
+  neutral: GREETING_REPLIES_EN
+};
+
+/**
+ * 絵文字と記号だけの入力の、情の種類を返す。用件が伴えば null。
+ * @returns {"positive"|"negative"|"question"|"attention"|"greeting"|"neutral"|null}
+ */
+export function emojiTone(text) {
+  const s = (typeof text === "string" ? text : "").trim();
+  if (!s || !EMOJI_CHAR.test(s)) return null;
+  const rest = s.replace(EMOJI_NOISE, "").replace(/[\s　。、！!？?~〜ー・,.…]/g, "");
+  if (rest.length > 0) return null;
+  for (const [tone, chars] of EMOJI_TONES) {
+    if ([...chars].some((c) => s.includes(c))) return tone;
+  }
+  return "neutral";
+}
+
+/** 情の種類に沿った返し。言い回しは呼び出しごとに変える。 */
+export function pickEmojiReply(tone, locale, seed) {
+  const table = locale === "en" ? EMOJI_REPLIES_EN : EMOJI_REPLIES_JA;
+  const list = table[tone] || table.neutral;
   const n = typeof seed === "number"
     ? Math.abs(Math.floor(seed)) : Math.floor(Math.random() * list.length);
   return list[n % list.length];

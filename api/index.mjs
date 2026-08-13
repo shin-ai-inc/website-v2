@@ -13,7 +13,7 @@
   秘密はコードに置かない。OPENAI_API_KEY は wrangler secret でのみ投入する。
 */
 import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
-import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed, greetingOnly, pickGreetingClose } from "./lib/guard.mjs";
+import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed, greetingOnly, pickGreetingClose, pickEmojiReply } from "./lib/guard.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
@@ -207,6 +207,12 @@ export default {
     if (verdict.verdict === "crisis") {
       audit({ event: "crisis_reply", ip: ipHash });
       return json({ success: true, response: reply.crisis }, 200, origin);
+    }
+    /* 絵文字だけの入力。用件ではなく情の表明なので、検索も生成も通さず
+       情に沿って返す。生成へ流すと根拠が当たらず拒否文になっていた。 */
+    if (verdict.verdict === "emoji") {
+      audit({ event: "emoji_reply", tone: verdict.tone, ip: ipHash, locale });
+      return json({ success: true, response: pickEmojiReply(verdict.tone, locale) }, 200, origin);
     }
     /* 人につないでほしい、という依頼。検索は「担当者」という語だけで
        別のFAQに当たり、問いと無関係な答えを返していた。
