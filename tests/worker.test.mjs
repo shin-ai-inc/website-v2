@@ -365,6 +365,16 @@ test("絵文字への返しは情に沿い、肯定には問い返さない", ()
   }
 });
 
+test("絵文字への返しは相手の発言を前提にしない", () => {
+  /* 絵文字は言葉ではない。言ったことにして返すと、相手の記憶と食い違う。 */
+  for (const tone of ["positive", "attention", "question", "negative", "greeting", "neutral"]) {
+    for (let i = 0; i < 4; i += 1) {
+      const s = pickEmojiReply(tone, "ja", i);
+      assert.ok(!/(言っ|おっしゃ|お言葉|仰)/.test(s), `発言を前提にしている: ${s}`);
+    }
+  }
+});
+
 test("絵文字への返しは言い方が複数ある", () => {
   const seen = new Set([0, 1, 2, 3].map((i) => pickEmojiReply("positive", "ja", i)));
   assert.ok(seen.size >= 3, `${seen.size}種`);
