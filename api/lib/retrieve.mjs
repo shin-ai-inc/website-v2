@@ -233,7 +233,7 @@ export function selectChunks(query, index, options = {}) {
   const k = options.k || 6;
   const entries = index && index.entries ? index.entries : [];
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
-  const lead = leadChunks(query, entries);
+  const lead = leadChunks(query, entries, index);
   const q = terms(stripFunctionWords(query));
 
   if (!q.size) return lead.concat(pinned).slice(0, k);
@@ -242,17 +242,54 @@ export function selectChunks(query, index, options = {}) {
   return applyPin(lead.concat(scored.map((s) => s.chunk)), pinned, k);
 }
 
-/** 話題が一致した目次を返す。先頭に置く分だけを取り出す。 */
-function leadChunks(query, entries) {
+/**
+ * 話題が一致した目次を返す。先頭に置く分だけを取り出す。
+ *
+ * 目録の問いに見えても、目録に載っていない固有の物を名指していれば、
+ * それは目録の問いではない。「GPUを導入されて何ができるようになったのですか」は
+ * 「何ができ」に当たるが、訪問者が知りたいのはGPUのことである。
+ * 目録に無い英数語を名指した質問では、目次を出さない。
+ */
+function leadChunks(query, entries, index) {
   const topics = queryTopics(query);
   if (!topics.size) return [];
-  return entries.filter((e) => e.chunk.pinFor && topics.has(e.chunk.pinFor))
-    .map((e) => e.chunk);
+  const lead = entries.filter((e) => e.chunk.pinFor && topics.has(e.chunk.pinFor));
+  if (!lead.length) return [];
+
+  const inLead = new Set();
+  for (const e of lead) for (const g of terms(`${e.chunk.title} ${e.chunk.text}`)) inLead.add(g);
+  const named = decisiveWords(terms(stripFunctionWords(query)), index)
+    .filter((w) => !inLead.has(w));
+  return named.length ? [] : lead.map((e) => e.chunk);
+}
+
+/* 語として取り出せた英数語は、2文字組と違い「証拠」である。
+
+   なぜ区別するか。日本語の2文字組は語の切れ目をまたいで生まれるため、
+   稀少でも話題を指さないことがある。「GPUを導入されたそうですが何が
+   できるようになったのですか」では、「たそ」「るよ」「なっ」が
+   いずれも資料中1件しかない最稀少語となり、3件に現れる gpu を合計で上回った。
+   結果、GPUの記述を一件も返せなかった(実測)。稀少さは情報量ではない。
+
+   一方、英数語は空白で区切られた実在の語であり、断片ではありえない。
+   GPU・RAG・PoC・LLM・CTO は訪問者が実際に使う語でもある。
+   これを含むチャンクを、含まないチャンクより上位に置く。
+   落とすのではなく順序を決めるだけなので、取りこぼしは増えない。 */
+const WORD_RE = /^[a-z0-9]{2,}$/;
+
+/** 質問に含まれ、かつ資料にも実在する英数語を返す。 */
+function decisiveWords(q, index) {
+  const out = [];
+  for (const g of q) {
+    if (WORD_RE.test(g) && index.df.get(g)) out.push(g);
+  }
+  return out;
 }
 
 /** 字面スコアの計算。融合と単独検索の双方から使う。 */
 function scoreLexical(q, index) {
   const entries = index && index.entries ? index.entries : [];
+  const decisive = decisiveWords(q, index);
   const scored = [];
   for (const { chunk, grams, titleGrams, len } of entries) {
     /* 常時同梱と話題別の目次は、競わせる対象ではない。
@@ -282,10 +319,14 @@ function scoreLexical(q, index) {
     /* 長いチャンクが語数だけで勝たないよう、字数で割る。
        線形で割ると短文が勝ちすぎるため平方根にする。 */
     score /= Math.sqrt(len);
-    if (score > MIN_SCORE) scored.push({ chunk, score });
+    if (score > MIN_SCORE) {
+      const hasWord = decisive.length > 0 && decisive.some((w) => grams.has(w));
+      scored.push({ chunk, score, tier: hasWord ? 0 : 1 });
+    }
   }
 
-  scored.sort((a, b) => b.score - a.score);
+  /* 証拠を含むものが先。同じ段の中では従来どおり点数順。 */
+  scored.sort((a, b) => (a.tier - b.tier) || (b.score - a.score));
   return scored;
 }
 
@@ -316,7 +357,7 @@ export function hybridSearch(query, queryVec, index, options = {}) {
   const k = options.k || 6;
   const entries = index && index.entries ? index.entries : [];
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
-  const lead = leadChunks(query, entries);
+  const lead = leadChunks(query, entries, index);
   const q = terms(stripFunctionWords(query));
   if (!q.size) return lead.concat(pinned).slice(0, k);
 

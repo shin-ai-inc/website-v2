@@ -148,3 +148,43 @@ test("目次を混ぜても pin(会社概要)は落ちない", () => {
   assert.ok(hits.some((c) => c.pin), "常時同梱は保たれる");
   assert.ok(hits.length <= 3, "k を超えない");
 });
+
+/* ---- 英数語は証拠、2文字組は手がかり ----
+   「GPUを導入されたそうですが何ができるようになったのですか」で、
+   資料中1件しかない「たそ」「るよ」「なっ」が合計で gpu を上回り、
+   GPUの記述を一件も返せなかった(実測)。稀少さは情報量ではない。 */
+
+const WORDY = [
+  { id: "news#gpu", title: "学習環境を整えました", url: "/news.html",
+    text: "NVIDIAのGPU（GeForce RTX 5070 Ti）を搭載した開発専用のコンピュータを社内に設置しました。データを外へ出さずにモデルを調整できます。" },
+  { id: "faq#a", title: "導入までの流れ", url: "/faq.html",
+    text: "小さく始めてから広げます。そうした進め方で無理なく効果を確かめられるようになった事例が多くあります。" },
+  { id: "faq#b", title: "対応範囲", url: "/faq.html",
+    text: "できることは幅広く、まずはご相談ください。何ができるかは状況によって変わります。" }
+];
+
+test("名指しされた英数語を含む記述が、断片の合計に負けない", () => {
+  const hits = selectChunks("GPUを導入されたそうですが何ができるようになったのですか",
+                            buildIndex(WORDY), { k: 3 });
+  assert.equal(hits[0].id, "news#gpu");
+});
+
+test("英数語を含まない質問では、従来どおり点数順のまま", () => {
+  const hits = selectChunks("導入までの流れを教えてください", buildIndex(WORDY), { k: 3 });
+  assert.equal(hits[0].id, "faq#a");
+});
+
+test("目次に無い固有の物を名指した質問では、目次を出さない", () => {
+  /* 「何ができ」に当たるが、訪問者が知りたいのはGPUのこと。 */
+  const hits = selectChunks("GPUを導入されて何ができるようになったのですか",
+                            buildIndex([...WITH_CATALOG, WORDY[0]]), { k: 4 });
+  assert.ok(!hits.some((c) => c.pinFor), "目次は枠を取らない");
+  assert.equal(hits[0].id, "news#gpu");
+});
+
+test("目次に載っている語を名指した質問では、目次を出す", () => {
+  const withRag = [...WITH_CATALOG];
+  withRag[withRag.indexOf(CATALOG)] = { ...CATALOG, text: CATALOG.text + " RAG構築" };
+  const hits = selectChunks("RAG構築のサービスはありますか", buildIndex(withRag), { k: 4 });
+  assert.ok(hits.some((c) => c.pinFor), "目次に載る語なら目次で答えてよい");
+});
