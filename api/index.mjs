@@ -14,6 +14,8 @@
 */
 import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
 import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed, greetingOnly, pickGreetingClose, pickEmojiReply } from "./lib/guard.mjs";
+import { isWorthKeeping, voiceRecord, slackPayload, isAuthorizedAdmin, purgeCutoff }
+  from "./lib/voices.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
@@ -129,6 +131,69 @@ const hashIp = async (ip, salt) => {
     .map((b) => b.toString(16).padStart(2, "0")).join("");
 };
 
+/*
+  お客様の声を残し、届ける。
+  応答の後ろで走らせる(ctx.waitUntil)。記録も通知も、失敗して構わない仕事であり、
+  利用者を待たせたり、答えを返せなくしたりしてはならない。
+*/
+async function rememberVoice({ message, locale, verdict, sessionId, ipHash, env }) {
+  if (!isWorthKeeping(message, verdict)) return;
+  const record = voiceRecord({
+    message, locale, verdict, sessionHash: sessionId, ipHash
+  });
+
+  if (env.VOICES) {
+    try {
+      await env.VOICES.prepare(
+        "INSERT INTO voices (created_at, message, locale, kind, session, ip_hash) VALUES (?, ?, ?, ?, ?, ?)"
+      ).bind(record.created_at, record.message, record.locale, record.kind,
+             record.session, record.ip_hash).run();
+      /* 保存期間を過ぎた行を落とす。毎回消しに行くほどの量ではないので、
+         書き込みのついでに時々掃く(専用の定期実行を増やさない)。 */
+      if (Math.random() < 0.02) {
+        await env.VOICES.prepare("DELETE FROM voices WHERE created_at < ?")
+          .bind(purgeCutoff()).run();
+      }
+    } catch (e) {
+      audit({ event: "voice_store_failed", name: e && e.name });
+    }
+  }
+
+  if (env.SLACK_WEBHOOK_URL) {
+    try {
+      await fetch(env.SLACK_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(slackPayload(record))
+      });
+    } catch (e) {
+      audit({ event: "voice_notify_failed", name: e && e.name });
+    }
+  }
+}
+
+/* 記録の閲覧。鍵を持たない相手には、存在ごと伏せて 404 を返す
+   (401 は「ここに何かある」と教えることになる)。 */
+async function readVoices(request, env) {
+  if (!isAuthorizedAdmin(request, env) || !env.VOICES) {
+    audit({ event: "voices_denied" });
+    return new Response("Not Found", { status: 404 });
+  }
+  const limit = Math.min(Number(new URL(request.url).searchParams.get("limit")) || 100, 500);
+  const { results } = await env.VOICES.prepare(
+    "SELECT created_at, message, locale, kind, session FROM voices ORDER BY created_at DESC LIMIT ?"
+  ).bind(limit).all();
+  return new Response(JSON.stringify({ count: results.length, voices: results }, null, 2), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      /* 個人情報を含む応答を、経路上のどこにも残さない。 */
+      "Cache-Control": "no-store",
+      "X-Robots-Tag": "noindex, nofollow"
+    }
+  });
+}
+
 export default {
   async fetch(request, env, ctx) {
     const allowlist = (env.ALLOWED_ORIGINS || "").split(",").map((s) => s.trim()).filter(Boolean);
@@ -149,16 +214,22 @@ export default {
       });
     }
 
-    if (request.method !== "POST") {
-      return json({ success: false }, 405, origin);
-    }
-
     /* workers.dev の既定ルートはゾーンのWAF・レート制限が適用されない。
        設定で無効化したうえで、ここでも受け付けない(多層)。 */
     const host = request.headers.get("Host") || "";
     if (env.API_HOST && host !== env.API_HOST) {
       audit({ event: "rejected_host", host });
       return json({ success: false }, 404, origin);
+    }
+
+    /* 記録の閲覧。ブラウザからではなく手元から鍵を添えて叩くためのもので、
+       サイトのオリジン検査(CORS)は通さない。 */
+    if (request.method === "GET" && new URL(request.url).pathname === "/api/voices") {
+      return readVoices(request, env);
+    }
+
+    if (request.method !== "POST") {
+      return json({ success: false }, 405, origin);
     }
 
     const url = new URL(request.url);
@@ -219,6 +290,11 @@ export default {
        意味を取り違えたまま生成に渡さず、連絡の道を確実に示す。 */
     if (verdict.verdict === "human") {
       audit({ event: "human_handoff", ip: ipHash, locale });
+      /* 人に会いたいと言われた瞬間は、最も関心が高まっている。取りこぼさない。 */
+      ctx.waitUntil(rememberVoice({
+        message: parsed.value.message, locale, verdict: "human",
+        sessionId: parsed.value.sessionId, ipHash, env
+      }));
       return json({ success: true, response: reply.human }, 200, origin);
     }
     if (verdict.verdict === "offtask") {
@@ -339,6 +415,11 @@ export default {
         ms: Date.now() - started,
         dayCount: meter.countBefore + 1
       });
+
+      ctx.waitUntil(rememberVoice({
+        message: parsed.value.message, locale, verdict: "allow",
+        sessionId: parsed.value.sessionId, ipHash, env
+      }));
 
       return json({ success: true, response: screened.text || reply.error }, 200, origin);
     } catch (e) {

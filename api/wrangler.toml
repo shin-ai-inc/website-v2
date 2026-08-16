@@ -7,6 +7,11 @@
 # 秘密は絶対にここへ書かない。投入は次のコマンドのみ:
 #   npx wrangler secret put OPENAI_API_KEY
 #   npx wrangler secret put IP_SALT
+#   npx wrangler secret put SLACK_WEBHOOK_URL   お客様の声の通知先
+#   npx wrangler secret put ADMIN_TOKEN         記録の閲覧に使う鍵(32文字以上)
+#
+# 記録用テーブルの作成(一度だけ):
+#   npx wrangler d1 execute shinai-voices --remote --file=schema.sql
 
 name = "shinai-chat"
 main = "index.mjs"
@@ -44,6 +49,12 @@ class_name = "BudgetMeter"
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["BudgetMeter"]
+
+# お客様の声の保管先。保存期間は voices.mjs の RETENTION_DAYS が唯一の定義。
+[[d1_databases]]
+binding = "VOICES"
+database_name = "shinai-voices"
+database_id = "6ce50e15-1a9d-4a12-b4e4-2ab9a75231ab"
 
 # 知識ベース(build.mjs が生成)を同梱するための設定。
 # 実体は api/knowledge.*.json。ビルドのたびに更新される。
