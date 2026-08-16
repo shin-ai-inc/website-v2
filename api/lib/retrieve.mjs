@@ -81,18 +81,33 @@ const QUERY_STOPWORDS_EN = new Set([
   "get", "got", "like", "want", "need", "know", "just", "also", "very"
 ]);
 
-/** 質問から話題を指さない言い回しを落とす。資料側には適用しない。 */
-export function stripFunctionWords(text) {
+/**
+ * 質問から話題を指さない言い回しを落とす。資料側には適用しない。
+ * @param {{expand?: boolean}} options expand:false で言い換えを足さない
+ */
+export function stripFunctionWords(text, options = {}) {
   let s = typeof text === "string" ? text : "";
   for (const w of QUERY_STOPWORDS) s = s.split(w).join(" ");
   s = s.replace(/[a-zA-Z]{1,8}/g,
     (w) => (QUERY_STOPWORDS_EN.has(w.toLowerCase()) ? " " : w));
+  if (options.expand === false) return s;
   /* 言い換えは置換でなく追加。元の語も手がかりとして残す。 */
   for (const [term, extra] of QUERY_SYNONYMS) {
     if (s.includes(term)) s += " " + extra;
   }
   return s;
 }
+
+/* 言い換えで足した語の重み。
+
+   なぜ1未満か。言い換えは、訪問者の語とサイトの語が繋がらないときの橋であって、
+   訪問者が実際に打った語より重くてはならない。
+   「登壇の実績はありますか」では、実績→活用・導入 の読み替えが
+   本人の打った「登壇」を上回り、高崎商工会議所の記事ではなく
+   無関係なFAQを返した(実測)。橋が本道を塞いでいた。
+
+   埋め込みを同梱した今、この表は縮退時の保険であり、主役ではない。 */
+const SYNONYM_WEIGHT = 0.4;
 
 /* 英語の語尾を落として、活用の違いで一致を逃さないようにする。
    manufacturers と manufacturing、solution と solutions は同じ話題である。
@@ -235,10 +250,11 @@ export function selectChunks(query, index, options = {}) {
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
   const lead = leadChunks(query, entries, index);
   const q = terms(stripFunctionWords(query));
+  const core = terms(stripFunctionWords(query, { expand: false }));
 
   if (!q.size) return lead.concat(pinned).slice(0, k);
 
-  const scored = scoreLexical(q, index);
+  const scored = scoreLexical(q, index, core);
   return applyPin(lead.concat(scored.map((s) => s.chunk)), pinned, k);
 }
 
@@ -258,7 +274,7 @@ function leadChunks(query, entries, index) {
 
   const inLead = new Set();
   for (const e of lead) for (const g of terms(`${e.chunk.title} ${e.chunk.text}`)) inLead.add(g);
-  const named = decisiveWords(terms(stripFunctionWords(query)), index)
+  const named = decisiveWords(terms(stripFunctionWords(query, { expand: false })), index)
     .filter((w) => !inLead.has(w));
   return named.length ? [] : lead.map((e) => e.chunk);
 }
@@ -287,7 +303,7 @@ function decisiveWords(q, index) {
 }
 
 /** 字面スコアの計算。融合と単独検索の双方から使う。 */
-function scoreLexical(q, index) {
+function scoreLexical(q, index, core) {
   const entries = index && index.entries ? index.entries : [];
   const decisive = decisiveWords(q, index);
   const scored = [];
@@ -314,7 +330,9 @@ function scoreLexical(q, index) {
       /* 見出しに現れた語は、その項目が何を扱うかを直に示す。
          「What does it cost?」という見出しを持つ項目が、
          同じ語を本文で一度触れただけの目次に負けていた。 */
-      score += titleGrams.has(g) ? idf * TITLE_WEIGHT : idf;
+      /* 言い換えで足した語は、訪問者が実際に打った語より軽く扱う。 */
+      const weight = (!core || core.has(g)) ? 1 : SYNONYM_WEIGHT;
+      score += weight * (titleGrams.has(g) ? idf * TITLE_WEIGHT : idf);
     }
     /* 長いチャンクが語数だけで勝たないよう、字数で割る。
        線形で割ると短文が勝ちすぎるため平方根にする。 */
@@ -359,9 +377,10 @@ export function hybridSearch(query, queryVec, index, options = {}) {
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
   const lead = leadChunks(query, entries, index);
   const q = terms(stripFunctionWords(query));
+  const core = terms(stripFunctionWords(query, { expand: false }));
   if (!q.size) return lead.concat(pinned).slice(0, k);
 
-  const lexical = scoreLexical(q, index).slice(0, ARM_DEPTH);
+  const lexical = scoreLexical(q, index, core).slice(0, ARM_DEPTH);
   if (!queryVec) return applyPin(lead.concat(lexical.map((s) => s.chunk)), pinned, k);
 
   const dense = entries

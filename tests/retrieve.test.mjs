@@ -188,3 +188,28 @@ test("目次に載っている語を名指した質問では、目次を出す",
   const hits = selectChunks("RAG構築のサービスはありますか", buildIndex(withRag), { k: 4 });
   assert.ok(hits.some((c) => c.pinFor), "目次に載る語なら目次で答えてよい");
 });
+
+/* ---- 言い換えは橋であって本道ではない ----
+   「登壇の実績はありますか」で、実績→活用・導入 の読み替えが
+   本人の打った「登壇」を上回り、無関係なFAQを返した(実測)。 */
+
+const BRIDGED = [
+  { id: "news#talk", title: "高崎商工会議所 第9回合同プレス発表会に登壇しました",
+    url: "/news.html",
+    text: "2025.12.05 登壇 高崎商工会議所が主催する発表会に、ShinAI代表の柴田昌国が登壇しました。" },
+  { id: "faq#use", title: "活用のすすめ方", url: "/faq.html",
+    text: "導入は小さく始めます。活用の範囲は導入後に広げ、活用状況を見ながら導入を進めます。" },
+  { id: "faq#cost", title: "費用はどのくらいかかりますか", url: "/faq.html",
+    text: "内容により異なります。まずは無料相談で費用の範囲を確認いたします。" }
+];
+
+test("言い換えより、訪問者が実際に打った語を重く見る", () => {
+  const hits = selectChunks("登壇の実績はありますか", buildIndex(BRIDGED), { k: 3 });
+  assert.equal(hits[0].id, "news#talk");
+});
+
+test("言い換えの橋は、繋がる相手が他に無いときは効く", () => {
+  /* 資料に「料金」の語は無い。橋が無ければ費用の項目に届かない。 */
+  const hits = selectChunks("料金はいくらですか", buildIndex(BRIDGED), { k: 3 });
+  assert.equal(hits[0].id, "faq#cost");
+});
