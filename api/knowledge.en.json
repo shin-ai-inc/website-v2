@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "3049476",
+  "generatedAt": "b1a4734",
   "chunks": [
     {
       "id": "index#0",
@@ -120,7 +120,7 @@
       "id": "index#19",
       "title": "A place to train AI without your data leaving the building｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "We have just installed a new computer dedicated to development, built around an NVIDIA GeForce RTX 5070 Ti. Rather than using a general model as it comes, we shape one around your own documents and judgment. That work never has to leave our own room, so confidential and personal information is welcome here. \r\n\n 2025.12.05 \r\n Speaking"
+      "text": "We have just installed a new computer dedicated to development, built around an NVIDIA GeForce RTX 5070 Ti. Rather than using a general model as it comes, we fine-tune one on your own data so that it fits the work. That work never has to leave the building, so confidential and personal information is welcome here. \r\n\n 2025.12.05 \r\n Speaking"
     },
     {
       "id": "index#20",
@@ -691,7 +691,7 @@
       "id": "news#2",
       "title": "A place to train AI without your data leaving the building｜News | ShinAI",
       "url": "https://shinai-inc.jp/en/news.html",
-      "text": "We have just installed a new computer dedicated to development, built around an NVIDIA GeForce RTX 5070 Ti. Rather than using a general model as it comes, we shape one around your own documents and judgment. That work never has to leave our own room, so confidential and personal information is welcome here. \r\n\n 2025.12.05 \r\n Talk"
+      "text": "We have just installed a new computer dedicated to development, built around an NVIDIA GeForce RTX 5070 Ti. Rather than using a general model as it comes, we fine-tune one on your own data so that it fits the work. That work never has to leave the building, so confidential and personal information is welcome here. \r\n\n 2025.12.05 \r\n Talk"
     },
     {
       "id": "news#3",
