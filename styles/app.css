@@ -4461,6 +4461,18 @@ h1, h2, h3 {
   color: inherit;
 }
 
+/* 詳細ページを持たないお知らせ。押せない面に浮き上がりの反応を残すと、
+   押せるという誤った合図になる。反応だけを外し、見た目の型は揃える。 */
+.news__item--flat:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+  border-color: var(--line);
+}
+
+.news__item--flat:hover .news__thumb img {
+  transform: none;
+}
+
 .news__thumb {
   overflow: hidden;
   background: var(--paper-2);
