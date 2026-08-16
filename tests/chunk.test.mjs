@@ -135,3 +135,59 @@ test("実サイト: 知識ベースの元となる分割に番地が残らない
     }
   }
 });
+
+/* ---- お知らせの項目 ----
+   日付とタグが見出しより前に置かれているため、見出しで割ると
+   各項目が「次の項目の日付」を抱え込む。2026年8月15日の設備投資の記事が
+   2025.12.05 を持っていた(実測)。誤った日付は、無いことより悪い。 */
+
+const NEWS_HTML = `<main><ul class="news__list">
+  <li class="news__item news__item--flat">
+    <div class="news__meta">
+      <time class="news__date" datetime="2026-08-15">2026.08.15</time>
+      <span class="news__tag">設備投資</span>
+    </div>
+    <h3 class="news__title">データを社外に出さずにAIを学習させられる環境を整えました</h3>
+    <p class="news__text">NVIDIAのGPUを搭載した開発専用のコンピュータを新しく社内に設置しました。</p>
+  </li>
+  <li class="news__item">
+    <div class="news__meta">
+      <time class="news__date" datetime="2025-12-05">2025.12.05</time>
+      <span class="news__tag">登壇</span>
+    </div>
+    <h3 class="news__title">高崎商工会議所 第9回合同プレス発表会に登壇しました</h3>
+    <p class="news__text">ShinAIの取り組みを発表しました。想いのもと歩んでいます。</p>
+  </li>
+</ul></main>`;
+
+const newsChunks = () => chunkPage(NEWS_HTML,
+  { title: "お知らせ", url: "https://shinai-inc.jp/news.html", slug: "news" });
+
+test("お知らせ: 各項目が自分の日付を持つ(次の項目の日付を抱えない)", () => {
+  const [first, second] = newsChunks();
+  assert.ok(first.text.includes("2026.08.15"), "1件目は自分の日付を持つ");
+  assert.ok(!first.text.includes("2025.12.05"), "次の項目の日付を持たない");
+  assert.ok(second.text.includes("2025.12.05"), "2件目も自分の日付を持つ");
+});
+
+test("お知らせ: 見出しに現れない分類が検索の的として残る", () => {
+  const [first, second] = newsChunks();
+  assert.ok(first.text.includes("設備投資"), "設備投資 で引ける");
+  assert.ok(second.text.includes("登壇"), "登壇 で引ける");
+});
+
+test("お知らせ: 項目ごとに1件へ切り出す", () => {
+  const chunks = newsChunks();
+  assert.equal(chunks.length, 2);
+  assert.match(chunks[0].title, /環境を整えました/);
+});
+
+test("実サイト: お知らせの日付が記事と対応している", () => {
+  const html = readFileSync(join(process.cwd(), "dist", "news.html"), "utf8");
+  const chunks = chunkPage(html,
+    { title: "お知らせ", url: "https://shinai-inc.jp/news.html", slug: "news" });
+  const gpu = chunks.find((c) => /GPU/.test(c.text));
+  assert.ok(gpu, "設備投資の記事がある");
+  assert.ok(gpu.text.includes("2026.08.15"), "記事本来の日付を持つ");
+  assert.ok(!gpu.text.includes("2025.12.05"), "別の記事の日付を持たない");
+});
