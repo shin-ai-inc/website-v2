@@ -69,6 +69,12 @@
   transform: scale(1.04);
 }
 
+/* 縦位置で撮った写真。4:3 に収めると被写体の上下が切れてしまうものだけ、
+   同じ比率を縦に倒した 3:4 で置く(新しい比率は増やさない)。 */
+.news__item--portrait .news__thumb img {
+  aspect-ratio: 3 / 4;
+}
+
 .news__body {
   display: flex;
   flex-direction: column;
