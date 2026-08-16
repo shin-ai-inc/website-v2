@@ -11,7 +11,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildIndex, hybridSearch } from "../api/lib/retrieve.mjs";
-import { chunkPage } from "../_build/chunk.mjs";
+import { chunkPage, catalogChunk } from "../_build/chunk.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const kbPath = (locale) => join(ROOT, "dist", "api", `knowledge.${locale}.json`);
@@ -153,7 +153,8 @@ test("公開HTMLと知識ベースが乖離していない(ビルド忘れの検
       title: "x", url, slug: file.replace(/\.html$/, ""),
       pinDl: file === "about.html"
     });
-    const committed = kb.chunks.filter((c) => c.url === url);
+    /* 目次(pinFor)は chunkPage ではなく catalogChunk の生成物。下で別に見張る。 */
+    const committed = kb.chunks.filter((c) => c.url === url && !c.pinFor);
     assert.equal(committed.length, fresh.length,
       `${file}: 公開HTMLは${fresh.length}件だが知識ベースは${committed.length}件。` +
       "node _build/build.mjs を実行すること");
@@ -174,4 +175,38 @@ test("番地から先が知識ベースに入らない(日英とも)", () => {
     }
     assert.ok(/高崎|Takasaki/.test(all), `${locale}: 拠点は残す`);
   }
+});
+
+test("サービスの目次が三つの柱を名指しし、公開HTMLと一致する", () => {
+  /* 「サービスを紹介してください」で研究領域だけを返した誤りを構造で止める。
+     目次が消える・古びる・柱を落とすのいずれも、静かに同じ誤りへ戻す。 */
+  for (const locale of ["ja", "en"]) {
+    const kb = loadKb(locale);
+    const dir = locale === "ja" ? "" : "en/";
+    const catalog = kb.chunks.find((c) => c.pinFor === "services");
+    assert.ok(catalog, `${locale}: サービスの目次がある`);
+
+    const html = readFileSync(join(ROOT, "dist", dir + "services.html"), "utf8");
+    const fresh = catalogChunk(html, {
+      slug: "services", url: catalog.url, title: "x",
+      catalogTitle: "x", catalogLead: "", catalogTail: ""
+    });
+    for (const line of fresh.text.split("\n").filter(Boolean)) {
+      assert.ok(catalog.text.includes(line),
+        `${locale}: 目次が公開HTMLと一致しない。node _build/build.mjs を実行すること`);
+    }
+    assert.equal(fresh.text.split("\n").filter(Boolean).length, 3,
+      `${locale}: 提供価値は三つ。増減したら文言も見直す`);
+  }
+});
+
+test("日本語の目次が三つの柱を名指しする", () => {
+  const catalog = loadKb("ja").chunks.find((c) => c.pinFor === "services");
+  for (const pillar of ["暗黙知の解消支援", "企業専用AIエージェント開発", "AI化伴走支援"]) {
+    assert.ok(catalog.text.includes(pillar), `${pillar} が目次にある`);
+  }
+  /* 研究領域は落とさない。ただし柱より先には出さない。 */
+  const iPhysical = catalog.text.indexOf("フィジカルAI");
+  assert.ok(iPhysical > catalog.text.indexOf("AI化伴走支援"),
+    "フィジカルAIは三つの柱の後に置く");
 });

@@ -6,7 +6,7 @@
 */
 import test from "node:test";
 import assert from "node:assert/strict";
-import { normalize, terms, buildIndex, selectChunks } from "../api/lib/retrieve.mjs";
+import { normalize, terms, buildIndex, selectChunks, queryTopics } from "../api/lib/retrieve.mjs";
 
 const CHUNKS = [
   { id: "about#profile", title: "会社概要", url: "/about.html", pin: true,
@@ -97,4 +97,54 @@ test("selectChunks: 長いチャンクが語数だけで有利にならない", 
 
 test("buildIndex: チャンクが空でも例外を投げない", () => {
   assert.deepEqual(selectChunks("何か", buildIndex([]), { k: 3 }), []);
+});
+
+/* ---- 話題別の目次(pinFor) ----
+   「サービスを紹介してください」に対し、三つの柱に触れないまま
+   研究領域(フィジカルAI)だけを紹介した実測の誤りを、構造で止める。 */
+
+const CATALOG = {
+  id: "services#catalog", title: "提供サービス一覧", url: "/services.html",
+  pinFor: "services",
+  text: "法人向けに提供しているサービスは次の三つです。\n1. 暗黙知の解消支援\n2. 企業専用AIエージェント開発\n3. AI化伴走支援"
+};
+const FRONTIER = {
+  id: "svc#frontier", title: "Physical AI 新サービス", url: "/services.html",
+  text: "現場の技をAIに変換するサービス。手の動きや判断をセンサーや映像から捉えます。"
+};
+const WITH_CATALOG = [...CHUNKS, CATALOG, FRONTIER];
+
+test("queryTopics: サービスを問う言い回しを話題として拾う", () => {
+  for (const q of ["サービス紹介してください", "事業内容を教えて",
+                   "何ができますか", "What services do you offer?"]) {
+    assert.ok(queryTopics(q).has("services"), `${q} を services と判定`);
+  }
+});
+
+test("queryTopics: 無関係な質問では話題を立てない", () => {
+  assert.equal(queryTopics("所在地はどこですか").size, 0);
+});
+
+test("目次は話題が一致したとき先頭に来る(答えの順序を決めるため)", () => {
+  const hits = selectChunks("サービス紹介してください", buildIndex(WITH_CATALOG), { k: 4 });
+  assert.equal(hits[0].id, "services#catalog");
+});
+
+test("サービスの問いで、研究領域だけが紹介される状態にならない", () => {
+  const hits = selectChunks("サービス紹介してください", buildIndex(WITH_CATALOG), { k: 4 });
+  const text = hits.map((c) => c.text).join("\n");
+  for (const pillar of ["暗黙知の解消支援", "企業専用AIエージェント開発", "AI化伴走支援"]) {
+    assert.ok(text.includes(pillar), `${pillar} が渡る`);
+  }
+});
+
+test("目次は話題が一致しない質問には混ざらない(枠を奪わせない)", () => {
+  const hits = selectChunks("費用はいくらですか", buildIndex(WITH_CATALOG), { k: 4 });
+  assert.ok(!hits.some((c) => c.id === "services#catalog"));
+});
+
+test("目次を混ぜても pin(会社概要)は落ちない", () => {
+  const hits = selectChunks("サービス紹介してください", buildIndex(WITH_CATALOG), { k: 3 });
+  assert.ok(hits.some((c) => c.pin), "常時同梱は保たれる");
+  assert.ok(hits.length <= 3, "k を超えない");
 });

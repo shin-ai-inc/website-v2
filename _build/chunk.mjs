@@ -79,6 +79,44 @@ function splitLong(text) {
 }
 
 /**
+ * サービス一覧のHTMLから「目次」チャンクを1件作る。
+ *
+ * なぜ要るか。個々のカードは別々のチャンクになるため、「サービスを紹介してください」
+ * のような目録の問いでは票が分かれ、単独で強い節（フィジカルAIの研究領域）が
+ * 上位を独占した。三つの柱に触れないまま研究の話だけを返す誤りが実際に起きた。
+ * 目録には目録で答える。
+ *
+ * 見出しから自動生成するため、サイトを直せば一覧も追従する。手書きしない。
+ *
+ * @returns {{id, title, url, text, pinFor: "services"}|null}
+ */
+export function catalogChunk(html, page) {
+  /* 説明文ではなく箇条書きを使う。
+     説明文は課題の提示から始まるため（「勘は本人の頭の中にしかなく…」）、
+     先頭の一文を採ると、何をする会社かではなく何が困るかの列挙になった。
+     箇条書きは実施内容そのもので、構造としても安定している。 */
+  const cards = html.split(/<article[^>]*class="solution-card/i).slice(1);
+  const lines = [];
+  for (const card of cards) {
+    const h = card.match(/<h3[^>]*class="solution-card__title"[^>]*>([\s\S]*?)<\/h3>/i);
+    if (!h) continue;
+    const name = strip(h[1]);
+    const items = [...card.matchAll(/<li[^>]*class="solution-card__item"[^>]*>([\s\S]*?)<\/li>/gi)]
+      .map((x) => strip(x[1])).filter(Boolean);
+    if (!name || !items.length) continue;
+    lines.push(`${lines.length + 1}. ${name}｜${items.join(" / ")}`);
+  }
+  if (!lines.length) return null;
+  return {
+    id: `${page.slug}#catalog`,
+    title: `${page.catalogTitle}｜${page.title}`,
+    url: page.url,
+    text: `${page.catalogLead}\n${lines.join("\n")}\n${page.catalogTail}`,
+    pinFor: "services"
+  };
+}
+
+/**
  * 1ページ分のHTMLからチャンク配列を作る。
  * @param {string} html 公開済みHTML全文
  * @param {{title: string, url: string, slug: string}} page

@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync, readdirSync, cpSync, mkdirSync, rmSync, co
 import { execSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { chunkPage } from "./chunk.mjs";
+import { chunkPage, catalogChunk } from "./chunk.mjs";
 import { encodeVector, normalizeVector } from "../api/lib/vector.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -827,16 +827,44 @@ writeFileSync(
 /* 会社概要の定義リストだけは常時同梱にする。最も問われ、かつ最も短い。 */
 const PIN_DL_PAGES = new Set(["about.html"]);
 
+/* サービスの目次に添える前置きと結び。一覧そのものは見出しから自動生成する。
+   フィジカルAIを落とさず、しかし三つの柱より先には出さない。
+   訪問者が最初に受け取る順序が、そのまま会社の印象になる。 */
+const CATALOG_TEXT = {
+  ja: {
+    title: "提供サービス一覧",
+    lead: "ShinAIが法人向けに提供しているサービスは、次の三つです。",
+    tail: "このほかに研究開発領域として、フィジカルAI（現場の動作や判断をAIが扱える形にする取り組み）のPoCを行っています。"
+  },
+  en: {
+    title: "Services offered",
+    lead: "ShinAI offers three services to companies.",
+    tail: "Alongside these, we carry out physical AI research and development (PoC) on the skill that documents never captured."
+  }
+};
+
 const knowledgeFor = (loc) => {
   const chunks = [];
+  const catalog = CATALOG_TEXT[loc.code];
   for (const page of pages) {
     const meta = loc.code === "ja" ? page : page.en;
-    chunks.push(...chunkPage(read(loc.dir + page.file), {
+    const html = read(loc.dir + page.file);
+    const ctx = {
       title: meta.title,
       url: urlFor(page.file, loc.dir),
       slug: page.file.replace(/\.html$/, ""),
       pinDl: PIN_DL_PAGES.has(page.file)
-    }));
+    };
+    /* 目次は本文チャンクより前に置く。渡した順序が、そのまま答えの順序になる。 */
+    if (page.part === "services.html") {
+      const c = catalogChunk(html, {
+        ...ctx, catalogTitle: catalog.title,
+        catalogLead: catalog.lead, catalogTail: catalog.tail
+      });
+      if (!c) throw new Error("サービス一覧を抽出できない。solution-card の構造を確認する。");
+      chunks.push(c);
+    }
+    chunks.push(...chunkPage(html, ctx));
   }
   return { locale: loc.code, generatedAt: BUILD_HASH, chunks };
 };

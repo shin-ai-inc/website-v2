@@ -190,6 +190,36 @@ const PARTICLES = new Set(["の", "を", "に", "は", "が", "と", "へ", "も
 /* 見出しに現れた語の重み。 */
 const TITLE_WEIGHT = 2.5;
 
+/* 話題ごとの常時同梱。質問がこの話題を指したときだけ、対応する目次を先頭に置く。
+
+   なぜ要るか。「サービスを紹介してください」は、どの記述が根拠かを問う質問ではなく、
+   何と何があるかを問う質問である。ところが検索は個々の記述を競わせるため、
+   三つの提供価値は票を分け合い、「新サービス」という語を持つフィジカルAIの節が
+   単独で1位を取った。結果、受託の柱に一切触れないまま研究領域だけを紹介した(実測)。
+
+   目録には目録で答える。ビルド時に三つの見出しから一覧チャンクを組み、
+   話題が一致したときに限って先頭へ固定する。
+   常時同梱(pin)にしないのは、関係しない質問で枠を奪わせないため。 */
+const TOPIC_TRIGGERS = [
+  ["services", [
+    "サービス", "ソリューション", "事業内容", "メニュー", "提供している",
+    "何ができ", "何をして", "何をやって", "できること", "取り組んで",
+    "service", "offer", "solution", "provide",
+    /* 空白と約物は正規化で落ちるため、語を詰めた形で照合する。 */
+    "whatdoyoudo", "whatyoudo"
+  ]]
+];
+
+/** 質問が指している話題を返す。字面のみで判定する(生成の前に確定させる)。 */
+export function queryTopics(query) {
+  const q = normalize(query);
+  const found = new Set();
+  for (const [topic, triggers] of TOPIC_TRIGGERS) {
+    if (triggers.some((t) => q.includes(normalize(t)))) found.add(topic);
+  }
+  return found;
+}
+
 /* 一致が皆無に等しいチャンクを混ぜない下限。
    雑音を渡すとモデルが引きずられ、関係のない話題へ流れる。 */
 const MIN_SCORE = 0.02;
@@ -203,12 +233,21 @@ export function selectChunks(query, index, options = {}) {
   const k = options.k || 6;
   const entries = index && index.entries ? index.entries : [];
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
+  const lead = leadChunks(query, entries);
   const q = terms(stripFunctionWords(query));
 
-  if (!q.size) return pinned.slice(0, k);
+  if (!q.size) return lead.concat(pinned).slice(0, k);
 
   const scored = scoreLexical(q, index);
-  return applyPin(scored.map((s) => s.chunk), pinned, k);
+  return applyPin(lead.concat(scored.map((s) => s.chunk)), pinned, k);
+}
+
+/** 話題が一致した目次を返す。先頭に置く分だけを取り出す。 */
+function leadChunks(query, entries) {
+  const topics = queryTopics(query);
+  if (!topics.size) return [];
+  return entries.filter((e) => e.chunk.pinFor && topics.has(e.chunk.pinFor))
+    .map((e) => e.chunk);
 }
 
 /** 字面スコアの計算。融合と単独検索の双方から使う。 */
@@ -216,7 +255,10 @@ function scoreLexical(q, index) {
   const entries = index && index.entries ? index.entries : [];
   const scored = [];
   for (const { chunk, grams, titleGrams, len } of entries) {
-    if (chunk.pin) continue;
+    /* 常時同梱と話題別の目次は、競わせる対象ではない。
+       目次は三つの見出しを並べたものなので、字面では常に強く出る。
+       競わせれば、本命の記述をどの質問でも押しのける。 */
+    if (chunk.pin || chunk.pinFor) continue;
     let score = 0;
     for (const g of q) {
       if (!grams.has(g)) continue;
@@ -274,26 +316,27 @@ export function hybridSearch(query, queryVec, index, options = {}) {
   const k = options.k || 6;
   const entries = index && index.entries ? index.entries : [];
   const pinned = entries.filter((e) => e.chunk.pin).map((e) => e.chunk);
+  const lead = leadChunks(query, entries);
   const q = terms(stripFunctionWords(query));
-  if (!q.size) return pinned.slice(0, k);
+  if (!q.size) return lead.concat(pinned).slice(0, k);
 
   const lexical = scoreLexical(q, index).slice(0, ARM_DEPTH);
-  if (!queryVec) return applyPin(lexical.map((s) => s.chunk), pinned, k);
+  if (!queryVec) return applyPin(lead.concat(lexical.map((s) => s.chunk)), pinned, k);
 
   const dense = entries
-    .filter((e) => e.vec && !e.chunk.pin)
+    .filter((e) => e.vec && !e.chunk.pin && !e.chunk.pinFor)
     .map((e) => ({ chunk: e.chunk, score: cosine(queryVec, e.vec) }))
     /* 意味が離れたものまで拾うと、字面が空振りしたとき雑音だけが残る。 */
     .filter((s) => s.score > 0.2)
     .sort((a, b) => b.score - a.score)
     .slice(0, ARM_DEPTH);
 
-  if (!dense.length) return applyPin(lexical.map((s) => s.chunk), pinned, k);
+  if (!dense.length) return applyPin(lead.concat(lexical.map((s) => s.chunk)), pinned, k);
 
   const byId = new Map(entries.map((e) => [e.chunk.id, e.chunk]));
   const fused = fuseRankings([
     lexical.map((s) => s.chunk.id),
     dense.map((s) => s.chunk.id)
   ]);
-  return applyPin(fused.map((f) => byId.get(f.id)).filter(Boolean), pinned, k);
+  return applyPin(lead.concat(fused.map((f) => byId.get(f.id)).filter(Boolean)), pinned, k);
 }
