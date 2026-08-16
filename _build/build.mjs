@@ -6,7 +6,7 @@
   - 共有 head/header/footer/chatbot を全ページへ。現在地ナビに aria-current を付与。
   実行: node _build/build.mjs
 */
-import { readFileSync, writeFileSync, readdirSync, cpSync, mkdirSync, rmSync, copyFileSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, cpSync, mkdirSync, rmSync, copyFileSync, statSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -20,6 +20,25 @@ const BUILD_HASH = (() => {
   try { return execSync("git rev-parse --short HEAD", { cwd: ROOT }).toString().trim(); }
   catch { return Date.now().toString(36); }
 })();
+
+/* ページの最終更新日。sitemap の lastmod と WebPage.dateModified の双方が
+   これを使う(二か所に別々の日付が出ると、どちらが本当か判定できなくなる)。
+
+   出所は「その本文ファイルを最後に変更したコミットの日付」。ビルド日時ではない。
+   ビルドのたびに全ページが更新されたことになると、クローラは lastmod を信用しなくなる。
+   git が無い環境(配布物からの再ビルド等)ではファイルの更新時刻へ退避する。 */
+const lastModCache = new Map();
+const lastModOf = (relPath) => {
+  if (lastModCache.has(relPath)) return lastModCache.get(relPath);
+  let date;
+  try {
+    const out = execSync(`git log -1 --format=%cs -- "${relPath}"`, { cwd: ROOT }).toString().trim();
+    date = /^\d{4}-\d{2}-\d{2}$/.test(out) ? out : null;
+  } catch { date = null; }
+  if (!date) date = statSync(join(ROOT, relPath)).mtime.toISOString().slice(0, 10);
+  lastModCache.set(relPath, date);
+  return date;
+};
 
 /* 実ドメインを置く唯一の場所。OGP/canonical の絶対URLに使う。 */
 const SITE_URL = "https://shinai-inc.jp";
@@ -380,6 +399,7 @@ const ldJsonEn = {
 const websiteLd = (loc) => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": SITE_URL + "/" + loc.dir + "#website",
   name: "ShinAI",
   alternateName: loc.code === "ja" ? "シンアイ" : "ShinAI Inc.",
   inLanguage: loc.htmlLang,
@@ -450,6 +470,106 @@ const articleLd = (loc, page, canonical) => {
   };
 };
 
+/* お知らせ一覧の各項目を NewsArticle として申告する。
+   詳細ページを持たない項目は、一覧内のアンカーを引用先URLにする。
+   URLと日付が無い記述は、AI検索にとって引用できない情報と同じであり、
+   「いつ・どこに書いてあるか」を伴わせて初めて、事実として扱われる。
+   一覧の本文を唯一の出所として抽出するので、書き換えれば申告も追随する。 */
+const newsListLd = (loc) => {
+  const raw = read(loc.src + "/news.html");
+  const base = SITE_URL + "/" + loc.dir + "news.html";
+  /* 項目ごとに切ってから中身を拾う。一つの正規表現で通しに読むと、
+     省略可能な <a href> が直前の貪欲でない一致に飛ばされ、
+     詳細ページを持つ項目のURLが黙って落ちる(実際に落ちた)。 */
+  const blocks = raw.split(/<li class="news__item/).slice(1);
+  const field = (s, re) => { const m = s.match(re); return m ? m[1] : null; };
+  const items = [];
+  for (const block of blocks) {
+    const date = field(block, /<time class="news__date" datetime="([^"]+)"/);
+    const title = field(block, /<h3 class="news__title">([\s\S]*?)<\/h3>/);
+    const text = field(block, /<p class="news__text">([\s\S]*?)<\/p>/);
+    const img = field(block, /<img src="([^"]+)"/);
+    if (!date || !title || !text || !img) continue;
+    const anchor = field(block, /^[^>]*\sid="([^"]+)"/);
+    const href = field(block, /<a class="news__link" href="([^"]+)"/);
+    const url = href ? SITE_URL + "/" + loc.dir + href : base + (anchor ? "#" + anchor : "");
+    items.push({
+      "@type": "ListItem",
+      position: items.length + 1,
+      item: {
+        "@type": "NewsArticle",
+        headline: stripTags(title),
+        description: stripTags(text),
+        inLanguage: loc.htmlLang,
+        datePublished: date,
+        dateModified: date,
+        image: SITE_URL + "/" + img.replace(/^\.\.\//, ""),
+        url,
+        author: { "@id": SITE_URL + "/#organization" },
+        publisher: { "@id": SITE_URL + "/#organization" },
+        mainEntityOfPage: { "@type": "WebPage", "@id": url }
+      }
+    });
+  }
+  if (!items.length) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: loc.code === "ja" ? "ShinAIのお知らせ" : "News from ShinAI",
+    inLanguage: loc.htmlLang,
+    itemListElement: items
+  };
+};
+
+/* ページそのものの申告。AI検索は引用の可否を「いつの情報か」で判断するため、
+   本文と同じ出所(lastModOf)から dateModified を出す。
+   組織・サイトへの所属を @id で結び、断片ではなく一つの実体として読ませる。 */
+const webPageLd = (loc, page, canonical, lastMod) => {
+  const meta = loc.code === "ja" ? page : page.en;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": canonical,
+    url: canonical,
+    name: meta.title,
+    description: meta.desc,
+    inLanguage: loc.htmlLang,
+    dateModified: lastMod,
+    isPartOf: { "@type": "WebSite", "@id": SITE_URL + "/" + loc.dir + "#website" },
+    publisher: { "@id": SITE_URL + "/#organization" }
+  };
+};
+
+/* 提供サービスの申告。partial の見出しと導入文を唯一の真実源として抽出し、
+   本文と構造化データが食い違う状態を作らない(FAQPage と同じ方針)。
+   料金は公開していないため offers は置かない。無い値を型のために埋めない。 */
+const serviceLdFor = (loc) => {
+  const raw = read(loc.src + "/services.html");
+  const re = /<h3 id="sol-[a-z]+-title" class="solution-card__title">([\s\S]*?)<\/h3>[\s\S]*?<p class="solution-card__lead">([\s\S]*?)<\/p>/g;
+  const items = [];
+  let m;
+  while ((m = re.exec(raw)) !== null) {
+    items.push({
+      "@type": "Service",
+      name: stripTags(m[1]),
+      description: stripTags(m[2]),
+      serviceType: stripTags(m[1]),
+      provider: { "@id": SITE_URL + "/#organization" },
+      areaServed: { "@type": "Country", name: loc.code === "ja" ? "日本" : "Japan" }
+    });
+  }
+  if (!items.length) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: loc.code === "ja" ? "ShinAIの提供サービス" : "Services offered by ShinAI",
+    inLanguage: loc.htmlLang,
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem", position: i + 1, item
+    }))
+  };
+};
+
 /* 公開HTMLから HTMLコメントを除去(開発メモを出さない。doctypeは非対象)。 */
 const stripComments = (html) => html.replace(/<!--[\s\S]*?-->/g, "").replace(/\n{3,}/g, "\n\n");
 
@@ -496,6 +616,9 @@ const shell = (page, loc) => {
   const structured = [
     loc.code === "ja" ? ldJson : ldJsonEn,
     page.file === "index.html" ? websiteLd(loc) : null,
+    webPageLd(loc, page, canonical, lastModOf(loc.src + "/" + page.part)),
+    page.part === "services.html" ? serviceLdFor(loc) : null,
+    page.part === "news.html" ? newsListLd(loc) : null,
     /* 代表individualの実体は about.html にのみ置く(重複申告を避ける)。
        他ページの founder/employee は @id 参照でここへ解決される。 */
     page.file === "about.html" ? (loc.code === "ja" ? personLd : personLdEn) : null,
@@ -577,7 +700,50 @@ for (const loc of LOCALES) {
 }
 
 /* ---- 4. SEO・メタファイル生成(SITE_URL を単一の真実源とする) ---- */
-write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
+/* AI検索の巡回者を名指しで許可する。
+   `User-agent: *` で足りるように見えるが、この種の巡回者は既定で拒否されている前提で
+   運用される場面が増えており(CDNの一括遮断・雛形の robots)、明示は「読んでよい」の
+   意思表示になる。学習用の収集(GPTBot・CCBot 等)と、回答時の参照(OAI-SearchBot・
+   ChatGPT-User 等)は別物であり、当社は本文を読ませて引用されることが利益なので双方を許可する。 */
+const AI_AGENTS = [
+  "GPTBot", "OAI-SearchBot", "ChatGPT-User",
+  "ClaudeBot", "Claude-User", "Claude-SearchBot",
+  "PerplexityBot", "Perplexity-User",
+  "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot"
+];
+write("robots.txt",
+  "User-agent: *\nAllow: /\n\n" +
+  AI_AGENTS.map((a) => `User-agent: ${a}\nAllow: /\n`).join("\n") +
+  `\nSitemap: ${SITE_URL}/sitemap.xml\n`);
+
+/* llms.txt — 大規模言語モデル向けの案内。HTMLを解析させずに、
+   何の会社で、どのURLに何が書いてあるかを平文で渡す。
+   ページ定義(pages)を唯一の出所とするので、ページを足せばここも自動で増える。 */
+const llmsTxt = [
+  "# ShinAI（シンアイ株式会社）",
+  "",
+  "> 群馬県高崎市のAI開発会社。企業の暗黙知（属人化した判断・技能）を、"
+  + "現場で使える専用AIへ変える。RAG構築、企業専用AIエージェント開発、"
+  + "大規模言語モデルの最適化、オンプレミス／自社GPUでの学習に対応する。",
+  "",
+  "問い合わせ: " + CONTACT_EMAIL,
+  "",
+  "## ページ",
+  ""
+].concat(
+  pages
+    .filter((p) => p.file !== "privacy.html" && p.file !== "terms.html")
+    .map((p) => `- [${p.title}](${urlFor(p.file, "")}): ${p.desc}`)
+).concat([
+  "",
+  "## English",
+  ""
+]).concat(
+  pages
+    .filter((p) => p.file !== "privacy.html" && p.file !== "terms.html")
+    .map((p) => `- [${p.en.title}](${urlFor(p.file, "en/")}): ${p.en.desc}`)
+).join("\n") + "\n";
+write("llms.txt", llmsTxt);
 
 /* 各URLに全言語版を xhtml:link で併記する(Google が推奨する言語版の申告方法)。
    HTMLの hreflang と二重に申告することで、英語圏の検索結果に英語版が出る確度を上げる。 */
@@ -590,6 +756,7 @@ write("sitemap.xml",
     ).join("") +
     `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor(p.file, "")}"/>`;
     return `  <url>\n    <loc>${urlFor(p.file, loc.dir)}</loc>` + alts +
+      `\n    <lastmod>${lastModOf(loc.src + "/" + p.part)}</lastmod>` +
       `\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`;
   })).join("\n") +
   "\n</urlset>\n");
@@ -641,7 +808,7 @@ cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
 /* favicon.ico はルート直下に置く。多くのブラウザ・検索エンジン・SNSは
    HTMLの<link rel="icon">を読まず /favicon.ico を直接取得しにいくため、
    ここが404だとタブや一覧にアイコンが出ない。 */
-for (const f of ["robots.txt", "sitemap.xml", "favicon.ico"]) toDist(f);
+for (const f of ["robots.txt", "sitemap.xml", "llms.txt", "favicon.ico"]) toDist(f);
 for (const loc of LOCALES) toDist(loc.dir + "site.webmanifest");
 toDist(".well-known/security.txt");
 /* 応答ヘッダ(Netlify/Cloudflare Pages形式)。CSPは上の単一定義から差し込み、
