@@ -54,7 +54,7 @@
   background: var(--paper);
   border: 1px solid var(--line-ink);
   /* 器も吹き出しに合わせる。中身が丸く外枠だけ直角だと、角の対比が視線を奪う。 */
-  border-radius: 0.9rem;
+  border-radius: 0.7rem;
   box-shadow: var(--shadow-lg);
   opacity: 0;
   visibility: hidden;
@@ -123,11 +123,15 @@
    ただし吹き出しは意匠ではなく会話の器で、丸みが発話の単位を示す
    （Teams・LINE ほか主要チャットUIが一様にそうしている）。
    直角にすると発話ではなく通知・注意書きに見える。
-   モバイル側(下部)と同じ形状にし、画面幅で人格が変わらないようにする。 */
+
+   四隅は均等にする。一隅だけ小さくする尻尾は話者を示す記法だが、
+   話者は左右の寄せと配色で既に分かる。二重に示すと、意図ではなく
+   歪みとして目に入る(実際にそう見えるとの指摘があった)。
+   丸みは控えめに取る。強い丸みは親しみと引き換えに軽さを連れてくる。 */
 .chatbot__message {
   max-width: 86%;
   padding: 0.7rem 0.95rem;
-  border-radius: 1.1rem;
+  border-radius: 0.6rem;
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
   white-space: pre-wrap;
@@ -139,14 +143,12 @@
   background: #fff;
   border: 1px solid var(--line);
   color: var(--charcoal);
-  border-bottom-left-radius: 0.3rem;
 }
 
 .chatbot__message--user {
   align-self: flex-end;
   background: var(--c-tacit-bg);
   color: var(--c-tacit-ink);
-  border-bottom-right-radius: 0.3rem;
 }
 
 .chatbot__cta {
@@ -207,7 +209,7 @@
   border: 1px solid var(--line);
   /* 複数行に伸びる(max-height 96px)ため、ピルではなく吹き出しと同じ丸みにする。
      ピルは1行のときだけ成立し、伸びた瞬間に形が崩れる。 */
-  border-radius: 1.1rem;
+  border-radius: 0.6rem;
   transition: border-color var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
 }
 
