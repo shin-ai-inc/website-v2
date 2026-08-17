@@ -553,6 +553,19 @@ h1, h2, h3 {
   text-align: left;
 }
 
+/* 結びの一文を改行して立たせる。<br> を使わないのは、狭い画面では
+   この改行が短い断片を作り、かえって読みにくくなるため。
+   モバイルでは行に戻し、折り返しは本文の幅に委ねる。 */
+.about-purpose__note-line {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .about-purpose__note-line {
+    display: inline;
+  }
+}
+
 /* ---- 会社概要の連絡先リンク ---- */
 .about-fact-link {
   color: var(--ink);
