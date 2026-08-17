@@ -1,138 +1,139 @@
 {
   "locale": "en",
-  "generatedAt": "5008fb7",
+  "generatedAt": "5a4dd60",
   "chunks": [
     {
       "id": "index#0",
+      "title": "A place to train AI without your data leaving the building｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "2026.08.15 \r\n Facilities \r\n \r\n A place to train AI without your data leaving the building \r\n We have just installed a new computer dedicated to development, built around an NVIDIA GPU (GeForce RTX 5070 Ti). Rather than using a general model as it comes, we can fine-tune one on your own data so that it fits the tasks you actually run. That work never has to leave the building, so confidential and personal information is welcome here."
+    },
+    {
+      "id": "index#1",
+      "title": "We spoke at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "url": "https://shinai-inc.jp/en/",
+      "text": "2025.12.05 \r\n Speaking \r\n \r\n We spoke at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry \r\n We presented ShinAI's work, carried by the belief that AI should give people their human hours back. \r\n \r\n Read more"
+    },
+    {
+      "id": "index#2",
       "title": "Unlocking tacit knowledge｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Unlocking tacit knowledge \r\n \r\n We convert the judgment, documents and conversations\r\n you have accumulated into a knowledge base that works.\r\n\n Collecting and structuring your internal knowledge \r\n RAG systems built on your internal data \r\n LLM fine-tuning"
     },
     {
-      "id": "index#1",
+      "id": "index#3",
       "title": "Private AI agent development｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Private AI agent development \r\n \r\n We connect your internal knowledge to your existing systems\r\n and build AI that carries out the work.\r\n\n Answers and decision support grounded in your own knowledge \r\n Integration and execution across existing systems \r\n A natural fit into how the work already flows"
     },
     {
-      "id": "index#2",
+      "id": "index#4",
       "title": "Hands-on support for AI-driven transformation｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Hands-on support for AI-driven transformation \r\n \r\n From designing the evaluation to running it and growing the team.\r\n We leave you able to carry it forward yourselves.\r\n\n PoC design and accuracy evaluation \r\n Operating rules and team structure \r\n Technical handover to your own engineers"
     },
     {
-      "id": "index#3",
+      "id": "index#5",
       "title": "Understanding the work｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "01 \r\n \r\n Understanding the work \r\n We learn the operation before we reach for the technology."
     },
     {
-      "id": "index#4",
+      "id": "index#6",
       "title": "Small-scale proof｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "02 \r\n \r\n Small-scale proof \r\n We try it small, confirm the effect, then widen it."
     },
     {
-      "id": "index#5",
+      "id": "index#7",
       "title": "Data protection｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "03 \r\n \r\n Data protection \r\n Encryption, access control, and on-premise options."
     },
     {
-      "id": "index#6",
+      "id": "index#8",
       "title": "Production, not demos｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "04 \r\n \r\n Production, not demos \r\n We do not stop at a prototype. We build it into the work."
     },
     {
-      "id": "index#7",
+      "id": "index#9",
       "title": "Technical handover｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "05 \r\n \r\n Technical handover \r\n In the end, your own team can carry it."
     },
     {
-      "id": "index#8",
+      "id": "index#10",
       "title": "会社概要｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Consultation: Free, 30–45 minutes, no preparation needed\nContact: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST"
     },
     {
-      "id": "index#9",
+      "id": "index#11",
       "title": "ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Your company's tacit knowledge, \r\n rebuilt as working AI. \r\n\n Years of judgment. Skill the hands remember. Documents no one has time to read. \r\n We put the knowledge sleeping inside your company back to work."
     },
     {
-      "id": "index#10",
+      "id": "index#12",
       "title": "\"Believe in true value, and build a new future for the next generation.\"｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Our Purpose \r\n \r\n Use AI to give people \r\n their human hours back. \r\n\n Research, analysis, the widening of thought. \r\n When AI carries these, people turn to creating and deciding. \r\n\n Solutions"
     },
     {
-      "id": "index#11",
+      "id": "index#13",
       "title": "Three stages that turn tacit \r\n knowledge into an asset.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "We design the whole path, from first concept to live operation. \r\n\n Explore our solutions\r\n\n Engineering"
     },
     {
-      "id": "index#12",
+      "id": "index#14",
       "title": "Advanced technique, \r\n turned into results on the floor.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "From accuracy through to operation, we design it ourselves and build a base that runs in the real workplace. \r\n\n 01"
     },
     {
-      "id": "index#13",
+      "id": "index#15",
       "title": "Custom LLM optimisation｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "We tune large language models to your purpose and draw out accuracy that follows your own context. \r\n\n 02"
     },
     {
-      "id": "index#14",
+      "id": "index#16",
       "title": "Reinforcement learning｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "We support systems that keep learning from feedback, so the AI settles further into your workplace the more it is used. \r\n\n 03"
     },
     {
-      "id": "index#15",
+      "id": "index#17",
       "title": "RAG and vector search｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "We build a base that searches your documents by meaning and answers while showing its sources. \r\n\n 04"
     },
     {
-      "id": "index#16",
+      "id": "index#18",
       "title": "On-premise deployment｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "We support architectures where no data leaves your walls, so this works even in highly confidential environments. \r\n\n Why ShinAI"
     },
     {
-      "id": "index#17",
+      "id": "index#19",
       "title": "It only becomes value \r\n once it takes root.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Delivery is not the finish line. \r\n We stay with you until it is rooted in the work and runs under your own power. \r\n\n News"
     },
     {
-      "id": "index#18",
-      "title": "News and activity｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
-      "url": "https://shinai-inc.jp/en/",
-      "text": "2026.08.15 \r\n Facilities"
-    },
-    {
-      "id": "index#19",
-      "title": "A place to train AI without your data leaving the building｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
-      "url": "https://shinai-inc.jp/en/",
-      "text": "We have just installed a new computer dedicated to development, built around an NVIDIA GPU (GeForce RTX 5070 Ti). Rather than using a general model as it comes, we can fine-tune one on your own data so that it fits the tasks you actually run. That work never has to leave the building, so confidential and personal information is welcome here. \r\n\n 2025.12.05 \r\n Speaking"
-    },
-    {
       "id": "index#20",
-      "title": "We spoke at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
-      "url": "https://shinai-inc.jp/en/",
-      "text": "We presented ShinAI's work, carried by the belief that AI should give people their human hours back. \r\n \r\n Read more"
-    },
-    {
-      "id": "index#21",
       "title": "Let us build what comes next, together.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "You do not need defined requirements to start. \r\n We take stock of how your work runs today and propose the measures that move it forward. \r\n\n Book a free consultation"
+    },
+    {
+      "id": "services#catalog",
+      "title": "Services offered｜Solutions | ShinAI",
+      "url": "https://shinai-inc.jp/en/services.html",
+      "text": "ShinAI offers three services to companies.\n1. Unlocking tacit knowledge｜Collecting and structuring your internal knowledge / RAG systems that put your internal data to work / LLM optimisation and tuning\n2. Private AI agent development｜Answers and decision support grounded in your own knowledge / Integration with existing systems and APIs / Support from search all the way to execution\n3. Hands-on support for AI-driven transformation｜PoC design and evaluation design / Operating rules and guidelines / Team development and technical handover\nAlongside these, we carry out physical AI research and development (PoC) on the skill that documents never captured.",
+      "pinFor": "services"
     },
     {
       "id": "services#0",
@@ -373,13 +374,13 @@
       "id": "about#10",
       "title": "About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
-      "text": "Home \n › \n About \n\n Company \n\n Before the AI, \n there is a person. \n\n ShinAI did not begin from an interest in technology. \n It began from a question: how can people work in a more human way? \n\n Purpose"
+      "text": "Home \n › \n About \n\n Company \n\n Before the AI, \n there is a person. \n\n A future where people work in a more human way— \n that question is where our design began. \n\n Purpose"
     },
     {
       "id": "about#11",
       "title": "Use AI to give people \n their human hours back.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
-      "text": "What lies beyond efficiency is not more work. \n It is people returning to what only people can do. \n\n Our aim is not to optimise operations. When AI carries information processing and routine judgment, people can concentrate on the higher work of creating, deciding, and building relationships. Our technology is pointed at supporting that kind of change in a company.\n\n Overview"
+      "text": "What lies beyond efficiency is not more work. \n It is people returning to what only people can do. \n\n AI takes on information processing and routine judgment. The time this frees can go to creating, deciding, and building relationships. We redesign how a company works so that it reaches that state.\n\n Overview"
     },
     {
       "id": "about#12",
@@ -677,27 +678,21 @@
     },
     {
       "id": "news#0",
-      "title": "News | ShinAI",
+      "title": "A place to train AI without your data leaving the building｜News | ShinAI",
       "url": "https://shinai-inc.jp/en/news.html",
-      "text": "Home \r\n › \r\n News \r\n\n News \r\n\n Keeping \r\n a record of the work. \r\n\n Talks, announcements, and what we have been working on. \r\n\n Archive"
+      "text": "2026.08.15 \r\n Facilities \r\n \r\n A place to train AI without your data leaving the building \r\n We have just installed a new computer dedicated to development, built around an NVIDIA GPU (GeForce RTX 5070 Ti). Rather than using a general model as it comes, we can fine-tune one on your own data so that it fits the tasks you actually run. That work never has to leave the building, so confidential and personal information is welcome here."
     },
     {
       "id": "news#1",
-      "title": "Announcements｜News | ShinAI",
+      "title": "Speaking at the 9th Takasaki CCI joint press conference｜News | ShinAI",
       "url": "https://shinai-inc.jp/en/news.html",
-      "text": "2026.08.15 \r\n Facilities"
+      "text": "2025.12.05 \r\n Talk \r\n \r\n Speaking at the 9th Takasaki CCI joint press conference \r\n We presented ShinAI's work under the idea of using AI to give people their human hours back. \r\n \r\n Read more"
     },
     {
       "id": "news#2",
-      "title": "A place to train AI without your data leaving the building｜News | ShinAI",
+      "title": "News | ShinAI",
       "url": "https://shinai-inc.jp/en/news.html",
-      "text": "We have just installed a new computer dedicated to development, built around an NVIDIA GPU (GeForce RTX 5070 Ti). Rather than using a general model as it comes, we can fine-tune one on your own data so that it fits the tasks you actually run. That work never has to leave the building, so confidential and personal information is welcome here. \r\n\n 2025.12.05 \r\n Talk"
-    },
-    {
-      "id": "news#3",
-      "title": "Speaking at the 9th Takasaki CCI joint press conference｜News | ShinAI",
-      "url": "https://shinai-inc.jp/en/news.html",
-      "text": "We presented ShinAI's work under the idea of using AI to give people their human hours back. \r\n \r\n Read more"
+      "text": "Home \r\n › \r\n News \r\n\n News \r\n\n Keeping \r\n a record of the work. \r\n\n Talks, announcements, and what we have been working on. \r\n\n Archive"
     },
     {
       "id": "news-20251205-takasaki-press#0",

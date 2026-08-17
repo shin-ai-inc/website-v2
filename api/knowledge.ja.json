@@ -1,132 +1,139 @@
 {
   "locale": "ja",
-  "generatedAt": "5008fb7",
+  "generatedAt": "5a4dd60",
   "chunks": [
     {
       "id": "index#0",
+      "title": "データを社外に出さずにAIを学習させられる環境を整えました｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
+      "url": "https://shinai-inc.jp/",
+      "text": "2026.08.15 \r\n 設備投資 \r\n \r\n データを社外に出さずにAIを学習させられる環境を整えました \r\n NVIDIAのGPU（GeForce RTX 5070 Ti）を搭載した開発専用のコンピュータを新しく社内に設置しました。既製のAIをそのまま使うのではなく、御社のデータでモデルをファインチューニングし、業務タスクに合わせることが可能です。作業を社外に持ち出さずに行えるため、機密や個人情報を含む業務もそのままご相談いただけます。"
+    },
+    {
+      "id": "index#1",
+      "title": "高崎商工会議所 第9回合同プレス発表会に登壇しました｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
+      "url": "https://shinai-inc.jp/",
+      "text": "2025.12.05 \r\n 登壇 \r\n \r\n 高崎商工会議所 第9回合同プレス発表会に登壇しました \r\n 「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みを発表しました。 \r\n \r\n 詳しく見る"
+    },
+    {
+      "id": "index#2",
       "title": "暗黙知の解消支援｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "暗黙知の解消支援 \r\n \r\n ベテランにしか分からなかった判断を、\r\n 誰もが引き出せる状態にします。\r\n\n 社内ナレッジの収集・構造化 \r\n RAG構築・社内データ活用 \r\n LLMのファインチューニング"
     },
     {
-      "id": "index#1",
+      "id": "index#3",
       "title": "企業専用AIエージェント開発｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "企業専用AIエージェント開発 \r\n \r\n 社内知識と既存システムをつなぎ\r\n 業務を実行するAIをつくります。\r\n\n 社内知識を踏まえた応答と判断支援 \r\n 既存システムとの連携・実行 \r\n 業務フローへの自然な組み込み"
     },
     {
-      "id": "index#2",
+      "id": "index#4",
       "title": "AI化伴走支援｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "AI化伴走支援 \r\n \r\n 検証の設計から運用・チーム育成まで。\r\n 御社が自走できる状態をつくります。\r\n\n PoC設計・精度の評価 \r\n 運用ルールと体制づくり \r\n 社内チームへの技術移転"
     },
     {
-      "id": "index#3",
+      "id": "index#5",
       "title": "現場理解｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "01 \r\n \r\n 現場理解 \r\n 技術より先に業務を理解する。"
     },
     {
-      "id": "index#4",
+      "id": "index#6",
       "title": "小規模検証｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "02 \r\n \r\n 小規模検証 \r\n 小さく試し、効果を確かめてから広げます。"
     },
     {
-      "id": "index#5",
+      "id": "index#7",
       "title": "データ保護｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "03 \r\n \r\n データ保護 \r\n 暗号化・権限管理・オンプレミスにも対応します。"
     },
     {
-      "id": "index#6",
+      "id": "index#8",
       "title": "本番実装｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "04 \r\n \r\n 本番実装 \r\n 試作で終えず業務に組み込むところまで作る。"
     },
     {
-      "id": "index#7",
+      "id": "index#9",
       "title": "技術移転｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "05 \r\n \r\n 技術移転 \r\n 最後は社内で自走できる状態に。"
     },
     {
-      "id": "index#8",
+      "id": "index#10",
       "title": "会社概要｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "Consultation: 無料相談 30〜45分・事前準備は不要です\nContact: contact@shinai-inc.jp\nHours: 平日 9:00–18:00"
     },
     {
-      "id": "index#9",
+      "id": "index#11",
       "title": "ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "企業の暗黙知を、 \r\n 使えるAI資産へ。 \r\n\n テクノロジーを追求した先にあるのは \r\n 人々が本来の時間を取り戻し、人間らしい豊かさを育むこと。 \r\n 私たちは次世代のために、構造変革を支援します。"
     },
     {
-      "id": "index#10",
+      "id": "index#12",
       "title": "「真の価値を信じ、 次世代のために新たな未来を創る。」｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "Our Purpose \r\n \r\n AIで \r\n 人間らしい時間を取り戻す。 \r\n\n 調査、分析、思考の拡張。 \r\n AIが担うことで人は創造と判断へ向かう。 \r\n\n Solutions"
     },
     {
-      "id": "index#11",
+      "id": "index#13",
       "title": "暗黙知を三段階で \r\n 資産に変える。｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "構想から現場稼働まで一貫して設計します。 \r\n\n ソリューションの詳細を見る\r\n\n Engineering"
     },
     {
-      "id": "index#12",
+      "id": "index#14",
       "title": "高度な技術を、 \r\n 現場の成果に変える。｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "精度から運用まで 自分たちで設計し 現場で動く基盤をつくります。 \r\n\n 01"
     },
     {
-      "id": "index#13",
+      "id": "index#15",
       "title": "カスタム LLM最適化｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "用途に合わせて大規模言語モデルを調整し、自社の文脈に沿った精度を引き出します。 \r\n\n 02"
     },
     {
-      "id": "index#14",
+      "id": "index#16",
       "title": "強化学習｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "フィードバックから学び続ける仕組みに対応し、使うほど現場に馴染むAIを目指します。 \r\n\n 03"
     },
     {
-      "id": "index#15",
+      "id": "index#17",
       "title": "RAG・ ベクトル検索｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "社内文書を意味で検索し、出典を示しながら答える基盤を構築します。 \r\n\n 04"
     },
     {
-      "id": "index#16",
+      "id": "index#18",
       "title": "オンプレミス 対応｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "データを外に出さない構成にも対応し、機密性の高い環境でも実装できます。 \r\n\n Why ShinAI"
     },
     {
-      "id": "index#17",
+      "id": "index#19",
       "title": "根づいてはじめて \r\n 価値になる。｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "導入して終わりにしない。 \r\n 現場に根づき 自走できる状態まで伴走します。 \r\n\n News"
-    },
-    {
-      "id": "index#18",
-      "title": "データを社外に出さずにAIを学習させられる環境を整えました｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
-      "url": "https://shinai-inc.jp/",
-      "text": "NVIDIAのGPU（GeForce RTX 5070 Ti）を搭載した開発専用のコンピュータを新しく社内に設置しました。既製のAIをそのまま使うのではなく、御社のデータでモデルをファインチューニングし、業務タスクに合わせることが可能です。作業を社外に持ち出さずに行えるため、機密や個人情報を含む業務もそのままご相談いただけます。 \r\n\n 2025.12.05 \r\n 登壇"
-    },
-    {
-      "id": "index#19",
-      "title": "高崎商工会議所 第9回合同プレス発表会に登壇しました｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
-      "url": "https://shinai-inc.jp/",
-      "text": "「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みを発表しました。 \r\n \r\n 詳しく見る"
     },
     {
       "id": "index#20",
       "title": "ご一緒に未来を創ります。｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "まだ要件が決まっていなくても構いません。 \r\n 業務の現状を棚卸しし、効果的な施策をご提案します。 \r\n\n 無料相談を申し込む"
+    },
+    {
+      "id": "services#catalog",
+      "title": "提供サービス一覧｜ソリューション｜ShinAI",
+      "url": "https://shinai-inc.jp/services.html",
+      "text": "ShinAIが法人向けに提供しているサービスは、次の三つです。\n1. 暗黙知の解消支援｜社内ナレッジの収集・構造化 / RAG構築・社内データの活用 / LLMの最適化・調整\n2. 企業専用AIエージェント開発｜社内知識を踏まえた応答・判断支援 / 既存システム・APIとの連携 / 検索から業務実行までの支援\n3. AI化伴走支援｜PoC設計・精度評価の設計 / 運用ルール・ガイドライン整備 / 社内チーム育成・技術移転\nこのほかに研究開発領域として、フィジカルAI（現場の動作や判断をAIが扱える形にする取り組み）のPoCを行っています。",
+      "pinFor": "services"
     },
     {
       "id": "services#0",
@@ -361,13 +368,13 @@
       "id": "about#9",
       "title": "会社情報｜ShinAI",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "ホーム \r\n › \r\n 会社情報 \r\n\n Company \r\n\n AIの前に、 \r\n 人がいる。 \r\n\n ShinAIの出発点は、 テクノロジーへの関心ではありません。 \r\n 人がもっと人らしく働ける未来—— \r\n その問いから、 私たちの設計は始まりました。 \r\n\n Purpose"
+      "text": "ホーム \r\n › \r\n 会社情報 \r\n\n Company \r\n\n AIの前に、 \r\n 人がいる。 \r\n\n 人がもっと人らしく働ける未来—— \r\n その問いから、 私たちの設計は始まりました。 \r\n\n Purpose"
     },
     {
       "id": "about#10",
       "title": "AIで \r\n 人間らしい時間を取り戻す。｜会社情報｜ShinAI",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "効率化の先にあるのは、 もっと働くことではありません。 \r\n 人が、人にしかできないことへ還ることです。 \r\n\n 目指すのは業務の最適化ではありません。AIが情報処理と定型判断を担うことで、人は創造・意思決定・関係構築という高次の仕事に集中できる。そのような企業への変革を支援することに、私たちの技術を向けています。\r\n\n Overview"
+      "text": "効率化の先にあるのは、 もっと働くことではありません。 \r\n 人が、人にしかできないことへ還ることです。 \r\n\n AIが情報処理と定型的な判断を引き受ける。そうして生まれた時間を、人は創造・意思決定・関係構築へ向けられる。その状態を目指して、企業のしくみそのものを設計し直します。\r\n\n Overview"
     },
     {
       "id": "about#11",
@@ -659,21 +666,21 @@
     },
     {
       "id": "news#0",
-      "title": "お知らせ｜ShinAI",
+      "title": "データを社外に出さずにAIを学習させられる環境を整えました｜お知らせ｜ShinAI",
       "url": "https://shinai-inc.jp/news.html",
-      "text": "ホーム \r\n › \r\n お知らせ \r\n\n News \r\n\n 歩みを、 \r\n 記録として残す。 \r\n\n 登壇や発表など、ShinAIの活動を お知らせしています。 \r\n\n Archive"
+      "text": "2026.08.15 \r\n 設備投資 \r\n \r\n データを社外に出さずにAIを学習させられる環境を整えました \r\n NVIDIAのGPU（GeForce RTX 5070 Ti）を搭載した開発専用のコンピュータを新しく社内に設置しました。既製のAIをそのまま使うのではなく、御社のデータでモデルをファインチューニングし、業務タスクに合わせることが可能です。作業を社外に持ち出さずに行えるため、機密や個人情報を含む業務もそのままご相談いただけます。"
     },
     {
       "id": "news#1",
-      "title": "データを社外に出さずにAIを学習させられる環境を整えました｜お知らせ｜ShinAI",
+      "title": "高崎商工会議所 第9回合同プレス発表会に登壇しました｜お知らせ｜ShinAI",
       "url": "https://shinai-inc.jp/news.html",
-      "text": "NVIDIAのGPU（GeForce RTX 5070 Ti）を搭載した開発専用のコンピュータを新しく社内に設置しました。既製のAIをそのまま使うのではなく、御社のデータでモデルをファインチューニングし、業務タスクに合わせることが可能です。作業を社外に持ち出さずに行えるため、機密や個人情報を含む業務もそのままご相談いただけます。 \r\n\n 2025.12.05 \r\n 登壇"
+      "text": "2025.12.05 \r\n 登壇 \r\n \r\n 高崎商工会議所 第9回合同プレス発表会に登壇しました \r\n 「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みを発表しました。 \r\n \r\n 詳しく見る"
     },
     {
       "id": "news#2",
-      "title": "高崎商工会議所 第9回合同プレス発表会に登壇しました｜お知らせ｜ShinAI",
+      "title": "お知らせ｜ShinAI",
       "url": "https://shinai-inc.jp/news.html",
-      "text": "「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みを発表しました。 \r\n \r\n 詳しく見る"
+      "text": "ホーム \r\n › \r\n お知らせ \r\n\n News \r\n\n 歩みを、 \r\n 記録として残す。 \r\n\n 登壇や発表など、ShinAIの活動を お知らせしています。 \r\n\n Archive"
     },
     {
       "id": "news-20251205-takasaki-press#0",
