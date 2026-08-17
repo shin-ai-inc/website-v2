@@ -6,7 +6,7 @@
   - 共有 head/header/footer/chatbot を全ページへ。現在地ナビに aria-current を付与。
   実行: node _build/build.mjs
 */
-import { readFileSync, writeFileSync, readdirSync, cpSync, mkdirSync, rmSync, copyFileSync, statSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, cpSync, mkdirSync, rmSync, copyFileSync, statSync, existsSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -876,33 +876,68 @@ const knowledgeFor = (loc) => {
 const EMBED_MODEL = "text-embedding-3-small";
 const EMBED_DIMS = 512;
 
+/* 前回の生成物からベクトルを引き継ぐ。
+   引き継ぎの鍵は題と本文そのもの(埋め込みの入力と同一)。文言が一字でも
+   変われば鍵が変わり、古いベクトルが新しい文へ付くことはない。
+   モデルか次元が変わっていれば全て捨てる。混在は静かな精度劣化になる。 */
+const carryVectors = (locale, chunks) => {
+  const path = join(ROOT, "api", `knowledge.${locale}.json`);
+  if (!existsSync(path)) return 0;
+  let prev;
+  try {
+    prev = JSON.parse(readFileSync(path, "utf8"));
+  } catch {
+    return 0;
+  }
+  if (prev.embedModel !== EMBED_MODEL || prev.embedDims !== EMBED_DIMS) return 0;
+  const byText = new Map();
+  for (const c of prev.chunks || []) {
+    if (c.vec) byText.set(`${c.title}\n${c.text}`, c.vec);
+  }
+  let carried = 0;
+  for (const c of chunks) {
+    const vec = byText.get(`${c.title}\n${c.text}`);
+    if (vec) {
+      c.vec = vec;
+      carried += 1;
+    }
+  }
+  return carried;
+};
+
 const embedChunks = async (chunks) => {
+  /* 鍵の有無に関わらず、まず引き継げるものを引き継ぐ。
+     鍵なしのビルドが既存のベクトルを消していた。手順の誤り一つで
+     検索が字面のみへ落ち、それが公開まで気づかれずに進む経路だった。 */
   const key = process.env.OPENAI_API_KEY;
+  const pending = chunks.filter((c) => !c.vec);
+  if (!pending.length) return true;
   if (!key) {
     /* 静かに縮退させない。鍵を渡したつもりで渡っていない取り違えが実際に起きた。
        縮退それ自体は正しい振る舞いだが、気づけないまま公開されると
        検索の精度だけが落ちた状態が続く。 */
     console.warn(
-      "\n[注意] OPENAI_API_KEY が渡っていないため、ベクトルを付けずに生成します。" +
-      "\n       検索は字面のみで動作します（言い換えは繋がりません）。" +
-      "\n       有効にするには、鍵の設定とビルドを同じコマンドで実行してください:" +
+      `\n[注意] OPENAI_API_KEY が渡っていないため、${pending.length}件のベクトルを付けられません。` +
+      "\n       文言を変えたチャンクだけが字面検索へ落ちます（言い換えは繋がりません）。" +
+      "\n       公開前に、鍵の設定とビルドを同じコマンドで実行してください:" +
       "\n         $env:OPENAI_API_KEY = Read-Host \"OpenAI APIキー\"; node _build/build.mjs\n"
     );
     return false;
   }
-  /* 題と本文を合わせて1件とする。題は検索の的として効きが強い。 */
+  /* 題と本文を合わせて1件とする。題は検索の的として効きが強い。
+     引き継げなかった分だけを送る。変えていない文へ費用を払わない。 */
   const res = await fetch("https://api.openai.com/v1/embeddings", {
     method: "POST",
     headers: { "Content-Type": "application/json", "Authorization": `Bearer ${key}` },
     body: JSON.stringify({
       model: EMBED_MODEL,
-      input: chunks.map((c) => `${c.title}\n${c.text}`),
+      input: pending.map((c) => `${c.title}\n${c.text}`),
       dimensions: EMBED_DIMS
     })
   });
   if (!res.ok) throw new Error(`embeddings failed: ${res.status} ${await res.text()}`);
   for (const item of (await res.json()).data) {
-    chunks[item.index].vec = encodeVector(normalizeVector(item.embedding));
+    pending[item.index].vec = encodeVector(normalizeVector(item.embedding));
   }
   return true;
 };
@@ -912,16 +947,24 @@ const embedChunks = async (chunks) => {
 mkdirSync(join(DIST, "api"), { recursive: true });
 for (const loc of LOCALES) {
   const kb = knowledgeFor(loc);
-  const embedded = await embedChunks(kb.chunks);
-  kb.embedModel = embedded ? EMBED_MODEL : null;
-  kb.embedDims = embedded ? EMBED_DIMS : 0;
+  carryVectors(loc.code, kb.chunks);
+  await embedChunks(kb.chunks);
+  /* 一件でもベクトルを持つなら索引としては有効。検索側はチャンク単位で
+     ベクトルの有無を見るため、混在しても壊れない。 */
+  const withVec = kb.chunks.filter((c) => c.vec).length;
+  kb.embedModel = withVec ? EMBED_MODEL : null;
+  kb.embedDims = withVec ? EMBED_DIMS : 0;
   const body = JSON.stringify(kb, null, 2);
   writeFileSync(join(ROOT, "api", `knowledge.${loc.code}.json`), body, "utf8");
   writeFileSync(join(DIST, "api", `knowledge.${loc.code}.json`), body, "utf8");
   const chars = kb.chunks.reduce((n, c) => n + c.text.length, 0);
+  const state = withVec === kb.chunks.length
+    ? `ベクトルあり(${EMBED_DIMS}次元)`
+    : (withVec
+      ? `ベクトル ${withVec}/${kb.chunks.length}件(未付与あり・公開前に鍵ありビルドが必要)`
+      : "ベクトルなし(字面検索のみ)");
   console.log(
-    `knowledge.${loc.code}.json: ${kb.chunks.length}チャンク / ${chars}字 / ` +
-    (embedded ? `ベクトルあり(${EMBED_DIMS}次元)` : "ベクトルなし(字面検索のみ)")
+    `knowledge.${loc.code}.json: ${kb.chunks.length}チャンク / ${chars}字 / ${state}`
   );
 }
 

@@ -191,3 +191,19 @@ test("実サイト: お知らせの日付が記事と対応している", () => 
   assert.ok(gpu.text.includes("2026.08.15"), "記事本来の日付を持つ");
   assert.ok(!gpu.text.includes("2025.12.05"), "別の記事の日付を持たない");
 });
+
+test("改行コードの違いが本文へ漏れない(索引の可搬性)", () => {
+  /* CRLFのままだと、Windowsで作った索引がLFのクローンで無効になる。
+     埋め込みベクトルは本文を鍵に引き継ぐため、鍵が変われば静かに外れる。 */
+  const inner = `
+    <h2>方針</h2>
+    <p>ひとつめの文です。ここには十分な長さの本文を置いています。</p>
+    <p>ふたつめの文です。改行の扱いだけを見るための本文です。</p>
+  `;
+  const crlf = chunkPage(wrap(inner.replace(/\n/g, "\r\n")), PAGE);
+  const lf = chunkPage(wrap(inner), PAGE);
+  assert.deepEqual(crlf.map((c) => c.text), lf.map((c) => c.text));
+  for (const c of crlf) {
+    assert.ok(!c.text.includes("\r"), `${c.id}: CR が残っている`);
+  }
+});

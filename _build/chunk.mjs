@@ -39,6 +39,11 @@ export function redact(text) {
    「井野町360-7」と「オークスアベニュー」がタグで分断されていて、
    前半だけが落ちて後半が残る（実際にそうなった）。 */
 const strip = (s) => redact(String(s)
+  /* 改行コードを揃える。揃えないと、チェックアウトの流儀(CRLF/LF)が
+     そのまま本文に入り、同じHTMLから違うチャンクが生まれる。
+     埋め込みベクトルは本文を鍵に引き継ぐため、これだけで引き継ぎが外れ、
+     Windowsで作った索引がLinuxのクローンで無効になる。 */
+  .replace(/\r\n?/g, "\n")
   .replace(/<(script|style|svg)\b[\s\S]*?<\/\1>/gi, " ")
   .replace(/<!--[\s\S]*?-->/g, " ")
   .replace(/<br\s*\/?>/gi, " ")

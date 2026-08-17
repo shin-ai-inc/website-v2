@@ -200,6 +200,24 @@ test("サービスの目次が三つの柱を名指しし、公開HTMLと一致�
   }
 });
 
+test("公開する知識ベースが全チャンクのベクトルを備えている", () => {
+  /* ベクトルはリポジトリに入っている前提とする。素の状態から取り出して
+     デプロイしても、検索が字面のみへ落ちないこと。
+     欠落は静かで、症状は「たまに見つからない」としてしか現れない。
+     Worker が実際に同梱するのは api/ 側なので、そちらを見る。 */
+  for (const locale of ["ja", "en"]) {
+    const path = join(ROOT, "api", `knowledge.${locale}.json`);
+    const kb = JSON.parse(readFileSync(path, "utf8"));
+    assert.equal(kb.embedModel, "text-embedding-3-small",
+      `${locale}: 埋め込みモデルが記録されていない。鍵ありビルドを実行すること`);
+    assert.equal(kb.embedDims, 512, `${locale}: 次元が想定と異なる`);
+    const missing = kb.chunks.filter((c) => !c.vec).map((c) => c.id);
+    assert.deepEqual(missing, [],
+      `${locale}: ${missing.length}件がベクトルを持たない。` +
+      "文言を変えた分は鍵ありビルドで付け直すこと");
+  }
+});
+
 test("日本語の目次が三つの柱を名指しする", () => {
   const catalog = loadKb("ja").chunks.find((c) => c.pinFor === "services");
   for (const pillar of ["暗黙知の解消支援", "企業専用AIエージェント開発", "AI化伴走支援"]) {
