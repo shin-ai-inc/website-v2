@@ -115,7 +115,10 @@
   flex-direction: column;
   gap: var(--space-2);
   padding: var(--space-4);
-  background: var(--paper-2);
+  /* 会話の地は、吹き出しより一段深くする。白に近いままだと、白い吹き出しと
+     その尻尾が地に溶けて見えない(実際に尻尾が描かれても判別できなかった)。
+     LINEほかの会話画面が一様に色づいた地を敷くのは、この理由による。 */
+  background: var(--paper-3);
 }
 
 /* ---- 発言の行(アイコン + 吹き出し) ----
@@ -188,7 +191,7 @@
   top: 9px;
   width: 0;
   height: 0;
-  border: 6px solid transparent;
+  border: 7px solid transparent;
 }
 
 .chatbot__message--bot {
@@ -200,7 +203,7 @@
 }
 
 .chatbot__message--bot::before {
-  left: -6px;
+  left: -7px;
   border-right-color: #fff;
 }
 
@@ -210,7 +213,7 @@
 }
 
 .chatbot__message--user::before {
-  right: -6px;
+  right: -7px;
   border-left-color: var(--c-tacit-bg);
 }
 
