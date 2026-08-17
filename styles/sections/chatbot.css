@@ -141,9 +141,11 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--grad-dark);
-  /* 顔は白で描く。地の藍青に対して最も明度差が取れ、28pxでも目鼻が消えない。
-     青緑は地に近く、輪郭が沈んで表情が読めなかった。 */
+  /* 地はブランドの藍青。従来の暗色グラデーションは、白基調の画面に
+     小さな黒点として落ち、重く沈んで見えた。
+     ヘッダーと同じ暗色を使ったのは統一のつもりだったが、面積が違えば
+     同じ色でも印象は変わる。大面積で落ち着く色が、小面積では沈む。 */
+  background: var(--brand);
   color: #fff;
   display: inline-flex;
   align-items: center;

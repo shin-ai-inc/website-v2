@@ -298,19 +298,17 @@
     },
 
     /* アイコンは画像ではなくSVGで描く。28pxで潰れない図形に限る。
-       目と口だけの顔にする。人の全身像(頭+肩)は、この大きさでは
-       頭が離れて浮いて見え、人らしさが伝わらなかった。
-       顔は一目で顔と分かる数少ない図形で、話し相手として自然に読める。 */
+       顔は描かない。小さく描いた顔は、目鼻の位置が数ピクセルずれるだけで
+       表情が変わり、意図しない不気味さを生む。記号にはその失敗がない。
+       四芒星は、この場所で唯一の図形(点や吹き出しは入力中の表示と重なる)。 */
     createAvatar: function () {
       var wrap = document.createElement("div");
       wrap.className = "chatbot__avatar";
       wrap.setAttribute("aria-hidden", "true");
       wrap.innerHTML =
         '<svg viewBox="0 0 32 32" fill="none" focusable="false">' +
-        '<circle cx="11.6" cy="13.4" r="1.9" fill="currentColor"/>' +
-        '<circle cx="20.4" cy="13.4" r="1.9" fill="currentColor"/>' +
-        '<path d="M10.8 19.2q5.2 4.6 10.4 0" stroke="currentColor" ' +
-        'stroke-width="2" stroke-linecap="round"/>' +
+        '<path d="M16 8c.6 4.4 3.6 7.4 8 8-4.4.6-7.4 3.6-8 8-.6-4.4-3.6-7.4-8-8' +
+        'c4.4-.6 7.4-3.6 8-8Z" fill="currentColor"/>' +
         "</svg>";
       return wrap;
     },
