@@ -282,6 +282,37 @@
       }).join("");
     },
 
+    /* 発言は必ず「行」に載せる。行がアイコンと吹き出しを横に並べる器になる。
+       吹き出しを直接 messages へ入れる経路を残すと、アイコンの付く発言と
+       付かない発言が混ざる。入口をここ一つに絞る。 */
+    mountRow: function (bubble, type) {
+      var row = document.createElement("div");
+      row.className = "chatbot__row chatbot__row--" + type;
+      if (type === "bot") {
+        row.appendChild(this.createAvatar());
+      }
+      row.appendChild(bubble);
+      this.messages.appendChild(row);
+      this.scrollToEnd();
+      return row;
+    },
+
+    /* アイコンは画像ではなくSVGで描く。28pxで潰れない図形に限る。
+       意匠は「AIの前に、人がいる。」——応答するのはAIだが、
+       その顔として置くのは人の姿である、という会社の立場をそのまま持たせた。 */
+    createAvatar: function () {
+      var wrap = document.createElement("div");
+      wrap.className = "chatbot__avatar";
+      wrap.setAttribute("aria-hidden", "true");
+      wrap.innerHTML =
+        '<svg viewBox="0 0 32 32" fill="none" focusable="false">' +
+        '<circle cx="16" cy="12.4" r="3.6" fill="currentColor"/>' +
+        '<path d="M9.2 25.4a7.4 7.4 0 0 1 13.6 0" stroke="#fff" ' +
+        'stroke-opacity="0.9" stroke-width="2.1" stroke-linecap="round"/>' +
+        "</svg>";
+      return wrap;
+    },
+
     addMessage: function (text, type) {
       var el = document.createElement("div");
       el.className = "chatbot__message chatbot__message--" + type;
@@ -289,8 +320,7 @@
       /* 個々の発言に role="status" を付けない。
          包む #chatbot-messages が既に aria-live であり、入れ子のライブ領域は
          読み上げを二重にする。 */
-      this.messages.appendChild(el);
-      this.scrollToEnd();
+      this.mountRow(el, type);
       return el;
     },
 
@@ -312,14 +342,13 @@
 
       if (this.prefersReducedMotion()) {
         el.textContent = text;
-        this.messages.appendChild(el);
-        this.scrollToEnd();
+        this.mountRow(el, "bot");
         finish();
         return;
       }
 
       el.setAttribute("aria-hidden", "true");
-      this.messages.appendChild(el);
+      this.mountRow(el, "bot");
 
       var i = 0;
       var timer = window.setInterval(function () {
@@ -360,15 +389,13 @@
       link.href = path;
       link.textContent = T.cta;
       wrap.appendChild(link);
-      this.messages.appendChild(wrap);
-      this.scrollToEnd();
+      this.mountRow(wrap, "bot");
     },
 
     showTyping: function () {
       this.isTyping = true;
       var el = document.createElement("div");
       el.className = "chatbot__message chatbot__message--bot chatbot__typing";
-      el.id = "chatbot-typing";
       el.setAttribute("aria-label", T.typing);
       var k;
       for (k = 0; k < 3; k += 1) {
@@ -376,8 +403,8 @@
         dot.className = "chatbot__dot";
         el.appendChild(dot);
       }
-      this.messages.appendChild(el);
-      this.scrollToEnd();
+      /* 目印は行に付ける。吹き出しだけ消すとアイコンが取り残される。 */
+      this.mountRow(el, "bot").id = "chatbot-typing";
     },
 
     hideTyping: function () {

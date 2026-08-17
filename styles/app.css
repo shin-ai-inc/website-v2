@@ -1571,18 +1571,54 @@ h1, h2, h3 {
   background: var(--paper-2);
 }
 
+/* ---- 発言の行(アイコン + 吹き出し) ----
+   LINE型。アイコンは吹き出しの上端にそろえる。中央にそろえると、
+   長い応答でアイコンが宙に浮き、どの発言に属するのか分からなくなる。 */
+.chatbot__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+
+.chatbot__row--bot {
+  justify-content: flex-start;
+}
+
+.chatbot__row--user {
+  justify-content: flex-end;
+}
+
+.chatbot__avatar {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--grad-dark);
+  color: var(--teal-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chatbot__avatar svg {
+  width: 100%;
+  height: 100%;
+}
+
 /* 吹き出しだけは角丸の例外とする。
    サイト全体の --r-* は 0 で、直角が意匠として選ばれている。
    ただし吹き出しは意匠ではなく会話の器で、丸みが発話の単位を示す
-   （Teams・LINE ほか主要チャットUIが一様にそうしている）。
+   （LINE ほか主要チャットUIが一様にそうしている）。
    直角にすると発話ではなく通知・注意書きに見える。
 
-   四隅は均等にする。一隅だけ小さくする尻尾は話者を示す記法だが、
-   話者は左右の寄せと配色で既に分かる。二重に示すと、意図ではなく
-   歪みとして目に入る(実際にそう見えるとの指摘があった)。
+   尻尾(一隅だけ小さくする)は、アイコンと隣り合って初めて意味を持つ。
+   アイコンの無い状態では話者を三重に示すことになり、歪みとして目に入る。
+   アイコンを置いた今は、尻尾がアイコンの側を指し、両者が一つの発言に見える。
    丸みは控えめに取る。強い丸みは親しみと引き換えに軽さを連れてくる。 */
 .chatbot__message {
-  max-width: 86%;
+  max-width: calc(100% - 36px);
   padding: 0.7rem 0.95rem;
   border-radius: 0.6rem;
   font-size: var(--fs-sm);
@@ -1592,16 +1628,16 @@ h1, h2, h3 {
 }
 
 .chatbot__message--bot {
-  align-self: flex-start;
   background: #fff;
   border: 1px solid var(--line);
   color: var(--charcoal);
+  border-top-left-radius: 0.15rem;
 }
 
 .chatbot__message--user {
-  align-self: flex-end;
   background: var(--c-tacit-bg);
   color: var(--c-tacit-ink);
+  border-top-right-radius: 0.15rem;
 }
 
 .chatbot__cta {
@@ -1742,21 +1778,17 @@ h1, h2, h3 {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* 吹き出し: LINE同等の可読サイズと丸み。自分=ブランド青/相手=白 */
+  /* 吹き出し: LINE同等の可読サイズ。自分=ブランド青/相手=白。
+     丸みと尻尾は共通側に一本化した(画面幅で形が変わらないようにする)。 */
   .chatbot__message {
     max-width: 80%;
     padding: 0.65rem 0.95rem;
     font-size: 0.9375rem;
     line-height: 1.6;
-    border-radius: 1.1rem;
-  }
-  .chatbot__message--bot {
-    border-bottom-left-radius: 0.3rem;
   }
   .chatbot__message--user {
     background: var(--brand);
     color: #FFFFFF;
-    border-bottom-right-radius: 0.3rem;
   }
 
   /* 入力バー: ピル型入力+丸ボタン。ホームバー領域(safe-area)を確保 */
