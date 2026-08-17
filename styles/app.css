@@ -1632,31 +1632,58 @@ h1, h2, h3 {
    （LINE ほか主要チャットUIが一様にそうしている）。
    直角にすると発話ではなく通知・注意書きに見える。
 
-   尻尾(一隅だけ小さくする)は、アイコンと隣り合って初めて意味を持つ。
-   アイコンの無い状態では話者を三重に示すことになり、歪みとして目に入る。
-   アイコンを置いた今は、尻尾がアイコンの側を指し、両者が一つの発言に見える。
-   丸みは控えめに取る。強い丸みは親しみと引き換えに軽さを連れてくる。 */
+   尻尾は角を落とすのではなく、外へ出す三角で描く。角を落とす表現は
+   吹き出しの内側で完結するため、どちらの発言かを示す力が弱い。
+   外へ出た三角は相手の側を指し、アイコンと吹き出しが一つに見える。 */
 .chatbot__message {
+  position: relative;
   max-width: calc(100% - 36px);
   padding: 0.7rem 0.95rem;
-  border-radius: 0.6rem;
+  border-radius: 0.85rem;
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* 尻尾。上端寄りに置く。中央や下端に置くと、長い発言でアイコンから
+   離れ、どこを指しているのか読めなくなる。 */
+.chatbot__message::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+}
+
 .chatbot__message--bot {
+  /* 枠線をやめ、ごく浅い影に置き換える。白地に白の吹き出しを
+     浮かせるのは影の役目で、線で囲うと発言ではなく箱に見える。 */
   background: #fff;
-  border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(12, 26, 54, 0.10);
   color: var(--charcoal);
-  border-top-left-radius: 0.15rem;
+}
+
+.chatbot__message--bot::before {
+  left: -6px;
+  border-right-color: #fff;
 }
 
 .chatbot__message--user {
   background: var(--c-tacit-bg);
   color: var(--c-tacit-ink);
-  border-top-right-radius: 0.15rem;
+}
+
+.chatbot__message--user::before {
+  right: -6px;
+  border-left-color: var(--c-tacit-bg);
+}
+
+/* 問い合わせボタンは吹き出しではない。地が透明なので、尻尾だけが
+   宙に浮いて残る。 */
+.chatbot__cta::before {
+  display: none;
 }
 
 .chatbot__cta {
@@ -1808,6 +1835,9 @@ h1, h2, h3 {
   .chatbot__message--user {
     background: var(--brand);
     color: #FFFFFF;
+  }
+  .chatbot__message--user::before {
+    border-left-color: var(--brand);
   }
 
   /* 入力バー: ピル型入力+丸ボタン。ホームバー領域(safe-area)を確保 */
