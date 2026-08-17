@@ -1608,7 +1608,9 @@ h1, h2, h3 {
   height: 28px;
   border-radius: 50%;
   background: var(--grad-dark);
-  color: var(--teal-2);
+  /* 顔は白で描く。地の藍青に対して最も明度差が取れ、28pxでも目鼻が消えない。
+     青緑は地に近く、輪郭が沈んで表情が読めなかった。 */
+  color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -298,17 +298,19 @@
     },
 
     /* アイコンは画像ではなくSVGで描く。28pxで潰れない図形に限る。
-       意匠は「AIの前に、人がいる。」——応答するのはAIだが、
-       その顔として置くのは人の姿である、という会社の立場をそのまま持たせた。 */
+       目と口だけの顔にする。人の全身像(頭+肩)は、この大きさでは
+       頭が離れて浮いて見え、人らしさが伝わらなかった。
+       顔は一目で顔と分かる数少ない図形で、話し相手として自然に読める。 */
     createAvatar: function () {
       var wrap = document.createElement("div");
       wrap.className = "chatbot__avatar";
       wrap.setAttribute("aria-hidden", "true");
       wrap.innerHTML =
         '<svg viewBox="0 0 32 32" fill="none" focusable="false">' +
-        '<circle cx="16" cy="12.4" r="3.6" fill="currentColor"/>' +
-        '<path d="M9.2 25.4a7.4 7.4 0 0 1 13.6 0" stroke="#fff" ' +
-        'stroke-opacity="0.9" stroke-width="2.1" stroke-linecap="round"/>' +
+        '<circle cx="11.6" cy="13.4" r="1.9" fill="currentColor"/>' +
+        '<circle cx="20.4" cy="13.4" r="1.9" fill="currentColor"/>' +
+        '<path d="M10.8 19.2q5.2 4.6 10.4 0" stroke="currentColor" ' +
+        'stroke-width="2" stroke-linecap="round"/>' +
         "</svg>";
       return wrap;
     },
