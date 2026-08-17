@@ -300,15 +300,19 @@
     /* アイコンは画像ではなくSVGで描く。28pxで潰れない図形に限る。
        顔は描かない。小さく描いた顔は、目鼻の位置が数ピクセルずれるだけで
        表情が変わり、意図しない不気味さを生む。記号にはその失敗がない。
-       四芒星は、この場所で唯一の図形(点や吹き出しは入力中の表示と重なる)。 */
+       四弁の花。同じ四方向の記号でも、辺が直線だと鋭さが立ち、
+       弧だと開いた印象になる。輪郭ではなく曲率が温度を決める。
+       点や吹き出しは、入力中の表示・起動ボタンと意味が重なるため使わない。 */
     createAvatar: function () {
       var wrap = document.createElement("div");
       wrap.className = "chatbot__avatar";
       wrap.setAttribute("aria-hidden", "true");
       wrap.innerHTML =
         '<svg viewBox="0 0 32 32" fill="none" focusable="false">' +
-        '<path d="M16 8c.6 4.4 3.6 7.4 8 8-4.4.6-7.4 3.6-8 8-.6-4.4-3.6-7.4-8-8' +
-        'c4.4-.6 7.4-3.6 8-8Z" fill="currentColor"/>' +
+        '<g fill="currentColor">' +
+        '<circle cx="16" cy="10.7" r="4.5"/><circle cx="21.3" cy="16" r="4.5"/>' +
+        '<circle cx="16" cy="21.3" r="4.5"/><circle cx="10.7" cy="16" r="4.5"/>' +
+        "</g>" +
         "</svg>";
       return wrap;
     },
