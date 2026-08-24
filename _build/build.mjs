@@ -484,6 +484,25 @@ const websiteLd = (loc) => ({
   publisher: { "@id": SITE_URL + "/#organization" }
 });
 
+/* 書体の読み込み。ここは描画を止める位置にあるため、要らないものを置かない。
+
+   日本語の書体は unicode-range で約120に分割して配信される。ウェイトを一つ増やすと
+   @font-face が約120件・CSSが約111KB増え、それを描画前に解析することになる。
+   実測(2026-08-25)で @font-face 877件・777KB。自社CSS(140KB)の5.5倍だった。
+
+   Zen Old Mincho 700: 落とす。CSS全体で font-weight が 700・bold になる宣言は
+     一つも無く(全42宣言を確認)、600 が読み込まれている以上そこから繰り上がることもない。
+     到達不能な120件だった。
+   Noto Sans JP 700: 残す。.legal__dt が 600 を要求するが 600 は読み込まれておらず、
+     フォント照合規則により 700 へ繰り上がって実際に描画されている。落とすと
+     規約ページの見た目が変わる。 */
+const FONTS_CSS_URL = "https://fonts.googleapis.com/css2" +
+  "?family=Zen+Old+Mincho:wght@500;600" +
+  "&family=Noto+Sans+JP:wght@300;400;500;700" +
+  "&family=Fraunces:opsz,wght@9..144,400;9..144,500" +
+  "&family=Space+Grotesk:wght@400;500;600" +
+  "&display=swap";
+
 const escapeAttr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 
 /* ---- FAQPage 構造化データ ----
@@ -755,7 +774,7 @@ ${alternates}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="${FONTS_CSS_URL}">
   <link rel="stylesheet" href="${p}styles/app.css${v}">
 
 ${structured}

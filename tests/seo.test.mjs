@@ -262,6 +262,20 @@ test("主要ページの meta description が地域を含む", () => {
   }
 });
 
+test("描画を止める書体の読み込みに、使われないウェイトを含めない", () => {
+  /* 日本語の書体はウェイト一つで @font-face 約120件・CSS約111KB を足し、
+     それが描画前に解析される。使っていないウェイトは黙って重さだけ残る。
+     太字の宣言が本文側に増えたら、この検査が先に落ちて気づける。 */
+  const css = readDist("styles/app.css");
+  assert.ok(!/font-weight:\s*(bold|bolder|[7-9]00)/.test(css),
+    "700以上の指定が入った。書体の読み込みウェイトを見直すこと");
+
+  const url = readDist("index.html")
+    .match(/<link rel="stylesheet" href="(https:\/\/fonts\.googleapis\.com[^"]*)">/)[1];
+  assert.match(url, /Zen\+Old\+Mincho:wght@500;600(&|$)/, `未使用の太さを読んでいる: ${url}`);
+  assert.match(url, /display=swap/, "font-display: swap が外れている");
+});
+
 test("llms.txt が地域を明示する(AI検索が最初に読む平文)", () => {
   const txt = readDist("llms.txt");
   assert.match(txt, /群馬県高崎市/, "所在地の記載がない");
