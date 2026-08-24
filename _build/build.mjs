@@ -47,6 +47,17 @@ const OG_IMAGE = SITE_URL + "/assets/images/ogp-card-logo.png";
 /* 検索結果・ナレッジパネルで使われる企業ロゴ。共有カード(OG_IMAGE)とは用途が違う。
    OG_IMAGE は余白と文字を含む1200x630の絵で、ロゴとしては読み取れない。 */
 const LOGO_IMAGE = SITE_URL + "/assets/images/logo.png";
+
+/* 法人番号。国税庁が基本3情報(商号・所在地・法人番号)として公表しており、
+   誰でも確認できる公開情報。文字列の一致ではなく公的登記との対応として
+   自社を名乗れる、唯一の識別子である。同名他社(神奈川県のシンアイ株式会社)と
+   取り違えられない根拠にもなる。 */
+const CORPORATE_NUMBER = "9070001044403";
+/* 公的データベース上の自社ページ。第三者が検証できる参照先を持たせる。 */
+const OFFICIAL_REFERENCES = [
+  `https://www.houjin-bangou.nta.go.jp/henkorireki-johoto.html?selHouzinNo=${CORPORATE_NUMBER}`,
+  `https://info.gbiz.go.jp/hojin/ichiran?hojinBango=${CORPORATE_NUMBER}`
+];
 const CONTACT_EMAIL = "contact@shinai-inc.jp";
 /* RFC 9116の脆弱性報告窓口。一般問い合わせ(CONTACT_EMAIL)とは意図的に分けている。 */
 const SECURITY_CONTACT_EMAIL = "support@shinai-inc.jp";
@@ -235,6 +246,12 @@ const ldJson = {
   legalName: "シンアイ株式会社",
   /* 指名検索の表記ゆれ(シンアイ/ShinAI/シンアイ株式会社)を同一主体として束ねる。 */
   alternateName: ["ShinAI", "シンアイ", "ShinAI Inc.", "シンアイ"],
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "法人番号",
+    value: CORPORATE_NUMBER
+  },
+  sameAs: OFFICIAL_REFERENCES,
   url: SITE_URL + "/",
   email: CONTACT_EMAIL,
   logo: LOGO_IMAGE,
@@ -394,6 +411,12 @@ const ldJsonEn = {
   name: "ShinAI Inc.",
   legalName: "ShinAI Inc.",
   alternateName: ["ShinAI", "シンアイ株式会社", "シンアイ"],
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "Japan Corporate Number (houjin bangou)",
+    value: CORPORATE_NUMBER
+  },
+  sameAs: OFFICIAL_REFERENCES,
   url: SITE_URL + "/en/",
   email: CONTACT_EMAIL,
   logo: LOGO_IMAGE,
@@ -798,6 +821,9 @@ const companyFacts = () => {
     if (term && value) rows.push(`- ${term}: ${value}`);
   }
   if (!rows.length) throw new Error("会社概要を抽出できない。company__fact の構造を確認する。");
+  /* 同名の別法人が実在する(神奈川県のシンアイ株式会社)。商号と地名だけでは
+     取り違えが起こるため、公的登記に対応する識別子を平文でも渡す。 */
+  rows.push(`- 法人番号: ${CORPORATE_NUMBER}（国税庁法人番号公表サイトで確認可能）`);
   return rows;
 };
 

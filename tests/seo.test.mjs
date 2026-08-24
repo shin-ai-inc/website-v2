@@ -180,6 +180,29 @@ test("組織が受付時間を申告し、本文の記載と一致する", () =>
   assert.ok(readDist("about.html").includes("平日 9:00–18:00"), "本文の記載が変わっている");
 });
 
+test("組織が法人番号で公的登記と結ばれる", () => {
+  /* 検査用数字(先頭1桁)を残る12桁から再計算し、書き間違いをここで止める。
+     国税庁の算式: 9 - (Σ 右からn桁目の数字 × (nが奇数なら1、偶数なら2)) mod 9 */
+  const NUMBER = "9070001044403";
+  const base = NUMBER.slice(1);
+  const sum = [...base].reverse()
+    .reduce((n, d, i) => n + Number(d) * (i % 2 === 0 ? 1 : 2), 0);
+  assert.equal(Number(NUMBER[0]), 9 - (sum % 9), "検査用数字が合わない");
+
+  for (const dir of ["", "en/"]) {
+    const org = orgOf(dir);
+    assert.equal(org.identifier["@type"], "PropertyValue");
+    assert.equal(org.identifier.value, NUMBER);
+    /* 公的データベース上の自社ページを参照させ、実体の同一性を裏づける。 */
+    const same = [].concat(org.sameAs || []);
+    assert.ok(same.some((u) => u.includes("houjin-bangou.nta.go.jp") && u.includes(NUMBER)),
+      `国税庁の参照がない: ${same}`);
+    assert.ok(same.some((u) => u.includes("info.gbiz.go.jp") && u.includes(NUMBER)),
+      `gBizINFOの参照がない: ${same}`);
+    for (const u of same) assert.match(u, /^https:\/\//, u);
+  }
+});
+
 test("組織が連絡手段と設立地を申告する", () => {
   for (const dir of ["", "en/"]) {
     const org = orgOf(dir);
