@@ -153,6 +153,84 @@ test("事業提供範囲に高崎市が含まれる", () => {
   assert.ok(names.some((n) => n.includes("群馬")), `群馬がない: ${names}`);
 });
 
+/** トップページの Organization ノード(日英どちらも同一 @id)。 */
+const orgOf = (dir = "") =>
+  ldOf(dir + "index.html").find((o) => String(o["@id"] || "").endsWith("#organization"));
+
+test("組織がロゴを申告する", () => {
+  /* 検索結果・ナレッジパネルで企業ロゴを出すかの判断に使われる。
+     og:image(共有カード)とは用途が違うため、別に持たせる。 */
+  for (const dir of ["", "en/"]) {
+    const org = orgOf(dir);
+    assert.match(org.logo, /^https:\/\/shinai-inc\.jp\/assets\/.+\.(png|svg)$/, `logo: ${org.logo}`);
+    assert.ok(existsSync(dist(org.logo.replace("https://shinai-inc.jp/", ""))),
+      `ロゴの実体がない: ${org.logo}`);
+  }
+});
+
+test("組織が受付時間を申告し、本文の記載と一致する", () => {
+  /* 本文(会社概要・トップのCTA)に既に出ている事実を機械可読にするだけ。
+     両者がずれると、画面とAIの答えが食い違う。 */
+  const spec = orgOf().openingHoursSpecification;
+  assert.ok(Array.isArray(spec) && spec.length > 0, "受付時間がない");
+  assert.equal(spec[0].opens, "09:00");
+  assert.equal(spec[0].closes, "18:00");
+  assert.deepEqual(spec[0].dayOfWeek,
+    ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]);
+  assert.ok(readDist("about.html").includes("平日 9:00–18:00"), "本文の記載が変わっている");
+});
+
+test("組織が連絡手段と設立地を申告する", () => {
+  for (const dir of ["", "en/"]) {
+    const org = orgOf(dir);
+    assert.equal(org.contactPoint["@type"], "ContactPoint");
+    assert.equal(org.contactPoint.email, "contact@shinai-inc.jp");
+    assert.ok(org.contactPoint.availableLanguage.length >= 2, "対応言語がない");
+    assert.equal(org.foundingLocation["@type"], "Place");
+    assert.match(org.foundingLocation.address.addressLocality, /高崎|Takasaki/);
+  }
+});
+
+test("サイト全体の発行主体が組織へ結ばれる", () => {
+  for (const dir of ["", "en/"]) {
+    const site = typed(dir + "index.html", "WebSite")[0];
+    assert.equal(site.publisher["@id"], "https://shinai-inc.jp/#organization");
+  }
+});
+
+test("お知らせの著者が代表個人として申告される", () => {
+  /* 誰が書いたか分からない記事は、AI検索にとって引用の重みが落ちる。
+     発行者(組織)と著者(個人)は別物であり、両方を申告する。 */
+  const article = typed("news-20251205-takasaki-press.html", "NewsArticle")[0];
+  assert.equal(article.author["@id"], "https://shinai-inc.jp/about.html#founder");
+  assert.equal(article.publisher["@id"], "https://shinai-inc.jp/#organization");
+  for (const { item } of typed("news.html", "ItemList")[0].itemListElement) {
+    assert.equal(item.author["@id"], "https://shinai-inc.jp/about.html#founder");
+  }
+});
+
+test("サービスの提供範囲に群馬県が含まれる", () => {
+  const [list] = typed("services.html", "ItemList");
+  for (const { item } of list.itemListElement) {
+    const names = [].concat(item.areaServed).map((a) => a.name);
+    assert.ok(names.some((n) => n.includes("群馬")), `${item.name}: ${names}`);
+    assert.ok(names.some((n) => n.includes("日本")), `${item.name}: ${names}`);
+  }
+});
+
+test("llms.txt が会社概要の事実を平文で持つ", () => {
+  /* AI検索が最も問われるのは会社の基礎事実であり、HTMLを解析させずに渡す。
+     本文の定義リストを唯一の出所とするので、書き換えれば案内も追随する。 */
+  const txt = readDist("llms.txt");
+  for (const term of ["商号", "設立", "代表", "所在地", "対応地域", "受付時間"]) {
+    assert.ok(txt.includes(term), `${term} がない`);
+  }
+  assert.ok(txt.includes("シンアイ株式会社"), "商号の値がない");
+  assert.ok(txt.includes("群馬県高崎市"), "所在地の値がない");
+  /* 住所の非公開方針はここでも守る(番地は出さない)。 */
+  assert.ok(!txt.includes("井野町"), "番地が含まれている");
+});
+
 test("主要ページの meta description が地域を含む", () => {
   /* title を据え置いた分、検索結果に出る文字列で地域を示せるのはここだけになる。 */
   for (const p of ["index.html", "services.html", "about.html", "faq.html", "contact.html"]) {

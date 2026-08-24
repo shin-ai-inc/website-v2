@@ -44,6 +44,9 @@ const lastModOf = (relPath) => {
 const SITE_URL = "https://shinai-inc.jp";
 /* OGPクローラ(LINE等)はURL単位でキャッシュするため、画像を変えるときはファイル名も変える */
 const OG_IMAGE = SITE_URL + "/assets/images/ogp-card-logo.png";
+/* 検索結果・ナレッジパネルで使われる企業ロゴ。共有カード(OG_IMAGE)とは用途が違う。
+   OG_IMAGE は余白と文字を含む1200x630の絵で、ロゴとしては読み取れない。 */
+const LOGO_IMAGE = SITE_URL + "/assets/images/logo.png";
 const CONTACT_EMAIL = "contact@shinai-inc.jp";
 /* RFC 9116の脆弱性報告窓口。一般問い合わせ(CONTACT_EMAIL)とは意図的に分けている。 */
 const SECURITY_CONTACT_EMAIL = "support@shinai-inc.jp";
@@ -234,9 +237,23 @@ const ldJson = {
   alternateName: ["ShinAI", "シンアイ", "ShinAI Inc.", "シンアイ"],
   url: SITE_URL + "/",
   email: CONTACT_EMAIL,
+  logo: LOGO_IMAGE,
+  image: LOGO_IMAGE,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: CONTACT_EMAIL,
+    availableLanguage: ["ja", "en"],
+    areaServed: "JP"
+  },
   slogan: "企業の暗黙知を、使えるAI資産へ。",
   description: "真の価値を信じ、次世代のために新たな未来を創る。ShinAIは、人の想いとAIをつなぎ、企業の「これまで」を大切に「これから」の変革に伴走する、企業AI開発特化のエンジニアチーム。強化学習・カスタムLLM最適化・RAG・オンプレミス対応により、暗黙知のAI化と企業専用AIエージェントを開発する。あわせて、文書に残らない現場の技を扱うフィジカルAIの研究開発（PoC）に取り組む。",
   foundingDate: "2026-08-08",
+  foundingLocation: {
+    "@type": "Place",
+    address: { "@type": "PostalAddress", addressCountry: "JP",
+               addressRegion: "群馬県", addressLocality: "高崎市" }
+  },
   founder: { "@id": SITE_URL + "/about.html#founder" },
   employee: { "@id": SITE_URL + "/about.html#founder" },
   address: {
@@ -246,6 +263,15 @@ const ldJson = {
     addressLocality: "高崎市",
     streetAddress: "井野町360-7 オークスアベニューD201"
   },
+  /* 会社概要とトップのCTAに既に出ている事実を、機械可読な形でも示す。
+     電話は公開していないため申告しない。受付時間だけは公開済みで、
+     地域事業者としての実在性を裏づける数少ない具体値になる。 */
+  openingHoursSpecification: [{
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00"
+  }],
   /* 事業を提供する地理範囲の宣言。本店は群馬県高崎市だが、対応は全国。
      AI検索が「群馬 AI導入支援」等へ分解して探索する際、住所だけでなく
      「その地域を対象に事業を行う主体」であることを機械可読な事実として示す。
@@ -370,9 +396,23 @@ const ldJsonEn = {
   alternateName: ["ShinAI", "シンアイ株式会社", "シンアイ"],
   url: SITE_URL + "/en/",
   email: CONTACT_EMAIL,
+  logo: LOGO_IMAGE,
+  image: LOGO_IMAGE,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: CONTACT_EMAIL,
+    availableLanguage: ["ja", "en"],
+    areaServed: "JP"
+  },
   slogan: "Turn your company's tacit knowledge into working AI assets.",
   description: "ShinAI is a Japan-based engineering team specialising in enterprise AI. We connect human intent with AI, honouring what a company has built while guiding what it becomes next. Through reinforcement learning, custom LLM optimisation, RAG, and on-premise deployment, we turn tacit knowledge into AI and build private enterprise AI agents. We also carry out physical AI research and development (PoC) for the skill that documents never captured.",
   foundingDate: "2026-08-08",
+  foundingLocation: {
+    "@type": "Place",
+    address: { "@type": "PostalAddress", addressCountry: "JP",
+               addressRegion: "Gunma", addressLocality: "Takasaki" }
+  },
   founder: { "@id": SITE_URL + "/about.html#founder" },
   employee: { "@id": SITE_URL + "/about.html#founder" },
   address: {
@@ -382,6 +422,12 @@ const ldJsonEn = {
     addressLocality: "Takasaki",
     streetAddress: "360-7 Ino-machi, Oaks Avenue D201"
   },
+  openingHoursSpecification: [{
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00"
+  }],
   areaServed: [
     { "@type": "City", name: "Takasaki" },
     { "@type": "AdministrativeArea", name: "Gunma" },
@@ -409,7 +455,10 @@ const websiteLd = (loc) => ({
   name: "ShinAI",
   alternateName: loc.code === "ja" ? "シンアイ" : "ShinAI Inc.",
   inLanguage: loc.htmlLang,
-  url: SITE_URL + "/" + loc.dir
+  url: SITE_URL + "/" + loc.dir,
+  /* サイトを組織へ結ぶ。断片のままだと「このサイトは誰のものか」が
+     機械には決まらず、指名検索でサイト名として扱われにくくなる。 */
+  publisher: { "@id": SITE_URL + "/#organization" }
 });
 
 const escapeAttr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
@@ -468,9 +517,10 @@ const articleLd = (loc, page, canonical) => {
     datePublished: page.article.date,
     dateModified: page.article.date,
     image: SITE_URL + "/" + page.article.image,
-    author: { "@id": SITE_URL + "/#organization" },
+    /* 著者は個人、発行者は組織。両者は別物であり、誰が書いたか分からない記事は
+       AI検索にとって引用の重みが落ちる。専門性の裏付けは個人に宿る。 */
+    author: { "@id": SITE_URL + "/about.html#founder" },
     publisher: { "@id": SITE_URL + "/#organization" },
-    /* 登壇者を代表個人へ紐付け、指名検索での実績の裏付けにする。 */
     about: { "@id": SITE_URL + "/about.html#founder" },
     mainEntityOfPage: { "@type": "WebPage", "@id": canonical }
   };
@@ -511,7 +561,7 @@ const newsListLd = (loc) => {
         dateModified: date,
         image: SITE_URL + "/" + img.replace(/^\.\.\//, ""),
         url,
-        author: { "@id": SITE_URL + "/#organization" },
+        author: { "@id": SITE_URL + "/about.html#founder" },
         publisher: { "@id": SITE_URL + "/#organization" },
         mainEntityOfPage: { "@type": "WebPage", "@id": url }
       }
@@ -561,7 +611,12 @@ const serviceLdFor = (loc) => {
       description: stripTags(m[2]),
       serviceType: stripTags(m[1]),
       provider: { "@id": SITE_URL + "/#organization" },
-      areaServed: { "@type": "Country", name: loc.code === "ja" ? "日本" : "Japan" }
+      /* 本店のある県と、実際に対応する全国の二つの粒度で示す。会社概要の
+         「群馬県を中心に全国」と同じ事実を、役務ごとに機械可読へ落とす。 */
+      areaServed: [
+        { "@type": "AdministrativeArea", name: loc.code === "ja" ? "群馬県" : "Gunma" },
+        { "@type": "Country", name: loc.code === "ja" ? "日本" : "Japan" }
+      ]
     });
   }
   if (!items.length) return null;
@@ -725,6 +780,27 @@ write("robots.txt",
 /* llms.txt — 大規模言語モデル向けの案内。HTMLを解析させずに、
    何の会社で、どのURLに何が書いてあるかを平文で渡す。
    ページ定義(pages)を唯一の出所とするので、ページを足せばここも自動で増える。 */
+/* 会社概要を本文の定義リストから抜き出す。最も問われ、最も短い事実であり、
+   HTMLを解析させずに平文で渡せると引用の確度が上がる。
+   本文を唯一の出所とするので、会社概要を直せばここも追随する。
+   番地だけは公開方針に従って落とし、構造化データ側の県・市へ差し替える。 */
+const companyFacts = () => {
+  const raw = read("partials/about.html");
+  const re = /<dt class="company__fact-term">([\s\S]*?)<\/dt>\s*<dd class="company__fact-desc">([\s\S]*?)<\/dd>/g;
+  const rows = [];
+  let m;
+  while ((m = re.exec(raw)) !== null) {
+    const term = stripTags(m[1]);
+    const value = term === "所在地"
+      ? ldJson.address.addressRegion + ldJson.address.addressLocality
+      /* 本文では区切りの直後で改行しているため、タグを剥がすと空白が残る。 */
+      : stripTags(m[2]).replace(/\s*／\s*/g, "／");
+    if (term && value) rows.push(`- ${term}: ${value}`);
+  }
+  if (!rows.length) throw new Error("会社概要を抽出できない。company__fact の構造を確認する。");
+  return rows;
+};
+
 const llmsTxt = [
   "# ShinAI（シンアイ株式会社）",
   "",
@@ -734,9 +810,13 @@ const llmsTxt = [
   "",
   "問い合わせ: " + CONTACT_EMAIL,
   "",
+  "## 会社概要",
+  ""
+].concat(companyFacts()).concat([
+  "",
   "## ページ",
   ""
-].concat(
+]).concat(
   pages
     .filter((p) => p.file !== "privacy.html" && p.file !== "terms.html")
     .map((p) => `- [${p.title}](${urlFor(p.file, "")}): ${p.desc}`)
