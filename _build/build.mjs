@@ -141,7 +141,7 @@ const pages = [
   { file: "index.html", part: "index.html", nav: null, hero: true,
     changefreq: "monthly", priority: "1.0",
     title: "ShinAI｜企業の暗黙知を、使えるAI資産へ",
-    desc: "退職や属人化で失われる判断や知識を、現場で使える専用AIへ。文書に残らない現場の技を扱うフィジカルAIの研究開発（PoC）にも取り組んでいます。",
+    desc: "群馬県高崎市のAI開発会社。退職や属人化で失われる判断や知識を、現場で使える専用AIへ。文書に残らない現場の技を扱うフィジカルAIの研究開発（PoC）にも取り組んでいます。",
     /* SNS共有のプレビューは一瞬で読まれる。課題の描写から入らず
        「何をする会社か」を先頭で言い切る。検索結果用のdescとは役割が違う。 */
     ogDesc: "企業の構造変革を支援するAI企業｜シンアイ株式会社　企画設計・開発・運用まで一気通貫支援",
@@ -152,21 +152,21 @@ const pages = [
     crumb: "ソリューション",
     changefreq: "monthly", priority: "0.9",
     title: "ソリューション｜ShinAI",
-    desc: "暗黙知のAI化、企業専用AIエージェント、AI化伴走支援、そしてフィジカルAIの研究開発（PoC）。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。",
+    desc: "群馬県高崎市を拠点に、暗黙知のAI化、企業専用AIエージェント、AI化伴走支援、そしてフィジカルAIの研究開発（PoC）。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。",
     en: {crumb: "Solutions",  title: "Solutions | ShinAI",
           desc: "Tacit knowledge structuring, private enterprise AI agents, hands-on support for AI-driven transformation, and physical AI research (PoC). Capture it, connect it, and make it usable where the work happens." } },
   { file: "industries.html", part: "industries.html", nav: "industries", hero: false,
     crumb: "業種別の活用",
     changefreq: "monthly", priority: "0.8",
     title: "業種別の活用｜ShinAI",
-    desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知改善でどう変わるかの活用イメージ。",
+    desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知改善でどう変わるかの活用イメージ。群馬県高崎市のAI開発会社が、業種の文脈からAIの適用先を整理します。",
     en: {crumb: "Industries",  title: "Industries | ShinAI",
           desc: "Manufacturing, construction, care and professional services, retail, healthcare, education, finance, and real estate. What breaks in each, and how tacit-knowledge AI changes it." } },
   { file: "about.html", part: "about.html", nav: "about", hero: false,
     crumb: "会社情報",
     changefreq: "monthly", priority: "0.7",
     title: "会社情報｜ShinAI",
-    desc: "技術より先に、人を見る。ShinAIの目的、代表メッセージ、七つのShin、体制と会社概要。",
+    desc: "技術より先に、人を見る。群馬県高崎市に本店を置くシンアイ株式会社の目的、代表メッセージ、七つのShin、体制と会社概要。",
     en: {crumb: "About",  title: "About | ShinAI",
           desc: "People before technology. Our purpose, a message from the founder, the Seven Shin principles, our team, and company facts." } },
   { file: "faq.html", part: "faq.html", nav: "faq", hero: false,
@@ -174,7 +174,7 @@ const pages = [
     changefreq: "monthly", priority: "0.6",
     extraScripts: ['<script src="scripts/faq.js" defer></script>'],
     title: "よくあるご質問｜ShinAI",
-    desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。ShinAIへのよくある質問。",
+    desc: "はじめての方へ、費用と導入、開発の進め方、業種別の活用、サービス、そのほか。群馬県高崎市のAI開発会社ShinAIへのよくある質問。",
     en: {crumb: "FAQ",  title: "FAQ | ShinAI",
           desc: "Getting started, cost and rollout, how we build, industry use, our services, and more. Common questions about working with ShinAI." } },
   { file: "contact.html", part: "contact.html", nav: "contact", hero: false,
@@ -182,7 +182,7 @@ const pages = [
     changefreq: "monthly", priority: "0.8",
     extraScripts: ['<script src="scripts/contact-form.js" defer></script>'],
     title: "お問い合わせ・無料相談｜ShinAI",
-    desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。",
+    desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。群馬県高崎市のAI開発会社が承ります。",
     en: {crumb: "Contact",  title: "Contact & Free Consultation | ShinAI",
           desc: "You do not need defined requirements to talk to us. We map where AI can apply from your current operations and knowledge assets. Free consultation, 30-45 minutes, no preparation needed." } },
   { file: "news.html", part: "news.html", nav: "news", hero: false,
@@ -222,7 +222,11 @@ const pages = [
 
 const ldJson = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  /* Organization だけでは「どこかにある会社」に留まる。ProfessionalService は
+     LocalBusiness の下位型で、実在の所在地を持って役務を提供する主体であることを
+     型そのもので示す。地域クエリで検索が探しているのはこの型の実体である。
+     電話・営業時間は公開していないため申告しない(型のために無い値を埋めない)。 */
+  "@type": ["Organization", "ProfessionalService"],
   "@id": SITE_URL + "/#organization",
   name: "シンアイ株式会社",
   legalName: "シンアイ株式会社",
@@ -247,6 +251,7 @@ const ldJson = {
      「その地域を対象に事業を行う主体」であることを機械可読な事実として示す。
      コピーは一切変えずに地域シグナルを補う手段。 */
   areaServed: [
+    { "@type": "City", name: "高崎市" },
     { "@type": "AdministrativeArea", name: "群馬県" },
     { "@type": "AdministrativeArea", name: "北関東" },
     { "@type": "Country", name: "日本" }
@@ -358,7 +363,7 @@ const personLdEn = {
    日本語版と同一の事実を英語で記述する(内容を盛らない)。 */
 const ldJsonEn = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   "@id": SITE_URL + "/#organization",
   name: "ShinAI Inc.",
   legalName: "ShinAI Inc.",
@@ -378,6 +383,7 @@ const ldJsonEn = {
     streetAddress: "360-7 Ino-machi, Oaks Avenue D201"
   },
   areaServed: [
+    { "@type": "City", name: "Takasaki" },
     { "@type": "AdministrativeArea", name: "Gunma" },
     { "@type": "AdministrativeArea", name: "Kita-Kanto" },
     { "@type": "Country", name: "Japan" }

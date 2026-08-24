@@ -125,3 +125,43 @@ test("llms.txt が全ページを実在するURLで案内する", () => {
   /* 住所の非公開方針は、AI向けの案内にも等しく適用される。 */
   assert.ok(!txt.includes("井野町"), "番地が含まれている");
 });
+
+/* ---- 地域(群馬・高崎)の申告 ----
+   title は画面に出る要素であり、ブランドの表現としてこのまま据え置くと決めた。
+   よって地域の関連性は、画面に出ない層(構造化データ・meta description・
+   AI向けの平文)だけで支える。この層が欠けると地域クエリでの手掛かりが
+   ゼロになるため、目視では気づけない申告をここで機械的に固定する。 */
+
+test("組織が地域事業者(ProfessionalService)としても申告される", () => {
+  for (const loc of ["", "en/"]) {
+    const org = ldOf(loc + "index.html")
+      .find((o) => String(o["@id"] || "").endsWith("#organization"));
+    assert.ok(org, `Organization がない: ${loc}`);
+    const types = [].concat(org["@type"]);
+    assert.ok(types.includes("Organization"), types);
+    /* LocalBusiness の下位型。所在地を持つ実体であることを型として示す。 */
+    assert.ok(types.includes("ProfessionalService"), `地域事業者の型がない: ${types}`);
+    assert.equal(org.address["@type"], "PostalAddress");
+    assert.ok(org.address.addressLocality.length > 0, "市区町村がない");
+  }
+});
+
+test("事業提供範囲に高崎市が含まれる", () => {
+  const org = ldOf("index.html").find((o) => String(o["@id"] || "").endsWith("#organization"));
+  const names = org.areaServed.map((a) => a.name);
+  assert.ok(names.some((n) => n.includes("高崎")), `高崎がない: ${names}`);
+  assert.ok(names.some((n) => n.includes("群馬")), `群馬がない: ${names}`);
+});
+
+test("主要ページの meta description が地域を含む", () => {
+  /* title を据え置いた分、検索結果に出る文字列で地域を示せるのはここだけになる。 */
+  for (const p of ["index.html", "services.html", "about.html", "faq.html", "contact.html"]) {
+    const desc = readDist(p).match(/<meta name="description" content="([\s\S]*?)">/)[1];
+    assert.match(desc, /群馬/, `description に地域語がない: ${p}`);
+  }
+});
+
+test("llms.txt が地域を明示する(AI検索が最初に読む平文)", () => {
+  const txt = readDist("llms.txt");
+  assert.match(txt, /群馬県高崎市/, "所在地の記載がない");
+});
