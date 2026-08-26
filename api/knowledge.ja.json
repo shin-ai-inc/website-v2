@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "d335224",
+  "generatedAt": "b22d9c3",
   "chunks": [
     {
       "id": "index#0",
@@ -418,97 +418,90 @@
     },
     {
       "id": "gunma-ai#8",
-      "title": "続ける根拠を示せない｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
-      "url": "https://shinai-inc.jp/gunma-ai.html",
-      "text": "04 \n \n 続ける根拠を示せない \n 良くなった実感はあっても、何がどれだけ変わったかを数字で言えません。",
-      "vec": "/wMBCQb4BAQFAgX4/fn//vz6AgIABAX8DPz+AAP7//kB+vkD/f0AAAkACQQABv36AAj3CATwAwcMAQH4CPcJ/vsCAAX7Af8EAAYA/QX8Bf/5CPb8Cvr4+v/8/gn/BAECAgMABAL2AQj//wH7/gP9+fYC/gL7BAMAAwT9AwX+BP3++wX+/QME+foF/PwC+/z6/AH6/Qf8BP3z+vkK/gb9/wED+QP9Bf738/f79wD3Af8H9wAA+//4CATy+gMG/f8EDgsH/QP/A/kC/An/+/8J/fUABf8F+/MCAAT7AQb+/P/+Cgf8Af0GAwD+AP8B/f8BAAQL/f0B/gUDBQYGAfX19wAJA/z+//b3BQQGCAD4BAEDBvz8+QgABvr+Af4BAf0BBP0A+wL6+wQCBQIFCP36/P0J9fj++P4AAQME9hL/Cfr2APkE8wb//wUB/AL+AfP69QL/+vYA+AMD/v/6Af3/+gj8AP4AAQD/9AUJ/gH++wD+AAj6+P3/+gr/+QP6/P/+/woJA/oDCgAC/AAB/Qn/CvX+8/3/CPsEAhH/9gb/9//6AgL+/vsB+QABAQAI+PgF/gH9A/gAB/0K+vr68AT4//74+/0BDv/8Avb/BwAD+QkFAwMHAf79/AL79wUH/PT6/Pv/Cf4SAv76AAb8B/4JAgX+9gX7//wM/vkGAv38AwE="
-    },
-    {
-      "id": "gunma-ai#9",
       "title": "現場から設計する｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "現場から設計する \n \n 技術の話より先に、\n いまの手順と困りごとをうかがいます。\n\n 県内は訪問、遠方はオンライン \n 小さく試して効果を確かめる \n 広げない判断もご一緒に",
       "vec": "//4FAQP3//3+/gP5+/z7+Pf+AwMECAX9C/wGBgH2+Pr49PsBAAL9BwMEAgYABv8C/wP4AwH3+wMJAv4FDPsIBPz/AAD3+f4CAP4A/AAJAwb4Aff9Bvn7Afr7AAv+AgIHBgcHBwb2BAz8+/8FAAb3+vYG+wMGAP/9/QYABQQEAvr5+QP8A/wD/PkE+AAEAvv89gT3/AQC//v89fcG9/oAAAIC/wL5/vsB9gD2+f8CAwIF+/4F+AP5Bfr5/wH7//4ACw4G/vv8CPwB9wgF//8EBgABB/oIAfkAAAT5AP3/+/4ADQT9BfYD//4AAAD++QD6BQML/f/7A/8HAgT7BPX8/vsF+/76B/v8AvsNDP/++/4FCfr9+Ab/AfYB/QH+AQH9Agb+BPkA//wA//8EDAAG/v4K+v0B+gAEBf4F9AoABfb3Afn58P4E/wL/A/3+//v/+QAA//L8+gQCAQb8BAH99wL3/fwD+Pr69P8H/vwE//36+g789wEC+AsC/woA+Pz7AAUIAvoAC/cE/QP8BQL9BP77+AMABgAA/QgD7QYB+gME/QMA+vsB/fn/B/4D9vsB+wT2Bv8DAgD//f3/+AX+BPz7AQAKEgv6BP7+CQgG+Qj+BwQBAgP4AAX79wUE+vb8//gEBwMT/AAAAwMFEf4IAwT89Qb5+f4H9/v/AQT7+wk="
     },
     {
-      "id": "gunma-ai#10",
+      "id": "gunma-ai#9",
       "title": "データを社外に出さない｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "データを社外に出さない \n \n GPUを備えた開発機を社内に置いています。\n 学習を外部に預けずに行えます。\n\n 自社設備でのファインチューニング \n 機密・個人情報を含む仕事も対象 \n 取り扱いの範囲は着手前に文書化",
       "vec": "/gIIAw72/gUA9Ab++wD9Afz7AQX/DAb6CvoC+wf6APr9APsE/wL6AAH6AgQCCP///gbzA/r1/gYHBPwEBfwDBwP8Agj2+wD+AfoB/wMBBAT6CPv/Bvn0Bvb//Qr1BP8DBwAEBf76BAQG+Pf//gb3/fsH9f4BBP0BAQoB/wQFBfT49QX2A/wI+v//+/gCBwEA9gD6/AYD/v/59/kN/wQB+QIFAgT+AAD89gT6/wAD/f4F/fsA+AT3Af74AAH9CAADCAwG9/z6BvsD+/0GBf0GAvgBBwD/AfoB/P8C//wE+wMCCv77BvsCAv37/v3///4C/wMG+gb+Af4HBP//A/H39f8EBAT5APj8AwEDBwb/+wAGBPgB/QH9APj8/AIABAX8/QEDA/z8AwAACfwBBwkD/foA+vj//P35AwMD9gP/DPX9/vf68gICAQP8B/j/+fn4+QX+9voD9wUAAAYGBAP+9gD4+/YD+v/+9P4M/wAA+/8G+g36+QD+9wcDCv8DAvz8AAcHBfwEB/0DAPv5/f/+AfwA/QACBQMD+gT99gUB+v39AfcB/fn9+PwACf0C9vz/+v/5A/78/vz/+/gC+//8CPv4BAALCAj6B/76BQcC9A4B+QIHBwD3BgP/9/4C+vf////9CQgVAwIFBQT9EP4IBwby9wIC/fsD8vv7/PsACQw="
     },
     {
-      "id": "gunma-ai#11",
+      "id": "gunma-ai#10",
       "title": "社内で回せるまで移す｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "社内で回せるまで移す \n \n 運用の決まりごとを整え、\n ご担当の方へ技術をお渡しします。\n\n 運用ルールと体制づくり \n 社内チームへの技術移転 \n 私たちがいなくても続く状態へ",
       "vec": "AQcEAwX7/gEB+AX5/gL///76AAgADQYBBgD/AgH5/fv8/AAD/gb6AQX+BQL9DfwDAwT7/gD3/gUMA/wECPoKAf8B+wn69fwD/P38/wIECAX4A/0AC/nz//r8/w77AQX9Bf8ECAb1/gj99PgA/AH6/vkD9AMEAAL8/gYA/QD9Bfb39gj2/f0B/foC+/0EAfv5+Aj9/Aj/Avv7+PkL/AIE/QAF+wH+//8D9wP49fsDBgEG/AAG+AT6BPT0+gX7BQQECQ0G+vz4BfcF+QkHAQMBBfr+BgAABvoD/QP+Av0CAAABCf76CPr/Afn9//36///9AwUM/QQABQQF/QD+C/X5/gMFAAT9Afz8BgEPCQX99v//BPgA/AX5A/f//fkDAvsDBAP8Bvv8/wL+BP4DBgb+/AMD+PoB/f/9BAIA9gX7C/r9/fX8+AMD/wIDBfr/Afr++P/8+/cD9AYBAQf9BQYB9//6+PoG+Pz/9f0K+fsH//z//A/1+gL/+QYDBQMA//n+/wYDBfoCC/wFAAP5/QL9/wP9+QL6Av4A9gQB9ggI+vz///79//kC+AACC/4D+Pr+/P/7Dv8A/vv/+v8F/AT1BPj+APkJEAL9B/oACQII/gn9AwQCBAP9CwX6+P8F+/P4//36BggSAQH+CwYBCf4JAQr59AL8/f4F9vn7/wH6AwU="
     },
     {
-      "id": "gunma-ai#12",
+      "id": "gunma-ai#11",
       "title": "会社概要｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "Area: 群馬県を中心に全国・オンライン可\nConsultation: 無料相談 30〜45分・事前準備は不要です\nContact: contact@shinai-inc.jp",
       "vec": "+v4HBQz0/Qf//Ab7AgD5//P8Av4ABAb9CAMDAAP1/PwA/PoAAwX/AAYEAwMEAf4A/gD1Af7z+wkLBAIDCvwDAgECBAf69QAE/gD+AQEFAAX2Cfj+B/b5/vcE8gv6AwD9BAIFBAD5BAwAA/wBAgX4//kB9AAHAvgC/AL9BwH/AP36+gH+A/0B9/sF+fwEBP359gT49wX8Avj39vQH9/3++QgF/wD9//3/9//4+v8EBPsJ//8G/QP6CPz4AQEA/gMBCw4K/Pv7APsC8AAK/voHAfsCCvMJ//wB+f/9/v4B/QL/DP79BvcFAf3+/PwEAf39BAMMAQD5BAACBQH+BvP9+P4DAQX+A/r7BP0ICwIC+wEIBPwC+gP3CPz9/QH/Bf/5/wUCAvr9AfwFAgIHCgIB+gMI9P4C/f0C/gH/9QX/BfwB/Pv88QMDAQX+CP8B+fsDAP79/vn+8gYB/gQCAgD6+QD8+v0C9/sB8AAF+/4B+QL9+hD7+f4C+QgFAAIC/v38AAUCBfsCEPv++wP6/wT8Avj6/f7+BPoA/QX/7gQD+QL8AgD9BvoC+/n9CPz++/0D+AT+AgID/AP+/Pz59gT9BfX/BgEIDQb+//75CAQG/AoC/gADAQT2BAP8+AAG9/P6+vr/BwsI/wUC/gUEEP8BAQX58wX5+fsI9QAC/fz8AAk="
     },
     {
-      "id": "gunma-ai#13",
+      "id": "gunma-ai#12",
       "title": "群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "ホーム \n › \n 群馬のAI導入支援 \n \n From Gunma \n \n 群馬発、 \n 現場で使われるAIを。 \n\n シンアイ株式会社は、 群馬県高崎市に本店を置く AIシステム開発会社です。 \n ものづくりの集積地で鍛えた設計を、 県内から全国の現場へ。 \n 企画から運用まで、 私たち自身が手を動かして ご支援します。 \n\n Where It Stops",
       "vec": "/gEJAwfyAAb8+wL9+/v8/Pj+AQP/BwX7CwAC/gH7+Pv/+foAAAL9AggBAAb+AwD5/gT5A/7z/wYKBf/8BvsEA/3+AQj09v3+/f7+//4FAAf4Bvb8Bvb5AfkA+g3/Bf/8A/0HAwP7AgcE+QMAAQL6+vcB9QcFAPsF/gf9AwMCA/f5+AP6AAED+vsD9wACA/74+AP29wr9BPz5+fQI9gH//QMHBQb+//v89/z6/PkBAv0C/fwB/P33Bf74+wL8A/8FCRQN/P/7CfYF9AYK/gAGBP8DB/oG+/sB+QH7/v4D/gP/CAH+CPsC/wD5/v/8AAD7AwMPAQL8AwUFBAAABfb//PUBAgH9Bvj6BPwHCwH/+AMGBfr//Af/BPn8/wj7Bf7+AQQAA/j/AvwCAgEFDgIB+QEF9fgB/P35AgAA+QoBBvf7APf98gEH/gD/CQP9//7++/v/APUA+QcDAgQEAAH6+wH2+vsD/P398gEI/gH8+wAB+w359wIC+g0CAAIBAADzAgUDBPcGDvcC/v/7Av7/C/n5/P0ABvwE/AYA9AUA9gf7/wAEA/////kCCPz/+fkB/QH5BAAE/wL9+/z+8gX/B/r+AgAJDwf8BgD9CAQC9gUB/gQABgH2BAD/+QIH9/j6+/z5BQUJ/QP//wICC/8JBAr28wT4+f4J9PoD//78Agc="
     },
     {
-      "id": "gunma-ai#14",
+      "id": "gunma-ai#13",
       "title": "導入したのに、 \n 使われない。｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "研修を受け、ツールを契約し、 試しに使うところまでは進んだ。 \n それでも仕事は変わらない。 ご相談の多くは、ここから始まります。 \n\n Where to Start",
       "vec": "+P4IAwny/QoEAQL8APsB/Pv8/QUCCwAACvf+Af759/n2/wAAAQUCAgACCAX8A/0D///7A/70/QQJ//j/Av8AAv0B/QT3/vz//AT/APsEAgb8CPL+AP35/v/z/An7BAkCAAIGAQT7AwoD+//8AAn6+vwC+gYFBAD7/AME/wH+A/76+gj3AgMA+vcF+PwC/fz59v35/QX+//749fsG9v8A/v4CAAP3/QH89f769v4CAvoB/f4B+gP3BPfy/QEE//4HCgsJ/wL9BPgG9wIL+/wEAfn5BfoB//T9AAL4AgH+AAAABwH4BAADA//4AAQA/v8BAP8N/fz9AQMIBAP/Cvr9AP8AA/4DA/3/Af8GCAMA/AMJCfn7/QIBB/f9+gH9B/v9AQMAAwD9AQEDAAMCDAYH/gEC/Pj///0BBwP/+An/CfXy/fj+9QQB/wL/A/36/Pf/+f4CA/IA+QsBCgcCBAH++wf8//z/+f8A9AMDBP8DAv78/Q/5+/7/+g/+AAQE/f79AQQJBP8FDfoG/gEAAgMBAPn8+vz+AgAA/QEH8QoD9gT/AQAF//n9/fgACPwK+PoC+gT2Bf4DAwcA/PkA9gT8/fz8/PcKCgv4B/r9Bv0I+ggABQQCAwL6Bv759AH/+vL3A/4ADAYa/wUABQABDP0JBAn68QT4+P8J+vsFAPz5AgM="
     },
     {
-      "id": "gunma-ai#15",
-      "title": "どこから、 \n 始めるか。｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
+      "id": "gunma-ai#14",
+      "title": "どこから \n 始めるか。｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "群馬は製造の集積が厚く、 建設・運輸・介護でも 人手と技能の継承が課題になっています。 \n 現場の困りごとは土地を選びません。 業種が違っても、 最初に効く場所は似ています。 \n\n 01",
-      "vec": "/v0NBgjzCAL9/QD8/f37+f35AQADBgL8CvoCAv359vv7+wAA/QL/AgICAwD8A/z7AQT8AAL0+wMIBgABBvwG//7+/gX2+v0CA//5//0BAAb4Bvj8BPr/Afn5/gz9CAf6BwEGAwH1Cw4A+f8C/gb9+fcH+AgGAf7//QIAAf7/Bvn7+wb+/wEE+vsE+P4FAP36/AL49QkBAPv3+fkA9voC/v8DBgD+Af359Pry+f0BAgAB+/4E/gH4A/v5+QAD/v4BBg8P/gL9C/sF+AMH/f0FBv79BPgDA/kE/AP6AQEC/QIABAb9C/wEAf/9/AX6//8AAf8K+wL+//4HAwP6Bvr9AfwBAwH8CP3/BvwIBf79+v4JCfr9+wH7Aff+AAL+BP/9BQX/APr7//0CAAIHDgIG/f8E9vgA/v8BAwH/+QsABfb3Aff88QMF/AL7AQH8/vn+/f4B//D8+wgCBgkC/wD8+gH8/PwE/Pb+9AAFA//9AP/+AAz1+PsA/AsBAAcD//j1AwUFBPsEDfoGA/z7AP/7B/38+v//AvsD9QQC8QgH+AL7Af4B/Pz8/fkCCP0D+PwD/Qb3Bf4DAQAA/P//9QUABPr///wHDwr/CP78BQEFAQoABgX//gX1/gL49gEG+PT2/f3+CgMUAQUAAwMDEP4IAgT57gb8+vwJ9fYEBfv6/wk="
+      "vec": "/fwNBwfzBgL9/v/+/vz8+fv6AgADBQL8CfkDA/359/v6+wAA/AL/AQECBQD8BPz8AQX9/gH1+wEIBf4ABvwHAP4B/gb5/PwDAgD3/v4AAQX6CPj8BfsBA/v3/gn+CQj8BwEHAQL1Cw4A+f8BAAT++vgH+QoFAP/+/QIBAf//BPn8/Af8/gEE+/sE9v0FAP34/AL3+Aj+APv3+fsA9voCAP4CB//9APz59fry+fwAAf//+/8D/gD4A/r6+wID/f0CBBAP/gT8C/sE+AMH+/4FBv/9BvoBAvgD/QP7AgQB/wICAgj9Cf0EAf76/QX5/wAAAf4K/AD9/v4FAwT6Bvv/APsABf/7CP3/Bv4JBP/9+v8LCPj+/QD8Avf/AQH8A/7/BAX9Afv7/vsB/wIHDgIG/P8G9voA/wACAwEB9wsCBfb3APf/8QQD/AD7AAH8/Pr9/P0A//D8/QcDCAoCAQD7+gL8/foF/Pj/9v8DA//7Af/8AAz1+fsA/QsAAQgC//r1AwQFA/wFDfsIAvz9AQH6CPz8+P4AAvoE9QUC8gkI+AP8AP8D/f36/voECf4G+P0C/QX2A/0DAQD//P7+9AYAAfv+//oJDgkACP3+BAEGAQoBBwT+/QP3/gP49AIG9/X2/fwACgEVAQb/AQMDEP4IAgT57wX7+fwJ9vQGBfv5/Qs="
     },
     {
-      "id": "gunma-ai#16",
+      "id": "gunma-ai#15",
       "title": "技能の 継承｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "熟練の段取りや不良の見分け方を、作業記録と聞き取りから引き出して構造化します。退職や異動で失われる前に、どなたでも引ける形にします。 \n\n 02",
       "vec": "AwcEAAn5/gf//gP6AQL///v5/Qb/BAj/DAAE+/39/vr8+wMD/gX7AQj/BQMCBv/+Agj2Bf/++wgHBP4BDP8HBPz++wjz9wP9AgH+AfsFAgb8/vj7Bf74+//3+QYAAwb9Bv4ABgL+BAn+9Pb6/Aj2+vb//AADAgMD/gP9+/v/Bf358v/7AvwE+PwA+P8DAvr+9wD9+wUE/v369vUK9vgC+v4A/gj7/f8E9gD39fsD/v8A/fkB+QH1Cfnx/gP/CAEACgcF/f35CPYC+QAFAv4DBPn6CfwB//gGBwT6//r5AQMDAQj7CPX8BAH7/QX4/wIAAQUM/wEABAQLAAj4Cv7//wEAAwIDBfkB/gAIBAAA9wUFBPf//QcAB/v8APwCCf78AgX4/Pv9/gEAA/8FCgQC//8A+PYG/f4BAAT/8wX7DfT5Afv67wT//QIAA/76AvkC9wQE/vL+8AcC/wQEAAAA/QH4+PsA+v//8/sK/v0D/Pr8+wf5+wAD+gj//wcG//z4AAQEB/oEBvsF/QH7+QD8AwD//fr7BgEDAAQF9ggC+vkAAwD7+/r99wAABf0K+AIA9wP2BQICAfwC+/j59wX4Avr7BAADEAT5A/38AwIB/wcBBAQCAwT9BwP8+gIF+vP3//n/CQQSAgD+CQIBEP4HBA759QL++v8J8vcABQH6AwU="
     },
     {
-      "id": "gunma-ai#17",
+      "id": "gunma-ai#16",
       "title": "見積・ 積算の下書き｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "過去の案件と単価の履歴を参照し、根拠を示しながら一次案を用意します。判断は人が行い、そこへ至るまでの手間を減らします。 \n\n 03",
       "vec": "/f4I+wb2AAEA+wT9+/8DBfz7+gL9BQf9CPgA+wX1+fr++/oE/Ab+AgQEBwT/CQH+Agf2BQD0/wkIBQMBC/cGB/YB/Qb2/P4FAgAB//8ABQj8BfoDBfn5APb69wn8AgQC/f4FBQT6Bwf/AvsB/wX6/fID/gIDBP39BP8A/gP7/PkC9QMABvv/+gQI/f4LBgEA9gj++gL+/Pv39PgG+fwA//0ABQL7BP8E8/74+wH7Avr/+wAI+f/1CPr3AQECBAgBCw0H+/79AQH+9wYMAPwE/f39C/8C//z/AQT3BQH8+/oADAb/CO8ECP8A/Ab7/vv+AQQHAAD/A/wGBwL9Cfr5+wEIA/v/AvsCAQEMCQAC+wQJA/oC+Qf7B/n7AgUDBgEAAgH8/vv7A/7+/QYMCQYEAf0H9vb//wAEAAQC9QcBC/kB+fv88wcDBAcBAQL8//kB/AH8+/n88wAD/gYAAv///gYE//wD+/sA8fwG/gH//v//+g7+8f399QYEAQUC/Pv6AgAKBwIBBf0B/AL7AwH/AvwC+/z+Bf8C/wQA8gT8/P8BCAH8+/oD+vn6B/wH8gAG+AL1AwMHBAT8APkB9AD8Afb+Av8DDwL8Bv/7/wIL/wEG/wAI/wL+BwP98wUC7/f6/vQDB/4XAAIDBAYFC/4D/gX7+gL7+v8E+Pv9/QIBAwo="
     },
     {
-      "id": "gunma-ai#18",
+      "id": "gunma-ai#17",
       "title": "記録と 申し送り｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "手書きや口頭で残っている情報を整理し、必要な方へ必要な形で届くようにします。書く時間そのものを短くします。 \n\n 04",
       "vec": "AwQIAQf3AwH6+wD8/gL6/f4DAQL9Awr/CP79+gP3+fr/+/wHAwD6/gcABwL9Cf/6AQX3BwL2BQgIBAMDB/cEAff8/Qn3+P4BAP////v/AwX5BfX5Bfn2BPr7+wsACAUA//0AAwL2BAD/Avz7/gH2+vkFAQEF/QAA/gT6/gMAAfj/9Qr2B/4A/QEF+/wIB/38+wH0+gb5Av/5+/kIAf3//wL/AAD7//798wD28wIF/fsC/PYJ+wL2A/j2BgL9BgIBCQkF/f35AvgA/PoF+v0E//3/DP4BAfcG+wL5+v4BAQD+CgkAAfQGCP8BAAH9A/0CBQANAf7+A/wOBwn2C/T4/v8DCAP/APcBCAMFCAEE+QQJCPgB9wf/Cf4C/QMBCQIABwL8/Pz6/gIG/wELBQID+/sG9fMB+QP+/gID9gj9CPcCAPz88wICAQIABvv7Av4A9QD8APz+8gP6/gkH/v4ABAUA+f4D/P4D8voL/P0A+/3/9xH6+f39+gkAAgUC/vj9BQUGCf8DA/4E/QP++wP+Bv8CAAT4Bf4CAQgA+gT//fr6Bvzz+vz8+PsAB/0I8/v9+wP7BAEDAwEAAPf++P/+Av3/AvcFCgH+Avv4/QQH/QcE/AAE/gf9Bv//8v0C8fL1/Pf/CgMNBP4FBQYFCv4FAgX3+v30//wH+gD//QP9CAo="
     },
     {
-      "id": "gunma-ai#19",
+      "id": "gunma-ai#18",
       "title": "問い合わせ 対応｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "社内の資料を出典付きで検索し、応答の下書きまで用意します。担当の方しか答えられない状態を解きます。 \n\n Our Stance",
       "vec": "//0IBQXx+gUC+gf3Avz6/v/+/AQCBQH/BwP9/QX5+vn8AvwA/gL+AAj8BgT9//8CAQT3AgP2AAELBP8EB/gCAfv8BAb6+wAC/gL8/gECBAX5B/P9B/38BfX99Q/8AgX8BQQCA//3/wgAAQL9BAT4+/oC9wD+//oB/ggCAAYFA/b39gL5AgH6/QEB+foEA/n7+P/49AcB//z4+fUIBP/+/gIGAf/9AQH+9gD4/f4FA/4E/P0E+gP6Af30/AP8BAMGCwgG9fr9A/0E+P8I/fwGA/gEDfYGBfn/+gD4+v0H/QD/DgL9B/UFAgL9/fz9/gT/AgAOAwL7B/0JBgP6B/H5+wEF/wP+CP35/wAMB/0E9QIJ/fT++QL9Cvb++wP/BQL5AgEF/fr9AP0DCQQDDAEI+wAB9wAE+wIBAQD78AsBBfoBAfz58vwEAgf/Cf37+/oD+QMB+/f/8wAA/AcAAQD7/QD+/PkC+P4A9fkH//wB/fsG+Q379wD9+AQGAAUE/fj5BAEDBvoDDf0C+wH9/wYCBPz9/AL6AvkC+wUE8QcA+P38AwL/APn+/PoCCP4G9vwF/v74CP4BAv3+/vr++gT/Bvj+A/0ICwMDBfv9BwMF+gr8+v0BAwX4BgP99gEG+fL+/vkABQgPAAH/AwP9Ef4HAwX39fr3/v4L/PwEAQAABgY="
     },
     {
-      "id": "gunma-ai#20",
+      "id": "gunma-ai#19",
       "title": "研修と試験導入で、 \n 終わらせない。｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "要件をまとめて他社へ渡すのではなく、 動くものをつくり、 仕事に組み込み、 \n 回り続ける状態まで見届けます。 \n\n ソリューションの詳細を見る\n\n FAQ",
       "vec": "/AEFAgb2AAMHAAP6+P77+/74BAUDBAIBB/oABQL1/fv6APwEAQL+AwUBAgIEBP8A/gL5BAHz/AILAfsGC/oC/voA/gb2+P7/AQH+/ggGCQX1A/v6BPn4//f0/A73CAYBCQUCBAD4/wUB+/r9/wH7+/gE+wED/Pz/AQcAAAP+DPz8+Aj7/gAA/Pv++f7+Bf3/+gH8/gL8A/z4/fcF+QP//wIFAAP7+wEE+QH58fwBB/wD/f0F/AH1Bvvz/AL9AgAFDwYG/v78BPgE+wQE//8DAvv6CQED//T+/gH6+//7AAMEDwX9B/sBBPz//QH9//z7/QEO+gT9BAII/gH8CPX6+wMD//79Bv36AAUECQf7/wEEB/v9/gT9APb9/gADBgD8BAcA/v3+/P4BBQMECgQE+v4A+vgB/QIAAwMA7wn/C/n8A/oB8v4C/QQBBPn7/vj99wQC//D+9wYBAgv/Af8C/AP5/vwA+f0D9wMIAvwBAf0AAA/3+QQB/AoD/wUA/vf7AQgDB/0BDfoK/QX8BQb+BP/6/gMBAgAA+AYE9AcE+P7+AgEBAvgB+vz+CwAH/PoD+v/4CQD8AfgC+/3/9wX9Avv+/PoIDAj8CfwBBAMI/AkFBAcCAgL2AgL68gIE+fD5+foBDQkdAAH8CQMDCP4HAQn29wP9/vsI+vr/AAX9Awc="
     },
     {
-      "id": "gunma-ai#21",
+      "id": "gunma-ai#20",
       "title": "まずは、お話をうかがいます。｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
       "text": "要件が決まっていなくても構いません。 \n いまのお仕事をうかがい、AIを活かせる場所をご一緒に整理します。 \n\n 無料相談を申し込む",
