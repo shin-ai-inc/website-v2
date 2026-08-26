@@ -93,7 +93,7 @@ const API_ORIGIN = "https://api.shinai-inc.jp";
    本サイトは GitHub Pages 配信で Cloudflare はDNSのみのため、
    プロキシ経由の自動計測は使えず、ビーコンを手で埋め込む方式になる。
    空のあいだはビーコンもCSPの許可も出さない。計測しない構成のまま保つ。 */
-const WEB_ANALYTICS_TOKEN = "";
+const WEB_ANALYTICS_TOKEN = "e9be1908df71408a8dc9031d743716ac";
 const CF_BEACON_HOST = "https://static.cloudflareinsights.com";
 const CF_BEACON_ENDPOINT = "https://cloudflareinsights.com";
 const analyticsOn = WEB_ANALYTICS_TOKEN.length > 0;
