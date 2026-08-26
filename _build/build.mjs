@@ -88,13 +88,23 @@ const API_ORIGIN = "https://api.shinai-inc.jp";
    無言で壊れ、_headersだけ直すと今すぐ壊れる)。ここを唯一の出所にする。
    meta形式は frame-ancestors と report-uri を解釈しないため、
    応答ヘッダ側にのみ足す(下の CSP_HEADER)。 */
+/* Cloudflare Web Analytics のサイトトークン。
+   HTMLに出る公開値であり秘密ではない（鍵と同じ扱いをしない）。
+   本サイトは GitHub Pages 配信で Cloudflare はDNSのみのため、
+   プロキシ経由の自動計測は使えず、ビーコンを手で埋め込む方式になる。
+   空のあいだはビーコンもCSPの許可も出さない。計測しない構成のまま保つ。 */
+const WEB_ANALYTICS_TOKEN = "";
+const CF_BEACON_HOST = "https://static.cloudflareinsights.com";
+const CF_BEACON_ENDPOINT = "https://cloudflareinsights.com";
+const analyticsOn = WEB_ANALYTICS_TOKEN.length > 0;
+
 const CSP_DIRECTIVES = [
   "default-src 'self'",
-  "script-src 'self'",
+  `script-src 'self'${analyticsOn ? " " + CF_BEACON_HOST : ""}`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data:",
-  `connect-src 'self' https://formspree.io ${API_ORIGIN}`,
+  `connect-src 'self' https://formspree.io ${API_ORIGIN}${analyticsOn ? " " + CF_BEACON_ENDPOINT : ""}`,
   "base-uri 'self'",
   "form-action 'self' https://formspree.io",
   "object-src 'none'"
@@ -833,7 +843,9 @@ ${main}
   </main>
 ${shared[loc.code].footer}
 ${shared[loc.code].chatbot}
-  ${scripts.join("\n  ")}
+  ${scripts.join("\n  ")}${analyticsOn ? `
+  <!-- Cloudflare Web Analytics: Cookieを置かず、個人を追跡しない。 -->
+  <script defer src="${CF_BEACON_HOST}/beacon.min.js" data-cf-beacon='{"token": "${WEB_ANALYTICS_TOKEN}"}'></script>` : ""}
 </body>
 </html>
 `;
