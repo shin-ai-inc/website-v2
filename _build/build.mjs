@@ -203,13 +203,15 @@ const pages = [
     en: {crumb: "Industries",  title: "Industries | ShinAI",
           desc: "Manufacturing, construction, care and professional services, retail, healthcare, education, finance, and real estate. What breaks in each, and how tacit-knowledge AI changes it." } },
   /* 地域ページ。トップの title はブランドの表現として据え置くと決めたため、
-     地域クエリで戦える面はここにしかない。日本語のみで公開する。 */
+     地域クエリで戦える面はここにしかない。日本語のみで公開する。
+     title には地域語を残しつつ、本文は「群馬発・全国へ」で書く。
+     県内限定に読める書き方をすると、県外の読み手がそこで離れる。 */
   { file: "gunma-ai.html", part: "gunma-ai.html", nav: null, hero: false,
     locales: ["ja"],
     crumb: "群馬のAI導入支援",
     changefreq: "monthly", priority: "0.9",
-    title: "群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
-    desc: "群馬県高崎市のAI開発会社が、県内企業のAI導入を支援します。生成AIの業務活用、RAG構築、企業専用AIエージェント開発、製造業の技能継承まで。研修や試験導入で終わらせず、設計から開発・運用まで一貫して伴走します。" },
+    title: "群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
+    desc: "群馬県高崎市のAIシステム開発会社。ものづくりの集積地で鍛えた設計を、県内から全国の現場へ。生成AIの業務活用、RAG構築、企業専用AIエージェント開発、技能継承まで。研修や試験導入で終わらせず、企画から運用まで一貫してご支援します。" },
   { file: "about.html", part: "about.html", nav: "about", hero: false,
     crumb: "会社情報",
     changefreq: "monthly", priority: "0.7",

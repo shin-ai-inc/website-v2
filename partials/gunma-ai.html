@@ -1,13 +1,22 @@
 <main id="main">
 
   <!--
-    群馬のAI導入支援。トップの title はブランドの表現として据え置くと決めたため、
-    地域クエリの受け皿はこのページが担う。地名を数で押し込まず、群馬の現場の話として書く。
+    群馬発のAIシステム開発。トップの title はブランドの表現として据え置くと決めたため、
+    地域クエリの受け皿はこのページが担う。
+
+    読者は群馬県内だけではない。「群馬の会社が群馬の会社を助ける」と書くと、
+    県外の読み手はその時点で自分の話ではなくなる。
+    ものづくりの集積地で鍛えた設計を全国へ、という向きで書くこと。
+    地域語は残しつつ、内容は土地を選ばない話にする。
 
     背景のリズムは既存ページ（services.html）に合わせる:
       hero → 明 → 暗 → 明alt → 明 → 暗(CTA)
-    capability は暗地専用のコンポーネント（白文字・白枠）であり、
+    capability は暗地専用の部品（白文字・白枠）であり、
     明地に置くと読めなくなる。必ず section--ink と組で使うこと。
+
+    カードに写真は置かない。トップと同じ写真を再掲すると誌面が重複し、
+    かつ写真は語より雄弁なので、内容より先に既視感を与える。
+    solution-card の色バリアント（--tacit / --agent / --enable）で差をつける。
   -->
 
   <!-- ============================================================
@@ -21,15 +30,15 @@
           <span class="page-hero__breadcrumb-sep" aria-hidden="true">›</span>
           <span aria-current="page">群馬のAI導入支援</span>
         </nav>
-        <p class="eyebrow page-hero__eyebrow">Gunma</p>
+        <p class="eyebrow page-hero__eyebrow">From Gunma</p>
         <h1 id="hero-title" class="page-hero__title">
-          <span class="page-hero__title-line">群馬の企業に、</span>
+          <span class="page-hero__title-line">群馬発、</span>
           <span class="page-hero__title-line page-hero__title-accent">現場で使われるAIを。</span>
         </h1>
         <p class="page-hero__lead">
           <span class="page-hero__lead-line">シンアイ株式会社は、<span class="nobr">群馬県高崎市に本店を置く</span><span class="nobr">AIシステム開発会社です。</span></span>
-          <span class="page-hero__lead-line">生成AIの業務活用から、<span class="nobr">社内知識を扱うRAGの構築、</span><span class="nobr">企業専用AIエージェントの開発まで。</span></span>
-          <span class="page-hero__lead-line">設計から運用まで、<span class="nobr">私たち自身が手を動かして支援します。</span></span>
+          <span class="page-hero__lead-line">ものづくりの集積地で鍛えた設計を、<span class="nobr">県内から全国の現場へ。</span></span>
+          <span class="page-hero__lead-line">企画から運用まで、<span class="nobr">私たち自身が手を動かして</span><span class="nobr">ご支援します。</span></span>
         </p>
       </div>
     </div>
@@ -57,7 +66,7 @@
           <span class="why__num" aria-hidden="true">01</span>
           <div>
             <h3 class="why__title">判断が言葉になっていない</h3>
-            <p class="why__line">熟練者が見ている勘どころは本人の中にあり、AIへ渡せる形になっていません。</p>
+            <p class="why__line">熟練の方が見ている勘どころは本人の中にあり、AIへ渡せる形になっていません。</p>
           </div>
         </article>
         <hr class="why__rule" aria-hidden="true">
@@ -101,7 +110,7 @@
         </h2>
         <p class="section__lead">
           <span class="section__lead-line">群馬は製造の集積が厚く、<span class="nobr">建設・運輸・介護でも</span><span class="nobr">人手と技能の継承が課題になっています。</span></span>
-          <span class="section__lead-line">業種が違っても、<span class="nobr">最初に効く場所は似ています。</span></span>
+          <span class="section__lead-line">現場の困りごとは土地を選びません。<span class="nobr">業種が違っても、</span><span class="nobr">最初に効く場所は似ています。</span></span>
         </p>
       </div>
 
@@ -109,29 +118,30 @@
         <li class="capability__item reveal">
           <span class="capability__num" aria-hidden="true">01</span>
           <h3 class="capability__term">技能の<wbr>継承</h3>
-          <p class="capability__desc">熟練者の段取りや不良の見分け方を、作業記録と聞き取りから引き出して構造化します。退職や異動で失われる前に、誰でも引ける形にします。</p>
+          <p class="capability__desc">熟練の段取りや不良の見分け方を、作業記録と聞き取りから引き出して構造化します。退職や異動で失われる前に、どなたでも引ける形にします。</p>
         </li>
         <li class="capability__item reveal" data-delay="1">
           <span class="capability__num" aria-hidden="true">02</span>
           <h3 class="capability__term">見積・<wbr>積算の下書き</h3>
-          <p class="capability__desc">過去の案件と単価の履歴を参照し、根拠を示しながら一次案を作ります。判断は人が行い、そこへ至るまでの手間を減らします。</p>
+          <p class="capability__desc">過去の案件と単価の履歴を参照し、根拠を示しながら一次案を用意します。判断は人が行い、そこへ至るまでの手間を減らします。</p>
         </li>
         <li class="capability__item reveal" data-delay="2">
           <span class="capability__num" aria-hidden="true">03</span>
           <h3 class="capability__term">記録と<wbr>申し送り</h3>
-          <p class="capability__desc">手書きや口頭で残っている情報を整理し、必要な人へ必要な形で届くようにします。書く時間そのものを短くします。</p>
+          <p class="capability__desc">手書きや口頭で残っている情報を整理し、必要な方へ必要な形で届くようにします。書く時間そのものを短くします。</p>
         </li>
         <li class="capability__item reveal" data-delay="3">
           <span class="capability__num" aria-hidden="true">04</span>
           <h3 class="capability__term">問い合わせ<wbr>対応</h3>
-          <p class="capability__desc">社内の資料を出典付きで検索し、応答の下書きまで用意します。担当者しか答えられない状態を解きます。</p>
+          <p class="capability__desc">社内の資料を出典付きで検索し、応答の下書きまで用意します。担当の方しか答えられない状態を解きます。</p>
         </li>
       </ul>
     </div>
   </section>
 
   <!-- ============================================================
-       立ち位置 — 研修・ツール導入との違いを、比較ではなく事実で示す
+       立ち位置 — 研修・ツール導入との違いを、比較ではなく事実で示す。
+       写真は置かない。色面（--tacit / --agent / --enable）で三枚を分ける。
   ============================================================ -->
   <section class="section section--alt" id="stance" aria-labelledby="stance-title">
     <div class="container">
@@ -142,16 +152,13 @@
           <span class="section__title-line">終わらせない。</span>
         </h2>
         <p class="section__lead">
-          <span class="section__lead-line">要件をまとめて他社へ渡すのではなく、<span class="nobr">動くものを作り、</span><span class="nobr">仕事に組み込み、</span></span>
+          <span class="section__lead-line">要件をまとめて他社へ渡すのではなく、<span class="nobr">動くものをつくり、</span><span class="nobr">仕事に組み込み、</span></span>
           <span class="section__lead-line">回り続ける状態まで見届けます。</span>
         </p>
       </div>
 
       <div class="solutions__grid">
-        <article class="solution-card reveal" data-delay="1">
-          <figure class="solution-card__figure" aria-hidden="true">
-            <img src="assets/images/photo-tacit.jpg" alt="" width="600" height="360" loading="lazy">
-          </figure>
+        <article class="solution-card solution-card--tacit reveal" data-delay="1">
           <h3 class="solution-card__title">現場から設計する</h3>
           <p class="solution-card__lead">
             技術の話より先に、
@@ -161,35 +168,29 @@
           <ul class="solution-card__items">
             <li class="solution-card__item">県内は訪問、遠方はオンライン</li>
             <li class="solution-card__item">小さく試して効果を確かめる</li>
-            <li class="solution-card__item">合わなければ広げない判断も一緒に</li>
+            <li class="solution-card__item">広げない判断もご一緒に</li>
           </ul>
         </article>
 
-        <article class="solution-card reveal" data-delay="2">
-          <figure class="solution-card__figure" aria-hidden="true">
-            <img src="assets/images/news-gpu-workstation.jpg" alt="" width="900" height="675" loading="lazy">
-          </figure>
+        <article class="solution-card solution-card--agent reveal" data-delay="2">
           <h3 class="solution-card__title">データを社外に出さない</h3>
           <p class="solution-card__lead">
-            GPUを積んだ開発機を社内に置いています。
+            GPUを備えた開発機を社内に置いています。
             学習を外部に預けずに行えます。
           </p>
           <hr class="solution-card__divider" aria-hidden="true">
           <ul class="solution-card__items">
             <li class="solution-card__item">自社設備でのファインチューニング</li>
-            <li class="solution-card__item">機密・個人情報を含む業務も対象</li>
+            <li class="solution-card__item">機密・個人情報を含む仕事も対象</li>
             <li class="solution-card__item">取り扱いの範囲は着手前に文書化</li>
           </ul>
         </article>
 
-        <article class="solution-card reveal" data-delay="3">
-          <figure class="solution-card__figure" aria-hidden="true">
-            <img src="assets/images/photo-enable.jpg" alt="" width="600" height="360" loading="lazy">
-          </figure>
+        <article class="solution-card solution-card--enable reveal" data-delay="3">
           <h3 class="solution-card__title">社内で回せるまで移す</h3>
           <p class="solution-card__lead">
             運用の決まりごとを整え、
-            担当の方へ技術を引き継ぎます。
+            ご担当の方へ技術をお渡しします。
           </p>
           <hr class="solution-card__divider" aria-hidden="true">
           <ul class="solution-card__items">
@@ -227,12 +228,12 @@
       <div class="faq__list reveal">
         <details class="faq-item" open>
           <summary class="faq-item__q">
-            <span class="faq-item__q-text">群馬県内であれば訪問してもらえますか。</span>
+            <span class="faq-item__q-text">遠方でも依頼できますか。</span>
             <span class="faq-item__marker" aria-hidden="true"></span>
           </summary>
           <div class="faq-item__a">
-            <p>はい。高崎市に本店があり、県内は訪問で対応できます。前橋・太田・伊勢崎・桐生など県内全域が対象です。</p>
-            <p>オンラインだけでも進められますので、ご負担の少ない形をお選びください。県外・全国のご依頼も承っています。</p>
+            <p>承っております。群馬県内は訪問でうかがい、それ以外の地域はオンラインを中心に進めます。設計も開発も画面越しで滞りなく行えますので、所在地によってお受けできる範囲が変わることはありません。</p>
+            <p>節目の打ち合わせだけ現地でご一緒するなど、ご都合に合わせた組み立ても可能です。</p>
           </div>
         </details>
 
@@ -242,8 +243,8 @@
             <span class="faq-item__marker" aria-hidden="true"></span>
           </summary>
           <div class="faq-item__a">
-            <p>できます。数名の会社から承っています。規模が小さいほど一人あたりの仕事の幅が広く、AIに任せられる余地が見つかりやすい傾向があります。</p>
-            <p>大きな仕組みを最初から作る必要はありません。日々時間を取られている作業を一つ選ぶところから始められます。</p>
+            <p>もちろんです。数名の会社から承っております。規模が小さいほどお一人あたりの仕事の幅が広く、AIにお任せいただける余地が見つかりやすい傾向があります。</p>
+            <p>大きな仕組みを最初からつくる必要はありません。日々お時間を取られている作業を一つ選ぶところから始められます。</p>
           </div>
         </details>
 
@@ -253,8 +254,8 @@
             <span class="faq-item__marker" aria-hidden="true"></span>
           </summary>
           <div class="faq-item__a">
-            <p>扱う仕事とデータの状態で変わるため、定価は設けていません。まず無料相談で範囲をうかがい、段階を分けたお見積りをお出しします。</p>
-            <p>最初から本番の仕組みを作らず、小さく試す段階を挟むことで、費用と効果を確かめながら進められます。</p>
+            <p>扱う仕事とデータの状態で変わるため、定価は設けておりません。まず無料相談で範囲をうかがい、段階を分けたお見積りをお出しします。</p>
+            <p>最初から本番の仕組みをつくらず、小さく試す段階を挟むことで、費用と効果を確かめながら進めていただけます。</p>
           </div>
         </details>
 
@@ -265,7 +266,7 @@
           </summary>
           <div class="faq-item__a">
             <p>目安として、課題の整理に1〜2週間、動くものをお見せするまで2〜4週間、実際の業務データでの検証に2〜6週間です。</p>
-            <p>本番の仕組みとして組み込む場合は1〜3か月以上を見ていただきます。範囲を絞れば、より短い期間で最初の効果を確かめられます。</p>
+            <p>本番の仕組みとして組み込む場合は1〜3か月以上をご覧いただきます。範囲を絞れば、より短い期間で最初の効果を確かめられます。</p>
           </div>
         </details>
 
@@ -275,8 +276,8 @@
             <span class="faq-item__marker" aria-hidden="true"></span>
           </summary>
           <div class="faq-item__a">
-            <p>対応できます。GPUを搭載した開発専用の機材を社内に置いており、御社のデータでAIを調整する作業を外部のサービスに渡さずに行えます。</p>
-            <p>機密情報や個人情報を含む仕事も、そのままご相談ください。取り扱いの範囲は着手前に文書で取り決めます。</p>
+            <p>ご対応いたします。GPUを搭載した開発専用の機材を社内に備えており、御社のデータでAIを調整する作業を外部のサービスに渡さずに行えます。</p>
+            <p>機密情報や個人情報を含むお仕事も、そのままご相談ください。取り扱いの範囲は着手前に文書で取り決めます。</p>
           </div>
         </details>
       </div>
@@ -301,7 +302,7 @@
         <h2 class="cta__title" id="cta-title">まずは、お話をうかがいます。</h2>
         <p class="cta__copy">
           <span class="cta__copy-line">要件が決まっていなくても構いません。</span>
-          <span class="cta__copy-line">いまの仕事をうかがい、AIを活かせる場所を一緒に整理します。</span>
+          <span class="cta__copy-line">いまのお仕事をうかがい、AIを活かせる場所をご一緒に整理します。</span>
         </p>
       </div>
 
