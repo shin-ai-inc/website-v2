@@ -211,7 +211,7 @@ const pages = [
     crumb: "群馬のAI導入支援",
     changefreq: "monthly", priority: "0.9",
     title: "群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
-    desc: "群馬県高崎市のAIシステム開発会社。ものづくりの集積地で鍛えた設計を、県内から全国の現場へ。生成AIの業務活用、RAG構築、企業専用AIエージェント開発、技能継承まで。研修や試験導入で終わらせず、企画から運用まで一貫してご支援します。" },
+    desc: "群馬県高崎市のAIシステム開発会社。生成AIの業務活用、RAG構築、企業専用AIエージェント開発、技能継承まで。研修や試験導入で終わらせず、企画から運用まで一気通貫してご支援します。群馬県を中心に全国対応・オンライン相談可。" },
   { file: "about.html", part: "about.html", nav: "about", hero: false,
     crumb: "会社情報",
     changefreq: "monthly", priority: "0.7",
