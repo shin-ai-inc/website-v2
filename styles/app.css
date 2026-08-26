@@ -2396,6 +2396,21 @@ h1, h2, h3 {
   text-underline-offset: 3px;
 }
 
+/* 送信先が未設定のときの案内。失敗ではないので赤は使わない。
+   ただし成功とも違う(まだ届いていない)ため、緑でもない。
+   行動を促す面として、内製化・運用支援と同じ淡橙を借りる。 */
+.contact-form__feedback--notice {
+  background: var(--energy-soft);
+  color: var(--c-enable-ink);
+  border: 1px solid rgba(181, 83, 0, 0.22);
+}
+
+.contact-form__feedback--notice a {
+  color: var(--c-enable-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ---- ハニーポット ---- */
 .contact-hp {
   position: absolute;

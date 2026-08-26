@@ -17,6 +17,7 @@
     sending: "Sending...",
     sent: "Sent",
     send: "Send",
+    opened: "Mail app opened",
     subject: "[ShinAI enquiry] ",
     company: "[Company or organisation]",
     name: "[Name]",
@@ -27,12 +28,13 @@
     sending: "送信中...",
     sent: "送信しました",
     send: "送信する",
+    opened: "メールソフトを開きました",
     subject: "[ShinAI お問い合わせ] ",
     company: "【会社名・組織名】",
     name: "【お名前】",
     email: "【メールアドレス】",
     phone: "【電話番号】",
-    message: "【相談内容】"
+    message: "【ご相談内容】"
   };
 
   var ENDPOINT = form.getAttribute("action");
@@ -45,21 +47,26 @@
   var btnSpan = submitBtn ? submitBtn.querySelector("span") : null;
   var successEl = document.getElementById("contact-success");
   var errorEl = document.getElementById("contact-error");
+  var fallbackEl = document.getElementById("contact-fallback");
 
   var setState = function (state) {
     form.setAttribute("data-state", state);
     if (!submitBtn) return;
     submitBtn.disabled = (state === "sending");
     if (btnSpan) {
-      if (state === "sending")      btnSpan.textContent = T.sending;
-      else if (state === "success") btnSpan.textContent = T.sent;
-      else                          btnSpan.textContent = T.send;
+      if (state === "sending")       btnSpan.textContent = T.sending;
+      else if (state === "success")  btnSpan.textContent = T.sent;
+      else if (state === "fallback") btnSpan.textContent = T.opened;
+      else                           btnSpan.textContent = T.send;
     }
   };
 
   var showFeedback = function (type) {
-    if (successEl) successEl.hidden = (type !== "success");
-    if (errorEl)   errorEl.hidden   = (type !== "error");
+    if (successEl)  successEl.hidden  = (type !== "success");
+    if (errorEl)    errorEl.hidden    = (type !== "error");
+    if (fallbackEl) fallbackEl.hidden = (type !== "fallback");
+    var shown = type === "success" ? successEl : (type === "error" ? errorEl : (type === "fallback" ? fallbackEl : null));
+    if (shown && shown.scrollIntoView) shown.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
   var buildMailto = function () {
@@ -85,6 +92,12 @@
     if (hp && hp.value) return;
 
     if (!isConfigured) {
+      /* 送信先が未設定の間はメールソフトへ逃がす。ただし mailto は、
+         メールソフトが関連付けられていない端末では何も起こさずに終わる。
+         逃がしたことを画面に必ず残し、直接届く宛先も併せて示す。
+         押して何も起きない状態は、送れたと誤解されるぶん未送信より悪い。 */
+      showFeedback("fallback");
+      setState("fallback");
       window.location.href = buildMailto();
       return;
     }
@@ -102,7 +115,6 @@
         setState("success");
         showFeedback("success");
         form.reset();
-        if (successEl) successEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
       } else {
         throw new Error("server");
       }

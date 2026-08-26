@@ -149,7 +149,7 @@
 
           <div class="contact-field">
             <label class="contact-field__label" for="message">
-              相談内容 <span class="contact-req">必須</span>
+              ご相談内容 <span class="contact-req">必須</span>
             </label>
             <textarea class="contact-field__input contact-field__textarea" id="message" name="message"
                       required aria-required="true" maxlength="2000" rows="6"
@@ -180,7 +180,14 @@
           </div>
 
           <div id="contact-success" class="contact-form__feedback contact-form__feedback--success" hidden>
-            <strong>送信しました。</strong>内容を確認のうえ、担当より後ほどご連絡いたします。
+            <strong>お問い合わせありがとうございます。</strong>
+            内容を確認のうえ、担当より後ほどご連絡いたします。
+          </div>
+          <div id="contact-fallback" class="contact-form__feedback contact-form__feedback--notice" hidden>
+            <strong>メールソフトを開きました。</strong>
+            開かない場合や、内容が引き継がれていない場合は、お手数ですが
+            <a href="mailto:contact@shinai-inc.jp">contact@shinai-inc.jp</a>
+            まで直接お送りください。
           </div>
           <div id="contact-error" class="contact-form__feedback contact-form__feedback--error" hidden>
             送信に問題が発生しました。お手数ですが

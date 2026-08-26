@@ -1173,6 +1173,21 @@ for (const loc of LOCALES) {
   );
 }
 
+/* 問い合わせの送信先。未設定のまま公開され、押しても何も起きない状態が続いた。
+   TODOコメントは読まれない。ビルドのたびに目に入る場所へ出す。 */
+{
+  const form = read("partials/contact.html");
+  const action = (form.match(/<form[^>]*\baction="([^"]*)"/) || [])[1] || "";
+  if (!action || action === "#" || action.includes("YOUR_FORM_ID")) {
+    console.warn(
+      "\n[注意] 問い合わせの送信先が未設定です。フォームからの相談は届きません。" +
+      "\n       いまは押すとメールソフトへ逃がし、その旨を画面に出す状態です。" +
+      "\n       partials/contact.html と partials/en/contact.html の form action を実際の送信先へ。" +
+      "\n       CSP の connect-src / form-action も同じ送信先へ合わせること(_build/build.mjs)。\n"
+    );
+  }
+}
+
 console.log("built pages:", built);
 console.log("app.css sections:", sectionFiles.length);
 console.log("dist/ ready (publish this directory):", DIST);

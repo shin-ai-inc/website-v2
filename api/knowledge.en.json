@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "756a578",
+  "generatedAt": "d5e5244",
   "chunks": [
     {
       "id": "index#0",
@@ -778,11 +778,18 @@
       "id": "contact#6",
       "title": "Send us a message｜Contact & Free Consultation | ShinAI",
       "url": "https://shinai-inc.jp/en/contact.html",
-      "text": "We read everything that comes in, and a colleague will get back to you. \n\n Please leave this field empty \n\n Company or organisation required \n\n Your name required \n\n Email address required \n\n Phone optional \n\n What would you like to discuss required \n\n No technical knowledge needed. Enquiries at a vague stage are genuinely welcome. \n\n I agree to the handling of personal information \n\n What you send is used only to respond to your enquiry.\n\n Send \n\n Message sent. We will read it and a colleague will get back to you.\n\n Something went wrong while sending. Please write to us directly at\n contact@shinai-inc.jp .",
-      "vec": "/wAEAQv2+AYA/AP2AAH6APkAAv8EBgkCB/4KAAj7/vv2CfwDCAj6+wUCCAP+//oAAwL+Af0G/AEE/gEEA/j8/wEBAggB/wMA+/8G/fkAAgD+BPL///z6A/j89wn6BgMCAAQDAAf6BQn/Afr5AgD1/AT8+v4A/Pz5+gwIA//8Av3z/gb3CPv6+f4C+PgBAPb7/Qb8+/78BgLy+AEKBAb0+AUE+/z6BAH//P75+fwFCvgI/vkB//z9/fn5BwD//P8BDAEF+AD8AAUA+QIE/fgCBv/+DvICBPn7+QD0+foEBAUEBgb7AfkFCP/8Cf0I/gb9CAMFAwD7//sLBAT7Bu4F+v4CAfwEBfn/BfoDCQIE+/4B//MI/P3/CPcJ9vb7Awf3AAoI+gD+/gIIAwAEBfwJ+PcC+QIK/foG/vz89wYCAvwC+AL69AMEBgAAAvQA/AAJ/QH7/wD//QYB/AP/AgD4/v//+wEFBP//9vgH/wQE9PgE9wcAAAH9+wgCAAMKCvj/BAD/BAL7Cfv+ARIEBgYA+v37BAn+Bv7/AAMG8AQCAfwKAwD4APf/+f3+CfgD9P759v79AAH7/QII/vQAAQT9DfoABvoGAf4DAPj9B/4D/wj8+f0E/wf5BgH4+P8B+Pb7//kCAAcD/gf+AwYBDf4G+wD59gD3AvkB/Pr/+AEDAgg="
+      "text": "We read everything that comes in, and a colleague will get back to you.Please leave this field empty \n\n Company or organisation required \n\n Your name required \n\n Email address required \n\n Phone optional \n\n What would you like to discuss required \n\n No technical knowledge needed.Enquiries at a vague stage are genuinely welcome.I agree to the handling of personal information \n\n What you send is used only to respond to your enquiry.Send \n\n Thank you for your message.We will read it and a colleague will get back to you.Your mail app should now be open.If it did not open, or your text was not carried over, please write to us\n directly at contact@shinai-inc.jp .Something went wrong while sending.",
+      "vec": "AAEEAQvz+QUB/QH4/wH6Afn/Av4EBgcCB/8IAQf7/vv3CPoDCQn8+wUDCQL9//gBAwP8AP4D/f8E/wEEAvr9AAIAAgoA/wMA+/8F+/kAAwL/BPP///z3A/f8+Ar5BgMD/gYDAQX6Bgj+Afr6Af/2+wP9+/4B+/z4+wwHBP/9Av31/wb4Cfv7+v4C+PoBAPb7/QP8+wD8BgPz+QIKBQb1+AQE+fv5AwH//P74+vwECfoJAPgC//z+/fr4CAD+/P7/CwED+gD8AAYC+QIE/PkBBv7/EPIBBfr6+/7z+voEBQMEBQX7AvgFCQD8CfwJ/AT/CQMGAwH7//sLAwT6B+8G+v0CAvwGBPn9BfsCCQID/f4B/vMI+/3/B/cI9/X8Agb5AQoI/AH9/gMHAv8GA/0I+fYD+QMJ/fsGAPz69gYCAv0D+gL69AQFBgAABPL//QAJ/AL8/wD//Ab/+wL/Av/4/f/++gEFAgAA9/gI/wMF8/kC9gkA/wD++ggC/gMKCvj/BP//BAL8C/r/ABEGBAYA+Pz8Awj+Bf7/AAQG8QQCAf0IAwH3Afb9+fz8B/gF8/359/3+///8/AIH/PP//wP7DvoBBPkGAv4C//j8Cf4DAAf9+/4EAQn5CAD3+P4C+Pb7APoDAAcD/wj/AgYBDf4F+wH49wD3AvkA/vv/+AEBAwc="
     },
     {
       "id": "contact#7",
+      "title": "Send us a message｜Contact & Free Consultation | ShinAI",
+      "url": "https://shinai-inc.jp/en/contact.html",
+      "text": "Please write to us directly at\n contact@shinai-inc.jp .",
+      "vec": "//0HBgv09gr+9wL6BQD6Afv/BP0BBQwDCwAG+Qn2/vr6AvsECQb7+QQACAj+//kBBP3+Av7/9gEHAwAGAfz8AgIDBAz/+QQC/QEE/PgFAQL4CPMC/fn4BPgA+An5AgADAQUH/wX5BQ0CA/z+/QD6+gD9/P8A+vz4/QoIAf77AP/2/v76B/n9/P4B+/0EAfH9/QT7+QL9A/7z9wIJAAT3+woDAP75AP/++/36+/4DDPoFAvkE/v73Afv5CgD+/P8ADgQG+v39AwL/9f8G/vgDB/4ACfIBBP36/Pz3+/sBAgYGBwT+AfcJBP/+BP8H/wb7AwADAv77Af0GBQL8BO8I+/8DAv8KA/v5BPwADAQE/foCA/kDAfz9CfT/+/b8/wP5/QYF+v/7AAMIAAAHA/0E9vkH9wUL/fsE/v8A+AUHA/4D+AH49AIGBQH9BPkE9v4ICP/3AwP+/Af++QEBBAD1/AEA/gEEAv/+8/kH/wAC9f0I+wn9AAD8/QsCAgADA/cBAwH/BwT8Dvj/AQkDCAcA/vj+BQUACP0B/QcF7gEB/v0L///6A/cB9fz+Bfj+9QL99gL/BAMA/gMD+/f/+//8D/UBBfwBAv0BAPn/DQEC/An89/4HAwX5CP77+f8B+vb6/vsABQkEAAP5AAYCD/4C+gH79wH5//sDAPwF+gUGAwg="
+    },
+    {
+      "id": "contact#8",
       "title": "Contact and coverage｜Contact & Free Consultation | ShinAI",
       "url": "https://shinai-inc.jp/en/contact.html",
       "text": "You can also chat with us \n The assistant at the bottom right of the screen takes questions on the spot. Use it when you want a quicker answer than the form.",
