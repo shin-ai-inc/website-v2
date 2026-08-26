@@ -1246,7 +1246,11 @@ h1, h2, h3 {
 }
 
 .article__tag {
-  font-family: var(--font-label);
+  /* --font-label(Space Grotesk/Inter)はラテン専用で、CJKのフォールバックを
+     持たない。「登壇」のような日本語タグを流すと、環境によっては字形が
+     見つからず空の枠(tofu)になる(実機・実測で確認)。中身が日本語の
+     タグは --font-body(Noto Sans JP)を使う。 */
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -1383,6 +1387,32 @@ h1, h2, h3 {
 @media (max-width: 640px) {
   :lang(ja) .article__para {
     word-break: normal;
+  }
+}
+
+/* AIアシスタントの起動ボタン(.chatbot__launcher・position:fixed)は
+   画面右下に常駐し、スクロール位置に関わらず同じ場所に留まる。
+   本文は幅いっぱいまで組んでいたため、読んでいる途中の行がボタンの
+   真下に来る瞬間、文字が隠れていた(実測: 390px幅で段落と43px重なる)。
+   本文の右側だけボタンの専有幅ぶん空け、どのスクロール位置でも
+   重ならないようにする。ボタン側(chatbot.css)は変更しない
+   (全ページ共通の部品のため、記事の読み幅だけをここで調整する)。
+
+   ボタンは480px以下でアイコンのみ(実測: 右端から約67px)、
+   481px以上では「質問する」の文字を持つピル形(実測: 約150px)に
+   footprint が変わるため、閾値をそろえて二段階で確保する
+   (chatbot.css の @media (max-width: 480px) と合わせる)。
+   上限は759px。760px(--container-narrow)からは記事の外枠自体が
+   ビューポートより狭まり中央寄せになるため、実測でも重なりが消える。 */
+@media (max-width: 480px) {
+  .article__body {
+    padding-right: 3.25rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 759px) {
+  .article__body {
+    padding-right: 8.5rem;
   }
 }
 
@@ -4686,7 +4716,12 @@ h1, h2, h3 {
 }
 
 .news__tag {
-  font-family: var(--font-label);
+  /* article.cssの.article__tagと同じ不具合。--font-label(Space Grotesk/
+     Inter)はCJKのフォールバックを持たず、「登壇」等の日本語タグが
+     環境によって空の枠(tofu)になる。中身は日本語のため --font-body を使う。
+     text-transform:uppercase は日本語には効かないが、英字タグが入っても
+     壊れないよう残す。 */
+  font-family: var(--font-body);
   font-size: var(--fs-eyebrow);
   letter-spacing: 0.08em;
   text-transform: uppercase;

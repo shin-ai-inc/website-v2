@@ -90,7 +90,12 @@
 }
 
 .news__tag {
-  font-family: var(--font-label);
+  /* article.cssの.article__tagと同じ不具合。--font-label(Space Grotesk/
+     Inter)はCJKのフォールバックを持たず、「登壇」等の日本語タグが
+     環境によって空の枠(tofu)になる。中身は日本語のため --font-body を使う。
+     text-transform:uppercase は日本語には効かないが、英字タグが入っても
+     壊れないよう残す。 */
+  font-family: var(--font-body);
   font-size: var(--fs-eyebrow);
   letter-spacing: 0.08em;
   text-transform: uppercase;
