@@ -92,8 +92,10 @@ const API_ORIGIN = "https://api.shinai-inc.jp";
    HTMLに出る公開値であり秘密ではない（鍵と同じ扱いをしない）。
    本サイトは GitHub Pages 配信で Cloudflare はDNSのみのため、
    プロキシ経由の自動計測は使えず、ビーコンを手で埋め込む方式になる。
-   空のあいだはビーコンもCSPの許可も出さない。計測しない構成のまま保つ。 */
-const WEB_ANALYTICS_TOKEN = "e9be1908df71408a8dc9031d743716ac";
+   空のあいだはビーコンもCSPの許可も出さない。計測しない構成のまま保つ。
+   値はダッシュボードのURLに出る siteTag ではなく、管理画面が示すスニペットの
+   token を使う。両者は別物で、siteTag を入れても計測は始まらない（一度取り違えた）。 */
+const WEB_ANALYTICS_TOKEN = "4261bda7d4d44372a91b44ff963a7d7c";
 const CF_BEACON_HOST = "https://static.cloudflareinsights.com";
 const CF_BEACON_ENDPOINT = "https://cloudflareinsights.com";
 const analyticsOn = WEB_ANALYTICS_TOKEN.length > 0;
@@ -845,7 +847,7 @@ ${shared[loc.code].footer}
 ${shared[loc.code].chatbot}
   ${scripts.join("\n  ")}${analyticsOn ? `
   <!-- Cloudflare Web Analytics: Cookieを置かず、個人を追跡しない。 -->
-  <script defer src="${CF_BEACON_HOST}/beacon.min.js" data-cf-beacon='{"token": "${WEB_ANALYTICS_TOKEN}"}'></script>` : ""}
+  <script type="module" src="${CF_BEACON_HOST}/beacon.min.js" data-cf-beacon='{"token": "${WEB_ANALYTICS_TOKEN}"}'></script>` : ""}
 </body>
 </html>
 `;
