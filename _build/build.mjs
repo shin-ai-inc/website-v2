@@ -106,9 +106,11 @@ const CSP_DIRECTIVES = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data:",
-  `connect-src 'self' https://formspree.io ${API_ORIGIN}${analyticsOn ? " " + CF_BEACON_ENDPOINT : ""}`,
+  /* 問い合わせフォームも自社Worker(API_ORIGIN)へJSONで送る。
+     Formspree等の第三者フォームサービスは使わない(2026-08-27・Resendへ移行)。 */
+  `connect-src 'self' ${API_ORIGIN}${analyticsOn ? " " + CF_BEACON_ENDPOINT : ""}`,
   "base-uri 'self'",
-  "form-action 'self' https://formspree.io",
+  "form-action 'self'",
   "object-src 'none'"
 ];
 const CSP_META = CSP_DIRECTIVES.join("; ");
@@ -1173,20 +1175,15 @@ for (const loc of LOCALES) {
   );
 }
 
-/* 問い合わせの送信先。未設定のまま公開され、押しても何も起きない状態が続いた。
-   TODOコメントは読まれない。ビルドのたびに目に入る場所へ出す。 */
-{
-  const form = read("partials/contact.html");
-  const action = (form.match(/<form[^>]*\baction="([^"]*)"/) || [])[1] || "";
-  if (!action || action === "#" || action.includes("YOUR_FORM_ID")) {
-    console.warn(
-      "\n[注意] 問い合わせの送信先が未設定です。フォームからの相談は届きません。" +
-      "\n       いまは押すとメールソフトへ逃がし、その旨を画面に出す状態です。" +
-      "\n       partials/contact.html と partials/en/contact.html の form action を実際の送信先へ。" +
-      "\n       CSP の connect-src / form-action も同じ送信先へ合わせること(_build/build.mjs)。\n"
-    );
-  }
-}
+/* 問い合わせの送信先。以前は form action にプレースホルダを残したまま公開され、
+   押しても何も起きない状態が続いた。いまは Worker(/api/contact)経由でJS送信するため
+   静的ビルドから設定漏れを検出できない(鍵はCloudflare側のsecretで、ここからは見えない)。
+   Worker未設定のときは Worker自身が控え(D1)へ落として success:false を返す
+   (api/index.mjs の handleContact)。ここでは新規クローン時の見落とし防止に留める。 */
+console.log(
+  "[確認] 問い合わせフォームは api.shinai-inc.jp/api/contact 経由。" +
+  " RESEND_API_KEY と CONTACT_FROM_EMAIL の設定は api/wrangler.toml のコメントを参照。"
+);
 
 console.log("built pages:", built);
 console.log("app.css sections:", sectionFiles.length);

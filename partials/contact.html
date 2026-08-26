@@ -1,6 +1,7 @@
 <!--
   CONTACT ページ本文（main の中身のみ）。事実・文言は BRIEF.md 10章を一次資料とする。
-  フォームのクライアント検証JSは scripts/ 側で付与する前提。送信先はプレースホルダ。
+  フォームの送信は scripts/contact-form.js が担う。JSONで自社Worker(/api/contact)へ
+  POSTし、Resend経由でメールする。Worker未設定時のみ mailto へフォールバックする。
 -->
 <section class="page-hero" aria-labelledby="contact-hero-title">
   <div class="container">
@@ -95,16 +96,10 @@
           <p class="contact-form-card__lead">いただいた内容を確認のうえ、担当より後ほどご連絡いたします。</p>
         </div>
 
-        <!-- TODO(公開前・必須): 送信先が未設定。action の YOUR_FORM_ID_HERE を実IDへ置換すること。
-             未設定の間は contact-form.js が mailto へフォールバックするためエラーにはならないが、
-             フォームからの問い合わせはメールクライアント任せになり取りこぼしが出る。
-             ドメイン取得後に Formspree(または後継の送信先)でフォームを作成し、
-             日本語版と英語版(partials/en/contact.html)の両方を同時に更新する。
-             CSP の connect-src / form-action も送信先に合わせて見直すこと(_build/build.mjs と deploy/_headers)。 -->
-        <form class="contact-form" method="post"
-              action="https://formspree.io/f/YOUR_FORM_ID_HERE"
+        <!-- JSでpreventDefaultして/api/contactへ送るため、actionは実質使われない。
+             CSPのform-actionは'self'のみ許可(_build/build.mjs)。 -->
+        <form class="contact-form" method="post" action="#"
               aria-describedby="contact-form-note">
-          <input type="hidden" name="_subject" value="ShinAI お問い合わせ">
           <!-- ハニーポット: 視覚非表示。人間は入力しない。値があれば送信側で破棄する -->
           <div class="contact-hp" aria-hidden="true">
             <label for="company-website">この欄は入力しないでください</label>

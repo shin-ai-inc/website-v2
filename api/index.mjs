@@ -17,6 +17,8 @@ import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUs
 import { isWorthKeeping, voiceRecord, slackPayload, isAuthorizedAdmin, purgeCutoff }
   from "./lib/voices.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
+import { parseContactBody, contactMailPayload, contactSlackPayload, deadLetterRow, deadLetterPurgeCutoff }
+  from "./lib/contact.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
 import { normalizeVector } from "./lib/vector.mjs";
@@ -194,6 +196,122 @@ async function readVoices(request, env) {
   });
 }
 
+/*
+  問い合わせフォームの受け口。
+  チャットと同じ多層の考え方を踏襲する: 受理は閉じた契約(contact.mjs)、
+  濫用はグローバルな日次上限(BudgetMeterの再利用)、失敗は沈黙させず
+  控え(D1)と通知(Slack)へ落とす。個人情報を扱う分、成功時は何も溜めない
+  (Resend側の送信ログのみが残り、当社の側には残さない)。
+*/
+async function handleContact(request, env, ctx, origin) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ success: false }, 400, origin);
+  }
+
+  const parsed = parseContactBody(body);
+  if (!parsed.ok) {
+    if (parsed.silent) {
+      /* ハニーポットに引っかかった機械の投稿。拒まれたと気づかせない。 */
+      return json({ success: true }, 200, origin);
+    }
+    audit({ event: "contact_rejected", reason: parsed.reason });
+    return json({ success: false, reason: parsed.reason }, parsed.status, origin);
+  }
+
+  /* --- 濫用対策: 日次上限。BudgetMeter はチャットと同じ仕組みを
+     別インスタンス(名前"contact")で使い回す。新しいDOクラスは増やさない。 --- */
+  const dayKey = jstDayKey(new Date());
+  const limit = Number(env.CONTACT_DAILY_LIMIT || 30);
+  let meter;
+  try {
+    const id = env.BUDGET.idFromName("contact");
+    const stub = env.BUDGET.get(id);
+    const res = await stub.fetch("https://budget/consume", {
+      method: "POST",
+      body: JSON.stringify({ dayKey, limit })
+    });
+    meter = await res.json();
+  } catch (e) {
+    audit({ event: "contact_budget_unavailable" });
+    return json({ success: false, reason: "busy" }, 200, origin);
+  }
+  if (shouldBlockByBudget({ count: meter.countBefore, limit })) {
+    audit({ event: "contact_budget_exceeded", day: dayKey, count: meter.countBefore, limit });
+    return json({ success: false, reason: "busy" }, 200, origin);
+  }
+
+  const to = env.CONTACT_TO_EMAIL || "contact@shinai-inc.jp";
+  const from = env.CONTACT_FROM_EMAIL;
+
+  if (!env.RESEND_API_KEY || !from) {
+    /* 送信手段が未設定。相談そのものを失わないよう控えに残し、通知だけ試みる。
+       利用者へは「届いた」と嘘をつかない。 */
+    audit({ event: "contact_unconfigured" });
+    ctx.waitUntil(recordDeadLetter(parsed.value, "unconfigured", env));
+    return json({ success: false, reason: "unconfigured" }, 200, origin);
+  }
+
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${env.RESEND_API_KEY}`
+      },
+      body: JSON.stringify(contactMailPayload(parsed.value, { to, from }))
+    });
+
+    if (!res.ok) {
+      /* Resend のエラー本文は転送しない(内部事情を利用者へ渡さない)。 */
+      audit({ event: "contact_send_failed", status: res.status });
+      ctx.waitUntil(recordDeadLetter(parsed.value, `resend_${res.status}`, env));
+      return json({ success: false, reason: "send_failed" }, 200, origin);
+    }
+
+    audit({ event: "contact_sent", locale: parsed.value.locale, dayCount: meter.countBefore + 1 });
+    return json({ success: true }, 200, origin);
+  } catch (e) {
+    audit({ event: "contact_send_error", name: e && e.name });
+    ctx.waitUntil(recordDeadLetter(parsed.value, "network_error", env));
+    return json({ success: false, reason: "send_failed" }, 200, origin);
+  }
+}
+
+/** 送れなかった相談を控えに残し、Slackへ気づきだけを送る(本文は載せない)。 */
+async function recordDeadLetter(value, reason, env) {
+  if (env.VOICES) {
+    try {
+      const row = deadLetterRow(value, reason);
+      await env.VOICES.prepare(
+        "INSERT INTO contact_deadletter (created_at, company, name, email, phone, message, locale, reason) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+      ).bind(row.created_at, row.company, row.name, row.email, row.phone, row.message, row.locale, row.reason).run();
+      if (Math.random() < 0.1) {
+        await env.VOICES.prepare("DELETE FROM contact_deadletter WHERE created_at < ?")
+          .bind(deadLetterPurgeCutoff()).run();
+      }
+    } catch (e) {
+      /* 控えすら残せないのは最悪のケース。せめて監査ログに理由を残す。 */
+      audit({ event: "contact_deadletter_store_failed", name: e && e.name, reason });
+    }
+  }
+
+  if (env.SLACK_WEBHOOK_URL) {
+    try {
+      await fetch(env.SLACK_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contactSlackPayload(value, reason))
+      });
+    } catch (e) {
+      audit({ event: "contact_deadletter_notify_failed", name: e && e.name });
+    }
+  }
+}
+
 export default {
   async fetch(request, env, ctx) {
     const allowlist = (env.ALLOWED_ORIGINS || "").split(",").map((s) => s.trim()).filter(Boolean);
@@ -233,9 +351,6 @@ export default {
     }
 
     const url = new URL(request.url);
-    if (url.pathname !== "/api/chatbot") {
-      return json({ success: false }, 404, origin);
-    }
 
     if (!origin) {
       audit({ event: "rejected_origin" });
@@ -244,6 +359,14 @@ export default {
 
     if (!(request.headers.get("Content-Type") || "").includes("application/json")) {
       return json({ success: false }, 415, origin);
+    }
+
+    if (url.pathname === "/api/contact") {
+      return handleContact(request, env, ctx, origin);
+    }
+
+    if (url.pathname !== "/api/chatbot") {
+      return json({ success: false }, 404, origin);
     }
 
     /* 言語はページ側の html[lang] に対応する。クエリで受け、既定は日本語。 */

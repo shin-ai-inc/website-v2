@@ -8,8 +8,9 @@
   ビルドは通り、リンクも壊れず、構造化データも正しいままだったので、
   実際に人が押すまで誰も気づかなかった(実際に気づかなかった)。
 
-  ここで押さえるのは一点。押した結果が必ず画面に現れること。
-  送信先が設定済みでも未設定でも、成功でも失敗でも、沈黙は許さない。
+  いまは Worker(/api/contact)へ JSON で送り、Resend でメールする経路に
+  差し替えた。ここで押さえるのは変わらず一点。押した結果が必ず画面に
+  現れること。API未設定でも、送信の成功でも失敗でも、沈黙は許さない。
 */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -82,8 +83,9 @@ test("押した結果を伝える領域が三つあり、初期状態はすべ�
 
 /* ---- 境界値 ---- */
 
-test("送信先が未設定のときの案内が、直接届く連絡先を持つ", () => {
-  /* mailto が開かない端末のための逃げ道。ここにアドレスが無いと、
+test("API未設定のときの案内が、直接届く連絡先を持つ", () => {
+  /* apiBase が空のときは mailto へ逃がすが、メールソフトが関連付けられて
+     いない端末では何も起こさない。ここにアドレスが無いと、
      案内を出しても相手は行き先を失う。 */
   for (const [name, html] of [["ja", ja()], ["en", en()]]) {
     const text = textOf(html, "contact-fallback");
@@ -92,15 +94,31 @@ test("送信先が未設定のときの案内が、直接届く連絡先を持�
   }
 });
 
+test("送信に失敗したときの案内も、直接届く連絡先を持つ", () => {
+  /* Worker までは届いたが送れなかった場合。相談を宙に浮かせない。 */
+  for (const [name, html] of [["ja", ja()], ["en", en()]]) {
+    const text = textOf(html, "contact-error");
+    assert.ok(text, `${name}: 失敗時の案内がない`);
+    assert.match(text, /contact@shinai-inc\.jp/, `${name}: 連絡先がない: ${text}`);
+  }
+});
+
 /* ---- 異常系 ---- */
 
-test("送信先が未設定でも、押した跡が画面に残る", () => {
+test("APIが未設定でも、押した跡が画面に残る", () => {
   /* 未設定の分岐が mailto を開くだけで戻ると、画面は無反応のままになる。
      分岐の中で必ず表示を切り替えること。 */
   const src = script();
-  const branch = src.match(/if\s*\(!isConfigured\)\s*\{([\s\S]*?)\n\s{4}\}/);
+  const branch = src.match(/if\s*\(!apiBase\)\s*\{([\s\S]*?)\n\s{4}\}/);
   assert.ok(branch, "未設定時の分岐が読み取れない");
   assert.match(branch[1], /showFeedback\(/, "未設定時に表示を切り替えていない");
+});
+
+test("Workerへ送るのは相談内容が字面のまま。HTMLへ組み立てて注入しない", () => {
+  /* サーバー側と役割が重複しないよう、整形はしない。フィールドをそのまま渡す。 */
+  const src = script();
+  assert.match(src, /fetch\(\s*apiBase\s*\+\s*"\/api\/contact"/, "Workerの/api/contactへ送っていない");
+  assert.match(src, /JSON\.stringify\(/, "JSONで送っていない");
 });
 
 test("ハニーポットに値があるときは送らない", () => {

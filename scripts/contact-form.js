@@ -1,8 +1,9 @@
 /*
   ShinAI Website v2 — contact-form.js
   問い合わせフォームの非同期送信と送信状態管理。
-  一次: Formspree AJAX POST。フォームIDが未設定の場合は mailto にフォールバック。
-  外部ライブラリ不要。自己完結 IIFE。CSP: connect-src 'self' https://formspree.io。
+  一次: 自社Worker(/api/contact)へJSONでPOSTし、Resend経由でメールする。
+  Worker未設定(apiBase未設定)の場合のみ mailto へフォールバックする。
+  外部ライブラリ不要。自己完結 IIFE。CSP: connect-src 'self' https://api.shinai-inc.jp。
 */
 (function () {
   "use strict";
@@ -37,11 +38,10 @@
     message: "【ご相談内容】"
   };
 
-  var ENDPOINT = form.getAttribute("action");
+  /* Cloudflare Worker(api/)の公開URL。チャットと同じ基点を使う。
+     未デプロイ・障害時は mailto へフォールバックする(下記 !apiBase 分岐)。 */
+  var apiBase = (window.SHINAI_CONFIG && window.SHINAI_CONFIG.chatbotApiBase) || "";
   var FALLBACK_EMAIL = "contact@shinai-inc.jp";
-  var isConfigured = ENDPOINT &&
-    ENDPOINT !== "#" &&
-    ENDPOINT.indexOf("YOUR_FORM_ID") === -1;
 
   var submitBtn = form.querySelector("[type='submit']");
   var btnSpan = submitBtn ? submitBtn.querySelector("span") : null;
@@ -69,18 +69,19 @@
     if (shown && shown.scrollIntoView) shown.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
+  var fieldValue = function (name) {
+    var el = form.querySelector("[name='" + name + "']");
+    return el ? (el.value || "").trim() : "";
+  };
+
   var buildMailto = function () {
-    var get = function (name) {
-      var el = form.querySelector("[name='" + name + "']");
-      return el ? (el.value || "") : "";
-    };
-    var subject = encodeURIComponent(T.subject + get("company") + " / " + get("name"));
+    var subject = encodeURIComponent(T.subject + fieldValue("company") + " / " + fieldValue("name"));
     var body = encodeURIComponent(
-      T.company + "\n" + get("company") + "\n\n" +
-      T.name + "\n" + get("name") + "\n\n" +
-      T.email + "\n" + get("email") + "\n\n" +
-      T.phone + "\n" + get("phone") + "\n\n" +
-      T.message + "\n" + get("message")
+      T.company + "\n" + fieldValue("company") + "\n\n" +
+      T.name + "\n" + fieldValue("name") + "\n\n" +
+      T.email + "\n" + fieldValue("email") + "\n\n" +
+      T.phone + "\n" + fieldValue("phone") + "\n\n" +
+      T.message + "\n" + fieldValue("message")
     );
     return "mailto:" + FALLBACK_EMAIL + "?subject=" + subject + "&body=" + body;
   };
@@ -91,9 +92,9 @@
     var hp = form.querySelector("[name='company-website']");
     if (hp && hp.value) return;
 
-    if (!isConfigured) {
-      /* 送信先が未設定の間はメールソフトへ逃がす。ただし mailto は、
-         メールソフトが関連付けられていない端末では何も起こさずに終わる。
+    if (!apiBase) {
+      /* Worker未設定。メールソフトへ逃がすが、mailto はメールソフトが
+         関連付けられていない端末では何も起こさずに終わる。
          逃がしたことを画面に必ず残し、直接届く宛先も併せて示す。
          押して何も起きない状態は、送れたと誤解されるぶん未送信より悪い。 */
       showFeedback("fallback");
@@ -105,19 +106,31 @@
     setState("sending");
     showFeedback(null);
 
-    fetch(ENDPOINT, {
+    var payload = {
+      company: fieldValue("company"),
+      name: fieldValue("name"),
+      email: fieldValue("email"),
+      phone: fieldValue("phone"),
+      message: fieldValue("message"),
+      consent: !!(form.querySelector("[name='privacy-consent']") || {}).checked,
+      locale: EN ? "en" : "ja"
+    };
+
+    fetch(apiBase + "/api/contact", {
       method: "POST",
-      body: new FormData(form),
-      headers: { "Accept": "application/json" }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
     })
     .then(function (res) {
-      if (res.ok) {
-        setState("success");
-        showFeedback("success");
-        form.reset();
-      } else {
-        throw new Error("server");
-      }
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        if (res.ok && data.success) {
+          setState("success");
+          showFeedback("success");
+          form.reset();
+        } else {
+          throw new Error("server");
+        }
+      });
     })
     .catch(function () {
       setState("error");

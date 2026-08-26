@@ -12,6 +12,8 @@ ShinAI コーポレートサイト（再構築版）。マルチページ・静�
 - 演出: `scripts/particles.js`＋自己ホストした `scripts/vendor/three.min.js`（流動パーティクル。
   CDNではなく自ドメイン配信で script-src 'self' を維持）。
 - AIアシスタント: `scripts/chatbot.js`（バックエンドAPI経由。鍵はクライアントに持たない）。
+- 問い合わせフォーム: `scripts/contact-form.js`。同じWorker(`api/`)の `/api/contact` へJSONで送り、
+  Resend経由でメールする。詳細は `api/README.md`。
 
 ## 多言語対応（英語版）
 - 英語版の本文は `partials/en/<page>.html`、共有部品は `partials/en/_header.html` /

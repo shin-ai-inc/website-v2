@@ -1,7 +1,7 @@
-# ShinAI サポートAI（チャットボットAPI）
+# ShinAI サポートAI（チャットボット + 問い合わせフォームAPI）
 
-公開サイトのチャットに応答する Cloudflare Worker。
-知識源は公開サイト16ページの本文のみで、機密は一切含まない。
+公開サイトのチャットと問い合わせフォームに応答する Cloudflare Worker。
+チャットの知識源は公開サイト16ページの本文のみで、機密は一切含まない。
 
 ## 設計の要点
 
@@ -71,6 +71,44 @@ FAQは `<details>`、会社概要は `<dl>` と、意味の境界が既にマー
 体験のための早期フィードバックであり統制ではない（curlで迂回される）。
 サーバ側が最終防壁。
 
+## 問い合わせフォーム（`/api/contact`・2026-08-27 追加）
+
+`scripts/contact-form.js` から JSON で送られる `POST /api/contact` を受け、
+[Resend](https://resend.com) 経由でメールする。実装は `lib/contact.mjs`（受理契約と
+組み立て・純粋関数）と `index.mjs` の `handleContact`（配線・fetch）に分かれる。
+チャットと同じ多層防御の考え方を踏襲するが、氏名・連絡先という「そのまま個人を
+指す」情報を扱う分、次の2点が異なる。
+
+- **成功時は何も溜めない。** Resend側の送信ログのみが残り、当社のD1には書かない。
+- **失敗は沈黙させない。** 送信に失敗した相談だけを `contact_deadletter` テーブルへ
+  控え、`SLACK_WEBHOOK_URL` があれば通知する（本文は載せず、届いていない事実だけ）。
+  控えは30日で消す（`lib/contact.mjs` の `DEADLETTER_RETENTION_DAYS`）。
+  氏名・連絡先・相談内容をそのまま持つため、「お客様の声」(`voices`テーブル・
+  180日)より短い保持期間にしている。
+
+濫用対策はチャットと同じ `BudgetMeter` Durable Object を、別インスタンス名
+（`idFromName("contact")`）で使い回す。新しいDOクラスは増やしていない。
+
+### 有効化に要る手順（柴田の手）
+
+1. [resend.com](https://resend.com) でアカウント作成・`shinai-inc.jp` のサブドメイン
+   （例 `send.shinai-inc.jp`）を追加し、指示されるDKIM/SPF/DMARCのDNSレコードを
+   Cloudflareへ設定する（このドメインのDNSはCloudflareが管理・NS確認済み）。
+2. APIキーを発行し投入する。
+   ```bash
+   cd api && npx wrangler secret put RESEND_API_KEY
+   ```
+3. `wrangler.toml` の `CONTACT_FROM_EMAIL` を、2で認証したドメインの実アドレスへ
+   置き換える（プレースホルダのままだと送信できず、控えとSlack通知だけが動く）。
+4. 控え用テーブルを作成する（`voices` と同じD1データベースを使い回す。初回のみ）。
+   ```bash
+   cd api && npx wrangler d1 execute shinai-voices --remote --file=schema.sql
+   ```
+5. `npx wrangler deploy` で反映する。
+
+未設定の間もフォームは壊れない。「届いた」と嘘をつかず `success:false` を返し、
+画面は `#contact-error` を表示して `contact@shinai-inc.jp` への直接連絡を案内する。
+
 ## 初回セットアップ
 
 ```bash
@@ -119,7 +157,7 @@ npx wrangler deploy
 ## 検証
 
 ```bash
-node --test tests/*.test.mjs   # 全92件（外部依存なし・決定的）
+node --test tests/*.test.mjs   # サイト全体で218件、うちAPI関連150件（外部依存なし・決定的）
 python tools/audit_replies.py  # 公開中のAPIへ18問を投げ、機械が書いた徴候を検出
 ```
 
@@ -140,6 +178,7 @@ python tools/audit_replies.py  # 公開中のAPIへ18問を投げ、機械が書
 | `tests/retrieve.test.mjs` | 字面検索・pin・順位 |
 | `tests/vector.test.mjs` | 量子化・コサイン・順位融合 |
 | `tests/knowledge.test.mjs` | 生成物と実データでの検索精度 |
+| `tests/contact-api.test.mjs` | 問い合わせフォームの受理契約・送信/通知の組み立て |
 
 ## 変えてはいけないこと
 

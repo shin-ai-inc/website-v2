@@ -1,6 +1,7 @@
 <!--
   CONTACT ページ本文（英語版・main の中身のみ）。日本語版 partials/contact.html と1対1で対応させる。
-  Formspree の送信先IDは日本語版と同じものを使う（_subject だけ英語で区別する）。
+  フォームの送信は scripts/contact-form.js が担う。JSONで自社Worker(/api/contact)へ
+  POSTし、Resend経由でメールする。locale:"en" を渡し、件名・本文の言語をサーバー側で切り替える。
   成功・失敗メッセージの ID は scripts/contact-form.js と一致させること。
 -->
 <section class="page-hero" aria-labelledby="contact-hero-title">
@@ -96,13 +97,9 @@
           <p class="contact-form-card__lead">We read everything that comes in, and a colleague will get back to you.</p>
         </div>
 
-        <!-- TODO(公開前・必須): 送信先が未設定。action の YOUR_FORM_ID_HERE を実IDへ置換すること。
-             日本語版 partials/contact.html と必ず同時に更新する(送信先IDは共通、_subject だけ別)。
-             詳細は日本語版の同じ位置のコメントを参照。 -->
-        <form class="contact-form" method="post"
-              action="https://formspree.io/f/YOUR_FORM_ID_HERE"
+        <!-- JSでpreventDefaultして/api/contactへ送るため、actionは実質使われない。 -->
+        <form class="contact-form" method="post" action="#"
               aria-describedby="contact-form-note">
-          <input type="hidden" name="_subject" value="ShinAI enquiry (EN)">
           <!-- ハニーポット: 視覚非表示。人間は入力しない。値があれば送信側で破棄する -->
           <div class="contact-hp" aria-hidden="true">
             <label for="company-website">Please leave this field empty</label>

@@ -7,10 +7,11 @@
 # 秘密は絶対にここへ書かない。投入は次のコマンドのみ:
 #   npx wrangler secret put OPENAI_API_KEY
 #   npx wrangler secret put IP_SALT
-#   npx wrangler secret put SLACK_WEBHOOK_URL   お客様の声の通知先
+#   npx wrangler secret put SLACK_WEBHOOK_URL   お客様の声・問い合わせ送信失敗の通知先
 #   npx wrangler secret put ADMIN_TOKEN         記録の閲覧に使う鍵(32文字以上)
+#   npx wrangler secret put RESEND_API_KEY      問い合わせフォームのメール送信(Resend)
 #
-# 記録用テーブルの作成(一度だけ):
+# 記録用テーブルの作成(一度だけ。追加後の再実行も安全・CREATE TABLE IF NOT EXISTS):
 #   npx wrangler d1 execute shinai-voices --remote --file=schema.sql
 
 name = "shinai-chat"
@@ -39,6 +40,14 @@ API_HOST = "api.shinai-inc.jp"
 DAILY_LIMIT = "800"
 MODEL = "gpt-4o-mini"
 MAX_TOKENS = "400"
+
+# 問い合わせフォーム(/api/contact)。
+# CONTACT_FROM_EMAIL は Resend 側でドメイン認証(DKIM/SPF)を済ませたアドレスのみ使える。
+# 未設定・RESEND_API_KEY未投入の間は、届いたふりをせず控え(D1)へ落として success:false を返す。
+CONTACT_TO_EMAIL = "contact@shinai-inc.jp"
+CONTACT_FROM_EMAIL = "ShinAI サイト <noreply@send.shinai-inc.jp>"
+# 日次上限。実勢の相談件数を大きく超えつつ、フォーム連投は止められる値。
+CONTACT_DAILY_LIMIT = "30"
 
 # 日次予算メーター。単一インスタンスで全体を数え、
 # IP単位の制限では止まらない低速分散を捕捉する。
