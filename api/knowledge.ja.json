@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "83e3ec1",
+  "generatedAt": "80458b5",
   "chunks": [
     {
       "id": "index#0",
@@ -359,6 +359,144 @@
       "url": "https://shinai-inc.jp/industries.html",
       "text": "属人化した知識、着手できない不安、既存システムとの連携。 \n 現れ方は違っても、根にあるのはいつも同じ課題です。 \n\n 属人化した 暗黙知を改善したい \n 長年の勘や判断基準が特定の人の頭の中にしかなく、引き継ぎ資料だけでは再現できません。 \n\n どこから始めれば よいか分からない \n 課題は感じているが、業務のどこを最初に構造化すべきか判断がつかず、着手できずにいます。 \n\n 既存システムと どう繋ぐのか不安 \n CRMや基幹システムに情報が入っており、置き換えずに連携できるのか見通せません。 \n\n ShinAIは現在の業務と知識資産から、 自社に当てはまる形を一緒に見極めます。",
       "vec": "/AEFAhD5/QT8/gL4APr6/vz6AfcKAv/+A/78A//7A//+BAkKAgMGAwMB/gH8AvUAAwf4Bv30+QACA/4FCfoBA/wCAgP19QH//gH+/gAHCQD+/f7/Bv33+vT3+gn5BgYABgICBgT6BQz9+/z/8fzz+P0A/f3+BAD9/QQD//wDCwL29AH8//7++foE+f0A+vsA+wX7/PUCAPz1/gEG/AEB+QkD+QH6/gEB9vv2+gEBAv4F+wL7+//2/gH0/P4D+QADDAIJ+wUC/AEH+wH+AgUIAvT7B/0FB/z7/gD3CggCAP8BBAb2BfUEBP8ABAYD/v//AAcG+QgA//0F/Qz+Cvf5/AUEAQD/A/8DA/wBBwb/BgcA+ff79QH9BvYCBwAAAvr++/gEAAD5A/oGBAECDfgAA/4B/vwF/f8GCfv+8Qn3Dvr5/QD+9AIBAP///PsDA/YCAQj++vX99//8/wUD/wL7+AEC+P/7/QP79fkGAAQD//8B/Qb9+/z1/AAH9wUFBPz9BAcBAvoDDPz+/P/6A/7+Cvz6/QEE/gMC/QME+wUDAv3/AgP+APX8+f3+BwIG+QEF+/zzCP8C/f4B+/n/9gP2/fn2Bf0FCPz7Bvn+CgEE/QsAAQQA/wH6Agbz+AQB/Pn9/wACCQUVAAUDBQT/C/4L/gbz8AX9APoP9/wHAAUAAgY="
+    },
+    {
+      "id": "gunma-ai#0",
+      "title": "群馬県内であれば訪問してもらえますか。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "群馬県内であれば訪問してもらえますか。\nはい。高崎市に本店があり、県内は訪問で対応できます。前橋・太田・伊勢崎・桐生など県内全域が対象です。 \n オンラインのみでも進められますので、まずは負担の少ない形をお選びください。県外・全国のご依頼も承っています。"
+    },
+    {
+      "id": "gunma-ai#1",
+      "title": "小さな会社でも相談できますか。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "小さな会社でも相談できますか。\nできます。数名の会社から承っています。規模が小さいほど一人あたりの業務が広く、AIに任せられる余地が見つかりやすい傾向があります。 \n 大きな仕組みを最初から作る必要はありません。日々時間を取られている作業を一つ選ぶところから始められます。"
+    },
+    {
+      "id": "gunma-ai#2",
+      "title": "費用はどのくらいかかりますか。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "費用はどのくらいかかりますか。\n扱う業務とデータの状態で変わるため、定価は設けていません。まず無料相談で範囲をうかがい、段階を分けたお見積りをお出しします。 \n 最初から本番の仕組みを作らず、小さく試す段階を挟むことで、費用と効果を確かめながら進められます。"
+    },
+    {
+      "id": "gunma-ai#3",
+      "title": "導入までどのくらいかかりますか。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "導入までどのくらいかかりますか。\n目安として、課題の整理に1〜2週間、動くプロトタイプまで2〜4週間、実際の業務データでの検証に2〜6週間です。 \n 本番の仕組みとして組み込む場合は1〜3か月以上を見ていただきます。範囲を絞れば、より短い期間で最初の効果を確かめられます。"
+    },
+    {
+      "id": "gunma-ai#4",
+      "title": "社内のデータを外部に出したくないのですが。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "社内のデータを外部に出したくないのですが。\n対応できます。社内にGPUを搭載した開発専用の機材を設置しており、御社のデータでAIを調整する作業を外部のサービスに渡さずに行えます。 \n 機密情報や個人情報を含む業務も、そのままご相談ください。取り扱いの範囲は着手前に文書で取り決めます。"
+    },
+    {
+      "id": "gunma-ai#5",
+      "title": "判断が言葉になっていない｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "01 \n \n 判断が言葉になっていない \n ベテランが見ている勘どころは、本人の中にあるままでAIに渡せる形になっていません。"
+    },
+    {
+      "id": "gunma-ai#6",
+      "title": "任せる範囲が決まっていない｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "02 \n \n 任せる範囲が決まっていない \n どこまでAIに任せ、どこから人が判断するか。線引きのないまま導入されています。"
+    },
+    {
+      "id": "gunma-ai#7",
+      "title": "既存の仕事につながっていない｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "03 \n \n 既存の仕事につながっていない \n 単独で動くツールは手順の外側に置かれ、忙しい日から順に使われなくなります。"
+    },
+    {
+      "id": "gunma-ai#8",
+      "title": "続ける根拠を示せない｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "04 \n \n 続ける根拠を示せない \n 良くなった実感はあっても、何がどれだけ変わったかを数字で言えない状態が続きます。"
+    },
+    {
+      "id": "gunma-ai#9",
+      "title": "現場を先に理解する｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "01 \n \n 現場を先に理解する \n 技術の説明より先に、いまの手順と困りごとをうかがいます。訪問でも、オンラインでも構いません。"
+    },
+    {
+      "id": "gunma-ai#10",
+      "title": "小さく試して確かめる｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "02 \n \n 小さく試して確かめる \n 一部の業務で効果を測ってから広げます。合わなければ、広げない判断も一緒にします。"
+    },
+    {
+      "id": "gunma-ai#11",
+      "title": "データを外に出さない選択肢がある｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "03 \n \n データを外に出さない選択肢がある \n 社内にGPUを積んだ開発機を置いています。御社のデータで学習させる作業を、外部に持ち出さずに行えます。"
+    },
+    {
+      "id": "gunma-ai#12",
+      "title": "最後は社内で回せるように｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "04 \n \n 最後は社内で回せるように \n 運用ルールを整え、担当の方へ技術を移します。私たちがいなくても続く状態を目標にします。"
+    },
+    {
+      "id": "gunma-ai#13",
+      "title": "会社概要｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "Area: 群馬県を中心に全国・オンライン可\nConsultation: 無料相談 30〜45分・事前準備は不要です\nContact: contact@shinai-inc.jp"
+    },
+    {
+      "id": "gunma-ai#14",
+      "title": "群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "ホーム \n › \n 群馬のAI導入支援 \n \n Gunma \n \n 群馬の企業に、 \n 現場で使われるAIを。 \n\n シンアイ株式会社は、 群馬県高崎市に本店を置く AI開発会社です。 \n 生成AIの業務活用から、 社内知識を扱うRAGの構築、 企業専用AIエージェントの開発まで。 \n 企画設計から開発・運用まで、 自分たちで手を動かして支援します。 \n\n Where It Stops"
+    },
+    {
+      "id": "gunma-ai#15",
+      "title": "導入したのに、 \n 使われない。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "研修を受け、ツールを契約し、 試験導入まで進んだ。 \n それでも業務が変わらない。 ご相談の多くは、ここから始まります。 \n\n In Gunma"
+    },
+    {
+      "id": "gunma-ai#16",
+      "title": "県内の現場で、 \n よくある入口。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "群馬は製造の集積が厚く、 建設・運輸・介護でも 人手と技能の継承が課題になっています。 \n 業種が違っても、 最初に効く場所は似ています。 \n\n 01"
+    },
+    {
+      "id": "gunma-ai#17",
+      "title": "技能の 継承｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "熟練者の段取りや不良の見分け方を、作業記録と聞き取りから引き出して構造化します。退職や異動で失われる前に、誰でも引ける形にします。 \n\n 02"
+    },
+    {
+      "id": "gunma-ai#18",
+      "title": "見積・ 積算の下書き｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "過去の案件と単価の履歴を参照し、根拠を示しながら一次案を作ります。判断は人が行い、そこに至るまでの手間を減らします。 \n\n 03"
+    },
+    {
+      "id": "gunma-ai#19",
+      "title": "記録と 申し送り｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "手書きや口頭で残っている情報を整理し、必要な人に必要な形で届くようにします。書く時間そのものを短くします。 \n\n 04"
+    },
+    {
+      "id": "gunma-ai#20",
+      "title": "問い合わせ 対応｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "社内の資料を出典付きで検索し、応答の下書きまで用意します。担当者しか答えられない状態を解きます。 \n\n 業種別の活用を見る\n\n Our Stance"
+    },
+    {
+      "id": "gunma-ai#21",
+      "title": "研修と試験導入で、 \n 終わらせない。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "要件を整理して他社へ渡すのではなく、 動くものを作り、 業務に組み込み、 \n 運用できる状態まで見届けます。 \n\n FAQ"
+    },
+    {
+      "id": "gunma-ai#22",
+      "title": "まずは、お話をうかがいます。｜群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+      "url": "https://shinai-inc.jp/gunma-ai.html",
+      "text": "要件が決まっていなくても構いません。 \n いまの業務をうかがい、AIを活かせる場所を一緒に整理します。 \n\n 無料相談を申し込む"
     },
     {
       "id": "about#0",

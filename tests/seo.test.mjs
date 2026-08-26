@@ -280,3 +280,72 @@ test("llms.txt が地域を明示する(AI検索が最初に読む平文)", () =
   const txt = readDist("llms.txt");
   assert.match(txt, /群馬県高崎市/, "所在地の記載がない");
 });
+
+/* ---- 日本語限定ページ(地域ページ) ----
+   地域語は日本語圏でしか検索されない。英訳しても読者のいない薄いページが増え、
+   サイト全体の評価を下げる。よって英語版を持たないページを許す仕組みを入れた。
+   「英語版を作らない」は目視では確認できない(存在しないものは見えない)ため、
+   生成されないこと・申告しないことの両方をここで固定する。 */
+
+const GUNMA = "gunma-ai.html";
+
+test("地域ページは日本語だけを生成し、英語版を作らない", () => {
+  assert.ok(existsSync(dist(GUNMA)), "日本語版がない");
+  assert.ok(!existsSync(dist("en/" + GUNMA)), "英語版が生成されている(薄いページになる)");
+});
+
+test("地域ページは存在しない言語版を hreflang で申告しない", () => {
+  /* 実体のない URL を alternate で指すと、検索エンジンは申告全体を疑う。 */
+  const html = readDist(GUNMA);
+  assert.ok(!html.includes(`hreflang="en"`), "英語版を申告している");
+  assert.ok(!html.includes("/en/" + GUNMA), "英語版URLを参照している");
+  assert.match(html, new RegExp(`rel="canonical" href="https://shinai-inc\.jp/${GUNMA}"`));
+});
+
+test("他ページの hreflang は地域ページの影響を受けない", () => {
+  /* 言語別出し分けの仕組みを入れた際に、既存ページの申告を壊していないこと。 */
+  for (const p of ["index.html", "services.html"]) {
+    const html = readDist(p);
+    assert.ok(html.includes(`hreflang="en"`), `英語版の申告が消えた: ${p}`);
+    assert.ok(html.includes(`hreflang="x-default"`), `x-default が消えた: ${p}`);
+  }
+});
+
+test("地域ページが title・description・h1 のすべてで地域を名乗る", () => {
+  /* トップの title は据え置くと決めた。地域クエリで戦える面はこのページにしかない。 */
+  const html = readDist(GUNMA);
+  const title = html.match(/<title>([\s\S]*?)<\/title>/)[1];
+  const desc = html.match(/<meta name="description" content="([\s\S]*?)">/)[1];
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, "");
+  assert.match(title, /群馬/, `title: ${title}`);
+  assert.match(desc, /群馬/, `desc: ${desc}`);
+  assert.match(h1, /群馬/, `h1: ${h1}`);
+});
+
+test("地域ページが sitemap と llms.txt から到達できる", () => {
+  assert.ok(readDist("sitemap.xml").includes(`https://shinai-inc.jp/${GUNMA}`), "sitemap にない");
+  assert.ok(readDist("llms.txt").includes(`https://shinai-inc.jp/${GUNMA}`), "llms.txt にない");
+});
+
+test("地域ページに内部リンクが張られている", () => {
+  /* 誰からも参照されないページは、サイトマップに載っていても評価が溜まらない。 */
+  const referrers = PAGES.filter((p) => readDist(p).includes(`href="${GUNMA}"`));
+  assert.ok(referrers.length >= 2, `参照元が少ない: ${referrers}`);
+});
+
+test("地域ページが自身を WebPage と FAQPage として申告する", () => {
+  assert.ok(typed(GUNMA, "WebPage")[0], "WebPage がない");
+  const [faq] = typed(GUNMA, "FAQPage");
+  assert.ok(faq, "FAQPage がない");
+  assert.ok(faq.mainEntity.length >= 4, `設問が少ない: ${faq.mainEntity.length}`);
+  for (const q of faq.mainEntity) {
+    assert.ok(q.name.length > 0 && q.acceptedAnswer.text.length > 20, q.name);
+  }
+});
+
+test("地域ページのパンくずが階層を申告する", () => {
+  const [crumb] = typed(GUNMA, "BreadcrumbList");
+  assert.ok(crumb, "BreadcrumbList がない");
+  assert.equal(crumb.itemListElement.length, 2);
+  assert.equal(crumb.itemListElement[1].item, `https://shinai-inc.jp/${GUNMA}`);
+});

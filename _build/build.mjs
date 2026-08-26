@@ -133,10 +133,19 @@ const LOCALES = [
     manifestDesc: "Turning your company's tacit knowledge into working AI assets." }
 ];
 
+/* ページが公開される言語。page.locales 未指定なら全言語に出す。
+   地域ページのように日本語でしか検索されないものは ["ja"] を指定し、
+   英語版の生成・hreflang申告・sitemap収録・言語切替のすべてから外す。
+   実体のない言語版を申告すると、申告そのものの信用が落ちる。 */
+const localesFor = (page) =>
+  LOCALES.filter((l) => !page.locales || page.locales.includes(l.code));
+
 /* 言語切替UI。ヘッダーの {{LANG_SWITCH}} を置き換える。
-   同一ページの他言語版へ1タップで移動する(トップへ飛ばさない)。 */
-const langSwitch = (loc, file) => {
-  const href = loc.code === "ja" ? "en/" + file : "../" + file;
+   同一ページの他言語版へ1タップで移動する(トップへ飛ばさない)。
+   他言語版を持たないページでは何も出さない(存在しないURLへは飛ばせない)。 */
+const langSwitch = (loc, page) => {
+  if (localesFor(page).length < 2) return "";
+  const href = loc.code === "ja" ? "en/" + page.file : "../" + page.file;
   return `<a class="site-header__lang" href="${href}" hreflang="${loc.switchTo}" lang="${loc.switchTo}" aria-label="${loc.switchAria}">
         <svg class="site-header__lang-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
@@ -193,6 +202,14 @@ const pages = [
     desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知改善でどう変わるかの活用イメージ。群馬県高崎市のAI開発会社が、業種の文脈からAIの適用先を整理します。",
     en: {crumb: "Industries",  title: "Industries | ShinAI",
           desc: "Manufacturing, construction, care and professional services, retail, healthcare, education, finance, and real estate. What breaks in each, and how tacit-knowledge AI changes it." } },
+  /* 地域ページ。トップの title はブランドの表現として据え置くと決めたため、
+     地域クエリで戦える面はここにしかない。日本語のみで公開する。 */
+  { file: "gunma-ai.html", part: "gunma-ai.html", nav: null, hero: false,
+    locales: ["ja"],
+    crumb: "群馬のAI導入支援",
+    changefreq: "monthly", priority: "0.9",
+    title: "群馬県のAI導入支援・AI開発｜シンアイ株式会社（高崎市）",
+    desc: "群馬県高崎市のAI開発会社が、県内企業のAI導入を支援します。生成AIの業務活用、RAG構築、企業専用AIエージェント開発、製造業の技能継承まで。研修や試験導入で終わらせず、設計から開発・運用まで一貫して伴走します。" },
   { file: "about.html", part: "about.html", nav: "about", hero: false,
     crumb: "会社情報",
     changefreq: "monthly", priority: "0.7",
@@ -526,8 +543,8 @@ const escapeAttr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
    外部AI・検索エンジンはFAQを信頼性評価と回答引用に使うため、schema.org/FAQPage を出力する。
    partial の Q&A を唯一の真実源として自動抽出し、本文との不一致を構造的に防ぐ。 */
 const stripTags = (s) => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-const faqLdFor = (loc) => {
-  const raw = read(loc.src + "/faq.html");
+const faqLdFor = (loc, part) => {
+  const raw = read(loc.src + "/" + part);
   const re = /<span class="faq-item__q-text">([\s\S]*?)<\/span>[\s\S]*?<div class="faq-item__a">([\s\S]*?)<\/div>/g;
   const mainEntity = [];
   let m;
@@ -538,15 +555,18 @@ const faqLdFor = (loc) => {
       acceptedAnswer: { "@type": "Answer", text: stripTags(m[2]) }
     });
   }
+  if (!mainEntity.length) return null;
   return { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: loc.htmlLang, mainEntity };
 };
 
 /* サブページのパンくず構造化データ(検索結果の階層表示用)。
    crumbParent を持つページ(お知らせの個別記事等)は 3階層で申告する。 */
 const breadcrumbLd = (loc, page) => {
-  if (!page.nav && page.file !== "privacy.html" && page.file !== "terms.html") return null;
-  const home = SITE_URL + "/" + loc.dir;
   const meta = loc.code === "ja" ? page : page.en;
+  /* パンくずを持つかどうかは crumb の有無で決まる(トップだけが持たない)。
+     以前はファイル名を名指しで例外扱いしていたため、ページを足すたびに漏れた。 */
+  if (!meta || !meta.crumb) return null;
+  const home = SITE_URL + "/" + loc.dir;
   const items = [
     { "@type": "ListItem", position: 1, name: loc.code === "ja" ? "ホーム" : "Home", item: home }
   ];
@@ -705,7 +725,7 @@ const shell = (page, loc) => {
   const main = normalizeMain(read(loc.src + "/" + page.part));
   /* replaceAll: partial 冒頭の解説コメント内にもトークン名が現れるため、先頭一致では取り違える。 */
   const header = markCurrent(shared[loc.code].header, page.nav)
-    .replaceAll("{{LANG_SWITCH}}", langSwitch(loc, page.file));
+    .replaceAll("{{LANG_SWITCH}}", langSwitch(loc, page));
   const v = "?v=" + BUILD_HASH;
   /* 英語版は /en/ 配下にあるため、共有アセットへは一段上がる。 */
   const p = loc.prefix;
@@ -727,10 +747,14 @@ const shell = (page, loc) => {
   }
 
   /* hreflang: 同一内容の言語別URLを相互申告する。x-default は日本語(本社所在地の言語)。
-     これがないと、英語ページが日本語ページの重複と見なされ英語圏で埋もれる。 */
-  const alternates = LOCALES.map((l) =>
-    `  <link rel="alternate" hreflang="${l.htmlLang}" href="${urlFor(page.file, l.dir)}">`
-  ).join("\n") + `\n  <link rel="alternate" hreflang="x-default" href="${urlFor(page.file, "")}">`;
+     これがないと、英語ページが日本語ページの重複と見なされ英語圏で埋もれる。
+     一言語しか持たないページでは何も申告しない。相互申告の相手がいない状態で
+     自分だけを alternate に挙げても情報はゼロで、実体のないURLを指せば害になる。 */
+  const pageLocales = localesFor(page);
+  const alternates = pageLocales.length < 2 ? "" :
+    pageLocales.map((l) =>
+      `  <link rel="alternate" hreflang="${l.htmlLang}" href="${urlFor(page.file, l.dir)}">`
+    ).join("\n") + `\n  <link rel="alternate" hreflang="x-default" href="${urlFor(page.file, "")}">`;
 
   const crumbLd = breadcrumbLd(loc, page);
   const structured = [
@@ -742,7 +766,9 @@ const shell = (page, loc) => {
     /* 代表individualの実体は about.html にのみ置く(重複申告を避ける)。
        他ページの founder/employee は @id 参照でここへ解決される。 */
     page.file === "about.html" ? (loc.code === "ja" ? personLd : personLdEn) : null,
-    page.part === "faq.html" ? faqLdFor(loc) : null,
+    /* Q&Aを持つページはすべて FAQPage を出す(faq.html 専用ではない)。
+       本文に faq-item が無いページでは faqLdFor が null を返す。 */
+    faqLdFor(loc, page.part),
     page.article ? articleLd(loc, page, canonical) : null,
     crumbLd
   ].filter(Boolean)
@@ -768,7 +794,8 @@ ${alternates}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ShinAI">
   <meta property="og:locale" content="${loc.ogLocale}">
-  <meta property="og:locale:alternate" content="${LOCALES.find((l) => l.code !== loc.code).ogLocale}">
+${pageLocales.filter((l) => l.code !== loc.code)
+  .map((l) => `  <meta property="og:locale:alternate" content="${l.ogLocale}">`).join("\n")}
   <meta property="og:title" content="${escapeAttr(meta.title)}">
   <meta property="og:description" content="${escapeAttr(meta.ogDesc || meta.desc)}">
   <meta property="og:url" content="${canonical}">
@@ -814,6 +841,7 @@ let built = 0;
 for (const loc of LOCALES) {
   if (loc.dir) mkdirSync(join(ROOT, loc.dir), { recursive: true });
   for (const page of pages) {
+    if (!localesFor(page).includes(loc)) continue;
     write(loc.dir + page.file, stripComments(shell(page, loc)));
     built += 1;
   }
@@ -889,6 +917,7 @@ const llmsTxt = [
 ]).concat(
   pages
     .filter((p) => p.file !== "privacy.html" && p.file !== "terms.html")
+    .filter((p) => localesFor(p).some((l) => l.code === "en"))
     .map((p) => `- [${p.en.title}](${urlFor(p.file, "en/")}): ${p.en.desc}`)
 ).join("\n") + "\n";
 write("llms.txt", llmsTxt);
@@ -898,8 +927,11 @@ write("llms.txt", llmsTxt);
 write("sitemap.xml",
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
-  LOCALES.flatMap((loc) => pages.map((p) => {
-    const alts = LOCALES.map((l) =>
+  LOCALES.flatMap((loc) => pages.filter((p) => localesFor(p).includes(loc)).map((p) => {
+    /* 言語版を持たないページには xhtml:link を出さない。
+       HTMLの hreflang と食い違うと、どちらが正しいか判定できなくなる。 */
+    const langs = localesFor(p);
+    const alts = langs.length < 2 ? "" : langs.map((l) =>
       `\n    <xhtml:link rel="alternate" hreflang="${l.htmlLang}" href="${urlFor(p.file, l.dir)}"/>`
     ).join("") +
     `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor(p.file, "")}"/>`;
@@ -947,8 +979,11 @@ const toDist = (rel) => {
   mkdirSync(dirname(dest), { recursive: true });
   copyFileSync(join(ROOT, rel), dest);
 };
-for (const loc of LOCALES) {                           // 生成済みHTML(日本語8 + 英語8)
-  for (const page of pages) toDist(loc.dir + page.file);
+for (const loc of LOCALES) {                           // 生成済みHTML(言語別)
+  for (const page of pages) {
+    if (!localesFor(page).includes(loc)) continue;
+    toDist(loc.dir + page.file);
+  }
 }
 toDist("styles/app.css");                              // 本番CSS(結合済み)
 cpSync(join(ROOT, "scripts"), join(DIST, "scripts"), { recursive: true }); // 公開JS+vendor
@@ -995,6 +1030,10 @@ const knowledgeFor = (loc) => {
   const chunks = [];
   const catalog = CATALOG_TEXT[loc.code];
   for (const page of pages) {
+    /* その言語で公開しないページは知識ベースにも入れない。
+       生成していないHTMLを読もうとして落ちるだけでなく、
+       チャットが存在しないURLを案内してしまう。 */
+    if (!localesFor(page).includes(loc)) continue;
     const meta = loc.code === "ja" ? page : page.en;
     const html = read(loc.dir + page.file);
     const ctx = {
