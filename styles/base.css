@@ -152,13 +152,14 @@ h1, h2, h3 {
 /* 狭幅では本文の改行位置を制御しない。
    auto-phrase は文節が行に収まらないと丸ごと次行へ送るため、
    一行が約22字しかないモバイルでは行末に空白が残り、右端が乱れる。
-   見出しは短く効果も大きいので残し、続けて読む文だけを解放する。
+   見出しと短いリードは残す（文節が行に対して小さく、空白が溜まらないうえ、
+   解放すると「本店/を置く」のように語の途中で割れる）。
+   段落として続けて読む長い文だけを解放する。
    faq.css が同じ判断を先に採っており、その作法に揃える。
    :lang(ja) の方が詳細度が高いため、同等の詳細度で上書きする。 */
 @media (max-width: 640px) {
-  :lang(ja) :is(.section__lead, .page-hero__lead, .purpose__support,
-    .about-purpose__note, .cta__text, .shin7__desc,
-    .industries-bridge__item-text, .industries-bridge__note) {
+  :lang(ja) :is(.purpose__support, .about-purpose__note, .cta__text,
+    .shin7__desc, .industries-bridge__item-text, .industries-bridge__note) {
     word-break: normal;
   }
 }
