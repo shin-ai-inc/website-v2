@@ -102,3 +102,12 @@
     display: block;
   }
 }
+
+/* 冒頭の一文（何者か）と、続く二文（何をするか）を、狭幅でだけ段落として分ける。
+   モバイルでは五行が一塊に見え、読み始める手がかりが失われるため。
+   広い画面では一行ずつ独立して見えるので、間隔を足す必要はない。 */
+@media (max-width: 640px) {
+  .page-hero__lead--grouped .page-hero__lead-line:first-child {
+    margin-bottom: var(--space-3);
+  }
+}
