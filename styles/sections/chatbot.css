@@ -72,14 +72,23 @@
   transform: translateY(0) scale(1);
 }
 
+/* 地は紙面側へ返す。暗色のままだと二つ困ることがあった。
+   一つは、この窓が右下に固定で開くため、ページ下端では暗いフッターの上に重なり、
+   窓の枠線(--line-ink)が暗地に溶けて上端の輪郭を失うこと。
+   もう一つは、窓の中でいちばん濃い面が、いちばん情報の薄い名札の帯に置かれ、
+   視線が会話と入力から奪われること。名札は退き、会話を前に出す。
+   単色ではなく紙面と同じ淡いグラデを敷き、小さな面でも平らに見せない。
+   会話地(--paper-3)との明度差は 1.06 倍しかなく面だけでは境界が立たないため、
+   区切りは罫(--line-ink)に持たせる。--line では淡すぎて会話地に紛れた。 */
 .chatbot__head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-3);
   padding: var(--space-4);
-  background: var(--grad-dark);
-  color: #fff;
+  background: var(--grad-paper);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line-ink);
 }
 
 .chatbot__title {
@@ -91,19 +100,20 @@
 .chatbot__subtitle {
   margin-top: 2px;
   font-size: var(--fs-sm);
-  color: rgba(231, 234, 241, 0.78);
+  /* --mist は淡地の端(#ECF6F4)で 4.39:1 と 4.5 を割る。小さな文字なので --ink-3(6.28:1)を使う。 */
+  color: var(--ink-3);
 }
 
 .chatbot__close {
   flex: none;
-  color: rgba(231, 234, 241, 0.85);
+  color: var(--ink-3);
   padding: 4px;
   border-radius: 6px;
   transition: color var(--dur-1) var(--ease-out);
 }
 
 .chatbot__close:hover {
-  color: #fff;
+  color: var(--ink);
 }
 
 /* ---- メッセージ列 ---- */
