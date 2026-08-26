@@ -15,6 +15,23 @@ import { encodeVector, normalizeVector } from "../api/lib/vector.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+/* 鍵はマシンごとの .env.local から読む(.gitignore の .env.* に含まれる)。
+   毎回入力させる方式は、マシンが増えるほど手順が人の記憶に依存する。
+   忘れた回だけベクトルが付かない、という取りこぼしが起きる。
+   既に環境変数があればそちらを優先する(CI・一時的な上書きを妨げない)。
+   値は読むだけで、出力にもログにも出さない。 */
+const loadLocalEnv = () => {
+  const path = join(ROOT, ".env.local");
+  if (!existsSync(path)) return;
+  for (const line of readFileSync(path, "utf8").split(/\r?\n/)) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)$/);
+    if (!m) continue;
+    const value = m[2].trim().replace(/^["']|["']$/g, "");
+    if (value && !process.env[m[1]]) process.env[m[1]] = value;
+  }
+};
+loadLocalEnv();
+
 /* ビルドごとにGitハッシュをURLクエリに付加してブラウザキャッシュを無効化する。 */
 const BUILD_HASH = (() => {
   try { return execSync("git rev-parse --short HEAD", { cwd: ROOT }).toString().trim(); }
@@ -1050,7 +1067,9 @@ const embedChunks = async (chunks) => {
     console.warn(
       `\n[注意] OPENAI_API_KEY が渡っていないため、${pending.length}件のベクトルを付けられません。` +
       "\n       文言を変えたチャンクだけが字面検索へ落ちます（言い換えは繋がりません）。" +
-      "\n       公開前に、鍵の設定とビルドを同じコマンドで実行してください:" +
+      "\n       このマシンに .env.local を置くと、以後は node _build/build.mjs だけで足ります:" +
+      "\n         OPENAI_API_KEY=<鍵>   (リポジトリ直下・.gitignore 済み)" +
+      "\n       一度きりなら、鍵の設定とビルドを同じコマンドで実行してください:" +
       "\n         $env:OPENAI_API_KEY = Read-Host \"OpenAI APIキー\"; node _build/build.mjs\n"
     );
     return false;
