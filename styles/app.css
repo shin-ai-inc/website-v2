@@ -2787,9 +2787,16 @@ body {
   text-align: center;
 }
 
+/* 見出しの上に空きを足す。他の節は見出しの前に飾りラベルと余白があり、節の
+   上端から見出しの文字まで 126px(PC) / 89px(モバイル) の空きがある。CTAだけは
+   見出しが節の天井に貼りつき、77px / 32px しかなかった。
+   同じ帯の中で一番大きな字が、いきなり縁から始まる。誘いではなく詰め寄られて
+   いるように読める。節の余白(--section-py)は他と同じなので、足りないのは
+   飾りラベルが担っていたぶんの空き。ここで直接補う。 */
 .cta__lead {
   max-width: var(--container-narrow);
   margin-inline: auto;
+  padding-top: var(--space-6);
 }
 
 .cta__title {
@@ -2914,7 +2921,13 @@ body {
      だから .cta__inner を抱えている節すべてを対象にする。 */
   .cta,
   .section--ink:has(> .cta__inner) {
-    padding-block: var(--space-5) var(--space-4);
+    padding-block: var(--space-4) var(--space-4);
+  }
+
+  /* 狭幅では 48px(PC)ぶんは要らない。節の余白と合わせて見出しまで 56px
+     ——他の節の 89px には届かないが、天井から離れて誘いに戻る量。 */
+  .cta__lead {
+    padding-top: var(--space-5);
   }
 
   /* 節の飾りラベル(「Get Started」)は狭幅では出さない。ローマ字の飾りで、
@@ -3383,16 +3396,19 @@ body {
   .site-footer__nav-list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-1) var(--space-4);
+    gap: 4px var(--space-4);
   }
 
   /* 指の寸法は min-height で明示する。padding だけに任せると、字の行高が
      変わったとき(書体の差し替え・拡大表示)に静かに割る。
+     44px だと字の高さ(約20px)に対して空きが 24px あり、3行に積んだとき
+     リンクどうしが離れて一覧に見えなかった。38px まで落として行の間隔を
+     字に近づける。WCAG 2.2 AA の下限は 24px なので、まだ余裕がある。
      hover の無い画面なので、押した手応えは色で返す。 */
   .site-footer__nav-link {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
+    min-height: 38px;
     color: rgba(255, 255, 255, 0.82);
   }
 

@@ -7,9 +7,16 @@
   text-align: center;
 }
 
+/* 見出しの上に空きを足す。他の節は見出しの前に飾りラベルと余白があり、節の
+   上端から見出しの文字まで 126px(PC) / 89px(モバイル) の空きがある。CTAだけは
+   見出しが節の天井に貼りつき、77px / 32px しかなかった。
+   同じ帯の中で一番大きな字が、いきなり縁から始まる。誘いではなく詰め寄られて
+   いるように読める。節の余白(--section-py)は他と同じなので、足りないのは
+   飾りラベルが担っていたぶんの空き。ここで直接補う。 */
 .cta__lead {
   max-width: var(--container-narrow);
   margin-inline: auto;
+  padding-top: var(--space-6);
 }
 
 .cta__title {
@@ -134,7 +141,13 @@
      だから .cta__inner を抱えている節すべてを対象にする。 */
   .cta,
   .section--ink:has(> .cta__inner) {
-    padding-block: var(--space-5) var(--space-4);
+    padding-block: var(--space-4) var(--space-4);
+  }
+
+  /* 狭幅では 48px(PC)ぶんは要らない。節の余白と合わせて見出しまで 56px
+     ——他の節の 89px には届かないが、天井から離れて誘いに戻る量。 */
+  .cta__lead {
+    padding-top: var(--space-5);
   }
 
   /* 節の飾りラベル(「Get Started」)は狭幅では出さない。ローマ字の飾りで、

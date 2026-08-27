@@ -164,16 +164,19 @@
   .site-footer__nav-list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-1) var(--space-4);
+    gap: 4px var(--space-4);
   }
 
   /* 指の寸法は min-height で明示する。padding だけに任せると、字の行高が
      変わったとき(書体の差し替え・拡大表示)に静かに割る。
+     44px だと字の高さ(約20px)に対して空きが 24px あり、3行に積んだとき
+     リンクどうしが離れて一覧に見えなかった。38px まで落として行の間隔を
+     字に近づける。WCAG 2.2 AA の下限は 24px なので、まだ余裕がある。
      hover の無い画面なので、押した手応えは色で返す。 */
   .site-footer__nav-link {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
+    min-height: 38px;
     color: rgba(255, 255, 255, 0.82);
   }
 
