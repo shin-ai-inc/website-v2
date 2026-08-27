@@ -244,7 +244,7 @@ const pages = [
     crumb: "会社情報",
     changefreq: "monthly", priority: "0.7",
     title: "会社情報｜ShinAI",
-    desc: "技術より先に、人を見る。群馬県高崎市に本店を置くシンアイ株式会社の目的、代表メッセージ、七つのShin、体制と会社概要。",
+    desc: "技術より先に、人を見る。群馬県高崎市を拠点とするシンアイ株式会社の目的、代表メッセージ、七つのShin、体制と会社概要。",
     en: {crumb: "About",  title: "About | ShinAI",
           desc: "People before technology. Our purpose, a message from the founder, the Seven Shin principles, our team, and company facts." } },
   { file: "faq.html", part: "faq.html", nav: "faq", hero: false,
