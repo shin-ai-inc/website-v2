@@ -193,30 +193,3 @@
     gap: var(--space-3);
   }
 }
-
-/* ---- 案内役キャラクター「アイト」(標準モデル・遊び心) ----
-   人の仕事のブロックをそっと受け取って運ぶ小さな相棒。フッター上端右からひょっこり。
-   標準の写像規則: AI色=輪郭/足(--brand)・強調色=アンテナ玉(--energy)・
-   荷物=温かい橙(--energy-soft/--c-enable-ink)。形と動きは標準モデルから不変。
-   reduced-motion は base.css のグローバル無効化に委ねる。 */
-.site-footer { position: relative; }
-.aito-footer {
-  position: absolute; top: -21px; right: clamp(16px, 5vw, 56px);
-  width: 62px; display: inline-block; line-height: 0; z-index: 1;
-}
-.aito-footer svg { width: 62px; height: auto; overflow: visible; animation: aito-float 3.4s ease-in-out infinite; }
-.aito .ab-face { fill: #FFFFFF; stroke: var(--brand); stroke-width: 2; }
-.aito .ab-ant { stroke: var(--brand); stroke-width: 2; stroke-linecap: round; }
-.aito .ab-antdot { fill: var(--energy); }
-.aito .aito-eye { fill: var(--ink); animation: aito-blink 4.6s infinite; transform-box: fill-box; transform-origin: center; }
-.aito .aito-mouth { stroke: var(--ink); stroke-width: 1.7; stroke-linecap: round; fill: none; }
-.aito .ab-foot { fill: var(--brand); opacity: 0.85; }
-.aito .aito-arm { stroke: var(--brand); stroke-width: 2; stroke-linecap: round; fill: none; }
-.aito .ab-box { fill: var(--energy-soft); stroke: var(--c-enable-ink); stroke-width: 1.6; }
-.aito .ab-lines { stroke: var(--c-enable-ink); stroke-width: 1.3; stroke-linecap: round; opacity: 0.7; fill: none; }
-.aito .aito-block { animation: aito-carry 3.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-.aito:hover .aito-block { animation: none; transform: translateY(-4px) rotate(-6deg); }
-.aito:hover .aito-mouth { d: path("M39.5 30 q4 4.6 8 0"); }
-@keyframes aito-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-@keyframes aito-blink { 0%, 91%, 100% { transform: scaleY(1); } 94% { transform: scaleY(0.12); } }
-@keyframes aito-carry { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-3deg) translateY(-1px); } }

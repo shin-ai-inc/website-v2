@@ -297,21 +297,37 @@
       return row;
     },
 
-    /* アイコンは画像ではなくSVGで描く。28pxで潰れない図形に限る。
-       顔は描かない。小さく描いた顔は、目鼻の位置が数ピクセルずれるだけで
-       表情が変わり、意図しない不気味さを生む。記号にはその失敗がない。
-       人物のシルエット。頭と肩を面で描き、肩は下端まで伸ばして枠で切る。
-       初期の版が異物に見えたのは、線で描いたうえに頭と肩を離したため。
-       この大きさでは、細い線と隙間が最初に壊れる。面で詰めれば壊れない。 */
+    /* アイコンは画像ではなくSVGで描く。図形は案内役キャラクター「アイト」の
+       全体像(標準モデル)。押したアイトがそのまま応える、という一対一を
+       画面が変わっても保つ。起動UIと違う図形を出すと、開いた先で相手が
+       すり替わる。
+       色の地は敷かない。円や角丸の色面に載せると、アイトではなく色面が
+       アイコンに見え、キャラクターはその中の模様に落ちる。
+       まばたきと浮遊はさせない。発言のたびに増える要素であり、画面内の
+       複数が別々に動くと、読んでいる本文から目が離れる。動くのは起動UIの
+       一体だけでよい。
+       図形の正本は partials/_chatbot.html と styles/sections/chatbot.css の
+       .aito。三つを同時に直すこと。 */
     createAvatar: function () {
       var wrap = document.createElement("div");
-      wrap.className = "chatbot__avatar";
+      wrap.className = "chatbot__avatar aito aito--avatar";
       wrap.setAttribute("aria-hidden", "true");
       wrap.innerHTML =
-        '<svg viewBox="0 0 32 32" fill="none" focusable="false">' +
-        '<g fill="currentColor">' +
-        '<circle cx="16" cy="12.2" r="4.9"/>' +
-        '<path d="M16 19.2c-5.5 0-10 3.7-10 8.2V32h20v-4.6c0-4.5-4.5-8.2-10-8.2Z"/>' +
+        '<svg viewBox="0 0 66 52" fill="none" focusable="false">' +
+        '<g class="aito-block">' +
+        '<rect x="4" y="23" width="15" height="15" rx="3" class="ab-box"/>' +
+        '<path d="M8 29 h7 M8 33 h5" class="ab-lines"/>' +
+        "</g>" +
+        '<path d="M26 30 q-5 -1 -8 1" class="aito-arm"/>' +
+        '<g class="aito-body">' +
+        '<rect x="25" y="11" width="36" height="30" rx="9" class="ab-face"/>' +
+        '<path d="M43 11 v-5" class="ab-ant"/>' +
+        '<circle cx="43" cy="4" r="2.6" class="ab-antdot"/>' +
+        '<circle cx="37" cy="24" r="2.5" class="aito-eye"/>' +
+        '<circle cx="50" cy="24" r="2.5" class="aito-eye"/>' +
+        '<path d="M39.5 31 q4 3.4 8 0" class="aito-mouth"/>' +
+        '<rect x="32" y="41" width="6" height="4" rx="2" class="ab-foot"/>' +
+        '<rect x="47" y="41" width="6" height="4" rx="2" class="ab-foot"/>' +
         "</g>" +
         "</svg>";
       return wrap;

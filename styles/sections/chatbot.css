@@ -11,35 +11,90 @@
   z-index: var(--z-overlay);
 }
 
-/* ---- 起動ボタン ---- */
+/* ---- 起動UI: 案内役キャラクター「アイト」そのもの ----
+   ピル型のボタンと「質問する」の文字は外した。押す先が吹き出し記号で、
+   開いた先に現れるのがアイトだと、入口と相手が二人になる。アイトを押したら
+   アイトが応える、という一対一に戻す。
+   よって、ここでのボタンは器を持たない。地・枠・影・余白をすべて外し、
+   当たり判定だけを残してキャラクターに重ねる。 */
 .chatbot__launcher {
   display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: 0.8rem 1.25rem;
-  border-radius: var(--r-pill);
-  background: var(--grad-dark);
-  color: #fff;
-  box-shadow: var(--shadow-lg);
-  transition:
-    transform var(--dur-1) var(--ease-out),
-    box-shadow var(--dur-1) var(--ease-out);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  line-height: 0;
+  transition: transform var(--dur-1) var(--ease-out);
 }
 
+/* 押せることは、器ではなく反応で示す。触れると持ち上がり、荷物を掲げて笑う。
+   (下の .aito--launcher:hover 群を参照) */
 .chatbot__launcher:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg), var(--shadow-brand);
+  transform: translateY(-3px);
 }
 
-.chatbot__launcher svg {
-  color: var(--teal-2);
+/* ---- 案内役キャラクター「アイト」(標準モデルの全体像) ----
+   人の仕事のブロックをそっと受け取って運ぶ小さな相棒。手足と荷物を持つ全体像を
+   そのまま使う。
+   フッターに置く案は取り下げた。モバイルでフッターの見かけの高さが増え、
+   最下部の情報が一画面から押し出されたため。キャラクターは常に居る必要はなく、
+   話しかける場所にだけ居ればよい。今その場所は起動UIと会話画面の二つで、
+   どちらにも同じ図形を出す。
+   色は標準モデルの写像規則のまま: 輪郭/足/腕=--brand・アンテナ玉=--energy・
+   目と口=--ink・荷物=--energy-soft/--c-enable-ink。形も動きも搭載時から不変。
+   reduced-motion は base.css のグローバル無効化に委ねる。
+   正本設定: shinai-core 05_プロダクト開発/仕事の変わり方/02_商品設計/キャラクター設定_アイト_v01_approved */
+.aito {
+  display: inline-block;
+  line-height: 0;
 }
 
-.chatbot__launcher-label {
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  letter-spacing: 0.02em;
+.aito .ab-face { fill: #FFFFFF; stroke: var(--brand); stroke-width: 2; }
+.aito .ab-ant { stroke: var(--brand); stroke-width: 2; stroke-linecap: round; }
+.aito .ab-antdot { fill: var(--energy); }
+.aito .aito-eye { fill: var(--ink); transform-box: fill-box; transform-origin: center; }
+.aito .aito-mouth { stroke: var(--ink); stroke-width: 1.7; stroke-linecap: round; fill: none; }
+.aito .ab-foot { fill: var(--brand); opacity: 0.85; }
+.aito .aito-arm { stroke: var(--brand); stroke-width: 2; stroke-linecap: round; fill: none; }
+.aito .ab-box { fill: var(--energy-soft); stroke: var(--c-enable-ink); stroke-width: 1.6; }
+.aito .ab-lines { stroke: var(--c-enable-ink); stroke-width: 1.3; stroke-linecap: round; opacity: 0.7; fill: none; }
+
+/* 起動UIのアイトだけが生きて動く。画面に一体しかなく、押す先を示す役があるため。
+   会話画面のアイコンは静止させる(下の .aito--avatar を参照)。
+   影は器の代わりではない。背後には白い節も暗いフッターも流れるので、
+   どの地の上でも輪郭が保てるだけの薄さに留める。 */
+.aito--launcher {
+  width: clamp(66px, 17vw, 78px);
+  filter: drop-shadow(0 3px 8px rgb(12 26 54 / 0.28));
 }
+
+.aito--launcher svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  animation: aito-float 3.4s ease-in-out infinite;
+}
+
+.aito--launcher .aito-eye { animation: aito-blink 4.6s infinite; }
+.aito--launcher .aito-block {
+  animation: aito-carry 3.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.chatbot__launcher:hover .aito--launcher .aito-block {
+  animation: none;
+  transform: translateY(-4px) rotate(-6deg);
+}
+
+.chatbot__launcher:hover .aito--launcher .aito-mouth {
+  d: path("M39.5 30 q4 4.6 8 0");
+}
+
+@keyframes aito-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes aito-blink { 0%, 91%, 100% { transform: scaleY(1); } 94% { transform: scaleY(0.12); } }
+@keyframes aito-carry { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-3deg) translateY(-1px); } }
 
 /* ---- ウィンドウ ---- */
 .chatbot__window {
@@ -149,29 +204,25 @@
   justify-content: flex-end;
 }
 
+/* 発言のアイコンもアイトの全体像。丸い色面の地は敷かない。
+   色面に載せるとアイコンに見えるのは色面のほうで、キャラクターはその中の
+   模様に落ちる。会話の地(--paper-3)の上に直接立たせる。
+   幅は起動UIより小さいが、顔・荷物・足が判別できる下限として 44px を取る。
+   これより縮めると、まず荷物の罫線と足が潰れ、輪郭だけの図形に寄る。 */
 .chatbot__avatar {
   flex: none;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  /* 地はブランドの藍青。従来の暗色グラデーションは、白基調の画面に
-     小さな黒点として落ち、重く沈んで見えた。
-     ヘッダーと同じ暗色を使ったのは統一のつもりだったが、面積が違えば
-     同じ色でも印象は変わる。大面積で落ち着く色が、小面積では沈む。
-     単色の藍青も硬いため、既存のブランドグラデーション(藍青→青緑)を敷く。
-     面の中で色が移り、小さな円でも平らに見えない。 */
-  background: var(--grad-brand);
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  width: 44px;
+  display: inline-block;
 }
 
 .chatbot__avatar svg {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
+
+/* 会話画面のアイトは動かない。発言のたびに増える要素であり、画面内の複数が
+   別々に浮いて瞬くと、読んでいる本文から目が離れる。動くのは起動UIの一体だけ。 */
+.aito--avatar svg { animation: none; }
 
 /* 吹き出しだけは角丸の例外とする。
    サイト全体の --r-* は 0 で、直角が意匠として選ばれている。
@@ -326,10 +377,6 @@
   .chatbot__dot { animation: none; }
 }
 
-@media (max-width: 480px) {
-  .chatbot__launcher-label { display: none; }
-  .chatbot__launcher { padding: 0.85rem; }
-}
 
 /* ---- モバイル: フルスクリーンのチャット画面(LINE型) ----
    ヘッダー固定・メッセージが伸縮・入力バーは常に最下部という3層のチャット画面。
