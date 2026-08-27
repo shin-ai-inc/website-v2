@@ -71,8 +71,18 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* .site-footer__meta-link は削除した。フッターから連絡先(メール)を外し、
-   直上のCTAに一本化したため、当てる相手が無くなった。 */
+.site-footer__meta-link {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.28);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--dur-1) var(--ease-out);
+}
+
+.site-footer__meta-link:hover {
+  text-decoration-color: var(--teal);
+}
 
 /* ---- 規約・コピーライト ---- */
 .site-footer__bottom {
@@ -120,14 +130,20 @@
    フッターで埋まり、スクロールの終わりが遠い。
    このファイル冒頭の方針(ブランド+横並びナビ / メタ / 規約行)へ素直に戻す。 */
 @media (max-width: 640px) {
+  /* 余白は詰める。フッターは読み物ではなく、探しに来た人が拾う索引で、
+     ここでの「呼吸」は最下部を遠くするだけの費用になる。 */
   .site-footer {
-    padding-block: var(--space-5) var(--space-4);
+    padding-block: var(--space-4) var(--space-3);
   }
 
   .site-footer__main {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .site-footer__essence {
+    margin-top: var(--space-1);
   }
 
   /* 縦の一覧をやめ、横に流して折り返す。1項目あたり60pxを使っていたのが、
@@ -136,16 +152,18 @@
   .site-footer__nav-list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-1) var(--space-4);
+    gap: 2px var(--space-3);
   }
 
   /* 指の寸法は min-height で明示する。padding だけに任せると、字の行高が
-     変わったとき(書体の差し替え・拡大表示)に静かに 44px を割る。
+     変わったとき(書体の差し替え・拡大表示)に静かに割る。
+     44px から 40px へ落とした。フッターのリンクは主動線ではなく、
+     WCAG 2.2 の AA 下限(24px)に対しては十分な余裕がある。
      hover の無い画面なので、押した手応えは色で返す。 */
   .site-footer__nav-link {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
+    min-height: 40px;
     color: rgba(255, 255, 255, 0.82);
   }
 
@@ -153,11 +171,14 @@
     color: #FFFFFF;
   }
 
-  /* メタは1項目1行の縦組みを保つ(折返しの偶然に任せない)。行間だけ詰める。
-     住所は2行に渡るので、ここを開けると帯がすぐ伸びる。 */
+  /* メタの縦組みをやめ、横に流して折り返す。1項目1行は読みやすかったが、
+     5項目で5行を確保するため、住所の折返しと合わせて 143px を使っていた。
+     項目の切れ目は行ではなく間隔(中黒相当の余白)で示す。 */
   .site-footer__meta {
-    flex-direction: column;
-    gap: var(--space-1);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2px var(--space-3);
+    margin-top: var(--space-3);
   }
 
   /* 規約とコピーライトは横一列に戻す。縦に積むと、二行ぶんの高さを
@@ -165,8 +186,10 @@
      両端揃えはやめる。狭い画面で右端へコピーライトが寄ると、下で空けている
      逃げ帯の中へ戻ってしまう。 */
   .site-footer__bottom {
-    gap: var(--space-1) var(--space-4);
+    gap: 2px var(--space-3);
     justify-content: flex-start;
+    margin-top: var(--space-3);
+    padding-top: var(--space-2);
   }
 }
 

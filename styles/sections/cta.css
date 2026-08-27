@@ -89,6 +89,16 @@
   color: var(--teal-2);
 }
 
+/* 和文のラベルはローマ字用の組みを外す。--font-label(Space Grotesk)は和文の
+   字を持たず黙って代替へ落ちるし、uppercase は効かず、0.15em の字間は
+   四文字の和文だと間延びして見える。字間は詰めるが、ラベルとして値から
+   浮かせる程度は残す。 */
+:lang(ja) .cta__fact-label {
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
 .cta__fact-value {
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
@@ -108,17 +118,53 @@
 }
 
 @media (max-width: 640px) {
+  /* CTAだけ節の上下余白を詰める(--section-py-mobile の 40px を上書き)。
+     この節は最後に来て、すぐ下にフッターが続く。二つ合わせて一画面に収めたい
+     ので、節と節の間合いより、最下部までの距離を優先する。
+     トークン側は動かさない。他の節は本文の合間にあり、あの余白が要る。 */
+  .cta {
+    padding-block: var(--space-4) var(--space-3);
+  }
+
+  /* 節の飾りラベル(「Get Started」)は狭幅では出さない。ローマ字の飾りで、
+     すぐ下の和文の見出しが同じことを言っている。最後の一画面をCTAと
+     フッターで分け合うため、意味を持たない一行から先に落とす。 */
+  .cta__lead .eyebrow {
+    display: none;
+  }
+
+  .cta__copy {
+    margin-top: var(--space-3);
+  }
+
   .cta__action {
-    margin-top: var(--space-4);
+    margin-top: var(--space-3);
   }
   .cta__facts {
     flex-direction: column;
-    gap: var(--space-3);
-    margin-top: var(--space-5);
+    gap: var(--space-2);
+    margin-top: var(--space-4);
   }
-  /* ローマ字ラベル(CONTACT/HOURS/CONSULTATION)はモバイルでは省く。値は自明で足りる。 */
+  /* ローマ字ラベル(CONTACT/HOURS/CONSULTATION)はモバイルでは省く。長いうえに
+     値が自明で、狭い画面では場所に見合わない。 */
   .cta__fact-label {
     display: none;
+  }
+
+  /* 和文のラベル(連絡先/受付時間/無料相談)は残す。四文字で場所を取らず、
+     ローマ字と違って読み飛ばさずに拾える。
+     値からラベルの語を抜いた項目もあるため(「無料相談 30〜45分…」→「30〜45分…」)、
+     ここを隠すと何の時間なのか分からなくなる。
+     ただし行は分けない。ラベルを上に積むと1項目が2行になり、3項目で3行ぶん
+     増える。ラベルを左、値を右に置いて、1項目1行に収める。 */
+  :lang(ja) .cta__fact {
+    grid-template-columns: 4.75rem 1fr;
+    align-items: baseline;
+    gap: 0 var(--space-2);
+  }
+
+  :lang(ja) .cta__fact-label {
+    display: block;
   }
 }
 
@@ -128,7 +174,7 @@
     max-width: 340px;
   }
   .cta__facts {
-    padding-top: var(--space-4);
-    margin-top: var(--space-5);
+    padding-top: var(--space-3);
+    margin-top: var(--space-4);
   }
 }
