@@ -3219,18 +3219,8 @@ body {
   color: rgba(255, 255, 255, 0.45);
 }
 
-.site-footer__meta-link {
-  font-size: var(--fs-xs);
-  color: rgba(255, 255, 255, 0.72);
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.28);
-  text-underline-offset: 3px;
-  transition: text-decoration-color var(--dur-1) var(--ease-out);
-}
-
-.site-footer__meta-link:hover {
-  text-decoration-color: var(--teal);
-}
+/* .site-footer__meta-link は削除した。フッターから連絡先(メール)を外し、
+   直上のCTAに一本化したため、当てる相手が無くなった。 */
 
 /* ---- 規約・コピーライト ---- */
 .site-footer__bottom {
