@@ -30,6 +30,8 @@
   --teal: #00C9A7;             /* セカンダリ青緑 */
   --teal-2: #20E7C4;           /* 明るい青緑 */
   --teal-soft: #E0FAF5;        /* 青緑の淡 */
+  --teal-ink: #04796A;         /* 淡ミント地(--teal-soft)で 4.5:1 を満たす濃度。
+                                  --teal は同地で 1.93:1 しかなく、線や文字には使えない */
   --energy: #FF8A00;           /* エネルギーオレンジ。CTA・強調 */
   --energy-2: #FFA533;         /* 明るいオレンジ */
   --energy-soft: #FFF3E0;      /* オレンジの淡 */
@@ -78,6 +80,14 @@
   --font-latin: "Fraunces", "Zen Old Mincho", serif;
   /* UI ラベル・eyebrow 専用。幾何学的 sans で技術精度感を演出 */
   --font-label: "Space Grotesk", "Inter", system-ui, sans-serif;
+  /* チャット会話面専用。サイト本文(--font-body / 300 / 字間 0.05em)は読み物のための
+     組みで、短い発話が続く画面では字面が薄く間延びする。会話には各OSのUI書体を先に
+     当てる(iOS=SF Pro+ヒラギノ角ゴ / Android=系統の Noto Sans CJK / Windows=游ゴシックUI)。
+     主要チャットアプリが一様にそうしており、利用者が最も見慣れた字面になる。
+     Noto Sans JP は既に読み込み済みなので、当たらない環境の受け皿として最後に置く。 */
+  --font-chat: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+               "Hiragino Kaku Gothic ProN", system-ui, "Segoe UI",
+               "Yu Gothic UI", "Noto Sans JP", sans-serif;
   /* 企業理念バンド専用。--font-body と同族で全体の統一感を維持 */
   --font-creed: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -96,6 +106,9 @@
 
   --lh-tight: 1.1;
   --lh-snug: 1.45;
+  /* チャットの発話用。1.45 は見出し脇の短い添え書きには合うが、和文の会話では
+     行が詰まって塊に見える。主要チャットUIはおおむね 1.6 前後を取る。 */
+  --lh-chat: 1.65;
   --lh-body: 1.9;
   --tracking-eyebrow: 0.15em;
   --tracking-latin: 0.04em;

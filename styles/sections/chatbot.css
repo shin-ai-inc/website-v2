@@ -4,8 +4,20 @@
   ローディングのドットはCSSで描く(FontAwesome等の外部依存なし)。
 */
 
+/* 起動UIは画面に貼りつけない(position:fixed をやめた)。読んでいる間ずっと右下に
+   居座ると、本文の一部を隠し続けるうえ、こちらの都合で話しかけているように見える。
+   ページの終わりまで下りてきた人の脇に、フッターと並んで待つ。
+   フッターの中へ入れる方法は取らない。帯の高さを一切変えないことが、そもそも
+   この配置に移した理由だから。高さを持たない絶対配置なら、フッターは元の寸法のまま
+   で、アイトはその上に重なるだけで済む。
+   body を包含ブロックにして文書の最下部へ置く。この一行はチャット起動UIのためだけ
+   にあるので、base.css ではなくここに置く(fixed へ戻すときは一緒に消すこと)。 */
+body {
+  position: relative;
+}
+
 .chatbot {
-  position: fixed;
+  position: absolute;
   right: clamp(1rem, 3vw, 2rem);
   bottom: clamp(1rem, 3vw, 2rem);
   z-index: var(--z-overlay);
@@ -64,8 +76,11 @@
    会話画面のアイコンは静止させる(下の .aito--avatar を参照)。
    影は器の代わりではない。背後には白い節も暗いフッターも流れるので、
    どの地の上でも輪郭が保てるだけの薄さに留める。 */
+/* 寸法の下限は指で押せる 44px から決める。図形の縦横比は 66:52 なので、
+   幅 56px で高さがちょうど 44px に届く。これ以上小さくすると、賢く見える前に
+   押しにくくなる。 */
 .aito--launcher {
-  width: clamp(66px, 17vw, 78px);
+  width: clamp(56px, 14vw, 62px);
   filter: drop-shadow(0 3px 8px rgb(12 26 54 / 0.28));
 }
 
@@ -97,12 +112,20 @@
 @keyframes aito-carry { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-3deg) translateY(-1px); } }
 
 /* ---- ウィンドウ ---- */
+/* 会話面の書体はここで一度だけ決め、中の要素は継承させる。入力欄と吹き出しに
+   別々に書くと、打っている字と送った字が違う顔になる。
+   サイト本文の組み(--font-body / 300 / 字間 0.05em)から離すのは、あれが読み物の
+   ための設定だから。短い発話が続く画面では、細いウェイトと広い字間が字を薄くし、
+   行を間延びさせる。会話は見慣れた字面であるほど速く読める。 */
 .chatbot__window {
   position: absolute;
   right: 0;
   bottom: calc(100% + var(--space-3));
   width: min(380px, calc(100vw - 2rem));
   max-height: min(560px, calc(100svh - 7rem));
+  font-family: var(--font-chat);
+  font-weight: 400;
+  letter-spacing: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -207,11 +230,11 @@
 /* 発言のアイコンもアイトの全体像。丸い色面の地は敷かない。
    色面に載せるとアイコンに見えるのは色面のほうで、キャラクターはその中の
    模様に落ちる。会話の地(--paper-3)の上に直接立たせる。
-   幅は起動UIより小さいが、顔・荷物・足が判別できる下限として 44px を取る。
+   幅は起動UIより小さいが、顔・荷物・足が判別できる下限として 40px を取る。
    これより縮めると、まず荷物の罫線と足が潰れ、輪郭だけの図形に寄る。 */
 .chatbot__avatar {
   flex: none;
-  width: 44px;
+  width: 40px;
   display: inline-block;
 }
 
@@ -238,8 +261,10 @@
   max-width: calc(100% - 36px);
   padding: 0.7rem 0.95rem;
   border-radius: 0.85rem;
-  font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
+  /* 14px は読み物の補助文の寸法で、会話の本文には小さい。主要チャットUIの
+     15〜16px に合わせる(モバイルは既に 0.9375rem を別途指定していた)。 */
+  font-size: 0.9375rem;
+  line-height: var(--lh-chat);
   white-space: pre-wrap;
   word-break: break-word;
 }
@@ -332,11 +357,22 @@
 .chatbot__input {
   flex: 1;
   resize: none;
-  max-height: 96px;
+  /* 書いている文が読めるだけの高さを持たせる。rows=1 のまま欄の中を
+     スクロールさせると、二行目から先は自分が何を書いたか見えない。
+     高さは chatbot.js が内容にあわせて伸ばし、上限はここで止める。
+     5行ぶん(0.9375rem × 1.65 × 5 + 上下の余白と枠)。これを超えたぶんは
+     欄の中でスクロールする。上限を置くのは、長文で入力欄が伸び続けると
+     会話の側が押し潰されるため。 */
+  max-height: 144px;
+  overflow-y: auto;
   padding: 0.6rem 0.8rem;
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
+  /* textarea は font 系を継承しない。会話面の指定(.chatbot__window)を明示的に
+     引き継いで、打っている字と送った字を同じ顔にする。 */
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  font-size: 0.9375rem;
+  line-height: var(--lh-chat);
   color: var(--charcoal);
   background: #fff;
   border: 1px solid var(--line);
@@ -361,16 +397,23 @@
   justify-content: center;
   /* 送信は円。主要チャットUIが一様にそうしており、入力欄と役割が視覚的に分かれる。 */
   border-radius: 50%;
-  background: var(--brand);
-  color: #fff;
+  /* 淡いミント。藍青のベタは、白い入力バーの中で一点だけ濃く沈み、
+     会話より先に目に入っていた。送信は会話の従で、押すときに探せれば足りる。
+     淡い地では白い矢印が消えるため、矢印は同系の濃色へ入れ替える(--teal-ink)。
+     縁を一本置くのは、白地の上で淡い円が輪郭を失わないようにするため。 */
+  background: var(--teal-soft);
+  border: 1px solid color-mix(in srgb, var(--teal) 38%, transparent);
+  color: var(--teal-ink);
   transition:
-    filter var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out),
     transform var(--dur-1) var(--ease-out);
 }
 
+/* ホバーで地の色は変えない。淡い地をこれ以上濃くも淡くもすると、矢印との
+   コントラストが 4.5:1 を割る。浮かせて影を敷くだけで、押せることは伝わる。 */
 .chatbot__send:hover {
-  filter: brightness(1.1);
   transform: translateY(-1px);
+  box-shadow: var(--shadow-teal);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -418,13 +461,12 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* 吹き出し: LINE同等の可読サイズ。自分=ブランド青/相手=白。
-     丸みと尻尾は共通側に一本化した(画面幅で形が変わらないようにする)。 */
+  /* 吹き出し: 自分=ブランド青/相手=白。
+     丸みと尻尾は共通側に一本化した(画面幅で形が変わらないようにする)。
+     寸法と行送りも共通側に一本化した(狭い画面だけ別の値を持つ理由がない)。 */
   .chatbot__message {
     max-width: 80%;
     padding: 0.65rem 0.95rem;
-    font-size: 0.9375rem;
-    line-height: 1.6;
   }
   .chatbot__message--user {
     background: var(--brand);
@@ -441,8 +483,14 @@
   .chatbot__input {
     /* 16px未満だとiOSがフォーカス時にページ全体をズームしレイアウトが崩壊する */
     font-size: 16px;
-    border-radius: var(--r-pill);
     padding: 0.6rem 1rem;
+    /* ピル(--r-pill)をやめる。あの形は1行のときだけ成立し、欄が伸びた瞬間に
+       両端が半円のまま膨らんで崩れる。入力欄が内容にあわせて伸びるように
+       なったので、吹き出しと同じ丸みへ揃える。 */
+    border-radius: 0.9rem;
+    /* 狭い画面では上限を4行に抑える。ここでの入力欄はキーボードと会話の間に
+       挟まれており、PCと同じ5行まで伸ばすと会話がほとんど見えなくなる。 */
+    max-height: 124px;
   }
   .chatbot__send {
     width: 44px;

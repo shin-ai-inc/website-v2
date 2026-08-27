@@ -90,6 +90,7 @@
       this.input.addEventListener("focus", function () {
         window.setTimeout(function () { self.scrollToEnd(); }, 250);
       });
+      this.input.addEventListener("input", function () { self.growInput(); });
       this.sendBtn.addEventListener("click", function () { self.send(); });
       this.input.addEventListener("keydown", function (e) {
         if (e.key === "Enter" && !e.shiftKey) {
@@ -225,14 +226,14 @@
       var problem = this.validate(text);
       if (problem) {
         this.addMessage(text, "user");
-        this.input.value = "";
+        this.resetInput();
         this.addMessage(problem, "bot");
         return;
       }
       this.lastMessageTime = now;
 
       this.addMessage(text, "user");
-      this.input.value = "";
+      this.resetInput();
 
       var apiBase = (window.SHINAI_CONFIG && window.SHINAI_CONFIG.chatbotApiBase) || "";
       if (!apiBase) {
@@ -433,6 +434,25 @@
       if (el) {
         el.parentNode.removeChild(el);
       }
+    },
+
+    /* 入力欄を中身の高さへ伸ばす。textarea は rows で決めた高さのまま止まり、
+       あふれたぶんは欄の中へ隠れる。書いた文が見えないまま送ることになるので、
+       ここで実際の内容の高さへ合わせる。
+       一度 height を空にしてから測るのは、縮めるときのため。前回の高さが
+       残っていると scrollHeight がその値より小さくならず、消しても縮まない。
+       上限は CSS の max-height が持つ。ここで数値を決めない(画面幅で上限が
+       変わるため、二か所に別々の値を置くと必ず片方が古くなる)。 */
+    growInput: function () {
+      this.input.style.height = "auto";
+      this.input.style.height = this.input.scrollHeight + "px";
+    },
+
+    /* 送信・クリア後に1行へ戻す。伸びた高さは inline style なので、
+       値を消して CSS の既定へ返す。 */
+    resetInput: function () {
+      this.input.value = "";
+      this.input.style.height = "";
     },
 
     scrollToEnd: function () {
