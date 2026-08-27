@@ -2898,12 +2898,18 @@ body {
 }
 
 @media (max-width: 640px) {
-  /* CTAだけ節の上下余白を詰める(--section-py-mobile の 40px を上書き)。
+  /* 最後の節の上下余白を詰める(--section-py-mobile の 40px を上書き)。
      この節は最後に来て、すぐ下にフッターが続く。二つ合わせて一画面に収めたい
-     ので、節と節の間合いより、最下部までの距離を優先する。
-     トークン側は動かさない。他の節は本文の合間にあり、あの余白が要る。 */
-  .cta {
-    padding-block: var(--space-4) var(--space-3);
+     ので、節と節の間合いより最下部までの距離を優先する。
+     トークン側は動かさない。他の節は本文の合間にあり、あの余白が要る。
+     .cta クラスの有無は「CTAの見た目を与えるか」
+     の指定で(全ページに強いCTAを置くと押しつけがましくなるため、services と
+     faq はあえて外してある)、余白の詰めはそれとは別の話。最下部の一画面に
+     CTAとフッターを収めたいのは、CTAの見た目を持たない節でも同じ。
+     だから .cta__inner を抱えている節すべてを対象にする。 */
+  .cta,
+  .section--ink:has(> .cta__inner) {
+    padding-block: var(--space-3) var(--space-2);
   }
 
   /* 節の飾りラベル(「Get Started」)は狭幅では出さない。ローマ字の飾りで、
@@ -2914,16 +2920,16 @@ body {
   }
 
   .cta__copy {
-    margin-top: var(--space-3);
+    margin-top: var(--space-2);
   }
 
   .cta__action {
-    margin-top: var(--space-3);
+    margin-top: var(--space-2);
   }
   .cta__facts {
     flex-direction: column;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
+    gap: var(--space-1);
+    margin-top: var(--space-2);
   }
   /* ローマ字ラベル(CONTACT/HOURS/CONSULTATION)はモバイルでは省く。長いうえに
      値が自明で、狭い画面では場所に見合わない。 */
@@ -2954,8 +2960,8 @@ body {
     max-width: 340px;
   }
   .cta__facts {
-    padding-top: var(--space-3);
-    margin-top: var(--space-4);
+    padding-top: var(--space-2);
+    margin-top: var(--space-3);
   }
 }
 
@@ -3316,24 +3322,29 @@ body {
 
 /* ---- モバイル(<=640px) ----
    全 base 規則の後に置き、確実に上書きする(モバイル上書きはファイル末尾が正)。
-   ワードマーク+一文 / 横並びナビ(タップ領域 44px) / 縦組みメタ / 横並びの規約行。
+   ワードマーク+一文 / 横並びナビ(タップ高 36px) / 横流しメタ / 横並びの規約行。
 
    狭幅のフッターは「一望できる低さ」に戻す作業が要る。罫で仕切った2カラムの
    一覧は整って見えたが、7項目が4行×60pxのブロックになり、帯全体が 695px
    ——viewport(844px)の 82% ——を占めていた。最下部に来るたび画面がほぼ
    フッターで埋まり、スクロールの終わりが遠い。
-   このファイル冒頭の方針(ブランド+横並びナビ / メタ / 規約行)へ素直に戻す。 */
+   このファイル冒頭の方針(ブランド+横並びナビ / メタ / 規約行)へ素直に戻す。
+
+   最終的な目標は、最下部までスクロールしたときCTAとフッターが一画面に収まり、
+   CTAの見出しが sticky ヘッダー(65px)の下に見えていること。iPhone 17
+   (402x781px)で実測しながら詰めた。余白の値をここで緩めると、その条件から
+   静かに外れる。変えるときは実測し直すこと。 */
 @media (max-width: 640px) {
   /* 余白は詰める。フッターは読み物ではなく、探しに来た人が拾う索引で、
      ここでの「呼吸」は最下部を遠くするだけの費用になる。 */
   .site-footer {
-    padding-block: var(--space-4) var(--space-3);
+    padding-block: var(--space-3) var(--space-2);
   }
 
   .site-footer__main {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
 
   .site-footer__essence {
@@ -3346,7 +3357,7 @@ body {
   .site-footer__nav-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 2px var(--space-3);
+    gap: 0px var(--space-3);
   }
 
   /* 指の寸法は min-height で明示する。padding だけに任せると、字の行高が
@@ -3357,7 +3368,7 @@ body {
   .site-footer__nav-link {
     display: inline-flex;
     align-items: center;
-    min-height: 40px;
+    min-height: 36px;
     color: rgba(255, 255, 255, 0.82);
   }
 
@@ -3371,19 +3382,26 @@ body {
   .site-footer__meta {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2px var(--space-3);
-    margin-top: var(--space-3);
+    gap: 2px var(--space-2);
+    margin-top: var(--space-2);
   }
 
   /* 規約とコピーライトは横一列に戻す。縦に積むと、二行ぶんの高さを
      短い文字列二つのために使うことになる。
      両端揃えはやめる。狭い画面で右端へコピーライトが寄ると、下で空けている
      逃げ帯の中へ戻ってしまう。 */
+  /* 間隔を space-3 から space-2 へ詰め、規約2つとコピーライトを1行に戻す。
+     アイトの逃げ帯(76px)を引いた 278px に対し、space-3 では 287px で
+     わずかに溢れて2行になっていた。1行に収まれば約25px戻る。 */
   .site-footer__bottom {
-    gap: 2px var(--space-3);
+    gap: 2px var(--space-2);
     justify-content: flex-start;
-    margin-top: var(--space-3);
-    padding-top: var(--space-2);
+    margin-top: var(--space-2);
+    padding-top: var(--space-1);
+  }
+
+  .site-footer__legal {
+    gap: 2px var(--space-2);
   }
 }
 

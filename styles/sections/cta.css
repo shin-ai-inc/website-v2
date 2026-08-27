@@ -118,12 +118,18 @@
 }
 
 @media (max-width: 640px) {
-  /* CTAだけ節の上下余白を詰める(--section-py-mobile の 40px を上書き)。
+  /* 最後の節の上下余白を詰める(--section-py-mobile の 40px を上書き)。
      この節は最後に来て、すぐ下にフッターが続く。二つ合わせて一画面に収めたい
-     ので、節と節の間合いより、最下部までの距離を優先する。
-     トークン側は動かさない。他の節は本文の合間にあり、あの余白が要る。 */
-  .cta {
-    padding-block: var(--space-4) var(--space-3);
+     ので、節と節の間合いより最下部までの距離を優先する。
+     トークン側は動かさない。他の節は本文の合間にあり、あの余白が要る。
+     .cta クラスの有無は「CTAの見た目を与えるか」
+     の指定で(全ページに強いCTAを置くと押しつけがましくなるため、services と
+     faq はあえて外してある)、余白の詰めはそれとは別の話。最下部の一画面に
+     CTAとフッターを収めたいのは、CTAの見た目を持たない節でも同じ。
+     だから .cta__inner を抱えている節すべてを対象にする。 */
+  .cta,
+  .section--ink:has(> .cta__inner) {
+    padding-block: var(--space-3) var(--space-2);
   }
 
   /* 節の飾りラベル(「Get Started」)は狭幅では出さない。ローマ字の飾りで、
@@ -134,16 +140,16 @@
   }
 
   .cta__copy {
-    margin-top: var(--space-3);
+    margin-top: var(--space-2);
   }
 
   .cta__action {
-    margin-top: var(--space-3);
+    margin-top: var(--space-2);
   }
   .cta__facts {
     flex-direction: column;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
+    gap: var(--space-1);
+    margin-top: var(--space-2);
   }
   /* ローマ字ラベル(CONTACT/HOURS/CONSULTATION)はモバイルでは省く。長いうえに
      値が自明で、狭い画面では場所に見合わない。 */
@@ -174,7 +180,7 @@
     max-width: 340px;
   }
   .cta__facts {
-    padding-top: var(--space-3);
-    margin-top: var(--space-4);
+    padding-top: var(--space-2);
+    margin-top: var(--space-3);
   }
 }
