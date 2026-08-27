@@ -77,30 +77,7 @@
       var self = this;
       this.button.addEventListener("click", function () { self.toggle(); });
       if (this.closeBtn) {
-        /* stopPropagation: ヘッダー全体にも閉じるハンドラを付けているため、
-           ×ボタン自身のクリックがそこへ二重に伝播しないようにする
-           (close()は多重に呼んでも安全だが、意図を素直に保つ)。 */
-        this.closeBtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          self.close();
-        });
-      }
-
-      /* モバイルでは閉じる手段が×ボタン一点しかなく、柴田より実機で
-         タップが反映しづらいと繰り返し報告があった。ボタン自体の
-         判定域は52px角まで広げたが、なお足りない場合に備え、帯全体
-         (見出し+副題のテキスト部分含む)を押しても閉じるようにする。
-         ヘッダーはこの用途以外の操作を持たないため、帯のどこを
-         押しても迷わせない。モバイル(640px以下)限定
-         (デスクトップの小さなポップオーバーでは、閉じるためだけに
-         見出しへの誤操作を増やしたくない)。 */
-      var head = this.panel.querySelector(".chatbot__head");
-      if (head) {
-        head.addEventListener("click", function () {
-          if (window.innerWidth <= 640) {
-            self.close();
-          }
-        });
+        this.closeBtn.addEventListener("click", function () { self.close(); });
       }
 
       /* モバイルのソフトキーボード対策: シートの高さを可視ビューポートへ追従させ、
@@ -141,11 +118,9 @@
         this.lockBackground();
         this.fitToViewport();
         this.scrollToEnd();
-        document.dispatchEvent(new CustomEvent("chatbot:open"));
       } else {
         this.unlockBackground();
         this.resetSheet();
-        document.dispatchEvent(new CustomEvent("chatbot:close"));
       }
       if (willOpen && window.innerWidth > 768) {
         this.input.focus();
@@ -157,12 +132,6 @@
       this.button.setAttribute("aria-expanded", "false");
       this.unlockBackground();
       this.resetSheet();
-      /* 背景の粒子演出(particles.js)を再開する合図。開いている間、この
-         背景はモバイルで画面全体を覆う会話面の下に完全に隠れており、
-         見えないまま毎フレーム描画され続けるのはメインスレッドの無駄な
-         負荷になる(閉じるボタンのタップ判定と取り合いになる)。互いの
-         ファイルを直接参照せず、documentへのイベントだけで疎に伝える。 */
-      document.dispatchEvent(new CustomEvent("chatbot:close"));
     },
 
     /* 背景ページの固定。iOSはbodyのoverflow:hiddenが効かないため position:fixed 方式で止める */
