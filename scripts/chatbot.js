@@ -156,7 +156,16 @@
       document.body.style.left = "";
       document.body.style.right = "";
       document.body.style.width = "";
-      window.scrollTo(0, this.savedScrollY || 0);
+      /* 起動アイコン(アイト)はページ末尾、フッターのそばに常駐する。
+         つまり開いた時点で利用者はほぼ必ずページ最下部にいる。
+         これまでは savedScrollY へ戻していたため、閉じるたびに
+         フッター付近へ引き戻され、長いページほど「ズラズラ」と
+         スクロールして見える不快な動きになっていた(柴田指摘)。
+         会話を終えたら、続きを読む場所ではなくページの先頭へ返す。
+         html は scroll-behavior:smooth のため、behavior を明示して
+         アニメーションさせず一瞬で切り替える(スムーズスクロールだと
+         長いページほど長々と流れてしまい、これも「ズラズラ」の一因)。 */
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     },
 
     /* キーボードに隠れる高さを計測し --chat-kb へ。CSSが bottom を持ち上げて

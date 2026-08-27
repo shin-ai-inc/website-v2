@@ -131,7 +131,12 @@
 }
 
 .industries-card__state--after {
-  background: var(--acc-bg);
+  /* --acc-bg(--ind-N-bg)そのままだと、隣のbefore面(--paper-2)より
+     明度が実測で5〜9%低く、8色中もっとも低い教育(菫)は特に沈んで見えた
+     （柴田指摘）。白を7割混ぜ、before面に近い明るさへ寄せつつ、
+     業種色の識別は保つ。ラベル文字・箇条点(--acc-ink)は文字用の濃さが
+     必要なため変えない。 */
+  background: color-mix(in srgb, var(--acc-bg) 70%, #FFFFFF);
   border: 1px solid color-mix(in srgb, var(--acc-ink) 22%, transparent);
 }
 
