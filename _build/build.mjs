@@ -841,7 +841,7 @@ ${pageLocales.filter((l) => l.code !== loc.code)
 
 ${structured}
 </head>
-<body${page.file === "index.html" ? ' class="is-home"' : ""}>
+<body${page.file === "index.html" ? ' class="is-home"' : ""} data-page="${page.file.replace(/\.html$/, "")}">
   <a class="skip-link" href="#main">${loc.code === "ja" ? "メインコンテンツへ" : "Skip to main content"}</a>
 ${header}
   <div id="three-container" class="site-particles" aria-hidden="true"></div>

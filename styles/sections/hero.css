@@ -248,7 +248,7 @@
    PC では下層ページに出さない。広い画面では本文の面積が大きく、読み物の
    後ろで粒が動くと目が滑る。トップの演出はトップのものとして残す。 */
 @media (min-width: 641px) {
-  body:not(.is-home) .site-particles {
+  body:not(.is-home):not([data-page="services"]) .site-particles {
     display: none;
   }
 }
