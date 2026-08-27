@@ -2037,10 +2037,13 @@ body {
     transform: none;
   }
 
-  /* ヘッダーはコンパクトに。副題は畳んで視線をメッセージへ */
+  /* ヘッダーはコンパクトに。副題は畳んで視線をメッセージへ。
+     position:relative は閉じるボタンをここへ絶対配置するための基準
+     (以下の.chatbot__close参照)。 */
   .chatbot__head {
     align-items: center;
     padding: var(--space-3) var(--space-4);
+    position: relative;
     /* site.webmanifest は display:"standalone"。ホーム画面に追加された場合、
        Safariの本体UI(ステータスバー領域の確保)が無くなり、top:0 は
        ノッチ/Dynamic Islandの真下から始まる。閉じるボタンが物理的に
@@ -2052,44 +2055,34 @@ body {
     display: none;
   }
 
-  /* 閉じるボタンのタップ判定を広げる。
-     一度 padding:12px/margin:-8pxで44px角(WCAG推奨の最小値)まで広げたが、
-     柴田より実機でまだ無反応が多いと再報告。44pxは理論上の最小値であり、
-     実際の指の接地面(だいたい8〜10mm=40px台後半〜50px台)に対しては
-     余裕がなかった。モバイルではこのウィンドウが画面全体を覆い
-     (position:fixed・top:0/left:0/right:0)、閉じる手段が実質この一点しか
-     ないため、狭いと行き詰まる。
-     負のmarginでの帳尻合わせ(padding拡大+margin相殺)をやめ、
-     width/height を直接指定してflexで中央寄せする単純な形にする方が、
-     計算の食い違いが起きにくく確実。52px角まで拡大し、
-     ヘッダーの高さはこのボタンに合わせて自然に広がるのを許容する
-     (帳尻合わせで詰めるより、見た目にも大きく取れているほうが
-     指の当て方そのものも安定する)。 */
-  .chatbot__close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 52px;
-    height: 52px;
-    padding: 0;
-    /* 以下の::beforeが判定域を負のinsetで外へ広げるための基準にする。 */
-    position: relative;
-  }
+  /* 閉じるボタン。ここまでの経緯(柴田より複数回の指摘):
+     1) padding:12px/margin:-8pxの帳尻合わせ(44px角)→まだ狭いと指摘。
+     2) width/height:52pxを直接指定 → 判定域は広がったが、ボタンの実寸が
+        ヘッダーの高さを押し上げ、見出しの上下に不自然な余白ができた
+        (実測: ヘッダー85px、見出し文字は32pxしかない)。「変な余白」
+        という指摘はこれ。
+     3) ::beforeの疑似要素で判定域だけ広げる案も試したが、その後
+        「感度が非常に悪い状態になっている」と悪化の報告。疑似要素越しの
+        当たり判定は仕様上は正しいはずだが、実機のブラウザ実装依存の
+        差異を疑うより、確実に動く形へ戻す方が早い。
 
-  /* 柴田が実機の写真に赤丸で指示した範囲(ヘッダー右側・×の左右と、
-     見出し帯の罫線の少し下まで)を、そのまま当たり判定にする。
-     疑似要素は生成元の要素(ここでは閉じるボタン)の一部として扱われ、
-     クリックはボタン自身に届く。ボタンのJSハンドラは増やさずCSSだけで済む。
-     .chatbot__window は overflow:hidden のため、窓の外へ出す方向
-     (上・右)は広げても切り取られて意味がない。窓の内側へ向かう方向
-     (下・左)だけ大きく確保する。 */
-  .chatbot__close::before {
-    content: "";
+     結論: ボタンをヘッダーの通常の流れから外し(position:absolute)、
+     実在のDOM要素として大きく取る。見た目のサイズ(アイコン+近接の
+     余白)は据え置きつつ、当たり判定はヘッダーの外縁いっぱいまで
+     広げ、ヘッダー下端の少し下(メッセージ面の頭)にも重ねる。
+     疑似要素を経由しない実要素なので、クリックの伝播に曖昧さがない。
+     絶対配置のため、この大きさはヘッダー自身の高さに一切影響しない
+     (ヘッダーは見出し文字と自身のpaddingだけで高さが決まる状態に戻る)。 */
+  .chatbot__close {
     position: absolute;
-    top: -16px;
-    right: -16px;
-    bottom: -32px;
-    left: -56px;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 88px;
+    height: 96px;
+    padding: calc(var(--space-3) + env(safe-area-inset-top, 0px)) var(--space-4) 0 0;
   }
 
   .chatbot__messages {
