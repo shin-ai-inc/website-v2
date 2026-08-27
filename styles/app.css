@@ -2072,6 +2072,24 @@ body {
     width: 52px;
     height: 52px;
     padding: 0;
+    /* 以下の::beforeが判定域を負のinsetで外へ広げるための基準にする。 */
+    position: relative;
+  }
+
+  /* 柴田が実機の写真に赤丸で指示した範囲(ヘッダー右側・×の左右と、
+     見出し帯の罫線の少し下まで)を、そのまま当たり判定にする。
+     疑似要素は生成元の要素(ここでは閉じるボタン)の一部として扱われ、
+     クリックはボタン自身に届く。ボタンのJSハンドラは増やさずCSSだけで済む。
+     .chatbot__window は overflow:hidden のため、窓の外へ出す方向
+     (上・右)は広げても切り取られて意味がない。窓の内側へ向かう方向
+     (下・左)だけ大きく確保する。 */
+  .chatbot__close::before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    bottom: -32px;
+    left: -56px;
   }
 
   .chatbot__messages {
