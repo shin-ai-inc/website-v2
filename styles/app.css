@@ -3511,15 +3511,19 @@ body {
    ここで高さを足すと二画面に割れる。 */
 @media (max-width: 640px) {
   body:not(:has(.cta__inner)) .site-footer {
-    min-height: 100vh;
-    min-height: 100lvh;
+    /* 一画面ぶんから、ヘッダーが覆う分を引く。
+       最下部でフッターの上端がちょうどヘッダーの下に来るので、直上の節は
+       不透明なヘッダーの裏に隠れて見えない。一画面まるごと確保していた版は、
+       隠れる 79px のぶんだけ余計にスクロールさせ、空の暗い面も広かった
+       (上下の余白 171px ずつ)。引いた版では締まる。
+       引く値はヘッダーの実測高 65px。狭幅では 320〜640px のどこでも 65px で
+       変わらない(可変にすると、引きすぎたとき上端に直上の節が数px覗く。
+       79px を引いた版で実際に 14px の帯が残った)。 */
+    min-height: calc(100vh - 65px);
+    min-height: calc(100lvh - 65px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* 上端はヘッダー(約79px)が覆っている。単純に中央へ置くと、見えている帯の
-       中では上に寄る。覆われるぶんを上に足して、目に映る範囲の中央へ戻す(実測で上下が揃う値)。
-       下側の余白は padding-block が持つ。 */
-    padding-top: 80px;
   }
 
   /* 一画面ぶんの暗い面の中では、左端に小さな字が続くだけだと塊が浮いて見える。
@@ -4222,17 +4226,39 @@ body {
   }
 }
 
-/* 下層ページでは粒子をフッターの地にだけ映す。
-   パーティクル場は viewport 固定の重ね板(z:0)で、背景を持たない節はその上に
-   何も描かないため、そのままだと本文の白い面にも粒子が乗る。トップはそれを
-   意図した構成(.is-home が節を透過させている)だが、下層は読み物であり、
-   文字の後ろで粒を漂わせる場所ではない。
-   本文をひとつ前面(z:1)へ上げ、地の色を持たせて粒子を覆う。フッターは
-   本文の外にあるので覆われず、トップと同じ地球儀と粒がそのまま映る。 */
-body:not(.is-home) main {
-  position: relative;
-  z-index: 1;
-  background: var(--paper);
+/* ---- 下層ページでの粒子の出しどころ ----
+   パーティクル場は viewport 固定の重ね板(z:0)で、背景を持たない節と、
+   位置指定を持たない要素の地の上に描かれる。トップはページ全体でそれを
+   意図した構成(.is-home が節を透過させている)。
+
+   PC では下層ページに出さない。広い画面では本文の面積が大きく、読み物の
+   後ろで粒が動くと目が滑る。トップの演出はトップのものとして残す。 */
+@media (min-width: 641px) {
+  body:not(.is-home) .site-particles {
+    display: none;
+  }
+}
+
+/* 狭い画面では、下層ページでもCTAとフッターの暗い帯にだけ映す。
+   本文(節)はひとつ前面(z:1)へ上げ、地の色を持たせて粒子を覆う。
+   CTAの節だけは position: static へ戻し、フッターと同じ扱いにする——
+   位置指定を外すと節の地が非配置の層へ落ち、固定canvas がその上に描かれる。
+   中の器(.cta__inner)は z:1 へ上げて文字を粒子の前に保つ。 */
+@media (max-width: 640px) {
+  body:not(.is-home) main > *:not(:has(> .cta__inner)) {
+    position: relative;
+    z-index: 1;
+    background: var(--paper);
+  }
+
+  body:not(.is-home) main > :has(> .cta__inner) {
+    position: static;
+  }
+
+  body:not(.is-home) main > :has(> .cta__inner) > .cta__inner {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 
