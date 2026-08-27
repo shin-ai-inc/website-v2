@@ -30,8 +30,6 @@
   --teal: #00C9A7;             /* セカンダリ青緑 */
   --teal-2: #20E7C4;           /* 明るい青緑 */
   --teal-soft: #E0FAF5;        /* 青緑の淡 */
-  --teal-ink: #04796A;         /* 淡ミント地(--teal-soft)で 4.5:1 を満たす濃度。
-                                  --teal は同地で 1.93:1 しかなく、線や文字には使えない */
   --energy: #FF8A00;           /* エネルギーオレンジ。CTA・強調 */
   --energy-2: #FFA533;         /* 明るいオレンジ */
   --energy-soft: #FFF3E0;      /* オレンジの淡 */
@@ -67,6 +65,11 @@
      グラデの奥行きで「AI青ベタ」の没個性を脱する。明色セクション・ページ見出しに用いる。 */
   --grad-section: linear-gradient(152deg, #FFFFFF 0%, #FFFFFF 30%, #F2F5FC 68%, #ECF6F4 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
+  /* ミントグラデ。チャットの送信ボタン。淡単色(--teal-soft)では白い面に埋もれて
+     押せる場所に見えず、--teal のベタでは会話より先に目を引いた。その中間を取る。
+     矢印は --ink を載せる前提の明度に留めてある(濃端 #17B79B でも 6.7:1)。
+     白い矢印は淡端で 1.9:1 まで落ちるため使えない。 */
+  --grad-mint: linear-gradient(135deg, #7FE8D4 0%, #17B79B 100%);
   /* 薄桜色グラデ。カードの左辺アクセント等、単色ブルーを避けたい箇所向け。 */
   --grad-sakura: linear-gradient(180deg, #FFEAF1 0%, #FFB4CC 100%);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);

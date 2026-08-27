@@ -169,8 +169,10 @@ body {
   border-bottom: 1px solid var(--line-ink);
 }
 
+/* 名札もウィンドウの書体(--font-chat)を継承させる。明朝(--font-display)を
+   当てていたが、中の会話だけがゴシックになり、同じ画面に二つの書体が並んで
+   いた。名札は会話の一部で、意匠の見出しではない。太さだけで格を示す。 */
 .chatbot__title {
-  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
 }
@@ -397,20 +399,20 @@ body {
   justify-content: center;
   /* 送信は円。主要チャットUIが一様にそうしており、入力欄と役割が視覚的に分かれる。 */
   border-radius: 50%;
-  /* 淡いミント。藍青のベタは、白い入力バーの中で一点だけ濃く沈み、
-     会話より先に目に入っていた。送信は会話の従で、押すときに探せれば足りる。
-     淡い地では白い矢印が消えるため、矢印は同系の濃色へ入れ替える(--teal-ink)。
-     縁を一本置くのは、白地の上で淡い円が輪郭を失わないようにするため。 */
-  background: var(--teal-soft);
-  border: 1px solid color-mix(in srgb, var(--teal) 38%, transparent);
-  color: var(--teal-ink);
+  /* ミントのグラデーション。藍青のベタは白い入力バーの中で一点だけ濃く沈み、
+     会話より先に目に入っていた。かといって淡い単色では白い面に埋もれ、
+     押せる場所に見えなかった。その中間を、面の中で色が動く形で取る。
+     矢印は --ink。この明度のミントでは白が 1.9:1 まで落ちて消える。
+     縁は要らない。地に濃淡があれば、白地の上でも円の輪郭は立つ。 */
+  background: var(--grad-mint);
+  color: var(--ink);
   transition:
     box-shadow var(--dur-1) var(--ease-out),
     transform var(--dur-1) var(--ease-out);
 }
 
-/* ホバーで地の色は変えない。淡い地をこれ以上濃くも淡くもすると、矢印との
-   コントラストが 4.5:1 を割る。浮かせて影を敷くだけで、押せることは伝わる。 */
+/* ホバーで地の色は変えない。濃くすれば矢印(--ink)とのコントラストが落ち、
+   淡くすれば白地に埋もれる。浮かせて影を敷くだけで、押せることは伝わる。 */
 .chatbot__send:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-teal);

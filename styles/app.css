@@ -31,8 +31,6 @@
   --teal: #00C9A7;             /* セカンダリ青緑 */
   --teal-2: #20E7C4;           /* 明るい青緑 */
   --teal-soft: #E0FAF5;        /* 青緑の淡 */
-  --teal-ink: #04796A;         /* 淡ミント地(--teal-soft)で 4.5:1 を満たす濃度。
-                                  --teal は同地で 1.93:1 しかなく、線や文字には使えない */
   --energy: #FF8A00;           /* エネルギーオレンジ。CTA・強調 */
   --energy-2: #FFA533;         /* 明るいオレンジ */
   --energy-soft: #FFF3E0;      /* オレンジの淡 */
@@ -68,6 +66,11 @@
      グラデの奥行きで「AI青ベタ」の没個性を脱する。明色セクション・ページ見出しに用いる。 */
   --grad-section: linear-gradient(152deg, #FFFFFF 0%, #FFFFFF 30%, #F2F5FC 68%, #ECF6F4 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
+  /* ミントグラデ。チャットの送信ボタン。淡単色(--teal-soft)では白い面に埋もれて
+     押せる場所に見えず、--teal のベタでは会話より先に目を引いた。その中間を取る。
+     矢印は --ink を載せる前提の明度に留めてある(濃端 #17B79B でも 6.7:1)。
+     白い矢印は淡端で 1.9:1 まで落ちるため使えない。 */
+  --grad-mint: linear-gradient(135deg, #7FE8D4 0%, #17B79B 100%);
   /* 薄桜色グラデ。カードの左辺アクセント等、単色ブルーを避けたい箇所向け。 */
   --grad-sakura: linear-gradient(180deg, #FFEAF1 0%, #FFB4CC 100%);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
@@ -1396,32 +1399,28 @@ h1, h2, h3 {
 }
 
 /* 記事本文も同じ理由で、狭幅では改行位置を制御しない（base.css の判断に揃える）。
-   段落が51〜154字あり、モバイルでは文節送りの余白が段ごとに積み上がる。 */
+   段落が51〜154字あり、モバイルでは文節送りの余白が段ごとに積み上がる。
+
+   リードと注記も同じ扱いにする。実測(390px)でリードの行末に111px、注記に110px の
+   空きが出て、右端が階段状に崩れていた。
+
+   題(.article__title)だけは文節改行のまま残す。一度は解放したが、字の詰まり方が
+   変わって「合同プ / レス発表会」のようにカタカナ語の途中で割れた。題は一目で読む
+   一行で、語の途中で切れると本文より先に引っかかる。行末が多少空いても、
+   語の切れ目で送るほうを採る。 */
 @media (max-width: 640px) {
-  :lang(ja) .article__para {
+  :lang(ja) :is(.article__lead, .article__para, .article__note) {
     word-break: normal;
   }
 }
 
-/* AIアシスタントの起動ボタン(.chatbot__launcher・position:fixed)は
-   画面右下に常駐し、スクロール位置に関わらず同じ場所に留まる。
-   本文は幅いっぱいまで組んでいたため、読んでいる途中の行がボタンの
-   真下に来る瞬間、文字が隠れていた(実測: 390px幅で段落と43px重なる)。
-   本文の右側だけボタンの専有幅ぶん空け、どのスクロール位置でも
-   重ならないようにする。ボタン側(chatbot.css)は変更しない
-   (全ページ共通の部品のため、記事の読み幅だけをここで調整する)。
-
-   ボタンは480px以下でアイコンのみ(実測: 右端から約67px)、
-   481px以上では「質問する」の文字を持つピル形(実測: 約150px)に
-   footprint が変わるため、閾値をそろえて二段階で確保する
-   (chatbot.css の @media (max-width: 480px) と合わせる)。
-   上限は759px。760px(--container-narrow)からは記事の外枠自体が
-   ビューポートより狭まり中央寄せになるため、実測でも重なりが消える。 */
-@media (max-width: 480px) {
-  .article__body {
-    padding-right: 3.25rem;
-  }
-}
+/* かつてここには .article__body { padding-right: 3.25rem } があった。
+   起動ボタンが position:fixed で画面右下に常駐していた頃、本文の行がボタンの
+   真下に来ると文字が隠れたため、本文の右だけをボタンの幅ぶん空けていた。
+   起動ボタンはページ末尾へ移り、本文の上を通らなくなったので、この逃げは
+   役目を終えた。残すと本文だけが右に 52px 空き、題や画像より内側で折り返す。
+   実測(390px)では題の右端が 366px、本文が 314px で、段落だけが理由もなく
+   狭い列になっていた。空けるのをやめ、記事の全要素を同じ幅で組む。 */
 
 @media (min-width: 481px) and (max-width: 759px) {
   .article__body {
@@ -1701,8 +1700,10 @@ body {
   border-bottom: 1px solid var(--line-ink);
 }
 
+/* 名札もウィンドウの書体(--font-chat)を継承させる。明朝(--font-display)を
+   当てていたが、中の会話だけがゴシックになり、同じ画面に二つの書体が並んで
+   いた。名札は会話の一部で、意匠の見出しではない。太さだけで格を示す。 */
 .chatbot__title {
-  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
 }
@@ -1929,20 +1930,20 @@ body {
   justify-content: center;
   /* 送信は円。主要チャットUIが一様にそうしており、入力欄と役割が視覚的に分かれる。 */
   border-radius: 50%;
-  /* 淡いミント。藍青のベタは、白い入力バーの中で一点だけ濃く沈み、
-     会話より先に目に入っていた。送信は会話の従で、押すときに探せれば足りる。
-     淡い地では白い矢印が消えるため、矢印は同系の濃色へ入れ替える(--teal-ink)。
-     縁を一本置くのは、白地の上で淡い円が輪郭を失わないようにするため。 */
-  background: var(--teal-soft);
-  border: 1px solid color-mix(in srgb, var(--teal) 38%, transparent);
-  color: var(--teal-ink);
+  /* ミントのグラデーション。藍青のベタは白い入力バーの中で一点だけ濃く沈み、
+     会話より先に目に入っていた。かといって淡い単色では白い面に埋もれ、
+     押せる場所に見えなかった。その中間を、面の中で色が動く形で取る。
+     矢印は --ink。この明度のミントでは白が 1.9:1 まで落ちて消える。
+     縁は要らない。地に濃淡があれば、白地の上でも円の輪郭は立つ。 */
+  background: var(--grad-mint);
+  color: var(--ink);
   transition:
     box-shadow var(--dur-1) var(--ease-out),
     transform var(--dur-1) var(--ease-out);
 }
 
-/* ホバーで地の色は変えない。淡い地をこれ以上濃くも淡くもすると、矢印との
-   コントラストが 4.5:1 を割る。浮かせて影を敷くだけで、押せることは伝わる。 */
+/* ホバーで地の色は変えない。濃くすれば矢印(--ink)とのコントラストが落ち、
+   淡くすれば白地に埋もれる。浮かせて影を敷くだけで、押せることは伝わる。 */
 .chatbot__send:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-teal);
@@ -3256,77 +3257,75 @@ body {
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* ---- モバイル(<=640px): 偶然の折返しに任せず、意図した段組みへ ----
+/* ---- モバイル(<=640px) ----
    全 base 規則の後に置き、確実に上書きする(モバイル上書きはファイル末尾が正)。
-   ワードマーク+一文 / 罫線付き2カラムのナビ / 縦組みメタ / 縦組み規約。
-   タップ領域を確保し(min 44px)、上下に呼吸を持たせて品位を保つ。 */
+   ワードマーク+一文 / 横並びナビ(タップ領域 44px) / 縦組みメタ / 横並びの規約行。
+
+   狭幅のフッターは「一望できる低さ」に戻す作業が要る。罫で仕切った2カラムの
+   一覧は整って見えたが、7項目が4行×60pxのブロックになり、帯全体が 695px
+   ——viewport(844px)の 82% ——を占めていた。最下部に来るたび画面がほぼ
+   フッターで埋まり、スクロールの終わりが遠い。
+   このファイル冒頭の方針(ブランド+横並びナビ / メタ / 規約行)へ素直に戻す。 */
 @media (max-width: 640px) {
   .site-footer {
-    padding-block: var(--space-6) var(--space-5);
+    padding-block: var(--space-5) var(--space-4);
   }
 
   .site-footer__main {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-5);
+    gap: var(--space-4);
   }
 
-  /* ナビは緩い折返しをやめ、罫で仕切った2カラムの一覧にする。
-     行間ゼロ＋上罫で、5項目が静かなリストとして整列する。 */
+  /* 縦の一覧をやめ、横に流して折り返す。1項目あたり60pxを使っていたのが、
+     3行に収まって半分以下になる。罫と山括弧も落とす。あれは項目を「行」に
+     見せるための飾りで、横並びでは項目そのものが区切りになる。 */
   .site-footer__nav-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--space-4);
-  }
-
-  /* 5項目め(長いラベル)は半幅だと折り返すため、最終行を全幅に伸ばす */
-  .site-footer__nav-list > li:last-child {
-    grid-column: 1 / -1;
-  }
-
-  /* タップ領域は padding-block(=56px)が担保するため、字は控えめの fs-sm でよい。
-     最長ラベルも 320px 幅の全幅行に1行で収まり、全幅で破綻しない。
-     モバイルは hover が無く静的テキストに見えるため、右端に控えめな山括弧を添えて
-     「タップで各ページへ進む」ことを明示し、押下時は白く反応させる(タップ手応え)。 */
-  .site-footer__nav-link {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-    padding-block: var(--space-3);
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.82);
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
   }
 
-  .site-footer__nav-link::after {
-    content: "";
-    flex: none;
-    width: 7px;
-    height: 7px;
-    border-top: 1.5px solid rgba(255, 255, 255, 0.4);
-    border-right: 1.5px solid rgba(255, 255, 255, 0.4);
-    transform: rotate(45deg);
+  /* 指の寸法は min-height で明示する。padding だけに任せると、字の行高が
+     変わったとき(書体の差し替え・拡大表示)に静かに 44px を割る。
+     hover の無い画面なので、押した手応えは色で返す。 */
+  .site-footer__nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: rgba(255, 255, 255, 0.82);
   }
 
   .site-footer__nav-link:active {
     color: #FFFFFF;
   }
 
-  .site-footer__nav-link:active::after {
-    border-color: #FFFFFF;
-  }
-
-  /* メタは1項目1行の縦組み(折返しの偶然に任せない)。行間はやや開けて可読に */
+  /* メタは1項目1行の縦組みを保つ(折返しの偶然に任せない)。行間だけ詰める。
+     住所は2行に渡るので、ここを開けると帯がすぐ伸びる。 */
   .site-footer__meta {
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 
-  /* 規約とコピーライトは縦に積み、左揃えで静かに締める */
+  /* 規約とコピーライトは横一列に戻す。縦に積むと、二行ぶんの高さを
+     短い文字列二つのために使うことになる。
+     両端揃えはやめる。狭い画面で右端へコピーライトが寄ると、下で空けている
+     逃げ帯の中へ戻ってしまう。 */
   .site-footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
+    gap: var(--space-1) var(--space-4);
+    justify-content: flex-start;
+  }
+}
+
+/* 起動UI(アイト)はページ最下部の右に立ち、フッターの最下行と同じ高さに来る。
+   最下行が右端まで文字を伸ばすと、コピーライトがキャラクターの下に隠れる。
+   文字を置かない帯を右端に確保する。
+   1520px 以上では不要。フッターの器がビューポートより十分狭まり、アイトが
+   器の外側に出るため(実測: 1440pxで重なり6px、1600pxで消滅)。
+   逃げ幅はアイトが器へ食い込む最大量から取る(実測: 768pxで58px)。 */
+@media (max-width: 1519px) {
+  .site-footer__bottom {
+    padding-right: 76px;
   }
 }
 

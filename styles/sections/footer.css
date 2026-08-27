@@ -120,76 +120,74 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* ---- モバイル(<=640px): 偶然の折返しに任せず、意図した段組みへ ----
+/* ---- モバイル(<=640px) ----
    全 base 規則の後に置き、確実に上書きする(モバイル上書きはファイル末尾が正)。
-   ワードマーク+一文 / 罫線付き2カラムのナビ / 縦組みメタ / 縦組み規約。
-   タップ領域を確保し(min 44px)、上下に呼吸を持たせて品位を保つ。 */
+   ワードマーク+一文 / 横並びナビ(タップ領域 44px) / 縦組みメタ / 横並びの規約行。
+
+   狭幅のフッターは「一望できる低さ」に戻す作業が要る。罫で仕切った2カラムの
+   一覧は整って見えたが、7項目が4行×60pxのブロックになり、帯全体が 695px
+   ——viewport(844px)の 82% ——を占めていた。最下部に来るたび画面がほぼ
+   フッターで埋まり、スクロールの終わりが遠い。
+   このファイル冒頭の方針(ブランド+横並びナビ / メタ / 規約行)へ素直に戻す。 */
 @media (max-width: 640px) {
   .site-footer {
-    padding-block: var(--space-6) var(--space-5);
+    padding-block: var(--space-5) var(--space-4);
   }
 
   .site-footer__main {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-5);
+    gap: var(--space-4);
   }
 
-  /* ナビは緩い折返しをやめ、罫で仕切った2カラムの一覧にする。
-     行間ゼロ＋上罫で、5項目が静かなリストとして整列する。 */
+  /* 縦の一覧をやめ、横に流して折り返す。1項目あたり60pxを使っていたのが、
+     3行に収まって半分以下になる。罫と山括弧も落とす。あれは項目を「行」に
+     見せるための飾りで、横並びでは項目そのものが区切りになる。 */
   .site-footer__nav-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--space-4);
-  }
-
-  /* 5項目め(長いラベル)は半幅だと折り返すため、最終行を全幅に伸ばす */
-  .site-footer__nav-list > li:last-child {
-    grid-column: 1 / -1;
-  }
-
-  /* タップ領域は padding-block(=56px)が担保するため、字は控えめの fs-sm でよい。
-     最長ラベルも 320px 幅の全幅行に1行で収まり、全幅で破綻しない。
-     モバイルは hover が無く静的テキストに見えるため、右端に控えめな山括弧を添えて
-     「タップで各ページへ進む」ことを明示し、押下時は白く反応させる(タップ手応え)。 */
-  .site-footer__nav-link {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-    padding-block: var(--space-3);
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.82);
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
   }
 
-  .site-footer__nav-link::after {
-    content: "";
-    flex: none;
-    width: 7px;
-    height: 7px;
-    border-top: 1.5px solid rgba(255, 255, 255, 0.4);
-    border-right: 1.5px solid rgba(255, 255, 255, 0.4);
-    transform: rotate(45deg);
+  /* 指の寸法は min-height で明示する。padding だけに任せると、字の行高が
+     変わったとき(書体の差し替え・拡大表示)に静かに 44px を割る。
+     hover の無い画面なので、押した手応えは色で返す。 */
+  .site-footer__nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: rgba(255, 255, 255, 0.82);
   }
 
   .site-footer__nav-link:active {
     color: #FFFFFF;
   }
 
-  .site-footer__nav-link:active::after {
-    border-color: #FFFFFF;
-  }
-
-  /* メタは1項目1行の縦組み(折返しの偶然に任せない)。行間はやや開けて可読に */
+  /* メタは1項目1行の縦組みを保つ(折返しの偶然に任せない)。行間だけ詰める。
+     住所は2行に渡るので、ここを開けると帯がすぐ伸びる。 */
   .site-footer__meta {
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 
-  /* 規約とコピーライトは縦に積み、左揃えで静かに締める */
+  /* 規約とコピーライトは横一列に戻す。縦に積むと、二行ぶんの高さを
+     短い文字列二つのために使うことになる。
+     両端揃えはやめる。狭い画面で右端へコピーライトが寄ると、下で空けている
+     逃げ帯の中へ戻ってしまう。 */
   .site-footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
+    gap: var(--space-1) var(--space-4);
+    justify-content: flex-start;
+  }
+}
+
+/* 起動UI(アイト)はページ最下部の右に立ち、フッターの最下行と同じ高さに来る。
+   最下行が右端まで文字を伸ばすと、コピーライトがキャラクターの下に隠れる。
+   文字を置かない帯を右端に確保する。
+   1520px 以上では不要。フッターの器がビューポートより十分狭まり、アイトが
+   器の外側に出るため(実測: 1440pxで重なり6px、1600pxで消滅)。
+   逃げ幅はアイトが器へ食い込む最大量から取る(実測: 768pxで58px)。 */
+@media (max-width: 1519px) {
+  .site-footer__bottom {
+    padding-right: 76px;
   }
 }
