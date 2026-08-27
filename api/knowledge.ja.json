@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "ad322dc",
+  "generatedAt": "4390b4d",
   "chunks": [
     {
       "id": "index#0",
@@ -76,7 +76,8 @@
       "id": "index#10",
       "title": "会社概要｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "無料相談: 30〜45分・事前準備は不要です\n連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00"
+      "text": "無料相談: 30〜45分・事前準備は不要です\n連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00",
+      "vec": "/f0CAwr6+QoC+Af5Cfz3/+8AAfcBBQYABAED/AX4//oDA/oBCAD//gT+BgAFA/X+AAP4Avf79QUJAQAJA/4CAwD9AQv8+P8G/f4CAP4HBAL6CfYABfP4APUC9QP4BgAHBAcDBQT9Bwz6Bvn+/gf2APsB+/v/BwD++gYBCf/6BgL6/vz+BfsB+f4B/vYEAv//+gf69f77APn1+PwI/AP8+ggF+f32/wED9vz6/gEHA/wHAfsA+gP3A/v1BAID/AYADgkG/gD5/gP/9P0GAgEPBPkBC/UCBfj8AP3+AfoB/AABCv76A/gJAPb8BfwG/wD/BwMI/wP5BPsFAQL/Bvj+9wEB/wEGAvj9BPwDBwgC/vwE//oB+//4DfoE/Pr/AQP6+wEF/gP7//8IAQIDB/0B/QIM9AEG/v4EAf4B9wH/B/0D+gD88gMD/QP7BvkE+vgCBAL3/PoA8AMAAQEABQT/+AP6/AAC+P4E8f8H/P8D+QEC+QoF//3++AEF/QAC/foBAf4DBQEAC/39+wH9AQT//vj//P79A/78AAgE8QUBBQIDBf/4B/X/9vv7BwME9wT//fsBAAIF+AH//PX99//5Bff8CP0DBv39/f37CwAB+gz+/P0CAwn7AgH2+AIH9fj9/voDBwcKBAcG/QsAEP8FAAP59gX5+v8F9gAC+gACBQw="
     },
     {
       "id": "index#11",
@@ -96,7 +97,8 @@
       "id": "index#13",
       "title": "暗黙知を三段階で \n 資産に変える。｜ShinAI｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "構想から現場稼働まで一貫して設計します。 \n\n 事業内容の詳細を見る\n\n Engineering"
+      "text": "構想から現場稼働まで一貫して設計します。 \n\n 事業内容の詳細を見る\n\n Engineering",
+      "vec": "/f7//gr6/An5+Qb+Afn/Avv7APv+AwEDBQIG/Pz7APz9AwD+BAICBQD+BAAGBPX9AAf8BfX69wUBAP8H/vz+CAH/+wz59/sF/vsD/vwLBAP8APkAA/j4/vL29wP5A/wLBwf+Cgr+Cgn6BPgB+v/z/QAE/v79BgkC+wAFBfn+CgD3/v39BvoD+v4C9/cCAQL/9QP6+f8C/fn6+wEG+wX+/gQH+AD2/gAB9fnz/wMDAP4E+Pz9+gHxA/33/v0F/wMFDAMD/gT/BgEB/AYD/AoMBPoCCf3+Cfn+A//9Bf7+/gADCgD7CPsL/Pb7AwAD+QH4BAUE+wIAAv8BAQkAA/v+/QADAv4EBff/BgEGBwD7AAMB//n8+wD7CfgDBf39BAj//PwJAQD6AwL8AgMDCvr+Af4K+voI+gMCB/oA9gT6BfYC/gH49AEC+wD8BgAA+vb/AgX5+vcA9AUA/QL+DwUD+QP69v3++/4E7wAK///8/v8HAAoE//z/9wUF+gQG/fb/BAEGAgEBCP0FAfn4BgMCAv36/fsDAAEC/QUE9wj/BP4K/wL5//T/9QUACQcL9gED/vn5BQD/+P0DAPP7+Pz2/vv3BfkBC/r/Bf/6CAAD/QcC/f8DAAb5/gX3AQoG9f0B/P8CBwYS/gT//gj+Df4L/gH08gQE+gAE9vsG/wcCBgg="
     },
     {
       "id": "index#14",
@@ -152,115 +154,134 @@
       "title": "提供サービス一覧｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
       "text": "ShinAIが法人向けに提供しているサービスは、次の三つです。\n1. 暗黙知の解消支援｜社内ナレッジの収集・構造化 / RAG構築・社内データの活用 / LLMの最適化・調整\n2. 企業専用AIエージェント開発｜社内知識を踏まえた応答・判断支援 / 既存システム・APIとの連携 / 検索から業務実行までの支援\n3. AI化伴走支援｜PoC設計・精度評価の設計 / 運用ルール・ガイドライン整備 / 社内チーム育成・技術移転\nこのほかに研究開発領域として、フィジカルAI（現場の動作や判断をAIが扱える形にする取り組み）のPoCを行っています。",
-      "pinFor": "services"
+      "pinFor": "services",
+      "vec": "+QEEAA/6+AwE+wb6Avn4BPn9APsGAQX+Af4A+v/3BP78AgIBAgEAAAb+BQH9Avv8/QP1Bfz4/AsI/gEFAv3+B/kD/w779QL/AfwCBgIFAAD9B/f+Bvn3//MF+wP1CQQHCQMFCQP9Bgf++/z/BAL4//sF+P4BBf3+/goHB/z+Cf33+wL/BPgB+v399f0JAwAD/AL+9f4A/f32/fYI/AX++AYG+QX2/wAD9f73/AAHAgEH/vz6+gLyAvv9/wL+AQYDCAkG/f/8/wEE/AMCBAMI/voBCf4FCPsA+P/+BAAA/QIFCQH0BPcEBPcGAvsA/gb4BwIB/gn/A/oJ/Qr4BvT+/QUD+gMDCvz9BvwFCgcA/AQDAP0H/Pz8BvsBAP0A/gj59P8G/AD6BfkEAgQJBv//+gIK+/4C+AH/BP0D9Qb8B/gB+/z+9/0D//38CP4D/Pf9Av35+PcA9gf8BAQABAUC9QP7+AP5+P0E8PsH/gAA9wAJ+wYGBP/59gMD/AACAfoBBQEDA/0JCvf9+f72/gQFB/38AP7/AQIB/gIC+gQFAQEGBAX7BvcD9v8CDAUC+P8D/Pj5AwP/+QEA/fIB+fv4Bvn7BPwDCff9Av39CQYC/wsB+/0DAAH4/wL59QQD9fsB/v4BAwoGAwgHAAUAEv8GAAL18Ar8//0I+f4F/wb/BQk="
     },
     {
       "id": "services#0",
       "title": "暗黙知の解消支援｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "暗黙知の解消支援 \n \n ベテランの勘や判断基準は、本人の頭の中にしかなく、退職とともに失われていきます。\n 会話・文書・作業記録を、検索でき、教育に使え、判断を支えられる形へ変換します。\n 「あの人に聞かないと分からない」を、組織の誰もが引き出せる知識資産へ。\n\n 社内ナレッジの収集・構造化 \n RAG構築・社内データの活用 \n LLMの最適化・調整"
+      "text": "暗黙知の解消支援 \n \n ベテランの勘や判断基準は、本人の頭の中にしかなく、退職とともに失われていきます。\n 会話・文書・作業記録を、検索でき、教育に使え、判断を支えられる形へ変換します。\n 「あの人に聞かないと分からない」を、組織の誰もが引き出せる知識資産へ。\n\n 社内ナレッジの収集・構造化 \n RAG構築・社内データの活用 \n LLMの最適化・調整",
+      "vec": "AAT/AQj/+hD79wUA/gD6B/8B+ggFBwP9BwAF/gX5Av7+AwD/CPwAAAIABAUCBfoAAQT3A/oC+QYCAwADAQD/Cfj+/Ar08f/8/PwBBAkFA/4BAPgABvv2Avf6+AT0BgIDBQEBCgb+D///APX4+gTy+vr9/fsAAwMF/AcCBfj+CgL4/AD7DPb//fr89/kEAQEH8v/8/P/+/P34//YCAAgA9QYE/Qb+AQQH9vv2/gP//wUJ+/b88wD4APfy+wgAAAEJCwcIAQX9/f/8+AL9BAgKBvsCCQP7CPwG/gT/AgH+/QEEBQP3BPoJ/vwECP7//wb1BwEC+wMB/vkI/wsACfj6/AD9/wQDBAH+Av4BCAIE/QD8APz/+gQCBPcJAP0BAwEB+gEE/AX7/f8D/AIBBgD8+wQL/PkC+f8CAgQA9QX7CfgD+QH8+wH9//7/Cf0BBPj3/Qb8+/kC9QUEBgL/CgcA8//99wL49gEG9PoK/gME+QEI+wX/Avv99v4E+gQE+vkACgQAAfwGBwEB+AD7+AUBBAD8+/wBBgQCAQUF/QMAAgEKBgL3+/P89AYACwUJ8/wE+f35AQIG+Pv/+vH++f75/fv4BvwJCPf0Av4BAwEC/ggB+/8BBwP8Agf1+wcB+v3/BPr/AQcOAwQAAwb/Dv4FBATw/AL//P4G/AAAAAUCAgY="
     },
     {
       "id": "services#1",
       "title": "企業専用AIエージェント開発｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "企業専用AIエージェント開発 \n \n 汎用AIは自社の文脈を知らないため、現場で使われず、やがて形骸化します。\n 社内知識と既存システムを接続し、回答だけでなく業務の実行まで支援する専用エージェントをつくります。\n 問い合わせ対応や定型業務を任せ、人は判断と対話に集中できます。\n\n 社内知識を踏まえた応答・判断支援 \n 既存システム・APIとの連携 \n 検索から業務実行までの支援"
+      "text": "企業専用AIエージェント開発 \n \n 汎用AIは自社の文脈を知らないため、現場で使われず、やがて形骸化します。\n 社内知識と既存システムを接続し、回答だけでなく業務の実行まで支援する専用エージェントをつくります。\n 問い合わせ対応や定型業務を任せ、人は判断と対話に集中できます。\n\n 社内知識を踏まえた応答・判断支援 \n 既存システム・APIとの連携 \n 検索から業務実行までの支援",
+      "vec": "+AQHAg369w3/+wX8Avr6/vz2+vwGBggC/wYAAQL2BP4FAwkEAgT+AAD8BwT7Afv/AgP0B/74+QUG+v8FBAD9DPcD/wn4+AX+Avz/AP8GAAf9Bff9Bfz6/vUC9An+AAQKBwcKCAT9BAf99/j9AwX1+/YB9/0DCAECAQwDAv7/AwD49vwBAfj9+vsA+P0DAfz/+AD7+f8B+vny/f0G+wH9+QMJ9gf5AQUG+v/1+QIHCP4G//78+AP0Avv6AQf9AAAEEQcNAAH7//0H/wQD/wQGAPz/C/gDBvn4/gD5AAEFAQD9AwDyA/n+//z7AgD7AAb7AQAG/gEBAf4IAgbzBfn99gIHAgUGCP8DB/oHCAQA/wb7/ff9+/UDBPv+//0CAP74+gQG/QD3AwEFBAYGB/4C/v0H+f0D+wAIA/wB8gr9BvkA+//29PwHA/oFA/8BAf0D+gD9/v4D9QEBBQUFAgIB+//69/39/P398/kF/fr+AAEF/gUH/gb69/0G/QUGAPv+/wQDBfoGC/sC9gP9/gIBBPz1A/39//z8/AYF+QQF/wIDBwIBA/YEAf//CwL/+QL//fr0Awj//gMA/vkC9QL2Bfj9AfwDC/v8Av4BCgP/AAgAAP0GAgb+BwP7+/wH9Pn9Avr+AAQNA/4GAwYBFP8LAgPz7gP69v0G+f8FAAT/BAY="
     },
     {
       "id": "services#2",
       "title": "AI化伴走支援｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "AI化伴走支援 \n \n 導入して終わり、にはしません。\n PoC設計から精度評価、運用ルールづくり、社内チームの育成まで伴走します。\n やがてShinAIがいなくても、自社で運用し改善し続けられる状態へ。技術を渡し、組織に根づかせます。\n\n PoC設計・精度評価の設計 \n 運用ルール・ガイドライン整備 \n 社内チーム育成・技術移転"
+      "text": "AI化伴走支援 \n \n 導入して終わり、にはしません。\n PoC設計から精度評価、運用ルールづくり、社内チームの育成まで伴走します。\n やがてShinAIがいなくても、自社で運用し改善し続けられる状態へ。技術を渡し、組織に根づかせます。\n\n PoC設計・精度評価の設計 \n 運用ルール・ガイドライン整備 \n 社内チーム育成・技術移転",
+      "vec": "BAEMAwb3AAYF9wP7/fb+/fz7AQADBgP9APn//v/zAPz4+gEBBQP9Awj7AgcBBwP//Qf4Cf3//QgOAP0B/vkGAgD+/QL59/8G+f4BAvcEBQL5Bfz6CPjz+ff8/Qn2BwUCCgIIBAbzBgv99vz+AAf8/v0I+v0L/AL/+wgB/PT7DQD3+AX5BQD6+vkG9PsE/Pn++/wD/P////z3/f0I9QcC/AQE9wH6/v8H8QD4/PcFCPwC+vv8/f76BvX6Agb8AwEGCwMD+Qb2BPwF/QYEAQP+Bf38BfkFAvoC/Ab5AP//BAICDP35A/L8APoBAfwCAAL3/gIN/AL8//0H/Qb9Bvn+AAP9//7/Bf36BwMIDgP8/QQC//0C+QD8Avf/+/wCAPv//f4B/gD9AwEAAwEGCQH89wcA/f0G/P4BBAL9+gv/Cv37//z++QAI/QL/BfcFA/r++gME/+4E8wYCAgH+/wYG+QP/AQH7+v8B9vkL/gAD+QIG/QUD+f76AAcE/wIAAf4FAgQDA/sABvT+APz9AgIBCgD4/fv7Av0E+AwE/AYBAQD9/gIBBPv++fkADAMC+QIF/v39BAL+AP8C+/sC+fz5BfAABAEJCfv3Afb/CgUFAQj+//8BBAD8Avr1+AEE+PL9/voBBgsTAgP9AgIBD/4DAAr97wz9AP0L/PcDBgb9AAQ="
     },
     {
       "id": "services#3",
       "title": "事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "ホーム \n › \n 事業内容 \n \n Solutions \n \n 試し深め、 \n 自走する組織へ。 \n\n 小さく検証して始め、知識を深く組み込み、 最後は自分たちで 動かせる状態をつくる。 \n ShinAIは三つの段階で、AIを組織に根づかせます。 \n\n What We Offer"
+      "text": "ホーム \n › \n 事業内容 \n \n Solutions \n \n 試し深め、 \n 自走する組織へ。 \n\n 小さく検証して始め、知識を深く組み込み、 最後は自分たちで 動かせる状態をつくる。 \n ShinAIは三つの段階で、AIを組織に根づかせます。 \n\n What We Offer",
+      "vec": "+/0B/w3z+QsB/Qj4AfL5Avz7AfkE/gT9BwAB/QHyB/v9Bf8EAAT+AAX+BAIAA/j//gX2Bfv1+AgF/vgGAPoBBwAFAAX9+QL/+v4BAPUEAgL7A/wABPn4/fT//QX7BQQDBAIECAj8CQr6/vwAAAD2+gEE/QAKAgL+AAsGAfkBDf34+QH/A/wB+vgF9v0K/P/9/P/8/f7+/fj3//sJ+QL3/QcH+QH4A/3++Pz1/P8IB/8BAPz++fzzAvn8AgP++/8DDAcL+wT/AwAB+QgG/v4DAvz8CPgEA/n++//7BwMCBgACCADzBPYFBfkC/QIA+wP5/wQD/wf+A/8F/Qv6BvQBAQQCAQIBDf37BQEFCwf7+AEA/PwE/fr+CfsBAvn8/gP39wYC/f74BPr/AAUEDP4B/QMD+QIH+wQDBv399gj8Bvv9/f789wIEAf79AwEB+/gDAv/6/vj/9wb/Bwn+BAYF9wT6+v/9/AED8P4LA/8C+P4DAQcC/wD6/QoE+QECAfkDAAECBfoBDPj9/gX3AQYCB/v4/AH//AUB+wMA+gYC/AEG/wH///j++P4CEQME+AII9v74B/z6/AEC+vcA+Pz7CPX4CPf8Cfr9A/r/CAIF/wn9Af3/Af/7AQP09gYF+vX//QD9CgkM/ggA/wX/Dv4I/wj27wcA/fwN//oF/wMC/Ak="
     },
     {
       "id": "services#4",
       "title": "提供する三つの価値｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "得られる成果で三つに分けています。 \n 自社の課題に近いところから、 無理なく始められます。 \n\n Physical AI \n 新サービス"
+      "text": "得られる成果で三つに分けています。 \n 自社の課題に近いところから、 無理なく始められます。 \n\n Physical AI \n 新サービス",
+      "vec": "AAECAgzz/AoG/Qf/APP5//f6BfgD/wH8B/4E/PryAfkCAAQF+ggB/gP/BQP+BPz++wX2B/v0+wT/AfgBBPcCBv0F/wL/9/4EAAEAAfP9AQL4B/4CAPz1+vr/+v79BAQEBgQEBgH7Ag/+BP8B/gL7+/wE/QEC/wL5/QoK/v7/C/n7+gADBP8A+vkD9/sA/AH8/f4A9v3/+vr4/fsEAAL9+QEA9Pz8BQAD8vj4+/8AAfgEA/36BAHzAv/8AAEE/QEGCwYJ+QABA/8GAAYBAwAD/fj+CfgBBPcCA/79Cf4EBf8BAwTzB/QDBfkB/AQDAAP5BgECAgf9A/4E/gj+BfgABwMEAwP/Dv75BQAHCQsAAQAD//oB/QP5Cvf/AvX/+QL49/4B+wH1BvwD/gUKDAEB/wAG9wAC+v4EBvX89Ar8BvwH/AT79/8C/wD6AwIA+fgCAf37APv+9QYGAwoABQQI9Qr2+v77+vsF8/4LAP8A+QMCAQAAAgH7/gEJ+fsBAfsF/gAFBPsHB/j0AQT6BAAECvkA+v//AgIC/wIF/AYF/v8HAQECBPkB+/wECgYC9gAC+vv8Cf0B+wf++fQE+f7/CPb9Avz2B/YCBfb9CgIGAQoG//0H/P37AQP59wgD/PkBAP79CQgVBgED/QsAEf4JAQX88Aj9+/wE/fsG/v0CAgg="
     },
     {
       "id": "services#5",
       "title": "現場の技を、AIへ。｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "手の動き、力加減、目で見て決める判断。 文書にも会話にも残らない現場の技を、 センサーや映像から捉え、 AIが扱える形にします。 \n\n 暗黙知の解消を 身体で動く現場にまで広げる新サービスです。 まずは小さな検証から、 御社の現場に合わせて設計します。 \n\n この新サービスを相談する \n\n ShinAI Method"
+      "text": "手の動き、力加減、目で見て決める判断。 文書にも会話にも残らない現場の技を、 センサーや映像から捉え、 AIが扱える形にします。 \n\n 暗黙知の解消を 身体で動く現場にまで広げる新サービスです。 まずは小さな検証から、 御社の現場に合わせて設計します。 \n\n この新サービスを相談する \n\n ShinAI Method",
+      "vec": "/wT8AAb6+QoA+wH9//r3//n8A/cDBQP8CPkG/v/5BPz9/AEB/AT+/gf/BAX8A/j7/QL4Bfn7+wIEBQMKBfwBDPkA/Qn08wUA+wABAPkMAwT7AfgC+vn4/PT//Qn+AQMKAwMHBwb9Cw0AAPoCAAb4/fgE/v0KAQT9/wkG//79BQH29/v9BPMF/PsF+P4FAP8E+P/7/gAE/fv4/voH/gX9/P8B/AL4/wL/9v73/wQCA/8IAvoA9wH2CPv3BQb/+QEJDAUJ/QP/A/4H/QIEBAYJAv0DCfsIAfkEA//4BvsBA/8ABQb3BvMDBPwFCfwBAAL8CAAF+gH+Av0KAAj+CPgCA/0D+wYCBwHyBPoHBAkE/AL+BPMA/AL6BfsGAfn8/fv7+QIC+gP9Af8FAwUDCvwA/P4R9f8F+f0FCvkB9wYBBvgC//368f0G/wIBBv8CAAAA/fv7/PoB+QsHAAYBBgT/+AH3+P/3+gH77v0KAP8C+v8B/AYEAwL7+AEE+wUABAD//wQDA/wCBPf8/wH9CAL/AgAA+gIBBAD//QkH+QgCAQEHAwL8APb+/f8ECAAL9gb++/j4C///+wH6//QC+v/5B/j6B/sCDvv8BP/+CQEE/AoDBgEB/AH7AQP49wMG+vwD//UDBAcN/gQE/wUAE/4N/QX68QYA+fsK+gEGAwb+/Qk="
     },
     {
       "id": "services#6",
       "title": "知識が現場で動くまで｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "散らばった知識を集め、意味でつなぎ、 根拠を持たせ、業務へ。 \n 五つの段階で、 最後は社内へ移します。 \n\n 01 \n \n Capture"
+      "text": "散らばった知識を集め、意味でつなぎ、 根拠を持たせ、業務へ。 \n 五つの段階で、 最後は社内へ移します。 \n\n 01 \n \n Capture",
+      "vec": "/gQA/Qv4+gT5AAsAAPYB/fz9/foH/QP/B/kA//36//z6BgQA/wP9Awv+AAMDAfQABgr6APn3+wAGAAADA/0GBvz//gb29AME+f/+/vcE/gH+AP36BP33/fP8+wv9Bv4FCAICCQb0BAj9/fT/+vv19P4FAP8HAgUD/wr9APoCCwX/9AH5Bfj//P4C9/v9Afz/+QL7BgYBBP/5/f4H/QP8/v8K+wL4Bf4A9Pz3/wIFBP4FAfz+8/70BP35BAb7/P4GCwUK/v7+//0DAAMH/QcIBPz5CvsCA/oB/QLzAgkABf4ABAH4CPcDB/r5AQb6/gABAQMF/AQABQIK/g35A/X/AAH9AQIHA//5CfsDAAj/+QX8/vMB9/7+A/r9//cC+/79AP8G/vz+BPv+AgMCBfoD/PkB+vsK/P0EBPv+/gn+Bv0B/wX7+AD7BAL+BgD7/foC+f39+vf89QX/BgwFAgUG+f4A//z5+QEF8/0RBPkF9/YEAQf//f779QcF/AIEAPkEBP0DAv4FCf0B+wj5Af//B/75/Pr//wf7/f0B+gcF/f8EAQH+//35+AACDf4I+QIJ9AD6CwD9/f7+/fYA9QX5A/n7APUECff8A/0BCP8KAQsEAP0CBgT+AgL5+gL/+Pb+/vv+BQYSAg4M/QD/Df4LAgX08wQBAfoG+QABAwYBAgU="
     },
     {
       "id": "services#7",
       "title": "収集｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "会話・文書・作業履歴を集め、散らばった知識を一か所へ。 \n\n 02 \n \n Structure"
+      "text": "会話・文書・作業履歴を集め、散らばった知識を一か所へ。 \n\n 02 \n \n Structure",
+      "vec": "/wAGAA35+Qfz+gD8Bv37BPz7//0EAgf/CAD8AgL1AvoDCf8DAf//+QYABP8EAfoBAwz2Bfj6/AIAAP0BBv4FBfr7/Qz69gIC9gMGAff+/QL8//z8BPv8A/X69gf9Agv9AAL9CAb3BgP8APf5+Pzu+fkI/wEGBAEE/wkA//oBBwT3+AT7AvUA+/sE9/wDAQAB+wP8/wX+//37Af8E/QH6/gYD+gD7Af8C8/r1+gAF//v///kA+f/3/fjwBgT+AQAHCwoE+wL9/v7+/vsH/QIGC//1C/z6BvsB/wP4/wQECgUBCQT1BvEEBPj8/f/9AwEDAAIHBAUAAfsLAA37BPX6/AIAAwUFCv0BAP8EBAP+9wUAAfoA9fkBB/kF/f4BAQH+AQkH+QD4//wC/wcEB/4J//sG+PwE/QL+Avz99wf9C/wH+wf+9AX/BP//Avn9/wAE/wf++/z79QT+BAoG+gQF+f4B+/z6+QEH8/kKAAAE9QED/gn+AP3+AAUGAAIEAP39BQADC/4DCvsF/Qf3+gb/BgP9AP8GAgIBBP0C9QUDAfoABfz3/fj8+f8ADAAD+AAB+wL6BAEE+/4AAPME9f4GB/j8BfwDD/r9APkABAUJAQkD/f3+BAX+CQb6+wIC+PT8Afz9BgcOBgoKAwAFCf4HAwLt9wH7Af0E+/r++wUABwg="
     },
     {
       "id": "services#8",
       "title": "構造化｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "知識・判断条件・関係性を整理し、意味でつなぐ。 \n\n 03 \n \n Ground"
+      "text": "知識・判断条件・関係性を整理し、意味でつなぐ。 \n\n 03 \n \n Ground",
+      "vec": "+/4DAgz5+wX8AAT5BPz6Avf8AfkH+wj/Cf8BAwP5/foBAAH5+AIDAgQBBP8EAvYCAAX5BPn9+wYBAQMEAvkACvn++gH6+gQG9wID+/sG/AH6BPr6Cvz8//H59wQCCf7/BgX/AQX5Bwj99/b/+vn3+vUJAP4CAwEEAf8BAfsBBQn6+wL/AvUA+/oG+f4FBQEE/AP4AQEE+/z6+/3//gL+/QQEAQT0A/3/9vrw/f4E/wAB+vv++/v2Afn5AwcG+fcGDQsH/AMBCAIC+AIC/QQBAPz6B/D9CP38Av72AwIFCQD0BgX0CPQFA/sC+wYCAAAE+/8JBAH/Bf8FBRH6/vT4AwX5Av8AC/7+APkFBgX5+wIA/PsA/P//BPX9CP74/wH4AAUI+QH8Av4EAAQCDP0G//8K/fsH+f8BBfj8+QsAAvoF/An58AX+BP/+Av/+AfwC/Qf4/f3++gP5BwUAAAYE9/v89wD9/f0E8vsJBP8B9gT9AQQF///9+AUE/AAC/fj/BgEBBPr/CvgF/gH0BQYACAD6/QQCAwL8+gIE9AQHBPgGAgH6A/0B+f8BDQQG8ggG+/3+AQP7+v38/fv+9P8DAfn8Bv8BDfUCA/gDAwcI/wj6/fsBAgX6AQv1+wYC9vf9//n/BAUPBgYE/wMADv4FAv75+AD2/gAF/fwHAAX+BAo="
     },
     {
       "id": "services#9",
       "title": "根拠づけ｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "出典を参照できるRAGへ接続し、答えに裏付けを持たせる。 \n\n 04 \n \n Act"
+      "text": "出典を参照できるRAGへ接続し、答えに裏付けを持たせる。 \n\n 04 \n \n Act",
+      "vec": "+f8CBQz39woC9wT9Bvz19vv7/AMC/gX+Af8BAAHuAfoBA/0AAP/6AAH4BAX9BfX3AgH9AgL8+QoBBv8C+vb8Av0F/Aj6/gT9AgIB//8GAwD/Afn3Avn2/vH+9wf6CggF/AEEAwn1Cwn/BfoA+wP7+vUA//3/AgL//ggE+/4FCf/6+wECB/3//P4A+P0C/wH/+gb1+f37+f75AfsA/wL7+gUD/AP+A//+9/75/P4D//wF/gH8+gH5AAD9BQMD9AIICwYE+wP3AQADAwP+9AQCBQH/DPcDB/kCAQH9AgEEAgT/CQn3BPILBf39BQIA+wD9AP8F/wb9A/wGBAoACO/3/gkC//7/BwABCAQKCAf99gUF+PcE/AD6Cfv8AwH9/v4ABAEE+AH4AP0HAAkDBQIB/f8F9/wC/QIAAgH8+gwAB/oD/wP79P8A/P0FBPn+AfkF/QD8AP39+P/8BgYBAgUH/P/6Avv//AIG7fwF/AQF9v4EAAcJ+gD6/v4G+v8G/f7/Bf0FBf8FAvz7+AD6AwEBDfv5/AECAv///wL/8wYDAv8BAfv3Avb8+vwDDgEK9QUG9/78AwQE/Pz/+vT/7wABBPUAAv0ABv4FBf7+BwAGAQoB+PwFAgT2AQf4/QID9Pr7/Pj//wQQCQoB/wcBC/4HAQf09P74BPkM+/8LAP8AAwU="
     },
     {
       "id": "services#10",
       "title": "実行｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "エージェントが検索・判断・業務を支援する。 \n\n 05 \n \n Transfer"
+      "text": "エージェントが検索・判断・業務を支援する。 \n\n 05 \n \n Transfer",
+      "vec": "+gEEAAj9+QwB+wj8BPv5Afv9/P0GAQf+Bv7++wTyA/oEAf8B/wT8+wT/BAH7B/r6BQT5Bvj6+goJAf8G/gH7BvkA/Qr+9v4CA/0ABf0DAgP6AvICBv3z//r/+Ar9CQcEA/4FBgL3Bwj9/vT9AQL0+/wGAAAKAv4B/woCAvoFBgP19QAAAfv9/Pz/+P0C//sD9wb8/AEA/vn1+f0K+gH7+gMF/gX4AgIG9AH6+f8HA/kI+/7/+wH8/fj8AwYA/QYHDAcB//78AP0D+wIG+PsEAQH/Dfj+A/X8A//8AgEC//39DQL1//EFBPn9AP7//wH9AQIG9gX/BvoIBQP7APT9/AYDAAUIB/4AA/wKBgUE/QME/vkD/fv8CfUE+v3+Af7z+wcB+gD2Af8D/AYKCgf+/P8J9v4D/v8EAQEC9QkADPoB+/0A9wL/Av0EB/sA/vwGAQD6Afz++gL+AAoD/wQE+v4C9v/++PsG8PsG/v8B+gQH/wUE/gb+9gIB/AMDAvUEAgD/AwMGCvoA/gX9BAcBAv31Af74Av7+/wIF9wQG/f0FA/v6APcA+vz6EAME+QEA9gL8AgX//f/7+vcF9/wAAvgDBfj6CvUB//wDCgAEAQYA+v8CBAX6BAb6+AAE9fb6Avj9BAoPBAcABgwEDv4I/Aj27wf4+/oC+/0J/wEDBAk="
     },
     {
       "id": "services#11",
       "title": "移転｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "社内で運用・改善できる体制へ引き渡す。 \n\n Technology & Security"
+      "text": "社内で運用・改善できる体制へ引き渡す。 \n\n Technology & Security",
+      "vec": "/wEGAQz9+Ar+9QQAAQD5/vz8+v3+Awf+AwH/+QTwA/gCAwQAAAEA+wb+AQb9CPj8/QP++fn3+woH//sJBfkGAgL//QgA+P0D+vsCAfkABgD5A/8ACfvz/vcB/w77BQADAgACCAj0Agj69v77AAT3+P4F8/8GAQX/AAYD+/z9BP/w+Qn5AvwF/P4F+vsMAv779wUA/AIE/vr5/v0NAwb/AQQG9gD6/wIB8Pz4+wEGAv8I+v0G+AP6AvXyAwj/AP0MCgQD//77A/sD+gcF/AMACPr+Bf79BQEF/wD/BQIHAgEBDfz6Bfj///QC/v4D9QH+AAUB/gX+Bf4A/v4CBfj+/wP9/wgCAv76B/0LBgn6AAD9/voA/fr7CvX+//cB/P7//gECA/n9AgL+//0FCQP9/AQF+f/+//f4AwD5+QX5CfgA+fn8/AUBAgP8CfQG+vsAAQb8+v4C9gUBAgf+BAwC9v/6+fz/9/0F8/wO/gAE9AQI/wP9/QD8AQgE/wEBAPkJ/gQABvwDB/n/AgD3AAYBBQP+/wL8AAAA+gED9AkD/foH/vn9Avv9+AMEBAAI9wH5+//+Cv3+/f3+/vwF+//6B/b6Bvz+DPj6APn/DAYHAAoA+/8BAgEADgH1+P8G/Pv//v/9BAgSBQr9BQkCDf4I9wX18QQB/vkE//3//wD5BQM="
     },
     {
       "id": "services#12",
       "title": "つくる、まもる、委ねすぎない｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "精度を測りながらつくり、データと権限を守り、 最終判断は人に残す。 \n 安心して任せられる設計を、 三つの構えで束ねます。"
+      "text": "精度を測りながらつくり、データと権限を守り、 最終判断は人に残す。 \n 安心して任せられる設計を、 三つの構えで束ねます。",
+      "vec": "AwYA/wv1+gME/Af9APT++vf1A/oE/wYBAwMJ/QL3APz+/AMC/QD9Awb7BQMG//sAAQf1B/r7+QMD//8G//T+B/z//Af6+QUD+P0D+QAJAQL+Bf/9Bfr5APb1+An9CP4GBgj//wf/CQX6/vgB/AH49vcK/PsADQP+AgUK/QAFBgD8+gH9Cf0DAPwH9/7//wD8/gX5BvsF//35//4E/AT++wIIAAP8AwAC+v/8//0GAPoDA/z8+P/2BP32AgYE+fcFCgAL/gD9Cf0C+wH6AgH//fn4CfwABfoGB/75Bf4ICPz9BAX6A/sA//r//QT//gT+AP4A+AACAgECAQn8A/T//f4BAQH6Dvn7BAgGAg74/QD8APcAAAD7//T5Bf0B/QH6AAED+gL5BP3+Af0EDAT//gAE+fsH/gIC/v0B9Qn+BvsC/Pv99QX4BAT9AAMA+fkB/QX8+vr89AEBAgX/BAEA+P/7+vv+APv98wAJ/fv7+gT9AAYE+P77/AME+wAA/Pz8AgICAAIAA/8F/wb1BQj/DQAB+AIC/wb+BAcD+wcDAf0J/v/89vX99wQDCgUF9wMC+vb3CPz/9QL6+foC8QT3A/r3Av4ACQIAA/0ECQgB/AkB/f4N/AH5/wv5/gUD9/sC+vb8Cf4WCAoCAwr9Ef4L/gLz8gQC+fsH9/8N/f4DAAc="
     },
     {
       "id": "services#13",
       "title": "つくる｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "RAG・社内検索 \n\n LLMの最適化・調整 \n\n 評価設計（精度を測る）"
+      "text": "RAG・社内検索 \n\n LLMの最適化・調整 \n\n 評価設計（精度を測る）",
+      "vec": "+wQEAA329gMF+wT8Afr+//v4/f8D/An6CgAL/gfzAfv//v0BAQf7Av//BAEEAv4EAwT1BgD49Qj+/QcFA/4AAfr7+Qn9+QT6BPwD/wQGBgX/Bv3/Bvj7//X89QQACQIHAQMEBAf/EwP+/vf+/QP2/+8E/vr/Cvr9+wYG/gEECf77/f7/CPv+/P8B9/oFA/sC9gn5/P8A+fv1AfsB+gL7+QoJBAgABAAI9f/9+QQEAP0GAPsC9/72APz2AwIG+QMEDgYGBAAB/QT//QL++wIAB/n9CgIDCPwE/gACA/4EBAH+CQT4B/QD//oD/gD+/gP5AP0D+gIA/wEIAQP9BvH9AP0CAv39Dv0BBP0BBwr5+/79A//+/QAAAfgEB////AT5+AIE+QT0/wb//QEJCQIB/f8N//kDAAADB//98wr/CP0F+v/59QP9/AP+Bv/9/vcC/gH6/vb8+AECAgYDAQQC9wAA+voB/fz/8vsL/P4D/AUF/wUG+QH8+AQC+wMA//z9BAMHCP8DAP0A+AX6CQsCDfj5+wMBAwEEAwID9gQC/f4KBf77+fcC9wD/BwAC+gL+/v3zAfwA/v/9APsA8gL5Cfn7B/wEAwH+BPUDCAoDAAX9/AAFBAL6/Qn1+wcD8vr8/vcGAwMUBwj8AAMADP4B/Qb29AL7+vgH/wUJ/gIG/wg="
     },
     {
       "id": "services#14",
       "title": "まもる｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "オンプレミス・プライベートクラウド対応 \n\n 権限管理 \n\n ログ・監査"
+      "text": "オンプレミス・プライベートクラウド対応 \n\n 権限管理 \n\n ログ・監査",
+      "vec": "AwsH/A76+AsF+Qr9Bvn3Afv8AfwEAgT+/Ab/+wL1A/n9AgH9AgT9///0CAf8Avb//gL5A/T3/QUEB/4GAfv7AfsD//v/+v0D+f0BBPwCBQD7Cv/+DP/xA/wC9wj5BQUEBAH/BQL0AAX7/wH7/wL4+/oG/v8HDAL+/wcD/QD/AgD1+gP6DfoABQH++foK/AP99QH3+PcAAPn3//oG/QT1/AUH+/8BBAIG9/36AwEAA/oBBP4C/QX7B/f3AQn/Av8ICQYD+P/7+v3/BAT+A/8DBf0CC/8CAPn7BPz+Av4JA/oADQX6Afn/A/oCBQIB/Af9BAP38wj9AfsEBAQDA/D+AAQBAAMECvb+CwIH/wcG/AD//vgGAfr4Bfr+/P4FAAj4/QP8/f76BvwB/f4IBwv9/QQH/fwE+/z6AQj78wf+A/gF9/b++QcC/Af7BfsFAP0BAQn++fz+8QQE/QgFAgb/+fsC/PwB+fwC8QII+wgB9gEDBQoI//v5AAEBAgIB/v8F/gD/APsDCP7//AD6AwoBAvr9/wP5/AH6AgMA+gL8BAAC/gH8/vv/AAEABwAE+AT59QH7AfoA+/wA9/wC9fz9A/7+Af3+APj4A/n8Bv8DAwcA+vwF/QQACQX59fwE9/7/Af3+AgYYBgoAAwICDv4G+gH1+Av58fIA9PsF/AL+/gQ="
     },
     {
       "id": "services#15",
       "title": "委ねすぎない｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "人間による最終承認 \n\n 判断根拠の提示 \n\n 段階的な権限委譲 \n\n How We Work"
+      "text": "人間による最終承認 \n\n 判断根拠の提示 \n\n 段階的な権限委譲 \n\n How We Work",
+      "vec": "BggABwr69wj//w36+/r5+fj6Bf4CAgYDAwAE+gb0APn+CgAA/gP4/gD+AP8BC/j8AgP2B/77+gYG//v//fwAB/r/+gQE/AMC+QID/gELAwEABvwBAv75/fX49Ar6DgMIAAgDAwj6AQL+AvwH/QD1+vgF/fcFBwb/AAUGAPsEAgf6+gH+CPz8BP8C+/oD/v3+9wb4AfYJAfz7APkE/wb8/wMG/gP7AwYB+AH1BQIEBvwHBQIB9wD3APr5AQQD+AIHBwMH9wX9BPn/+QME/v7+/vf6CfwEAvz4A/7+CAMHAAH9CAH9BPwCCPz+/gUE+gH4AgUJ+wIAAv8CAQn+CPb5+wMEAf/8Cfj7AwQLAQ0A+gIBAfYAAf31AvcAAgEDBAD+AAMC+gP5AQAE+wIGBQAC/QUB+QAC/AEE+gEE+QoABvYC/fn/+Qf5BAj9AP4DAfn//g/3AQD+9QAB/gX9CQn8+Pf++AAB/AIB7QAIAAD79vwE/wUC+wT7AQEH//wAAv0A/QIBBP//Bfz/AgX8AQcCBP39+gD8+v8CAAYE9wYAA/0I/wL7/fn99QX/CQAF9gMD+Pn6C/4H+f/7+fX99Pz+AvYDBf8CCfb6CAT6BAEG/w78//4J/wH1/QT3/PoH9fz//PwACAkUCgn7Bwj/Dv4E/Qry8AX/+fwE+QAF+gX++wo="
     },
     {
       "id": "services#16",
       "title": "小さく試し本番まで、 \n そして自走へ｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "いきなり大きく作らず、 効果を確かめながら前に進めます。 \n 下の期間はあくまで目安で、 規模や目的によって変わります。 \n\n 1 \n 課題整理・要件仮説 \n 目安 1〜2週間 \n\n 2 \n 動作プロトタイプ \n 目安 2〜4週間 \n\n 3 \n 業務データによる検証 \n 目安 2〜6週間 \n\n 4 \n 本番システム構築 \n 目安 1〜3か月以上 \n\n 5 \n 内製化・継続改善 \n 継続 \n\n 期間は目安です。各段階の結果を見ながら、次へ進むかどうかを一緒に判断します。 \n\n Get Started"
+      "text": "いきなり大きく作らず、 効果を確かめながら前に進めます。 \n 下の期間はあくまで目安で、 規模や目的によって変わります。 \n\n 1 \n 課題整理・要件仮説 \n 目安 1〜2週間 \n\n 2 \n 動作プロトタイプ \n 目安 2〜4週間 \n\n 3 \n 業務データによる検証 \n 目安 2〜6週間 \n\n 4 \n 本番システム構築 \n 目安 1〜3か月以上 \n\n 5 \n 内製化・継続改善 \n 継続 \n\n 期間は目安です。各段階の結果を見ながら、次へ進むかどうかを一緒に判断します。 \n\n Get Started",
+      "vec": "/wQI+QL1AgIFAQf9+fP/APj4//4BAP/8A/cBAgf0Afz5/v4AAQP++wEA/vwBAfsCBAz2Bvn6AQIDAAAFB/0AAfz//QX6+v3/Af0AAAADCAT2/fsCAvv4//n7+wf+CxD+/wICBAUABwb6//cH/Pv5/fQF/gYK+QD7AAkA/v7/Dv8A/wX7Cfv9+P4C+AMC/foD+An8BPr7Afz5/gcI9QT3/gIA+AL7Af0D9QAH/AX9CPwAAAAD//71Bv31AAIE8wMCAgUK+wX5BwQC//4BBv/6//4ACQEDAPQAAgT3AgcEAvsFDgMACfP+Afv//wQB+//2BAX8+v/9/fj9AAb2BvgE/AYFAwX+BgH/BwQICAf2/f////b8+/72Bfb//f0F/wH9/wcGAP74BPn9Bf4ECQIDBfsF/P/+AAIDAvsB+A39Cvz89/0D/QAE/gL+/vkAAf8E//wDCvb89QYJBgj9B/4E+AL9AvkC/fz99gEHAf0B//z4AhIE+v3z/QEH/QoDAPoFAAUEBP3+AfsE/wL7BAj7B/7++P8A+/4A/QME9QcABAADAgT/+fD8+vb/BgEC+/8E/gbzBgD9AQEA//0E9f/5Afr3//n7BPn4Bfj/A/oG/gsGAwoEAgX/AgT7+Af+AfUEAP4GCAcd/gT9/QMHCf4J/AX79AcB/vsL/PYHAQkF+QQ="
     },
     {
       "id": "services#17",
       "title": "暗黙知の解消を相談する｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "要件が曖昧な段階でも、一緒に整理できます。 \n いまの知識資産から、最初の一手を見つけます。 \n\n 無料相談はこちら \n\n 連絡先 \n contact@shinai-inc.jp \n\n 受付時間 \n 平日 9:00–18:00 \n\n 無料相談 \n 30〜45分・事前準備は不要"
+      "text": "要件が曖昧な段階でも、一緒に整理できます。 \n いまの知識資産から、最初の一手を見つけます。 \n\n 無料相談はこちら \n\n 連絡先 \n contact@shinai-inc.jp \n\n 受付時間 \n 平日 9:00–18:00 \n\n 無料相談 \n 30〜45分・事前準備は不要",
+      "vec": "/v4AAAj++Av++Qf9AwD8AvQA/wACBgH+BP4I/Ar6AP0CCvwA//3++gQBAwAKBfYCAgD9A/r89AQGAQIHCP3+AfsBAgn49/wA/vr+/gUGAgb6BPcABfv5Bfn69wLw//8DAggCBAP+DAj7BPX89gP3//wB+vr/AgL8/AUECfv7CAT1AwH4CPX9+/z//fkIA/oC+QQB+Pj9Aff7+PwCAgT9+QQDAPz9AwUE+vr3/QQBAQUG/vQB+wL4Avfu/wQF+gADBggHBAj8/AT38P8FAQEJBvgEC/j9BvoAB/35BAP+AP4ICAP8BgEHA/UCC/wBAAD7A/4C+f79AvcHAQUAB/f7+QT8/QQIAvz5Bv4CCAD//fsBAPr++QH9A/UG//v/AgQB/QED/QP8/fwE/AADCAAD+gIN9QIF/f0A//8E9QEEBvcG+AH49QIC/QEBAvoG/fgCAAL7/Pr+9AL/BAL/CAX+9gP7+QP7+P0E9P4C/gED+AD+/AoCBfz8+P4G//8D/fsAC/8BAgH/DP8A/AX5/Qn+/v399///CPr7AwYI9Aj///0N/wL4BvgC9P78CAUH8gAD/PsABgAG+f35//X99QD5Avv5BvgDBvn6/v37BwMEAAkB+wMEAwz7/gX48woG//sC/PsCCAoRAAT+AAsBDP4FAQP69wL++QQD+/0E+gUEBAs="
     },
     {
       "id": "industries#0",
@@ -413,7 +434,8 @@
       "id": "gunma-ai#10",
       "title": "会社概要｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
-      "text": "対応地域: 群馬県を中心に全国・オンライン可\n無料相談: 30〜45分・事前準備は不要です\n連絡先: contact@shinai-inc.jp"
+      "text": "対応地域: 群馬県を中心に全国・オンライン可\n無料相談: 30〜45分・事前準備は不要です\n連絡先: contact@shinai-inc.jp",
+      "vec": "+P4HBQrz/QcA/QX5AwD4/PP8A/4BBQb8BwIDAAT0+vv//foBAgX+/wYDAwIDAf0A///2Av70/QkLBAICCfwC//8BBAf69f8D/wH9AgEEAAX2Cvj+Bvf7/vkE8gn6AwD9BQIGBAH5BAz+A/wCAwb6APgB9AIFAfgB/AL9CAL9Afz7/AD/A/7/+PwD+vsEBP369gP39wT7Afj29fQH9/7++AgE///9//3/+AD6+/4EBfwK//8H/AP5CP33AAH//QICCw8K/f36/vwC8AAKAPsFA/sACvMJ//sA+QD8/f0B/AEACwD9BfYE//79/PwEAf78AwIKAAD3Bv8EBP/8B/P9+AADAAX/A/r8BfsHCgIC/AIIA/sC+gL3CPv9+//+A//4AAYBA/n9Af0HAQIICwQD+gMI8/4C/P4C/wD/9AYCBPsA/Pv88QIDAAYABv8A+fwE//78//v/8gYC/wQCAQH6+v78/P0D9/oA8QAE+v4B+/79+g/9+QAB+gUEAAIB/vz6AQMBBfsCEPv++gX6/wT8Avj7/v/+BPn//gYB7QYD+wP8AQD+BvsD+/j9Cfz9+v0C+QP/AgEE/gT+/f349wP9B/UABwIHCwb9AP34CgMF+wkA/gACAgb2BgL99wAH9vL7+fsACAoMAQUC/gYEEP8BAwX78gb3+P0J9QAB/fz7AQg="
     },
     {
       "id": "gunma-ai#11",
@@ -461,7 +483,8 @@
       "id": "gunma-ai#17",
       "title": "研修と試験導入で、 \n 終わらせない。｜群馬県のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
       "url": "https://shinai-inc.jp/gunma-ai.html",
-      "text": "要件をまとめて他社へ渡すのではなく、 動くものをつくり、 仕事に組み込み、 \n 回り続ける状態まで見届けます。 \n\n 事業内容の詳細を見る\n\n FAQ"
+      "text": "要件をまとめて他社へ渡すのではなく、 動くものをつくり、 仕事に組み込み、 \n 回り続ける状態まで見届けます。 \n\n 事業内容の詳細を見る\n\n FAQ",
+      "vec": "/AEGBAb2AQQIAQP7+/z7/P35AgUBBAIBBvn/BAL0/vz5APoDAgP/AwT/BAQDBv0E/wP5BQLy+wQLAPsHCfkCAPkA/wf0+v8A/gL+/QYEBQbzBPr7Bvj5//f1+w34CAYBBwMCAwL5/wYB+/j8AAP6+/kH+QIE//0AAAgCAAH/Cv37+AX7/gMB+/sB+P8ABf77+QL8+wT8Avz5+fgJ+QP+/gEE/wX5/gIB+gD48fwCBf4D/v0E+//2Bvjy/QP8AAEHDgcG/v78A/kE+QUG/v4GBPv6Cf8EAfX9/QH5/P/9AQQDDwP9B/sABP3/+//7//z9/gIP+QL9AgAH/wP8B/b6+wIEAP7/Cvz7AgcICAf8/QIDBfv//QT+//j9/gABBP78AgcD//78//8DBAIECQMD+/0B+fkB/AMBAwIA8Qr/Cvz8A/gA8wAD/wMDBf36/ff/+AIA//D/+AgCAgr+AP8D/AT6/PsA+v0D9AMIAvsA//z9ABD4+AQD+goC/wUB//n7AQkDBf0CDfoJ+wL6BAP+BP37/AL/AQAB+QYC8wcF+P38AwL+//r/+vn9CgAF/PoF9gD2CAD8//oC+vwA9gX8Afv7APkFDAf7B/v+AwEH/AcDBAgEAgT4AwP58gME+e/5+fn+DwgaAAT+BQMFCv4IAQn29QT7//4H+vkBAQL+AAU="
     },
     {
       "id": "gunma-ai#18",
@@ -748,13 +771,15 @@
       "id": "faq#14",
       "title": "どのようなソリューションがありますか。｜よくあるご質問｜ShinAI",
       "url": "https://shinai-inc.jp/faq.html",
-      "text": "どのようなソリューションがありますか。\n暗黙知の解消支援、企業専用AIエージェント開発、AI化伴走支援の三つを軸に目的へ合わせて組み合わせます。あわせて、フィジカルAIの研究開発にも取り組んでいます。 \n それぞれの中身と進め方は 事業内容 ページをご覧ください。"
+      "text": "どのようなソリューションがありますか。\n暗黙知の解消支援、企業専用AIエージェント開発、AI化伴走支援の三つを軸に目的へ合わせて組み合わせます。あわせて、フィジカルAIの研究開発にも取り組んでいます。 \n それぞれの中身と進め方は 事業内容 ページをご覧ください。",
+      "vec": "+v8F/gz9/QYA+Qn9+vv2/f38B/oCAQAEBf0DAPv8Bf39BQEBA/4AAQgAAgT+Afr3+wH2Bf36/QYA/wMEBPn7Cf4D/Qfz9f8BAf8BBP8GBAABCPb8B/v9AfIA9wfzCAYFCwkBCwD8CAsC9//8/wH3+fwA+fwBAv4A+wcOAvz+B/v3AP4AAPb/+v3/+fsHAP0E/v3++fv+/fr6//sAAQb//gQF+AT4+wAF+P/3+wAGCvsB+vf++wHvBPz5/f8CAgMCCgoJ/gH8A/4G/QP/AQYLAP0FB/sGCfX7APz5CP8E/wL+BwD1BPsJBvYEA/v7/wj6BP4F/wQBBfsD/Qr4BPD/+gEB/Qb+CPz9AgD9CwICAwAE/vr9/v38Bvb+AP0CAwD+9wAF+gD9Av3/CQIIC/n+/QAI+P8G+QP7CAD89AUACfgE/gD59QEC/Pr7Bf8A/f38/QP98/EC9gT6AQEBBAT99QD2/gX7/PoA9foM/f8A+/sJ/wcC/wD6/P8H+wMDAfYAAQIDAP8HC/cB/P/5BQkCAgH9APsBAgT//QcIAAUE/wIEAQf8CPP++gUECgMD+f0HA/T7CQD7+P7//vgC9P/9BQH5AvcBC/z+CfsDAwQA/QgC/AEA/wf1/Qb4+QQG/PwC+QH+BQYK/QQIBQT9Ef8JBAH08gYC/v0I+/0H/QoBBgY="
     },
     {
       "id": "faq#15",
       "title": "フィジカルAIとは何ですか。｜よくあるご質問｜ShinAI",
       "url": "https://shinai-inc.jp/faq.html",
-      "text": "フィジカルAIとは何ですか。\n文書や会話ではなく、現実世界の動きや信号を扱うAIのことです。熟練者の手の動きや力加減、設備の稼働音や振動といった、これまで言葉にされてこなかった情報をセンサーで捉え、強化学習などで扱える形にしていきます。 \n ShinAIではこれを研究開発（PoC）の領域と位置づけ、現場をお持ちの企業と共同で小さな検証から進めています。詳しくは 事業内容 ページをご覧ください。"
+      "text": "フィジカルAIとは何ですか。\n文書や会話ではなく、現実世界の動きや信号を扱うAIのことです。熟練者の手の動きや力加減、設備の稼働音や振動といった、これまで言葉にされてこなかった情報をセンサーで捉え、強化学習などで扱える形にしていきます。 \n ShinAIではこれを研究開発（PoC）の領域と位置づけ、現場をお持ちの企業と共同で小さな検証から進めています。詳しくは 事業内容 ページをご覧ください。",
+      "vec": "+gX/Awr8+wcA+wT9+/79/vf5BPIEAAD/BvQDBPz4CP72/vwAAv/9Af4CAQv6/v4D/QH0Dfr9AgkF/gEEAAD/B/sG/wcA/QMC9gD+AvoFBQYBCvT9CPr6/vf8/AryDAUMBAYDAP4BBQgE//z8AwH3+/4H9/8BBv/8/AkFBf/8BQD4///7BPcC+PoD+/wE/wAEAv8C+gP+/f37+fUJ/gb+/v4E+wb3AvsD+Af3/v0BA/wG+fb/9wDxBgD5AAf//gADCQwN/gX7BAQGAf0BBQAK/fgAC/wJAPUABAD1/gADBAT6BP/9A/kE/Pn7/vz6/v/+BQQEAPsB/f8N/Qn7AvsD/AMF+AEABvv4BAQCBwgD+g8DAf4D+//9CPsBAf7+/fzw+f0E+gD/Af4ECgECBvf/+/sO/AEC/wMBB/z++QH7Df///P/99fsEBf0BBwX++vgA+vz79fsD9gsA+/0DBAD8+gD5/f39/fv98vwKAvr99/f++P8DAQH/+AQAAgADCP3+/QQDAPcOBvj4+/76BwEECf/+/wAB/wMCAwcC/QUHAAACBAL+CPn//AAICwED9QEE/vYCBQX+9f4A/vgB+Af9B/n7APoFCP/9BP0CAgMC+wcG/gcH/gPx+wD49wIL+PgEBP4FAQQE/wYI/AH4Ef8LAAD59Af/A/wN9gYFAQcBBQk="
     },
     {
       "id": "faq#16",
@@ -802,7 +827,8 @@
       "id": "faq#22",
       "title": "会社概要｜よくあるご質問｜ShinAI",
       "url": "https://shinai-inc.jp/faq.html",
-      "text": "連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00\n無料相談: オンライン 30〜45分・事前準備不要"
+      "text": "連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00\n無料相談: オンライン 30〜45分・事前準備不要",
+      "vec": "+v8GBQn5+AUA/Qf6Cv31/vH+BPcCAwb+AgEF+wX0//n+BfYDBwH++wP/BwEBAfgDAQL6Avz69wYJ/gEGBfgBAf//AgX7+AIG+wAAAf0EAwL2B/cBBPb7//YF8gb4CAQHBQcE/wP6Ag39A/r9AAX2//cE+P8ABP36/QcDCP7+BQT3/f/+A/r7+v0B/PgDAvn7/gf6+P/6//ny9fsH/AL6+AkI+gD6/wAG+Pz9/AEDCPoIAfoD+wL5//n4BgL/+QICDgYG+v73+/3/9f4HAP4HAvsADPMEB/v7/QD8/P0D/wH+DPz8BvMGA/r+AvsJ/v79BAIFAQL4BfoGAQL7CPT/9wIC/wEHAwD9Bf8BCgYDAPsE/vgA/fz5CfgH/PkAAP77+wUE/QH5Af8K/wIDBP4C+gAL9QMDAP8D/gAA9gkDBf0F9gD99QED/gP8BvkF+foIBAT4/P398QEB/QMBAQT8+AH9AAIE9v4A9AAF/P0D9gL++AsE/AL6+gUE/gACAfwDAQH/CAABDP37/AgABgj//vn//gD8Avz8AAYD8gIFAf4EAgD5Bvf/+Pn4A/3/9QP/+QABAgIC+gX7/Pn+9QP8B/X/CP4ECPwA/fv4CgAC/Qn9+vkEAAv6AwT1+AEG9vT6/PwCBwwIBQsC/gYDD////wP49Aj0/P0G+QAE+wECAQo="
     },
     {
       "id": "faq#23",
@@ -906,13 +932,15 @@
       "id": "news-20251205-takasaki-press#0",
       "title": "高崎商工会議所 第9回合同プレス発表会に登壇しました｜ShinAI",
       "url": "https://shinai-inc.jp/news-20251205-takasaki-press.html",
-      "text": "2025年12月5日、高崎商工会議所が主催する 第9回合同プレス発表会に弊社の代表 柴田が登壇しました。\n\n 発表では、「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みをお伝えしました。\n\n 私たちが向き合っているのは、企業のなかで言葉にならないまま個人に留まっている知識です。長年の判断、手が覚えた技、積み上げられた文書。それらは会社の資産でありながら、必要なときに引き出せる形にはなっていません。退職や異動とともに失われていくことも少なくありません。\n\n ShinAIは群馬県高崎市を拠点に、そうした暗黙知を構造化し、現場で使えるAIへ変える支援を行っています。効率化そのものが目的ではありません。AIが情報処理と定型的な判断を引き受けることで、人が創造や意思決定、関係づくりといった、人にしかできない仕事に還れる状態をつくること。それが私たちの考える最適化です。\n\n 当日のプレスリリースは、高崎商工会議所のウェブサイトでご覧いただけます。\n\n プレスリリースを見る（PDF）\n\n お知らせ一覧へ戻る"
+      "text": "2025年12月5日、高崎商工会議所が主催する 第9回合同プレス発表会に弊社の代表 柴田が登壇しました。\n\n 発表では、「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みをお伝えしました。\n\n 私たちが向き合っているのは、企業のなかで言葉にならないまま個人に留まっている知識です。長年の判断、手が覚えた技、積み上げられた文書。それらは会社の資産でありながら、必要なときに引き出せる形にはなっていません。退職や異動とともに失われていくことも少なくありません。\n\n ShinAIは群馬県高崎市を拠点に、そうした暗黙知を構造化し、現場で使えるAIへ変える支援を行っています。効率化そのものが目的ではありません。AIが情報処理と定型的な判断を引き受けることで、人が創造や意思決定、関係づくりといった、人にしかできない仕事に還れる状態をつくること。それが私たちの考える最適化です。\n\n 当日のプレスリリースは、高崎商工会議所のウェブサイトでご覧いただけます。\n\n プレスリリースを見る（PDF）\n\n お知らせ一覧へ戻る",
+      "vec": "AvwAAg719gb8+wD7A/X6+vj5Bf36AgAABAMC/gb7/voCAf//Af/6+gX9CAP+BfcAAgr4CgDz+QEJ/P0BBQIECPj/AQkB9wkHAPsD/fcFAwX3CfP5BPT8APwE/Aj/B/78AwMDAgn5Awf5AAD4/QPw+voL//wDBQMB/AUABPz+BPz39vsCA/n/+//+/v4KAP7++wcC9v/++/r39/4I/QP7+gMI+Qr6/Ab+8//1//wIBgAIBvn9+/v2/f71/wT8AwQJDwgI/wD7Bf0C/P8IAgEHA/0CCf0JAfz9/vv7AvoEAAUCBf3+B/oDAvr+BAQI/wL/BP4OBAf+APsEAxD/Cfj9AAAB/Ab/APr/DAgHCQcB/AEDAfsD9gj8DgH9/v/+Bvv89wIC/QH4AQEFAf4EDfsDBQID9vcG+fkC//n9+g4CAPoAAv7//P4D//z9Bf8BAPgL/wD+//QC7gAG/wL6/gUB9wL9/P4B/v8B7gMEAAEC/AQH+gkC/gHx+AQEA/z+/vX99wMBA/4DDPf4/AX8//8BBvv9/fz6AwH++AwE+wH++P8BCQIAAQEB+/oDBfwD9/wA/vwABv8H/gUC/fj89f3/CfgABvoDBvgBAPz+AAD/9gj5/wQJAAb6AgD8+AEG+Pf6+/r9CQkJAwD7AAX+Cv8H/gb48wT9/gAM+gQF+wIDAQI="
     },
     {
       "id": "news-20251205-takasaki-press#1",
       "title": "高崎商工会議所 第9回合同プレス発表会に登壇しました｜ShinAI",
       "url": "https://shinai-inc.jp/news-20251205-takasaki-press.html",
-      "text": "ホーム \n › \n お知らせ \n › \n 高崎商工会議所 第9回合同プレス発表会に登壇 \n\n 2025.12.05 \n 登壇 \n\n 高崎商工会議所 第9回 合同プレス発表会に登壇しました"
+      "text": "ホーム \n › \n お知らせ \n › \n 高崎商工会議所 第9回合同プレス発表会に登壇 \n\n 2025.12.05 \n 登壇 \n\n 高崎商工会議所 第9回 合同プレス発表会に登壇しました",
+      "vec": "APoF/Qv59QT7+AD/A/n9+Pb+//35Af0BBAUCAAj///oFAv35/wL6+AgCAwEDA/P9AQz6Cgb09v8F/f8ACf8DBv3+AwgE/QAG+/0E+/b/AQT3CfD7B/X7Av4G/AYABQH8AgX+Agz6/wP5BP32+//v//4LAfsDAgMC/wj+Afv/AgH4+/n7AP78/gD9+wEOAwT6+gf/+Pv7+v72+voD/gH+/wIL/A76/Qf+8wD5A/0JBQQFB/oE+/74+fz3BAUA/QEGDwkC/P//BP0E/AEKAP7+Bv8ADAAHA/77Aff7BPsFAAUEB/0EBvgCA/r/AgQEAP3/AQEQ/Qb6AvoBBgoCBvb8/f8C/QAC//0ACAUJCQL+AAMDB/wD+gcEDPz9+QQCCff++QkA/f73AQMH/vsCB/4FCAMCAPoE+fgG+/r7/QwAA/0E//77AgIDAPv/AwL//vsPAgIDAfgB8f0H/Qj6/gQE+gIFAvoJ/f8D8AP/AQIF+gQE/A4D+wb1+wQEB/z/+fMG9wb9AQQIDfv5/gIAAwT+Bfv9/Pv5//0B9wYI9wEA+f8ABf0BAwX///n/BvcG+vj8/gEAAfoGAgn/APn79wECAfoKA/8GBfkEAv74/wP++wb1AQIFAwj0/gX9+QMJ/vb2+/f8CAoBBPn3AAUFBf8E/QD69AH+/QIBAgYD+wAF/gU="
     },
     {
       "id": "privacy#0",
