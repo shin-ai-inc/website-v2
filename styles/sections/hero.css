@@ -271,6 +271,15 @@
   body[data-page="services"] .section--ink {
     position: static;
   }
+
+  /* ページ見出し帯も透過にする。.page-hero は --paper-2 + --grad-section の
+     不透明な地を持つため、ここだけ粒子が消えていた(「試し深め、自走する組織へ。」
+     の節)。地を外すと固定canvas がそのまま透ける。
+     文字は .page-hero 自身の stacking context(isolation: isolate)の中にあり、
+     canvas より前に描かれるので読みやすさは変わらない。 */
+  body[data-page="services"] .page-hero {
+    background: transparent;
+  }
 }
 
 /* 狭い画面では、下層ページでもCTAとフッターの暗い帯にだけ映す。

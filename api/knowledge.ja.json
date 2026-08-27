@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "362e5f1",
+  "generatedAt": "1b14959",
   "chunks": [
     {
       "id": "index#0",
@@ -188,7 +188,7 @@
       "id": "services#5",
       "title": "現場の技を、AIへ。｜事業内容｜ShinAI",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "手の動き、力加減、目で見て決める判断。 文書にも会話にも残らない現場の技を、 センサーや映像から捉え、 AIが扱える形にします。 \n\n 暗黙知の解消を、 身体で動く現場にまで広げる新サービスです。 まずは小さな検証から、 御社の現場に合わせて設計します。 \n\n この新サービスを相談する \n\n ShinAI Method"
+      "text": "手の動き、力加減、目で見て決める判断。 文書にも会話にも残らない現場の技を、 センサーや映像から捉え、 AIが扱える形にします。 \n\n 暗黙知の解消を 身体で動く現場にまで広げる新サービスです。 まずは小さな検証から、 御社の現場に合わせて設計します。 \n\n この新サービスを相談する \n\n ShinAI Method"
     },
     {
       "id": "services#6",
@@ -913,8 +913,7 @@
       "id": "news-20251205-takasaki-press#1",
       "title": "高崎商工会議所 第9回合同プレス発表会に登壇しました｜ShinAI",
       "url": "https://shinai-inc.jp/news-20251205-takasaki-press.html",
-      "text": "ホーム \n › \n お知らせ \n › \n 高崎商工会議所 第9回合同プレス発表会に登壇 \n\n 2025.12.05 \n 登壇 \n\n 高崎商工会議所 第9回合同プレス発表会 に登壇しました",
-      "vec": "APkF/Qv69AT6+AAAAvn9+Pb+//35Af0ABAUCAAj///oFAvz5/wH6+AgCAwEEBPP+AQz6Cgb19v4E/f4ACf8CBv3+AwkE/QAG+/0E+/b+AQT3CfD7B/X8Av4F/AcBBQH9AgX+Agz6AAP5BP32+//v//8KAPsEAgQC/wn+Afv/AgH4+/j7Af78/gD9/AEOAwT6+wf/+Pv8+/72+voE/gH+/wIL/A35/Qf+8wD5A/4JBQQFB/oE+/74+fz3BAUA/QEFDwoC/P7/BP0D+wEKAP7+Bf//DP8HA/78Avf7A/sFAAUEB/wFBvkCA/n/AQQFAP3/AAER/Qb6AvoCBgoCB/b8/P4C/AAC//0ACAUJCQL+AAMDB/wD+gcDDPz9+gQCCff++QgB/f73AQIH/vsCB/4FCAMDAPoE+fgG+/r7/QwAA/0E/v77AgIEAfz/AwL//vsQAgECAfgB8f0H/Qj5/gME+gIFAvsJ/f8D8AT/AgIF+gQE/A4D+wX1+wQEB/z/+fMG+Ab9AQQIDfv6/QL/AwT+Bfv9/Pv5//4B9wYH9gEA+f8BBf0AAwX//vn/BvcG+vj8/gEAAfoGAgn/APn79wEBAfoKA/4GBfkFAv73/wP++wf1AgIGBAj0/gX9+AMI/vX2+vj8CAoBA/n3AQUFBv8F/QD69AL+/QICAgYD+wAF/gU="
+      "text": "ホーム \n › \n お知らせ \n › \n 高崎商工会議所 第9回合同プレス発表会に登壇 \n\n 2025.12.05 \n 登壇 \n\n 高崎商工会議所 第9回 合同プレス発表会に登壇しました"
     },
     {
       "id": "privacy#0",
