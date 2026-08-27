@@ -476,16 +476,26 @@ body {
     display: none;
   }
 
-  /* 閉じるボタンのタップ判定を広げる。padding:4pxのままだと
-     アイコン20px+余白4px×2=28pxしかなく、指のタップ精度(実用上おおむね
-     40px以上が必要)を下回る。モバイルではこのウィンドウが画面全体を覆い
+  /* 閉じるボタンのタップ判定を広げる。
+     一度 padding:12px/margin:-8pxで44px角(WCAG推奨の最小値)まで広げたが、
+     柴田より実機でまだ無反応が多いと再報告。44pxは理論上の最小値であり、
+     実際の指の接地面(だいたい8〜10mm=40px台後半〜50px台)に対しては
+     余裕がなかった。モバイルではこのウィンドウが画面全体を覆い
      (position:fixed・top:0/left:0/right:0)、閉じる手段が実質この一点しか
-     ないため、外すと行き詰まる。padding を12pxへ広げ、同じぶんだけ
-     margin を負にして見た目の位置とアイコンサイズは変えずに
-     判定域だけ44px角(WCAGの推奨サイズ)へ広げる。 */
+     ないため、狭いと行き詰まる。
+     負のmarginでの帳尻合わせ(padding拡大+margin相殺)をやめ、
+     width/height を直接指定してflexで中央寄せする単純な形にする方が、
+     計算の食い違いが起きにくく確実。52px角まで拡大し、
+     ヘッダーの高さはこのボタンに合わせて自然に広がるのを許容する
+     (帳尻合わせで詰めるより、見た目にも大きく取れているほうが
+     指の当て方そのものも安定する)。 */
   .chatbot__close {
-    padding: 12px;
-    margin: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
   }
 
   .chatbot__messages {
