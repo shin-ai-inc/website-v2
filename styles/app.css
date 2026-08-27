@@ -1311,8 +1311,13 @@ h1, h2, h3 {
   max-width: var(--container-text);
 }
 
+/* リードは本文より大きくする。--fs-lead は clamp(0.95rem, 1.15vw, 1.125rem) で、
+   1.15vw が下限 0.95rem を超えるのは 1322px 以上。つまり実質どの幅でも 15.2px に
+   張り付き、本文(--fs-body = 16px)より小さい。導入文が本文に負けて、記事の
+   入り口が沈んで見えていた(色 --ink で濃くしても、寸法が逆では釣り合わない)。
+   記事のリードだけ一段上げて、リード > 本文 > 注記の順に戻す。 */
 .article__lead {
-  font-size: var(--fs-lead);
+  font-size: 1.0625rem;
   line-height: var(--lh-body);
   letter-spacing: 0.04em;
   color: var(--ink);
@@ -1424,12 +1429,6 @@ h1, h2, h3 {
    役目を終えた。残すと本文だけが右に 52px 空き、題や画像より内側で折り返す。
    実測(390px)では題の右端が 366px、本文が 314px で、段落だけが理由もなく
    狭い列になっていた。空けるのをやめ、記事の全要素を同じ幅で組む。 */
-
-@media (min-width: 481px) and (max-width: 759px) {
-  .article__body {
-    padding-right: 8.5rem;
-  }
-}
 
 
 /* sections/capability.css */
