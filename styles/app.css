@@ -1599,6 +1599,15 @@ body {
   z-index: var(--z-overlay);
 }
 
+/* スクロール進捗ライン(.scroll-progress・base.css)は --z-overlay を共有し、
+   DOM挿入順で.chatbotより後に来る(main.jsがbodyの末尾へ追加するため)ため、
+   同じ重なり順位では会話面の上に描画されていた。チャットが画面全体を覆う
+   間、読めないページの進捗を示す意味もないので、開いている間は隠す
+   (chatbot.jsのlockBackground/unlockBackgroundがbody.chat-openを付け外しする)。 */
+body.chat-open .scroll-progress {
+  display: none;
+}
+
 /* ---- 起動UI: 案内役キャラクター「アイト」そのもの ----
    ピル型のボタンと「質問する」の文字は外した。押す先が吹き出し記号で、
    開いた先に現れるのがアイトだと、入口と相手が二人になる。アイトを押したら

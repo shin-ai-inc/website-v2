@@ -134,7 +134,16 @@
       this.resetSheet();
     },
 
-    /* 背景ページの固定。iOSはbodyのoverflow:hiddenが効かないため position:fixed 方式で止める */
+    /* 背景ページの固定。iOSはbodyのoverflow:hiddenが効かないため position:fixed 方式で止める。
+       あわせてスクロール進捗ライン(.scroll-progress・main.jsが生成)を隠す。
+       このラインは position:fixed; top:0 で画面最上部に張り付き、z-indexが
+       .chatbot と同じ --z-overlay(80)。DOM挿入順で.chatbotより後に来るため、
+       同じ重なり順位ではラインが会話面(モバイルでは画面全体を覆う)の上に
+       描画されていた。pointer-events:none は付いているためタップは本来
+       素通りするはずだが、実機で「最上部の線をタップしてから閉じるボタンを
+       もう一度」という報告があった(柴田指摘)。原因が完全に特定しきれない
+       以上、疑わしい重なりそのものを解消するのが確実。会話中はページを
+       読めない(全画面で覆う)ので、読んでいないページの進捗を示す意味もない。 */
     lockBackground: function () {
       if (window.innerWidth > 640) {
         return;
@@ -145,6 +154,7 @@
       document.body.style.left = "0";
       document.body.style.right = "0";
       document.body.style.width = "100%";
+      document.body.classList.add("chat-open");
     },
 
     unlockBackground: function () {
@@ -156,6 +166,7 @@
       document.body.style.left = "";
       document.body.style.right = "";
       document.body.style.width = "";
+      document.body.classList.remove("chat-open");
       /* 起動アイコン(アイト)はページ末尾、フッターのそばに常駐する。
          つまり開いた時点で利用者はほぼ必ずページ最下部にいる。
          これまでは savedScrollY へ戻していたため、閉じるたびに
