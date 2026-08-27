@@ -418,7 +418,12 @@
   color: var(--ink-2);
 }
 
+/* 指の寸法(WCAG 2.2 AA の 24px)を満たす。横に長いリンクだが高さは字の分しか
+   無く、実測 167x16px だった。CTA・フッターの同じリンクと揃える。 */
 .contact-info__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   color: var(--ink);
   text-decoration: underline;
   text-decoration-color: var(--line-ink);
@@ -513,5 +518,42 @@
 @media (max-width: 480px) {
   .contact-field-row {
     grid-template-columns: 1fr;
+  }
+}
+
+/* 和文のラベルに欧文の組みを当てない。--font-latin(Fraunces)は和文の字を持たず
+   黙って代替へ落ち、uppercase は効かず、1.8px の字間は四文字の和文だと間延びする。
+   CTAの項目ラベル(cta.css)と同じ判断。 */
+:lang(ja) .contact-info__label {
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+/* ---- 狭幅: 「連絡先と対応地域」を1項目1行に畳む ----
+   ラベルを上、値を下に積むと1項目が 71〜96px になり、4項目で 392px
+   ——iPhone 17 の画面のちょうど半分——を使っていた。読むのは四つの短い事実
+   だけで、その面積に見合わない。
+   ラベルを左・値を右の1行に置き、項目の間隔も罫の前後だけに絞る。
+   罫は残す。四つが同じ列に並ぶぶん、区切りが無いと一続きの文に見える。 */
+@media (max-width: 640px) {
+  .contact-info {
+    gap: 0;
+  }
+
+  .contact-info__item {
+    grid-template-columns: 5rem 1fr;
+    align-items: baseline;
+    gap: 0 var(--space-3);
+    padding-block: var(--space-2);
+  }
+
+  .contact-info__item:last-child {
+    padding-bottom: var(--space-2);
+  }
+
+  /* 値の中の強制改行は外す。左に寄せた列の中では、幅なりに折り返れば足りる。 */
+  .contact-info__value br {
+    display: none;
   }
 }
