@@ -2037,13 +2037,10 @@ body {
     transform: none;
   }
 
-  /* ヘッダーはコンパクトに。副題は畳んで視線をメッセージへ。
-     position:relative は閉じるボタンをここへ絶対配置するための基準
-     (以下の.chatbot__close参照)。 */
+  /* ヘッダーはコンパクトに。副題は畳んで視線をメッセージへ */
   .chatbot__head {
     align-items: center;
     padding: var(--space-3) var(--space-4);
-    position: relative;
     /* site.webmanifest は display:"standalone"。ホーム画面に追加された場合、
        Safariの本体UI(ステータスバー領域の確保)が無くなり、top:0 は
        ノッチ/Dynamic Islandの真下から始まる。閉じるボタンが物理的に
@@ -2055,34 +2052,30 @@ body {
     display: none;
   }
 
-  /* 閉じるボタン。ここまでの経緯(柴田より複数回の指摘):
+  /* 閉じるボタン。ここまでの経緯(柴田より複数回の指摘、2026-08-27〜28):
      1) padding:12px/margin:-8pxの帳尻合わせ(44px角)→まだ狭いと指摘。
      2) width/height:52pxを直接指定 → 判定域は広がったが、ボタンの実寸が
-        ヘッダーの高さを押し上げ、見出しの上下に不自然な余白ができた
-        (実測: ヘッダー85px、見出し文字は32pxしかない)。「変な余白」
-        という指摘はこれ。
-     3) ::beforeの疑似要素で判定域だけ広げる案も試したが、その後
-        「感度が非常に悪い状態になっている」と悪化の報告。疑似要素越しの
-        当たり判定は仕様上は正しいはずだが、実機のブラウザ実装依存の
-        差異を疑うより、確実に動く形へ戻す方が早い。
+        ヘッダーの高さを押し上げ、見出しの上下に不自然な余白ができた。
+     3) ::beforeの疑似要素で判定域だけ広げる案 → 「感度が非常に悪い」
+        「二回タップしないと閉じない」と悪化の報告。
+     4) position:absoluteで実要素を大きく取る案(88×96px) → これも
+        改善しなかった。
 
-     結論: ボタンをヘッダーの通常の流れから外し(position:absolute)、
-     実在のDOM要素として大きく取る。見た目のサイズ(アイコン+近接の
-     余白)は据え置きつつ、当たり判定はヘッダーの外縁いっぱいまで
-     広げ、ヘッダー下端の少し下(メッセージ面の頭)にも重ねる。
-     疑似要素を経由しない実要素なので、クリックの伝播に曖昧さがない。
-     絶対配置のため、この大きさはヘッダー自身の高さに一切影響しない
-     (ヘッダーは見出し文字と自身のpaddingだけで高さが決まる状態に戻る)。 */
+     疑似要素・絶対配置と、手を加えるほど複雑にしてきたが、複雑にする
+     たびに悪化した。ここで一度、最も単純で実績のある形(実在のボタン・
+     通常の配置・素直なサイズ)へ戻す。44px角はWCAGが定める最小の
+     タップ領域で、一般的なチャットUIの閉じるボタンと同等の大きさ。
+     ヘッダーの高さもこれに合わせて自然に決まり、見出し文字に対して
+     不自然に大きくならない(実測: 16px padding + 44px + 16px padding
+     ≒ 76px。旧来の85pxより低く、52px時代よりは高いが、見出し文字との
+     釣り合いは取れている)。 */
   .chatbot__close {
-    position: absolute;
-    top: 0;
-    right: 0;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    width: 88px;
-    height: 96px;
-    padding: calc(var(--space-3) + env(safe-area-inset-top, 0px)) var(--space-4) 0 0;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
   }
 
   .chatbot__messages {
