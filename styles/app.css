@@ -3396,19 +3396,23 @@ body {
   .site-footer__nav-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px var(--space-4);
+    gap: 2px var(--space-3);
   }
 
   /* 指の寸法は min-height で明示する。padding だけに任せると、字の行高が
      変わったとき(書体の差し替え・拡大表示)に静かに割る。
-     44px だと字の高さ(約20px)に対して空きが 24px あり、3行に積んだとき
-     リンクどうしが離れて一覧に見えなかった。38px まで落として行の間隔を
-     字に近づける。WCAG 2.2 AA の下限は 24px なので、まだ余裕がある。
+     44px→38px→32px と落としてきた。字の高さに対して空きが多いと、3行に
+     積んだときリンクどうしが離れ、一覧ではなく個別のボタンが並んで見える。
+     字も一段小さくする(0.875rem→0.8125rem)。ここは主動線ではなく索引で、
+     本文と同じ寸法である必要がない。直下のメタ(0.8rem)よりは大きく保ち、
+     索引と注記の順位は残す。
+     32px は WCAG 2.2 AA の下限 24px に対してまだ余裕がある。
      hover の無い画面なので、押した手応えは色で返す。 */
   .site-footer__nav-link {
     display: inline-flex;
     align-items: center;
-    min-height: 38px;
+    min-height: 32px;
+    font-size: 0.8125rem;
     color: rgba(255, 255, 255, 0.82);
   }
 
