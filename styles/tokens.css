@@ -65,12 +65,14 @@
      グラデの奥行きで「AI青ベタ」の没個性を脱する。明色セクション・ページ見出しに用いる。 */
   --grad-section: linear-gradient(152deg, #FFFFFF 0%, #FFFFFF 30%, #F2F5FC 68%, #ECF6F4 100%);
   --grad-brand-line: linear-gradient(90deg, transparent, #3A5FEB 40%, #00C9A7 60%, transparent);
-  /* ミントグラデ。チャットの送信ボタン。明るいミントを既存トークンで組む。
-     矢印は白。白い図形は明るい地の上でコントラストが 1.6〜2.1:1 に留まり、
+  /* ミントグラデ。チャットの送信ボタン。
+     出自は --teal-2 / --teal で、そこへ白を混ぜて一段薄くした値
+     (それぞれ白 25% / 20% 混合)。色相はブランドの青緑から動かさない。
+     矢印は白。白い図形は明るい地の上でコントラストが 1.5〜1.9:1 に留まり、
      WCAG 1.4.11(非テキスト 3:1)には届かない。地を濃くすれば満たせるが、
      明るさを優先する判断を採った。影も置かない方針のため、支えは線の太さだけ
      (chatbot.css)。読みにくさの指摘が出たら、まず地の濃度から見直すこと。 */
-  --grad-mint: linear-gradient(135deg, var(--teal-2) 0%, var(--teal) 100%);
+  --grad-mint: linear-gradient(135deg, #58EDD3 0%, #33D4B9 100%);
   /* 薄桜色グラデ。カードの左辺アクセント等、単色ブルーを避けたい箇所向け。 */
   --grad-sakura: linear-gradient(180deg, #FFEAF1 0%, #FFB4CC 100%);
   --grad-transform: linear-gradient(100deg, var(--c-tacit-bg) 0%, var(--c-agent-bg) 52%, var(--c-enable-bg) 100%);
