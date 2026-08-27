@@ -105,7 +105,12 @@
   color: #E7EAF1;
 }
 
+/* 指の寸法(WCAG 2.2 AA の 24px)を満たす。横に長いリンクだが高さは字の分しか
+   無く、実測 167x16px だった。 */
 .cta__fact-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   color: #FFFFFF;
   text-decoration: underline;
   text-decoration-color: rgba(255, 255, 255, 0.32);
@@ -129,7 +134,7 @@
      だから .cta__inner を抱えている節すべてを対象にする。 */
   .cta,
   .section--ink:has(> .cta__inner) {
-    padding-block: var(--space-3) var(--space-2);
+    padding-block: var(--space-5) var(--space-4);
   }
 
   /* 節の飾りラベル(「Get Started」)は狭幅では出さない。ローマ字の飾りで、
@@ -139,17 +144,31 @@
     display: none;
   }
 
+  /* 見出し→本文は近く、本文→ボタンは離す。ボタンは「読む」から「押す」へ
+     切り替わる場所で、同じ間隔で並べると文章の続きに見える。 */
   .cta__copy {
-    margin-top: var(--space-2);
+    margin-top: var(--space-3);
   }
 
   .cta__action {
-    margin-top: var(--space-2);
+    margin-top: var(--space-5);
   }
+
+  /* 項目一覧は罫で区切ったうえに、罫の前後も開ける。ここは押した後の
+     確認事項で、CTA本体とは役割が違う。 */
   .cta__facts {
     flex-direction: column;
-    gap: var(--space-1);
-    margin-top: var(--space-2);
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+  }
+
+  /* すぐ下のフッターが同じ事実(連絡先・受付時間・対応地域)を持っている。
+     狭い画面では両方が一画面に入り、同じことを二度言われる。
+     重なる項目はここで下ろし、各ページに固有の一件だけを残す。
+     消すのではなく譲るだけなので、情報は同じ画面のフッターで拾える。
+     広い画面では二つが一画面に同居しないため、三件とも出す。 */
+  .cta__fact--echo {
+    display: none;
   }
   /* ローマ字ラベル(CONTACT/HOURS/CONSULTATION)はモバイルでは省く。長いうえに
      値が自明で、狭い画面では場所に見合わない。 */

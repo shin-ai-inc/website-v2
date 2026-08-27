@@ -2885,7 +2885,12 @@ body {
   color: #E7EAF1;
 }
 
+/* 指の寸法(WCAG 2.2 AA の 24px)を満たす。横に長いリンクだが高さは字の分しか
+   無く、実測 167x16px だった。 */
 .cta__fact-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   color: #FFFFFF;
   text-decoration: underline;
   text-decoration-color: rgba(255, 255, 255, 0.32);
@@ -2909,7 +2914,7 @@ body {
      だから .cta__inner を抱えている節すべてを対象にする。 */
   .cta,
   .section--ink:has(> .cta__inner) {
-    padding-block: var(--space-3) var(--space-2);
+    padding-block: var(--space-5) var(--space-4);
   }
 
   /* 節の飾りラベル(「Get Started」)は狭幅では出さない。ローマ字の飾りで、
@@ -2919,17 +2924,31 @@ body {
     display: none;
   }
 
+  /* 見出し→本文は近く、本文→ボタンは離す。ボタンは「読む」から「押す」へ
+     切り替わる場所で、同じ間隔で並べると文章の続きに見える。 */
   .cta__copy {
-    margin-top: var(--space-2);
+    margin-top: var(--space-3);
   }
 
   .cta__action {
-    margin-top: var(--space-2);
+    margin-top: var(--space-5);
   }
+
+  /* 項目一覧は罫で区切ったうえに、罫の前後も開ける。ここは押した後の
+     確認事項で、CTA本体とは役割が違う。 */
   .cta__facts {
     flex-direction: column;
-    gap: var(--space-1);
-    margin-top: var(--space-2);
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+  }
+
+  /* すぐ下のフッターが同じ事実(連絡先・受付時間・対応地域)を持っている。
+     狭い画面では両方が一画面に入り、同じことを二度言われる。
+     重なる項目はここで下ろし、各ページに固有の一件だけを残す。
+     消すのではなく譲るだけなので、情報は同じ画面のフッターで拾える。
+     広い画面では二つが一画面に同居しないため、三件とも出す。 */
+  .cta__fact--echo {
+    display: none;
   }
   /* ローマ字ラベル(CONTACT/HOURS/CONSULTATION)はモバイルでは省く。長いうえに
      値が自明で、狭い画面では場所に見合わない。 */
@@ -3268,10 +3287,15 @@ body {
   font-style: normal;
   font-size: var(--fs-xs);
   line-height: var(--lh-snug);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.52);
 }
 
+/* 指の寸法(WCAG 2.2 AA の 24px)を満たす。横に長いリンクだが高さは字の分しか
+   無く、実測 154x19px で行間の詰まった場所にあった。隣の行を踏みやすい。 */
 .site-footer__meta-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   font-size: var(--fs-xs);
   color: rgba(255, 255, 255, 0.72);
   text-decoration: underline;
@@ -3317,12 +3341,12 @@ body {
   font-family: var(--font-latin);
   font-size: var(--fs-sm);
   letter-spacing: var(--tracking-latin);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.52);
 }
 
 /* ---- モバイル(<=640px) ----
    全 base 規則の後に置き、確実に上書きする(モバイル上書きはファイル末尾が正)。
-   ワードマーク+一文 / 横並びナビ(タップ高 36px) / 横流しメタ / 横並びの規約行。
+   ワードマーク+一文 / 横並びナビ(タップ高 44px) / 横流しメタ / 横並びの規約行。
 
    狭幅のフッターは「一望できる低さ」に戻す作業が要る。罫で仕切った2カラムの
    一覧は整って見えたが、7項目が4行×60pxのブロックになり、帯全体が 695px
@@ -3330,21 +3354,23 @@ body {
    フッターで埋まり、スクロールの終わりが遠い。
    このファイル冒頭の方針(ブランド+横並びナビ / メタ / 規約行)へ素直に戻す。
 
-   最終的な目標は、最下部までスクロールしたときCTAとフッターが一画面に収まり、
-   CTAの見出しが sticky ヘッダー(65px)の下に見えていること。iPhone 17
-   (402x781px)で実測しながら詰めた。余白の値をここで緩めると、その条件から
-   静かに外れる。変えるときは実測し直すこと。 */
+   低さを追ってすべての間隔を最小値まで詰めた版もあったが、項目の間と組の間が
+   同じ寸法になり、区切りの読めない塊になった(iPhone 17 で 427px まで下がった
+   代わりに「ぎちぎち」になった)。低さは目的ではなく、目的は最下部が近いこと。
+   間隔には段を戻し、削るなら余白ではなく項目数から削ること。 */
 @media (max-width: 640px) {
-  /* 余白は詰める。フッターは読み物ではなく、探しに来た人が拾う索引で、
-     ここでの「呼吸」は最下部を遠くするだけの費用になる。 */
+  /* 余白には段を付ける。一度すべてを最小値まで詰めたことがあるが、
+     項目の間と組の間が同じ間隔になり、どこで区切れるのか読めない塊になった。
+     詰めるのは組と組の間ではなく、組の中。
+     ここでの段は 8px(組の中) / 16px(組と組) / 24-16px(帯の内外)。 */
   .site-footer {
-    padding-block: var(--space-3) var(--space-2);
+    padding-block: var(--space-4) var(--space-3);
   }
 
   .site-footer__main {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .site-footer__essence {
@@ -3357,18 +3383,16 @@ body {
   .site-footer__nav-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0px var(--space-3);
+    gap: var(--space-1) var(--space-4);
   }
 
   /* 指の寸法は min-height で明示する。padding だけに任せると、字の行高が
      変わったとき(書体の差し替え・拡大表示)に静かに割る。
-     44px から 40px へ落とした。フッターのリンクは主動線ではなく、
-     WCAG 2.2 の AA 下限(24px)に対しては十分な余裕がある。
      hover の無い画面なので、押した手応えは色で返す。 */
   .site-footer__nav-link {
     display: inline-flex;
     align-items: center;
-    min-height: 36px;
+    min-height: 44px;
     color: rgba(255, 255, 255, 0.82);
   }
 
@@ -3378,30 +3402,25 @@ body {
 
   /* メタの縦組みをやめ、横に流して折り返す。1項目1行は読みやすかったが、
      5項目で5行を確保するため、住所の折返しと合わせて 143px を使っていた。
-     項目の切れ目は行ではなく間隔(中黒相当の余白)で示す。 */
+     項目の切れ目は行ではなく間隔で示す。行間は本文並みに開ける——ここは
+     住所と時刻が並ぶ場所で、行が詰まると数字の拾い読みができない。 */
   .site-footer__meta {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2px var(--space-2);
-    margin-top: var(--space-2);
+    gap: var(--space-1) var(--space-3);
+    margin-top: var(--space-3);
+    line-height: 1.7;
   }
 
   /* 規約とコピーライトは横一列に戻す。縦に積むと、二行ぶんの高さを
      短い文字列二つのために使うことになる。
      両端揃えはやめる。狭い画面で右端へコピーライトが寄ると、下で空けている
-     逃げ帯の中へ戻ってしまう。 */
-  /* 間隔を space-3 から space-2 へ詰め、規約2つとコピーライトを1行に戻す。
-     アイトの逃げ帯(76px)を引いた 278px に対し、space-3 では 287px で
-     わずかに溢れて2行になっていた。1行に収まれば約25px戻る。 */
+     アイトの逃げ帯の中へ戻ってしまう。 */
   .site-footer__bottom {
-    gap: 2px var(--space-2);
+    gap: var(--space-1) var(--space-3);
     justify-content: flex-start;
-    margin-top: var(--space-2);
-    padding-top: var(--space-1);
-  }
-
-  .site-footer__legal {
-    gap: 2px var(--space-2);
+    margin-top: var(--space-3);
+    padding-top: var(--space-2);
   }
 }
 
