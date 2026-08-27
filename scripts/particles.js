@@ -355,4 +355,13 @@
       start();
     }
   });
+
+  /* チャットを開いている間、この背景は画面全体を覆う会話面の下に完全に
+     隠れて見えない(モバイルの .chatbot__window は position:fixed で
+     ビューポート全体を覆う)。見えないのに毎フレーム描画し続けるのは
+     無駄な負荷で、閉じるボタンのタップ判定と同じメインスレッドを奪う。
+     chatbot.js からの合図(document.dispatchEvent)だけで受け渡し、
+     互いのファイルを直接参照しない。 */
+  document.addEventListener("chatbot:open", stop);
+  document.addEventListener("chatbot:close", start);
 })();
