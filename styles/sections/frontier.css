@@ -115,8 +115,10 @@
   .frontier__headline {
     font-size: 1.4rem;
   }
+  /* 本文と同寸(16px)では、見出し(1.4rem)との差が小さく、4行に渡る説明文が
+     節の主役に見えていた。一段落として見出し > リード > 注記の順を保つ。 */
   .frontier__lead {
-    font-size: var(--fs-body);
+    font-size: 0.9375rem;
     margin-top: var(--space-4);
   }
 }

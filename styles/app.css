@@ -3652,8 +3652,10 @@ body {
   .frontier__headline {
     font-size: 1.4rem;
   }
+  /* 本文と同寸(16px)では、見出し(1.4rem)との差が小さく、4行に渡る説明文が
+     節の主役に見えていた。一段落として見出し > リード > 注記の順を保つ。 */
   .frontier__lead {
-    font-size: var(--fs-body);
+    font-size: 0.9375rem;
     margin-top: var(--space-4);
   }
 }
@@ -4235,6 +4237,26 @@ body {
 @media (min-width: 641px) {
   body:not(.is-home):not([data-page="services"]) .site-particles {
     display: none;
+  }
+
+  /* 事業内容ページはトップと同じ見え方にする。
+     節ごとに地の持ち方が違うため、素のままだと粒子が現れる節と消える節が
+     交互になる(実測 1280px: solutions=見える / frontier=見えない /
+     method=見えない / technology=見える / process=見えない / contact=見えない)。
+     節をまたいで途切れる背景は、演出ではなく描画の失敗に見える。
+     .is-home と同じ三点を与えて全節で通す——器を前面(z:1)へ上げ、
+     alt の地を透過にし、ink を非配置へ落として地を粒子の下へ送る。 */
+  body[data-page="services"] main .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  body[data-page="services"] .section--alt {
+    background: transparent;
+  }
+
+  body[data-page="services"] .section--ink {
+    position: static;
   }
 }
 
