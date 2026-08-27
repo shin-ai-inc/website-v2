@@ -751,13 +751,15 @@ const shell = (page, loc) => {
     `<script src="${p}scripts/main.js${v}" defer></script>`,
     `<script src="${p}scripts/chatbot.js${v}" defer></script>`
   ];
-  if (page.hero) {
-    /* 施主が愛する流動パーティクル。Three.js は自己ホスト(CDNではない)で script-src 'self' を維持。 */
-    scripts.splice(3, 0,
-      `<script src="${p}scripts/vendor/three.min.js${v}" defer></script>`,
-      `<script src="${p}scripts/particles.js${v}" defer></script>`
-    );
-  }
+  /* 施主が愛する流動パーティクル。Three.js は自己ホスト(CDNではない)で script-src 'self' を維持。
+     全ページで読む。トップだけの演出だったが、フッターの地としても使うため
+     (下層ページでは本文が前面に上がり、粒子はフッターの帯にだけ映る)。
+     three.min.js は 148KB(gzip)。assets/scripts は immutable でキャッシュするので、
+     二ページ目以降と再訪では再取得されない。 */
+  scripts.splice(3, 0,
+    `<script src="${p}scripts/vendor/three.min.js${v}" defer></script>`,
+    `<script src="${p}scripts/particles.js${v}" defer></script>`
+  );
   if (page.extraScripts) {
     for (const s of page.extraScripts) { scripts.push(s.replace('src="', 'src="' + p)); }
   }
@@ -842,6 +844,7 @@ ${structured}
 <body${page.file === "index.html" ? ' class="is-home"' : ""}>
   <a class="skip-link" href="#main">${loc.code === "ja" ? "メインコンテンツへ" : "Skip to main content"}</a>
 ${header}
+  <div id="three-container" class="site-particles" aria-hidden="true"></div>
   <main id="main">
 ${main}
   </main>
