@@ -259,9 +259,17 @@
    位置指定を外すと節の地が非配置の層へ落ち、固定canvas がその上に描かれる。
    中の器(.cta__inner)は z:1 へ上げて文字を粒子の前に保つ。 */
 @media (max-width: 640px) {
-  body:not(.is-home) main > *:not(:has(> .cta__inner)) {
+  /* 節はひとつ前面(z:1)へ上げ、固定canvas を覆う。 */
+  body:not(.is-home) main > * {
     position: relative;
     z-index: 1;
+  }
+
+  /* 地を敷くのは、自前の地を持たない節だけ。--ink(暗い帯・白文字)と
+     --alt(薄いグラデ)は既に不透明な地を持っており、ここで --paper に
+     上書きすると白地に白文字になって読めなくなる。
+     実際に群馬ページの「改善の共通項」(section--ink)が全文消えた。 */
+  body:not(.is-home) main > *:not(.section--ink):not(.section--alt) {
     background: var(--paper);
   }
 
