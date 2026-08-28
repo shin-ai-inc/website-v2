@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "fd586aa",
+  "generatedAt": "d0531c5",
   "chunks": [
     {
       "id": "index#0",
@@ -285,80 +285,80 @@
     },
     {
       "id": "industries#0",
-      "title": "熟練の判断を、 誰もが使える基準に｜業種別の活用｜ShinAI",
+      "title": "熟練の判断を、 誰もが使える基準に｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "製造 \n 熟練の判断を、 誰もが使える基準に \n\n 現場のよくある困りごと \n 検査や調整のコツが言語化されず、品質のばらつきと技術伝承が一部の熟練者に依存している。 \n\n 暗黙知改善でどう変わるか \n 例えば、図面と過去の実績データから見積りを自動算出するAI。検査記録と判断のコツも構造化し、若手が同じ基準で動ける支援AIへ。",
-      "vec": "/gUAAA77+wQCAQD7+v75/Pv+/fsHBAL7B/4D//v8/vz9/Qb/AQQC/gQFAAH//v39/QXyDvz0/wUBAQICCPz/Bvn7/gP8+Ab/AQIB/gYMCAP9APf6Avr6+fbz9wX/CQIGBAMAAQIBCQsD9/oB+AT4+/IIAPwDCAED/AEE/fwCBwD49fv8BPYE+fwC/AEDAvkG+v/2+vkH+/3y/fkL+gUA+wAD+wb+AwEC9/z9/wP7CP0C/fr/9vz1A/30/gMD/AECDQYK/QX9Bf4J/AH8AwIHA/r8Av8DBfoFBwL2BgD9AP37AgX6CfUC//oEBgMC/AP8BAUI+/8A/f4GAQ35Cfn6+wMC/f/6Cfr8AwAGCgH/BAQBA/v7/AP6AvMFBwAF/f75/vwA+wb8AvsEBP3/Cfj9A/oK9/oE/QIMBP79+Qf5D/f5/gH+9wIB/P/+/QMBAvwE+QP8+vP99AcF+///BAQB+gH88/73AwH58vkJ//wCAf4C/AcD/Pz49wIA+QYC//v9AgkGBvoEAPz7/QL9AgX+CAH8/AMDBwD//woJ+wP+Af4HBgD+/vn+9wALAv8C9AIC/fv4/wH9/v4A+fL99QTzBfr5BQIDCfv4Cf3/CAAE/wMCBwUDAQD6+QL1/gAD9/b8+/j/AQcRAv7+/wH+Ef4GAAP+9Qz6/vwN9gAGAwT+/wY="
+      "vec": "/gX//w76+wQCAQD7+v75/Pr9/fsGBAP8B/4D//r8/vz9/QcAAQMC/gQFAAH+/v38/gXyDvzz/wUAAQIDCP0ABvn7/wP8+Qf/AAIA/QYMCAP9//f5Avv5+fb09wX/CQIGBAMAAQIACAsC+PoA+AT3+/IIAPsDCQED/AAE/fwCCAD49fv7A/YE+fwC/QEDAfkG+v/3+voH+/7x/fkL+gUA+wAC+wb+AgEB9/39/wT7CP0D/vr/9/z1A/z0/gMD/AECDQYJ/QX9Bf4J/QH8BAIHA/r8Av8CBfkEBwP2BQH9//37AgX5CvUB//kEBgMC/QP8BAUH/P///f8GAQ35Cfn7/AMC/P/5Cfv8AwAGCgH/AwMBA/v7/AP6AvMFCP8F/f/5//3/+wb8AfsFBP3/Cfj9A/oK9/kE/QIMBf79+Qf4D/f5/QD+9wIB/f/+/gMBAvsD+QP8+vP99AcE/P/+BAQB+gH88/72AwD58vkJ//wCAf8C/AcC/Pz49gMA+QYC//v8AgkFBvkEAPz7/QL9AgT+CAD8/AMDBwH/AAoI+wP+Af0GBgD//vj+9wALA/8B9QEB/fr4/wH8//4A+fL99QT0Bfn5BQIDCPv4Cf3/BwAD/gMCBwUCAQD6+QL1/gAC9/f7+/f/AQcRAf7+/wH+Ev4GAAL+9Qz6//wN9gEFAwT9/wY="
     },
     {
       "id": "industries#1",
-      "title": "棚に眠る手順を、 現場で引き出す｜業種別の活用｜ShinAI",
+      "title": "棚に眠る手順を、 現場で引き出す｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "建設 \n 棚に眠る手順を、 現場で引き出す \n\n 現場のよくある困りごと \n 安全のノウハウや現場対応が個人の経験に依存し、マニュアルは見られないまま棚に残る。 \n\n 暗黙知改善でどう変わるか \n 例えば、現場写真とメモから施工日報を自動生成するAI。過去の事故事例や手順も対話で引き出し、現場から必要な情報へすぐにたどり着けます。",
-      "vec": "/AYC/gb5/f79/P/+APv//v/+APwCBQL8Bv8D/f399vv5/QkCAfj//gf+A/z+Bfn/Bgv4Bfn1+f0DAAEDCfwBCfv8/gj6+AX+AQAB9voHAAX7AfT9Avn4//31+wv/Av8HAwYFBAn8BgcA/vn/9P3v9vgJA/4JBwX+/gYCAP39B/32+Pn9CfP9/P8E+wAG/f4C9Qn//f0D//3//P4H/AIA/AMC+Qv5///8+QEA/gMBAgIBBf0D+fr1Bf/z+wP6AAEDBQoM/v/+A/wC+v4CAwUDCQD7CAMGAfcDAgLyAwICAPsHCAH1CvsBA/oCCgoA+v3+BAQC/PwC//kIAgn+BPf7/gAB+wAAB/n/Cf3/BQUD/AUD/fz9+v33AfMBAf8E/fcIAf8B/QH6Afv/Av8GA/gLAwMC+vQG/vkA//3/9wf7CPcA/wH98f8DAQAABP4CBgAE/gL7+vYA8wn8/QUABAT/Afzz+/3/AAP88/oJBAAEAwMGAAsH+/fz/AUAAQf///j9BQYAA/0ABfz9AgD4BAQABgIA+AUCAAP7AAIF+gX4/fsCBf3++vb+/v4GAQMK9AEC+wEAAf8F/Aj99e8C8/3xA/f7A/cGDvf/Bfr/BQUC/ggDA/4EBgH8AAT0/AAD9/P7/v0HAg4TAAAGA/sCEP4I/QP3/wb8//sJ+P4FBAb9/gQ="
+      "vec": "/QUB/gb4/f3+/P/9APoA/f79APsBBQL8Bv4D/f3+9/v4/gkCAfj//wf+Avz9Bfn/Bwz4Bfr0+v0D/wEECPwDB/v8/gj6+Qb/AAEA9voIAAT7APX8Afn4/vz3+woAAv8HAwYGBAn7BQf/APn/9f3v9vgJA/4KBwX+/gUCAf39CP33+Pr9CPT9/P8E+wAF/f4C9Qn//f8D/v7++/4I/QIA/AMC+Av5//77+AL//gIAAgICBv0C+fv1Bf/0+wL6AAACBQoM/v//A/wC+v4BAwYDCAD6CAQGAfcDAQPyAwID//sGCAD1C/sBBPkBCgoA+v3+BQQB/P0C//kIAQr9BPf7/gAB+wD/B/n/CP3/BQQE/AUD/fz9+v72AfMBAv4F/fcIAf8B/gH7APv/Af8FA/gMBAMB+vQF/vn///7/9wf7CPcA/wH88f8CAgAABP8DBv8D/gL7+vUB8wn8/Qb/BAX+Afzz+/3+AAL88/oJBAAEAwMHAAsG+vfz+wYAAgb///j9BgYBAvwABP39Af/3BAIABgIA9gYDAQX6/wIE+gX3/fsCBf7/+vb+//4HAQMK9AEC+wEAAgAF/Qf99e8B8v7yAvj7A/YGDfX/Bvv+BAUC/QgEA/4DBQH8AAP0/P8D9/T7/v0GAg4T/wAGA/sCEf4I/QP3AAb9//wK+f8EBQb9/wQ="
     },
     {
       "id": "industries#2",
-      "title": "人にしか残らない 機微を、知識に｜業種別の活用｜ShinAI",
+      "title": "人にしか残らない 機微を、知識に｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "介護・専門サービス \n 人にしか残らない 機微を、知識に \n\n 現場のよくある困りごと \n ベテランのケア判断や顧客対応の機微が記録に残らず、退職とともに失われていく。 \n\n 暗黙知改善でどう変わるか \n 例えば、ケア記録から申し送りやアセスメント文書を自動作成するAI。日々の記録や会話も知識化し、判断の相談に答える専用AIへ。負担を減らせます。",
-      "vec": "AwT+Agr8/AgB/QX3AP78A/v7AvsEBgb8CQEA/AD9B/z/AgUCBP8BAwMCCAj8Avf9BAr0CPb4/wcCAwMFBPkFCfn/AAf58wP8+QAB/gMIBQD/APn9BP71+vT8+gj+AwUHCQQBBAj5Bwj8+fr39wTz9vQFAAEABgb9+wYA/P39CQD19QH8BvcD+gID+PkF/f0D+QH+/f4E//30//kI/wj5+QEA9wD8BAAF9vX4+QEA/gAE/PkE9P76Avvw+gL8/wL+DQYK/QL9//4DAAL6B/8FAvv6BwMEAfkEB//5AwL+BQAGAQf5BPsABvkBBwH//gL9BgP+AP4A/f8J/Qv2C/r8/ggEBgQEAP3/CfoEBAcFAwH/BfkA9v38AvoFCPoF//7//vz+/QP6AgEBBAEBDPv5/f0H+/kI/P8EAwH7+gb2D/EC/f369v4AAv38AwEDB/oC9QP8+fj88AIF/Af8BAUB///98wL9/f398vkL/QYI/P4F/Qj9Bfrz9/4E+v7+BPgCBQYABPkAAvn+AQL/+gf9Bvv9/gMB/AH9AQIE/QMF/fsACAT6+fsA9QIHB/8E9v8A9f37/wb//v0B+fAC/v32BP/6CfwCBvT6A/n/AgT9/AgFA/0D+gT8BP/3+/4C+vb7//v6AAYLBgEDBAH+D/4KBQP6+Qf5+/UM+/4FAQL7/gY="
+      "vec": "AwT+Awr8/QgB/QX4//77A/r7AvsDBgf8CQAA+wD8B/z+AgYCBP8ABAMCCAj7Avj9BAn0CPf3/wYCAwIGBPkGCfn/AAf68wP7+QAB/gQIBQD+APn9A//1+fT9+gn/AwUGCgQBBQj5Bgn8+fr4+QTz9vMGAAAABQb9+wYA/P39Cf/19AL9BvcD+wID+PkF/f0D+gH//QAE//7z//gJ/gj6+QIA9wD9AwAF9vX4+QEA/gAE/PkE9f76Avvw+gH8/wL+DAYJ/AL9AP0CAAP6B/8GAvr6BwQEAPgDBwD6AwL/BQAFAQf5BPr/BfkABwH//gL9BgP/AP8A/v8I/Qr2C/v8/ggEBgQEAP3+CfoEBAcFAwH/BfkA9v38A/oECPkG/v7//v39/QP7AQEBBAABDPz5/vwH+/gH/QADAwH8+gb2DvEC/P369v0AA/78BAEDBvoB9QL8+ff78AIF/Ab7BAUA//798wL8/fz98vkL/AYI/P4F/Qj9BPrz9v8F+v7/BPgCBgYABPgAAfn+AAIA+Qb9Bvv9/QIB/QH9AQME/QME/fsBCAX6+vsB9gIIB/8E9v8A9v36/wb//v0B+fAD/v32BP/6CfwDBvP6BPn+AQT9/AgFAv4D+QT9BP73+v4C+vf7//v7AQcLBQEDBQL/D/4JBQP6+Qf6+/YM+/4FAgL6/gc="
     },
     {
       "id": "industries#3",
-      "title": "店舗ごとの勘を、 共有の力に｜業種別の活用｜ShinAI",
+      "title": "店舗ごとの勘を、 共有の力に｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "小売 \n 店舗ごとの勘を、 共有の力に \n\n 現場のよくある困りごと \n 接客や品揃えの勘が店舗ごとに閉じ、問い合わせ対応にも時間が取られる。 \n\n 暗黙知改善でどう変わるか \n 例えば、顧客管理システム(CRM)のデータと接客記録をつなぐAI。商品知識と応対履歴をまとめ、スタッフの相談と顧客対応を支える案内役になります。",
-      "vec": "/QEBAAr69wb6/wr7/f3+Af8E/v0DBAb+/gT+/P/8AfwEAQYI/gMKAAUEB/wCA/v8AAH5CPn0+f8AAAQKB/oA/vwDAQf4+wMBAP4E//0JB/38//kFBvX0BfT4+gQBBQQCB/4A/wX+BQYC9gH/+Pz1/Pb9BP4IA/37/QgI//8BBf/8+AX5AvP++P8F+fj///8D+/v7+vQB/P339wAIBQX8+gED9QT3/AAF+fr7AQcBAAEJAPwG9P79//75+v8A+/8BCgQMAAH/+gAB+Ab/AwEF//gBCP8CBvwDAQPyCAQBA/gCDQjxDfMFA/8ECgX+AAH8BAYC+gEB/v0LBQz8BfL9/QIA/wkBAf0DCPkGCf0GAgD/APr79QACCPIAAwAEAvz7/wAD//z9Bf8HAwAGCAD7/gAH+P0J+v4FCP77+gr2Cfr6A/v+9/0A//sBBPsFAfsCAwn79wAB9QQE+goCAwT8+gT69gf5/P788/gLAfsDAPsD+g8F+f3y+/8E+wcEAPn/AwQCAf4DBPsD/f7+BwX6BgH9AAYBA/r9AQYKAAcGA/oABAH+APcC/P8EAgME8wX//vz2AAIG+vz99vQA+f31Bv76AQH9Bfr+A///AP4C/goFAPsEBAX6AAb2+v8B/ff+AQD8AwMPAQIEAP4BEf4JBAn5+Qb6+/0K9wYE+Qv8BgQ="
+      "vec": "/QEAAAr59wb7/gr7/Pz+Af0D/vwBBAb//gT++//7AfwDAQcI/gIKAAQFB/wBA/r7AQL5CPnz+f8A/wQLB/oB/f0DAQb4+wQC/v4F//4KCPz8/vgEBvbzBfP4+gUBBQQCB/4BAAX9BAYC+AL++fv0/PX8BP0IAv77/QgI//8BBf/89wX5AvP++P8E+vj+/v8D+/v7+vUC/P339wAJBgX9+QEC9AT3/AEE+Pr7AQYAAAEKAP0F9P7+//35+v///P4BCgULAAEA+wAB+Ab+AwEF/vgBCAACBvoCAQPyBwMCAvgBDAfxDfMFA/4ECgX/AQL8BQcB+QIA/v0MBAz8BfL+/AL//ggBAf0DCfkFCfwHAgAAAPr79QACCPEAA/8EAfz8AAAC//39BP8IBP8GCAD7//8G+P0J+/8FCf/6+Qv1Cfr6A/v+9/wAAPwCBPsGAfsCAwn79/8B9QQE+woBBAT7+gP79Ab4/P398/gKAfwE//wE+g4E+f3y+v8F+wYEAPn/BAQCAf0DBPsD/f7+BgT6BwH9/wYCA/v9AQYJAAcGA/r/BAH+APcD/f8FAwIE9AX//vz2AQMF+/v99vT/+P72Bf76AQD9Bfj/BP/+//4B/goFAPsDAwT6/wX2+P8A/ff+AAD8AwMPAAIEAP8BEv4JBAj5+Qb6/P0J+QcD+Qv8BQQ="
     },
     {
       "id": "industries#4",
-      "title": "分散した情報を、 出典付きで一つに｜業種別の活用｜ShinAI",
+      "title": "分散した情報を、 出典付きで一つに｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "医療福祉 \n 分散した情報を、 出典付きで一つに \n\n 現場のよくある困りごと \n 専門知識と過去の対応が分散し、必要な情報を探すだけで時間が溶ける。 \n\n 暗黙知改善でどう変わるか \n 例えば、カルテや紹介状の手入力を解消するAI。院内文書や対応記録も出典付きで引ける形にし、確認の手間と転記ミスを減らせます。",
-      "vec": "/v0DBQr8+Qf/AgL6AAICAP3//AD/AwT8B/sF/gEAAfwEBQEGAgL/+wcA/wP8/vv8CAz0B/b0/QL9/wMDC/0EBvYDAQT9+wYDAP0C/fwGBf8EA/oBBv37APP18wX6BQUCAgIACQb9BQT/+Pn5+AD1+vcFAf39AgIB+gQDAf38Cv369AIABvgC9f4D+vkC//0C/AD79/cD+f35/fkLBQL/+PoD9wEAAAH/8/v8+Ab8//0DAvoD+wP0Bf3y9gf+/gcGCQQIAgL///4AAvr8AgEFAgD+CQUCBfgFBAD1/wb/AAIBBQb1AfgHBPz+CwAD/wL7BQEEA/0A+/cKBA35CPP6+QUBAAkAB/78CAH/CwH8AgQC+/j+9v/4APoDAvcG/P/9A/kC/QX5AQP9A/7/Cfr+AAUH/PkF+v4CAgD79wX2DfMBAAL7+P0CB/n8AgD+BfsA9gT5/PQA8AUC+QIF/QUB/gb8+v/3/AL/9vYLAQQB+P0E/QgAA/v0+/4D+gMB/fYABgkCCPgFAvsA/QT7+An+BQP/+AUCBv/+CAQF/AMB/voECQX5APj//AEHBQEE8/0E/Pz9AwoBAAH8+uwA9f78AgD5CfkDCvr6BfgABAgH+gcI/gAA/wYC/wT69wAC+vf+APoABAwQBf4HBf4AEP4KAQH2/AYC//cH/QAGAQQDAgA="
+      "vec": "/v0CBQr8+Qf/AQL6AAIBAP3+/P/+BAX8CPwF/wEAAPwDBQIGAgP++wYB/wP8/fv7CAz0B/b0/gL9/wMEC/wEBvYEAQT++wYE//4C/P0IBv4DAvoABf77APP38wX6BQQCAgMBCQb8BAX/+fr4+QD1+vUFAf39AwEB+wMEAvz8Cv368wIABvgD9v4C+/kB//0C/AD89/kD+f75/PkMBQIA+PoD9wEA/wH+8/v89wb7//4EAvoC+wP1Bv3y9gf+/gYGCAQGAgH/AP0AAvr8AgIFAgD+CQcDBPcEBP/2/wYA/wIBBQb2AfgHA/z+C/8D/wL7BgEDA/0A+/cJBA35CPP7+gUB/wj/B/79CAD/CwH9AQQC+/f99/74AfoDA/YH/P/9A/kC/QX5AAP+A///Cfr+AAUH/PkF+/8CAwD79gX2DPIBAAL7+P0CCPr8AgD+BPv/9gT5+/QA8AQB+QIE/gYA/gb9+v/2/AH+9vYLAQQB+P0E/Qj/Avv0+v8E+gIB/PYABgoCBvgFAvv//AP79wn+BAL/+AUCBgD+BwQF/AMB/voDCQX5Afj//AIIBgAE8/0D/Pz9BAoAAAH7+uwB9f/8Av/5CPgDCfn6Bvj/AwgG+wcJ/v8A/gYC/wP69wAC+vf+APkABAwRBf0IBP4AEf4JAQD2/AUC//cH/gEFAQQCAgA="
     },
     {
       "id": "industries#5",
-      "title": "指導の工夫を、皆の資産に｜業種別の活用｜ShinAI",
+      "title": "指導の工夫を、皆の資産に｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "教育 \n 指導の工夫を、皆の資産に \n\n 現場のよくある困りごと \n 指導の工夫や教材作成のノウハウが個人にとどまり、研修や授業の質に差が出る。 \n\n 暗黙知改善でどう変わるか \n 例えば、過去の指導記録から生徒別の学習アドバイスを提案するAI。教材づくりのノウハウも共有資産に変え、一人ひとりに合わせた学習支援を下支えします。",
-      "vec": "AQIDAwz7/AsA+Qr9/fT/APz7AgAEAwYGBP8IAf4A//39//sFAgQC/wYABwACA/b8BAX8D/769QIE/vsFBgIDAwH3/AD39wb///38APoFBQUB/fUD/vn6+/zx9gD8Bv8EAwMGAgr9Bwz//fj78QPx/PkCBPQDAgP//wEDAQD/BgX79AP+Avn+9vsE+/cG/vUE+wP//AAH/Pr2Av0K9QL0/AUE8gb9/AIB9/35+AX/Bv4C+vwB+/vuBfvz/gAA/AP9CwYGAwL8/QEF/wD8/QACAvsABv4HBfkCBfvzBvn8AgQCBQL8BfMBBfv+BQAA/wb/AgADAPoC//0LAQr+Cvv8+AIHAv4FBfn+CAQCCAEDAgL9Bv/7/gUABfgABQUABPv//Pv//QX5Bf/+BAILBv0A/wj5APgI+gIK/P//9gn7Dfz/Af399/8HA//+AwL7B/r+AgH/8fT/9P7/+gUGAwkEAQj8+gD3+wH88/gMAv8IAv4L+AoE/vz8/wMD/AYA+/j/AgMGB/8CCf3+/AABAQcAA/z8+wQFBfoBAwID+gX+AfwCAQX6//YG9gIJAgQJ9f8E+v36+gL9AvsC/fD99/z9Aff5/wcFCAD/Afn5BgED+wICAAYB/AIAAfn09gAB+vz3/v8CBggNAf8E/AH7Ef8DAgb++QgG//UI+gEH/QUD/QA="
+      "vec": "AgEDAw36+wsB+gr9/vT/APv6Av8DAwcHBP4IAf0AAPz8//sFAgMC/wYBB/8BA/b8BAb7D/759QME/vwGBgIDAgH4/AD3+Ab+/f38//sGBQQA/fYC/vr6+/zy9gD8Bv8EAwIGAgr8Bgz+/vn78gPw/PgCBPMDAgP/AAADAgD/BwX78wL9Avn+9vsD/PcF/vQE/AP//AEJ/Pv1Af0K9QL1+wUE8Qb9/AIA9v75+AX/Bv4D+/wA+/vuBfv0/f8A/AP+CgYFAwL8/QAF///7/QADAvwAB/4HBPgCBPvzBvn8AQQCBAL7BvMABvv9BQAA/wb/AwACAPoB//0MAAr9Cvv8+AMHAv4FBfn+CAQCCAADAgL8Bv/7/QUABfgABQMABPsA/Pr//Qb5Bf7/BAIKBv0A/wf5//kI+gMK/QD+9gj6Df3/Af39+P4HA///AwL8Bvv+AgH/8vT/8/7++gYFAwoEAQj8+f/2+wH88/gMAv8IAv4L9wkF/fz8/gQE+wUA/Pj/AwQGB/8CCf3+/AABAQYAA/v8+gQFBfsAAgIE+gT+AfsCAQX6//YG9wIJAwQJ9f4E+f36+gL9A/sC/fD99/38Avf5/wYFCP7+Avn4BQIC+wMC/wYA+wIAAfn09QAB+vv3/gABBggNAf8E/AH7Ev8CAgX++QgH//YJ+gEG/QUD/QE="
     },
     {
       "id": "industries#6",
-      "title": "判断の根拠を、 説明できる形に｜業種別の活用｜ShinAI",
+      "title": "判断の根拠を、 説明できる形に｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "金融 \n 判断の根拠を、 説明できる形に \n\n 現場のよくある困りごと \n 審査や相談対応の判断根拠が暗黙化し、説明責任と引き継ぎが重荷になる。 \n\n 暗黙知改善でどう変わるか \n 例えば、審査基準や過去の稟議を根拠付きで参照する審査支援AI。説明できる形で実務を支えます。最終判断は人が担います。",
-      "vec": "/AL+BAv+9wUD/wb6/vr6/PwBAAIEBwT/Bff++wX7Av0AAf/9/P4C/QUBAPv9Bvz1AAP2Cf74/gT/AgMDBPz/A/r7/wj9+QcCBQH7+wgKBf/7BPgBCPz6AfD09gb8CgIHAAMCAAD/DwoD+/r/+Ab6/vAE+/37Cf4B/AAEAQL/BgL5+fz/AfUB+wAG+/oG/vsH8wL4+fkF/fv2A/sE/wUD/wIG+QT6AgD99v37/wL+AwID+wP+8/33AAH1/QQJ+gQFCgkH/wb/BAIE+QP+/AkJAPv+Bf0CBvkACP34CQkB+vv5CgX8AvoJ/vMBCgAB/AL6BAUD+vz+APsFAgz9B/nz9QgHAQH6Av75CfgIBQH+BAH/A/v//gP5BfQBCgAEAPz8AP4E+gX6A/wD/gUFDPv7/wEH9fv/9wEDAP8C/Qf9DfYB/gIA9wUCAf8B/AYBAvf/+QT1+fP99gEE+wEAAwYB+gT/9wD6+QL+9fkHAQT+/f4FAAIG+/v2+/8D+f/9//X/AwgGAAEDAfv/Af3+AAkAA/v8/AIEBQD8AgYK+gQAAf0JBQX9BPT/+AMHBAAK8/wFAfj5/QkB+QD7/fP79AT8APb5CgQCCfr7CP/6AwIE/QcA/gIJ/QL9+wX2+/0I8/z7+/oA/AQUCAABAwT7Dv4G//37+Qj9APsG+v8G/QL+AQg="
+      "vec": "/QL+BAv+9wUD/wb6/vn6/PsBAAECBwX/Bfj//AX7Av3/Af/+/P8B/QQC//v9Bfv0AQT2Cf73/gUAAgIEBPz/A/r8/wj++QgCBAH7+ggKBf/7A/gACP76AfD29wb8CgIHAAMDAQD+DgsD/fr/+gX5/+8E/Pv7Cf4C/f8EAgL/BgL5+fz+AfQB+wAE+/oF/vsH9AP5+vsF/fz1AvsGAAUD/wMF+AT6AQD99v77/wL9AwID/AP+9P35AAD1/AQJ+gQGCgoG/wYABAIE+QP++wkJ//z+Bf4CBvgACP35CAoC+vv4CQX8A/oJ/vIACgAB/QP5BQUD+/z9APsFAQz8B/n19ggHAAD6Av75CPcHBAD/AwH/A/v//gL5BfQCCv8E//z8Af8C+gb6AfwD/gUFDPv8AAEH9vr/9wIDAf8B/Af8DfUB/gH/+AQBAv8C/QYBAvj++QP1+PP99wEE+wH/BQYA+gT/9//5+QH+9vgHAQP//f4FAQEF+vv3+gAE+v79//X/BQkF/wADAfv/APz+AAkBA/v7+gIEBgD8AwYJ+gT/Af4JBQX+BfQA+AMHBAAK8/sEAfj6/goB+QD7/PP89AX9//X5CgMDCfn7CP/5AgMD/QgA/gMJ/QH++wX2+/4I9Pz7/PoA/AQUBwABAwT7D/4F//z8+gn+APwG+gAE/QL+AQk="
     },
     {
       "id": "industries#7",
-      "title": "散らばる情報を、 横断して引く｜業種別の活用｜ShinAI",
+      "title": "散らばる情報を、 横断して引く｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "不動産 \n 散らばる情報を、 横断して引く \n\n 現場のよくある困りごと \n 物件情報や交渉の勘所が担当者ごとに散らばり、問い合わせ対応が滞る。 \n\n 暗黙知改善でどう変わるか \n 例えば、物件資料から重要事項説明のたたき台を自動作成するAI。対応履歴も横断検索し、顧客への回答と提案を素早く整えられます。",
-      "vec": "/P//Bwr99wMAAQH4/f79Af4A/PsAAf/7AQMBAwH+APsFBAYD/f4B/AcDBP8BA/j9BAr2BvTz/AAC/AEEAvz/BPsBAQf7+gQA/v8C+v0FBf8BBfEABPz8APL58Qj8BP//BwIDCQX7CQf/+fr7+fv2+/YDAP8DBgD/+wcFBf0ADf34+AH/Bff8+PwC+voDAP0D9wP/+Pf///32AP0KBwf79/oC+gL5/QUE9fr++QP+/QAC/gEC/P/3/P3y9wn9AAMHCQgIAf//AP4D/vv9AQAJBf//CAABBvn9Bwb2AwQE/wECCgb1BPwFAvz+DP4DAv/9BP8GAAEAAPsJAAv9AvP9+gMG+wYCB/oBCvoHAwT8/QIA+vUG/P3+BfgAAv0B+/r9AvwE//78/gADAQIBC/wB/wIH+/0H+PkFAPv+9Af5DPEB//z67PgFA/4ABP8A/vkE9wL4+/kE9QX//wED/AUA/gUA+QT3AAMA+PYLAv0C/P8G/AgD/fz4+gAD/AQG/u77AQX/APkBCPwD/gP4/Qf9BgMA+wH/BPz7BgQM+QgA+/sCAwP4BvcB/P4JBgYE7wIB/vv8AQYG/Pv8+fEB+vwBA/34A/oBCvf8BPr/BwQC+ggC+/sC/wj7/wX59gQH+fP8//7+BQkN/gL9AgD/FP4O/wD3+wj7/PoA+gIFAQT/Agk="
+      "vec": "/f//CAv89wQAAQH5/f79Af3//Pr/Av/7AQIBAwD/APsEBAYD/f8B/AcEA/8ABPj8BQv2BvXy/AAD/AAFAvsABPwBAgf8+wQB/f8C+f4GBP8BBPEABP78APL68Qj8BP//BgIDCQX6CQf/+fr7+vv1+/UDAP4DBgD+/AcGBvwADf34+AH/Bfj8+fwC+voDAP0D+AMA+fgA//71//4LCAf89/oC+gL5/AUD9fr++AP9/AAD/wEB/P/4/P3y9gr9AQMICQkHAf8AAP0D/vv8AQEJBP8ACAIBBvj8BwX3AgUE/gECCgb1BfwEA/z+Df4DA//9BP4FAAEAAPsJAAv9AvP9+gQG+wYCB/oBCfsHAwT8/QEA+vYF/P3/BfgAAvwC+/r9AvwEAP79/QADAQIBCvwB/wIH/PwH+PoEAfz99Af5DPEB/vv67fcFBP8BBP8B/fkE9gL4+/kF9QT//wIC/AX//wUA+AT2AQIA+PYKAv0C/P8G/AcC/f34+QED/AMG/u77Agb///gBCPwD/QL4/Qb9BgIA+wH/Bf37BgQM+QcA+/sCAwP5BvgB/f4JBgYE7gEB/vv8AgcF/Pv8+fEB+f0BAvz4A/oCCvb8BPv+BgQB+ggD+vwC/gj7/gT59gQG+fP8AP/+BgkO/QH8AgAAFP4N/wD3/Aj7/PoA/AMEAQT/Ago="
     },
     {
       "id": "industries#8",
-      "title": "業種別の活用｜ShinAI",
+      "title": "業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
-      "text": "ホーム \n › \n 業種別 \n\n Industries \n\n どの業界にも、 \n 見えていない知識がある。 \n\n 知識が見えないままであることが、 どの業種にも共通する課題です。 \n 業種ごとの現場で、その知識をどう可視化し 活用するかを紹介します。 \n\n Use Cases",
-      "vec": "+QABAA339QP+AAD5BP0DAfwAAAAIBP8ABP0BBf/+APv/AwgCAwMEAwsBAf/9Bvn+Agf6Afnt+wH/BQL+BwEFCfwEAgX59Qb2+Qf//PUEBQL7BfQCCf76+vAA+QX9AP8HCPwGDAP9BgsA/fwC+/z0+f8I+wIA/AcB+QYA/PkBB//48v39APj/9fsF+AACAQQA+gD9+wMHAfrz/PwB//v79QME+Qj0BQD+9/v7/gL/AgQI+wD79gP2+wT5Bf3+/AAFDQgM/P0A/f0E/wL9BAEFA/z7BgACBAP8/wD1DAQHAv8CBf73CPYEC//9BwX+/v39AAYE/Aj//wAIAAsBAfb//wUF/wMEA/4BBfgCAwX/BAYD+Pr++Pr+AfgDBP/+//r8+PsGAgD2AwEGAAH5CfYBAP3/+/sF/vwCBfr2+Ab8CPgDAAL79QH8//75AAL9B/UEAQL4+fkA+gAD+wcC+gD99f7/9/79+v4D8vkDAwgF+/kB/QMCAfn89QMDAAABBP37A/4CAvMECvv9/gb2APoABvX6AQMD//4A/f7/+AYD+wUCAf0ABPv89f3/C/0C+/8G/fz5AwoC/gP/+vf99//5A/n3Av0BC/wACv34C/8F/wkB/wH+CQL/Awb1+AUG+ff+//74BgwPBgUHA/v9EP4LAgX39wb++vUL//sH/gEB/AM="
+      "text": "ホーム \n › \n 業界別 \n\n Industries \n\n どの業界にも、 \n 見えていない知識がある。 \n\n 知識が見えないままであることが、 どの業種にも共通する課題です。 \n 業種ごとの現場で、その知識をどう可視化し 活用するかを紹介します。 \n\n Use Cases",
+      "vec": "+f0BAg/29AX+AAD6Av0CAvr+//8EBQMBBP0BBf/+Afv/BAcBAgUDAwkC///9Bfv7BQn4Afrt+wL/BAL/BQAFCPwFAQX79Qb4+AcB/PgGBQH9AvUBCAH6/PAB+gX+Af0JCP0HDAT9BAsC/vwB/Pzy+fwJ+gEB/AUB+gUA/vgCCAH58//9APcA9foE+QECAAX/+wL/+gQFAfrz/PwBAPv89QQD9wf1BAH/9fr4/QL+BAUJ+wH6+AH5+wH6BP79/AAHDQsM/P0B/f0EAAP8AgIGBPz7BwECAQD6AAH4CQMJAf4CBP/2CPcDCf/6CAT///z7AQYD/An+/wEH/wsCAfUBAAUFAQMBAv7/BfgABAX/AgYC+Pr9+fj9/voDBP0B/fr8+fsEAf/3AwAF/gH6CfQAA/v++/wF/fwCCfr1+AX8B/cF/gH89gL8//78AgP9BPUCAAL4+Pj/+AAC+wcA/AL99f7+9/76+/8D8vgEAwcF+/cD/gMD//n69AMEAP8ABPz8BP8CAPMECv39/Ab3APoACPX5/wECAP///v/++AMC+wYEAv4BBfz89/8BDP4D+v8F/v34AwkC/gT9+vb+9QD5Afn3BfwCC/oADP34Cv4D/wkDAAL+CAIAAgb1+QQG+Pn/APz3BA0PBQUGAvv+Ef4JAwX3+AX/+vcNAP0F/gD//QM="
     },
     {
       "id": "industries#9",
-      "title": "業種別の活用イメージ｜業種別の活用｜ShinAI",
+      "title": "業界別の活用イメージ｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "同じ課題でも、現れ方は業種で異なります。 \n よくある困りごとと、 暗黙知改善による変化を対にして示します。 \n\n Beyond Industry",
-      "vec": "+/wB/wn5+gX+AQT5AQD8Avv8/wECAAIBB/8ABQL+/PoB/AkDAgEFAQj7//76Bvr9Bgf4BQDt+v3/BwT+Df0F/voFAQL78wX4+gX+/gD+B//7A/sDB/z49fP7+//9AQIGBf4HCwMBCw/+/P3/9gD0+fwF/P4AAQn+9wMF+/7/CwL28vn8/fv99/wI+fz+Bv8A/AP7/AAEAfnvAP0A/wP59wX89gf4AAID9fj3/QP8BP8D+vz8/ALz/AX4AvsE/AEHEQUH+QL/9gAIAQf8BAEHA/3/Bv0DAf7//gD5DwQGA/8DCQT2BPQKBvv9BgQD+gL+AQUE/gD+/v8BAAf+/fj+/QkG/wEDBf0DBv8FCQT9BgYB+/75/P/7APQGBv3+/v38/PgE+gH6AQEE/gL8C/b7Af0D+/oD+/sEAfv58wP5C/sCAgL/9gL+/v/9/wD9CvoH+wkA+vAA/wIE+QX+/AAA+QD/9v/9/v8F9PsCAgcC//sG/gME//v4/AAD/wP+Cv74/QQBAvQECPr9Av/7BgL/Cff8/gUEAP0A/gQD+gb//AAFAP4CA/YA+QMABgIF9/4G+/vyAAgCAwL/9vj89gT2A/r3A//9Cf8CD/j/BgABAwcBAwEABQH7Bwf0+gYE9fn//fv/BwYTBQACAgAADP4KAAT39gL/+/cJ/AAJ/wACAAg="
+      "vec": "/PoCAQv5+QYAAAT4AP/8A/n6/v7+AQQEB/7/BgH+APoA/QYFAQQFAAf+/v77Avr6CQf4BQHt+/wBBgT/C/wF/vsFAgL99Qb8+AUA/QIACP76AfsBBv749fP8+gD9AgAIBf8ICwT+CRAA/v3/9//x+voH+/0CAAf9+QME/v3/CwH49P36//n+9/oG+vr9BgH//gT9/AEDAPru/v8AAQL6+Af78wf5/gQC8vj1+wL7B/8F+vz9/AH2/gL5AfsD+wAIEAcH+QIA9wAIAAj8AgIHAv7+B/8EAPz+AAH6DAQHAP8DCgP2BPQJBPn6CAMD/AL9BQQD/AH8/v8B/Af+/vf+/QkF/gAABf8CBf8BCgT/BQYA/Pz4/v/6APQFBfsA/f3+//kB+wD6//8D/AP7C/b7BPwC/foE+/0CBfz48wH4CvkEAAL/9wP+//7/AgH/B/oF+wgA+O///gED+gb8/gIA+QD99v76/gAE9PkDAgYE/voH/gMF/Pz4+gIFAAL+Cf36AAYB//QDCPv/AP/8BwMBCvf9+wQDAv7+/gQD+QQA/AAFAf8CBfYA+QQABgEG9v0G+/rxAgkBAwL+9vj+8wX4Afr4Bf79CPwCEPn8BP//AwgDAwMABAP7Bgb1+QYD9vr//vn+BgcRAwABAQAADf4IAQT59gEA/PkL/QEIAAH/AAg="
     },
     {
       "id": "industries#10",
-      "title": "業種が違っても、 課題の根は同じです。｜業種別の活用｜ShinAI",
+      "title": "業種が違っても、 課題の根は同じです。｜業界別の活用｜ShinAI",
       "url": "https://shinai-inc.jp/industries.html",
       "text": "属人化した知識、着手できない不安、既存システムとの連携。 \n 現れ方は違っても、根にあるのはいつも同じ課題です。 \n\n 属人化した 暗黙知を改善したい \n 長年の勘や判断基準が特定の人の頭の中にしかなく、引き継ぎ資料だけでは再現できません。 \n\n どこから始めれば よいか分からない \n 課題は感じているが、業務のどこを最初に構造化すべきか判断がつかず、着手できずにいます。 \n\n 既存システムと どう繋ぐのか不安 \n CRMや基幹システムに情報が入っており、置き換えずに連携できるのか見通せません。 \n\n ShinAIは現在の業務と知識資産から、 自社に当てはまる形を一緒に見極めます。",
-      "vec": "/AEFAhD5/QT8/gL4APr6/vz6AfcKAv/+A/78A//7A//+BAkKAgMGAwMB/gH8AvUAAwf4Bv30+QACA/4FCfoBA/wCAgP19QH//gH+/gAHCQD+/f7/Bv33+vT3+gn5BgYABgICBgT6BQz9+/z/8fzz+P0A/f3+BAD9/QQD//wDCwL29AH8//7++foE+f0A+vsA+wX7/PUCAPz1/gEG/AEB+QkD+QH6/gEB9vv2+gEBAv4F+wL7+//2/gH0/P4D+QADDAIJ+wUC/AEH+wH+AgUIAvT7B/0FB/z7/gD3CggCAP8BBAb2BfUEBP8ABAYD/v//AAcG+QgA//0F/Qz+Cvf5/AUEAQD/A/8DA/wBBwb/BgcA+ff79QH9BvYCBwAAAvr++/gEAAD5A/oGBAECDfgAA/4B/vwF/f8GCfv+8Qn3Dvr5/QD+9AIBAP///PsDA/YCAQj++vX99//8/wUD/wL7+AEC+P/7/QP79fkGAAQD//8B/Qb9+/z1/AAH9wUFBPz9BAcBAvoDDPz+/P/6A/7+Cvz6/QEE/gMC/QME+wUDAv3/AgP+APX8+f3+BwIG+QEF+/zzCP8C/f4B+/n/9gP2/fn2Bf0FCPz7Bvn+CgEE/QsAAQQA/wH6Agbz+AQB/Pn9/wACCQUVAAUDBQT/C/4L/gbz8AX9APoP9/wHAAUAAgY="
+      "vec": "/AAFAhD4/gX8/gL4//n6/vz5APcJAwD+BP38A/78A//9BAkKAQMGBAMC/gH8AvT/BAj4Bv3z+f8DAv4FCPsCAvwCAgP39gL//QH+/gEICQD+/f7+Bf/3+vT4+gj6BgYABgIDBgT5BAz9/fz/8vvx+f0B/v3+AwD9/gQD//sDCwL38wL7//3++PoE+vz/+/sA+wX7/fgC//z1/QAF/AEC+QoC9wH6/QIA9vz2+QEBAv8G/AL7+//3/gH0/f4C+f8DDAMH+wUC/AAH+wH+AgUJAvX7CP4FB/z7///3CQcDAP8BAwX2BfYEBP//BAYD////AQcF+Qj///0G/A3+Cff5/AYEAP//Av8DBPwBBwUABgcA+vb79QH9BvUCB/8AAvr/+/kEAAD6AvoGBAEBDvj/BP4A/vwG/f8GCvz98Qn2Dvr5/QD+9QIBAf8A/fsCAvcCAQf++fX9+P/8/wUDAAL6+AAC9/76/QL89fgFAAQE//8B/Ab++vz2+gAH+AUGBPv9BQgBAvgDC/3+/AD6A/3+Cvz6/AEF/wMB/QIE+wUEAv3/AgP/APT8+v7+BwIG+QAF+/zzCf8B/v8A+vn/9QT2/fn2Bf0FB/v8B/v9CQEE/gv/AgT//wH6Agbz9wQA+/n+AAABCQQU/wUEBQX/DP4J/wXz8AX+AfoP+P0GAQX/Awc="
     },
     {
       "id": "gunma-ai#0",
@@ -736,8 +736,8 @@
       "id": "faq#9",
       "title": "どんな業種で活用できますか。｜よくあるご質問｜ShinAI",
       "url": "https://shinai-inc.jp/faq.html",
-      "text": "どんな業種で活用できますか。\n製造・建設・小売・医療福祉・教育・金融・不動産など業種を問わず活用イメージがあります。文書・会話・作業記録が蓄積されている領域ほど相性がよい傾向です。 \n 業種ごとの具体像は 業種別の活用 ページにまとめています。",
-      "vec": "9gMEAxD2+Qr6+/78Af/+/vf/A/8CBvr/Bvz/Bv/7/PsAAQUABAAE/wUBBfz3Bfr+/wX1Bf3vAAH9AQH7AgACCPcHAQH09Af6/gQD/fv/BAT8BfUGBP8E+fP9/AL+/wUFCP8DCAAABwkD+wT6/QDz+fUK/fwAA/7+/QMGBP4ABQT39vYCAfv/+QMD9voD//8E+Pz4+AACAPrw/P0D/gL69gAA+gf3/v0B/Pb4/AD+BP4F/v7/9ADx/wD1/v0C/QEEDAcO+gD//fkKAQD/AAcBAvz5A/0GA/r8/wD2BQMEBv/7C/74BPYDBAH7BAX9Av76AQcDAgD/AAAJAQn8AfUB+wQMAQcDCf8DCQAGBAT+AAUE+PsA+/P8BPYDBAT//gL6+P0J+gD0CQMEBgIEDvkDAP0H+QAI/AAGCv73+gf7C/YGAgD9+QP+APb3BAj7CPkDAAH6+/kA/AMA/AMG+QH/+P36/QIA+Pz9+PkFAwP++f3+/QkHA/r2/PwD+wQBCfv9AAEABfoHB/n8/QH8/wT7//sCAQQJ/QAA/QEJ9gAFAQH9Bf/9/fn6+AD9Bv77/QEEBPv0AQoDAAf++/kC9wH3APv4AgL/Cf79Dvz9Bv4CAAMC/wMCBwb8BQb7/v8I+/r9APv5CAoOCgMFBPz9Df8JBQH0+AP9+vkH+vsM/AL+/wQ="
+      "text": "どんな業種で活用できますか。\n製造・建設・小売・医療福祉・教育・金融・不動産など業種を問わず活用イメージがあります。文書・会話・作業記録が蓄積されている領域ほど相性がよい傾向です。 \n 業種ごとの具体像は 業界別の活用 ページにまとめています。",
+      "vec": "9gIFAxD2+Qr5+/79Af/+/vf+A/4BBvsABvz/Bv/7/Pv/AQX/BP8E/wUCBPv2Bfr9AAb2Bf7uAQH9AQL8AgACCPcHAgH19Qj6/gUD/PwABAX8BfUGBP8E+fP+/AL+/wQFCP8ECAEABwoD/AP5/f/y+fUL/fwAA/7//gMGBf0ABQT39vcCAfr/+QMD9/kC/wAE+Pz4+AEDAPrv/PwD/gL69gEA+Qb3/v4A/Pf4/P/9BP8G/v//9QDy/wD2/v0C/QAECwgN+gD//vgKAQD//wgCAvz6A/0GA/r7AAD2BQQFBv/7C/33BPYDBAD7BAT+Av/6AgcDAQD/AAAJAAn8APUC+wQMAAcDCP4ECQAGBAT+AAUE+Pr/+/P7BPYDBQMA/gL6+f0J+wD1CAIEBgIDDvkDAP0G+AAJ/P8GCv/3+gb8C/YHAgH8+QP+APf3BAn6CPgDAAH6+/kA/AQA+wMG+QL++fz6/QL/+Pz9+PkEAwP/+fz9/QgHA/n2+/0E/AQBCfv9AAIABPgHB/n8/QH7AAP7//oCAQQJ/gAA/AEJ9QAGAQH9Bf/8/fj6+QD9B/77/QAEBfv0AgoDAAj9+/gD9gL4//v4AgIACf3+D/38Bv4DAAMC/wMCBgb8BQf6/f8I+/n9APr4BwoNCgQFBPz9Dv8JBv/0+QT++/kH+vwL/AL+/wU="
     },
     {
       "id": "faq#10",
@@ -841,8 +841,8 @@
       "id": "faq#24",
       "title": "知りたいことから探す｜よくあるご質問｜ShinAI",
       "url": "https://shinai-inc.jp/faq.html",
-      "text": "該当する項目を開くと回答が表示されます。 \n\n すべて \n はじめての方へ \n 費用と導入 \n 開発の進め方 \n 業種別の活用 \n サービスについて \n その他",
-      "vec": "+P4CAAz0+QUA/wb9Afz7+fv+Av8LA/z/A/8CAP/1APn7BgH7//sA/v/9Bv77AfYA/AT9//7w/gIB/f8DBf/5BgIBAQP6+gD//gECAvgBAwj8BvD7CPz5BPf68wb6CAUEBAQGBAHzBgr/+vj9/f33/fwIAAEC/QT5+wkEBfwBAwj//AMBCPf+/PgE9vwH//7+/Pv9+Pr6//ry+P0C+//3//oC9wL4/v8C+v76+QgACP8I+/8A+wP1//33A/3/9QAEDAQF/P75/v4D/AUE/wUAAgH5C/cEBP4B///zAgYEAwUKBv35Bv0GC/wEAAL//P32A/4DBgP+APkLBA3+DfMC+wEFAv4IAwMDAQMFCgH+/AEI/vcA/fz7BPP6/wADAf37/QID+//4CgADBQMJCfcF//8G/wMGAAABAf38+QkHDPsIAAD/9v0E///9BfsA/O///wb2/vr/9f/+AwgA/gP//gH6/wD7+P8C9fwM///6+f/8+gkEAv/1/AIB+QgF//sDBgH+A/0DBvYA9wX9/wX+Avr+/P75Avv8/v0B9gYI+fsDBQT9Bff4+/f/CgEF8wAD/QD9/gYDAgP8+fkF9f/5Avv5AvcBA/7//Pr8BgMHAwwDAAIDBQL6AwLz9gIF/vb5/wEEBAcVAQYBAQECDf4I/f348wf3/PsHBfkN/gID/AQ="
+      "text": "該当する項目を開くと回答が表示されます。 \n\n すべて \n はじめての方へ \n 費用と導入 \n 開発の進め方 \n 業界別の活用 \n サービスについて \n その他",
+      "vec": "+v4BAQzz+QUA/wb9Afz6+vr+Av4KBPwABP8C//72APn7BQH7//v//v/+Bv36APb//QT9/wDv/gIC/QADBP76BQEBAQP6+wD//QIBAfkCAgj8BfD7CPz5A/b78wb7CQUEBAUGBAH0BQv/+/f9/v32/voI/gAC/QT6+wkFBvsCAwf+/AMACPf9/PgE9/wG//3+/Pz9+Pv6//ry+P0C/P74//oC9gL4/v8C+f75+Qf/CP8J+v8A+gP2//33Av7/9QAECwQE/P76/v0F/AUE/wUBAgH5DPgEBP4A///0AgYGAgUJBv35BvwHDPsDAQEA/f72A/4CBQT+APoKAwz+DPMC/AEFAv4HBAMCAgMFCgL+/AEH/vf//fz7BPP7AAADAP38/gID+//4CgAEBAMICvYFAP4G/gIFAAABAv78+QkHDPsIAAD/9v0E/gD9Bfz/++//AAb1/vkA9QD+AggA/gT+/gH6/v/7+P8C9fsN/v/7+f/8+gkEAP/2+gMB+gcF//oCBwL9AvsDBvcA9wX9AAX/Afr9+/35Avv9/v0B9gYI+foDBQT+Bff4/Pj/CgAF8v8D/P/9/wcDAgL7+fkF9QD5Avv6AvcBA/3//fv8BQIGAwwD/wIDBAP6AwLz9QME/vb5/wEEBAcWAQYAAAECD/4H/vz49Af3/PwHBfoN/wID/QU="
     },
     {
       "id": "faq#25",
