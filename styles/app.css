@@ -2937,6 +2937,14 @@ body.chat-open .scroll-progress {
   letter-spacing: 0.07em;
 }
 
+/* 群馬ページ限定。「まずは、お話をお聞かせください。」から「ご相談はこちらから」
+   への短縮に合わせ、見出しの重さも落とす(柴田指示)。--fs-h2ままだと
+   一言のメッセージに対して主張が強すぎる。既存トークンの--fs-h3を使い、
+   新しいサイズを増やさない。 */
+.cta__title--compact {
+  font-size: var(--fs-h3);
+}
+
 .cta__title-line {
   display: block;
 }
@@ -4472,13 +4480,17 @@ body.chat-open .scroll-progress {
   width: 2.9rem;
   height: 2.9rem;
   border-radius: var(--r-md);
-  /* 淡色チップだと沈むため業種色のグラデ+白アイコンで立たせるが、
-     --acc-ink(文字用に濃い)そのままだと重い印象になるため白を混ぜて明るく。 */
-  background: linear-gradient(140deg,
-    color-mix(in srgb, var(--acc-ink) 80%, #FFFFFF) 0%,
-    color-mix(in srgb, var(--acc-ink) 52%, #FFFFFF) 100%);
-  color: #FFFFFF;
-  box-shadow: 0 5px 14px color-mix(in srgb, var(--acc-ink) 18%, transparent);
+  /* 濃色グラデ+白アイコンで立たせる案は、白の視認性を保つために地を
+     ある程度濃くする必要があり(グラデの明るい端でも白との対比が2.1〜2.35)、
+     結果として「どんより暗い」印象になっていた(柴田指摘)。
+     地と図を反転する: 淡い業種色の地(--acc-bg)に、業種色そのものの
+     線画アイコン(--acc-ink)を置く。線画は元々白地の上で読ませる設計
+     (partials/industries.htmlのSVGはstroke="currentColor")のため、
+     地を暗くする必要自体がなくなる。 */
+  background: var(--acc-bg);
+  border: 1px solid color-mix(in srgb, var(--acc-ink) 22%, transparent);
+  color: var(--acc-ink);
+  box-shadow: var(--shadow-sm);
 }
 
 .industries-card__icon svg {
