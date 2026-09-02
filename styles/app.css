@@ -546,6 +546,24 @@ h1, h2, h3 {
 /* ---- 装飾の細い罫(ブランドグラデーション) ---- */
 .rule-copper { height: 1px; background: var(--grad-brand-line); border: 0; }
 
+/* ---- 本文中のリンク ---- */
+/* 素の a は color: inherit / text-decoration: none。ナビとボタン以外にリンクが
+   無かったため本文用の様式が存在せず、そのまま置くと本文と見分けがつかない。 */
+.text-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: color-mix(in srgb, currentColor 32%, transparent);
+  transition: color var(--dur-1) var(--ease-out),
+              text-decoration-color var(--dur-1) var(--ease-out);
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--brand);
+  text-decoration-color: currentColor;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

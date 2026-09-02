@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "906f306",
+  "generatedAt": "46fa8f5",
   "chunks": [
     {
       "id": "index#0",
@@ -553,9 +553,9 @@
       "id": "about#8",
       "title": "会社概要｜会社情報｜ShinAI",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "商号: シンアイ株式会社（ShinAI）\n創業: 令和7年1月1日（個人事業）\n設立: 令和8年8月8日\n代表取締役: 柴田 昌国\n事業内容: 暗黙知の解消支援／企業専用AIエージェント開発／AI化伴走支援／\n フィジカルAIの研究開発（PoC）\n対応地域: 群馬県を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市\n連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00",
+      "text": "商号: シンアイ株式会社（ShinAI）\n創業: 令和7年1月1日（個人事業）\n設立: 令和8年8月8日\n代表取締役: 柴田 昌国\n事業内容: 暗黙知の解消支援／企業専用AIエージェント開発／AI化伴走支援／\n フィジカルAIの研究開発（PoC）\n対応地域: 群馬県 を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市\n連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00",
       "pin": true,
-      "vec": "+/wDAwz6+gf8+wj8B/v5//b+APgCBQf9CQMB/QL3A/4ABf/+AwL//gQABQX+/fgB/gP7APz59QYIAQIIBP79AQICAwz89/8EAP//A/4JAAP1Cvf9CPb5//cE+AX2BgUABAEEAAL6BQv4Bfn8Agb3APkC8wACAf39+wwDCv77Bfr5+v79AvwD9/4C+fgGB/79+wb68wL/Avv69PYG/AH9+gUI/AL6//v99gD6/vwFAvwFA/j9+gH3BPr4AgUA/QIBDQ0K+wH9/fv/8wEJAfwM/v0DC/QFAfwA+P78AfoF+QIBCP76BfoFAPn/AfsF/wQABAEIAQT8BP8D/An7Bfb9+QL+/QQCBQD7Bf4EDgYC/gEE/v8C+gP2CfoF/P7+A/73+gID+/36APkI/wIDC/39+QYP9AME/f7+Av//+QX+BvkB+/v99AgE+wT+C/sD//oGAv39/fkA9Af+/wMAAQT59gL69v4A+f0G9v0F+/7/9wID/AkD//4B9gcA/QACA/z+AP4EAfwGEfoA/v/5AQH/BPn9AwD9BP8A/AgB+QQH/f4AAvz6A/T/9fn8Bv8D+QH/+v3/Av//9gIB+/j69AH/BPj/BfwEDv0D/f31CAL9+w79+v0DAgX1AAP29QUF+fv8/Pz/BAgD/gn/AAQBD/8F/wn48wn5//0L9AAF/AEACAc="
+      "vec": "+/wDAwz6+gf8+wj8B/v4//b+APgCBQf9CAMB/QL4A/4ABP/+AwL//gQABQX+/fgB/gP7APz59QYIAQIIBP79AQECAwz89/8E////A/4JAAP1Cvf9CPb5//cE+AX2BgUABAIEAAL6BQv5Bfn8Agb3APkC8wACAf39+wwDCv77Bfr5+v79AvwD9/4C+fgGB/79+wb68wL/Avv69PYF/AH9+gUI/AL6//v99gD6/vwFAvwFA/j9+gH3BPr4AgUA/QIBDQ0K+wH9/fv/8wEJAfwM/v0CC/QFAfwA+P78AfoF+QIBCP76BfoFAPn/AfsF/wQABAEIAQT8BP8D/An7BfX9+QL+/gQCBQD7Bf4EDgYC/gEE/v8D+gP2CfoF/P7/A/73+gID+/36APkI/wIDC/39+QYP9AME/f7+Av//+QX+B/kB+/v99AgE+wT+C/sD//oFAv39/fkA9Af//wMAAQT59gL69v4A+f0G9v0F+/7/9wID/AkD//4B9gcA/QACA/z+AP4EAfwGEfoA/v/5AQH/BPn9AwD8BP8A/AgB+AQH/f4AAvz6A/T/9fn8Bv8D+QH/+f3/Av//9gIB+/j69AH/BPj/BfwEDv0E/v31CAL9+w79+v0DAgX1AQP29QUF+fv8/Pz/BAgD/gn/AAUBEP8F/wn48wn5//0L9AAF/AEACAc="
     },
     {
       "id": "about#9",
@@ -855,8 +855,8 @@
       "id": "contact#0",
       "title": "会社概要｜お問い合わせ・無料相談｜ShinAI",
       "url": "https://shinai-inc.jp/contact.html",
-      "text": "メール: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00\n対応地域: 群馬県を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市",
-      "vec": "+v0HCQz09wcB+wT5B/72+/L9BPn/AQf9BQUBAAf2APr/BPj9CAUB/gP+BwX/APgBAAT8Afn2+AgIAgEFA/oBAAABAAP9+P4DAP8C/f0D/gT1Cfj9BfT+APkB8wn4CwACAgEHAAP4BQ0AAvkCAgX1/voA9wEHAvv+/AwCB//8BQH3/v3/Avv7+v8C+/0GBPr7+Qf29gT5A/nz9PcJ+wT59wcJ/v/6AP4B+f38+v4DBv4HBfsG/AD6Avn2CAX9/QEDCwoL+f3+/v4A8gIG+/0GAf8BDfQDA//7/AD7/v0H/QIDCQD8BvkIAv/+AP4I///+Af8GAAL4BP4FAQH8BPP//AID/wQHBf/6Bv0BBgUH/P4F//wF/f38B/sC/fn/AAH6/gQG/fv2Av8L/QMGAwL/9/4K9QUBAP0AAP//+AYFB/0F+vz88QAE/gT8CPkE+v0HBAD5/v0A9QX//gIA/f/4+gH8/f0G+PwA9AEG/gAA+P8A+A8E+gH/+QkCAgADBfoAAgICBv0ADvv//gb9AgX/APb+/P8AAvv8/ggA7wEG/wEEAPz8Afn/+vn7Bfz6+QD/9wABAgEC+QUB+vf+9AL9CfYCCv0ECPwD/v74CwAB/gX99/8EAgb4BAH1+f8F9Pf9+/v8BQkJAgsC/wIEDf8A/QL58wbz+PwI9/8D/f8BAQo="
+      "text": "メール: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00\n対応地域: 群馬県 を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市",
+      "vec": "+v0HCQv09wcA+wT6B/71+/L9BPn/AQf8BQUCAAf2APr/BPj9CAUB/gP+BwX/APgAAAT8Afr29wgIAgEFA/sBAAABAAL9+P4DAP8D/f0D/gT1Cfj9BfT+APkB8wn4C/8CAwEHAAP4BQ0AAvkCAgX1/voA9wEIAvv+/AwCB//8BQH3/v3/Avv7+f8C+/0GBPr7+Qf29wT5A/nz9PcJ+wT59wcI/v/7AP4B+f38+v4EBv4HBfsG/P/6Avn2CAX9/QEDCwoL+f3+/v4A8gIG+/0GAf8BDfMDAwD7/AD7/v0H/QIDCQD8BvoJAv//AP4I/wD+Af8GAAH4BP4FAQH8BPP//AID/wQGBf/6Bv0CBwUH/P4E//wF/f38B/sC/fn/AAH6/gQG/fr2Av8L/QMGAwL/9/4K9QUBAP0AAP//+AcFB/0G+vz88QAE/wT8CPkE+v0HBP/6/v0A9QX//gIA/f/4+gH8/f0G+PwA9AEG/gAA+P8A+A8E+gH/+QkCAQADBfoAAgICBv0ADvv//gb9AgX/APb+/AAAAvr9/ggA7wEG/wEDAPz8APn/+/n7Bfz7+QAA9wABAgEC+QUB+vf99QL9CfYCCv0ECPwD/v74CwAB/gX99/8EAgb4BAH1+f4F9Pf9+/v8BQkJAgsC/wIEDf8A/QL68wbz+PwI9/8D/f8BAQo="
     },
     {
       "id": "contact#1",
@@ -932,8 +932,8 @@
       "id": "news-20251205-takasaki-press#0",
       "title": "高崎商工会議所 第9回合同プレス発表会に登壇しました｜ShinAI",
       "url": "https://shinai-inc.jp/news-20251205-takasaki-press.html",
-      "text": "2025年12月5日、高崎商工会議所が主催する 第9回合同プレス発表会に弊社の代表 柴田が登壇しました。\n\n 発表では、「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みをお伝えしました。\n\n 私たちが向き合っているのは、企業のなかで言葉にならないまま個人に留まっている知識です。長年の判断、手が覚えた技、積み上げられた文書。それらは会社の資産でありながら、必要なときに引き出せる形にはなっていません。退職や異動とともに失われていくことも少なくありません。\n\n ShinAIは群馬県高崎市を拠点に、そうした暗黙知を構造化し、現場で使えるAIへ変える支援を行っています。効率化そのものが目的ではありません。AIが情報処理と定型的な判断を引き受けることで、人が創造や意思決定、関係づくりといった、人にしかできない仕事に還れる状態をつくること。それが私たちの考える最適化です。\n\n 当日のプレスリリースは、高崎商工会議所のウェブサイトでご覧いただけます。\n\n プレスリリースを見る（PDF）\n\n お知らせ一覧へ戻る",
-      "vec": "AvwAAg719gb8+wD7A/X6+vj5Bf36AgAABAMC/gb7/voCAf//Af/6+gX9CAP+BfcAAgr4CgDz+QEJ/P0BBQIECPj/AQkB9wkHAPsD/fcFAwX3CfP5BPT8APwE/Aj/B/78AwMDAgn5Awf5AAD4/QPw+voL//wDBQMB/AUABPz+BPz39vsCA/n/+//+/v4KAP7++wcC9v/++/r39/4I/QP7+gMI+Qr6/Ab+8//1//wIBgAIBvn9+/v2/f71/wT8AwQJDwgI/wD7Bf0C/P8IAgEHA/0CCf0JAfz9/vv7AvoEAAUCBf3+B/oDAvr+BAQI/wL/BP4OBAf+APsEAxD/Cfj9AAAB/Ab/APr/DAgHCQcB/AEDAfsD9gj8DgH9/v/+Bvv89wIC/QH4AQEFAf4EDfsDBQID9vcG+fkC//n9+g4CAPoAAv7//P4D//z9Bf8BAPgL/wD+//QC7gAG/wL6/gUB9wL9/P4B/v8B7gMEAAEC/AQH+gkC/gHx+AQEA/z+/vX99wMBA/4DDPf4/AX8//8BBvv9/fz6AwH++AwE+wH++P8BCQIAAQEB+/oDBfwD9/wA/vwABv8H/gUC/fj89f3/CfgABvoDBvgBAPz+AAD/9gj5/wQJAAb6AgD8+AEG+Pf6+/r9CQkJAwD7AAX+Cv8H/gb48wT9/gAM+gQF+wIDAQI="
+      "text": "2025年12月5日、高崎商工会議所が主催する 第9回合同プレス発表会に弊社の代表 柴田が登壇しました。\n\n 発表では、「AIで人間らしい時間を取り戻す」という想いのもと、ShinAIの取り組みをお伝えしました。\n\n 私たちが向き合っているのは、企業のなかで言葉にならないまま個人に留まっている知識です。長年の判断、手が覚えた技、積み上げられた文書。それらは会社の資産でありながら、必要なときに引き出せる形にはなっていません。退職や異動とともに失われていくことも少なくありません。\n\n ShinAIは 群馬県高崎市 を拠点に、そうした暗黙知を構造化し、現場で使えるAIへ変える支援を行っています。効率化そのものが目的ではありません。AIが情報処理と定型的な判断を引き受けることで、人が創造や意思決定、関係づくりといった、人にしかできない仕事に還れる状態をつくること。それが私たちの考える最適化です。\n\n 当日のプレスリリースは、高崎商工会議所のウェブサイトでご覧いただけます。\n\n プレスリリースを見る（PDF）\n\n お知らせ一覧へ戻る",
+      "vec": "AvwAAg719gb8+wD7A/X6+vj5Bf36AgAABAQC/gb7/voCAf7/Af/6+gX9CAP+BPcAAgr4CgDz+QEJ/P0BBQIFCPn/AQkB9wkHAPsD/PcFAwX3CPP5BPT8APwE/Aj/B/78AwMDAgn5Awf5AAD4/QPw+voL//wDBQMB/AUBBPz+BPz39vsBA/kA/P/+/v4KAP7++wcC9v/++/r39/4I/QT7+gMI+Qr6/Ab+8//1//wIBgAIBvn9+/v2/v71/wT8AwQJDwgI/wD7BP0C+/8IAgIHA/0CCf0JAfz9/vv6AvoEAAUBBf3+B/oDAvr+BAQH/wL/A/4OBAf+APsEAxD/Cfn9AP8B/Ab/APr/DAgHCQcB/AEDAfsD9gj8DgH9/v/+Bvv89wIC/QH4AQAGAf4EDfsDBQID9vcG+fkC//n9+g4CAPsAAv///P4D//z9Bf8BAPgL///+//QB7gAG/wL6/gUB9wL+/P4B/v8B7gMEAAEC/AQH+wkC/gHy+AQEA/z+/vX99wMBA/4DDPf4/AX8//8BBvv9/fz7AwH++AwE+wH++P8BCQL/AQEB+/oDBfwD9/wA/vwABv8H/gUC/ff89f3/CfgABvoDBvgBAPz+AAD/9gj5/wQJAAb6AgD89wEG+Pf6+/r9CQkJAwD6AAX+Cv8H/gb48wT9/gAM+gQF+wIDAQI="
     },
     {
       "id": "news-20251205-takasaki-press#1",

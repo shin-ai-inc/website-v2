@@ -333,6 +333,18 @@ test("地域ページに内部リンクが張られている", () => {
   assert.ok(referrers.length >= 2, `参照元が少ない: ${referrers}`);
 });
 
+test("地域ページへ、定型のナビ以外の本文からも文脈リンクが張られている", () => {
+  /* ヘッダーとフッターのリンクは全ページに同じ形で並ぶ定型で、Googleは本文中の
+     リンクより軽く扱う。実際、参照元7ページはすべてフッターの1本だけだった。
+     文脈のある本文から張られて初めて、そのページが何についてのものかが伝わる。 */
+  const body = (p) =>
+    readDist(p)
+      .replace(/<header[\s\S]*?<\/header>/g, "")
+      .replace(/<footer[\s\S]*?<\/footer>/g, "");
+  const referrers = PAGES.filter((p) => body(p).includes(`href="${GUNMA}"`));
+  assert.ok(referrers.length >= 2, `本文からの参照元が少ない: ${referrers}`);
+});
+
 test("地域ページが自身を WebPage と FAQPage として申告する", () => {
   assert.ok(typed(GUNMA, "WebPage")[0], "WebPage がない");
   const [faq] = typed(GUNMA, "FAQPage");
