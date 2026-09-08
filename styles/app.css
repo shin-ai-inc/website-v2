@@ -4501,11 +4501,16 @@ body.chat-open .scroll-progress {
   /* 濃色グラデ+白アイコンで立たせる案は、白の視認性を保つために地を
      ある程度濃くする必要があり(グラデの明るい端でも白との対比が2.1〜2.35)、
      結果として「どんより暗い」印象になっていた(柴田指摘)。
-     地と図を反転する: 淡い業種色の地(--acc-bg)に、業種色そのものの
-     線画アイコン(--acc-ink)を置く。線画は元々白地の上で読ませる設計
+     地と図を反転する: 淡い業種色の地に、業種色そのものの線画アイコン
+     (--acc-ink)を置く。線画は元々白地の上で読ませる設計
      (partials/industries.htmlのSVGはstroke="currentColor")のため、
-     地を暗くする必要自体がなくなる。 */
-  background: var(--acc-bg);
+     地を暗くする必要自体がなくなる。
+     単色は平板に見えるとの指摘(柴田)を受け、地に方向性を持たせる。
+     起点は--acc-bgそのまま、終点は--acc-inkを22%まで混ぜた地点
+     (8業種いずれもアイコンとのコントラスト比3.83〜4.65を確保、非文字要素の
+     WCAG基準3:1を十分に上回る)。終点を明るく保つことで、グラデーションを
+     足しても「どんより暗い」へ戻らないようにする。 */
+  background: linear-gradient(140deg, var(--acc-bg) 0%, color-mix(in srgb, var(--acc-ink) 22%, #FFFFFF) 100%);
   border: 1px solid color-mix(in srgb, var(--acc-ink) 22%, transparent);
   color: var(--acc-ink);
   box-shadow: var(--shadow-sm);
