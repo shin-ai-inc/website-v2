@@ -112,25 +112,10 @@
   margin-bottom: var(--space-4);
 }
 
-/* 理念とそれを受ける一文は一つの題辞なので、段落どうしの間隔(--space-4)は
-   離れすぎる(柴田指摘)。二段詰めて、二つが続きものに見える距離にする。 */
-.about-message__lead:has(+ .about-message__para--creed) {
-  margin-bottom: var(--space-2);
-}
-
 .about-message__para {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--ink-2);
-}
-
-/* 「この想いから〜」は理念を受ける一文で、続く語りとは役割が違う。
-   理念と同じ寸法・書体・色にして、二つで一つの題辞として読ませる。 */
-.about-message__para--creed {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  line-height: var(--lh-snug);
-  color: var(--ink);
 }
 
 .about-message__para + .about-message__para {
@@ -142,15 +127,12 @@
   .about-message__para {
     font-size: 0.8125rem;
   }
-  /* --creed は .about-message__para と同じ詳細度なので、後ろに置かないと
-     0.8125rem に打ち負ける。順序が効きになっている。 */
-  .about-message__lead,
-  .about-message__para--creed {
+  .about-message__lead {
     font-size: 1rem;
     /* 理念の一文は読点で二行に割る。意味の切れ目で割るため上下の長さが揃わず
        (9文字と17文字)、左揃えのままだと右端が大きく余って落ち着かない。
        中央へ寄せると二行が対称の形に収まる(柴田指摘)。語りの段落は左揃えの
-       ままにして、理念とそれを受ける一文だけを題辞として扱う。 */
+       ままにして、理念だけを題辞として扱う。 */
     text-align: center;
     /* 日本語は <br class="br-sp"> で手で割っているためこれは効かない。
        効くのは自然に折り返す英語版で、中央揃えにしたときの行長を揃える。 */
