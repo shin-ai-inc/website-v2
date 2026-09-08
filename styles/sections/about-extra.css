@@ -133,6 +133,11 @@
 
 /* モバイルは一回り控えめに(読み物として静かな声量へ) */
 @media (max-width: 640px) {
+  .about-message__para {
+    font-size: 0.8125rem;
+  }
+  /* --creed は .about-message__para と同じ詳細度なので、後ろに置かないと
+     0.8125rem に打ち負ける。順序が効きになっている。 */
   .about-message__lead,
   .about-message__para--creed {
     font-size: 1rem;
@@ -144,14 +149,6 @@
     /* 日本語は <br class="br-sp"> で手で割っているためこれは効かない。
        効くのは自然に折り返す英語版で、中央揃えにしたときの行長を揃える。 */
     text-wrap: balance;
-  }
-  /* 二行のあいだに息を入れる。詰まっていると二行の長さの差が目立つ(柴田指摘)。
-     新しい値を作らず、本文の行間をそのまま借りる。 */
-  .about-message__lead {
-    line-height: var(--lh-body);
-  }
-  .about-message__para {
-    font-size: 0.8125rem;
   }
 }
 
