@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "46fa8f5",
+  "generatedAt": "d84e513",
   "chunks": [
     {
       "id": "index#0",
@@ -385,8 +385,8 @@
       "id": "about#3",
       "title": "Masakuni Shibata\n 柴田 昌国｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
-      "text": "Founder / AI Engineer \n Masakuni Shibata\n 柴田 昌国 \n\n A former firefighter of some seven years.In February 2023, about two months after ChatGPT was released, he became convinced of what AI could do and taught himself to program.After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 under the principle of believing in true value and building a new future for the next generation.In August 2026, he incorporated the company as ShinAI Inc.He still works hands-on as an AI engineer, designing, building, and running AI systems for clients from listed companies to small and mid-sized firms.",
-      "vec": "//wHAwz0+Qf+9Ar8Afv3//X4Avb8/QMGAwD///74/v36AAP4AQX+/v35BA359//8AAT4BPkB/AMAA/4FAwH8A/z7+wj/+AECAP///P4N/v/6DfYAAPv2/Pz99wf3BQX9CQkJ+Pn+CQ38BPv4/gD3+/0B8fwGAfkAAAkE//3+Aff3+QL9AvsD9fYC9vz9Bvr++v36/f8B+wMB+vkF/gP/+AMG+wj4B/369/sA/AD/A/8HBvf+/wH3A/v6BgMF+QAJCggL/gb1CfsC+f8C/AAH/fr8DfQEBPoA+vb9AwIH/f8BBgcFBwQDAPn6/QIFAgUH/QYMAAgD/vwEAggAB/39/wD7BwEFCf/+AAAFCwr+/QEC/vkDAgP1DPcDBv4CBf7++PsF9/38CQAFCf4EDPr9/P8D+wIFAv38//0CAAcGBPz/+wL/+AME9wAABgD++vcCAPj7Afb/9wEEAAEDAP3/+wP5/wEA/f4A7wMDBPsB9P/+AAEAAwH7+gr++ggCBQL/+wQDBf4FB/n9CAD6Bf0ACPsFBPz/CQIH+gcK9gYA//0FBQMH/vgC8gEBA/8K/vr+Avz/BAP99wf//AH99PwBBPv/BfQHDfwAAvv8BgX+/QD8+AEHBAP+APn4/P8D+voEAfoEDAf//wH/A/4AEv0J/Az29QcCAvUE+foFAQEG/wE="
+      "text": "Founder / AI Engineer \n Masakuni Shibata\n 柴田 昌国 \n\n In February 2023, about two months after ChatGPT was released, he became convinced of what AI could do and taught himself to program (previously a firefighter for some seven years).After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 under the principle of believing in true value and building a new future for the next generation.In August 2026, he incorporated the company as ShinAI Inc.He still works hands-on as an AI engineer, designing, building, and running AI systems for clients from listed companies to small and mid-sized firms.",
+      "vec": "/v0IAwv1+Qj/9Av9Afz2/vX4Avb9/wIGAwAAAP74/f77/wT4AQb+//35BA36+f/8AAT3BPgB/AL/A/4EBAH8A/z7+wj/9wED/////v0O//75DfYAAfv3/Pz+9gb4BgX/CQgH+Pn+CA38Bfv5/f73+/wB8vsHAPsA/wkE//7+APf2+AH/AvoC9fYC9vv8Bvr++f/6/f0C+wUC+voG/QMA9wMH/Af4CP769/sA/P8ABP4EBfj+/wL3A/v7BwIE+QEHCwgM/Qb1C/sC+v4C/v8I/fr9DfMDBPoA+ff8AgEH/f4CBQcGBwQDAPr6/wIFAQUG/gYMAQoD//sEAwcABv79/wD8BQAGCP//AgAFCgr9/gAC/voCAAP1DfYCBv4CBf//9/sG9/39CQEGCf8FDPn+/P4E+QIGAv37/vsCAAcEA/z//AL++QUF9gEABf/++vcDAfj8AvcA+AADAAAEAP0A+QX5AAEA/f7/7gMCBfoB8wD/AAIAAgH7+gn++gkBAwL/+wQCBf0FB/n9CAH6BfwACPoFBPv+BwAG/AgK9gb///0EBQQI//gC8QEABP8J/vr+AvoABAP9+Qf//QH89Pz/A/v/A/UICvwAAfv8BwT+/AH8+AIHAwP/APn5/QAD+voEAfoEDQUA/wD+Av4BEf0H/gv29AcBAfYE+PoFAAEH/gE="
     },
     {
       "id": "about#4",
@@ -449,102 +449,109 @@
       "id": "about#12",
       "title": "A message from the founder｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
-      "text": "Masakuni Shibata \n\n \"I wanted to save people in trouble.\" That single wish kept me on the front line as a firefighter for some seven years.Facing lives day after day, I also came to know the limits of what one person can do.Was there a way to help far more people?I carried that question with me for years.The answer was AI.When I encountered generative AI in February 2023, I became certain it could let me help many more people —\n not as a technology that replaces people, but as a means to widen what they are capable of.What we take on is rebuilding the very workings of a company with AI at its foundation.Not efficiency, but optimisation — that is where the essence lies.",
-      "vec": "A/gEBwvu9Qz8+gL4/fX//Pn2BPr+/wQBBP4DBwP3//z3A//8BAAB/gD0Cgz4+P4AAQX7B/3/+v8A//sDBv3+BvsBAAb8+wYB/f79/P0L//39Cvn/A/z3//z4+gX4BAECBQoL/QP7BQf3A/78AQDy+/4D9/v/BwADAQUDBf33BPr19wYDAPn/9/r/9/4B/PX4+//9/QL7/AD8+v0D/Qn7/v8G8gX4Avr49/73/f8GCvsF//X9/fz7AfsA/QT++/4LDgUL/AP8Cv8B/AUD//4FAPf6C/YAAvj7/vv3BQECAQQCAggCAwEEBPj7/wMJBgkAAAMIAgQD/QAECAz7CfoA/wEBBQEHBvz9AwUGCwcDAgEC/fcEBQf6CfgCBvcAAv77+vv/+QP6AwQFBAAIC/j+AAMD+QIEAgQA//r+/gz8B/v/+QH9+QAG/f0BBfwB/fcB/vv/+vr/8P4AAP76AQT9/f/79AQF/QAA9AEIBPsA+AQEAv79AQH6/Qf9/gQHCPsA/QcHAv0EDfb7BgT/AAIFBvkCAwT9DAAH9wME+Qb+APwJA/4E+fn89AEDCv0I8/7+Afn9CAP/AAEE/PgB+wH+CPj///ECCvIDAfgACQEA+gH6+wEA/QP8APr5+f39/vr7//oBCAT8AAT+/wIADv0F+gf39AYEBfcKAPYFAv0D+wE="
+      "text": "Masakuni Shibata \n\n \"Believe in true value, and build a new future for the next generation.\" ShinAI began with that conviction.True value is not something to be created anew.We believe it is already there inside a company —\n in years of judgement, in intuition earned on site, in the steps no one has ever written down.Our work begins by trusting it.In my earlier work, I came to know the limits of what one person can do.Was there a way to help far more people?I carried that question with me for a long time.In February 2023, I found the answer in generative AI —\n not as a technology that replaces people, but as a means to widen what they are capable of.",
+      "vec": "BPoBBQzv+Av7+Af5+/b9/vb1A/kB/QIBB/wCB/71/Pz5Avv/BQMB/f/3DAv7+/z8/gT5A/3/9gD+//YEBPsABf8A/AX9/QUB+QL9+/0J//77CvYDAP/3/Pz/+QL9CP4FBQcJ+QD6CQz6CPz7+gPv+/0C9/f9AgMDAQQBAf/5AgD39gQF//kB+Pr+9/7//Pn4/AP9+wQC/P/9/fwB/AX7/AMH+gb6Bf339vz2AP4DDvsAAPj+/Pz4//4BAAT/9fwIDgYO+wX9Cf4A/AMBAAAI//j7CfP/AP3+/f31BAAEAQgDAQUBAvwGAv34/wMGAgj/BgAIBQMC/f8HCQcAB/0D/P0ABf4DBfn+BQUFCQsA/////fv9AQn8DvMCBvz/AQX9+PwC9wL3AwMHAP8IDPcB+/8D+gIFBAECAPf+AQj+BfwA+gUC+wEI9wD9Avv//vgCAvn9+/v++v8D//78AwX9+gX3+v4E/wAB8/0LBfoB9wUE//z6AAP8/wr9/AQEBv3//QQFAvsHCff5BggC/wAGBv0DAQP/Cf0I+AYE+gf9AAAIBvoD/vn87wT+CP0E8/7//fn/BQL9AfwE/fj89wH8Cff7/PgDB/UG//v9CwAA/AT9+AIC/v79/fv5/AAC/v37APz/BwL+//7//QX9Df0A+gf57wcEBPgK/vkHAP8J/QE="
     },
     {
       "id": "about#13",
       "title": "A message from the founder｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
-      "text": "Technology is never the goal, only the means.Beyond it lies a future where people reclaim their human time and give themselves to value of a higher order.\"Believe in true value, and build a new future for the next generation.\" It is this conviction that keeps us moving forward.〜 2023 \n Served as a firefighter (approx.7 years) \n\n 2023.02 \n Saw the potential in generative AI and began teaching himself \n\n 2024–2025 \n Practitioner at a Tokyo AI systems development company (LLM integration, RAG) \n\n 2025.01.01 \n Started ShinAI as a sole proprietorship \n\n 2026.08.08 \n Incorporated as ShinAI Inc.Founder \n Masakuni Shibata\n 柴田 昌国 \n\n Seven Shin",
-      "vec": "APkCAg3x+Ar6/Af9APb6//X3APoB+gUEB/4EAv74Avv5A//6BgL/+v/2Cgn5/PsBAgb9AvsA8v8CAfsFBf3+AQMB/Qr++AQC/f3+APwF/v/5CvoCAvr3APz69wb5BAX8BgUK9/z6Bwv5Bvf7/QLx//8C9PoAAP///wQCBP/6Bvz29gX/BPkC9Pv89PwEAf34/gX9/AH+AAEB+wAE+wX7+QIG9gP7Af349P77/QIBB/wIA/z8//z2/vj/AwMF+f0LDQYL/gT5B/wA/QEGAPwFAPr9DPX/BPn/+/j5AgMH/gIGAQUDBv8EA/n7/wMIAggDAQMHAgUA/v8FBQz7B/sA/gD+BQAGBPz/BwIEDQz9Av8B/vsAAwn3C/kHAvn+BQP++PkC9wH3A/8I/wAGC/r8+/4I+QEHBv/8/vcA/wkCBfkA+AIC+wAH+f7/Bvr/+/gCAfj/Avr+9QEBAP/8/gL6+QX/9gIE/f8F8P4IBvsB9gEC/wH7A//8/wz7/wIECv0C/gAEBgEHC/j8BgH9AwAEBfsDBv3+CAMH9wcE9gcAAPoEAf4E/ff97QEBBfwJ+P3++f0AAv75+wUG/vv79wD9Bvr+//YEB/gCAvj8CgD+/AP+9wMFAPz9//v1+gX8/Pj+/gAEBwP9/gX6AAICD/0E+Aj57wUEA/gL+vgEAf8H/v8="
+      "text": "What we take on is rebuilding the very workings of a company with AI at its foundation.Not efficiency, but optimisation.Technology is never the goal, only the means.Beyond it lies a future where people reclaim their human time and give themselves to value of a higher order.We keep moving forward to hand that future to the next generation.〜 2023 \n Served as a firefighter (approx.7 years) \n\n 2023.02 \n Saw the potential in generative AI and began teaching himself \n\n 2024–2025 \n Practitioner at a Tokyo AI systems development company (LLM integration, RAG) \n\n 2025.01.01 \n Started ShinAI as a sole proprietorship \n\n 2026.08.08 \n Incorporated as ShinAI Inc.",
+      "vec": "/voEAQvz+Qz7/Qf8//P7APX2//kE+wQEBv4FAv35Avr5BP/6Bv8B+//3Bwf5//sCAQT7BPwA8f8BAv0FBP8BAQIC/g3++AYA/Pr+//0G/gD5CvkABfj3APn6+Qf5AwX8BAUJ+wD6Cgn5Bfn8/QDwAgAB8/j/AwD+AAICBf76CPz29QcABPcA9P399fsC//r3+wX9+f/9/wH/+gMF+wf9+AEJ9QP7AP748wD5/AEBBvoGA/r8/v74/vb/AAUD/P8JCwYK/QX7B/0B/QEIA/wG/vsAC/b/A/j6+vv5AgEF/gIEAgQAA/8CAff6AAIJAAcCAQQGAQX//QEFBAr6CPv//gAABP8GBvwABwECDgn/AAH///sAAgn3DfsEAvr8BAH9+PoB+QP4BQAJ/wQICvr7+gAF9QIIBgL9APYAAAv/CPj/9wIC+wAJ+/4ABfsB/PcGAvoA//j99AIBAwD9AAX5+AX99AEH/QAE8v8IBvwB9gMDAQP8A//7/wv7AAIFCvsC/wIDBAAFDPf8BwD8AgEGBPsCB/3/BwMI9wgE9QcAAvkEAP4G+/f87/8BBP0G9f7++fv+BP/6/gUJ/vr8+AL8BPj+/voECPgBAfj+CQD8/AT8+QME//37APz3+Qf8+/n5//8DBQb9/QP6/wMDDf0D+Qn27gICA/oL+vgDAQAD/wE="
     },
     {
       "id": "about#14",
+      "title": "A message from the founder｜About | ShinAI",
+      "url": "https://shinai-inc.jp/en/about.html",
+      "text": "Founder \n Masakuni Shibata\n 柴田 昌国 \n\n Seven Shin",
+      "vec": "Afr/Awzw9wj2+QT+BPn6/Pr+AP4FAAYECAAEAQT0Avv8Bv78BQP//AL4DAX7+fr+BAgABvz7+gAC//sCA/73AAX//wID+wAB+gL9+voGAwD6DvcE//n2Af/9+An5BQACBwgJ+QL2AQr8Bfn5+gPy+gAB9/4E/gED/wYDBf38BP30+Qb6BPsC+/f99P0EBf36AwT4/gH+/v4A+/n+/gL6AQgD+QX5BPj4+P/6/QEDCPsIAff+//v3Af7+AgAF8/0IEAcK+AP6Bvn3/gAF+PkECPwAC/EBAvoGAfb2AQEGAggJBAcIBf0KB/39//4IAQkCAgIIBgUA/QAECA8DBfkD/wD/AAQHAfv8AwIFCwsF//4D//4BAgT4BvkJ//r+AwL9+Pz/9P74AAAF/f4CCvj//P8I/gAIBf//+/4A+wIHA/wD+f8A/AMF+v7+CvQA+fgF/vv3AgD/+QAA+/wA/wH6+gb4+v8D/AAI9PsIAP0C9AEG//3+/wL+AAv5/gEEB/4A/wEDB/8KDvgACAICBgABBf4DAwT6CP4E+AQA9QQB//0KAAIA/fv67wAABfcK+AP9+/8D+///+/8C/fv8+v8BB/v8//T/BvUG/v38B/8B/Af+8v8FAf/9AP7z9gH//vz+//sCBAL/AAf6/gECDP0E+gf78AcDA/cL/fcE/wMH/gE="
+    },
+    {
+      "id": "about#15",
       "title": "The spirit behind the seven Shin｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Seven Japanese words read \"shin\" gather inside the name ShinAI. \n\n 真 \n Truth \n\n 信 \n Trust \n\n 伸 \n Growth \n\n 心 \n Heart \n\n 新 \n New \n\n 芯 \n Core \n\n 紳 \n Integrity \n\n Truth \n 真",
       "vec": "+v/6Awr3+An9+gX8/vr9/P0AAvwAAAMIBQgBAAb4//wGAPz7/P38+QP/CQAA+vkBAAb+CPkB+Pv6BfsDA/r2BgQC/wIC+ggH+AP/+/kIAfv5CPz7B/34/vwB/QP4BP4DBAgB/gH4Bwz/BP35+wPr/AAGA///AgEGAggDBf8ABwf8+wH8AvkF+vwA9f7/+gL4BQL3/vn//P/+/Pn9/QL6AgYE+wP6//T7+Pb2//oFBvgHA/gC/wPxBwgBAQIAAP4JFAQK/AD+BwD3AwP/+gYC+Pv/BvYHAPcGB/X3AQEDBQn8AggCAfwJA/r7/PgE+wMC/wMEBgQG/QMHAg/8BPUD+vwEAwUFBQH9AP4ECQn6AgID+v3+/gb8CvoGBAH+AQX8+v38+Pv7Av0I/QEACfn+/P4L+f8JAQUCA/cC+QAEB/wC+gUD9wAFAP/+B/oAAfgD/f/0/gD9/gX/AP37BAT9/Aj+9vz9+P8I9vMJAP34/QYC+vj+//3/AgH9+f8FBvz7BQEDAwUJAvr/AP0BCgcAAwAF/vsDCf0B+QcH/wcJ/QQLAfsB+vr18gQCBvgN8wb/AvoF+fv6+/4A+fv4/gn8AP35AP39AvsF/AEGAAD8+A4E8wMBBPv++gLz+wX/BwX5/vn/AwD7AgMABAT/Cv4J/Af37QMFBfoL/QIIAQMJAwI="
     },
     {
-      "id": "about#15",
+      "id": "about#16",
       "title": "See to the essence, and deliver value through honest engineering.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We are not swayed by surface trends. We keep pursuing the solution that is genuinely needed. \n\n Trust \n 信",
       "vec": "A/37Bg709AX7/Qj8+/wAAfj1//cGAwMCCQEABgT2AfsCBQEGBv/++AD/BwUD/vwEAgT7A/38+f4CBvoG//X+BP/9/AMD+ggD+gT+9P0HBvv5BfX5/fz3//T//AT/APkIAAsGAQb4CAoDA/77+APu+v4J/QL8AQUB/AgCAv78AwT6+AH/A/wB/fsH+gMA9wH0Bv8A/AAE/vz0/v//Bgf6/gcH+gL6/vfx9v30AfwDCvsE+vf+AAT4/wH+AAT8+vYKDQAG+gEFBgD9/wr//AAG/vr3CPr9AvsBAgP4Cfr/AwD+Dgb6AfwGAvz8/QAH/AgAAP4BAAUA/gABBgv9/vUE+/38BwH/BP/+/QUGBQr9BQAC//j5AQf6CPP6APv3/gf//vz79/36/f4G+gL6Cf4B//sD/QICAAEAAPv//QUEAvQG+wUB/ggC/wT9APgC9vgHAvz4+/r5/AAJAgD4Bgv++Qb9+v0F+vwF9/oGBf0DAAf9/QMAAgMBAgkAAPwFBP38BAUDA/3/CfoBAQ3/AwUJBv8F/gUBBvwB+Qr+/QUC+voL/gEC/fj19QUCCfoF7gEAAPv9BP73//8A+vf/+AT+//b7Av0ABvwO/vj+BQH++QX/9gX/CPz9/f35+QwAAP/4/Pj5BgQIAf/5AQf4CP0G/AP89QMEAgEMAPwL/wMK/AU="
     },
     {
-      "id": "about#16",
+      "id": "about#17",
       "title": "Build trust, and deepen the bond between people and technology.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We build relationships with transparency and honesty, and go on providing technology that can be believed in. \n\n Growth \n 伸",
       "vec": "Av39Bwz09Qf2/AX7/fX+/vf7//j/BAf+BQACAQT2/voACgQEBf4A/AD9AwYBAPkAAAf8Afv++AcIBPQHBPkDBQQA/QYD/wcB8wMB+/kIA/n7APL/Avv5//cC/QgABf0BBQYG/wX4Bgf6Af75/wXr//wG/P0CAwYA/AQHBQX8AgH4+AECBP0B+PkB+gAF9/35/wIB9/r/+/ry//8H/Qf7AgIH+gH8Bfb48/v5/P0LAvwB+fr9/QT3/Pn5/Qf//PYKCgAH9f4ABAP9/gT/APkEAfn9CPn8APgDAQL4//kABf4DCQf7BvwEAvX9AQQJ/Ab6AQQCBQYEAP4IBQf/APcG+f38/f8CBP76BAIDCAv7CPv/+fn5/gH6CvQBAvj+BAf3/QME+f/8/QEK/v/+BAD//wEI+gAI/gD/BPz9/wn/AfUA+/8AAAMDAAD9Afj/9/wFCPz0Av39+QQGAf/5AwoA/AP7+gME+AEG8PwH/f8A+gj7+vv+AgT8/w3+AwEE/wH9AAIAA/sFDfT9AAn9AwAFBf4A/AMDAvv6/Ar89QYA/PsD/QMAAP747gQEBgAC8QEB/fv/Av74+/wE+fn6+/72A/f8Avr/CPoL/fj+BAX+/gcD+AAAA/j8AP31+QcF/v78+AL9BggF/wH4/Ab8Df0G/Af59QUEAvcN/fwH/gMGAvw="
     },
     {
-      "id": "about#17",
+      "id": "about#18",
       "title": "Draw out latent potential, and keep evolving together.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We support our clients' growth and keep learning ourselves, so that we extend into the future side by side. \n\n Heart \n 心",
       "vec": "/voHBAP9+wz9+gP//fX+A/j/Cvn+/Q0ECQAEBAL5//n7Cf8GAwP6/AH3CwoA//n+Awn6Afz//f8EBPkKAP0EBQAC9gcAAAgC/AIC/P0CAgL7Bff/A/b5/Pr9Av74AwAMCAICAQL9Bgj/APj99wHp/AEJAPcCBAT+/QoCCP78AgP6+gAABff8/P0G+PYE/Pz9/wT+Afj9/QP4//0C/AH6/wED/wb8//AA9vj5+fcFB/j++/QEBAf6A/YC/wYC9v0MDv4E9wgAAwT9Awn9/QIA+wECC/r8/voCBAD7APn/CQMBBgf4Af0EA/v2Av0F/Qj7/AQFAQcB/AEG/An9BP4EAQAAAvoEAgP4BwECCAj+A/v8/Pr9AgT8Bvr9A/v9Av77+AH/+AL8/wQJ/v0CB/79/wIFAgQFBP8AB/v8/QUIBvf7/AH8/P8B//8ABfUB//sD/P72A/T9+v/+BAEDAQIA+gj6/fwB8gMG8fQDBv/++AYA+QMB/wb4BAz+AAYFA/8EAwME/fsACvT5/gP8BAgCBPr6/AUGBv8FAgQG+QYCA/oH/QUG+fb58AMBDfwF8AUG/f38Bf/6/voK/PkB+wX5/vT4BQABB/sK/fsGAgL79QcC+QoCBPoCAvz7+ggEBPz/AAL7BgcIAf8B/AX+CP0NAgL69gMJB/4HBfoMAgUI/gI="
     },
     {
-      "id": "about#18",
+      "id": "about#19",
       "title": "Honour sensibility, and create AI that touches the heart.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We hold to more than the technology, caring about human feeling and values, and offering solutions that create empathy. \n\n New \n 新",
       "vec": "B/z7BgXy+wn+/AL2+/v/Aff8Cfb+BQP/DQACAwT9AvkAAQAD+wD++f//BwT7/v3/+wX6Bvn/+wD/Bf0B/vv8BfwC9gIC+QYG+gP++vgLBfn3Bvf8Af77APIBAQX6AP0GBAEFAgH1Awv/BAP//wjq9/kHAfgD+wf/9wUDAPv8CP/29AUG//n8/PoC9f0E8/v9AwH8+/4L/Ab6BPwB/gXz/QIC/P38Avn69fz4/f4GCPoI/vkEBAL6AAH8AAMB+/0EDgMI+AIEAPoEAQj/AfwAAPz9Cv0FBv0CA/7yAv4FBwT9AgP7/vsAB/3//wID/wcABP8FBwEEAvwKBQ3+C/cEAPwBAP4DAwT8B/wDDQoB/v8D+vYC/gkAB/b+B/z4Av76/vz+9v76/QgI/wICD/z+/AUK9f8KAQP9A/n7+gn+Bvv++QH6+v4FAgD8APr8+/oF/AL9/fv49gIAAAb6AAb9/QP/9P8DAP8F7/oK/wj59gQD+/z/Av/8/Qf/9/8ABv/8AAUFAv4ICPX8CQf+AggFB/0BAgD/CPoI/Qb++QgCAQL/A/z//Pr99wcECPgL8v8H/ff9AgICAv8H9/0A/AD3B/f8/vv9CvoE/v0CBAr7+Q0A/PwB/P39Af77+QAD/gH8/gD6AgUCBf/+AQL+Cv0K/AX58wH8AfwN9/cLAAAGAQE="
     },
     {
-      "id": "about#19",
+      "id": "about#20",
       "title": "Meet change head on, and open the future through innovation.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Unbound by precedent, we keep taking on new possibilities, and in doing so open the door to what comes next. \n\n Core \n 芯",
       "vec": "BP0BAwf3/AkB+QT5+wD5/fX6Bvr9BAMIBwX1CAX/BPv/Bf0FAwAA9/z5Cgf8+fUA/gsAAAD99/wCBfkHA/gDA/3++gUB/AMH9v/7+f8BBP75/PT6Avn5/Pn99gT8BvsLAQQIAgT0BAYDCPv7+QHp9f0GAfsKAQb+/gn/A/33BQH5+wL9BPn++fYE+wAE+wH6/wL8/wUDAfv6AAQDAgT4/QYD+AAD/vr/7/r9+AAGCf3+//cCAAb8Af7+AQj9+PkKEQMI9Qf9BPz9AQj//v4AAf39DPwBBP4ABAH1AgAHAwsFCPz7AgAEAfr0+QAH+Ab+/gD+BAMDAQIHBgwEAvgH+P4GAv4FA/z8AAEDBwb8BPr/+vf7AAYBDvn5APf9Av8BAfj/+/z3/AQI/P8AC/oB/wgI//0BAfr5AvgA+wb/Bfr9/wQG/gYL/wT+A/MB+/UBBvz6+/7/+AQCAvz7AQX8+AYB/vwD+AQG8fsGAgL7+f4C9wD8/gD4/wv7BwICBv3/AAQGA//+Cvz+/gMEBwIDAf0G/v4BAgMD/wIF/QYGBP//9/4IBPf08wQEB/sJ8vwF//8ABvz7A/wB+fkE9gD4Avf2BvUIBvwGAfwCCgH9+wgA/gAFAP4GB/38+QX/APr9/PsFBfwL/AT7/wP+A/0G+QX58gEJ/voM/wAJAAUE/v8="
     },
     {
-      "id": "about#20",
+      "id": "about#21",
       "title": "Hold an unwavering centre, and carry the core of what comes next.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "With principle and engineering strength that the times cannot shake, we become something the next generation can rest on. \n\n Integrity \n 紳",
       "vec": "BQIECAv59gf6AQn8+fX+//b8Av38AAIDCAEECAH6Cfz+A/4GBPr8/AD8CQoD/vsBAgcAB/8C+AD8BfoH+foEBgD6/QQC+wcE9gD9+fwE//r3Avn5Av37/vgCAAP6Av4DCgoD/wb3BwoDBAD79ALy+foE//wABgMFBAn9AAH2CAT3/QD8AP8A9foF/gAB9v7yCQX7AAMEAf73Af0DAAj7/AII9gL/+/n69Pr8A/0EDP///fr9BP/9/wAI/gz8APkJDwMK9wEACv/8BAT7/wIC//b5BvcEAfYD/QX0B/8DAQf+CgX+BQAG/wL2+v8L/Ar7/f8EAAQBAQUAAwz+Cfz//AMDB/z6B/z1BQcDCA33+QD5/fcB/gv5DPH9A/37B/v//P0D+P/9/P0GAQMDCwED//8AAQEB/AT9/vv5/QMAAvoE/gYB/AUFAAL9//8C+vcCA/8C+f75+gQAAv33/QT6+wYD/v4B+QIC9/gJA/v8+gP//f0G/wD9AQMB/P8F/wUAAAcCBQIDCP8BAwf+BQQCBf0BAAMGAgAD+AID/wgBAfsD+QUE+fjz8AUCBvgF8gYG//z8Bff4AQED9fn8/Ab9AfT2CPoCCfoKAP8DCv/5+gj7+wECAPr7AQD2AQAA//v3+fX9AAAH/gX6AgH8Cv0I+AP67wYHCwEG/vkHBQQG/wA="
     },
     {
-      "id": "about#21",
+      "id": "about#22",
       "title": "Conduct ourselves with grace and respect, and let trust follow.｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "We act with high ethics and dignity, and remain a company that society can respect. \n\n Future Vision",
       "vec": "BvsBCQv59gj+AAP6A/f9APT+BPr9BwIDAAT9CgT7A/oCAAEGBf0A+AH7BAMGAfv/BgX7APkE9AAHAPcG+fr8AwMB+AQEAQYB+QT/9f0DA/z5Au8CBvz2/fb9+Qn3Av4EBv8F/wf6BQ0EA/z4+QT0+vsP/wX8AgcG+wUAAf/9///19AL6//X//vgB/vv/+P/3AQH///gJAwL3Av8EBwD8/gYN+QD+/fr+9QH6AvwABfj/AfwB/gX6+fwC+Qr8/fwOCv8C+fwDBAH9AP/8AP4D+v78C/z9/voBAwD2Af0CAQP+Dgb+Avb+Avn5/vsG/QoBBAgB/Qv9APsIAgUDB/f+//3/+wP8BgT7AwD/+w//+vz79/f+/QX9CPj8A/n5BP79A/0A+/v6/P4M/QL8CQYAAf0G/P8HAAMDB/z2/wQABvwB/QAC/wH9+wP6BPoA+vsHAgP/APv7+QIABQH6BgwF+P0C+foF+P4F8/UD/v0B+AUC/QIDAAL8/Qv+BPoBAv37/QQCAQsCBPoCBQL5BgcFAQICAgYBAvEA9Qb/+gj8AvwI//oB+v738AUGA/gC8/4E+/f5BAj2/fkF8PgB/gD4CPkBAv8BCP8OBAP9Av7+AA//+QQABPz3AP72/gQC+gH7+/4BDQcCAgL7Bwf/CP0C+QX69vwDAwEF+f4H/QMG+QA="
     },
     {
-      "id": "about#22",
+      "id": "about#23",
       "title": "Toward a society people and technology create together｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "ShinAI is working toward a future where technology walks alongside human creativity and kindness. Through AI that resonates with human sensibility, with the diversity of society, and with the sustainability of the planet, we solve problems with technology that can be believed in, and keep delivering value as a company people choose.\n\n Team",
       "vec": "BPj/BAny/Q36+v76+/j3/fv3Dfr6BAcBBvz/CQT7+fr7A/8CBvwB/f37CQoA+/v//gMB/vr/9wEEAv0IAfsFAv4A+AX++wcF+AQB+/sICP/9AvYD//v2+u4B+wb4CAD+AgMN/gT2BAT+AQH5/wTu/fwCAvgH/Ar9/QUCAf34A/rx+QUD/vwA+fwA+AAE+/z7BP4DAP8GAAD5Av8D/Qj7+AD9+Ab9AvwA9fn2+vkNCPoE/QH5/wD4+fz9AgL8+/sMEAIL+f7+BwH//QMDAv4E/wL/C/4CBAAC/P72AvkHBQoFCP34BvgGBP38BP8J/gD8Av0HAgADAv4H/goBCP8GAQADAQICAQH+BgH/Cgr/AwAA9fn6AAP8BPD/A/77AgD9+v8F/Pr6+wENBAIADvUC/QIC8/8KAPr+Bfj9/Af9B/f9+AAF/wAA///9APcC/fYBA/35+/z3+AABAP32AQz++f79+AYC+P4C+foIBAMF9QL/+f38AwH7/AkBAQT/BAD9/ggCAvsBDPT7AwT7AgMFBwECAQIABf0G+gj+8wYDAgQEAf38/wEA8AUAAf4A+AAH/fgAAgf8AP8C+fz//P77DfH5AQH/C/oI/v79CQEC+gj+/wQEAP/7APz1/AQFAfn7+/8BBgcCBgIAAgL6EP0D9QL5/AH9A/YP+/8KAgQBAP8="
     },
     {
-      "id": "about#23",
+      "id": "about#24",
       "title": "The team｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Professionals with deep expertise and a record of delivery, working on the problems companies bring to us. \n\n Join Us — partners wanted",
       "vec": "/PwKAAn4+A76/QP6/Pv7BPj6AfsBCAMBB/4ABAb6APv/BwQABQL2+gIABQn8APMA/wf4A/wC+gUIBP4D//r/DPz++wP6+AkA9wX/+/cKBf75Bvr7/vb3+fgC/Qb5CAUGBAcJBgP3BAb8Af79/QDyAwAB+PwG+gH7+QcDBPz/A/n3+fv9Av38/fcC9/0G//r7+v8A+/sA+vzx/v4G/QP9+QQF/QYAAfgC9f37+vgQCvsD/fb5+wL4//z8Bf8B/QEIDwMK9///BQH//QIFBP8HBvn2C/YIAfr++/4AAvUHAP//DQL6B/gDAvj9Bf0IAQT8AgAJAwQA/gEHAgj5CPYF/gH8AAMGBgD7//sDDQcE/gAD/Pr/Af/2BvoA/fr7/wb3/QUC/QD4AvwIAAUBB/wB+QQB+P8IAAIBAgD49wr6Bfz5+/77+gIF//3/B/r+APwEAf/7+/v6+AgIBgMBAgb8+AQB9wIE+gD/8/cC/QED+/8H+QMBAgT4/gkB/wQHB/wA+wMB//kEDvkA/gf/CP8GAfn+/wL8AQME+QD99gQH/gIGBgEB/vz99AIBCf/78gEE//z3AwH//gIA+fwA/v39Bvj+B/kHBfwCAAAACgL//An8+gIDAgT/Af33+f4C+vz5+vz7BwUD/wX/Agb+C/4J/Qb57gUB9/QP+PkG/gAJ/wg="
     },
     {
-      "id": "about#24",
+      "id": "about#25",
       "title": "The future we are building with ShinAI｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "Come and take part in projects creating a new future with the power of AI.",
       "vec": "/fkAAQr3/wz7AAD4+Pf0//b3CPsAAAn9AvwABf8B+/r6AgMEBQH4/wH6Bgj6+/j9Agv3APf+9gUCAfcG/v7/Cf4B/AkC+wX9+f79+PsLAgD7CfEAAPb4/fQA9wX1BAUIBwMLBgf8Bgb//gL/+APu+/8C+vkH/AgA/QUDCP32Afn0/f0DAPkE/ff+9wII/f/+/AQF9wIDAP/4AgEE+QP9+QEE+wX8A/sA8/z4AAAF//8A/fv8/AT0//z/AQsB/PsIDggJ+wL9DP8AAv0ACv0JAv0BBfkE/v7++P76APsFAAoDB//8CgD+Aff9//8G+QP+BAAIBwUEAAANBAUACfoI/foFAQQABPn7CAIECQn4/gAC+PcD/wn6CPv9Af/7Av/89wAH/P75AwEP/QEGDfgB/QYJ9gAGAf8BA/j6/QcACAAA+f78APsCAP4AAPwA//kBAgD7///99QkDAf/7AP/7+AP2/AAE/Pz78f0HAwMA9/8F+P78AwT3AQr/AQT8A/77/QQBBPsCDPf+AP7+BwAEBfr8Af0BAAD+Awb+8wP9BAQE/AAD/f398gYBCP399v//AP3+BAT/AQIG+/0E+/34CPX7AvsHDfsB//0DDQT9+Aj//AEC/fv/AQD0/QAE/P0C+PwBCAD///77/gb+DP4K9QX28gb/AvYL/v8H+gQE/wI="
     },
     {
-      "id": "about#25",
+      "id": "about#26",
       "title": "What working on a ShinAI project offers｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "01 \n Hands on the leading edge \n Constant access to the newest AI technology, in an environment where it is used on real projects. Current LLMs and RAG techniques, applied in practice. \n\n 02 \n Freedom to make your ideas real \n A culture where you propose your own ideas and get to build them. Creative thinking is respected, and ambitious projects are open to you. \n\n 03 \n Flexible ways of working \n Remote work, contract engagements, and other arrangements that fit your life. We build relationships focused on the project and the result.",
       "vec": "+/4JCAz0+wj/AAT8/Pz3/ff2Av0DBQMDBfj/AQAAAPv4CAEHA/3/+gEAAwb+/gIAAAn8Afz/9wAFAP0CCPsDCvn/+gH7+AgB/QL+/vgHAfv7Bfr/APX5+/MD9QX7BAMHBAMGBwb2BQkDBgD9AQPq+/8H/PsH/AT7/QoEBP4AB/n5+AEHB/YAAPn+9v0GA/kCAQIB/P8E+wL6AAEH+wf8+QkF+gf7AfcA9v769fkIDvgH/gD++f32Afr5BAD+/P4IDgkI/gEBBvoBAQECBAIGB/v+CPsHBQP9/AD7Af79/AkCCAP5DPL9A/r8A/4H+Ab5BgAAAAP+AAIL/wQABvUD/vv/BP8BBwIAAwH7DQb9+vz//P39AwD7B/z9/vv6/v/9AAAE+Qb1A/0I/gUHC/z/+AMF+/3+AwADAvv7+wcBBf0A+wL9+wEL/v/5Bvn9/PwAAAD9+/YC9QgFBAQBCAcD+AAD+QAE+P0A8fcIAwL/+wIG+QYBAwQAAQn+AAj9BvoAAgYB/fsFDPf9BwMDCAMF//v//vsABQEE/gMA+QcB//oI/gQCAfr99AQFDP0B8/8F9/38CPsB/f8GAPkA9gL1//T7APsHDfsEBQD8DAD4/Aj//gEDAwL+/wP7+gQB9f/8/AD9BwoA/AP7BAT/C/0M9AL18QgEA/gM/QAFAgMF+wA="
     },
     {
-      "id": "about#26",
+      "id": "about#27",
       "title": "Skills we are currently looking for｜About | ShinAI",
       "url": "https://shinai-inc.jp/en/about.html",
       "text": "This is not limited to formal employment. Contract work, side projects and joint ventures are all worth a conversation.",

@@ -399,7 +399,7 @@ const personLd = {
     occupationalCategory: "AIエンジニア",
     description: "上場企業から中小企業まで、AIシステムの企画設計、開発、運用に従事。生成AIサービスの企画設計、RAG構築、AI活用戦略の立案を自ら手がける。"
   },
-  description: "シンアイ株式会社 代表取締役／AIエンジニア。元消防士として約7年従事したのち、2023年2月から生成AIの可能性を確信しプログラミングを独学で習得。東京のAIシステム開発企業での実務を経て、2025年1月にShinAIを創業し、2026年8月に法人化。上場企業から中小企業まで、生成AIサービスの企画設計、RAG構築、AI活用戦略の立案を自ら手がけ、企業の暗黙知をAI資産へ変える支援に取り組む。",
+  description: "シンアイ株式会社 代表取締役／AIエンジニア。2023年2月から生成AIの可能性を確信しプログラミングを独学で習得（前職は消防士・約7年）。東京のAIシステム開発企業での実務を経て、2025年1月にShinAIを創業し、2026年8月に法人化。上場企業から中小企業まで、生成AIサービスの企画設計、RAG構築、AI活用戦略の立案を自ら手がけ、企業の暗黙知をAI資産へ変える支援に取り組む。",
   worksFor: { "@id": SITE_URL + "/#organization" },
   url: SITE_URL + "/about.html",
   image: SITE_URL + "/assets/images/ceo-masakuni-shibata.png",
@@ -440,7 +440,7 @@ const personLdEn = {
     occupationalCategory: "AI Engineer",
     description: "Designs, builds, and runs AI systems for clients ranging from listed companies to small and mid-sized firms. Hands-on across generative AI service design, RAG development, and AI strategy."
   },
-  description: "Founder, CEO, and AI engineer at ShinAI Inc. A former firefighter of some seven years, he became convinced of what generative AI could do in February 2023 and taught himself to program. After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 and incorporated it in August 2026. He works hands-on across generative AI service design, RAG development, and AI strategy, turning the tacit knowledge inside companies into working AI assets.",
+  description: "Founder, CEO, and AI engineer at ShinAI Inc. He became convinced of what generative AI could do in February 2023 and taught himself to program, after some seven years as a firefighter. After working at an AI systems development company in Tokyo, he founded ShinAI in January 2025 and incorporated it in August 2026. He works hands-on across generative AI service design, RAG development, and AI strategy, turning the tacit knowledge inside companies into working AI assets.",
   worksFor: { "@id": SITE_URL + "/#organization" },
   url: SITE_URL + "/en/about.html",
   image: SITE_URL + "/assets/images/ceo-masakuni-shibata.png",

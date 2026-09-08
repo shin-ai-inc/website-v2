@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "46fa8f5",
+  "generatedAt": "d84e513",
   "chunks": [
     {
       "id": "index#0",
@@ -518,8 +518,8 @@
       "id": "about#3",
       "title": "柴田 昌国\n Masakuni Shibata｜会社情報｜ShinAI",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "代表取締役 / AIエンジニア \n 柴田 昌国\n Masakuni Shibata \n\n 元消防士として約7年従事。ChatGPT公開約2ヶ月後の2023年2月からAIの可能性を確信し、プログラミングを独学で習得。東京のAIシステム開発企業での実務経験を経て、2025年1月、「真の価値を信じ、次世代のために新たな未来を創る」という理念のもと、ShinAIを創業。2026年8月、シンアイ株式会社として法人化。現在も自らAIエンジニアとして、上場企業から中小企業まで、AIシステムの企画設計、開発、運用を手がける。\n \n 専門領域 生成AIサービスの企画設計、 RAG構築、 AI活用戦略の立案、 ビジネスプロセス最適化",
-      "vec": "AvsEAg33/QcA9gj7Bfn5AvT4Avj+AAYCBQH/APz3Avr9AQD5/gj/+wD8AgkC/PwAAAP4Bf39+AcEAf4FBQD+BPz7/Aj++/8E//8AAfwE+gH3C/n+A/n3+vsB8wj6BQb+CQUH+fsACA/7A/v8AAD6+/gF8fkCAf78/gkCBvoDBPf39QD/Af0E+Pb++fwCBfr++v/5+AD//QD/9PoE/P8B9wYF9gX2//789AH++wH+A/wIB/3//AL2Af35CAAE/QIHCwsE///7Bv0I8/8D/AMKAvn7DfYDBvsD+/v9A/wH/QECBgUACgAA/fb7+QICAAgD/gQM/wYAAfv/AQoBCfn4+wX/AwMCCv4ABAMKDAn/+wEC/f0B/AP7DfkBAP0CBP/7+v4F/vz3Bv0BB/4DEP8A/gAE/gAD/v39Af7//Qn+A/z++f8A+gIH+QH/BwcC/PYDAvn6//QA9gT/AAUB/wMA9wH6+v4D//8B7QAB+/3+9f8F/goE/AH89gsB/Aj/B/0A+gQCA/8ICvv/A/n4APwACP0GAf39CQAI9AEJ+Aj+Av0DCQID/voC8Pz9AwAJ+/wA/f3+/gf9+QP++/768P8DA/n6CvoGDvkBBQD5BAIC/wX99wQGBAT9Avv7+P4D+vgA/vr+CQkIAAD7AwX/Dv4KAgv49gb/AfsE+/sA/wMBAQQ="
+      "text": "代表取締役 / AIエンジニア \n 柴田 昌国\n Masakuni Shibata \n\n 2023年2月、ChatGPT公開の約2ヶ月後にAIの可能性を確信し、プログラミングを独学で習得（前職は消防士・約7年）。東京のAIシステム開発企業での実務経験を経て、2025年1月、「真の価値を信じ、次世代のために新たな未来を創る」という理念のもと、ShinAIを創業。2026年8月、シンアイ株式会社として法人化。現在も自らAIエンジニアとして、上場企業から中小企業まで、AIシステムの企画設計、開発、運用を手がける。\n \n 専門領域 生成AIサービスの企画設計、 RAG構築、 AI活用戦略の立案、 ビジネスプロセス最適化",
+      "vec": "AvsGAg33/gUB9gn8BPr4APX4Avf9AAQCBQAA//v4Afv+/wH6/gn//P/+AwoC/vwA/wP2Bfz+9wgCAf0FAwD/BP37/Aj++/4F/v4BAfsF/AL3C/j/A/j5+/sC8wb5BwcACwQG+foACA/8Avr9//76+/gF8fgE//38/QkCBfwEA/j29f7/Av0E9/X/+vwBBvr/+wD5+P//+wEA9voG+v8D9wYF+AT4//389QD9+wD/BPwHBv7//QT2Af38Cf4E/QIGDAsFAAH7B/wJ9f4C/QILAfn8DvQCBvwD+/r9BPsG/QEBBgUBCQAA/Pn5+QECAQYC/wINAAf/AvsAAQkBCPr4+gUBAwECCv0BBwMKDQr++wAB/v4B+gT7EPgBAP0CBQD6+v8G/fz3Bv0ECP8EEP4B/f8F/gEF/f7+//0A/Af+Av79/P8B+gQH+AP/BgYD+/cCA/n6//QC+AP/AAUCAAP/9gT6+/0C/gAB7AIC/P3/9P4F/gkE/AH99QwC/Qn+Bv3++gQCBP4JCfz/Avr4APoAB/sEAvv+CAAJ9QMJ+Qj+Av4DCAIFAPoD8P38BQEI+/3+/vz//wb8+gP++/758f8CAvj7CPkHDPwBBgD6BQIE/wb99wUGAwP9Avv6+P4F+vgB/fsACQcJAAD9AgQADv4KAgr29AX+AfsE+fv//gMCAQQ="
     },
     {
       "id": "about#4",
@@ -575,8 +575,8 @@
       "id": "about#11",
       "title": "代表メッセージ｜会社情報｜ShinAI",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "Masakuni Shibata \n\n 「困っている人を救いたい。」 その一心で、約7年間 消防の現場に立ってきました。\n\n 目の前の命に向き合う日々のなかで、一人にできることの限界も知りました。\n より多くの人の力になる道はないか。その問いをずっと抱いてきました。\n\n その答えがAIでした。2023年2月に生成AIと出会い、これならより多くの人の力になれると確信しました。\n 人に代わる技術ではなく、人の可能性を広げる手段として。\n\n 私たちが手がけるのは、AIを前提に、企業のしくみそのものを設計し直すことです。\n 効率化ではなく最適化。そこに本質があると考えています。\n\n 技術は目的ではなく手段です。\n その先にあるのは、人が人間らしい時間を取り戻し、より高次の価値創造に没頭できる未来です。\n\n 「真の価値を信じ、次世代のために新たな未来を創る。」 この想いで私たちは歩み続けます。\n\n 〜 2023 \n 消防士として従事（約7年） \n\n 2023.02 \n 生成AIに可能性を見出し、独学を開始 \n\n 2024–2025 \n 東京のAIシステム開発企業で実務（LLM統合・RAG構築） \n\n 2025.01.01 \n 個人事業主として ShinAI を開業 \n\n 2026.08.08 \n シンアイ株式会社を設立（法人化） \n\n 代表取締役 \n 柴田 昌国\n Masakuni Shibata \n\n Seven Shin",
-      "vec": "AvcCAQr0+Av89gL6A/f9/Pf5APr9AAkDAwAE/gj5APn3/QX8/wP7/Qb3CQT5+fv9BAL/B/4B9gEEAfoBBgH8B///Agb5+AUC//7//fkF/wH5B/r/BPr3/vv+9wf6BgP9CAYK9gH8Bgr1Bfv7AQP1//wH9PkBAv/+AQcEBf79Cvv29gD9Af4G+P379PwEAPn8/AT9/v36/f7+9/sC+gX8/AQH8wX5AP389wP6+wEBBvsIBvn9/fz4Bfv7/wEF+v4LDwcL/wL7BvwC+gUG/v8F//v+DPkE//gC+/j6AgAJ/gABBQQABv8B/v39+wMFBQkCBAMKAgr/AP//Bw37B/v+AwT+/wMFCwH5AQQJDQn+//8B/fkDAAf2DvsEBfYCBf36+f4E+f37Av4DAv8FDfv9/AII+PsI/wEB/v4A+A79AvsA+QAC9wIH/AT+CPz+/vgBAfr7/fwC8gD/AAX+/gL/+P3++P8A+f8F8fsDAv4C/AEEAAP/AQAA9wb9/gQCBfn++QQDAAQHC/gABP35AAL7A/sBBQL+DQAC9gUE+AT+Af4CBv/++fT+9P4ACP0O+v7//Pz/AQL7+Ab/+fn79wP/BvwBA/UDC/X/Bfj5BwAC/QT7+/4E/gf9AQD1+f8B+vv//fr6CQkCAgT8BQYCE/4F+wf98wMAAvoN/vYDAP8J+wU="
+      "text": "Masakuni Shibata \n\n 「真の価値を信じ、次世代のために新たな未来を創る。」 この想いから、ShinAIは始まりました。\n\n 真の価値は、新しく作るものではなく、すでにその会社の中にあると考えています。\n 長年の判断、現場の勘、言葉にならない手順。それを信じるところから、私たちの仕事は始まります。\n\n 以前の仕事で、一人にできることの限界を知りました。\n より多くの人の力になる道はないか。その問いを、長く抱えてきました。\n\n 2023年2月、生成AIに答えを見つけました。\n 人に代わる技術ではなく、人の可能性を広げる手段として。\n\n 私たちが手がけるのは、AIを前提に、企業のしくみそのものを設計し直すことです。\n 効率化ではなく最適化。技術は目的ではなく、手段だと考えています。\n\n その先にあるのは、人が人間らしい時間を取り戻し、より高次の価値創造に没頭できる未来です。\n 次の世代へその未来を手渡すために、私たちは歩み続けます。\n\n 〜 2023 \n 消防士として従事（約7年） \n\n 2023.02 \n 生成AIに可能性を見出し、独学を開始 \n\n 2024–2025 \n 東京のAIシステム開発企業で実務（LLM統合・RAG構築） \n\n 2025.01.01 \n 個人事業主として ShinAI を開業 \n\n 2026.08.08 \n シンアイ株式会社を設立（法人化） \n\n 代表取締役 \n 柴田 昌国\n Masakuni Shibata \n\n Seven Shin",
+      "vec": "AvgC/w3z+gr69wf8BPX8+/D2//j//wUDBf8F/AT1//r7AP79AAX9/AT5CgP8+/v8AAL+A/3/9QMDAvYEBP39BwEA/gn7+gYC+wD/+vcEAAT3CfkAA/z4/foA9wX9BwMCBwYI8wH8Bw/2B/r7/gTx//sH8/r/AQEAAQUEA//+B/z59gD+//8G+P7+9/wB/vz5/Af6/f7+/f/++fsE+gL++wUJ9gT6AQD89/75+wH/CPkGBfv9/v73Av79AAEG9v4KDwkJ/gL8Bf8D+gMD/gII/ff+C/QBAPcD+/j7BP8L/wIBBAMBBf4C//76+gEEAwsBBgELAwr//wABBQv+CP3/AQH8AwQECf36AwUHCgz7/wEA+/z+/Qb3EfgDBvgABAH4+P4C+Pz5A/8FAf8HDfr/+P8E9v0HAAECAPkB+w3/A/3++gEE+QMH+Qb8B/37/vkBAvn6/fsD9QACAQT9AQP99wD8+v4B+v4F8voFAf0B+wMDAQL9/wIC+Ab++gD+Bfv++wEBAgEJCfv8A//6AQAABfsAAwH7C/0F+AcG+QUA/wADB/3//vP/9QD/BP4J+fv9/PwAAf/6+QQA+fr48wH/B/sBAPkDCfYABfv4B/4A/gj9+QAEAAL+/wDz+wID+fwA/fv8CwQGAQL+AwYBE/4E+wj68AUAAvoK+/kF/gAL/Ac="
     },
     {
       "id": "about#12",
