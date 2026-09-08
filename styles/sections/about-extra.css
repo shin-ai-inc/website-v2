@@ -112,6 +112,12 @@
   margin-bottom: var(--space-4);
 }
 
+/* 理念とそれを受ける一文は一つの題辞なので、段落どうしの間隔(--space-4)は
+   離れすぎる(柴田指摘)。一段詰めて、二つが続きものに見える距離にする。 */
+.about-message__lead:has(+ .about-message__para--creed) {
+  margin-bottom: var(--space-3);
+}
+
 .about-message__para {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
