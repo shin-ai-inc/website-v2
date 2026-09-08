@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "880ff61",
+  "generatedAt": "1281aec",
   "chunks": [
     {
       "id": "index#0",
@@ -561,8 +561,8 @@
       "id": "faq#2",
       "title": "How long does it take to get something running?｜FAQ | ShinAI",
       "url": "https://shinai-inc.jp/en/faq.html",
-      "text": "How long does it take to get something running?\nIt depends on scale and purpose, but a small prototype can sometimes take shape in as little as a month. \n Because we build small, confirm, then widen in stages, you get a sense of whether it works early on.",
-      "vec": "+QgD+gD7BvwDAQT9/PX99vf4//8H/v0ABv0EA/75Avzz//7/CfkC/foBAfsGAP4G/A//APgE/f8C/P0KAvz+AgMD+QQA/AL+AvwC//sRBAj3+P0C/fv8Afr2AAL9BgUFAAgHBQr/CAP6AfcG/P349/4D9/4G+wT8/wb//wX9BP4AAv3/DP/+9f78+AT+9/wBAQwABfn5Bf78/wn/+Av59f8C+AH4//79+QAD/wAHDfgD+gP9/P75A//4Av8A9f7/AgEL+Qj6Dv/8//7/B/wA+wEBAvcB/vj9/AX5AQACAP/9Cv0ACfYDAf7/BAMC+vrz/v4BAP4B+/0M+QH4BvgD/Pz+BAP8Bv0HBgMEBwX3BAP+/vkC/wX5BPgCAP79/wv++gQD/Pv/BvgE/vsCBPoKAPwF9gQHBf4CAfcB/Qf9Bfr79gUHBgIF+vz8//8C//4A/v0GC/b9/AoJAQIABgAB+wH8AwMF+vr9/fwHCvf++v/7/goH///1/wQFBAUMAQD+Bf8BAfkCC/UCAgUDCgMAAQP7+gMD+/sB+ggE9AYG/vsD+/8B/fP77voABgD89QABAQT9AgX3AgUIAg0H9gbyAPj1Avr9/wT+AAD8C/gJ+wf+AAkGBf/6+Af6+wz+Bf0B+/0JBAcL/AH5+gYCCf4I/gH8+Ab/BwAK9vgOAQcF+AQ="
+      "text": "How long does it take to get something running?\nIt depends on scale and purpose, but a small prototype can sometimes take shape in as little as two weeks. \n Because we build small, confirm, then widen in stages, you get a sense of whether it works early on.",
+      "vec": "+QcC+P/6BvwDAgT7/fT99fj4/v8G/f0ABv0FAv/4Afz0//7/CPkB/PoBAfsH//0G/Q8BAPcF/f8D/v0IAvv+AgID+gT/+wH+APwC/vsRBQj3+PsB/Pv7Avr2/wP+BwUFAQcGBgr+BwX8AfgG/Pz49/8F+P8G/AT9AAb+AAX/A/4AA/oADQD99gD89wX99/sB/gz/Bvn6Bf/8AAn/9gv69P4D9wD5/v7++f8C//8HDvcE+gL9+/z6BP/4Af4C9f8AAwEL+Ab6D/78AP3+B/z/+wIAAfcB//f8/QX4AQACAf79CfwACvUDAf/+BAIC+/vz/v0BAv8A+vwM+P/3B/kD+/3/AwP8BvwHBAMDBgT4AwT///oC/QX6A/cDAf3+/gz/+gQE//r/BfgF//wBBPoJAPwE9gYGBf0EAPcA/AcABPj+9gYGBgME+/38//4AAP7///0GCvf9/QoIAQMABgAA+wH9AQMG+/3+/v4IC/cA+//8/ggI/gD0/gYHBAUMAf/8BAACAfgCCvYBAwYDCwMAAQH5+gQE+/oC/QkC9AUH/fkE+wAA/vP77voABQH69f8AAwT+AgX3AQQGAwwG9wXy//n0Afz8AAT+/wD8DPgH+wf//woHBAD8+AX8/Az+Bv0C+/4JBAcL/QH6+AYCCv4H/wL++Af+CP8L9vkOAQYE+QM="
     },
     {
       "id": "faq#3",

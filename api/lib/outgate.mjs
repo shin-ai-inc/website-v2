@@ -25,7 +25,7 @@ const ASSERTION_EN = /\b(guarantee|guaranteed|we promise|certainly will|definite
 const MONEY_JA = /([0-9０-９,，]+\s*(円|万円|億円)|[¥￥]\s*[0-9０-９,，]+)/;
 const MONEY_EN = /(\$\s*[0-9,]+|\b[0-9,]+\s*(yen|usd|dollars)\b)/i;
 
-/* 納期。期間そのものは資料にもあるため(例: 最短1ヶ月ほど)、
+/* 納期。期間そのものは資料にもあるため(例: 最短2週間ほど)、
    断定と組んだときだけ止める。「ほど」「目安」等の緩衝がある表現は通す。 */
 const DURATION_JA = /[0-9０-９]+\s*(日|週間|ヶ月|カ月|か月|年)/;
 const DURATION_EN = /\b[0-9]+\s*(days?|weeks?|months?|years?)\b/i;
@@ -90,7 +90,7 @@ export function screenAnswer(raw, locale) {
   }
 
   /* 期間は断定と組んだときのみ止める。
-     「最短1ヶ月ほど」(資料の事実)は通し、「1ヶ月で完成します」は止める。 */
+     「最短2週間ほど」(資料の事実)は通し、「2週間で完成します」は止める。 */
   if (duration.test(text) && /(で(完成|納品|導入)(でき|し)|以内に(必ず|確実))/.test(text)) {
     return { blocked: true, text: fallback, reason: "deadline_claim" };
   }

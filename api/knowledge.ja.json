@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "880ff61",
+  "generatedAt": "1281aec",
   "chunks": [
     {
       "id": "index#0",
@@ -680,8 +680,8 @@
       "id": "faq#2",
       "title": "導入にはどのくらいかかりますか。｜よくあるご質問｜ShinAI",
       "url": "https://shinai-inc.jp/faq.html",
-      "text": "導入にはどのくらいかかりますか。\n規模と目的にもよりますが小規模なプロトタイプであれば、最短1ヶ月ほどで形にできる場合があります。 \n 小さく作って確かめながら段階的に広げる進め方のため短い期間で手応えを得ながら進められます。",
-      "vec": "+/8I/Aj5Awf/AQb+/vj/+Pj5/gEDAgICCfsEAADyAPv0//38AwMA/QIIAf7+Avr++gr3Bfb7/wQE/AECBPj+AgD++gn9/v/8/vz/CPQLBgb5BP3+Av39Af37+wb3BAf+AwECAQf+BwX5+vr++wP/+voAAgEAA/37/gMFAAH8CQH9/AT/CQL89PsE/fv9+vkG/gj7Bf3+//v78wMF9Af6+AMB/v/1Af0E9QX//AH7Dfr+9gUB+wT3Cv/2+wAF8gL9BQUM8gX8C/sD+gEBBP4B/fsCBfn+//kBAAT8/wUBBfr7Bfv9DPQAAPv+/ggA+gD2APv/Afz++/8L/gL4CvoC/gIIAfwGAQT/CwMFDAL9Cfv/BPf/APv5BvL6Avn9/AX3/gUE/QAABvwABgAFCv4H/vkE9gACAwQEAgP4/wYACPj4+fv+AAL//gH5A/7++/wA/fsEB/j7+AkGBgb/BgME/AX9BQMH+Pn79QECBfn+/QD5/goA/fv7+wAAAQIB/vwG/P8GA/oGDPsB/QMBCgT8B/z7//P++gYA+/8F9wcIBP79BAL/+fX59vn+CQT58/4E+wD+BQL8BgQE/gP9/AD1//36//3//gT1/v36B/oB9QQF/gcBBAD9AQL7/gn7APb7AfkCBgYeBQL+/gECD/8NBgH58gT6/gEE8voG/wMF/AY="
+      "text": "導入にはどのくらいかかりますか。\n規模と目的にもよりますが小規模なプロトタイプであれば、最短2週間ほどで形にできる場合があります。 \n 小さく作って確かめながら段階的に広げる進め方のため短い期間で手応えを得ながら進められます。",
+      "vec": "/P4H+gf4BAb+AQX+/fb9+Pj5/QACAQIBCPwF/wHx//v1//v9AwT+/QMJAP7/Avj8/Ar4BPb9AAUE/QACBff9//79+gj8//79/Pz/BvQMBwb4Avv9Avz8Av36+wj3BwX+AwIDAgj+Bgf9+/v9+wP++PsBBAL/Bf38/wMDAgH+CQD8/QMACgL99vwF/fr9+/kF+wf6B/7//vz79AME8wb8+QQD/v/2AP0G9QP+/AH8Dvn/+AT/+wL5CgD2+gAI8gP+BwQM8QP6DPsC/P4BA/7//vwABfj9APgAAAb7/wUBBfr8BPv+DfIB//z9/gcA+gD4Afr/A/z9+/4L/wH3CvoC/gMI//0FAgL+CwQFDAL+CPsABPf//fv7BPD7A/n+/QX2/QYF//8BBPwBBgEFCv4G/foD9QAAAgIEAQH2/gcDB/f5+vz9AAL+/wH5A/39/P4B/vsFB/j7+AkFBgf/BwMD/AT9BAMI+vr79gUEBfoB/gD5/QkC/f36+wIDAQID/vwE/P8HAvwGCf0B/wQCDQT8B/r5//P/+gQA/AAC9gcIBfz/BAL++fX39vn7CAT38vwC/gH/BgL9BgQB/wL8/AD0AP37//7//wP2/f36CPsB9gcG/QYCAwH+AgH+/gj8//f8AfoCBQcdBwH//gADD/8MBgD68wT4/gEF8vsFAAQF/gY="
     },
     {
       "id": "faq#3",
