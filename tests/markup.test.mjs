@@ -120,3 +120,52 @@ test("本文の画像は寸法を持ち、遅延読み込みされる", () => {
     }
   }
 });
+
+/* PNG の IHDR から寸法と色種別を読む。依存を足さずに実体を確かめる。 */
+const pngHead = (rel) => {
+  const b = readFileSync(join(ROOT, rel));
+  if (b.readUInt32BE(0) !== 0x89504e47) throw new Error(`${rel} が PNG でない`);
+  return { w: b.readUInt32BE(16), h: b.readUInt32BE(20), colorType: b[25] };
+};
+
+/* ICO のディレクトリから収録寸法を読む。幅0は256を意味する。 */
+const icoSizes = (rel) => {
+  const b = readFileSync(join(ROOT, rel));
+  const n = b.readUInt16LE(4);
+  return Array.from({ length: n }, (_, i) => b[6 + i * 16] || 256).sort((a, x) => a - x);
+};
+
+test("アイコンの宣言と実体の寸法が一致する", () => {
+  /* sizes 属性や manifest の値は宣言でしかない。実体とずれても画面は出るため
+     目視では気づけない。ブラウザは宣言を信じて選ぶので、ずれると小さい画像を
+     引き伸ばして表示することになる。 */
+  const html = readDist("index.html");
+  const declared = [...html.matchAll(/<link rel="icon" href="([^"?]+)[^"]*"[^>]*sizes="(\d+)x\d+"/g)];
+  assert.ok(declared.length > 0, "HTMLにサイズ付きのアイコン宣言がない");
+  for (const [, href, size] of declared) {
+    const { w, h } = pngHead(href);
+    assert.equal(`${w}x${h}`, `${size}x${size}`, `${href} の実体が宣言と違う`);
+  }
+
+  const manifest = JSON.parse(readFileSync(join(ROOT, "site.webmanifest"), "utf8"));
+  for (const icon of manifest.icons) {
+    const { w, h } = pngHead(icon.src);
+    assert.equal(`${w}x${h}`, icon.sizes, `${icon.src} の実体が manifest と違う`);
+  }
+});
+
+test("favicon.ico が Google の推奨する寸法を収めている", () => {
+  /* 検索結果のアイコンは 48px を基準に選ばれる。48が無いと別の寸法から
+     引き伸ばされ、輪郭が甘くなる。 */
+  const sizes = icoSizes("favicon.ico");
+  for (const want of [16, 32, 48]) {
+    assert.ok(sizes.includes(want), `favicon.ico に ${want}px がない: ${sizes}`);
+  }
+});
+
+test("ホーム画面用アイコンは透過を持たない", () => {
+  /* iOS は透過部分を黒で塗る。透過のまま渡すと、ホーム画面で四隅が黒くなる。
+     PNG の色種別 2 は RGB(透過なし)、6 は RGBA。 */
+  const { colorType } = pngHead("assets/icons/apple-touch-icon.png");
+  assert.equal(colorType, 2, `apple-touch-icon が透過を持っている(色種別 ${colorType})`);
+});
