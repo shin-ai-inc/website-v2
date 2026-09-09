@@ -190,6 +190,22 @@ const markCurrent = (html, nav) => {
 const normalizeMain = (raw) =>
   raw.replace(/^\s*<main\b[^>]*>/i, "").replace(/<\/main>\s*$/i, "").trim();
 
+/* ビルド機構を通さず、単独で公開しているページ。本文は生成しないが、
+   ここに挙げないと sitemap にも llms.txt にも載らず、検索側から見つからない。
+   収録に必要な事実だけを持たせる。 */
+const standalonePages = [
+  {
+    dir: "ai-business/",
+    src: "ai-business/index.html",
+    changefreq: "monthly",
+    priority: "0.9",
+    title: "新規事業 × AI｜オーダーメイドAIシステム開発",
+    desc: "自社の技術・経験・現場のデータを出発点に、新しいサービスをAIで組み立てる。"
+        + "構想の技術的な整理から開発、導入後の運用改善まで一貫して支援する。"
+        + "ものづくり補助金・新事業進出補助金の活用も相談できる。",
+  },
+];
+
 /* ---- 3. ページ定義(sitemap の changefreq/priority もここで一元管理) ---- */
 const pages = [
   { file: "index.html", part: "index.html", nav: null, hero: true,
@@ -945,6 +961,8 @@ const llmsTxt = [
   pages
     .filter((p) => p.file !== "privacy.html" && p.file !== "terms.html")
     .map((p) => `- [${p.title}](${urlFor(p.file, "")}): ${p.desc}`)
+).concat(
+  standalonePages.map((p) => `- [${p.title}](${SITE_URL}/${p.dir}): ${p.desc}`)
 ).concat([
   "",
   "## English",
@@ -973,7 +991,12 @@ write("sitemap.xml",
     return `  <url>\n    <loc>${urlFor(p.file, loc.dir)}</loc>` + alts +
       `\n    <lastmod>${lastModOf(loc.src + "/" + p.part)}</lastmod>` +
       `\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`;
-  })).join("\n") +
+  })).join("\n") + "\n" +
+  standalonePages.map((p) =>
+    `  <url>\n    <loc>${SITE_URL}/${p.dir}</loc>` +
+    `\n    <lastmod>${lastModOf(p.src)}</lastmod>` +
+    `\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`
+  ).join("\n") +
   "\n</urlset>\n");
 
 write(".well-known/security.txt", [
@@ -1027,6 +1050,11 @@ cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
    HTMLの<link rel="icon">を読まず /favicon.ico を直接取得しにいくため、
    ここが404だとタブや一覧にアイコンが出ない。 */
 for (const f of ["robots.txt", "sitemap.xml", "llms.txt", "favicon.ico"]) toDist(f);
+/* 独立ページは丸ごと写す。dist は「そのまま公開できる状態」でなければ、
+   この経路でだけ404になり、本番(ルート配信)では正常なので気づけない。 */
+for (const p of standalonePages) {
+  cpSync(join(ROOT, p.dir), join(DIST, p.dir), { recursive: true });
+}
 for (const loc of LOCALES) toDist(loc.dir + "site.webmanifest");
 toDist(".well-known/security.txt");
 /* 応答ヘッダ(Netlify/Cloudflare Pages形式)。CSPは上の単一定義から差し込み、

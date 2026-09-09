@@ -361,3 +361,19 @@ test("地域ページのパンくずが階層を申告する", () => {
   assert.equal(crumb.itemListElement.length, 2);
   assert.equal(crumb.itemListElement[1].item, `https://shinai-inc.jp/${GUNMA}`);
 });
+
+test("独立ページの計測トークンが、本体と同じ値である", () => {
+  /* /ai-business/ はビルドを通さないため、計測トークンを自分で持っている。
+     本体側を差し替えたとき、ここだけ古い値が残ると、そのページの計測だけが
+     静かに止まる。画面には何も出ないので目視では気づけない。
+     二重に持つこと自体は構造上避けられないので、ずれを機械で見張る。 */
+  const build = readFileSync(join(ROOT, "_build", "build.mjs"), "utf8");
+  const want = build.match(/WEB_ANALYTICS_TOKEN = "([0-9a-f]*)"/);
+  assert.ok(want, "本体のトークン定義が読めない");
+  const lp = readDist("ai-business/index.html");
+  if (!want[1]) {
+    assert.ok(!lp.includes("cloudflareinsights"), "本体は計測を切っているのに独立ページが送っている");
+    return;
+  }
+  assert.ok(lp.includes(`"token": "${want[1]}"`), "独立ページのトークンが本体と違う");
+});
