@@ -150,8 +150,14 @@
 }
 
 .industries-card__state--after {
-  background: var(--acc-bg);
-  border: 1px solid color-mix(in srgb, var(--acc-ink) 26%, transparent);
+  /* 単色で塗ると面が重い(--ind-N-bg は明度0.82〜0.87)。業種色を薄い透過で置き、
+     斜めに濃度を落とす。透過なので下のカードの地が透け、塗りつぶしにならない。
+     濃端6%(0.91〜0.92)から淡端3%(0.96)へ。塗る面はここだけなので、
+     この薄さでも唯一の色面として立つ(柴田指摘 2026-09-10)。 */
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--acc-ink) 6%, transparent) 0%,
+    color-mix(in srgb, var(--acc-ink) 3%, transparent) 100%);
+  border: 1px solid color-mix(in srgb, var(--acc-ink) 22%, transparent);
 }
 
 /* 困りごとの本文も一段退かせる。変化の側は --charcoal のまま前に出す。 */
