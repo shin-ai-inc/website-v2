@@ -377,3 +377,34 @@ test("独立ページの計測トークンが、本体と同じ値である", ()
   }
   assert.ok(lp.includes(`"token": "${want[1]}"`), "独立ページのトークンが本体と違う");
 });
+
+test("独立ページの申し込み先が、本体と同じAPIを指す", () => {
+  /* /ai-business/ はビルドを通さないため、送信先のURLを自分で持っている。
+     本体側を移したとき、ここだけ古いURLが残ると送信だけが静かに失敗する。
+     画面には何も出ないので目視では気づけない。ずれを機械で見張る。 */
+  const build = readFileSync(join(ROOT, "_build", "build.mjs"), "utf8");
+  const want = build.match(/API_ORIGIN = "([^"]+)"/);
+  assert.ok(want, "本体のAPI定義が読めない");
+
+  const js = readFileSync(join(ROOT, "ai-business", "form.js"), "utf8");
+  assert.ok(js.includes('var API = "' + want[1] + '"'), "独立ページの送信先が本体と違う");
+
+  /* 送信先を許可していないCSPは、フォームを置いた意味を消す。 */
+  const html = readDist("ai-business/index.html");
+  const csp = html.match(/Content-Security-Policy" content="([^"]*)"/);
+  assert.ok(csp, "CSPの宣言が無い");
+  assert.ok(csp[1].includes("connect-src") && csp[1].includes(want[1]),
+    "CSPが送信先を許可していない: " + csp[1]);
+  assert.ok(/script-src[^;]*'self'/.test(csp[1]), "CSPが自前のJSを許可していない");
+});
+
+test("独立ページのフォームが、APIの受理条件を満たす形になっている", () => {
+  /* 受理条件は api/lib/contact.mjs にある。画面の項目が足りないと、送信して
+     初めて400で弾かれる。作る側が気づけるよう、ここで突き合わせる。 */
+  const html = readDist("ai-business/index.html");
+  for (const name of ["company", "name", "email", "message"]) {
+    assert.ok(html.includes('name="' + name + '"'), `入力欄が無い: ${name}`);
+  }
+  assert.ok(html.includes('name="company-website"'), "機械の投稿を見分ける欄が無い");
+  assert.ok(html.includes('name="privacy-consent"'), "同意の欄が無い");
+});
