@@ -91,7 +91,15 @@
      (8業種いずれもアイコンとのコントラスト比3.83〜4.65を確保、非文字要素の
      WCAG基準3:1を十分に上回る)。終点を明るく保つことで、グラデーションを
      足しても「どんより暗い」へ戻らないようにする。 */
-  background: linear-gradient(140deg, var(--acc-bg) 0%, color-mix(in srgb, var(--acc-ink) 22%, #FFFFFF) 100%);
+  /* 地は明るい側で終わらせる。--acc-bg から ink22%混色へ落とす形は、終端が
+     明度0.71(白より29%暗い)まで沈み、どんよりして見えた(柴田指摘 2026-09-10)。
+     業種色の透過14%から6%へ、明るくなる向きに変える。小さな面なので変化面
+     (6%→3%)より濃くしてよいが、終端は0.92まで抜く。
+     アイコン(--acc-ink)との対比は8色すべて4.3:1以上で、非文字要素の基準3:1を
+     十分に上回る。 */
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--acc-ink) 14%, transparent) 0%,
+    color-mix(in srgb, var(--acc-ink) 6%, transparent) 100%);
   border: 1px solid color-mix(in srgb, var(--acc-ink) 22%, transparent);
   color: var(--acc-ink);
   box-shadow: var(--shadow-sm);
