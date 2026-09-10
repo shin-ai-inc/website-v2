@@ -46,3 +46,9 @@ picture{display:block}
    期間は本サイトが公表している数字だけを使う。 */
 .steps h3{margin-bottom:5px}
 .step-dur{color:#95627e;letter-spacing:.02em;margin-bottom:10px;font-size:12px;display:block}
+
+/* 支援の三項目のテンポ。見出しは body の行送り1.95を継いでおり、22pxの一行が
+   43pxを占めて間延びしていた（柴田指摘 2026-09-10）。見出しは詰め、項目の
+   あいだも縮める。本文の行送りは読み物として2.0のまま残す。 */
+.reasons h3{line-height:1.45}
+.reasons article{padding:22px 0}
