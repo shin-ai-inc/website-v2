@@ -25,24 +25,32 @@ LP = os.path.join(ROOT, "ai-business")
 
 QUALITY = 88
 
-# (元のPNG, 書き出す幅。None なら原寸のまま)
+# (元のPNG, 書き出す幅。None なら原寸のまま, 可逆で書くか)
+#
+# 図版は抽象イラストで、非可逆でも PSNR が 43dB を超える（40dB超で目視の差は
+# 出ない）。ロゴだけは可逆にする。細い文字の輪郭に圧縮ノイズが乗り、36.2dB
+# まで落ちて「文字がにじむ」状態になっていた（柴田指摘 2026-09-10）。
+# 文字や線画は非可逆圧縮の不得意な絵柄である。容量差は 7KB と 18KB。
 TARGETS = [
-    ("hero-v5.png", None),
-    ("collaboration-v5.png", None),
-    ("shinai-logo.png", 500),
+    ("hero-v5.png", None, False),
+    ("collaboration-v5.png", None, False),
+    ("shinai-logo.png", 500, True),
 ]
 
 
 def main():
     total_before = total_after = 0
-    for name, width in TARGETS:
+    for name, width, lossless in TARGETS:
         src_path = os.path.join(LP, name)
         im = Image.open(src_path)
         if width:
             h = round(im.size[1] * width / im.size[0])
             im = im.resize((width, h), Image.LANCZOS)
         out = os.path.join(LP, os.path.splitext(name)[0] + ".webp")
-        im.save(out, "WEBP", quality=QUALITY, method=6)
+        if lossless:
+            im.save(out, "WEBP", lossless=True, method=6)
+        else:
+            im.save(out, "WEBP", quality=QUALITY, method=6)
         before, after = os.path.getsize(src_path), os.path.getsize(out)
         total_before += before
         total_after += after
