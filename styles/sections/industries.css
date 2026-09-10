@@ -134,21 +134,29 @@
   border-radius: var(--r-md);
 }
 
+/* 強調を、明るさではなく「塗るか塗らないか」で作る。
+
+   これまでは after 面を明るくする方向で三度直したが、効かなかった。
+   理由は測って分かった。before面 #F3F5FA(明度0.913) がカード内で最も濃く、
+   after面は白へ寄せるほど(0.936→0.962)見えなくなる。明るくするほど
+   消えるので、問題の面だけが残って目立つ——強調が逆を向いていた。
+
+   塗る面を一つにする。困りごとは枠線だけにして退き、変化の面だけに業種色を
+   敷く。塗られた面は明度に関係なく前に出るため、業種色をそのまま使える。
+   結果、カードの視線は「静かな問題」から「色のついた変化」へ流れる。 */
 .industries-card__state--before {
-  background: var(--paper-2);
+  background: transparent;
   border: 1px solid var(--line);
 }
 
 .industries-card__state--after {
-  /* --acc-bg(--ind-N-bg)そのままだと、隣のbefore面(--paper-2 明度0.913)より
-     実測で明度5〜9%低く沈んで見えた。白を7割混ぜる案(明度0.875〜0.909)を
-     一度出したが、柴田より「まだ全然改善できていない」と再指摘——数値上は
-     before面に近づいていても、体感で変化が分かるほどの差ではなかった。
-     白を7割5分(35%地)まで踏み込み、8色すべてbefore面(0.913)を上回る
-     明度0.936〜0.951へ。誰の目にも明らかに軽くなる量まで振り切り、
-     業種色の識別は罫線(--acc-ink)とラベル・箇条点の濃色で保つ。 */
-  background: color-mix(in srgb, var(--acc-bg) 35%, #FFFFFF);
-  border: 1px solid color-mix(in srgb, var(--acc-ink) 22%, transparent);
+  background: var(--acc-bg);
+  border: 1px solid color-mix(in srgb, var(--acc-ink) 26%, transparent);
+}
+
+/* 困りごとの本文も一段退かせる。変化の側は --charcoal のまま前に出す。 */
+.industries-card__state--before .industries-card__state-text {
+  color: var(--ink-3);
 }
 
 .industries-card__state-label {
