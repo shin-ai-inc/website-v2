@@ -408,3 +408,18 @@ test("独立ページのフォームが、APIの受理条件を満たす形に�
   assert.ok(html.includes('name="company-website"'), "機械の投稿を見分ける欄が無い");
   assert.ok(html.includes('name="privacy-consent"'), "同意の欄が無い");
 });
+
+test("独立ページのアイコンが、本体と同じマークを指す", () => {
+  /* /ai-business/ は自前の仮アイコン（角丸にArialの「S」）を持っており、
+     ブラウザのタブだけ別ブランドに見えていた（柴田指摘 2026-09-10）。
+     独立ページでも、同じドメインで出す以上マークは一つでなければならない。 */
+  const html = readDist("ai-business/index.html");
+  const icons = [...html.matchAll(/<link rel="(?:apple-touch-)?icon"[^>]*href="([^"]+)"/g)]
+    .map((m) => m[1]);
+  assert.ok(icons.length >= 2, `アイコンの宣言が少ない: ${icons}`);
+  for (const href of icons) {
+    assert.ok(href.startsWith("/"), `独立ページ内のアイコンを指している: ${href}`);
+    assert.ok(!href.includes("ai-business"), `独立ページ専用のアイコン: ${href}`);
+    assert.ok(existsSync(dist(href.replace(/^\//, ""))), `実体がない: ${href}`);
+  }
+});
