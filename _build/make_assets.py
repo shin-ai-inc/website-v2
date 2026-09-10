@@ -10,6 +10,11 @@
 
 Apple のホーム画面用だけは白地で焼き込む。iOS は透過部分を黒で塗るため、
 透過のまま渡すと四隅が黒くなる。
+
+原本はマークの外側に余白を持っている（1500px中、マークは1264px＝84%）。
+schema.org の logo として使う分にはそれでよいが、アイコンは画布いっぱいに
+描かないとタブの中で小さく見える（16px表示でマークが13.5px・柴田指摘
+2026-09-10）。ここで余白を落としてから各寸法を作る。原本そのものは触らない。
 """
 import os
 from PIL import Image
@@ -26,7 +31,25 @@ def load_master():
     im = Image.open(MASTER).convert("RGBA")
     if im.size[0] != im.size[1]:
         raise SystemExit("原本が正方形でない: %s" % (im.size,))
-    return im
+    return trim_to_mark(im)
+
+
+def trim_to_mark(im):
+    """マークの外側の余白を落とし、正方形に切り出す。
+
+    切り出しはマークの中心を保った正方形で行う。外接矩形そのままだと縦横比が
+    崩れ、正方形のアイコンへ入れたときに円が歪む。
+    """
+    box = im.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox()
+    if box is None:
+        return im
+    left, top, right, bottom = box
+    side = max(right - left, bottom - top)
+    cx, cy = (left + right) / 2.0, (top + bottom) / 2.0
+    half = side / 2.0
+    x0, y0 = int(round(cx - half)), int(round(cy - half))
+    x0, y0 = max(0, min(x0, im.size[0] - side)), max(0, min(y0, im.size[1] - side))
+    return im.crop((x0, y0, x0 + side, y0 + side))
 
 
 def down(im, size):
