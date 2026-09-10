@@ -29,3 +29,10 @@ picture{display:block}
 .lp-form .button:disabled{opacity:.6;cursor:default;transform:none!important;box-shadow:none}
 /* 4項目のフォームには 370px は狭い。ここだけ広げる。 */
 .contact-action{max-width:430px}
+
+/* PC限定の改行。このLPのモバイル境は780pxなので、それより広いときだけ効かせる。
+   狭い画面で同じ位置に改行を入れると、折り返しと二重になって行が短く途切れる。
+   広い画面では一行に収まってしまう二文を、意味の切れ目で割って読みやすくする
+   （柴田指示 2026-09-10・可読性優先）。 */
+.br-pc{display:none}
+@media (min-width:781px){.br-pc{display:inline}}
