@@ -8,7 +8,7 @@ picture{display:block}
    逃がしており、ページを離れる時点で大きく落ちていた。送信は自社Workerへ直接。
    .contact-action は text-align:center なので、フォームだけ左揃えへ戻す。 */
 .lp-form{text-align:left;gap:14px;display:grid}
-.lp-chips{flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:2px;display:flex}
+.lp-chips{flex-wrap:wrap;align-items:center;gap:8px;margin:1px 0 3px;display:flex}
 .lp-chips__label{color:#8b7f8a;width:100%;font-size:11px}
 /* 白紙の入力欄は、書くことが決まっていない人ほど手が止まる。一押しで書き出しが埋まる。 */
 .lp-chip{color:#6b5268;cursor:pointer;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 13px;font:inherit;font-size:12px;transition:border-color .18s,color .18s}
