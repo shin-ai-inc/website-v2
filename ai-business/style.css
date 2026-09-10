@@ -40,3 +40,9 @@ picture{display:block}
    （柴田指示 2026-09-10・可読性優先）。 */
 .br-pc{display:none}
 @media (min-width:781px){.br-pc{display:inline}}
+
+/* ご相談の流れ ＝ 手順と所要期間。「ShinAIの支援」は考え方を述べる節で、
+   両方が手順の話になっていて内容が重なっていた（柴田承認 2026-09-10）。
+   期間は本サイトが公表している数字だけを使う。 */
+.steps h3{margin-bottom:5px}
+.step-dur{color:#95627e;letter-spacing:.02em;margin-bottom:10px;font-size:12px;display:block}
