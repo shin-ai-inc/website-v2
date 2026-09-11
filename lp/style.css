@@ -88,10 +88,13 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
 }
 
 /* ===== 見出し・ボタン・ヒーローの調整（柴田指示） =====
-   1) ヒーロー1行目の「余白」をセージ緑へ。2行目の「次の一手」は
-      テラコッタのまま。静（いま手に入るもの）と動（これから起こすこと）を
-      色で対にする。#6f8a6a は紙 #f8f7f1 に対し 3.56:1。ヒーローは32〜68pxの太字で、
-      大きな文字の基準3:1を満たす。
+   1) ヒーローの二語をグラデーションにする。「余白」は新芽の緑、
+      「次の一手」は薄めたテラコッタ。どちらも明るい端へ向かって
+      色相が黄・橙へ寄るので、平らな一色より華やかに見える。
+      紙 #f8f7f1 との比は 余白 3.38→2.40、次の一手 4.04→2.96。
+      明るい端は大見出しの基準3:1を下回る。この紙の上で新芽の明るさを
+      出すと3:1には届かないため、見え方を優先した判断（柴田指示）。
+      background-clip が効かない環境では単色に落ちるよう @supports で囲う。
    2) 第4節の見出しは「チームが一貫して担います。」13字を
       モバイルで一行に収める。幅は wrap=100%-44px なので
       13字×1.01em が収まる上限は 390px幅で26.3px、360px幅で24.4px。
@@ -101,7 +104,7 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
       掛かって行の高さだけで48.75pxあった。.contact-button>span は
       ラベルと矢印の両方に当たるため、「無料で相談する」自体も25pxだった。
       ラベル15px・矢印18pxに分け、行間を切る。高さ82.75px→52px。 */
-.hero h1>span:first-child em{color:#6f8a6a}
+
 .contact-button{line-height:1.45;padding:18px 26px}
 .contact-button>span:first-child{font-size:16px}
 .contact-button>span:last-child{font-size:20px;line-height:1}
@@ -110,4 +113,18 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
   .contact-button{padding:15px 20px}
   .contact-button>span:first-child{font-size:15px}
   .contact-button>span:last-child{font-size:18px}
+}
+
+.hero h1>span:first-child em{color:#5b9530;background-image:linear-gradient(100deg,#5b9530 0%,#7cb041 100%)}
+.hero h1>span:last-child em{color:#b8623a;background-image:linear-gradient(100deg,#b8623a 0%,#cc7d4a 100%)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero h1 em{-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+}
+/* 図版のマスクが絵そのものを削っていた。絵は x=2%〜98% まで描かれているのに
+   マスクは左右7%を透明にしており、片側77〜78列ぶんが消えていた。
+   画像の地は (248,246,240) で紙 (248,247,241) とほぼ同じ＝隠すべき境目がない。 */
+.story-art img{mask-image:none}
+@media(max-width:760px){
+  /* 対比の矢印は、文字の左端に揃える（柴田指示） */
+  .benefit-path>span{align-self:flex-start}
 }
