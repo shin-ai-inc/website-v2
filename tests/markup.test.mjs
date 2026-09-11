@@ -169,3 +169,35 @@ test("ホーム画面用アイコンは透過を持たない", () => {
   const { colorType } = pngHead("assets/icons/apple-touch-icon.png");
   assert.equal(colorType, 2, `apple-touch-icon が透過を持っている(色種別 ${colorType})`);
 });
+
+/* ---- 事業内容のカード画像(自社で描いた画面イメージ) ---- */
+
+test("事業内容のカードはフリー写真ではなく、自社で描いた画面イメージを使う", () => {
+  for (const page of ["services.html", "en/services.html"]) {
+    const html = readFileSync(join(ROOT, page), "utf8");
+    assert.ok(!/service-(custom-ai-development|consulting-team|cocreation-partnership)\.jpg/.test(html),
+      `${page}: 以前のフリー写真が残っている`);
+    const lang = page.startsWith("en/") ? "en" : "ja";
+    for (const name of ["tacit", "agent", "enable"]) {
+      assert.ok(html.includes(`assets/images/screens/${name}.${lang}.svg`), `${page}: ${name} の画面イメージが無い`);
+    }
+    const screens = html.match(/solution-card__figure--screen/g) || [];
+    assert.equal(screens.length, 3, `${page}: 画面イメージの枠は3つ`);
+  }
+});
+
+test("画面イメージは安全な単体SVGで、架空の例であることを明示している", () => {
+  for (const name of ["tacit", "agent", "enable"]) {
+    for (const lang of ["ja", "en"]) {
+      const rel = `assets/images/screens/${name}.${lang}.svg`;
+      assert.ok(existsSync(join(ROOT, rel)), `${rel} が無い`);
+      const svg = readFileSync(join(ROOT, rel), "utf8");
+      /* 同じ出所で直に開かれると SVG はスクリプトを実行できる。書かないことを固定する */
+      assert.ok(!/<script|\son[a-z]+\s*=|javascript:/i.test(svg), `${rel}: スクリプトやイベント属性がある`);
+      assert.ok(!/(href|src)\s*=\s*"(https?:)?\/\//i.test(svg), `${rel}: 外部を参照している`);
+      assert.ok(svg.includes(lang === "ja" ? "画面イメージ" : "Illustrative"), `${rel}: 画面イメージの明示が無い`);
+      assert.match(svg, /viewBox="0 0 600 360"/, `${rel}: 枠の比率(5:3)が違う`);
+    }
+  }
+});
+

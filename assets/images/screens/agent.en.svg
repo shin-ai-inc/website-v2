@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360" role="img" aria-label="An illustrative screen: an AI agent matches, checks and drafts an order, and a person approves it">
+<defs>
+<radialGradient id="bg" cx="50%" cy="-10%" r="95%"><stop offset="0" stop-color="#F4FDFB"/><stop offset="1" stop-color="#D6F5EE"/></radialGradient>
+<filter id="sh" x="-12%" y="-12%" width="124%" height="136%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#0B4F45" flood-opacity=".16"/></filter>
+<clipPath id="win"><rect x="44" y="28" width="512" height="304" rx="16"/></clipPath>
+</defs>
+<rect width="600" height="360" fill="url(#bg)"/>
+<rect x="44" y="28" width="512" height="304" rx="16" fill="#fff" filter="url(#sh)"/>
+<g clip-path="url(#win)">
+<rect x="44" y="28" width="512" height="46" fill="#E0FAF5"/>
+<line x1="44" y1="74" x2="556" y2="74" stroke="#C3EBE2"/>
+</g>
+<rect x="44" y="28" width="512" height="304" rx="16" fill="none" stroke="#C3EBE2"/>
+<circle cx="68" cy="51.0" r="6" fill="#007A67"/>
+<text x="84" y="58" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="18" font-weight="700" fill="#0C1A36" text-anchor="start">Order email handling</text>
+<rect x="446" y="39" width="96" height="24" rx="12" fill="#fff" stroke="#C3EBE2"/>
+<text x="494.0" y="56" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="13" font-weight="500" fill="#637290" text-anchor="middle">Illustrative</text>
+<rect x="68" y="98" width="200" height="164" rx="12" fill="#F7FAF9" stroke="#E4E8F1"/>
+<text x="86" y="128" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="14" font-weight="700" fill="#4A5A7A" text-anchor="start">Incoming email</text>
+<rect x="86" y="140" width="164" height="1" fill="#E4E8F1"/>
+<text x="86" y="172" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="19" font-weight="700" fill="#0C1A36" text-anchor="start">Additional order</text>
+<text x="86" y="206" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="16" font-weight="500" fill="#4A5A7A" text-anchor="start">200 × part A-12,</text>
+<text x="86" y="232" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="16" font-weight="500" fill="#4A5A7A" text-anchor="start">deliver by Oct 20</text>
+<path d="M280 180 h22" stroke="#007A67" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M296 173 l8 7 l-8 7" fill="none" stroke="#007A67" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="332" cy="111" r="12" fill="#007A67"/>
+<path d="M326 111 l4 4 l8 -8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="354" y="118" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="20" font-weight="500" fill="#0C1A36" text-anchor="start">Customer matched</text>
+<circle cx="332" cy="155" r="12" fill="#007A67"/>
+<path d="M326 155 l4 4 l8 -8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="354" y="162" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="20" font-weight="500" fill="#0C1A36" text-anchor="start">Stock checked</text>
+<circle cx="332" cy="199" r="12" fill="#007A67"/>
+<path d="M326 199 l4 4 l8 -8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="354" y="206" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="20" font-weight="500" fill="#0C1A36" text-anchor="start">Order drafted</text>
+<circle cx="332" cy="243" r="11" fill="#fff" stroke="#007A67" stroke-width="2.4"/>
+<circle cx="332" cy="243" r="4" fill="#007A67"/>
+<text x="354" y="250" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="20" font-weight="700" fill="#007A67" text-anchor="start">Awaiting review</text>
+<rect x="436" y="268" width="96" height="34" rx="17" fill="#007A67"/>
+<text x="484" y="291" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">Review</text>
+</svg>
