@@ -552,10 +552,20 @@
     padding-bottom: var(--space-2);
   }
 
-  /* 値の中の強制改行は外す。左に寄せた列の中では、幅なりに折り返れば足りる。 */
-  .contact-info__value br {
-    display: none;
+  /* 値の中の改行は、意味の切れ目に置いたものなので残す
+     (以前は外していて「オークスアベ／ニュー」と割れた)。 */
+}
+
+/* 370px以下は、項目名と値を横に並べると値の列が細り、住所が4行に割れた。項目名の下に値を置く。 */
+@media (max-width: 370px) {
+  .contact-info__item {
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
+}
+
+.contact-info__link {
+  white-space: nowrap;
 }
 
 /* 人間確認(Turnstile)の枠。サイトキーが設定されるまでは hidden のまま。 */

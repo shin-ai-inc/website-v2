@@ -667,3 +667,45 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* 七つのShin(スマホ): 2列では1枚150px前後になり、説明が1行7〜8字に細切れになった
+   (「表面的な流行に惑わさ／れず」)。1列にし、1行目に漢字と英字、その下に見出しと説明を
+   カード幅いっぱいで置く。見出しも説明も1行約20字になり、縦も詰まる。 */
+@media (max-width: 640px) {
+  .shin7__grid {
+    gap: var(--space-2);
+  }
+  .shin7__card {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "kanji roman" "title title" "desc desc";
+    column-gap: var(--space-2);
+    align-items: baseline;
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+  }
+  .shin7__icon-wrap {
+    display: none;
+  }
+  .shin7__kanji {
+    grid-area: kanji;
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+  }
+  .shin7__roman {
+    grid-area: roman;
+    margin: 0;
+    text-align: left;
+  }
+  .shin7__title {
+    grid-area: title;
+    margin: var(--space-1) 0 0;
+  }
+  .shin7__desc {
+    grid-area: desc;
+    margin-top: var(--space-2);
+  }
+}
+

@@ -140,6 +140,8 @@ body.is-home { background: var(--paper); }
    auto-phrase は日本語専用のため :lang(ja) に限定する(英語版 /en/ には効かせない)。
    text-wrap の方は言語を問わず有効なので限定しない。 */
 :lang(ja) :is(h1, h2, h3,
+  .industries-card__state-text, .why__line, .capability__desc, .method__desc,
+  .contact-flow__text, .contact-form-card__lead,
   .section__lead, .page-hero__lead, .purpose__support,
   .about-purpose__note, .cta__text, .shin7__desc,
   .industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note) {
@@ -167,6 +169,11 @@ h1, h2, h3 {
 .cta__text, .shin7__desc, .industries-bridge__item-text, .industries-bridge__note {
   text-wrap: pretty;
 }
+/* 本文の段落と箇条書きも、最後の行に「す。」「ます。」だけが残らないよう行を配分する
+   (スマホ375pxで長い段落の末尾が一字落ちしていた)。未対応のブラウザでは従来どおり。 */
+main p, main li, main dd {
+  text-wrap: pretty;
+}
 /* 意味の切れ目を守る最小語塊。折り返すならこの塊の前で折る(全ブラウザで有効) */
 .nobr {
   white-space: nowrap;
@@ -176,7 +183,11 @@ h1, h2, h3 {
    レイアウト全体が破綻する。狭幅では収まりを優先し、折り返しを許可する。
    (語の途中で割れることより、画面内に収まることを優先する判断) */
 @media (max-width: 400px) {
+  /* 折り返しは許すが、まとまりは保つ。inline-block は、行の残りに入らなければ
+     塊ごと次の行へ送り、一行にも入らないときだけ中で折れる。
+     以前は単に折り返しを許していたため「AIエンジ／ニア」「開／発」と割れた。 */
   .nobr {
+    display: inline-block;
     white-space: normal;
   }
 }
@@ -209,9 +220,9 @@ h1, h2, h3 {
   .section__title {
     font-size: 1.55rem;
   }
-  .section__lead-line {
-    display: inline;
-  }
+  /* 以前はスマホで行をつなげて一つの段落として流していた。行の境目の改行が空白になり
+     (「分けています。 自社の」)、折れる位置も画面幅任せだった。行は保ち、
+     長い行にだけスマホ用の改行(.br-sp)を置く。 */
 }
 
 /* ---- Eyebrow (英字ラベル。ブランドグラデーションの一線で先進性を表現) ---- */

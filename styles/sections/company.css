@@ -41,6 +41,11 @@
     gap: var(--space-3);
     padding-block: var(--space-2);
   }
+  /* 人物カード: 写真と本文を横に並べると本文が1行13字前後に細る。写真の下に置く */
+  .company__person {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
   .company__fact-desc {
     font-size: var(--fs-sm);
   }
@@ -145,5 +150,14 @@
   margin-right: var(--space-2);
   font-weight: 500;
   color: var(--brand);
+}
+
+/* 370px以下は、項目名と値を横に並べると値の列が200px前後になり、
+   「企業専用AIエージェント開／発」と割れた。項目名の下に値を置く。 */
+@media (max-width: 370px) {
+  .company__facts > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
 }
 

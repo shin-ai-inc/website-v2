@@ -207,17 +207,8 @@
   .faq-item__a p {
     font-size: var(--fs-sm);
   }
-  /* 狭幅では改行位置を一切制御せず、行幅いっぱいまで文章を続ける。
-     auto-phrase(文節改行)も pretty(行長の均整) も、狭い横幅では
-     不自然な折り返しと余白を生むため無効化する。
-     :lang(ja) セレクタの方が詳細度が高いため、同等の詳細度で上書きする。 */
-  :lang(ja) .faq-item__a p {
-    word-break: normal;
-    text-wrap: wrap;
-  }
-  .faq-item__a p {
-    text-wrap: wrap;
-  }
+  /* 以前は狭幅で改行の制御を外していたが、「AIをど／う活かせる」「進／め方」のように
+     語の途中で割れた。回答は2〜4行の短い文なので、スマホでも文節で折る(PC と同じ)。 */
 }
 
 @media (max-width: 480px) {
