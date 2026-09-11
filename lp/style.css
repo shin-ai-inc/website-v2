@@ -68,3 +68,21 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
 .lp-done{margin:28px 0 0;color:var(--ink);font-size:16px;line-height:2}
 .lp-form .contact-button{width:100%;justify-content:center;margin-top:4px}
 .lp-form .contact-button:disabled{opacity:.6;cursor:default;transform:none}
+
+/* ===== 読みやすさの調整（柴田指摘） =====
+   1) 課題の一覧（03節）は、読む文章ではなく目で追う一覧。
+      本文の下に35pxの間が空き、さらに1件目の上余白14pxが重なって
+      約49pxの空白ができていた。行の高さも1件あたり54pxあり、
+      6件で324px＝ほぼ一画面をこの一覧だけが占めていた。
+      間と行を詰めて、一覧として追える密度にする。
+   2) 図版の説明文は #8a7972 で紙との比が3.61:1しかなく、
+      小さな文字に必要な4.5:1を下回っていた。--muted(4.78:1)へ。 */
+.story-art figcaption{color:var(--muted);letter-spacing:.02em}
+@media(max-width:760px){
+  .story-art figcaption{font-size:13px}
+  .challenge .split{gap:20px}
+  .challenge .section-intro{line-height:1.95}
+  .concerns li{padding-top:10px;padding-bottom:10px;line-height:1.7}
+  .concerns li:before{top:11px}
+  .conclusion{margin-top:22px}
+}
