@@ -477,3 +477,16 @@ test("すべての問い合わせフォームに、人間確認の枠がある",
   }
 });
 
+/* ---- /lp/ の改行は意味の切れ目で置く(柴田指示 2026-09-12) ---- */
+test("/lp/ はスマホで書いた改行を消さず、スマホ専用の改行を持つ", () => {
+  /* 以前はスマホで本文の <br> を一律に消し、画面幅任せに折っていた。
+     「お客様への提案や次の改善へ。AIを入れた先の」のように、意味の途中で折れていた。 */
+  const css = readSrc("lp/style.css");
+  assert.ok(!/\.body br\s*\{\s*display:\s*none/.test(css), "スマホで本文の改行を消している");
+  assert.ok(!/\.work-detail p br\s*\{\s*display:\s*none/.test(css), "スマホで業務の変化の改行を消している");
+  assert.match(css, /\.br-sp\{display:none\}/, "スマホ専用の改行(.br-sp)の既定が無い");
+  assert.match(css, /max-width:760px\)\{\s*\.br-sp\{display:inline\}/, "スマホで .br-sp を表示していない");
+  const html = readSrc("lp/index.html");
+  assert.ok((html.match(/class="br-sp"/g) || []).length >= 20, "スマホ専用の改行が少ない");
+});
+
