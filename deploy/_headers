@@ -1,7 +1,7 @@
 # Netlify / Cloudflare Pages 形式のセキュリティ応答ヘッダ。
 # 配置: 公開ルートに `_headers` として置く(ビルド出力直下)。
 #
-# {{CSP}} は build.mjs が CSP_HEADER で置換する。CSPを直接ここへ書かないこと。
+# Content-Security-Policy の値は build.mjs が CSP_HEADER で埋める。CSPを直接ここへ書かないこと。
 # 各HTMLの <meta> と同じ定義から生成することで、片方だけ直して障害が潜伏するのを防ぐ。
 
 /*

@@ -462,7 +462,11 @@ test("人間確認の読み込み先を、すべてのページの CSP が許可
     assert.ok(new RegExp(`script-src[^;]*${host}`).test(csp[1]), `${page}: script-src が ${host} を許可していない`);
     assert.ok(new RegExp(`frame-src[^;]*${host}`).test(csp[1]), `${page}: frame-src が ${host} を許可していない`);
   }
-  assert.ok(readSrc("dist/_headers").includes(`frame-src ${host}`), "_headers の CSP に frame-src が無い");
+  const headers = readSrc("dist/_headers");
+  const cspLine = headers.split("\n").find((l) => l.trim().startsWith("Content-Security-Policy:")) || "";
+  assert.ok(!headers.includes("{{CSP}}"), "_headers に未置換の {{CSP}} が残っている");
+  assert.ok(cspLine.includes("default-src") && cspLine.includes(`frame-src ${host}`) && cspLine.includes("frame-ancestors 'none'"),
+    "_headers の規則行に CSP が入っていない: " + cspLine.trim().slice(0, 60));
 });
 
 test("すべての問い合わせフォームに、人間確認の枠がある", () => {

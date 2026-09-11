@@ -45,6 +45,16 @@ const BUILD_HASH = (() => {
    ビルドのたびに全ページが更新されたことになると、クローラは lastmod を信用しなくなる。
    git が無い環境(配布物からの再ビルド等)ではファイルの更新時刻へ退避する。 */
 const lastModCache = new Map();
+/* ホスティングのビルド環境は浅いクローン(--depth=1)のことがある。
+   その場合 git log は空になり、全ページの更新日が「今日」に化ける
+   (sitemap の lastmod が毎回全件更新になり、検索エンジンが信用しなくなる)。
+   浅ければ履歴を取り直す。取れなければ従来どおり mtime へ倒す。 */
+try {
+  if (execSync("git rev-parse --is-shallow-repository", { cwd: ROOT }).toString().trim() === "true") {
+    execSync("git fetch --unshallow --quiet", { cwd: ROOT, stdio: "ignore" });
+  }
+} catch { /* git が無い・取れない環境では mtime に倒す */ }
+
 const lastModOf = (relPath) => {
   if (lastModCache.has(relPath)) return lastModCache.get(relPath);
   let date;
@@ -1075,7 +1085,9 @@ toDist(".well-known/security.txt");
    deploy/_headers 側の {{CSP}} を置換する。二重管理をここで断つ。 */
 writeFileSync(
   join(DIST, "_headers"),
-  read("deploy/_headers").replace("{{CSP}}", CSP_HEADER),
+  /* replaceAll: 最初の1箇所だけ置くと、説明コメント側が先に当たって規則行が
+     "{{CSP}}" のまま公開される(2026-09-11 に実際にそうなっていた)。 */
+  read("deploy/_headers").replaceAll("{{CSP}}", CSP_HEADER),
   "utf8"
 );
 
