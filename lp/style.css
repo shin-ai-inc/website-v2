@@ -86,7 +86,10 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .header{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:40px;height:84px;padding-inline:max(28px,calc((100% - 1216px)/2));transition:height .45s var(--ease),background-color .45s var(--ease),box-shadow .45s var(--ease)}
 .header.is-scrolled{height:68px;background:rgba(248,247,241,.9);-webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);box-shadow:0 1px 0 var(--line-soft)}
 .brand{display:block}
-.brand .official-logo{width:116px}
+/* ロゴは高さを整数で決める。116px幅では文字の縦画が1.24画素しかなく、PC(画素密度1〜1.5)では
+   必ず2列の灰色に割れて滲んだ(柴田指摘)。高さ44px=幅141pxで縦画1.5画素、円の中の白い線3画素。
+   ヘッダー84px(縮むと68px)から引いて上下の余りが整数になる高さにし、半画素のずれも出さない。 */
+.brand .official-logo{width:auto;height:44px}
 .desktop-nav{display:flex;gap:36px;margin-left:auto;font-size:13px;letter-spacing:.12em;color:var(--ink-2)}
 .desktop-nav a{position:relative;padding-block:6px}
 .desktop-nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
@@ -271,7 +274,7 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 
 /* ===== フッター ===== */
 .footer{display:flex;align-items:center;gap:28px;padding:40px max(28px,calc((100% - 1120px)/2));border-top:1px solid var(--line-soft)}
-.footer .official-logo{width:92px}
+.footer .official-logo{width:auto;height:36px}
 .footer p{font-size:12px;letter-spacing:.12em;color:var(--muted)}
 .footer small{margin-left:auto;font-size:11px;color:var(--muted)}
 .back-top{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;color:var(--ink-2);transition:border-color .3s,color .3s}
@@ -336,7 +339,7 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 
   .header{height:68px;gap:0;padding-inline:18px 14px}
   .header.is-scrolled{height:60px}
-  .brand .official-logo{width:104px}
+  .brand .official-logo{width:104px;height:auto}
   .desktop-nav,.header-cta{display:none}
   .menu-button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:44px;height:44px;margin-left:auto;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer}
   .menu-button span{width:16px;height:1px;background:var(--ink);transition:transform .3s var(--ease)}
