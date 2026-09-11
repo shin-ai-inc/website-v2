@@ -22,6 +22,7 @@ import { parseContactBody, contactMailPayload, contactSlackPayload, deadLetterRo
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
 import { normalizeVector } from "./lib/vector.mjs";
+import { JSON_SECURITY_HEADERS } from "./lib/headers.mjs";
 import KB_JA from "./knowledge.ja.json";
 import KB_EN from "./knowledge.en.json";
 
@@ -109,7 +110,7 @@ const REPLY = {
 };
 
 const json = (body, status, origin) => {
-  const headers = { "Content-Type": "application/json; charset=utf-8" };
+  const headers = { "Content-Type": "application/json; charset=utf-8", ...JSON_SECURITY_HEADERS };
   if (origin) {
     headers["Access-Control-Allow-Origin"] = origin;
     /* オリジンをエコーする設計では必須。欠くとCDNが別オリジン向けの
@@ -189,8 +190,8 @@ async function readVoices(request, env) {
     status: 200,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      /* 個人情報を含む応答を、経路上のどこにも残さない。 */
-      "Cache-Control": "no-store",
+      /* 個人情報を含む応答。no-store は JSON_SECURITY_HEADERS 側にある。 */
+      ...JSON_SECURITY_HEADERS,
       "X-Robots-Tag": "noindex, nofollow"
     }
   });

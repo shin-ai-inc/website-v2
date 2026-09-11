@@ -407,3 +407,22 @@ test("つなぐ依頼は攻撃の判定より先に効く", () => {
      拒否文を返すと、人に届く道を塞いでしまう。 */
   assert.equal(classifyInput("担当者に代わってください").verdict, "human");
 });
+
+/* ---- 応答ヘッダ(無言で欠けるものの検証) ---- */
+import { JSON_SECURITY_HEADERS } from "../api/lib/headers.mjs";
+import { readFileSync } from "node:fs";
+
+test("JSON応答の防御ヘッダが揃っている", () => {
+  assert.equal(JSON_SECURITY_HEADERS["X-Content-Type-Options"], "nosniff");
+  assert.equal(JSON_SECURITY_HEADERS["Cache-Control"], "no-store");
+  assert.equal(JSON_SECURITY_HEADERS["Referrer-Policy"], "no-referrer");
+  assert.match(JSON_SECURITY_HEADERS["Strict-Transport-Security"], /^max-age=\d{8,}/);
+  assert.ok(!/preload/.test(JSON_SECURITY_HEADERS["Strict-Transport-Security"]), "preload は apex の宣言");
+});
+
+test("json() と readVoices() の両方が防御ヘッダを使う", () => {
+  const src = readFileSync(new URL("../api/index.mjs", import.meta.url), "utf8");
+  const uses = src.match(/\.\.\.JSON_SECURITY_HEADERS/g) || [];
+  assert.ok(uses.length >= 2, `使用箇所 ${uses.length} (json と readVoices の2箇所以上)`);
+});
+
