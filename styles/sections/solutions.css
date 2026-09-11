@@ -227,32 +227,3 @@
     margin-bottom: var(--space-3);
   }
 }
-
-/* 自社で描いた画面イメージ(assets/images/screens/)。
-   写真は object-fit: cover で切り抜いても成り立つが、画面イメージは切り抜くと
-   文字が欠ける。帯状(150〜200px)や縦長(タブレットの左列)にせず、比率を保つ。
-   地の色は絵の側に描いてあるので、下端を色で沈める重ねは外す。 */
-.solution-card__figure--screen::after {
-  display: none;
-}
-
-@media (max-width: 960px) {
-  .solution-card__figure.solution-card__figure--screen {
-    aspect-ratio: 5 / 3;
-    height: auto;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 960px) {
-  .solution-card__figure.solution-card__figure--screen {
-    align-self: start;
-    margin-bottom: 0;
-  }
-}
-
-/* スマホは 16:9。絵は上下 11 単位までの切り抜きに耐えるよう描いてある。 */
-@media (max-width: 640px) {
-  .solution-card__figure.solution-card__figure--screen {
-    aspect-ratio: 16 / 9;
-  }
-}
