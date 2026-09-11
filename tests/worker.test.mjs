@@ -426,3 +426,14 @@ test("json() と readVoices() の両方が防御ヘッダを使う", () => {
   assert.ok(uses.length >= 2, `使用箇所 ${uses.length} (json と readVoices の2箇所以上)`);
 });
 
+test("チャットは段階遮断を分類より先に通し、問い合わせは同一IP上限を総量より先に通す", () => {
+  const src = readFileSync(new URL("../api/index.mjs", import.meta.url), "utf8");
+  const flag = src.indexOf('"chat-flag:" + ipHash, flagDay, "peek"');
+  const classify = src.indexOf("統制1: 入力の分類");
+  assert.ok(flag > 0 && classify > flag, "段階遮断(peek)が分類より前にある");
+  assert.ok(src.includes('"chat-flag:" + ipHash, flagDay, "consume"'), "refuse で試みを数える");
+  const perIp = src.indexOf('"contact-ip:" + ipHash');
+  const total = src.indexOf('env.BUDGET.idFromName("contact")');
+  assert.ok(perIp > 0 && total > perIp, "同一IP上限が総量より前にある");
+});
+

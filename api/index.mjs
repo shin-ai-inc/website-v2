@@ -16,7 +16,7 @@ import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
 import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed, greetingOnly, pickGreetingClose, pickEmojiReply } from "./lib/guard.mjs";
 import { isWorthKeeping, voiceRecord, slackPayload, isAuthorizedAdmin, purgeCutoff }
   from "./lib/voices.mjs";
-import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "./lib/budget.mjs";
+import { jstDayKey, shouldBlockByBudget, estimateCostUsd, advanceMeter } from "./lib/budget.mjs";
 import { parseContactBody, contactMailPayload, contactSlackPayload, deadLetterRow, deadLetterPurgeCutoff }
   from "./lib/contact.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
@@ -125,6 +125,23 @@ const audit = (fields) => {
   console.log(JSON.stringify({ at: new Date().toISOString(), ...fields }));
 };
 
+/* 名前付きメーターを読む/進める。失敗は null(呼び出し側が「止める側」に倒す)。
+   BudgetMeter は日次総量のために作られたが、名前を変えれば同一IP・同一日の
+   数え上げにも使える。新しい DO クラスは増やさない。 */
+async function meterOf(env, name, dayKey, op) {
+  try {
+    const stub = env.BUDGET.get(env.BUDGET.idFromName(name));
+    const res = await stub.fetch("https://budget/" + op, {
+      method: "POST",
+      body: JSON.stringify({ dayKey, op })
+    });
+    const { countBefore } = await res.json();
+    return Number.isFinite(Number(countBefore)) ? Number(countBefore) : null;
+  } catch {
+    return null;
+  }
+}
+
 /* IPは個人情報。相関に足る一方向ハッシュだけを残す。 */
 const hashIp = async (ip, salt) => {
   if (!ip) return "unknown";
@@ -222,9 +239,21 @@ async function handleContact(request, env, ctx, origin) {
     return json({ success: false, reason: parsed.reason }, parsed.status, origin);
   }
 
-  /* --- 濫用対策: 日次上限。BudgetMeter はチャットと同じ仕組みを
-     別インスタンス(名前"contact")で使い回す。新しいDOクラスは増やさない。 --- */
   const dayKey = jstDayKey(new Date());
+
+  /* --- 濫用対策1: 同一IPの上限。1台の機械が1日の総量(30件)を使い切ると、
+     その日の問い合わせが全員ぶん止まる。総量より先に、個別で止める。
+     正当な相手が1日に3件以上送ることは実務上ない。 --- */
+  const ipHash = await hashIp(request.headers.get("CF-Connecting-IP"), env.IP_SALT || "shinai");
+  const perIpLimit = Number(env.CONTACT_PER_IP_LIMIT || 3);
+  const perIp = await meterOf(env, "contact-ip:" + ipHash, dayKey, "consume");
+  if (perIp === null || perIp >= perIpLimit) {
+    audit({ event: perIp === null ? "contact_ip_meter_unavailable" : "contact_ip_exceeded", ip: ipHash, count: perIp });
+    return json({ success: false, reason: "busy" }, 200, origin);
+  }
+
+  /* --- 濫用対策2: 日次総量。BudgetMeter はチャットと同じ仕組みを
+     別インスタンス(名前"contact")で使い回す。新しいDOクラスは増やさない。 --- */
   const limit = Number(env.CONTACT_DAILY_LIMIT || 30);
   let meter;
   try {
@@ -389,6 +418,18 @@ export default {
 
     const ipHash = await hashIp(request.headers.get("CF-Connecting-IP"), env.IP_SALT || "shinai");
 
+    /* --- 統制0: 段階遮断。同じ相手が同じ日に乗っ取りを何度も試みたら、
+       その日はもう分類にも生成にも進ませない。入力の型は言い換えで
+       破れるが、「破ろうとした回数」は言い換えで隠せない。
+       メーターが読めないときは止める側に倒す。 --- */
+    const flagDay = jstDayKey(new Date());
+    const flagLimit = Number(env.CHAT_FLAG_LIMIT || 5);
+    const flags = await meterOf(env, "chat-flag:" + ipHash, flagDay, "peek");
+    if (flags === null || flags >= flagLimit) {
+      audit({ event: flags === null ? "flag_meter_unavailable" : "ip_blocked", ip: ipHash, flags });
+      return json({ success: true, response: reply.refused }, 200, origin);
+    }
+
     /* --- 統制1: 入力の分類 --- */
     const verdict = classifyInput(parsed.value.message);
     if (verdict.verdict === "too_long") {
@@ -426,6 +467,8 @@ export default {
       return json({ success: true, response: reply.offtask }, 200, origin);
     }
     if (verdict.verdict === "refuse") {
+      /* 試みを数える。応答は待たせない。 */
+      ctx.waitUntil(meterOf(env, "chat-flag:" + ipHash, flagDay, "consume"));
       audit({ event: "refused_input", kind: verdict.reason, ip: ipHash });
       /* 攻撃者にも通常利用者にも同じ体験を返す(検出条件を推測させない)。
          OpenAIは呼ばないのでコストも発生しない。 */
@@ -564,12 +607,10 @@ export class BudgetMeter {
   }
 
   async fetch(request) {
-    const { dayKey } = await request.json();
+    const { dayKey, op } = await request.json();
     const stored = (await this.state.storage.get("meter")) || { dayKey: "", count: 0 };
-    /* 日付が変わったら自動で戻す(JST基準の切替は呼び出し側が決める)。 */
-    const current = stored.dayKey === dayKey ? stored : { dayKey, count: 0 };
-    const countBefore = current.count;
-    await this.state.storage.put("meter", { dayKey, count: countBefore + 1 });
+    const { countBefore, next } = advanceMeter(stored, dayKey, op);
+    if (next) await this.state.storage.put("meter", next);
     return new Response(JSON.stringify({ countBefore }), {
       headers: { "Content-Type": "application/json" }
     });

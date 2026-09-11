@@ -46,3 +46,16 @@ export function estimateCostUsd({ inputTokens, outputTokens }) {
   const o = Number.isFinite(outputTokens) ? outputTokens : 0;
   return (i * PRICE_PER_MTOK.input + o * PRICE_PER_MTOK.output) / 1_000_000;
 }
+
+/* メーターの前進。Durable Object の中身はこれだけを呼ぶ。
+   - 日付が変わったら 0 から数え直す(JST の日付は呼び出し側が決める)
+   - op "peek" は数を読むだけで進めない(遮断の判定に使う。読むたびに
+     進めると、判定そのものが上限を食い潰す)
+   - op "consume"(既定) は 1 進める */
+export function advanceMeter(stored, dayKey, op = "consume") {
+  const current = stored && stored.dayKey === dayKey ? stored : { dayKey, count: 0 };
+  const countBefore = Number.isFinite(Number(current.count)) ? Number(current.count) : 0;
+  if (op === "peek") return { countBefore, next: null };
+  return { countBefore, next: { dayKey, count: countBefore + 1 } };
+}
+

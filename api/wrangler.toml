@@ -48,6 +48,10 @@ CONTACT_TO_EMAIL = "contact@shinai-inc.jp"
 CONTACT_FROM_EMAIL = "ShinAI サイト <noreply@send.shinai-inc.jp>"
 # 日次上限。実勢の相談件数を大きく超えつつ、フォーム連投は止められる値。
 CONTACT_DAILY_LIMIT = "30"
+# 同一IP・同一日の上限。総量(30)を1台に使い切らせない
+CONTACT_PER_IP_LIMIT = "3"
+# 同一IPが乗っ取りを試みた回数の上限。超えたらその日は定型応答のみ
+CHAT_FLAG_LIMIT = "5"
 
 # 日次予算メーター。単一インスタンスで全体を数え、
 # IP単位の制限では止まらない低速分散を捕捉する。

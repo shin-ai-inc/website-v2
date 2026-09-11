@@ -11,6 +11,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd } from "../api/lib/budget.mjs";
+import { advanceMeter } from "../api/lib/budget.mjs";
 import { screenAnswer } from "../api/lib/outgate.mjs";
 
 /* ---- 日次キー(JST) ---- */
@@ -123,3 +124,36 @@ test("謝罪表現の活用形を取りこぼさない", () => {
     assert.equal(screenAnswer(s, "ja").blocked, true, `止まらない: ${s}`);
   }
 });
+
+/* ---- メーターの前進(段階遮断・同一IP上限の土台) ---- */
+
+test("consume は1進め、日付が変わると0から数え直す", () => {
+  const a = advanceMeter({ dayKey: "2026-09-11", count: 4 }, "2026-09-11");
+  assert.equal(a.countBefore, 4);
+  assert.deepEqual(a.next, { dayKey: "2026-09-11", count: 5 });
+  const b = advanceMeter({ dayKey: "2026-09-11", count: 4 }, "2026-09-12");
+  assert.equal(b.countBefore, 0, "翌日は0から");
+  assert.deepEqual(b.next, { dayKey: "2026-09-12", count: 1 });
+});
+
+test("peek は読むだけで進めない(判定が上限を食い潰さない)", () => {
+  const r = advanceMeter({ dayKey: "2026-09-11", count: 4 }, "2026-09-11", "peek");
+  assert.equal(r.countBefore, 4);
+  assert.equal(r.next, null);
+});
+
+test("壊れた保存値でも数え直せる", () => {
+  for (const stored of [undefined, null, {}, { dayKey: "2026-09-11", count: "x" }]) {
+    const r = advanceMeter(stored, "2026-09-11");
+    assert.equal(r.countBefore, 0);
+    assert.deepEqual(r.next, { dayKey: "2026-09-11", count: 1 });
+  }
+});
+
+test("段階遮断と同一IP上限は shouldBlockByBudget と同じ境界で止まる", () => {
+  assert.equal(shouldBlockByBudget({ count: 4, limit: 5 }), false, "5回目までは通す");
+  assert.equal(shouldBlockByBudget({ count: 5, limit: 5 }), true, "6回目から止める");
+  assert.equal(shouldBlockByBudget({ count: 2, limit: 3 }), false, "問い合わせ3件目は通す");
+  assert.equal(shouldBlockByBudget({ count: 3, limit: 3 }), true, "4件目は止める");
+});
+
