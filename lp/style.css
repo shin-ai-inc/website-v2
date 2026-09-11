@@ -28,6 +28,10 @@
   --grad-room:linear-gradient(100.4deg,#5b9530 0%,#7cb041 100%);
   --grad-next:linear-gradient(100.7deg,#b8623a 0%,#cc7d4a 100%);
   --grad-thread:linear-gradient(90deg,#9cbf7c 0%,#7cb041 38%,#cc7d4a 100%);
+  /* 申し込みの朱。深い朱(色相8°)から明るい朱(19°)へ、色相と彩度を動かして華やかさを出す。
+     白い文字を載せるので、最も明るい端でも 4.5:1 を割らない所で止める
+     (#9b3a2a 6.93 → #b5512a 5.03 → #bb5626 4.70)。 */
+  --grad-cta:radial-gradient(120% 160% at 12% 0%,rgba(255,236,220,.16),rgba(255,236,220,0) 55%),linear-gradient(115deg,#9b3a2a 0%,#b5512a 52%,#bb5626 100%);
   --sans:"Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
   --latin:"Helvetica Neue",Arial,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -103,10 +107,17 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .hero__art{margin-right:-24px;overflow:hidden;border-radius:28px;box-shadow:0 1px 0 rgba(63,53,49,.04),0 44px 80px -58px rgba(63,53,49,.4)}
 .hero__art img{width:100%}
 
-.primary-link{display:inline-flex;align-items:center;gap:22px;padding:18px 26px 18px 30px;border-radius:999px;background:var(--accent);color:#fff;font-size:15px;letter-spacing:.0607em;box-shadow:0 16px 30px -18px rgba(143,72,41,.75);transition:background-color .3s,transform .4s var(--ease),box-shadow .4s var(--ease)}
-.primary-link>span{font-size:17px;line-height:1;transition:transform .4s var(--ease)}
-.primary-link:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 20px 34px -18px rgba(143,72,41,.8)}
-.primary-link:hover>span{transform:translate(3px,-3px)}
+/* 申し込みの二つのボタン(ヒーロー・フォーム)は同じ作りにする。
+   地は朱のグラデーション、上縁に一筋の光、矢印は淡い丸に収める。
+   ホバーで地がずれ、光が一度だけ横切る。 */
+.primary-link,.contact-button{position:relative;isolation:isolate;overflow:hidden;background:#b5512a;background-image:var(--grad-cta);background-size:160% 100%;background-position:0% 50%;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 18px 34px -16px rgba(187,86,38,.62);transition:background-position .7s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
+.primary-link::before,.contact-button::before{content:"";position:absolute;inset:0 auto 0 -60%;z-index:-1;width:50%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.2),rgba(255,255,255,0));transform:skewX(-18deg);transition:left .9s var(--ease)}
+.primary-link:hover,.contact-button:hover{background-position:100% 50%;transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 24px 40px -16px rgba(187,86,38,.7)}
+.primary-link:hover::before,.contact-button:hover::before{left:115%}
+.primary-link>span,.contact-button>span:last-child{display:grid;place-items:center;flex:none;border-radius:50%;background:rgba(255,255,255,.17);line-height:1;transition:transform .4s var(--ease),background-color .3s}
+.primary-link:hover>span,.contact-button:hover>span:last-child{transform:translate(2px,-2px);background:rgba(255,255,255,.26)}
+.primary-link{display:inline-flex;align-items:center;gap:18px;padding:12px 12px 12px 30px;border-radius:999px;font-size:15px;letter-spacing:.0607em}
+.primary-link>span{width:36px;height:36px;font-size:15px}
 .text-link{display:inline-flex;align-items:center;gap:10px;padding-bottom:5px;border-bottom:1px solid var(--line);font-size:14px;letter-spacing:.08em;color:var(--ink-2);transition:color .3s,border-color .3s}
 .text-link:hover{color:var(--accent);border-color:var(--accent)}
 
@@ -244,11 +255,11 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .lp-error{margin:0;font-size:13px;line-height:1.8;color:#9b3a1f}
 .lp-done{font-size:16px;line-height:2;color:var(--ink)}
 .lp-turnstile{margin:2px 0 4px}
-.contact-button{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;margin-top:4px;padding:18px 26px;border:0;border-radius:999px;background:var(--accent);color:#fff;font-size:16px;line-height:1.4507;letter-spacing:.1em;cursor:pointer;box-shadow:0 16px 30px -18px rgba(143,72,41,.75);transition:background-color .3s,transform .4s var(--ease),box-shadow .4s var(--ease)}
-.contact-button>span:last-child{font-size:18px;line-height:1;transition:transform .4s var(--ease)}
-.contact-button:hover{background:var(--accent-deep);transform:translateY(-2px)}
-.contact-button:hover>span:last-child{transform:translate(3px,-3px)}
+.contact-button{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;margin-top:4px;padding:13px 14px 13px 30px;border:0;border-radius:999px;font-size:16px;line-height:1.4507;letter-spacing:.1em;cursor:pointer}
+.contact-button>span:first-child{flex:1;text-align:center;padding-left:40px}
+.contact-button>span:last-child{width:40px;height:40px;font-size:16px}
 .contact-button:disabled{opacity:.6;cursor:default;transform:none}
+.contact-button:disabled::before{display:none}
 
 /* ===== フッター ===== */
 .footer{display:flex;align-items:center;gap:28px;padding:40px max(28px,calc((100% - 1120px)/2));border-top:1px solid var(--line-soft)}
@@ -328,7 +339,8 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
   .hero__lead{margin-top:26px;font-size:15px}
   .hero__sub{font-size:12.5px;letter-spacing:.06em}
   .hero__actions{gap:18px 26px;margin-top:32px}
-  .primary-link{padding:16px 22px 16px 26px;font-size:14px}
+  .primary-link{padding:10px 10px 10px 24px;font-size:14px}
+  .primary-link>span{width:34px;height:34px}
   .hero__grid{row-gap:36px}
   .hero__art{margin-inline:-6px;border-radius:20px}
 
