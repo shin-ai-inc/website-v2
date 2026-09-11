@@ -90,7 +90,8 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
 /* ===== 見出し・ボタン・ヒーローの調整（柴田指示） =====
    1) ヒーロー1行目の「余白」をセージ緑へ。2行目の「次の一手」は
       テラコッタのまま。静（いま手に入るもの）と動（これから起こすこと）を
-      色で対にする。#5a7357 は紙 #f8f7f1 に対し 4.87:1。
+      色で対にする。#6f8a6a は紙 #f8f7f1 に対し 3.56:1。ヒーローは32〜68pxの太字で、
+      大きな文字の基準3:1を満たす。
    2) 第4節の見出しは「チームが一貫して担います。」13字を
       モバイルで一行に収める。幅は wrap=100%-44px なので
       13字×1.01em が収まる上限は 390px幅で26.3px、360px幅で24.4px。
@@ -100,7 +101,7 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
       掛かって行の高さだけで48.75pxあった。.contact-button>span は
       ラベルと矢印の両方に当たるため、「無料で相談する」自体も25pxだった。
       ラベル15px・矢印18pxに分け、行間を切る。高さ82.75px→52px。 */
-.hero h1>span:first-child em{color:#5a7357}
+.hero h1>span:first-child em{color:#6f8a6a}
 .contact-button{line-height:1.45;padding:18px 26px}
 .contact-button>span:first-child{font-size:16px}
 .contact-button>span:last-child{font-size:20px;line-height:1}
