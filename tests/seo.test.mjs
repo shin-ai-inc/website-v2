@@ -490,3 +490,15 @@ test("/lp/ はスマホで書いた改行を消さず、スマホ専用の改行
   assert.ok((html.match(/class="br-sp"/g) || []).length >= 20, "スマホ専用の改行が少ない");
 });
 
+test("/lp/ のロゴは図形(SVG)で、安全な単体ファイル", () => {
+  /* 画像のロゴは PC(画素密度1〜1.5)でマークの白い線が滲んだ(柴田指摘 2026-09-12)。
+     図形なら画素密度によらず輪郭をその場で描ける。 */
+  const html = readSrc("lp/index.html");
+  const logos = html.match(/<img src="assets\/logo\/shinai-logo\.svg"[^>]*class="official-logo"/g) || [];
+  assert.equal(logos.length, 2, "ヘッダーとフッターのロゴが図形になっていない");
+  assert.ok(!/shinai-logo-\d+\.(webp|png)/.test(html), "画像のロゴが残っている");
+  const svg = readSrc("lp/assets/logo/shinai-logo.svg");
+  assert.ok(!/<script|\son[a-z]+\s*=|javascript:|(href|src)\s*=\s*"(https?:)?\/\//i.test(svg), "SVG にスクリプトか外部参照がある");
+  assert.match(svg, /viewBox="0 0 1500 468"/, "原本と同じ比率ではない");
+});
+
