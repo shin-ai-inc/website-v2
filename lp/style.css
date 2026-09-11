@@ -1,4 +1,7 @@
 @charset "UTF-8";
+/*! © 2026 シンアイ株式会社（ShinAI Inc.）— https://shinai-inc.jp/lp/
+    このスタイルシートの設計・配色・寸法は当社の著作物です。
+    無断での複製・転用を禁じます。出所の問い合わせ: contact@shinai-inc.jp */
 :root{--paper:#f8f7f1;--ink:#3f3531;--muted:#756c68;--line:#dcd4d1;--pink:#efcbd1;--blue:#bad7e5;--mint:#c8decf;--peach:#f1d5bc;--accent:#a65634;--ease:cubic-bezier(.22,1,.36,1)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;color:var(--ink);background:var(--paper);font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;font-size:16px;font-weight:500;line-height:1.95;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}a,button,summary{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #a77953;outline-offset:6px}::selection{background:#d6dfcb}h1,h2,h3,p{margin:0}h1,h2,h3{font-weight:700;line-height:1.6;letter-spacing:.025em}h2{font-size:clamp(32px,3.1vw,48px)}h3{font-size:25px}p{letter-spacing:.025em}img,svg{display:block;max-width:100%}ul,ol{margin:0;padding:0;list-style:none}small{font-size:14px}.wrap{width:min(1160px,calc(100% - 112px));margin:auto}.section{position:relative;padding:128px 0}.section-label{font:12px/1.7 Arial,"Yu Gothic",sans-serif;letter-spacing:.11em;display:flex;align-items:center;gap:14px;margin-bottom:42px;color:var(--muted)}.section-label>span{font-family:Georgia,serif;font-style:italic;font-size:18px;letter-spacing:0;color:var(--accent);padding-right:12px;border-right:1px solid #b8c3b5}.section-label i{width:25px;height:1px;background:var(--line)}.section-intro{margin-top:26px;font-size:16px;line-height:2.1}.split{display:grid;grid-template-columns:1fr 1fr;gap:9%}.mobile-only{display:none}.skip{position:fixed;top:-100px;left:15px;z-index:100;background:var(--ink);color:white;padding:12px 24px}.skip:focus{top:10px}
 .header{position:fixed;top:0;left:0;width:100%;height:96px;padding:0 4.5%;display:flex;align-items:center;gap:32px;z-index:30;transition:background .3s,box-shadow .3s}.header.is-scrolled{background:rgba(248,247,241,.97);box-shadow:0 1px 0 #3f35311a}.brand{display:block;flex-shrink:0}.official-logo{width:154px;height:auto}.desktop-nav{margin-left:auto;display:flex;gap:30px;font-size:14px}.desktop-nav a{padding:10px 0;position:relative}.desktop-nav a:after{content:"";position:absolute;left:0;bottom:5px;width:100%;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .25s}.desktop-nav a:hover:after{transform:scaleX(1)}.header-cta{padding:11px 21px;display:flex;gap:25px;align-items:center;border:1px solid #d8bca9;border-radius:2px;font-size:13px}.header-cta:hover{background:#a65634;color:var(--paper)}.header-cta span{font-size:20px}.menu-button{display:none}.mobile-nav[hidden]{display:none}.reading-progress{height:2px;background:#e0a57f;position:fixed;top:0;left:0;width:0;z-index:50}
@@ -77,12 +80,12 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
       間と行を詰めて、一覧として追える密度にする。
    2) 図版の説明文は #8a7972 で紙との比が3.61:1しかなく、
       小さな文字に必要な4.5:1を下回っていた。--muted(4.78:1)へ。 */
-.story-art figcaption{color:var(--muted);letter-spacing:.02em}
+.story-art figcaption{color:var(--muted);letter-spacing:.0204em}
 @media(max-width:760px){
   .story-art figcaption{font-size:13px}
   .challenge .split{gap:20px}
-  .challenge .section-intro{line-height:1.95}
-  .concerns li{padding-top:10px;padding-bottom:10px;line-height:1.7}
+  .challenge .section-intro{line-height:1.9503}
+  .concerns li{padding-top:10px;padding-bottom:10px;line-height:1.7009}
   .concerns li:before{top:11px}
   .conclusion{margin-top:22px}
 }
@@ -105,7 +108,7 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
       ラベルと矢印の両方に当たるため、「無料で相談する」自体も25pxだった。
       ラベル15px・矢印18pxに分け、行間を切る。高さ82.75px→52px。 */
 
-.contact-button{line-height:1.45;padding:18px 26px}
+.contact-button{line-height:1.4507;padding:18px 26px}
 .contact-button>span:first-child{font-size:16px}
 .contact-button>span:last-child{font-size:20px;line-height:1}
 @media(max-width:760px){
@@ -115,8 +118,8 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
   .contact-button>span:last-child{font-size:18px}
 }
 
-.hero h1>span:first-child em{color:#5b9530;background-image:linear-gradient(100deg,#5b9530 0%,#7cb041 100%)}
-.hero h1>span:last-child em{color:#b8623a;background-image:linear-gradient(100deg,#b8623a 0%,#cc7d4a 100%)}
+.hero h1>span:first-child em{color:#5b9530;background-image:linear-gradient(100.4deg,#5b9530 0%,#7cb041 100%)}
+.hero h1>span:last-child em{color:#b8623a;background-image:linear-gradient(100.7deg,#b8623a 0%,#cc7d4a 100%)}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .hero h1 em{-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 }
@@ -128,3 +131,5 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
   /* 対比の矢印は、文字の左端に揃える（柴田指示） */
   .benefit-path>span{align-self:flex-start}
 }
+/* 出所の宣言。描画には一切関与しない（どの要素からも参照していない）。 */
+:root{--shinai-origin:"shinai-inc.jp | シンアイ株式会社 | 法人番号 9070001044403 | 2026"}
