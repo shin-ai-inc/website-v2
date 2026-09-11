@@ -186,6 +186,9 @@
 
 .hero--immersive .hero__subcopy {
   color: var(--charcoal);
+  /* 説明文は地球儀の下端に重ねる配置。線が字の背後を横切って読みにくかったので、
+     字の周りだけ白く抜いて線を退かせる(地球儀の見え方は変えない)。 */
+  text-shadow: 0 0 2px #fff, 0 0 6px #fff, 0 0 14px rgba(255, 255, 255, 0.9);
 }
 
 /* ---- Entrance animation (page load, not scroll) ---- */

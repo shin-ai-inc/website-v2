@@ -12,8 +12,11 @@
 
 .capability__item {
   display: flex;
+  /* 用語の下に説明を置く。横に並べると説明の列が画面幅しだいで250px前後まで細り、
+     「自社の文／脈」「調整／し、」のように語の途中で折れた(1440・1280pxで実測)。 */
+  flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-4);
+  gap: var(--space-2);
   padding: var(--space-5);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--r-lg);
@@ -73,8 +76,18 @@
   color: rgba(255, 255, 255, 0.62);
 }
 
-@media (max-width: 640px) {
+/* 900px以下で2列にすると1枚が300px前後になり、説明の一行(最長22字)が収まらない。 */
+@media (max-width: 900px) {
   .capability__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  /* 2列のままだと1列が140px前後になり、説明が1行7〜8字に細切れになった
+     (「用途に合わせて大／規模言語モデルを／調整し」)。1列にして、意味の切れ目で改行する。 */
+  .capability__grid {
+    grid-template-columns: 1fr;
     gap: var(--space-3);
     margin-top: var(--space-4);
   }

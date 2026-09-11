@@ -204,6 +204,18 @@ const markCurrent = (html, nav) => {
 const normalizeMain = (raw) =>
   raw.replace(/^\s*<main\b[^>]*>/i, "").replace(/<\/main>\s*$/i, "").trim();
 
+/* 日本語の文の途中で原稿を改行すると、ブラウザは改行を空白として描く
+   (「判断を、 誰もが」「つなぎ 業務を」)。CSS の規定では和文どうしの改行は
+   消すことになっているが、主要ブラウザは実装していない。
+   本文の和文どうしの間にある改行と字下げだけを除く。タグ・script・style・pre には触れない。
+   2026-09-12 時点で 6 ページ 33 か所あった。 */
+const CJK = "[\\u3000-\\u303F\\u3040-\\u30FF\\u4E00-\\u9FFF\\uFF00-\\uFFEF]";
+const CJK_BREAK = new RegExp(`(${CJK})[ \\t]*\\r?\\n\\s*(?=${CJK})`, "g");
+const joinCjkBreaks = (html) => html
+  .split(/(<(?:script|style|pre)\b[\s\S]*?<\/(?:script|style|pre)>|<[^>]+>)/i)
+  .map((part, i) => (i % 2 === 1 ? part : part.replace(CJK_BREAK, "$1")))
+  .join("");
+
 /* ビルド機構を通さず、単独で公開しているページ。本文は生成しないが、
    ここに挙げないと sitemap にも llms.txt にも載らず、検索側から見つからない。
    収録に必要な事実だけを持たせる。 */
@@ -792,7 +804,7 @@ const urlFor = (file, dir) =>
 const shell = (page, loc) => {
   const meta = loc.code === "ja" ? page : page.en;
   const canonical = urlFor(page.file, loc.dir);
-  const main = normalizeMain(read(loc.src + "/" + page.part));
+  const main = joinCjkBreaks(normalizeMain(read(loc.src + "/" + page.part)));
   /* replaceAll: partial 冒頭の解説コメント内にもトークン名が現れるため、先頭一致では取り違える。 */
   const header = markCurrent(shared[loc.code].header, page.nav)
     .replaceAll("{{LANG_SWITCH}}", langSwitch(loc, page));

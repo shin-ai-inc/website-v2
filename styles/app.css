@@ -1506,8 +1506,11 @@ h1, h2, h3 {
 
 .capability__item {
   display: flex;
+  /* 用語の下に説明を置く。横に並べると説明の列が画面幅しだいで250px前後まで細り、
+     「自社の文／脈」「調整／し、」のように語の途中で折れた(1440・1280pxで実測)。 */
+  flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-4);
+  gap: var(--space-2);
   padding: var(--space-5);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--r-lg);
@@ -1567,8 +1570,18 @@ h1, h2, h3 {
   color: rgba(255, 255, 255, 0.62);
 }
 
-@media (max-width: 640px) {
+/* 900px以下で2列にすると1枚が300px前後になり、説明の一行(最長22字)が収まらない。 */
+@media (max-width: 900px) {
   .capability__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  /* 2列のままだと1列が140px前後になり、説明が1行7〜8字に細切れになった
+     (「用途に合わせて大／規模言語モデルを／調整し」)。1列にして、意味の切れ目で改行する。 */
+  .capability__grid {
+    grid-template-columns: 1fr;
     gap: var(--space-3);
     margin-top: var(--space-4);
   }
@@ -4289,6 +4302,9 @@ body.chat-open .scroll-progress {
 
 .hero--immersive .hero__subcopy {
   color: var(--charcoal);
+  /* 説明文は地球儀の下端に重ねる配置。線が字の背後を横切って読みにくかったので、
+     字の周りだけ白く抜いて線を退かせる(地球儀の見え方は変えない)。 */
+  text-shadow: 0 0 2px #fff, 0 0 6px #fff, 0 0 14px rgba(255, 255, 255, 0.9);
 }
 
 /* ---- Entrance animation (page load, not scroll) ---- */
@@ -5779,7 +5795,9 @@ body.chat-open .scroll-progress {
 }
 
 /* タブレット: 1カラム化。過剰な横伸びを防ぐため最大幅を制限 */
-@media (max-width: 960px) {
+/* 961〜1100px で3枚を横に並べると本文が1行13字前後になり、
+   「つな／ぎ」「育／成まで」と崩れた。1100px までは画像と本文を横に並べる形にする。 */
+@media (max-width: 1100px) {
   .solutions__grid {
     grid-template-columns: 1fr;
     max-width: 640px;
@@ -5791,10 +5809,10 @@ body.chat-open .scroll-progress {
   }
 }
 
-/* タブレット帯(641-960): 縦積みの大画像カードは narrow column + 大画像で間延びする。
+/* タブレット帯(641-1100): 縦積みの大画像カードは narrow column + 大画像で間延びする。
    画像を左へ寄せた横並びメディアカードにして幅を活かし、密度と品位を保つ。
    位置指定を明示し、col1=画像(全高)/col2=見出し・リード・罫・箇条書き とする。 */
-@media (min-width: 641px) and (max-width: 960px) {
+@media (min-width: 641px) and (max-width: 1100px) {
   .solutions__grid {
     max-width: 760px;
   }
