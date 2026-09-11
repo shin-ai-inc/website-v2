@@ -15,70 +15,146 @@
 <a class="skip" href="#main">本文へ移動</a>
 <header class="header">
   <a class="brand" href="#home" aria-label="ShinAI トップ"><picture><source srcset="assets/shinai-logo.webp" type="image/webp"><img src="assets/shinai-logo.png" width="500" height="156" alt="ShinAI" class="official-logo"></picture></a>
-  <nav class="desktop-nav" aria-label="メインナビゲーション"><a href="#about">私たちについて</a><a href="#work">仕事の変え方</a><a href="#company">会社情報</a></nav>
+  <nav class="desktop-nav" aria-label="メインナビゲーション"><a href="#change">仕事の変化</a><a href="#approach">進め方</a><a href="#company">会社について</a></nav>
   <a href="#contact" class="header-cta">まずは、話してみる <span aria-hidden="true">↗</span></a>
-  <button class="menu-button" aria-expanded="false" aria-controls="mobile-nav" aria-label="メニューを開く"><span></span><span></span></button>
-  <nav id="mobile-nav" class="mobile-nav" aria-label="モバイルナビゲーション" hidden><a href="#about">私たちについて</a><a href="#work">仕事の変え方</a><a href="#process">支援の進め方</a><a href="#company">会社情報</a><a href="#contact">まずは、話してみる ↗</a></nav>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="メニューを開く"><span></span><span></span></button>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="モバイルナビゲーション" hidden><a href="#change">仕事の変化</a><a href="#work">業務ごとの変化</a><a href="#approach">進め方</a><a href="#company">会社について</a><a href="#contact">まずは、話してみる ↗</a></nav>
 </header>
 <main id="main">
-  <section id="home" class="hero section" aria-labelledby="hero-title">
-    <div class="hero-copy">
-      <p class="eyebrow">人手不足・属人化に向き合う、経営者・役員の方へ。</p>
-      <h1 id="hero-title"><span>仕事に、<em>余白</em>を。</span><span>会社に、<em>次の一手</em>を。</span></h1>
-      <p class="hero-description">転記や確認の手間を減らし、<br>社員が、判断や改善に力を使える会社へ。<br><span>自社に合うAIシステムを、開発から定着まで。</span></p>
-      <div class="hero-actions"><a href="#contact" class="primary-link">自社の仕事から相談する <span aria-hidden="true">↗</span></a><a href="#work" class="secondary-link">仕事の変化を見る <span aria-hidden="true">↓</span></a></div>
+
+  <section id="home" class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow">人手不足・属人化に向き合う、経営者・役員の方へ。</p>
+        <h1 id="hero-title"><span>仕事に、<em>余白</em>を。</span><span>会社に、<em>次の一手</em>を。</span></h1>
+        <p class="hero__lead">転記や確認の手間を減らし、<br>社員が、判断や改善に力を使える会社へ。</p>
+        <p class="hero__sub">自社に合うAIシステムを、開発から定着まで。</p>
+        <div class="hero__actions"><a href="#contact" class="primary-link">自社の仕事から相談する <span aria-hidden="true">↗</span></a><a href="#change" class="text-link">仕事の変化を見る <span aria-hidden="true">↓</span></a></div>
+      </div>
+      <figure class="hero__art"><picture><source srcset="assets/shinai-editorial-art.webp" type="image/webp"><img src="assets/shinai-editorial-art.png" width="1200" height="800" alt="異なる色の面が組み合わさり、余白と新しい広がりを生む抽象アート" fetchpriority="high"></picture></figure>
     </div>
-    <div class="hero-artwork"><picture><source srcset="assets/shinai-editorial-art.webp" type="image/webp"><img src="assets/shinai-editorial-art.png" width="1200" height="800" alt="異なる色の面が組み合わさり、余白と新しい広がりを生む抽象アート" fetchpriority="high"></picture><p><span>SHINAI</span> Make room for what’s next.</p><div class="hero-benefits" aria-label="AI活用で目指す変化"><span>手間を、減らす。</span><span>知恵を、つなぐ。</span><span>時間を、生み出す。</span></div></div>
-    <div class="hero-bottom"><span>AI SYSTEM DEVELOPMENT &amp; IMPLEMENTATION</span><span>群馬・高崎から、企業の現場へ。</span><a href="#about" aria-label="シンアイの支援について読む">SCROLL <span aria-hidden="true">↓</span></a></div>
   </section>
-  <section id="about" class="section about" aria-labelledby="about-title">
-    <div class="wrap"><p class="section-label"><span>02</span> ABOUT US <i></i> 15秒でわかるShinAI</p>
-    <h2 id="about-title" class="reveal">社員の知恵を、<br>会社で使える仕組みに。</h2>
-    <div class="principles">
-      <article class="reveal"><div class="principle-mark pink"><span>01</span></div><p class="small-lead">改善の優先順位がわかる。</p><h3>変える仕事が、見える。</h3><p>仕事を一番よく知る社員の声をもとに、<br>負担の大きい業務とAIの使いどころを整理します。</p></article>
-      <span class="flow-arrow" aria-hidden="true">→</span>
-      <article class="reveal"><div class="principle-mark blue"><span>02</span></div><p class="small-lead">業務に合わせて開発する。</p><h3>自社に合うから、使える。</h3><p>提案書で終わらず、必要なシステムを開発。<br>既存の仕事の流れに合わせて組み込みます。</p></article>
-      <span class="flow-arrow" aria-hidden="true">→</span>
-      <article class="reveal"><div class="principle-mark mint"><span>03</span></div><p class="small-lead">導入後も、相談できる。</p><h3>使いながら、良くなる。</h3><p>社員の使い勝手を確かめ、改善を重ねます。<br>日々の業務で使われる状態まで伴走します。</p></article>
-    </div></div>
+
+  <section id="change" class="section section--sage" aria-labelledby="change-title">
+    <div class="wrap">
+      <div class="split split--center">
+        <div class="reveal">
+          <p class="eyebrow">仕事の変化</p>
+          <h2 id="change-title">手間が減ると、<br><span class="h-accent">できることが増える。</span></h2>
+          <p class="body">何度も入力する。あちこち探す。<br>その時間を、お客様への提案や次の改善へ。<br>AIを入れた先の「仕事の変化」を大切にします。</p>
+        </div>
+        <figure class="art reveal"><div class="art__frame"><picture><source srcset="assets/shinai-work-flow.webp" type="image/webp"><img src="assets/shinai-work-flow.png" width="1200" height="800" loading="lazy" alt="散らばった書類が一つの整理された流れにまとまるイラスト"></picture></div><figcaption>ばらばらの仕事を、すっと流れる仕組みに。</figcaption></figure>
+      </div>
+      <div class="day reveal" role="img" aria-label="一日の時間の使い方のイメージ。いまは転記・確認・情報探しが大半を占める。これからは転記と確認が短くなって余白が生まれ、提案・判断・改善に使える時間が増える。">
+        <p class="day__title">一日の時間の使い方<small>イメージ</small></p>
+        <div class="day__row day__row--now">
+          <span class="day__label">いま</span>
+          <div class="day__bar"><span class="seg seg--chore s1">転記</span><span class="seg seg--chore s2">確認</span><span class="seg seg--chore s3">情報探し</span><span class="seg seg--value">提案・判断</span></div>
+        </div>
+        <div class="day__row day__row--next">
+          <span class="day__label">これから</span>
+          <div class="day__bar"><span class="seg seg--chore s1">転記</span><span class="seg seg--chore s2">確認</span><span class="seg seg--room"><em>余白</em></span><span class="seg seg--value">提案・判断・改善</span></div>
+        </div>
+      </div>
+    </div>
   </section>
-  <section id="challenge" class="section challenge" aria-labelledby="challenge-title"><div class="wrap split">
-    <div class="reveal"><p class="section-label"><span>03</span> THE REAL CHALLENGE</p><h2 id="challenge-title">忙しさの理由は、<br>仕事の流れの中に。</h2><p class="section-intro">AIを選ぶ前に、負担が生まれる場所を整理する。<br>そこから、変えるべき仕事が見えてきます。</p></div>
-    <div class="concerns reveal"><ul><li>どの業務からAI化すべきかわからない</li><li>業務の進め方が、人によって違う</li><li>情報がExcel・紙・システムに分散している</li><li>AIツールを入れたが、定着しない</li><li>自社に合うAIがわからない</li><li>開発会社に何を頼めばよいかわからない</li></ul><p class="conclusion">必要なのは、ツール選びだけでなく、<br><span>仕事の流れから考えること。</span></p></div>
-  </div></section>
-  <section id="approach" class="section approach" aria-labelledby="approach-title"><div class="wrap">
-    <p class="section-label"><span>04</span> OUR APPROACH</p><h2 id="approach-title" class="reveal">事業を理解した<br>チームが一貫して担います。</h2>
-    <p class="section-intro reveal">業務の流れを知らないままでは、解くべき課題は見えません。<br>現場の仕事を理解するところから始め、開発も、その後の定着も、同じチームが担います。</p>
-    <div class="fragmented reveal"><span class="diagram-label">担当ごとに分かれる支援</span><span>AIコンサル<small>戦略・企画</small></span><span>研修会社<small>人材教育</small></span><span>システム会社<small>開発</small></span><span>SaaS<small>ツール提供</small></span></div>
-    <div class="continuous reveal"><div class="continuous-brand"><picture><source srcset="assets/shinai-logo.webp" type="image/webp"><img src="assets/shinai-logo.png" width="500" height="156" alt="ShinAI" class="official-logo"></picture><small>理解から、定着まで。</small></div><ol><li>業務理解</li><li>課題整理</li><li>AI活用設計</li><li>小さな検証<small>PoC</small></li><li>システム開発</li><li>導入・定着</li></ol></div>
-  </div></section>
-  <section id="philosophy" class="section philosophy" aria-labelledby="philosophy-title"><div class="wrap">
-    <p class="section-label"><span>05</span> OUR PHILOSOPHY</p>
-    <div class="benefit-story">
-      <figure class="story-art reveal"><picture><source srcset="assets/shinai-work-flow.webp" type="image/webp"><img src="assets/shinai-work-flow.png" width="1200" height="800" loading="lazy" alt="散らばった書類が一つの整理された流れにまとまるイラスト"></picture><figcaption>ばらばらの仕事を、すっと流れる仕組みに。</figcaption></figure>
-      <div class="philosophy-main reveal"><h2 id="philosophy-title">手間が減ると、<br><span>できることが増える。</span></h2><p class="philosophy-note">何度も入力する。あちこち探す。<br>その時間を、お客様への提案や次の改善へ。<br>AIを入れた先の「仕事の変化」を大切にします。</p></div>
+
+  <section id="challenge" class="section" aria-labelledby="challenge-title">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow">よくあるお悩み</p>
+        <h2 id="challenge-title">忙しさの理由は、<br>仕事の流れの中に。</h2>
+        <p class="body">AIを選ぶ前に、負担が生まれる場所を整理する。<br>そこから、変えるべき仕事が見えてきます。</p>
+      </div>
+      <div class="reveal">
+        <ol class="numbered concerns"><li>どの業務からAI化すべきかわからない</li><li>業務の進め方が、人によって違う</li><li>情報がExcel・紙・システムに分散している</li><li>AIツールを入れたが、定着しない</li><li>自社に合うAIがわからない</li><li>開発会社に何を頼めばよいかわからない</li></ol>
+        <p class="conclusion">必要なのは、ツール選びだけでなく、<br><span>仕事の流れから考えること。</span></p>
+      </div>
     </div>
-    <div class="benefit-path reveal" aria-label="AI活用が生む時間の変化"><div><small>いま、時間を使っていること</small><p>転記・確認・情報探し</p></div><span aria-hidden="true">→</span><div><small>もっと、時間を使いたいこと</small><p>提案・判断・改善</p></div></div>
-  </div></section>
-  <section id="work" class="section work" aria-labelledby="work-title"><div class="wrap">
-    <p class="section-label"><span>06</span> WORK, REIMAGINED</p><div class="section-heading reveal"><h2 id="work-title">あなたの会社にも、<br>変えられる仕事がある。</h2><p>今の仕事がどう変わるか、業務ごとにご覧ください。<br><small>支援で目指す変化の例です。</small></p></div>
-    <div class="work-list">
-      <details class="work-item" open><summary><span class="work-number">01</span><h3>受発注</h3><span class="work-summary">何度も入力する手間を、減らす。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="before-label">BEFORE</span><p>電話・FAX・メール・Excel。<br>情報を集めて、何度も入力。</p></div><span class="detail-arrow" aria-hidden="true">→</span><div><span class="after-label">AFTER</span><p>情報を整理し、<br><strong>確認・入力・判断をAIで支援。</strong></p></div></div></details>
-      <details class="work-item"><summary><span class="work-number">02</span><h3>見積</h3><span class="work-summary">調べ直す時間を減らし、見積を進めやすく。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="before-label">BEFORE</span><p>図面・過去案件・経験則を、<br>担当者が一つずつ確認。</p></div><span class="detail-arrow" aria-hidden="true">→</span><div><span class="after-label">AFTER</span><p>過去情報とAIを組み合わせ、<br><strong>見積判断を支援。</strong></p></div></div></details>
-      <details class="work-item"><summary><span class="work-number">03</span><h3>生産管理</h3><span class="work-summary">眠ったデータを、計画と判断に活かす。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="before-label">BEFORE</span><p>データは蓄積されているが、<br>計画や判断に活かせていない。</p></div><span class="detail-arrow" aria-hidden="true">→</span><div><span class="after-label">AFTER</span><p>情報の持ち方から整え、<br><strong>AIが活用できるデータ構造へ。</strong></p></div></div></details>
-      <details class="work-item"><summary><span class="work-number">04</span><h3>社内ナレッジ</h3><span class="work-summary">「あの人に聞かないと」を、減らす。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="before-label">BEFORE</span><p>「あの人に聞かないと分からない」。<br>探す時間も、答える時間もかかる。</p></div><span class="detail-arrow" aria-hidden="true">→</span><div><span class="after-label">AFTER</span><p>社内の情報を整理し、<br><strong>必要な知識へAIからアクセス。</strong></p></div></div></details>
-      <details class="work-item"><summary><span class="work-number">05</span><h3>会議・文書</h3><span class="work-summary">まとめる時間を、動き出す時間に。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="before-label">BEFORE</span><p>会議が終わってから、<br>議事録づくり・整理・共有。</p></div><span class="detail-arrow" aria-hidden="true">→</span><div><span class="after-label">AFTER</span><p>会議から情報整理までAIが補助。<br><strong>次の行動につながる共有へ。</strong></p></div></div></details>
-      <details class="work-item"><summary><span class="work-number">06</span><h3>AI人材育成</h3><span class="work-summary">「学んだ」を、日々の「使える」に。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="before-label">BEFORE</span><p>研修は受けたけれど、<br>実際の業務で使う機会がない。</p></div><span class="detail-arrow" aria-hidden="true">→</span><div><span class="after-label">AFTER</span><p>自社の仕事を題材に、<br><strong>業務に活きるAI活用を習得。</strong></p></div></div></details>
+  </section>
+
+  <section id="work" class="section section--rule" aria-labelledby="work-title">
+    <div class="wrap split">
+      <div class="sticky reveal">
+        <p class="eyebrow">業務ごとの変化</p>
+        <h2 id="work-title">あなたの会社にも、<br>変えられる仕事がある。</h2>
+        <p class="body">今の仕事がどう変わるか、<br class="br-pc">業務ごとにご覧ください。</p>
+        <p class="note">支援で目指す変化の例です。</p>
+      </div>
+      <div class="work-list reveal">
+        <details class="work-item" open><summary><span class="work-number">01</span><h3>受発注</h3><span class="work-summary">何度も入力する手間を、減らす。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="tag">いま</span><p>電話・FAX・メール・Excel。<br>情報を集めて、何度も入力。</p></div><span class="work-detail__arrow" aria-hidden="true">→</span><div><span class="tag tag--next">これから</span><p>情報を整理し、<br><strong>確認・入力・判断をAIで支援。</strong></p></div></div></details>
+        <details class="work-item"><summary><span class="work-number">02</span><h3>見積</h3><span class="work-summary">調べ直す時間を減らし、見積を進めやすく。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="tag">いま</span><p>図面・過去案件・経験則を、<br>担当者が一つずつ確認。</p></div><span class="work-detail__arrow" aria-hidden="true">→</span><div><span class="tag tag--next">これから</span><p>過去情報とAIを組み合わせ、<br><strong>見積判断を支援。</strong></p></div></div></details>
+        <details class="work-item"><summary><span class="work-number">03</span><h3>生産管理</h3><span class="work-summary">眠ったデータを、計画と判断に活かす。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="tag">いま</span><p>データは蓄積されているが、<br>計画や判断に活かせていない。</p></div><span class="work-detail__arrow" aria-hidden="true">→</span><div><span class="tag tag--next">これから</span><p>情報の持ち方から整え、<br><strong>AIが活用できるデータ構造へ。</strong></p></div></div></details>
+        <details class="work-item"><summary><span class="work-number">04</span><h3>社内ナレッジ</h3><span class="work-summary">「あの人に聞かないと」を、減らす。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="tag">いま</span><p>「あの人に聞かないと分からない」。<br>探す時間も、答える時間もかかる。</p></div><span class="work-detail__arrow" aria-hidden="true">→</span><div><span class="tag tag--next">これから</span><p>社内の情報を整理し、<br><strong>必要な知識へAIからアクセス。</strong></p></div></div></details>
+        <details class="work-item"><summary><span class="work-number">05</span><h3>会議・文書</h3><span class="work-summary">まとめる時間を、動き出す時間に。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="tag">いま</span><p>会議が終わってから、<br>議事録づくり・整理・共有。</p></div><span class="work-detail__arrow" aria-hidden="true">→</span><div><span class="tag tag--next">これから</span><p>会議から情報整理までAIが補助。<br><strong>次の行動につながる共有へ。</strong></p></div></div></details>
+        <details class="work-item"><summary><span class="work-number">06</span><h3>AI人材育成</h3><span class="work-summary">「学んだ」を、日々の「使える」に。</span><span class="toggle" aria-hidden="true"></span></summary><div class="work-detail"><div><span class="tag">いま</span><p>研修は受けたけれど、<br>実際の業務で使う機会がない。</p></div><span class="work-detail__arrow" aria-hidden="true">→</span><div><span class="tag tag--next">これから</span><p>自社の仕事を題材に、<br><strong>業務に活きるAI活用を習得。</strong></p></div></div></details>
+      </div>
     </div>
-  </div></section>
-  <section id="process" class="section process" aria-labelledby="process-title"><div class="wrap"><p class="section-label"><span>07</span> HOW WE WORK</p><h2 id="process-title" class="reveal">小さく確かめて、<br>使える仕組みへ。</h2><p class="section-intro reveal">いきなり開発を決める必要はありません。<br>今の仕事の話から、一歩ずつ進めます。</p>
-    <ol class="steps"><li class="reveal"><span>STEP 01</span><h3>話す</h3><p>まず経営課題や<br>業務について伺います。</p></li><li class="reveal"><span>STEP 02</span><h3>見つける</h3><p>AIを使う場所と、<br>使わない場所を整理。</p></li><li class="reveal"><span>STEP 03</span><h3>試す</h3><p>必要に応じて、<br>小さな検証から。</p></li><li class="reveal"><span>STEP 04</span><h3>つくる</h3><p>自社の業務に合う<br>仕組みを開発します。</p></li><li class="reveal"><span>STEP 05</span><h3>根づかせる</h3><p>社員が使える状態まで<br>伴走します。</p></li></ol>
-  </div></section>
-  <section id="closeness" class="section closeness" aria-labelledby="closeness-title"><div class="wrap split"><div class="reveal"><p class="section-label"><span>08</span> OUR DISTANCE</p><h2 id="closeness-title">近く、<br>深く。</h2><p>経営者の「変えたい」と、<br>社員の「こうすれば使える」をつなぐ。<br>その対話を、開発と改善につなげます。</p><figure class="together-art"><picture><source srcset="assets/shinai-together.webp" type="image/webp"><img src="assets/shinai-together.png" width="1200" height="800" loading="lazy" alt="異なる形が一つの道につながり、協力して前に進む抽象イラスト"></picture></figure></div><div class="closeness-list"><article class="reveal"><span>01</span><div><h3>経営と近い</h3><p>目的や優先順位から話せるので、何を変えるかを決めやすい。</p></div></article><article class="reveal"><span>02</span><div><h3>現場と近い</h3><p>社員のやり方や困りごとを、使いやすい仕組みに反映する。</p></div></article><article class="reveal"><span>03</span><div><h3>開発と近い</h3><p>相談した内容が開発につながり、導入後の改善も一緒に進められる。</p></div></article></div></div></section>
-  <section id="technology" class="section technology" aria-labelledby="technology-title"><div class="wrap"><p class="section-label"><span>09</span> OUR EXPERTISE</p><div class="split"><div class="reveal"><h2 id="technology-title">相談しやすい。<br>その先まで、つくれる。</h2><p class="section-intro">相談で終わらず、実際に動く仕組みへ。<br>業務に合う技術を選び、組み合わせます。</p></div><div class="tech-panel reveal"><p>業務に合わせて選ぶ、技術の引き出し。</p><ul><li>生成AI / LLM</li><li>RAG <small>社内情報の検索・活用</small></li><li>AIエージェント</li><li>音声認識</li><li>画像解析</li><li>業務システム連携</li><li>ローカルAI</li><li>セキュリティ設計</li></ul><span class="tech-caption">FROM UNDERSTANDING TO IMPLEMENTATION.</span></div></div></div></section>
-  <section id="vision" class="section vision" aria-labelledby="vision-title"><div class="wrap"><p class="section-label"><span>10</span> THE FUTURE WE BUILD</p><div class="vision-layout"><div class="reveal"><h2 id="vision-title">一つの効率化から、<br>新しい当たり前へ。</h2><p>人と情報と仕事が、自然につながる。<br>AIが企業活動の中で、当たり前に働く。</p><p>一つのツールの導入から、<br>企業そのものがAIを活用できる構造へ。<br>その変化を、一緒につくっていきます。</p></div><div class="vision-diagram reveal" role="img" aria-label="人、情報、仕事がつながり、AIが日常の業務で働く"><div class="vision-nodes"><div><span class="vision-word">人</span><small>判断する</small></div><b aria-hidden="true">＋</b><div><span class="vision-word">情報</span><small>つながる</small></div><b aria-hidden="true">＋</b><div><span class="vision-word">仕事</span><small>動き出す</small></div></div><div class="vision-outcome"><span aria-hidden="true">↓</span><p>AIが、日々の仕事の中で働く。</p></div></div></div></div></section>
-  <section id="company" class="section company" aria-labelledby="company-title"><div class="wrap"><p class="section-label"><span>11</span> COMPANY</p><div class="split"><div class="reveal"><h2 id="company-title">群馬から、<br>企業のAI活用をつくる。</h2><p class="section-intro">群馬を拠点に、中小・中堅企業の<br>AI活用を支援しています。</p><p class="location-mark">GUNMA <span>—</span> TAKASAKI<br><small>近くのパートナーとして、その先の未来へ。</small></p></div><dl class="company-data reveal"><div><dt>会社名</dt><dd>シンアイ株式会社 <span>ShinAI</span></dd></div><div><dt>代表取締役</dt><dd>柴田 昌国</dd></div><div><dt>所在地</dt><dd>群馬県高崎市</dd></div><div><dt>事業内容</dt><dd>AIシステム開発<br>AI導入伴走支援</dd></div></dl></div></div></section>
-  <section id="contact" class="section contact" aria-labelledby="contact-title"><div class="wrap"><p class="section-label"><span>12</span> LET’S TALK</p><div class="contact-copy reveal"><p class="eyebrow">AIを導入するか、決まっていなくても大丈夫です。</p><h2 id="contact-title">次の一手を、<br>仕事の話から。</h2><p>「人を増やさずに、この業務を回せるだろうか」。<br>そんな経営の悩みからで構いません。<br>AIが役立つ業務と、まず整えるべきことを一緒に考えます。</p><form class="lp-form" id="lp-form" novalidate><div class="lp-field"><label class="lp-label" for="lp-company">会社名・組織名</label><input class="lp-input" id="lp-company" name="company" type="text" maxlength="100" autocomplete="organization" required="required"></div><div class="lp-field"><label class="lp-label" for="lp-name">お名前</label><input class="lp-input" id="lp-name" name="name" type="text" maxlength="50" autocomplete="name" required="required"></div><div class="lp-field"><label class="lp-label" for="lp-email">メールアドレス</label><input class="lp-input" id="lp-email" name="email" type="email" maxlength="254" autocomplete="email" required="required"></div><div class="lp-field"><label class="lp-label" for="lp-message">ご相談内容</label><div class="lp-chips"><span class="lp-chips__label">近いものがあれば、押すと下書きが入ります</span><button type="button" class="lp-chip" data-fill="いまの業務の手間を減らしたいと考えています。どこから手をつけられるか相談したいです。">いまの業務を楽にしたい</button><button type="button" class="lp-chip" data-fill="AIを活用したいのですが、何から始めるかが決まっていません。整理するところから相談したいです。">何から始めるか決めたい</button></div><textarea class="lp-input lp-textarea" id="lp-message" name="message" maxlength="2000" rows="4" required="required"></textarea></div><div class="lp-hp" aria-hidden="true"><label for="lp-website">この欄は入力しないでください</label><input id="lp-website" name="company-website" type="text" tabindex="-1" autocomplete="off"></div><label class="lp-consent"><input type="checkbox" name="privacy-consent" required="required"><span><a href="https://shinai-inc.jp/privacy.html" target="_blank" rel="noopener noreferrer">個人情報の取り扱い</a>に同意します</span></label><noscript><p class="lp-error">この環境ではフォームを送信できません。お手数ですが contact@shinai-inc.jp へ直接お送りください。</p></noscript><p class="lp-error" id="lp-error" role="alert" hidden></p><div class="lp-turnstile" data-turnstile hidden></div><button class="contact-button" type="submit"><span>無料で相談する</span><span aria-hidden="true">↗</span></button></form><p class="lp-done" id="lp-done" hidden>送信しました。<br>ご記入のメールアドレスへ、担当者よりご連絡します。</p><span class="contact-note">オンラインで30〜45分。事前準備は不要です。メールでも承ります（<a href="mailto:contact@shinai-inc.jp?subject=AI%E6%B4%BB%E7%94%A8%E3%83%BB%E6%A5%AD%E5%8B%99%E6%94%B9%E5%96%84%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">contact@shinai-inc.jp</a>）。</span><a class="company-link" href="#company">会社について見る <span aria-hidden="true">↑</span></a></div></div></section>
+  </section>
+
+  <section id="approach" class="section section--sage" aria-labelledby="approach-title">
+    <div class="wrap">
+      <div class="split split--center">
+        <div class="reveal">
+          <p class="eyebrow">進め方</p>
+          <h2 id="approach-title">事業を理解した<br><span class="nowrap">チームが一貫して担います。</span></h2>
+          <p class="body">業務の流れを知らないままでは、解くべき課題は見えません。<br>現場の仕事を理解するところから始め、開発も、その後の定着も、同じチームが担います。</p>
+        </div>
+        <figure class="art reveal"><div class="art__frame"><picture><source srcset="assets/shinai-together.webp" type="image/webp"><img src="assets/shinai-together.png" width="1200" height="800" loading="lazy" alt="異なる形が一つの道につながり、協力して前に進む抽象イラスト"></picture></div></figure>
+      </div>
+      <div class="thread reveal">
+        <div class="thread__row">
+          <p class="thread__label">担当ごとに分かれる支援</p>
+          <ul class="thread__pieces"><li>AIコンサル<small>戦略・企画</small></li><li>研修会社<small>人材教育</small></li><li>システム会社<small>開発</small></li><li>SaaS<small>ツール提供</small></li></ul>
+        </div>
+        <div class="thread__row">
+          <p class="thread__label"><span class="thread__brand">ShinAI</span>理解から、定着まで。</p>
+          <ol class="thread__steps"><li><h3>話す</h3><p>まず経営課題や<br class="br-pc">業務について伺います。</p></li><li><h3>見つける</h3><p>AIを使う場所と、<br class="br-pc">使わない場所を整理。</p></li><li><h3>試す</h3><p>必要に応じて、<br class="br-pc">小さな検証から。</p></li><li><h3>つくる</h3><p>自社の業務に合う<br class="br-pc">仕組みを開発します。</p></li><li><h3>根づかせる</h3><p>社員が使える状態まで<br class="br-pc">伴走します。</p></li></ol>
+        </div>
+        <p class="note thread__note">いきなり開発を決める必要はありません。今の仕事の話から、一歩ずつ進めます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="company" class="section" aria-labelledby="company-title">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">ShinAIについて</p>
+          <h2 id="company-title">近く、<br>深く。</h2>
+          <p class="body">経営者の「変えたい」と、<br>社員の「こうすれば使える」をつなぐ。<br>その対話を、開発と改善につなげます。</p>
+        </div>
+        <ol class="numbered closeness reveal"><li><h3>経営と近い</h3><p>目的や優先順位から話せるので、何を変えるかを決めやすい。</p></li><li><h3>現場と近い</h3><p>社員のやり方や困りごとを、使いやすい仕組みに反映する。</p></li><li><h3>開発と近い</h3><p>相談した内容が開発につながり、導入後の改善も一緒に進められる。</p></li></ol>
+      </div>
+      <div class="split company-foot">
+        <div class="reveal">
+          <h3 class="sub-h">群馬から、企業のAI活用をつくる。</h3>
+          <p class="body">群馬を拠点に、中小・中堅企業のAI活用を支援しています。</p>
+          <p class="kicker">業務に合わせて選ぶ、技術の引き出し</p>
+          <ul class="chips"><li>生成AI / LLM</li><li>RAG（社内情報の検索・活用）</li><li>AIエージェント</li><li>音声認識</li><li>画像解析</li><li>業務システム連携</li><li>ローカルAI</li><li>セキュリティ設計</li></ul>
+        </div>
+        <dl class="company-data reveal"><div><dt>会社名</dt><dd>シンアイ株式会社 <span>ShinAI</span></dd></div><div><dt>代表取締役</dt><dd>柴田 昌国</dd></div><div><dt>所在地</dt><dd>群馬県高崎市</dd></div><div><dt>事業内容</dt><dd>AIシステム開発<br>AI導入伴走支援</dd></div></dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section--warm contact" aria-labelledby="contact-title">
+    <div class="wrap contact__grid">
+      <div class="contact__copy reveal">
+        <p class="eyebrow">ご相談</p>
+        <p class="contact__pre">AIを導入するか、決まっていなくても大丈夫です。</p>
+        <h2 id="contact-title"><em>次の一手</em>を、<br>仕事の話から。</h2>
+        <p class="body">「人を増やさずに、この業務を回せるだろうか」。<br>そんな経営の悩みからで構いません。<br>AIが役立つ業務と、まず整えるべきことを一緒に考えます。</p>
+        <ul class="contact__facts"><li>オンラインで30〜45分</li><li>事前準備は不要です</li></ul>
+        <p class="contact__mail">メールでも承ります（<a href="mailto:contact@shinai-inc.jp?subject=AI%E6%B4%BB%E7%94%A8%E3%83%BB%E6%A5%AD%E5%8B%99%E6%94%B9%E5%96%84%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">contact@shinai-inc.jp</a>）</p>
+      </div>
+      <div class="contact__form reveal">
+        <form class="lp-form" id="lp-form" novalidate><div class="lp-field"><label class="lp-label" for="lp-company">会社名・組織名</label><input class="lp-input" id="lp-company" name="company" type="text" maxlength="100" autocomplete="organization" required="required"></div><div class="lp-field"><label class="lp-label" for="lp-name">お名前</label><input class="lp-input" id="lp-name" name="name" type="text" maxlength="50" autocomplete="name" required="required"></div><div class="lp-field"><label class="lp-label" for="lp-email">メールアドレス</label><input class="lp-input" id="lp-email" name="email" type="email" maxlength="254" autocomplete="email" required="required"></div><div class="lp-field"><label class="lp-label" for="lp-message">ご相談内容</label><div class="lp-chips"><span class="lp-chips__label">近いものがあれば、押すと下書きが入ります</span><button type="button" class="lp-chip" data-fill="いまの業務の手間を減らしたいと考えています。どこから手をつけられるか相談したいです。">いまの業務を楽にしたい</button><button type="button" class="lp-chip" data-fill="AIを活用したいのですが、何から始めるかが決まっていません。整理するところから相談したいです。">何から始めるか決めたい</button></div><textarea class="lp-input lp-textarea" id="lp-message" name="message" maxlength="2000" rows="4" required="required"></textarea></div><div class="lp-hp" aria-hidden="true"><label for="lp-website">この欄は入力しないでください</label><input id="lp-website" name="company-website" type="text" tabindex="-1" autocomplete="off"></div><label class="lp-consent"><input type="checkbox" name="privacy-consent" required="required"><span><a href="https://shinai-inc.jp/privacy.html" target="_blank" rel="noopener noreferrer">個人情報の取り扱い</a>に同意します</span></label><noscript><p class="lp-error">この環境ではフォームを送信できません。お手数ですが contact@shinai-inc.jp へ直接お送りください。</p></noscript><p class="lp-error" id="lp-error" role="alert" hidden></p><div class="lp-turnstile" data-turnstile hidden></div><button class="contact-button" type="submit"><span>無料で相談する</span><span aria-hidden="true">↗</span></button></form>
+        <p class="lp-done" id="lp-done" hidden>送信しました。<br>ご記入のメールアドレスへ、担当者よりご連絡します。</p>
+      </div>
+    </div>
+  </section>
+
 </main>
 <footer class="footer"><a class="brand" href="#home" aria-label="ShinAI トップ"><picture><source srcset="assets/shinai-logo.webp" type="image/webp"><img src="assets/shinai-logo.png" width="500" height="156" alt="ShinAI" class="official-logo"></picture></a><p>仕事に余白を。会社に、次の一手を。</p><small>© <span id="year">2026</span> ShinAI Inc.</small><a href="#home" class="back-top" aria-label="ページの先頭へ">↑</a></footer>
 <div class="reading-progress" aria-hidden="true"></div>
