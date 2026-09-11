@@ -14,6 +14,12 @@
 
   var API = "https://api.shinai-inc.jp";
   var MAIL = "contact@shinai-inc.jp";
+  /* 人間確認(Cloudflare Turnstile)のサイトキー。公開値であり鍵ではない。
+     空のあいだは枠も出さず、Worker 側も秘密鍵が無ければ要求しない。
+     値は scripts/config.js の turnstileSiteKey と同じものを置く(テストで一致を見張る)。 */
+  var TURNSTILE_SITE_KEY = "";
+  var TS_MSG = "人間確認が完了していません。数秒待ってから、もう一度お試しください。"
+    + "解消しない場合は " + MAIL + " へ直接お送りください。";
 
   var form = document.getElementById("lp-form");
   if (!form) return;
@@ -22,6 +28,21 @@
   var doneEl = document.getElementById("lp-done");
   var submitBtn = form.querySelector("[type='submit']");
   var btnLabel = submitBtn ? submitBtn.querySelector("span") : null;
+
+  var tsSlot = form.querySelector("[data-turnstile]");
+  var tsWidget = null;
+  var tsReset = function () { if (tsWidget !== null && window.turnstile) window.turnstile.reset(tsWidget); };
+  if (TURNSTILE_SITE_KEY && tsSlot) {
+    window.shinaiTurnstileReady = function () {
+      tsSlot.hidden = false;
+      tsWidget = window.turnstile.render(tsSlot, { sitekey: TURNSTILE_SITE_KEY, size: "flexible", theme: "light", language: "ja" });
+    };
+    var ts = document.createElement("script");
+    ts.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=shinaiTurnstileReady&render=explicit";
+    ts.async = true;
+    ts.defer = true;
+    document.head.appendChild(ts);
+  }
 
   var val = function (name) {
     var el = form.querySelector("[name='" + name + "']");
@@ -89,26 +110,34 @@
     var bad = validate();
     if (bad) { say(bad[1]); focusField(bad[0]); return; }
 
+    var payload = {
+      company: val("company"),
+      name: val("name"),
+      email: val("email"),
+      message: val("message"),
+      consent: true,
+      locale: "ja"
+    };
+    if (TURNSTILE_SITE_KEY) {
+      var token = (tsWidget !== null && window.turnstile) ? window.turnstile.getResponse(tsWidget) : "";
+      if (!token) { say(TS_MSG); return; }
+      payload.turnstile = token;
+    }
+
     say("");
     setBusy(true);
 
     fetch(API + "/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        company: val("company"),
-        name: val("name"),
-        email: val("email"),
-        message: val("message"),
-        consent: true,
-        locale: "ja"
-      })
+      body: JSON.stringify(payload)
     })
       .then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (data) {
           if (res.ok && data.success) return "ok";
           /* 受付上限に達した場合。利用者の入力に非は無いので、そう分かる文にする。 */
           if (data.reason === "busy") return "busy";
+          if (data.reason === "turnstile_failed") return "verify";
           return "ng";
         });
       })
@@ -121,6 +150,12 @@
             doneEl.hidden = false;
             if (doneEl.scrollIntoView) doneEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
           }
+          return;
+        }
+        /* トークンは一度きり。成功以外は次の送信のために確認を取り直す。 */
+        tsReset();
+        if (result === "verify") {
+          say(TS_MSG);
           return;
         }
         if (result === "busy") {

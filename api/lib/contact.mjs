@@ -15,10 +15,12 @@ export const MAX_CHARS = {
   name: 50,
   email: 254,
   phone: 20,
-  message: 2000
+  message: 2000,
+  /* Turnstile のトークンは通常 300〜600 字。上限は余裕を見た線。 */
+  turnstile: 2048
 };
 
-const ALLOWED_KEYS = new Set(["company", "name", "email", "phone", "message", "consent", "locale"]);
+const ALLOWED_KEYS = new Set(["company", "name", "email", "phone", "message", "consent", "locale", "turnstile"]);
 
 /* RFC全体は実装しない。素通しでも壊れないが、あからさまに
    メールの形をしていないものだけは入口で落とす。 */
@@ -80,7 +82,35 @@ export function parseContactBody(body) {
 
   const locale = body.locale === "en" ? "en" : "ja";
 
-  return { ok: true, value: { company, name, email, phone, message, locale } };
+  /* 人間確認(Turnstile)の応答トークン。要るかどうかは鍵の有無で決まる(turnstileRequired)ので、
+     ここでは形だけを見る。空は「無い」として通し、判定は index.mjs 側で行う。 */
+  const turnstile = typeof body.turnstile === "string" ? body.turnstile.trim() : "";
+  if (turnstile.length > MAX_CHARS.turnstile) return { ok: false, status: 400, reason: "turnstile_malformed" };
+
+  return { ok: true, value: { company, name, email, phone, message, locale, turnstile } };
+}
+
+/**
+ * 人間確認を要求するか。鍵が無い環境では要求しない。
+ * 鍵の設定忘れで問い合わせが全滅するより、機械の投稿が混じる方がまだ良い
+ * (ハニーポットと同一IP上限は残る)。鍵があるときは必ず検証する。
+ */
+export function turnstileRequired(env) {
+  return !!(env && typeof env.TURNSTILE_SECRET === "string" && env.TURNSTILE_SECRET.length >= 16);
+}
+
+/**
+ * siteverify の応答から判定を出す。外部I/Oを持たないので、テストで固定できる。
+ * hostname: 確認が解かれたページのホスト。当社のページ以外で解いたトークンを
+ * 持ち込まれても通さない。
+ */
+export function turnstileVerdict(result, { hostname } = {}) {
+  if (!result || typeof result !== "object") return { ok: false, reason: "turnstile_unreadable" };
+  if (result.success !== true) return { ok: false, reason: "turnstile_failed" };
+  if (hostname && typeof result.hostname === "string" && result.hostname !== hostname) {
+    return { ok: false, reason: "turnstile_host_mismatch" };
+  }
+  return { ok: true, reason: null };
 }
 
 /**

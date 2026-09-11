@@ -17,7 +17,8 @@ import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUs
 import { isWorthKeeping, voiceRecord, slackPayload, isAuthorizedAdmin, purgeCutoff }
   from "./lib/voices.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd, advanceMeter } from "./lib/budget.mjs";
-import { parseContactBody, contactMailPayload, contactSlackPayload, deadLetterRow, deadLetterPurgeCutoff }
+import { parseContactBody, contactMailPayload, contactSlackPayload, deadLetterRow, deadLetterPurgeCutoff,
+         turnstileRequired, turnstileVerdict }
   from "./lib/contact.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
@@ -142,6 +143,27 @@ async function meterOf(env, name, dayKey, op) {
   }
 }
 
+/* Turnstile のトークンを Cloudflare に照会する。
+   秘密鍵はここでしか使わず、応答にもログにも出さない。 */
+async function verifyTurnstile(env, token, request, origin) {
+  if (!token) return { ok: false, reason: "turnstile_missing" };
+  try {
+    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        secret: env.TURNSTILE_SECRET,
+        response: token,
+        remoteip: request.headers.get("CF-Connecting-IP") || undefined
+      })
+    });
+    const data = await res.json();
+    return turnstileVerdict(data, { hostname: origin ? new URL(origin).hostname : "" });
+  } catch {
+    return { ok: false, reason: "turnstile_unavailable" };
+  }
+}
+
 /* IPは個人情報。相関に足る一方向ハッシュだけを残す。 */
 const hashIp = async (ip, salt) => {
   if (!ip) return "unknown";
@@ -237,6 +259,22 @@ async function handleContact(request, env, ctx, origin) {
     }
     audit({ event: "contact_rejected", reason: parsed.reason });
     return json({ success: false, reason: parsed.reason }, parsed.status, origin);
+  }
+
+  /* --- 人間確認(Turnstile)。鍵があるときだけ要求する。
+     同一IP上限より前に置く。確認をやり直す人が、上限を使い切らないように。 --- */
+  if (turnstileRequired(env)) {
+    const verdict = await verifyTurnstile(env, parsed.value.turnstile, request, origin);
+    if (!verdict.ok) {
+      audit({ event: "contact_turnstile_rejected", reason: verdict.reason });
+      if (verdict.reason === "turnstile_unavailable") {
+        /* 確認サービス側の障害。利用者の入力に非は無いので busy として案内する。 */
+        return json({ success: false, reason: "busy" }, 200, origin);
+      }
+      return json({ success: false, reason: "turnstile_failed" }, 400, origin);
+    }
+  } else {
+    audit({ event: "contact_turnstile_unconfigured" });
   }
 
   const dayKey = jstDayKey(new Date());

@@ -43,6 +43,29 @@
   var apiBase = (window.SHINAI_CONFIG && window.SHINAI_CONFIG.chatbotApiBase) || "";
   var FALLBACK_EMAIL = "contact@shinai-inc.jp";
 
+  /* 人間確認(Cloudflare Turnstile)。サイトキーは公開値(鍵ではない)。
+     空のあいだは枠も出さず、Worker 側も秘密鍵が無ければ要求しない。 */
+  var SITE_KEY = (window.SHINAI_CONFIG && window.SHINAI_CONFIG.turnstileSiteKey) || "";
+  var tsSlot = form.querySelector("[data-turnstile]");
+  var tsNote = document.getElementById("turnstile-error");
+  var tsWidget = null;
+  var tsShow = function (on) { if (tsNote) tsNote.hidden = !on; };
+  var tsReset = function () { if (tsWidget !== null && window.turnstile) window.turnstile.reset(tsWidget); };
+  if (SITE_KEY && tsSlot) {
+    window.shinaiTurnstileReady = function () {
+      tsSlot.hidden = false;
+      tsWidget = window.turnstile.render(tsSlot, {
+        sitekey: SITE_KEY, size: "flexible", theme: "light", language: EN ? "en" : "ja",
+        callback: function () { tsShow(false); }
+      });
+    };
+    var ts = document.createElement("script");
+    ts.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=shinaiTurnstileReady&render=explicit";
+    ts.async = true;
+    ts.defer = true;
+    document.head.appendChild(ts);
+  }
+
   var submitBtn = form.querySelector("[type='submit']");
   var btnSpan = submitBtn ? submitBtn.querySelector("span") : null;
   var successEl = document.getElementById("contact-success");
@@ -116,6 +139,17 @@
       locale: EN ? "en" : "ja"
     };
 
+    if (SITE_KEY) {
+      var token = (tsWidget !== null && window.turnstile) ? window.turnstile.getResponse(tsWidget) : "";
+      if (!token) {
+        /* 確認が済んでいない(読み込み中・期限切れ)。入力に非は無いので、やり直しだけを促す。 */
+        setState("idle");
+        tsShow(true);
+        return;
+      }
+      payload.turnstile = token;
+    }
+
     fetch(apiBase + "/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -127,12 +161,18 @@
           setState("success");
           showFeedback("success");
           form.reset();
+        } else if (data.reason === "turnstile_failed") {
+          setState("idle");
+          tsReset();
+          tsShow(true);
         } else {
           throw new Error("server");
         }
       });
     })
     .catch(function () {
+      /* トークンは一度きり。次の送信のために確認を取り直す。 */
+      tsReset();
       setState("error");
       showFeedback("error");
     });

@@ -17,6 +17,7 @@ import {
   deadLetterRow,
   MAX_CHARS
 } from "../api/lib/contact.mjs";
+import { turnstileRequired, turnstileVerdict } from "../api/lib/contact.mjs";
 
 const valid = () => ({
   company: "シンアイ株式会社",
@@ -164,3 +165,30 @@ test("届かなかったことの知らせに、相談の中身は載せない",
   assert.match(payload.text, /シンアイ株式会社/);
   assert.ok(!payload.text.includes("引き継ぎができません"), "相談の中身が載っている");
 });
+
+/* ---- 人間確認(Turnstile) ---- */
+
+test("確認トークンは受け取り、無ければ空として通す(要るかは鍵の有無で決まる)", () => {
+  assert.equal(parseContactBody(valid()).value.turnstile, "");
+  assert.equal(parseContactBody({ ...valid(), turnstile: " 0.abc " }).value.turnstile, "0.abc");
+  const r = parseContactBody({ ...valid(), turnstile: "x".repeat(2049) });
+  assert.equal(r.ok, false);
+  assert.equal(r.reason, "turnstile_malformed");
+});
+
+test("秘密鍵が無い環境では確認を要求しない。あれば必ず要求する", () => {
+  assert.equal(turnstileRequired({}), false);
+  assert.equal(turnstileRequired({ TURNSTILE_SECRET: "" }), false);
+  assert.equal(turnstileRequired({ TURNSTILE_SECRET: "short" }), false, "短すぎる値は未設定扱い");
+  assert.equal(turnstileRequired({ TURNSTILE_SECRET: "0x0000000000000000000000000000000000" }), true);
+});
+
+test("照会の応答から判定を出す", () => {
+  assert.equal(turnstileVerdict({ success: true, hostname: "shinai-inc.jp" }, { hostname: "shinai-inc.jp" }).ok, true);
+  assert.equal(turnstileVerdict({ success: true }, { hostname: "shinai-inc.jp" }).ok, true, "hostname 無しの応答は通す");
+  assert.equal(turnstileVerdict({ success: false, "error-codes": ["timeout-or-duplicate"] }).reason, "turnstile_failed");
+  assert.equal(turnstileVerdict({ success: true, hostname: "evil.example" }, { hostname: "shinai-inc.jp" }).reason, "turnstile_host_mismatch");
+  assert.equal(turnstileVerdict(null).reason, "turnstile_unreadable");
+  assert.equal(turnstileVerdict("yes").reason, "turnstile_unreadable");
+});
+

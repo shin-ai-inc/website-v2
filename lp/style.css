@@ -133,3 +133,5 @@ html{scroll-padding-top:82px}body{font-size:15px;line-height:1.95}.wrap{width:ca
 }
 /* 出所の宣言。描画には一切関与しない（どの要素からも参照していない）。 */
 :root{--shinai-origin:"shinai-inc.jp | シンアイ株式会社 | 法人番号 9070001044403 | 2026"}
+/* 人間確認(Turnstile)の枠。サイトキーが設定されるまでは hidden のまま。 */
+.lp-turnstile{margin:2px 0 6px}

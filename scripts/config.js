@@ -12,6 +12,10 @@
     /* Cloudflare Worker(api/)の公開URL。鍵ではないのでここに置いてよい。
        未デプロイ・障害時は chatbot 側が「準備中」として問い合わせへ誘導する。 */
     chatbotApiBase: "https://api.shinai-inc.jp",
-    contactPath: "contact.html"
+    contactPath: "contact.html",
+    /* 人間確認(Cloudflare Turnstile)のサイトキー。公開値であり鍵ではない。
+       空のあいだは何も表示せず、Worker 側も秘密鍵が無ければ要求しない。
+       lp/form.js・ai-business/form.js にも同じ値を置く(テストで一致を見張る)。 */
+    turnstileSiteKey: ""
   };
 })();

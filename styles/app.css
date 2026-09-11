@@ -2863,6 +2863,15 @@ body.chat-open .scroll-progress {
   }
 }
 
+/* 人間確認(Turnstile)の枠。サイトキーが設定されるまでは hidden のまま。 */
+.contact-form__turnstile {
+  margin: 4px 0 12px;
+}
+.contact-form__note--alert {
+  color: #9b3a1f;
+}
+
+
 
 /* sections/creed.css */
 /*

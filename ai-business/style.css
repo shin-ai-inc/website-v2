@@ -52,3 +52,5 @@ picture{display:block}
    あいだも縮める。本文の行送りは読み物として2.0のまま残す。 */
 .reasons h3{line-height:1.45}
 .reasons article{padding:22px 0}
+/* 人間確認(Turnstile)の枠。サイトキーが設定されるまでは hidden のまま。 */
+.lp-turnstile{margin:2px 0 6px}

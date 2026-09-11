@@ -436,3 +436,40 @@ test("独立ページのアイコンが、本体と同じマークを指す", ()
     }
   }
 });
+
+/* ---- 人間確認(Turnstile)。鍵を設定した瞬間に静かに壊れるものを見張る ---- */
+const SRC_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const readSrc = (rel) => readFileSync(join(SRC_ROOT, rel), "utf8");
+
+
+test("人間確認のサイトキーは、本体と独立ページで同じ値", () => {
+  /* 三つのファイルに同じ値を置く設計。ずれると、そのページだけ確認が出ず
+     Worker に拒まれる(画面には「確認が完了していません」しか出ない)。 */
+  const main = readSrc("scripts/config.js").match(/turnstileSiteKey:\s*"([^"]*)"/);
+  assert.ok(main, "config.js に turnstileSiteKey が無い");
+  for (const dir of STANDALONE) {
+    const lp = readSrc(`${dir}/form.js`).match(/var TURNSTILE_SITE_KEY = "([^"]*)"/);
+    assert.ok(lp, `${dir}/form.js に TURNSTILE_SITE_KEY が無い`);
+    assert.equal(lp[1], main[1], `${dir}: サイトキーが本体と違う`);
+  }
+});
+
+test("人間確認の読み込み先を、すべてのページの CSP が許可している", () => {
+  const host = "https://challenges.cloudflare.com";
+  for (const page of ["contact.html", "en/contact.html", ...STANDALONE.map((d) => `${d}/index.html`)]) {
+    const csp = readDist(page).match(/http-equiv="Content-Security-Policy" content="([^"]*)"/);
+    assert.ok(csp, `${page}: CSP が無い`);
+    assert.ok(new RegExp(`script-src[^;]*${host}`).test(csp[1]), `${page}: script-src が ${host} を許可していない`);
+    assert.ok(new RegExp(`frame-src[^;]*${host}`).test(csp[1]), `${page}: frame-src が ${host} を許可していない`);
+  }
+  assert.ok(readSrc("dist/_headers").includes(`frame-src ${host}`), "_headers の CSP に frame-src が無い");
+});
+
+test("すべての問い合わせフォームに、人間確認の枠がある", () => {
+  for (const page of ["contact.html", "en/contact.html", ...STANDALONE.map((d) => `${d}/index.html`)]) {
+    const html = readDist(page);
+    assert.ok(html.includes("data-turnstile"), `${page}: 人間確認の枠が無い`);
+    assert.ok(/data-turnstile[^>]*hidden|hidden[^>]*data-turnstile/.test(html), `${page}: 枠は鍵が入るまで hidden`);
+  }
+});
+

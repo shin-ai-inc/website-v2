@@ -98,17 +98,21 @@ const API_ORIGIN = "https://api.shinai-inc.jp";
 const WEB_ANALYTICS_TOKEN = "4261bda7d4d44372a91b44ff963a7d7c";
 const CF_BEACON_HOST = "https://static.cloudflareinsights.com";
 const CF_BEACON_ENDPOINT = "https://cloudflareinsights.com";
+const TURNSTILE_HOST = "https://challenges.cloudflare.com";
 const analyticsOn = WEB_ANALYTICS_TOKEN.length > 0;
 
 const CSP_DIRECTIVES = [
   "default-src 'self'",
-  `script-src 'self'${analyticsOn ? " " + CF_BEACON_HOST : ""}`,
+  /* challenges.cloudflare.com は人間確認(Turnstile)。読み込むのは鍵が設定されたときだけだが、
+     許可は常に出す(許可だけでは何も起きず、設定した瞬間に CSP で止まる事故を防ぐ)。 */
+  `script-src 'self'${analyticsOn ? " " + CF_BEACON_HOST : ""} ${TURNSTILE_HOST}`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data:",
   /* 問い合わせフォームも自社Worker(API_ORIGIN)へJSONで送る。
      Formspree等の第三者フォームサービスは使わない(2026-08-27・Resendへ移行)。 */
   `connect-src 'self' ${API_ORIGIN}${analyticsOn ? " " + CF_BEACON_ENDPOINT : ""}`,
+  `frame-src ${TURNSTILE_HOST}`,
   "base-uri 'self'",
   "form-action 'self'",
   "object-src 'none'"
