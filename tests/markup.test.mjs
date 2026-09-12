@@ -169,17 +169,3 @@ test("ホーム画面用アイコンは透過を持たない", () => {
   const { colorType } = pngHead("assets/icons/apple-touch-icon.png");
   assert.equal(colorType, 2, `apple-touch-icon が透過を持っている(色種別 ${colorType})`);
 });
-
-/* ---- 和文の途中の改行が空白として描かれない ---- */
-test("生成したページの本文に、和文どうしの間の改行が残っていない", () => {
-  /* 原稿を文の途中で改行すると、ブラウザは空白として描く(「判断を、 誰もが」)。
-     build.mjs の joinCjkBreaks が本文から除く。2026-09-12 時点で 6 ページ 33 か所あった。 */
-  const CJK = "[\u3000-\u303F\u3040-\u30FF\u4E00-\u9FFF\uFF00-\uFFEF]";
-  const re = new RegExp(`${CJK}[ \t]*\r?\n\s*${CJK}`);
-  for (const page of ["index.html", "services.html", "about.html", "gunma-ai.html", "privacy.html", "terms.html"]) {
-    const html = readFileSync(join(ROOT, page), "utf8").replace(/<(script|style|pre)[\s\S]*?<\/\1>/g, "");
-    const hit = html.split(/<[^>]+>/).find((text) => re.test(text));
-    assert.equal(hit, undefined, `${page}: 和文の途中に改行が残っている: ${hit && hit.trim().slice(0, 30)}`);
-  }
-});
-

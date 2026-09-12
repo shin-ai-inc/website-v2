@@ -331,8 +331,6 @@ body.is-home { background: var(--paper); }
    auto-phrase は日本語専用のため :lang(ja) に限定する(英語版 /en/ には効かせない)。
    text-wrap の方は言語を問わず有効なので限定しない。 */
 :lang(ja) :is(h1, h2, h3,
-  .industries-card__state-text, .why__line, .capability__desc, .method__desc,
-  .contact-flow__text, .contact-form-card__lead,
   .section__lead, .page-hero__lead, .purpose__support,
   .about-purpose__note, .cta__text, .shin7__desc,
   .industries-bridge__item-title, .industries-bridge__item-text, .industries-bridge__note) {
@@ -360,11 +358,6 @@ h1, h2, h3 {
 .cta__text, .shin7__desc, .industries-bridge__item-text, .industries-bridge__note {
   text-wrap: pretty;
 }
-/* 本文の段落と箇条書きも、最後の行に「す。」「ます。」だけが残らないよう行を配分する
-   (スマホ375pxで長い段落の末尾が一字落ちしていた)。未対応のブラウザでは従来どおり。 */
-main p, main li, main dd {
-  text-wrap: pretty;
-}
 /* 意味の切れ目を守る最小語塊。折り返すならこの塊の前で折る(全ブラウザで有効) */
 .nobr {
   white-space: nowrap;
@@ -374,11 +367,7 @@ main p, main li, main dd {
    レイアウト全体が破綻する。狭幅では収まりを優先し、折り返しを許可する。
    (語の途中で割れることより、画面内に収まることを優先する判断) */
 @media (max-width: 400px) {
-  /* 折り返しは許すが、まとまりは保つ。inline-block は、行の残りに入らなければ
-     塊ごと次の行へ送り、一行にも入らないときだけ中で折れる。
-     以前は単に折り返しを許していたため「AIエンジ／ニア」「開／発」と割れた。 */
   .nobr {
-    display: inline-block;
     white-space: normal;
   }
 }
@@ -411,9 +400,9 @@ main p, main li, main dd {
   .section__title {
     font-size: 1.55rem;
   }
-  /* 以前はスマホで行をつなげて一つの段落として流していた。行の境目の改行が空白になり
-     (「分けています。 自社の」)、折れる位置も画面幅任せだった。行は保ち、
-     長い行にだけスマホ用の改行(.br-sp)を置く。 */
+  .section__lead-line {
+    display: inline;
+  }
 }
 
 /* ---- Eyebrow (英字ラベル。ブランドグラデーションの一線で先進性を表現) ---- */
@@ -1269,48 +1258,6 @@ main p, main li, main dd {
   }
 }
 
-/* 七つのShin(スマホ): 2列では1枚150px前後になり、説明が1行7〜8字に細切れになった
-   (「表面的な流行に惑わさ／れず」)。1列にし、1行目に漢字と英字、その下に見出しと説明を
-   カード幅いっぱいで置く。見出しも説明も1行約20字になり、縦も詰まる。 */
-@media (max-width: 640px) {
-  .shin7__grid {
-    gap: var(--space-2);
-  }
-  .shin7__card {
-    flex-basis: 100%;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas: "kanji roman" "title title" "desc desc";
-    column-gap: var(--space-2);
-    align-items: baseline;
-    text-align: left;
-    padding: var(--space-3) var(--space-4);
-  }
-  .shin7__icon-wrap {
-    display: none;
-  }
-  .shin7__kanji {
-    grid-area: kanji;
-    margin: 0;
-    line-height: 1.1;
-    text-align: center;
-  }
-  .shin7__roman {
-    grid-area: roman;
-    margin: 0;
-    text-align: left;
-  }
-  .shin7__title {
-    grid-area: title;
-    margin: var(--space-1) 0 0;
-  }
-  .shin7__desc {
-    grid-area: desc;
-    margin-top: var(--space-2);
-  }
-}
-
-
 
 /* sections/article.css */
 /*
@@ -1559,11 +1506,8 @@ main p, main li, main dd {
 
 .capability__item {
   display: flex;
-  /* 用語の下に説明を置く。横に並べると説明の列が画面幅しだいで250px前後まで細り、
-     「自社の文／脈」「調整／し、」のように語の途中で折れた(1440・1280pxで実測)。 */
-  flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-2);
+  gap: var(--space-4);
   padding: var(--space-5);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--r-lg);
@@ -1623,18 +1567,8 @@ main p, main li, main dd {
   color: rgba(255, 255, 255, 0.62);
 }
 
-/* 900px以下で2列にすると1枚が300px前後になり、説明の一行(最長22字)が収まらない。 */
-@media (max-width: 900px) {
-  .capability__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 640px) {
-  /* 2列のままだと1列が140px前後になり、説明が1行7〜8字に細切れになった
-     (「用途に合わせて大／規模言語モデルを／調整し」)。1列にして、意味の切れ目で改行する。 */
   .capability__grid {
-    grid-template-columns: 1fr;
     gap: var(--space-3);
     margin-top: var(--space-4);
   }
@@ -2260,11 +2194,6 @@ body.chat-open .scroll-progress {
     gap: var(--space-3);
     padding-block: var(--space-2);
   }
-  /* 人物カード: 写真と本文を横に並べると本文が1行13字前後に細る。写真の下に置く */
-  .company__person {
-    flex-direction: column;
-    gap: var(--space-3);
-  }
   .company__fact-desc {
     font-size: var(--fs-sm);
   }
@@ -2369,15 +2298,6 @@ body.chat-open .scroll-progress {
   margin-right: var(--space-2);
   font-weight: 500;
   color: var(--brand);
-}
-
-/* 370px以下は、項目名と値を横に並べると値の列が200px前後になり、
-   「企業専用AIエージェント開／発」と割れた。項目名の下に値を置く。 */
-@media (max-width: 370px) {
-  .company__facts > div {
-    grid-template-columns: 1fr;
-    gap: 2px;
-  }
 }
 
 
@@ -2937,20 +2857,10 @@ body.chat-open .scroll-progress {
     padding-bottom: var(--space-2);
   }
 
-  /* 値の中の改行は、意味の切れ目に置いたものなので残す
-     (以前は外していて「オークスアベ／ニュー」と割れた)。 */
-}
-
-/* 370px以下は、項目名と値を横に並べると値の列が細り、住所が4行に割れた。項目名の下に値を置く。 */
-@media (max-width: 370px) {
-  .contact-info__item {
-    grid-template-columns: 1fr;
-    gap: 2px;
+  /* 値の中の強制改行は外す。左に寄せた列の中では、幅なりに折り返れば足りる。 */
+  .contact-info__value br {
+    display: none;
   }
-}
-
-.contact-info__link {
-  white-space: nowrap;
 }
 
 /* 人間確認(Turnstile)の枠。サイトキーが設定されるまでは hidden のまま。 */
@@ -3455,8 +3365,17 @@ body.chat-open .scroll-progress {
   .faq-item__a p {
     font-size: var(--fs-sm);
   }
-  /* 以前は狭幅で改行の制御を外していたが、「AIをど／う活かせる」「進／め方」のように
-     語の途中で割れた。回答は2〜4行の短い文なので、スマホでも文節で折る(PC と同じ)。 */
+  /* 狭幅では改行位置を一切制御せず、行幅いっぱいまで文章を続ける。
+     auto-phrase(文節改行)も pretty(行長の均整) も、狭い横幅では
+     不自然な折り返しと余白を生むため無効化する。
+     :lang(ja) セレクタの方が詳細度が高いため、同等の詳細度で上書きする。 */
+  :lang(ja) .faq-item__a p {
+    word-break: normal;
+    text-wrap: wrap;
+  }
+  .faq-item__a p {
+    text-wrap: wrap;
+  }
 }
 
 @media (max-width: 480px) {
@@ -4370,9 +4289,6 @@ body.chat-open .scroll-progress {
 
 .hero--immersive .hero__subcopy {
   color: var(--charcoal);
-  /* 説明文は地球儀の下端に重ねる配置。線が字の背後を横切って読みにくかったので、
-     字の周りだけ白く抜いて線を退かせる(地球儀の見え方は変えない)。 */
-  text-shadow: 0 0 2px #fff, 0 0 6px #fff, 0 0 14px rgba(255, 255, 255, 0.9);
 }
 
 /* ---- Entrance animation (page load, not scroll) ---- */
@@ -5863,9 +5779,7 @@ body.chat-open .scroll-progress {
 }
 
 /* タブレット: 1カラム化。過剰な横伸びを防ぐため最大幅を制限 */
-/* 961〜1100px で3枚を横に並べると本文が1行13字前後になり、
-   「つな／ぎ」「育／成まで」と崩れた。1100px までは画像と本文を横に並べる形にする。 */
-@media (max-width: 1100px) {
+@media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
     max-width: 640px;
@@ -5877,10 +5791,10 @@ body.chat-open .scroll-progress {
   }
 }
 
-/* タブレット帯(641-1100): 縦積みの大画像カードは narrow column + 大画像で間延びする。
+/* タブレット帯(641-960): 縦積みの大画像カードは narrow column + 大画像で間延びする。
    画像を左へ寄せた横並びメディアカードにして幅を活かし、密度と品位を保つ。
    位置指定を明示し、col1=画像(全高)/col2=見出し・リード・罫・箇条書き とする。 */
-@media (min-width: 641px) and (max-width: 1100px) {
+@media (min-width: 641px) and (max-width: 960px) {
   .solutions__grid {
     max-width: 760px;
   }

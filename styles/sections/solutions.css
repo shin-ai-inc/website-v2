@@ -152,9 +152,7 @@
 }
 
 /* タブレット: 1カラム化。過剰な横伸びを防ぐため最大幅を制限 */
-/* 961〜1100px で3枚を横に並べると本文が1行13字前後になり、
-   「つな／ぎ」「育／成まで」と崩れた。1100px までは画像と本文を横に並べる形にする。 */
-@media (max-width: 1100px) {
+@media (max-width: 960px) {
   .solutions__grid {
     grid-template-columns: 1fr;
     max-width: 640px;
@@ -166,10 +164,10 @@
   }
 }
 
-/* タブレット帯(641-1100): 縦積みの大画像カードは narrow column + 大画像で間延びする。
+/* タブレット帯(641-960): 縦積みの大画像カードは narrow column + 大画像で間延びする。
    画像を左へ寄せた横並びメディアカードにして幅を活かし、密度と品位を保つ。
    位置指定を明示し、col1=画像(全高)/col2=見出し・リード・罫・箇条書き とする。 */
-@media (min-width: 641px) and (max-width: 1100px) {
+@media (min-width: 641px) and (max-width: 960px) {
   .solutions__grid {
     max-width: 760px;
   }

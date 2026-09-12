@@ -204,55 +204,6 @@ const markCurrent = (html, nav) => {
 const normalizeMain = (raw) =>
   raw.replace(/^\s*<main\b[^>]*>/i, "").replace(/<\/main>\s*$/i, "").trim();
 
-/* 日本語の文の途中で原稿を改行すると、ブラウザは改行を空白として描く
-   (「判断を、 誰もが」「つなぎ 業務を」)。CSS の規定では和文どうしの改行は
-   消すことになっているが、主要ブラウザは実装していない。
-   本文の和文どうしの間にある改行と字下げだけを除く。タグ・script・style・pre には触れない。
-   2026-09-12 時点で 6 ページ 33 か所あった。
-   タグをまたぐ場合(「分けています。</span>⏎<span>自社の」)も同じく空白になるので、
-   改行だけの隙間の前後がどちらも和文なら除く。 */
-const CJK = "[\\u3000-\\u303F\\u3040-\\u30FF\\u4E00-\\u9FFF\\uFF00-\\uFFEF]";
-const CJK_BREAK = new RegExp(`(${CJK})[ \\t]*\\r?\\n\\s*(?=${CJK})`, "g");
-/* 句読点のあとの改行も、続きが英数字なら空白になる(「しません。 PoC設計」)。
-   和文の句読点のあとに空白を置く書き方はしないので、ここも除く。 */
-const CJK_PUNCT_BREAK = /([。、」』）])[ \t]*\r?\n\s*(?=[A-Za-z0-9])/g;
-const CJK_FIRST = new RegExp(`^\\s*${CJK}`);
-const CJK_LAST = new RegExp(`${CJK}\\s*$`);
-const joinCjkBreaks = (html) => {
-  const parts = html
-    .split(/(<(?:script|style|pre)\b[\s\S]*?<\/(?:script|style|pre)>|<[^>]+>)/i)
-    .map((part, i) => (i % 2 === 1 ? part : part.replace(CJK_BREAK, "$1").replace(CJK_PUNCT_BREAK, "$1")));
-  /* 奇数番目がタグ、偶数番目が本文。改行を含む空白だけの本文を、両隣の本文で判定する。
-     またいでよいのは文字飾りのタグだけ。図形・画像・改行・段落の境目に当たったら判定しない
-     (「詳細を見る⏎<svg>」の隙間のように、空けておくべき所を詰めないため)。 */
-  const INLINE = /^<\/?(?:span|a|em|strong|b|i|small|mark|time|abbr|q|cite|sup|sub|u|s|ruby|rt|bdi|wbr)\b/i;
-  const textAround = (i, step) => {
-    for (let j = i + step; j >= 0 && j < parts.length; j += step) {
-      if (j % 2 === 1) {
-        if (!INLINE.test(parts[j])) return "";
-        continue;
-      }
-      if (parts[j].trim()) return parts[j];
-    }
-    return "";
-  };
-  for (let i = 0; i < parts.length; i += 2) {
-    if (!/\n/.test(parts[i])) continue;
-    if (!parts[i].trim()) {
-      if (CJK_LAST.test(textAround(i, -1)) && CJK_FIRST.test(textAround(i, 1))) parts[i] = "";
-      continue;
-    }
-    /* 本文の端に残る改行(「支援／⏎<span>フィジカル」)も、隣が和文なら除く */
-    if (/\n\s*$/.test(parts[i]) && CJK_LAST.test(parts[i]) && CJK_FIRST.test(textAround(i, 1))) {
-      parts[i] = parts[i].replace(/[ \t]*\r?\n\s*$/, "");
-    }
-    if (/^\s*\n/.test(parts[i]) && CJK_FIRST.test(parts[i]) && CJK_LAST.test(textAround(i, -1))) {
-      parts[i] = parts[i].replace(/^\s*\r?\n\s*/, "");
-    }
-  }
-  return parts.join("");
-};
-
 /* ビルド機構を通さず、単独で公開しているページ。本文は生成しないが、
    ここに挙げないと sitemap にも llms.txt にも載らず、検索側から見つからない。
    収録に必要な事実だけを持たせる。 */
@@ -841,7 +792,7 @@ const urlFor = (file, dir) =>
 const shell = (page, loc) => {
   const meta = loc.code === "ja" ? page : page.en;
   const canonical = urlFor(page.file, loc.dir);
-  const main = joinCjkBreaks(normalizeMain(read(loc.src + "/" + page.part)));
+  const main = normalizeMain(read(loc.src + "/" + page.part));
   /* replaceAll: partial 冒頭の解説コメント内にもトークン名が現れるため、先頭一致では取り違える。 */
   const header = markCurrent(shared[loc.code].header, page.nav)
     .replaceAll("{{LANG_SWITCH}}", langSwitch(loc, page));
