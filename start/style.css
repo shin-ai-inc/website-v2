@@ -338,6 +338,10 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 /* ===== モバイル ===== */
 @media (max-width:760px){
   .br-sp{display:inline}
+  /* この一文だけ、前の行との間を一行ぶん空ける(柴田指示)。
+     22字で 390px 幅にはちょうど収まるが 375/360px では 10px 余る。
+     約物(「」。)を詰め組みにして幅を作り、どの幅でも一行に保つ。 */
+  .line-gap{display:block;margin-top:1.15em;font-feature-settings:"palt";letter-spacing:.02em}
   html{scroll-padding-top:76px}
   body{font-size:15px}
   .wrap{width:calc(100% - 44px)}
