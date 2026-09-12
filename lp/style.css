@@ -276,7 +276,11 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .footer{display:flex;align-items:center;gap:28px;padding:40px max(28px,calc((100% - 1120px)/2));border-top:1px solid var(--line-soft)}
 .footer .official-logo{width:auto;height:36px}
 .footer p{font-size:12px;letter-spacing:.12em;color:var(--muted)}
-.footer small{margin-left:auto;font-size:11px;color:var(--muted)}
+/* 本体サイトへの出口はフッターだけに置く。検討の流れを切らないよう、
+   ヘッダーと本文には置かない(柴田承認 2026-09-13)。 */
+.footer__site{margin-left:auto;display:inline-flex;align-items:center;gap:8px;padding-bottom:3px;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.08em;color:var(--ink-2);transition:color .3s,border-color .3s}
+.footer__site:hover{color:var(--accent);border-color:var(--accent)}
+.footer small{font-size:11px;color:var(--muted)}
 .back-top{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;color:var(--ink-2);transition:border-color .3s,color .3s}
 .back-top:hover{border-color:var(--accent);color:var(--accent)}
 /* 読み進んだ量。若葉から朱へ、余白から次の一手へ。 */
@@ -413,6 +417,7 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 
   .footer{flex-wrap:wrap;gap:14px 20px;padding:32px 22px}
   .footer p{order:3;width:100%;font-size:11px}
+  .footer__site{margin-left:auto;font-size:11.5px}
 }
 @media (max-width:360px){
   .wrap{width:calc(100% - 36px)}
