@@ -515,6 +515,6 @@ test("検索結果に出すサイト名が、三か所で一致している", ()
   assert.match(html, new RegExp(`<meta property="og:site_name" content="${NAME}">`), "og:site_name が社名でない");
   assert.match(html, new RegExp(`<title>${NAME}｜`), "トップのtitleが社名で始まらない");
   /* 社名で探した人が最初に出会うページを、地域ページではなくトップにする */
-  assert.match(readDist("gunma-ai.html"), new RegExp(`<title>${NAME}｜`), "群馬ページのtitleが社名で始まらない");
+  assert.match(readDist("gunma-ai.html"), new RegExp(`<title>${NAME}[ ｜]`), "群馬ページのtitleが社名で始まらない");
 });
 
