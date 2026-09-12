@@ -252,14 +252,14 @@ const pages = [
   { file: "services.html", part: "services.html", nav: "services", hero: false,
     crumb: "事業内容",
     changefreq: "monthly", priority: "0.9",
-    title: "事業内容｜ShinAI",
+    title: "事業内容｜シンアイ株式会社",
     desc: "群馬県高崎市を拠点に、暗黙知のAI化、企業専用AIエージェント、AI化伴走支援、そしてフィジカルAIの研究開発（PoC）。集めて、つなぎ、現場で使えるところまで。ShinAIの提供領域と進め方。",
     en: {crumb: "Solutions",  title: "Solutions | ShinAI",
           desc: "Tacit knowledge structuring, private enterprise AI agents, hands-on support for AI-driven transformation, and physical AI research (PoC). Capture it, connect it, and make it usable where the work happens." } },
   { file: "industries.html", part: "industries.html", nav: "industries", hero: false,
     crumb: "業界別の活用",
     changefreq: "monthly", priority: "0.8",
-    title: "業界別の活用｜ShinAI",
+    title: "業界別の活用｜シンアイ株式会社",
     desc: "製造、建設、介護や専門サービス、小売、医療福祉、教育、金融、不動産。業種ごとの困りごとと、暗黙知改善でどう変わるかの活用イメージ。群馬県高崎市のAI開発会社が、業種の文脈からAIの適用先を整理します。",
     en: {crumb: "Industries",  title: "Industries | ShinAI",
           desc: "Manufacturing, construction, care and professional services, retail, healthcare, education, finance, and real estate. What breaks in each, and how tacit-knowledge AI changes it." } },
@@ -278,12 +278,12 @@ const pages = [
     locales: ["ja"],
     crumb: "群馬のAI導入支援",
     changefreq: "monthly", priority: "0.9",
-    title: "群馬発のAI導入支援・AIシステム開発｜シンアイ株式会社（高崎市）",
+    title: "シンアイ株式会社｜群馬のAI導入支援・AIシステム開発（高崎市）",
     desc: "群馬県高崎市のAIシステム開発会社。生成AIの業務活用、RAG構築、企業専用AIエージェント開発、技能継承まで。研修や試験導入で終わらせず、企画から運用まで一気通貫してご支援します。群馬県を中心に全国対応・オンライン相談可。" },
   { file: "about.html", part: "about.html", nav: "about", hero: false,
     crumb: "会社情報",
     changefreq: "monthly", priority: "0.7",
-    title: "会社情報｜ShinAI",
+    title: "会社情報｜シンアイ株式会社",
     desc: "技術より先に、人を見る。群馬県高崎市を拠点とするシンアイ株式会社の目的、代表メッセージ、七つのShin、体制と会社概要。",
     en: {crumb: "About",  title: "About | ShinAI",
           desc: "People before technology. Our purpose, a message from the founder, the Seven Shin principles, our team, and company facts." } },
@@ -291,7 +291,7 @@ const pages = [
     crumb: "よくあるご質問",
     changefreq: "monthly", priority: "0.6",
     extraScripts: ['<script src="scripts/faq.js" defer></script>'],
-    title: "よくあるご質問｜ShinAI",
+    title: "よくあるご質問｜シンアイ株式会社",
     desc: "はじめての方へ、費用と導入、開発の進め方、業界別の活用、サービス、そのほか。群馬県高崎市のAI開発会社ShinAIへのよくある質問。",
     en: {crumb: "FAQ",  title: "FAQ | ShinAI",
           desc: "Getting started, cost and rollout, how we build, industry use, our services, and more. Common questions about working with ShinAI." } },
@@ -299,14 +299,14 @@ const pages = [
     crumb: "お問い合わせ",
     changefreq: "monthly", priority: "0.8",
     extraScripts: ['<script src="scripts/contact-form.js" defer></script>'],
-    title: "お問い合わせ・無料相談｜ShinAI",
+    title: "お問い合わせ・無料相談｜シンアイ株式会社",
     desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。群馬県高崎市のAI開発会社が承ります。",
     en: {crumb: "Contact",  title: "Contact & Free Consultation | ShinAI",
           desc: "You do not need defined requirements to talk to us. We map where AI can apply from your current operations and knowledge assets. Free consultation, 30-45 minutes, no preparation needed." } },
   { file: "news.html", part: "news.html", nav: "news", hero: false,
     crumb: "お知らせ",
     changefreq: "monthly", priority: "0.6",
-    title: "お知らせ｜ShinAI",
+    title: "お知らせ｜シンアイ株式会社",
     desc: "シンアイ株式会社の登壇・発表・活動のお知らせ。群馬県高崎市を拠点に、暗黙知のAI化と企業専用AIエージェント開発に取り組んでいます。",
     en: {crumb: "News",  title: "News | ShinAI",
           desc: "Talks, announcements, and activities from ShinAI Inc. Based in Takasaki, Gunma, working on tacit-knowledge AI and private enterprise AI agents." } },
@@ -316,7 +316,7 @@ const pages = [
     crumbParent: { name: "お知らせ", file: "news.html" },
     article: { date: "2025-12-05", image: "assets/images/news-takasaki-press.jpg" },
     changefreq: "yearly", priority: "0.5",
-    title: "高崎商工会議所 第9回合同プレス発表会に登壇しました｜ShinAI",
+    title: "高崎商工会議所 第9回合同プレス発表会に登壇しました｜シンアイ株式会社",
     desc: "2025年12月5日、高崎商工会議所の第9回合同プレス発表会にShinAI代表 柴田昌国が登壇し、「AIで人間らしい時間を取り戻す」という想いのもと、群馬県高崎市を拠点とする取り組みを発表しました。",
     en: {crumb: "Talk at the 9th Takasaki CCI joint press conference",
           crumbParent: { name: "News", file: "news.html" },
@@ -325,14 +325,14 @@ const pages = [
   { file: "privacy.html", part: "privacy.html", nav: null, hero: false,
     crumb: "プライバシーポリシー",
     changefreq: "yearly", priority: "0.2",
-    title: "プライバシーポリシー｜ShinAI",
+    title: "プライバシーポリシー｜シンアイ株式会社",
     desc: "ShinAIの個人情報の取り扱いについて。",
     en: {crumb: "Privacy Policy",  title: "Privacy Policy | ShinAI",
           desc: "How ShinAI handles personal information." } },
   { file: "terms.html", part: "terms.html", nav: null, hero: false,
     crumb: "利用規約",
     changefreq: "yearly", priority: "0.2",
-    title: "利用規約｜ShinAI",
+    title: "利用規約｜シンアイ株式会社",
     desc: "ShinAIウェブサイトの利用規約。",
     en: {crumb: "Terms of Use",  title: "Terms of Use | ShinAI",
           desc: "Terms of use for the ShinAI website." } }
@@ -574,13 +574,17 @@ const ldJsonEn = {
   ]
 };
 
-/* 検索結果でのサイト名表示のため、トップページに WebSite を出す。 */
+/* 検索結果の先頭に出るサイト名のため、トップページに WebSite を出す。
+   name はブランド表記の "ShinAI" にしていたが、検索結果にはドメイン(shinai-inc.jp)が
+   出ていた(柴田確認 2026-09-12)。Google はサイト名を、トップページの
+   WebSite.name・og:site_name・title から一致するものを選ぶ。三つを
+   正式社名でそろえ、ブランド表記は alternateName に回す。 */
 const websiteLd = (loc) => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": SITE_URL + "/" + loc.dir + "#website",
-  name: "ShinAI",
-  alternateName: loc.code === "ja" ? "シンアイ" : "ShinAI Inc.",
+  name: loc.code === "ja" ? "シンアイ株式会社" : "ShinAI Inc.",
+  alternateName: loc.code === "ja" ? ["ShinAI", "シンアイ"] : ["ShinAI", "シンアイ株式会社"],
   inLanguage: loc.htmlLang,
   url: SITE_URL + "/" + loc.dir,
   /* サイトを組織へ結ぶ。断片のままだと「このサイトは誰のものか」が
@@ -864,7 +868,7 @@ ${alternates}
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ShinAI">
+  <meta property="og:site_name" content="${loc.code === "ja" ? "シンアイ株式会社" : "ShinAI Inc."}">
   <meta property="og:locale" content="${loc.ogLocale}">
 ${pageLocales.filter((l) => l.code !== loc.code)
   .map((l) => `  <meta property="og:locale:alternate" content="${l.ogLocale}">`).join("\n")}

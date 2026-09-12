@@ -503,3 +503,18 @@ test("/lp/ のロゴは図形(SVG)で、安全な単体ファイル", () => {
   assert.match(svg, /viewBox="0 0 1500 468"/, "原本と同じ比率ではない");
 });
 
+test("検索結果に出すサイト名が、三か所で一致している", () => {
+  /* Google はトップページの WebSite.name・og:site_name・title から
+     一致するものをサイト名に選ぶ。ずれるとドメイン(shinai-inc.jp)が出る
+     (柴田確認 2026-09-12)。正式社名でそろえる。 */
+  const NAME = "シンアイ株式会社";
+  const html = readDist("index.html");
+  const site = typed("index.html", "WebSite")[0];
+  assert.equal(site.name, NAME, "WebSite.name が社名でない");
+  assert.ok((site.alternateName || []).includes("ShinAI"), "ブランド表記が別名に無い");
+  assert.match(html, new RegExp(`<meta property="og:site_name" content="${NAME}">`), "og:site_name が社名でない");
+  assert.match(html, new RegExp(`<title>${NAME}｜`), "トップのtitleが社名で始まらない");
+  /* 社名で探した人が最初に出会うページを、地域ページではなくトップにする */
+  assert.match(readDist("gunma-ai.html"), new RegExp(`<title>${NAME}｜`), "群馬ページのtitleが社名で始まらない");
+});
+
