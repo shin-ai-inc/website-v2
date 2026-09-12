@@ -356,7 +356,7 @@ const ldJson = {
   name: "シンアイ株式会社",
   legalName: "シンアイ株式会社",
   /* 指名検索の表記ゆれ(シンアイ/ShinAI/シンアイ株式会社)を同一主体として束ねる。 */
-  alternateName: ["ShinAI", "シンアイ", "ShinAI Inc.", "シンアイ"],
+  alternateName: ["ShinAI", "ShinAI Inc.", "シンアイ"],
   identifier: {
     "@type": "PropertyValue",
     propertyID: "法人番号",
@@ -391,6 +391,9 @@ const ldJson = {
     addressLocality: "高崎市",
     streetAddress: "井野町360-7 オークスアベニューD201"
   },
+  /* 位置情報。地図検索・地域の検索結果で「どこの会社か」を機械が確定できる。
+     座標は国土地理院の住所検索(msearch.gsi.go.jp)で井野町360番地を引いた実測値。 */
+  geo: { "@type": "GeoCoordinates", latitude: 36.361103, longitude: 139.022751 },
   /* 会社概要とトップのCTAに既に出ている事実を、機械可読な形でも示す。
      電話は公開していないため申告しない。受付時間だけは公開済みで、
      地域事業者としての実在性を裏づける数少ない具体値になる。 */
@@ -556,6 +559,9 @@ const ldJsonEn = {
     addressLocality: "Takasaki",
     streetAddress: "360-7 Ino-machi, Oaks Avenue D201"
   },
+  /* 位置情報。地図検索・地域の検索結果で「どこの会社か」を機械が確定できる。
+     座標は国土地理院の住所検索(msearch.gsi.go.jp)で井野町360番地を引いた実測値。 */
+  geo: { "@type": "GeoCoordinates", latitude: 36.361103, longitude: 139.022751 },
   openingHoursSpecification: [{
     "@type": "OpeningHoursSpecification",
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
