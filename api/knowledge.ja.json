@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "3505945",
+  "generatedAt": "b6de835",
   "chunks": [
     {
       "id": "index#0",
@@ -553,9 +553,9 @@
       "id": "about#8",
       "title": "会社概要｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "商号: シンアイ株式会社（ShinAI）\n創業: 令和7年1月1日（個人事業）\n設立: 令和8年8月8日\n代表取締役: 柴田 昌国\n事業内容: 企業専用AIエージェント開発／企業構造の変革支援／\n フィジカルAIの研究開発（PoC）\n対応地域: 群馬県 を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市\n連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00",
+      "text": "商号: シンアイ株式会社（ShinAI）\n設立: 令和8年8月8日\n代表取締役: 柴田 昌国\n事業内容: 企業専用AIエージェント開発／企業構造の変革支援／\n フィジカルAIの研究開発（PoC）\n対応地域: 群馬県 を中心に全国 （オンライン対応可）\n所在地: 群馬県高崎市\n連絡先: contact@shinai-inc.jp\n受付時間: 平日 9:00–18:00",
       "pin": true,
-      "vec": "/P4EBQz2/gf+/Qf9Cf37/vb+APcBBQcBCQUB/gL3A/7/BPwAAAcA/gMABwX9/PoF/gb6AAH39wcJAQEGCP3+/wIDBAz8+QAC/wD8A/0IAQPzC/cAB/j9/vgH8wb4BAb/AwED/wH7AQ37Bvr9AQT5AfcG8v0DAPr9/ggCC//7APn4+P38//sD9vwB+PkFBfv4/Qj89gQBAPr79PgF+v0A+gcI+wH7//j79wD8+vwCA/kDAvz/+wL2A/z7AQMA/f8BDQ4F/P77/PkA8gIM/vkHA/0DC/IG/vz/9/75AfkG+gP+CgD8BPkBAPr5/vwEAAL+AwMIBAX6BgEB/gf7BfX99gD/AQUABP76Bf4EDgT//QEE/wAA+QP1C/sD+f/9Bf71/AMF/vv6//kIAf8GCf0B+QQM9gEE/QD9Af//+gP+BfoA+/v+9wgF+wT+Cv4B/vsI/vwB//n/9QMB+gMB/wP5+f/5+fsE+PwG9f0D+/z+9wMB/AcA/gEE9woE/v8CBfv9//8DAfwGEPv//gD6AgP/Avj8BP78BP4A+QYA8gQI+v3+BPv9BfEC9/r8Bf4B/P///f7/AAH9+wIA/vz59gUCBPYCAf4FD/8F/f72BwH8/A//+v0EAQX1AAX49gIF+vn5/f0ABAkF/wX9AAQDDf8F/wr48gv7/f8K8wAD/P7+BQY="
+      "vec": "+/4EBw33/gf9/Af8Cf37/fb/APgBBQb/CwQA/gH5A/0AA/wAAAYB/QL/BgT9/voF/gX5Af/29wgKAgEFB/0A/wADBAv8+gADAQD9A/0IAAXzDPb+B/f8//cI8gb4BAb+BAID/wD7Agz9B/v+AQP6//gF8vwC//v9/AgCCv/7//n69/38//sD9vwB+PkGBvv5/Qf89gUBAPr88/gG+P0A+wYI/AH6/vf79wH7+vwABPsFA/wA+wL3A/z7AwUA//8BDQ0G+v76/PoA8gEL/vgGA/0DC/EF/Pz/9/75APkF+wP9CwD8BfkC//r6/v0EAQL/BAQIBQT7BwEB/gb8BfT89wH+/wQBBf35Bf8EDQT//AED/wAA+QL3C/wD+v/9Bf32/QMGAPz6//gIAgAHCv4B+QUL9AEE/P/8Av/++gP+BfoB/fv99wgE+gb/CgAB/vsH/vsA/fgB9gMA+wIC/wH6+gD6+fsE9/wH9f0F/Pz+9wMC+wcA/gAE+AsF//8CBPz//v8EAPsGD/oA/gD6AQMAA/f9A/7+A/7/+QX/8gQG+v7+A/v+BfEC9/n9Bv4A/P7//P8AAAH8+wIA/vz69gUCBPYCAf4FD/8F/v33CAL9/A7/+/0EAQT0AQT49wAG+Pr4+vv/AwkF/gX9/wIDDf8F/wn58Qv6/v8K8/8D/P/+BQY="
     },
     {
       "id": "about#9",
