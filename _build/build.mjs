@@ -207,6 +207,10 @@ const normalizeMain = (raw) =>
 /* ビルド機構を通さず、単独で公開しているページ。本文は生成しないが、
    ここに挙げないと sitemap にも llms.txt にも載らず、検索側から見つからない。
    収録に必要な事実だけを持たせる。 */
+/* 旧URLのまま残す入れ物。中身は移転先を示すだけのページ。
+   2026-09-13: /lp/ は社内用語がURLに出ていたため /start/ へ移した。 */
+const REDIRECT_DIRS = ["lp/"];
+
 const standalonePages = [
   {
     dir: "ai-business/",
@@ -219,8 +223,8 @@ const standalonePages = [
         + "ものづくり補助金・新事業進出補助金の活用も相談できる。",
   },
   {
-    dir: "lp/",
-    src: "lp/index.html",
+    dir: "start/",
+    src: "start/index.html",
     changefreq: "monthly",
     priority: "0.8",
     title: "仕事に、余白を。会社に、次の一手を。",
@@ -1082,6 +1086,11 @@ for (const f of ["robots.txt", "sitemap.xml", "llms.txt", "favicon.ico"]) toDist
    この経路でだけ404になり、本番(ルート配信)では正常なので気づけない。 */
 for (const p of standalonePages) {
   cpSync(join(ROOT, p.dir), join(DIST, p.dir), { recursive: true });
+}
+/* 旧URL。移転先を canonical と meta refresh で示すだけのページ。
+   sitemap にも llms.txt にも載せない(正規の場所は移転先だけ)。 */
+for (const dir of REDIRECT_DIRS) {
+  cpSync(join(ROOT, dir), join(DIST, dir), { recursive: true });
 }
 for (const loc of LOCALES) toDist(loc.dir + "site.webmanifest");
 toDist(".well-known/security.txt");

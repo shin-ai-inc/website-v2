@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""会社紹介LP(/lp/)の画像を作る（開発ツール。公開しない）。
+"""会社紹介LP(/start/)の画像を作る（開発ツール。公開しない）。
 
   python _build/make_lp2_images.py
 
@@ -15,7 +15,7 @@ import os
 from PIL import Image
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-LP = os.path.join(ROOT, "lp", "assets")
+LP = os.path.join(ROOT, "start", "assets")
 
 # (元のPNG, 書き出す幅, 可逆で書くか)
 TARGETS = [

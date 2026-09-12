@@ -363,7 +363,7 @@ test("地域ページのパンくずが階層を申告する", () => {
 });
 
 /* ビルドを通さない独立ページ。増えたらここへ足す。 */
-const STANDALONE = ["ai-business", "lp"];
+const STANDALONE = ["ai-business", "start"];
 
 test("独立ページの計測トークンが、本体と同じ値である", () => {
   /* /ai-business/ はビルドを通さないため、計測トークンを自分で持っている。
@@ -477,28 +477,28 @@ test("すべての問い合わせフォームに、人間確認の枠がある",
   }
 });
 
-/* ---- /lp/ の改行は意味の切れ目で置く(柴田指示 2026-09-12) ---- */
-test("/lp/ はスマホで書いた改行を消さず、スマホ専用の改行を持つ", () => {
+/* ---- /start/ の改行は意味の切れ目で置く(柴田指示 2026-09-12) ---- */
+test("/start/ はスマホで書いた改行を消さず、スマホ専用の改行を持つ", () => {
   /* 以前はスマホで本文の <br> を一律に消し、画面幅任せに折っていた。
      「お客様への提案や次の改善へ。AIを入れた先の」のように、意味の途中で折れていた。 */
-  const css = readSrc("lp/style.css");
+  const css = readSrc("start/style.css");
   assert.ok(!/\.body br\s*\{\s*display:\s*none/.test(css), "スマホで本文の改行を消している");
   assert.ok(!/\.work-detail p br\s*\{\s*display:\s*none/.test(css), "スマホで業務の変化の改行を消している");
   assert.match(css, /\.br-sp\{display:none\}/, "スマホ専用の改行(.br-sp)の既定が無い");
   assert.match(css, /max-width:760px\)\{\s*\.br-sp\{display:inline\}/, "スマホで .br-sp を表示していない");
-  const html = readSrc("lp/index.html");
+  const html = readSrc("start/index.html");
   /* 改行の多くはスマホ専用。PCと共通にしたものもあるので、数は目安として下限だけ見る */
   assert.ok((html.match(/class="br-sp"/g) || []).length >= 10, "スマホ専用の改行が少ない");
 });
 
-test("/lp/ のロゴは図形(SVG)で、安全な単体ファイル", () => {
+test("/start/ のロゴは図形(SVG)で、安全な単体ファイル", () => {
   /* 画像のロゴは PC(画素密度1〜1.5)でマークの白い線が滲んだ(柴田指摘 2026-09-12)。
      図形なら画素密度によらず輪郭をその場で描ける。 */
-  const html = readSrc("lp/index.html");
+  const html = readSrc("start/index.html");
   const logos = html.match(/<img src="assets\/logo\/shinai-logo\.svg"[^>]*class="official-logo"/g) || [];
   assert.equal(logos.length, 2, "ヘッダーとフッターのロゴが図形になっていない");
   assert.ok(!/shinai-logo-\d+\.(webp|png)/.test(html), "画像のロゴが残っている");
-  const svg = readSrc("lp/assets/logo/shinai-logo.svg");
+  const svg = readSrc("start/assets/logo/shinai-logo.svg");
   assert.ok(!/<script|\son[a-z]+\s*=|javascript:|(href|src)\s*=\s*"(https?:)?\/\//i.test(svg), "SVG にスクリプトか外部参照がある");
   assert.match(svg, /viewBox="0 0 1500 468"/, "原本と同じ比率ではない");
 });

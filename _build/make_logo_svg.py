@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""会社紹介LP(/lp/)のロゴを、原寸の画像から図形(SVG)に起こす（開発ツール。公開しない）。
+"""会社紹介LP(/start/)のロゴを、原寸の画像から図形(SVG)に起こす（開発ツール。公開しない）。
 
   pip install potracer numpy pillow
   python _build/make_logo_svg.py
@@ -9,7 +9,7 @@
 約350画素を使えるので鮮明だった。画素を足すのではなく、図形にして輪郭をブラウザに
 その場で描かせる。
 
-原本 lp/assets/shinai-logo.png (1500x468) の文字(黒)と円(マゼンタ・上から下へわずかに
+原本 start/assets/shinai-logo.png (1500x468) の文字(黒)と円(マゼンタ・上から下へわずかに
 濃くなる)を別々に輪郭化する。円の中の白い線は透明の抜きなので、evenodd で穴として残る。
 2026-09-12 の起こしでは、原本との形の一致率(IoU) 0.984、食い違いはすべて輪郭の±2px 以内
 (アンチエイリアスの差)、円の平均色は原本 (195,0,242) に対し (195,1,242)。
@@ -20,8 +20,8 @@ import potrace
 from PIL import Image
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SRC = os.path.join(ROOT, "lp", "assets", "shinai-logo.png")
-OUT = os.path.join(ROOT, "lp", "assets", "logo", "shinai-logo.svg")
+SRC = os.path.join(ROOT, "start", "assets", "shinai-logo.png")
+OUT = os.path.join(ROOT, "start", "assets", "logo", "shinai-logo.svg")
 
 # 円の色は原本の上端・下端の実測値
 DISC_TOP, DISC_BOTTOM = "#CC02F7", "#BA00EE"
