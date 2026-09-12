@@ -2190,7 +2190,9 @@ body.chat-open .scroll-progress {
 
 @media (max-width: 640px) {
   .company__facts > div {
-    grid-template-columns: 6.5em 1fr;
+    /* 360px級では値の列が192pxしかなく、事業内容の一行(196px)が4px入らず
+       「／」だけが落ちていた。項目名の列を詰めて値の幅を確保する。 */
+    grid-template-columns: 5.5em 1fr;
     gap: var(--space-3);
     padding-block: var(--space-2);
   }
@@ -2300,6 +2302,11 @@ body.chat-open .scroll-progress {
   color: var(--brand);
 }
 
+/* 事業内容は一行に一事業。狭幅では .nobr の折り返し許可が効いて「／」だけが
+   次の行に落ちるため、この行に限り塊ごと送る(inline-block)。 */
+.company__fact-desc .nobr {
+  display: inline-block;
+}
 
 
 /* sections/contact.css */
