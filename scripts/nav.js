@@ -1,8 +1,3 @@
-/*
-  ShinAI Website v2 — nav.js
-  アクセシブルなモバイルナビ開閉と、スクロールによるヘッダー condense。
-  インラインハンドラを使わず、グローバルを汚さない自己完結 IIFE。
-*/
 (function () {
   "use strict";
 
@@ -14,12 +9,10 @@
   var toggle = header.querySelector("[data-nav-toggle]");
   var nav = document.getElementById("primary-nav");
 
-  /* 開閉ラベルはページの言語(html[lang])で切り替える。英語版 /en/ も同じスクリプトを共有する。 */
   var EN = (document.documentElement.getAttribute("lang") || "ja").indexOf("en") === 0;
   var LABEL_OPEN = EN ? "Open menu" : "メニューを開く";
   var LABEL_CLOSE = EN ? "Close menu" : "メニューを閉じる";
 
-  /* ---- モバイルナビ開閉 ---- */
   if (toggle && nav) {
     var isOpen = false;
     var mobileQuery = window.matchMedia("(max-width: 820px)");
@@ -86,7 +79,6 @@
     }
   }
 
-  /* ---- スクロールで condense ---- */
   var condenseAt = 24;
   var ticking = false;
 

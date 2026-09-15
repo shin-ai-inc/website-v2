@@ -3,11 +3,6 @@
     このスタイルシートの設計・配色・寸法は当社の著作物です。
     無断での複製・転用を禁じます。出所の問い合わせ: contact@shinai-inc.jp */
 
-/* ===== 設計の芯 =====
-   このページが約束しているのは「余白」。だからページ自体に余白を持たせる。
-   背景は三つだけ: 紙(基調)・若葉の淡色(余白の話をする節)・朱の淡色(次の一手＝相談)。
-   ヒーローの二語の色(余白=緑、次の一手=朱)が、そのまま節の地色の意味になる。
-   装置は一種類に絞る: 細い罫・小さな番号・左に見出し/右に中身の二段組。 */
 :root{
   --paper:#f8f7f1;
   --sage-wash:#edf1e8;
@@ -28,11 +23,6 @@
   --grad-room:linear-gradient(100.4deg,#5b9530 0%,#7cb041 100%);
   --grad-next:linear-gradient(100.7deg,#b8623a 0%,#cc7d4a 100%);
   --grad-thread:linear-gradient(90deg,#9cbf7c 0%,#7cb041 38%,#cc7d4a 100%);
-  /* 申し込みのボタンは淡いピンク(柴田指示)。朱の一色では地味だった。
-     淡い地に白い文字は読めないため、文字は濃いローズ #7d2842 にする。
-     地のいちばん濃い端 #efb3c0 でも 5.27:1、淡い端 #fbe0e4 で 7.49:1。
-     地と紙の差は 1.3〜1.7:1 しかないので、ローズの縁と桃色の光彩で形を立てる。
-     ブランドのマーク(マゼンタ)とも、/ai-business/ の桃色の地とも響き合う。 */
   --grad-cta:radial-gradient(120% 160% at 12% 0%,rgba(255,255,255,.55),rgba(255,255,255,0) 55%),linear-gradient(115deg,#fbe0e4 0%,#f5c6cf 55%,#efb3c0 100%);
   --cta-ink:#7d2842;
   --sans:"Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
@@ -51,14 +41,10 @@ button{font:inherit;color:inherit}
 a,button,summary{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
 ::selection{background:#dfe8d4}
-/* 改行は画面幅任せにせず、意味の切れ目で置く(柴田指示)。
-   <br> は共通、.br-pc は PC だけ、.br-sp はスマホだけの改行。
-   word-break:auto-phrase は、想定より狭い端末で折れたときの受け皿として残す。 */
 .br-pc{display:none}
 .br-sp{display:none}
 .nowrap{white-space:nowrap}
 
-/* 見出しは細く、字詰めで締める。太さで押さず、余白で読ませる。 */
 h1,h2{font-feature-settings:"palt";color:var(--ink)}
 h2{font-size:clamp(28px,2.8vw,40px);font-weight:400;line-height:1.75;letter-spacing:.08em}
 h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
@@ -82,13 +68,9 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .skip{position:fixed;top:-100px;left:16px;z-index:100;padding:10px 18px;border-radius:8px;background:var(--ink);color:#fff}
 .skip:focus{top:12px}
 
-/* ===== ヘッダー ===== */
 .header{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:40px;height:84px;padding-inline:max(28px,calc((100% - 1216px)/2));transition:height .45s var(--ease),background-color .45s var(--ease),box-shadow .45s var(--ease)}
 .header.is-scrolled{height:68px;background:rgba(248,247,241,.9);-webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);box-shadow:0 1px 0 var(--line-soft)}
 .brand{display:block}
-/* ロゴは高さを整数で決める。116px幅では文字の縦画が1.24画素しかなく、PC(画素密度1〜1.5)では
-   必ず2列の灰色に割れて滲んだ(柴田指摘)。高さ44px=幅141pxで縦画1.5画素、円の中の白い線3画素。
-   ヘッダー84px(縮むと68px)から引いて上下の余りが整数になる高さにし、半画素のずれも出さない。 */
 .brand .official-logo{width:auto;height:44px}
 .desktop-nav{display:flex;gap:36px;margin-left:auto;font-size:13px;letter-spacing:.12em;color:var(--ink-2)}
 .desktop-nav a{position:relative;padding-block:6px}
@@ -97,11 +79,8 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .header-cta{display:inline-flex;align-items:center;gap:14px;padding:10px 20px 10px 22px;border:1px solid var(--line);border-radius:999px;font-size:13px;letter-spacing:.1em;transition:border-color .3s,color .3s,background-color .3s}
 .header-cta:hover{border-color:var(--accent);color:var(--accent)}
 .menu-button{display:none}
-/* hidden 属性は、display を持つ部品指定(.lp-form の grid 等)に負ける。
-   送信後もフォームが残り、二重送信できていた。常に隠れる側を優先させる。 */
 [hidden]{display:none!important}
 
-/* ===== ヒーロー ===== */
 .hero{display:flex;align-items:center;min-height:min(100svh,920px);padding-block:156px 112px}
 .hero__grid{display:grid;grid-template-columns:1.2fr 1fr;column-gap:48px;align-items:center}
 .hero__eyebrow{margin-bottom:36px}
@@ -114,14 +93,9 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .hero__lead{margin-top:40px;font-size:17px;line-height:2.0503;color:var(--ink-2)}
 .hero__sub{margin-top:12px;font-size:13px;letter-spacing:.1em;color:var(--muted)}
 .hero__actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px 34px;margin-top:48px}
-/* 絵の地(249,245,240)は紙とわずかに違い、紙目の質感もある。溶かすと境目が滲むので、
-   額装として縁を立てる。他の二枚と同じ扱いにそろえる。 */
 .hero__art{margin-right:-24px;overflow:hidden;border-radius:28px;box-shadow:0 1px 0 rgba(63,53,49,.04),0 44px 80px -58px rgba(63,53,49,.4)}
 .hero__art img{width:100%}
 
-/* 申し込みの二つのボタン(ヒーロー・フォーム)は同じ作りにする。
-   地は朱のグラデーション、上縁に一筋の光、矢印は淡い丸に収める。
-   ホバーで地がずれ、光が一度だけ横切る。 */
 .primary-link,.contact-button{position:relative;isolation:isolate;overflow:hidden;border:1px solid rgba(207,110,138,.42);background:#f5c6cf;background-image:var(--grad-cta);background-size:160% 100%;background-position:0% 50%;color:var(--cta-ink);font-weight:600;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 16px 30px -16px rgba(214,110,140,.6);transition:background-position .7s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
 .primary-link::before,.contact-button::before{content:"";position:absolute;inset:0 auto 0 -60%;z-index:-1;width:50%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:skewX(-18deg);transition:left .9s var(--ease)}
 .primary-link:hover,.contact-button:hover{background-position:100% 50%;transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 22px 38px -16px rgba(214,110,140,.72)}
@@ -133,17 +107,10 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .text-link{display:inline-flex;align-items:center;gap:10px;padding-bottom:5px;border-bottom:1px solid var(--line);font-size:14px;letter-spacing:.08em;color:var(--ink-2);transition:color .3s,border-color .3s}
 .text-link:hover{color:var(--accent);border-color:var(--accent)}
 
-/* ===== 図版 =====
-   淡色の節では、絵を紙色の額に入れる。絵の地(248,246,240)と紙がほぼ同じなので、
-   額の中では境目が消え、額の外(節の地色)とだけ縁が立つ。 */
 .art__frame{overflow:hidden;border-radius:24px;background:var(--paper)}
 .art img{width:100%}
 .art figcaption{margin-top:14px;text-align:center;font-size:13px;letter-spacing:.0204em;color:var(--muted)}
 
-/* ===== 一日の時間の使い方 =====
-   「余白」を、比喩ではなく面積で見せる。いまの帯は下ごしらえで埋まり、
-   これからの帯には何もない区画(＝余白)が生まれ、判断の区画が広がる。
-   下ごしらえは斜線(単調さ)、余白は破線の空き(まだ何も置いていない時間)。 */
 .day{margin-top:104px;padding:44px 48px 42px;border-radius:24px;background:var(--paper);box-shadow:0 1px 0 rgba(63,53,49,.04),0 30px 60px -44px rgba(63,53,49,.28)}
 .day__title{display:flex;align-items:center;gap:12px;margin-bottom:30px;font-size:13px;letter-spacing:.14em;color:var(--muted)}
 .day__title small{padding:1px 10px;border:1px solid var(--line);border-radius:999px;font-size:11px;letter-spacing:.1em}
@@ -165,13 +132,11 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .day__row--next .seg--room{flex-grow:3.2}
 .day__row--next .seg--value{flex-grow:3.6}
 .day__row--next .seg{transition-delay:.6s}
-/* 画面に入るまでは「これから」も「いま」と同じ配分に置き、見えた瞬間に動かす */
 .motion-ready .day.pending .day__row--next .s1{flex-grow:2.2}
 .motion-ready .day.pending .day__row--next .s2{flex-grow:2}
 .motion-ready .day.pending .day__row--next .seg--room{flex-grow:.0001;border-color:transparent;opacity:0}
 .motion-ready .day.pending .day__row--next .seg--value{flex-grow:2.2}
 
-/* ===== 番号つきの行 ===== */
 .numbered{counter-reset:n;border-top:1px solid var(--line)}
 .numbered>li{counter-increment:n;position:relative;padding:22px 0 22px 56px;border-bottom:1px solid var(--line);line-height:1.8009}
 .numbered>li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:25px;font:500 13px/1.6 var(--latin);letter-spacing:.08em;color:var(--accent)}
@@ -183,7 +148,6 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .closeness h3{font-size:19px}
 .closeness p{margin-top:6px;font-size:14px;line-height:1.9;color:var(--ink-2)}
 
-/* ===== 業務ごとの変化 ===== */
 .work-list{border-top:1px solid var(--line)}
 .work-item{border-bottom:1px solid var(--line)}
 .work-item summary{display:grid;grid-template-columns:56px 1fr auto;grid-template-areas:"num title toggle" "num sum toggle";row-gap:2px;align-items:center;padding:26px 0;list-style:none;cursor:pointer}
@@ -198,16 +162,12 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .work-item[open] .toggle{border-color:var(--sage-soft);background:var(--sage-wash)}
 .work-item[open] .toggle::after{transform:translate(-50%,-50%) rotate(0)}
 .work-detail{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin:0 0 30px;padding:26px 22px;border-radius:18px;background:var(--card);box-shadow:0 1px 0 rgba(63,53,49,.04),0 20px 40px -34px rgba(63,53,49,.3)}
-/* 一行は最長16字。二列に分けても字詰めを少し締めれば、PCで一行に収まる */
 .work-detail p{font-size:14px;line-height:1.95;letter-spacing:.02em;color:var(--ink-2)}
 .work-detail strong{font-weight:600;color:var(--ink)}
 .work-detail__arrow{font-size:18px;color:var(--accent)}
 .tag{display:block;margin-bottom:6px;font-size:11px;letter-spacing:.1em;color:var(--muted)}
 .tag--next{color:var(--sage)}
 
-/* ===== 進め方 =====
-   分かれた支援は「途切れた線」、ShinAIは「一本の線」。比較の意味を線そのものに持たせる。
-   一本の線は若葉(理解・余白)から朱(次の一手)へ移る。ヒーローの二色を、道のりとして引く。 */
 .thread{display:grid;gap:64px;margin-top:104px}
 .thread__label{display:flex;align-items:center;gap:14px;margin-bottom:22px;font-size:13px;letter-spacing:.14em;color:var(--muted)}
 .thread__brand{font:600 15px/1 var(--latin);letter-spacing:.04em;color:var(--ink)}
@@ -227,7 +187,6 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .motion-ready .thread.pending .thread__steps::before{transform:scaleX(0)}
 .thread__note{margin-top:-24px}
 
-/* ===== 会社について ===== */
 .company-foot{margin-top:120px}
 .sub-h{font-size:22px;font-weight:500;line-height:1.7;letter-spacing:.08em}
 .company-foot .body{margin-top:16px}
@@ -239,7 +198,6 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .company-data dt{padding-top:2px;font-size:12.5px;letter-spacing:.12em;color:var(--muted)}
 .company-data dd span{margin-left:8px;font-size:12px;color:var(--muted)}
 
-/* ===== ご相談 ===== */
 .contact__grid{display:grid;grid-template-columns:5fr 6fr;column-gap:clamp(40px,7%,96px);align-items:center}
 .contact__pre{margin-bottom:12px;font-size:13px;letter-spacing:.08em;color:var(--muted)}
 .contact h2 em{font-style:normal;color:#b8623a}
@@ -255,7 +213,6 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .lp-input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--paper);font:inherit;font-size:16px;line-height:1.7;color:var(--ink);transition:border-color .2s var(--ease),box-shadow .2s var(--ease),background-color .2s}
 .lp-input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(166,86,52,.14)}
 .lp-textarea{min-height:120px;resize:vertical}
-/* 白紙の入力欄は、書くことが決まっていない人ほど手が止まる。一押しで書き出しが埋まる。 */
 .lp-chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .lp-chips__label{width:100%;font-size:11.5px;color:var(--muted)}
 .lp-chip{padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:transparent;font-size:12.5px;color:var(--accent-deep);cursor:pointer;transition:border-color .2s,background-color .2s}
@@ -263,11 +220,8 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .lp-consent{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.8;color:var(--ink-2);cursor:pointer}
 .lp-consent input{flex-shrink:0;margin-top:5px;accent-color:var(--accent)}
 .lp-consent a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
-/* 人には見えない欄。読み上げと自動入力からも遠ざける。 */
 .lp-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .lp-error{margin:0;font-size:13px;line-height:1.8;color:#9b3a1f}
-/* 送信完了。受付の確証とお礼、返信先の確認、届かないときの出口だけを置く。
-   返信先は打ち間違いに本人が気づけるよう表示する。色は「余白」の若葉(sage)で受ける。 */
 .lp-done{display:grid;justify-items:center;padding-block:12px 4px;text-align:center;scroll-margin-top:96px}
 .lp-done__mark{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--sage-wash)}
 .lp-done__mark svg{width:44px;height:44px;fill:none;stroke:var(--sage);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
@@ -291,21 +245,16 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .contact-button:disabled{opacity:.6;cursor:default;transform:none}
 .contact-button:disabled::before{display:none}
 
-/* ===== フッター ===== */
 .footer{display:flex;align-items:center;gap:28px;padding:40px max(28px,calc((100% - 1120px)/2));border-top:1px solid var(--line-soft)}
 .footer .official-logo{width:auto;height:36px}
 .footer p{font-size:12px;letter-spacing:.12em;color:var(--muted)}
-/* 本体サイトへの出口はフッターだけに置く。検討の流れを切らないよう、
-   ヘッダーと本文には置かない(柴田承認 2026-09-13)。 */
 .footer__site{margin-left:auto;display:inline-flex;align-items:center;gap:8px;padding-bottom:3px;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.08em;color:var(--ink-2);transition:color .3s,border-color .3s}
 .footer__site:hover{color:var(--accent);border-color:var(--accent)}
 .footer small{font-size:11px;color:var(--muted)}
 .back-top{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;color:var(--ink-2);transition:border-color .3s,color .3s}
 .back-top:hover{border-color:var(--accent);color:var(--accent)}
-/* 読み進んだ量。若葉から朱へ、余白から次の一手へ。 */
 .reading-progress{position:fixed;top:0;left:0;z-index:60;width:0;height:2px;background:linear-gradient(90deg,#7cb041,#cc7d4a)}
 
-/* ===== 動き ===== */
 .reveal{opacity:1;transform:none}
 .motion-ready .reveal{transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .motion-ready .reveal.pending{opacity:0;transform:translateY(18px)}
@@ -320,7 +269,6 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 }
 @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-/* 背景切り抜きの文字。効かない環境では上の単色がそのまま残る。 */
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .hero h1 em,.contact h2 em,.seg--room em{-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
   .hero h1>span:first-child em,.seg--room em{background-image:var(--grad-room)}
@@ -329,15 +277,12 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 
 @media (min-width:761px){.br-pc{display:inline}}
 
-/* 1025〜1240px は二段組の右列が細く、業務カードの「いま／これから」を二列に並べると
-   1列が200px前後になり、意味の途中で折れた。ここではスマホと同じく縦に積む。 */
 @media (max-width:1240px){
   .work-detail{grid-template-columns:1fr;gap:10px}
   .work-detail__arrow{transform:rotate(90deg);justify-self:start;margin-left:4px}
   .work-detail .br-pc{display:none}
 }
 
-/* ===== 中間幅 ===== */
 @media (max-width:1024px){
   .hero{min-height:0}
   .hero__grid{grid-template-columns:1fr;row-gap:48px}
@@ -345,7 +290,6 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
   .split,.contact__grid{grid-template-columns:1fr;row-gap:56px}
   .sticky{position:static}
   .work-detail{margin-left:0}
-  /* 5列だと1工程が130px前後になり、説明が3行に崩れる。縦の一本線にする */
   .thread__steps{grid-template-columns:1fr;padding-left:34px}
   .thread__steps::before{left:6px;right:auto;top:6px;bottom:28px;width:2px;height:auto;background:linear-gradient(180deg,#9cbf7c 0%,#7cb041 38%,#cc7d4a 100%);transform-origin:top}
   .motion-ready .thread.pending .thread__steps::before{transform:scaleY(0)}
@@ -354,12 +298,8 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
   .thread__steps .br-pc{display:none}
 }
 
-/* ===== モバイル ===== */
 @media (max-width:760px){
   .br-sp{display:inline}
-  /* この一文だけ、前の行との間を一行ぶん空ける(柴田指示)。
-     22字で 390px 幅にはちょうど収まるが 375/360px では 10px 余る。
-     約物(「」。)を詰め組みにして幅を作り、どの幅でも一行に保つ。 */
   .line-gap{display:block;margin-top:1.15em;font-feature-settings:"palt";letter-spacing:.02em}
   html{scroll-padding-top:76px}
   body{font-size:15px}
@@ -367,7 +307,6 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
   .section{padding-block:92px}
   h2{font-size:26px;line-height:1.75}
   #work-title{font-size:26px}
-  /* 11字を一行に。320px級の端末でも二行を保つ */
   #approach-title{font-size:min(26px,7.4vw)}
   .eyebrow{margin-bottom:20px;font-size:11.5px}
   .body{margin-top:20px;font-size:15px;line-height:2}
@@ -457,5 +396,4 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
   .section{padding-block:40px;break-inside:avoid}
 }
 
-/* 出所の宣言。描画には一切関与しない（どの要素からも参照していない）。 */
 :root{--shinai-origin:"shinai-inc.jp | シンアイ株式会社 | 法人番号 9070001044403 | 2026"}

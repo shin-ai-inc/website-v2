@@ -1,28 +1,14 @@
-/*
-  ShinAI Website v2 — main.js
-  - .reveal → .is-in: スクロール表示 (IntersectionObserver)
-  - スクロール進捗ライン: ページ上部に細い brand 色の線
-  - 視差スクロール: [data-parallax] 要素に深度を与える
-  プログレッシブ・エンハンスメント: JS が動く時だけ .reveal を隠す。
-  reduced-motion と IO 非対応は即時表示。グローバル非汚染 IIFE。
-*/
 (function () {
   "use strict";
 
   var root = document.documentElement;
   root.classList.add("js");
 
-  /* 新しいページへ進んだときは必ず先頭から見せる。
-     reveal 表示でページ高さが後から伸びるため、iOS Safari 等が読み込み途中の
-     高さのまま前ページのスクロール位置を復元し、記事が途中から表示されることがある。
-     戻る/進む(back_forward)のときはブラウザの復元を尊重し、
-     新規遷移(navigate)のときだけ明示的に先頭へ送る。 */
   var navType = (function () {
     var entries = window.performance && window.performance.getEntriesByType
       ? window.performance.getEntriesByType("navigation")
       : null;
     if (entries && entries.length) { return entries[0].type; }
-    /* 旧 API へのフォールバック(2=TYPE_BACK_FORWARD)。 */
     if (window.performance && window.performance.navigation) {
       return window.performance.navigation.type === 2 ? "back_forward" : "navigate";
     }
@@ -31,8 +17,6 @@
 
   if (navType !== "back_forward" && !window.location.hash) {
     window.scrollTo(0, 0);
-    /* 画像やフォントの読み込みで高さが確定した後にずれることがあるため、
-       描画確定の直後にもう一度だけ先頭を保証する。 */
     window.requestAnimationFrame(function () {
       if (!window.location.hash) { window.scrollTo(0, 0); }
     });
@@ -53,7 +37,6 @@
     return;
   }
 
-  /* --- Reveal observer --- */
   var observer = new window.IntersectionObserver(function (entries) {
     var i;
     for (i = 0; i < entries.length; i += 1) {
@@ -73,7 +56,6 @@
     observer.observe(targets[i]);
   }
 
-  /* --- スクロール進捗ライン(見た目は base.css の .scroll-progress が持つ) --- */
   var progressBar = document.createElement("div");
   progressBar.className = "scroll-progress";
   progressBar.setAttribute("aria-hidden", "true");
@@ -88,7 +70,6 @@
   window.addEventListener("scroll", updateProgress, { passive: true });
   updateProgress();
 
-  /* --- 視差スクロール (data-parallax 属性) --- */
   if (!reduceMotion) {
     var parallaxEls = document.querySelectorAll("[data-parallax]");
     if (parallaxEls.length) {

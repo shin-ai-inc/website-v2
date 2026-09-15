@@ -1,18 +1,6 @@
-/*
-  ShinAI Website v2 — chatbot.js
-  現行 v3.0.0 を継承しつつ技術的負債を解消した AIアシスタント。
-  改善点: innerHTML を全廃し DOM 構築に統一(XSS面の縮小) / FontAwesome 依存を撤廃(ローディングはCSS) /
-  API URL を外部 config.js から取得(インライン禁止) / 鍵はクライアントに一切持たない /
-  多層のクライアント検証(長さ・危険パターン・レート制限・crypto乱数 sessionId)を維持・強化 /
-  モデル応答は必ず textContent で描画(出力を信用してHTMLにしない)。
-  クライアント検証は防御の一層であり最終防壁ではない。最終的なインジェクション対策・出力サニタイズ・
-  濫用検知はサーバー側責務。グローバル非汚染の自己完結 IIFE。
-*/
 (function () {
   "use strict";
 
-  /* 表示文言はページの言語(html[lang])で切り替える。英語版 /en/ も同じスクリプトを共有する。
-     危険パターンの検出regexは言語に関係なく全て適用する(攻撃は言語を選ばない)。 */
   var EN = (document.documentElement.getAttribute("lang") || "ja").indexOf("en") === 0;
   var T = EN ? {
     greet: "Hello. This is the ShinAI assistant. Ask anything about unlocking tacit knowledge, or about applying it to your work.",
@@ -40,8 +28,6 @@
            "料金", "費用", "期間", "詳しく", "具体的", "ご提案"]
   };
 
-  /* 自傷をほのめかす表現。サーバー側 guard.mjs の分類と対応させる。
-     ここでは何も返さず、通過させるためだけに使う。 */
   var CRISIS = /死にたい|しにたい|消えたい|生きるのが(つらい|辛い|嫌)|自殺|自傷|リストカット|誰も助けて|kill myself|suicide|want to die|end my life|self[ -]harm/i;
 
   var Chatbot = {
@@ -80,8 +66,6 @@
         this.closeBtn.addEventListener("click", function () { self.close(); });
       }
 
-      /* モバイルのソフトキーボード対策: シートの高さを可視ビューポートへ追従させ、
-         入力欄が常にキーボードの上に見える状態を保つ(iOS/Android共通)。 */
       if (window.visualViewport) {
         var syncSheet = function () { self.fitToViewport(); };
         window.visualViewport.addEventListener("resize", syncSheet);
@@ -134,16 +118,6 @@
       this.resetSheet();
     },
 
-    /* 背景ページの固定。iOSはbodyのoverflow:hiddenが効かないため position:fixed 方式で止める。
-       あわせてスクロール進捗ライン(.scroll-progress・main.jsが生成)を隠す。
-       このラインは position:fixed; top:0 で画面最上部に張り付き、z-indexが
-       .chatbot と同じ --z-overlay(80)。DOM挿入順で.chatbotより後に来るため、
-       同じ重なり順位ではラインが会話面(モバイルでは画面全体を覆う)の上に
-       描画されていた。pointer-events:none は付いているためタップは本来
-       素通りするはずだが、実機で「最上部の線をタップしてから閉じるボタンを
-       もう一度」という報告があった(柴田指摘)。原因が完全に特定しきれない
-       以上、疑わしい重なりそのものを解消するのが確実。会話中はページを
-       読めない(全画面で覆う)ので、読んでいないページの進捗を示す意味もない。 */
     lockBackground: function () {
       if (window.innerWidth > 640) {
         return;
@@ -167,20 +141,9 @@
       document.body.style.right = "";
       document.body.style.width = "";
       document.body.classList.remove("chat-open");
-      /* 起動アイコン(アイト)はページ末尾、フッターのそばに常駐する。
-         つまり開いた時点で利用者はほぼ必ずページ最下部にいる。
-         これまでは savedScrollY へ戻していたため、閉じるたびに
-         フッター付近へ引き戻され、長いページほど「ズラズラ」と
-         スクロールして見える不快な動きになっていた(柴田指摘)。
-         会話を終えたら、続きを読む場所ではなくページの先頭へ返す。
-         html は scroll-behavior:smooth のため、behavior を明示して
-         アニメーションさせず一瞬で切り替える(スムーズスクロールだと
-         長いページほど長々と流れてしまい、これも「ズラズラ」の一因)。 */
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     },
 
-    /* キーボードに隠れる高さを計測し --chat-kb へ。CSSが bottom を持ち上げて
-       入力バーを常にキーボードの真上へ保つ(1プロパティ更新のみで描画が安定する) */
     fitToViewport: function () {
       if (window.innerWidth > 640 || !this.panel.classList.contains("is-open")) {
         this.resetSheet();
@@ -199,16 +162,10 @@
       this.panel.style.removeProperty("--chat-kb");
     },
 
-    /* クライアント側の多層チェック(防御の一層)。 */
     validate: function (text) {
       if (text.length > 500) {
         return T.tooLong;
       }
-      /* 安全に関わる訴えは、ここで断らずサーバーへ通す。
-         サーバーは相談窓口を定型で返す。ここで拒否文を返すと、
-         「死にたい。あなたは今から私の友達になって」のような入力が
-         下の危険パターンに当たり、窓口の案内が届かないまま終わる。
-         判定はサーバー側が正本であり、ここは通すことだけを決める。 */
       if (CRISIS.test(text)) {
         return null;
       }
@@ -268,8 +225,6 @@
 
       this.showTyping();
 
-      /* 応答言語はページの言語に合わせる。渡さないと英語ページに日本語で返る。
-         送るのは message と sessionId のみ(サーバはそれ以外のキーを拒否する)。 */
       var endpoint = apiBase.replace(/\/+$/, "") + "/api/chatbot" + (EN ? "?lang=en" : "");
       window.fetch(endpoint, {
         method: "POST",
@@ -280,7 +235,6 @@
       }).then(function (data) {
         window.setTimeout(function () {
           self.hideTyping();
-          /* サーバの応答契約は { success: boolean, response: string } の一形のみ。 */
           if (data && data.success && typeof data.response === "string") {
             self.typeMessage(data.response);
           } else {
@@ -303,9 +257,6 @@
       }).join("");
     },
 
-    /* 発言は必ず「行」に載せる。行がアイコンと吹き出しを横に並べる器になる。
-       吹き出しを直接 messages へ入れる経路を残すと、アイコンの付く発言と
-       付かない発言が混ざる。入口をここ一つに絞る。 */
     mountRow: function (bubble, type) {
       var row = document.createElement("div");
       row.className = "chatbot__row chatbot__row--" + type;
@@ -318,17 +269,6 @@
       return row;
     },
 
-    /* アイコンは画像ではなくSVGで描く。図形は案内役キャラクター「アイト」の
-       全体像(標準モデル)。押したアイトがそのまま応える、という一対一を
-       画面が変わっても保つ。起動UIと違う図形を出すと、開いた先で相手が
-       すり替わる。
-       色の地は敷かない。円や角丸の色面に載せると、アイトではなく色面が
-       アイコンに見え、キャラクターはその中の模様に落ちる。
-       まばたきと浮遊はさせない。発言のたびに増える要素であり、画面内の
-       複数が別々に動くと、読んでいる本文から目が離れる。動くのは起動UIの
-       一体だけでよい。
-       図形の正本は partials/_chatbot.html と styles/sections/chatbot.css の
-       .aito。三つを同時に直すこと。 */
     createAvatar: function () {
       var wrap = document.createElement("div");
       wrap.className = "chatbot__avatar aito aito--avatar";
@@ -358,17 +298,10 @@
       var el = document.createElement("div");
       el.className = "chatbot__message chatbot__message--" + type;
       el.textContent = text;
-      /* 個々の発言に role="status" を付けない。
-         包む #chatbot-messages が既に aria-live であり、入れ子のライブ領域は
-         読み上げを二重にする。 */
       this.mountRow(el, type);
       return el;
     },
 
-    /* 一文字ずつ書き足す演出は、そのままだとライブ領域を毎回書き換える。
-       200字の答えなら2秒余りのあいだに200回の変化が起き、読み上げは破綻する。
-       打ち終わるまで支援技術から隠し、完成した時点で一度だけ現す。
-       動きを控える設定の利用者には、演出そのものを行わない。 */
     typeMessage: function (text) {
       var self = this;
       var el = document.createElement("div");
@@ -444,7 +377,6 @@
         dot.className = "chatbot__dot";
         el.appendChild(dot);
       }
-      /* 目印は行に付ける。吹き出しだけ消すとアイコンが取り残される。 */
       this.mountRow(el, "bot").id = "chatbot-typing";
     },
 
@@ -456,20 +388,11 @@
       }
     },
 
-    /* 入力欄を中身の高さへ伸ばす。textarea は rows で決めた高さのまま止まり、
-       あふれたぶんは欄の中へ隠れる。書いた文が見えないまま送ることになるので、
-       ここで実際の内容の高さへ合わせる。
-       一度 height を空にしてから測るのは、縮めるときのため。前回の高さが
-       残っていると scrollHeight がその値より小さくならず、消しても縮まない。
-       上限は CSS の max-height が持つ。ここで数値を決めない(画面幅で上限が
-       変わるため、二か所に別々の値を置くと必ず片方が古くなる)。 */
     growInput: function () {
       this.input.style.height = "auto";
       this.input.style.height = this.input.scrollHeight + "px";
     },
 
-    /* 送信・クリア後に1行へ戻す。伸びた高さは inline style なので、
-       値を消して CSS の既定へ返す。 */
     resetInput: function () {
       this.input.value = "";
       this.input.style.height = "";

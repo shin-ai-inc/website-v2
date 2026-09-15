@@ -1,22 +1,8 @@
-/*
-  新規事業LP — 申し込みフォーム。
-  自社Worker(/api/contact)へJSONでPOSTする。外部ライブラリは使わない。
-
-  CSP: script-src 'self' / connect-src https://api.shinai-inc.jp
-  送信先は _build/build.mjs の API_ORIGIN と同じ値を持つ。二重に持つ以上ずれ得るが、
-  ずれると送信だけが静かに失敗する（画面には何も出ない）ため、テストで一致を見張る。
-
-  文言は「何が起きたか・利用者に非があるか・次にどうするか」を必ず含める
-  （.claude/rules/08_日本語プロダクト設計原則）。
-*/
 (function () {
   "use strict";
 
   var API = "https://api.shinai-inc.jp";
   var MAIL = "support@shinai-inc.jp";
-  /* 人間確認(Cloudflare Turnstile)のサイトキー。公開値であり鍵ではない。
-     空のあいだは枠も出さず、Worker 側も秘密鍵が無ければ要求しない。
-     値は scripts/config.js の turnstileSiteKey と同じものを置く(テストで一致を見張る)。 */
   var TURNSTILE_SITE_KEY = "";
   var TS_MSG = "人間確認が完了していません。数秒待ってから、もう一度お試しください。"
     + "解消しない場合は " + MAIL + " へ直接お送りください。";
@@ -61,8 +47,6 @@
     if (el && el.focus) el.focus();
   };
 
-  /* 相談内容の入口。白紙の入力欄は、書くことが決まっていない人ほど手が止まる。
-     一押しで書き出しが埋まる形にして、あとから直せるようにする。 */
   var chips = form.querySelectorAll(".lp-chip");
   var message = form.querySelector("[name='message']");
   Array.prototype.forEach.call(chips, function (chip) {
@@ -78,7 +62,6 @@
     });
   });
 
-  /* 入口で弾く条件は、Worker側の contact.mjs と同じ。往復させずにその場で返す。 */
   var validate = function () {
     if (!val("company")) return ["company", "会社名・組織名をご記入ください。"];
     if (!val("name")) return ["name", "お名前をご記入ください。"];
@@ -103,7 +86,6 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    /* 人には見えない欄。値が入っていれば機械の投稿なので、黙って終える。 */
     var hp = form.querySelector("[name='company-website']");
     if (hp && hp.value) return;
 
@@ -135,7 +117,6 @@
       .then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (data) {
           if (res.ok && data.success) return "ok";
-          /* 受付上限に達した場合。利用者の入力に非は無いので、そう分かる文にする。 */
           if (data.reason === "busy") return "busy";
           if (data.reason === "turnstile_failed") return "verify";
           return "ng";
@@ -152,7 +133,6 @@
           }
           return;
         }
-        /* トークンは一度きり。成功以外は次の送信のために確認を取り直す。 */
         tsReset();
         if (result === "verify") {
           say(TS_MSG);

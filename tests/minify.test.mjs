@@ -79,6 +79,16 @@ test("文字列と url() の中身には触れない", () => {
   assert.ok(out.includes('url("x y.png")'), "url の中が変わった");
 });
 
+test("選択子のエスケープされた引用符を文字列の始まりと取り違えない", () => {
+  /* Tailwind の生成物は .after\:content-\[\'\'\] のような名前を持つ。
+     引用符を文字列の始まりと読むと、その先の大半が「触れない区間」になり圧縮されない。 */
+  const src = String.raw`.after\:content-\[\'\'\]:after { content : var(--x) ; }
+/* 設計の理由 */
+.b { color : red ; }
+.c[type='button'] { color : blue ; }`;
+  assert.equal(minifyCss(src), String.raw`.after\:content-\[\'\'\]:after{content:var(--x)}.b{color:red}.c[type='button']{color:blue}`);
+});
+
 test("メディアクエリの条件を壊さない", () => {
   assert.equal(
     minifyCss("@media (min-width: 641px) and (max-width: 1100px) {\n  .a { display: none; }\n}"),

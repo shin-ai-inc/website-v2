@@ -1,9 +1,3 @@
-/*
-  ShinAI Website v2 — faq.js
-  FAQ のカテゴリ絞り込み(チップ)。旧公開サイトで好評だった UX を段階的強化として継承。
-  JSが無効でも全問がそのまま閲覧できる(コントロール自体を hidden から解除するのはJSのみ)。
-  innerHTML 不使用・グローバル非汚染の自己完結 IIFE。CSP: script-src 'self' のまま。
-*/
 (function () {
   "use strict";
 

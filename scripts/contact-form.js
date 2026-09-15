@@ -1,18 +1,9 @@
-/*
-  ShinAI Website v2 — contact-form.js
-  問い合わせフォームの非同期送信と送信状態管理。
-  一次: 自社Worker(/api/contact)へJSONでPOSTし、Resend経由でメールする。
-  Worker未設定(apiBase未設定)の場合のみ mailto へフォールバックする。
-  外部ライブラリ不要。自己完結 IIFE。CSP: connect-src 'self' https://api.shinai-inc.jp。
-*/
 (function () {
   "use strict";
 
   var form = document.querySelector(".contact-form");
   if (!form) return;
 
-  /* 表示文言はページの言語(html[lang])で切り替える。英語版は /en/ 配下にあり
-     同じスクリプトを共有するため、文言をここに閉じ込めて重複配信を避ける。 */
   var EN = (document.documentElement.getAttribute("lang") || "ja").indexOf("en") === 0;
   var T = EN ? {
     sending: "Sending...",
@@ -38,13 +29,9 @@
     message: "【ご相談内容】"
   };
 
-  /* Cloudflare Worker(api/)の公開URL。チャットと同じ基点を使う。
-     未デプロイ・障害時は mailto へフォールバックする(下記 !apiBase 分岐)。 */
   var apiBase = (window.SHINAI_CONFIG && window.SHINAI_CONFIG.chatbotApiBase) || "";
   var FALLBACK_EMAIL = "contact@shinai-inc.jp";
 
-  /* 人間確認(Cloudflare Turnstile)。サイトキーは公開値(鍵ではない)。
-     空のあいだは枠も出さず、Worker 側も秘密鍵が無ければ要求しない。 */
   var SITE_KEY = (window.SHINAI_CONFIG && window.SHINAI_CONFIG.turnstileSiteKey) || "";
   var tsSlot = form.querySelector("[data-turnstile]");
   var tsNote = document.getElementById("turnstile-error");
@@ -116,10 +103,6 @@
     if (hp && hp.value) return;
 
     if (!apiBase) {
-      /* Worker未設定。メールソフトへ逃がすが、mailto はメールソフトが
-         関連付けられていない端末では何も起こさずに終わる。
-         逃がしたことを画面に必ず残し、直接届く宛先も併せて示す。
-         押して何も起きない状態は、送れたと誤解されるぶん未送信より悪い。 */
       showFeedback("fallback");
       setState("fallback");
       window.location.href = buildMailto();
@@ -142,7 +125,6 @@
     if (SITE_KEY) {
       var token = (tsWidget !== null && window.turnstile) ? window.turnstile.getResponse(tsWidget) : "";
       if (!token) {
-        /* 確認が済んでいない(読み込み中・期限切れ)。入力に非は無いので、やり直しだけを促す。 */
         setState("idle");
         tsShow(true);
         return;
@@ -171,7 +153,6 @@
       });
     })
     .catch(function () {
-      /* トークンは一度きり。次の送信のために確認を取り直す。 */
       tsReset();
       setState("error");
       showFeedback("error");

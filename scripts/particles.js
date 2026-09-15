@@ -1,16 +1,3 @@
-/*
-  ShinAI Website v2 — particles.js
-  現行サイトで施主が高く評価する「流動的に流れる」3Dパーティクルを正式移植したもの。
-  二重ワイヤーフレームコア + 浮遊する多数の粒子(軌道運動 + 波の揺らぎ) + 近接接続線 +
-  ポインタ視差 + 起動直後の流れる初期モーション。質感は現行のまま、堅牢化して継承する。
-
-  方針(第一原理): 施主が愛する効果はそのまま使い、セキュリティも最高水準に保つ。
-  - Three.js は CDN ではなく自己ホスト(scripts/vendor/three.min.js)。script-src 'self' を維持。
-  - 外部追跡・可用性リスクなし。
-  堅牢化: タブ非表示で停止 / dpr 上限2 / 端末で粒子数可変 / resize 追従。
-  prefers-reduced-motion でも停止しない(装飾背景で vestibular リスクが低く、施主が継承を明示した効果のため)。
-  THREE はグローバル(自己ホストのUMD)を参照。自己完結 IIFE。
-*/
 (function () {
   "use strict";
 
@@ -27,9 +14,6 @@
 
   var isMobile = window.innerWidth < 768;
 
-  /* モバイルはアドレスバーの出入りで高さだけが揺れる。これに描画を追従させると
-     地球儀が拡大縮小して不自然になるため、高さを初回の「大きいビューポート高さ」で固定し、
-     以後は向き変更(幅変化)時のみ更新する。canvas は中央配置で余剰を切り取るので楕円化しない。 */
   var stableH = isMobile
     ? Math.round(Math.max(window.innerHeight, (window.screen && window.screen.height) || 0))
     : 0;
@@ -44,7 +28,6 @@
   var scene = new THREE.Scene();
   var dim = sizeOf();
   var camera = new THREE.PerspectiveCamera(60, dim.w / dim.h, 0.1, 1000);
-  /* モバイルはカメラを後退させ地球儀・粒子群を一回り小さく見せる(施主要望の若干サイズダウン)。 */
   camera.position.z = isMobile ? 72 : 58;
 
   var renderer;
@@ -58,11 +41,6 @@
     return;
   }
   renderer.setSize(dim.w, dim.h);
-  /* ワイヤーフレームの線をより細く見せるための描画倍率。
-     WebGLのwireframe線は1描画ピクセル固定のため、描画バッファをCSSサイズより高倍率にする
-     (スーパーサンプリング)と、線がCSSピクセル換算で細く(例0.5px相当)描かれる。
-     デスクトップは devicePixelRatio に関わらず最低2倍で描画し、大画面PCでも線を繊細にする。
-     モバイルは性能優先で従来通り最大1.5。 */
   var pixelRatioFor = function () {
     var dpr = window.devicePixelRatio || 1;
     return isMobile ? Math.min(dpr, 1.5) : Math.min(Math.max(dpr, 2), 2);
@@ -71,7 +49,6 @@
   renderer.domElement.setAttribute("aria-hidden", "true");
   container.appendChild(renderer.domElement);
 
-  /* 二重コア(藍と青緑のワイヤーフレーム)。現行の二重地球儀構造を継承。分割数は2(網目数は変えない)。 */
   var core = new THREE.Mesh(
     new THREE.IcosahedronGeometry(isMobile ? 8.2 : 9.0, 2),
     new THREE.MeshBasicMaterial({ color: 0x3a5feb, transparent: true, opacity: isMobile ? 0.18 : 0.17, wireframe: true })
@@ -84,7 +61,6 @@
   );
   scene.add(innerCore);
 
-  /* 粒子。端末性能で数を抑える。lowSpec = 論理CPUが2以下の超低スペック機のみ。 */
   var lowSpec = typeof navigator.hardwareConcurrency === "number" ? navigator.hardwareConcurrency <= 2 : false;
   var particlesCount = isMobile ? 1100 : lowSpec ? 900 : 2000;
   var particles = [];
@@ -94,7 +70,6 @@
     new THREE.SphereGeometry(0.08, 6, 6),
     new THREE.TetrahedronGeometry(0.12, 0)
   ];
-  /* 藍〜青緑〜白に、銅を一点だけ混ぜてブランドの温度を宿す。 */
   var colors = [0x4a8fff, 0x3a5feb, 0x00c9a7, 0x20e7c4, 0xffffff, 0xb4f2ff, 0xc08c54];
 
   var i;
@@ -142,7 +117,6 @@
     scene.add(particle);
   }
 
-  /* 接続線。流れの中で近づいた粒子を細く結ぶ(知識がつながる比喩)。 */
   var connectionLines = [];
   var lineCount = isMobile ? 36 : 88;
   for (i = 0; i < lineCount; i += 1) {
@@ -153,7 +127,6 @@
     connectionLines.push(line);
   }
 
-  /* ポインタ視差。 */
   var mouseX = 0;
   var mouseY = 0;
   var targetX = 0;
@@ -165,15 +138,8 @@
   var onMouseMove = function (e) { onPointer(e.clientX, e.clientY); };
   var onTouchMove = function (e) { if (e.touches.length > 0) { onPointer(e.touches[0].clientX, e.touches[0].clientY); } };
 
-  /* lookAt ターゲット: creed帯の高さ分だけ下にオフセットし地球儀をヒーロー白エリア中央に揃える。
-     canvas = hero + creed。creed半分の高さ(世界座標)をlookAt Y に引くことで補正する。
-     PC: creed≈132px / canvas≈822px(header78px) → coverage 67unit → offset ≈5.0unit
-     Mobile: creed≈65px / canvas≈576px → coverage 55unit → offset ≈6.0unit */
-  /* モバイルは lookAt Y を少し上げ(=-6.0→-4.5)、地球儀の画面上の位置を若干下げる(施主要望)。 */
   var heroLookAt = new THREE.Vector3(0, isMobile ? -4.5 : -5.0, 0);
 
-  /* 起動直後の「上へ流れる」初期モーション。現行の印象を継承。
-     モバイルは強度を抑えつつバーストは必ず実行する(prefers-reduced-motionは定常アニメに影響しない)。 */
   var time = 0;
   var initialMotionTime = 0;
   var initialMotionDuration = isMobile ? 2.0 : 2.5;
@@ -310,9 +276,6 @@
     renderer.render(scene, camera);
   };
 
-  /* resize 追従(コンテナ基準)。
-     モバイルは幅が変わらない高さのみの変化(=アドレスバー開閉)を無視し、地球儀の拡大縮小を防ぐ。
-     向き変更(幅変化)のときだけ stableH を更新して追従する。canvas 非ストレッチ配置のため楕円化しない。 */
   var lastW = dim.w;
   var resizeTimer = null;
   var onResize = function () {
@@ -341,8 +304,6 @@
   window.addEventListener("resize", onResize, { passive: true });
 
   document.addEventListener("mousemove", onMouseMove, { passive: true });
-  /* モバイルではスクロール自体が touchmove のため、視差にタッチを使うと
-     スクロールのたびに地球儀の画角が動いてしまう。タッチ視差はモバイルで無効化する。 */
   if (!isMobile) {
     document.addEventListener("touchmove", onTouchMove, { passive: true });
   }

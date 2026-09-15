@@ -82,6 +82,27 @@ test("サーバー側の実装・検証・生成元は配信されない", () =>
   }
 });
 
+test("配信するファイルに設計の理由を書いたコメントを置かない", () => {
+  /* ページのソースを開けば、配信物のコメントはそのまま読める。2026-09-15 に
+     /ai-business/style.css の配色・余白の判断理由が本番で読めていた。
+     残してよいのはライセンスと出所の表示(/*! と @license)だけ。
+     設計の理由は非公開の制作規約(shinai-core の 12_ブランド・公開資産)へ書く。 */
+  const rules = jekyllRules();
+  const targets = tracked.filter((p) => served(p, rules)
+    && /\.(css|js|html|svg)$/.test(p) && !p.startsWith("scripts/vendor/"));
+  assert.ok(targets.length > 20, "配信ファイルが読めている");
+  const found = [];
+  for (const p of targets) {
+    const text = read(p);
+    const block = (text.match(/\/\*[\s\S]*?\*\//g) || [])
+      .filter((c) => !c.startsWith("/*!") && !c.includes("@license"));
+    const markup = text.match(/<!--[\s\S]*?-->/g) || [];
+    const line = /\.js$/.test(p) ? (text.match(/^[ \t]*\/\/.*$/gm) || []) : [];
+    for (const c of [...block, ...markup, ...line]) found.push(`${p}: ${c.slice(0, 40)}`);
+  }
+  assert.deepEqual(found, [], "配信物に説明のコメントが残っている");
+});
+
 test("security.txt(RFC 9116) は配信される", () => {
   assert.equal(served(".well-known/security.txt", jekyllRules()), true);
 });
