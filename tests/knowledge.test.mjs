@@ -158,8 +158,11 @@ test("公開HTMLと知識ベースが乖離していない(ビルド忘れの検
     assert.equal(committed.length, fresh.length,
       `${file}: 公開HTMLは${fresh.length}件だが知識ベースは${committed.length}件。` +
       "node _build/build.mjs を実行すること");
-    const freshText = fresh.map((c) => c.text).join("\n");
-    const committedText = committed.map((c) => c.text).join("\n");
+    /* 公開HTMLは圧縮され改行が畳まれている(_build/minify.mjs)。知識ベースは
+       圧縮前から作るため、空白の差は乖離ではない。見張るのは文言の差だけ。 */
+    const words = (chunks) => chunks.map((c) => c.text.replace(/\s+/g, "")).join("\n");
+    const freshText = words(fresh);
+    const committedText = words(committed);
     assert.equal(committedText, freshText,
       `${file}: 本文が公開HTMLと一致しない。node _build/build.mjs を実行すること`);
   }
