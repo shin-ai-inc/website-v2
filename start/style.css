@@ -266,7 +266,24 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 /* 人には見えない欄。読み上げと自動入力からも遠ざける。 */
 .lp-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .lp-error{margin:0;font-size:13px;line-height:1.8;color:#9b3a1f}
-.lp-done{font-size:16px;line-height:2;color:var(--ink)}
+/* 送信完了。受付の確証とお礼、返信先の確認、届かないときの出口だけを置く。
+   返信先は打ち間違いに本人が気づけるよう表示する。色は「余白」の若葉(sage)で受ける。 */
+.lp-done{display:grid;justify-items:center;padding-block:12px 4px;text-align:center;scroll-margin-top:96px}
+.lp-done__mark{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--sage-wash)}
+.lp-done__mark svg{width:44px;height:44px;fill:none;stroke:var(--sage);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.lp-done__mark circle{stroke:var(--sage-soft);stroke-width:1.6}
+.lp-done__title{margin-top:22px;font-size:22px;font-weight:600;line-height:1.6;letter-spacing:.06em;color:var(--ink)}
+.lp-done__title:focus{outline:none}
+.lp-done__lead{margin-top:10px;font-size:14.5px;line-height:1.9;color:var(--ink-2)}
+.lp-done__to{max-width:100%;margin-top:20px;padding:7px 20px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:13px;line-height:1.7}
+.lp-done__email{color:var(--ink);font-family:var(--latin);letter-spacing:.02em;overflow-wrap:anywhere}
+.lp-done__note{margin-top:22px;font-size:12px;line-height:1.8;color:var(--muted)}
+.lp-done__note a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+  .lp-done:not([hidden]){animation:rise .9s var(--ease) both}
+  .lp-done:not([hidden]) .lp-done__mark path{stroke-dasharray:40;stroke-dashoffset:40;animation:lp-draw .7s .35s var(--ease) forwards}
+}
+@keyframes lp-draw{to{stroke-dashoffset:0}}
 .lp-turnstile{margin:2px 0 4px}
 .contact-button{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;margin-top:4px;padding:13px 14px 13px 30px;border:0;border-radius:999px;font-size:16px;line-height:1.4507;letter-spacing:.1em;cursor:pointer}
 .contact-button>span:first-child{flex:1;text-align:center;padding-left:40px}
@@ -419,6 +436,7 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
   .company-data div{grid-template-columns:96px 1fr;padding:15px 0;font-size:14px}
 
   .contact__form{margin-inline:-6px;padding:28px 20px 24px;border-radius:22px}
+  .lp-done__title{font-size:20px}
   .contact__facts{margin-top:26px}
 
   .footer{flex-wrap:wrap;gap:14px 20px;padding:32px 22px}

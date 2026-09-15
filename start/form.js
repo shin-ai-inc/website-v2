@@ -95,6 +95,21 @@
     return null;
   };
 
+  /* 送信完了。フォームを畳み、同じ枠に「何が起きたか・次に何が起きるか」を置く。
+     返信先の打ち間違いに本人が気づけるよう、記入されたアドレスを見せる(表示のみ・保存しない)。
+     完了を読み上げてもらうため、見出しへフォーカスを移す。 */
+  var showDone = function (email) {
+    form.hidden = true;
+    if (!doneEl) return;
+    var emailEl = document.getElementById("lp-done-email");
+    var toEl = document.getElementById("lp-done-to");
+    if (emailEl && toEl && email) { emailEl.textContent = email; toEl.hidden = false; }
+    doneEl.hidden = false;
+    var title = document.getElementById("lp-done-title");
+    if (title && title.focus) title.focus({ preventScroll: true });
+    if (doneEl.scrollIntoView) doneEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   var setBusy = function (busy) {
     if (submitBtn) submitBtn.disabled = busy;
     if (btnLabel) btnLabel.textContent = busy ? "送信中..." : "無料で相談する";
@@ -145,11 +160,7 @@
       .then(function (result) {
         setBusy(false);
         if (result === "ok") {
-          form.hidden = true;
-          if (doneEl) {
-            doneEl.hidden = false;
-            if (doneEl.scrollIntoView) doneEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          }
+          showDone(payload.email);
           return;
         }
         /* トークンは一度きり。成功以外は次の送信のために確認を取り直す。 */
