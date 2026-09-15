@@ -21,6 +21,8 @@ exclude:
   - styles/tokens.css
   - styles/base.css
   - styles/sections
+  # JS の読みやすい正本。配信するのは build が生成する js/
+  - scripts
   # サーバー側(Cloudflare Worker)の実装・設定。鍵は含まないが、
   # 防御の中身と内部識別子を相手に渡さない
   - api

@@ -29,7 +29,7 @@ const PUBLIC = [
   /^en\/site\.webmanifest$/,
   /^(start|lp|ai-business)\//,
   /^assets\//,
-  /^scripts\//,
+  /^js\//,
   /^styles\/app\.css$/,
   /^(robots\.txt|llms\.txt|sitemap\.xml|site\.webmanifest|favicon\.ico|CNAME)$/,
   /^\.well-known\/security\.txt$/
@@ -77,7 +77,8 @@ test("サーバー側の実装・検証・生成元は配信されない", () =>
   const rules = jekyllRules();
   for (const p of ["api/index.mjs", "api/lib/guard.mjs", "api/wrangler.toml", "api/schema.sql",
                    "tests/seo.test.mjs", "tools/check_overflow.py", "_build/build.mjs",
-                   "partials/_footer.html", "deploy/_headers", "netlify.toml", "README.md"]) {
+                   "partials/_footer.html", "deploy/_headers", "netlify.toml", "README.md",
+                   "scripts/chatbot.js", "scripts/config.js"]) {
     assert.equal(served(p, rules), false, `${p} は配信されない`);
   }
 });
@@ -89,7 +90,7 @@ test("配信するファイルに設計の理由を書いたコメントを置�
      設計の理由は非公開の制作規約(shinai-core の 12_ブランド・公開資産)へ書く。 */
   const rules = jekyllRules();
   const targets = tracked.filter((p) => served(p, rules)
-    && /\.(css|js|html|svg)$/.test(p) && !p.startsWith("scripts/vendor/"));
+    && /\.(css|js|html|svg)$/.test(p) && !p.startsWith("js/vendor/"));
   assert.ok(targets.length > 20, "配信ファイルが読めている");
   const found = [];
   for (const p of targets) {

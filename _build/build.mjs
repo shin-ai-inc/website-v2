@@ -11,7 +11,8 @@ import { execSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chunkPage, catalogChunk } from "./chunk.mjs";
-import { collapseHtml, minifyCss } from "./minify.mjs";
+import vm from "node:vm";
+import { collapseHtml, minifyCss, minifyJs } from "./minify.mjs";
 import { encodeVector, normalizeVector } from "../api/lib/vector.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -150,11 +151,25 @@ for (const f of sectionFiles) {
    読みやすい正本は styles/ 側にある。 */
 write("styles/app.css", minifyCss(css));
 
+/* ---- 1b. JS ----
+   読みやすい正本は scripts/ に置き、配信しない(_config.yml)。ページが読むのは js/ の生成物。
+   構文として読めないものは書き出さない。壊れた JS は画面が静かに動かなくなるだけで、誰も気づけない。 */
+const JS_SRC = "scripts";
+const JS_OUT = "js";
+rmSync(join(ROOT, JS_OUT), { recursive: true, force: true });
+mkdirSync(join(ROOT, JS_OUT), { recursive: true });
+for (const f of readdirSync(join(ROOT, JS_SRC)).filter((name) => name.endsWith(".js"))) {
+  const code = minifyJs(read(join(JS_SRC, f)));
+  new vm.Script(code, { filename: `${JS_OUT}/${f}` });
+  write(join(JS_OUT, f), code);
+}
+cpSync(join(ROOT, JS_SRC, "vendor"), join(ROOT, JS_OUT, "vendor"), { recursive: true });
+
 /* ---- 2. ロケール定義 ----
    日本語はサイト直下、英語は /en/ 配下に出力する。既存の日本語URLを一切動かさずに
    英語版を増設でき、検索エンジンには言語ごとの独立URLとして正しくインデックスされる。
    dir     … SITE_URL からの出力先(末尾スラッシュ込み)
-   prefix  … ページから見た共有アセット(styles/scripts/assets)への相対接頭辞
+   prefix  … ページから見た共有アセット(styles/js/assets)への相対接頭辞
    src     … partial の読み込み元ディレクトリ */
 const LOCALES = [
   { code: "ja", dir: "", prefix: "", src: "partials", htmlLang: "ja", ogLocale: "ja_JP",
@@ -300,7 +315,7 @@ const pages = [
   { file: "faq.html", part: "faq.html", nav: "faq", hero: false,
     crumb: "よくあるご質問",
     changefreq: "monthly", priority: "0.6",
-    extraScripts: ['<script src="scripts/faq.js" defer></script>'],
+    extraScripts: [`<script src="${JS_OUT}/faq.js" defer></script>`],
     title: "よくあるご質問｜シンアイ株式会社",
     desc: "はじめての方へ、費用と導入、開発の進め方、業界別の活用、サービス、そのほか。群馬県高崎市のAI開発会社ShinAIへのよくある質問。",
     en: {crumb: "FAQ",  title: "FAQ | ShinAI",
@@ -308,7 +323,7 @@ const pages = [
   { file: "contact.html", part: "contact.html", nav: "contact", hero: false,
     crumb: "お問い合わせ",
     changefreq: "monthly", priority: "0.8",
-    extraScripts: ['<script src="scripts/contact-form.js" defer></script>'],
+    extraScripts: [`<script src="${JS_OUT}/contact-form.js" defer></script>`],
     title: "お問い合わせ・無料相談｜シンアイ株式会社",
     desc: "まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。群馬県高崎市のAI開発会社が承ります。",
     en: {crumb: "Contact",  title: "Contact & Free Consultation | ShinAI",
@@ -820,22 +835,22 @@ const shell = (page, loc) => {
   /* 英語版は /en/ 配下にあるため、共有アセットへは一段上がる。 */
   const p = loc.prefix;
   const scripts = [
-    `<script src="${p}scripts/config.js${v}" defer></script>`,
-    `<script src="${p}scripts/nav.js${v}" defer></script>`,
-    `<script src="${p}scripts/main.js${v}" defer></script>`,
-    `<script src="${p}scripts/chatbot.js${v}" defer></script>`
+    `<script src="${p}${JS_OUT}/config.js${v}" defer></script>`,
+    `<script src="${p}${JS_OUT}/nav.js${v}" defer></script>`,
+    `<script src="${p}${JS_OUT}/main.js${v}" defer></script>`,
+    `<script src="${p}${JS_OUT}/chatbot.js${v}" defer></script>`
   ];
   /* 施主が愛する流動パーティクル。Three.js は自己ホスト(CDNではない)で script-src 'self' を維持。
      全ページで読む。トップだけの演出だったが、フッターの地としても使うため
      (下層ページでは本文が前面に上がり、粒子はフッターの帯にだけ映る)。
-     three.min.js は 148KB(gzip)。assets/scripts は immutable でキャッシュするので、
+     three.min.js は 148KB(gzip)。assets/js は immutable でキャッシュするので、
      二ページ目以降と再訪では再取得されない。 */
   scripts.splice(3, 0,
-    `<script src="${p}scripts/vendor/three.min.js${v}" defer></script>`,
-    `<script src="${p}scripts/particles.js${v}" defer></script>`
+    `<script src="${p}${JS_OUT}/vendor/three.min.js${v}" defer></script>`,
+    `<script src="${p}${JS_OUT}/particles.js${v}" defer></script>`
   );
   if (page.extraScripts) {
-    for (const s of page.extraScripts) { scripts.push(s.replace('src="', 'src="' + p)); }
+    for (const s of page.extraScripts) { scripts.push(s.replace('src="', 'src="' + p).replace('.js"', '.js' + v + '"')); }
   }
 
   /* hreflang: 同一内容の言語別URLを相互申告する。x-default は日本語(本社所在地の言語)。
@@ -1092,7 +1107,7 @@ for (const loc of LOCALES) {                           // 生成済みHTML(言�
   }
 }
 toDist("styles/app.css");                              // 本番CSS(結合済み)
-cpSync(join(ROOT, "scripts"), join(DIST, "scripts"), { recursive: true }); // 公開JS+vendor
+cpSync(join(ROOT, JS_OUT), join(DIST, JS_OUT), { recursive: true }); // 公開JS(生成物)+vendor
 cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
 /* favicon.ico はルート直下に置く。多くのブラウザ・検索エンジン・SNSは
    HTMLの<link rel="icon">を読まず /favicon.ico を直接取得しにいくため、
@@ -1102,7 +1117,7 @@ for (const f of ["robots.txt", "sitemap.xml", "llms.txt", "favicon.ico"]) toDist
    この経路でだけ404になり、本番(ルート配信)では正常なので気づけない。 */
 /* 手書きの独立ページは、公開物だけを圧縮する(リポジトリ側は編集できる形のまま)。
    ルート配信の GitHub Pages では効かず、dist を公開する配信へ移ってから効く。 */
-const MINIFIERS = { ".html": collapseHtml, ".css": minifyCss };
+const MINIFIERS = { ".html": collapseHtml, ".css": minifyCss, ".js": minifyJs };
 const minifyTree = (dir) => {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const path = join(dir, entry.name);
