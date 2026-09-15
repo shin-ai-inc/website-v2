@@ -1276,9 +1276,8 @@ const embedChunks = async (chunks) => {
   return true;
 };
 
-/* Worker が import で同梱するため api/ 直下へ置く(こちらが実体)。
-   dist/ 側にも出すのは、生成物をテストと目視で確認できるようにするため。 */
-mkdirSync(join(DIST, "api"), { recursive: true });
+/* Worker が import で同梱するため api/ 直下へ置く。dist/ には置かない。
+   dist はそのまま公開されるため、置くと知識ベースの全文とベクトルが誰でも取得できる。 */
 for (const loc of LOCALES) {
   const kb = knowledgeFor(loc);
   carryVectors(loc.code, kb.chunks);
@@ -1290,7 +1289,6 @@ for (const loc of LOCALES) {
   kb.embedDims = withVec ? EMBED_DIMS : 0;
   const body = JSON.stringify(kb, null, 2);
   writeFileSync(join(ROOT, "api", `knowledge.${loc.code}.json`), body, "utf8");
-  writeFileSync(join(DIST, "api", `knowledge.${loc.code}.json`), body, "utf8");
   const chars = kb.chunks.reduce((n, c) => n + c.text.length, 0);
   const state = withVec === kb.chunks.length
     ? `ベクトルあり(${EMBED_DIMS}次元)`

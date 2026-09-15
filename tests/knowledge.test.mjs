@@ -14,7 +14,8 @@ import { buildIndex, hybridSearch } from "../api/lib/retrieve.mjs";
 import { chunkPage, catalogChunk } from "../_build/chunk.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const kbPath = (locale) => join(ROOT, "dist", "api", `knowledge.${locale}.json`);
+/* Worker が同梱する実体を読む。dist には置かない(公開されるため)。 */
+const kbPath = (locale) => join(ROOT, "api", `knowledge.${locale}.json`);
 
 const loadKb = (locale = "ja") => {
   const path = kbPath(locale);

@@ -1,0 +1,14 @@
+{
+  // shinai-inc.jp の静的配信(Cloudflare Workers の静的アセット)。配信は無料・回数無制限。
+  // Pages ではなく Workers を使うのは、Pages が /about.html を /about へ転送し、止める設定が無いため。
+  // canonical・サイトマップ・検索結果の URL はすべて .html なので、html_handling を none にして今の URL のまま返す。
+  // ビルド: node _build/build.mjs   配信: npx wrangler deploy
+  // チャットとフォームの API は別の Worker(api/wrangler.toml)で、ここには含めない。
+  "name": "shinai-website",
+  "compatibility_date": "2026-09-15",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "none",
+    "not_found_handling": "none"
+  }
+}

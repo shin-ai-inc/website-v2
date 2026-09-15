@@ -31,6 +31,7 @@ exclude:
   - tools
   # 他ホスティング向けの設定
   - netlify.toml
+  - wrangler.jsonc
   - .vercelignore
   - .gitattributes
   - Gemfile

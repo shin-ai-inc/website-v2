@@ -15,7 +15,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -106,4 +106,19 @@ test("配信するファイルに設計の理由を書いたコメントを置�
 
 test("security.txt(RFC 9116) は配信される", () => {
   assert.equal(served(".well-known/security.txt", jekyllRules()), true);
+});
+
+/* ---- Cloudflare への移行 ----
+   Pages は /about.html を /about へ転送し、止める設定が無い。canonical・サイトマップ・
+   検索結果の URL はすべて .html なので、転送が挟まると評価が割れる。Workers の静的配信で
+   html_handling を none にし、今の URL をそのまま返す。 */
+test("Cloudflare の配信設定は dist をそのまま返し、URL を書き換えない", () => {
+  const config = JSON.parse(read("wrangler.jsonc").replace(/^\s*\/\/.*$/gm, ""));
+  assert.equal(config.assets.directory, "./dist", "配信するのは dist");
+  assert.equal(config.assets.html_handling, "none", ".html を外す転送を止める");
+  assert.equal(config.main, undefined, "静的配信だけにする(処理を足すと無料枠の数え方が変わる)");
+});
+
+test("dist には公開してよいものだけを置く(知識ベースは Worker が同梱する)", () => {
+  assert.equal(existsSync(join(ROOT, "dist", "api")), false, "dist/api が公開される");
 });
