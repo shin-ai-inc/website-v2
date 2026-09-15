@@ -97,7 +97,9 @@ h3{font-size:18px;font-weight:600;line-height:1.7;letter-spacing:.06em}
 .header-cta{display:inline-flex;align-items:center;gap:14px;padding:10px 20px 10px 22px;border:1px solid var(--line);border-radius:999px;font-size:13px;letter-spacing:.1em;transition:border-color .3s,color .3s,background-color .3s}
 .header-cta:hover{border-color:var(--accent);color:var(--accent)}
 .menu-button{display:none}
-.mobile-nav[hidden]{display:none}
+/* hidden 属性は、display を持つ部品指定(.lp-form の grid 等)に負ける。
+   送信後もフォームが残り、二重送信できていた。常に隠れる側を優先させる。 */
+[hidden]{display:none!important}
 
 /* ===== ヒーロー ===== */
 .hero{display:flex;align-items:center;min-height:min(100svh,920px);padding-block:156px 112px}
