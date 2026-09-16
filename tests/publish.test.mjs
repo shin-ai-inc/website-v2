@@ -122,3 +122,11 @@ test("Cloudflare の配信設定は dist をそのまま返し、URL を書き�
 test("dist には公開してよいものだけを置く(知識ベースは Worker が同梱する)", () => {
   assert.equal(existsSync(join(ROOT, "dist", "api")), false, "dist/api が公開される");
 });
+
+test("workers.dev の URL を発行しない(本番の URL は shinai-inc.jp だけ)", () => {
+  /* 既定では *.workers.dev とプレビューURLが公開され、同じ内容が別URLでも読める。
+     検索に拾われれば評価が割れ、社外にも配信元が見える(柴田判断 2026-09-16)。 */
+  const config = JSON.parse(read("wrangler.jsonc").replace(/^\s*\/\/.*$/gm, ""));
+  assert.equal(config.workers_dev, false, "workers.dev の URL が発行される");
+  assert.equal(config.preview_urls, false, "版ごとのプレビューURLが公開される");
+});

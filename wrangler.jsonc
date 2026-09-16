@@ -6,6 +6,11 @@
   // チャットとフォームの API は別の Worker(api/wrangler.toml)で、ここには含めない。
   "name": "shinai-website",
   "compatibility_date": "2026-09-15",
+  // 本番の URL は shinai-inc.jp だけにする。既定では *.workers.dev と
+  // 版ごとのプレビューURL(例 abc123-shinai-website.〇〇.workers.dev)が公開され、
+  // 同じ内容が別の URL でも読めてしまう(柴田判断 2026-09-16)。
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     "directory": "./dist",
     "html_handling": "none",
