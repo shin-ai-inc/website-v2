@@ -75,11 +75,17 @@
 
 @media (max-width: 640px) {
   .capability__grid {
+    /* 2列のままだと本文の幅が129pxしかなく、「用途に合わせて大/規模言語モデルを」のように
+       語の途中で折れる。文が左に詰まり、カードの右だけが空いて見える。縦に積む。 */
+    grid-template-columns: 1fr;
     gap: var(--space-3);
     margin-top: var(--space-4);
   }
   .capability__item {
     padding: var(--space-3);
+    /* 縦に積むと番号と見出しが離れて見えるため、横並びのときより間隔を詰める。 */
+    flex-direction: column;
+    gap: var(--space-2);
   }
   .capability__term {
     font-size: var(--fs-body);
@@ -88,9 +94,5 @@
     /* keep-all は長い連なりを1行に伸ばし画面外へはみ出させる。
        収まらない時だけ折り返せるようにする安全弁。 */
     overflow-wrap: anywhere;
-  }
-  .capability__item {
-    flex-direction: column;
-    gap: var(--space-3);
   }
 }
