@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "6eee0c6",
+  "generatedAt": "93e965f",
   "chunks": [
     {
       "id": "index#0",
@@ -967,8 +967,8 @@
       "id": "privacy#4",
       "title": "4. 外部サービスの利用｜プライバシーポリシー｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/privacy.html",
-      "text": "本サイトの一部機能（AIアシスタントなど）では、応答の生成のために外部のAIサービスを利用することがあります。\n その際も、当社はお客様の情報を必要な範囲に限って取り扱い、安全管理に努めます。\n\n 本サイトの利用状況の把握のため、Cloudflare Web Analytics を利用しています。\n 同サービスは Cookie を使用せず、閲覧者を個人として識別する情報や、\n 端末をまたいで追跡するための識別子を収集しません。\n 取得するのは、閲覧されたページや参照元といった集計のための情報に限られます。",
-      "vec": "BAX9/g/4+P4FAwn/Bvv//fz6/gADCwX/AAAD+v75APoAAAD9A/8BAgL/CAb8AAAF/gX2CAP5/A0GBAIGBfv/Bv8EBAn9+gAA+/z7AgD5AgT+DPH9BPj1A/kI9wr2//8ABAH+AgTxAAEC+gD4+wH5//YG+gL/Cv39/gkH/wMABvX19wT8A/cF/AH++v8FBQf/+PwB+/4E/wD89vULBAAD/QYB9P/6/wP+9QH99wH+/foB/AUD+gX9AP0A/P39BgAJBgX9+fj5/QMC/AEBAv8GAfUJC/oJ//QH////BPQIAP4ACQL+APsCBfr9/PsCAwf3AQIDBgn/A/kDBgUDAvUC+AYEAgUDA/b6AfsHBP34/AQEAfsB/wH8CPn8+/gEAAX1/wMD+f39/wUDBfoDBAL/AQEK+gcJ+wEG/P3++Ab4CfUH+fv8/f8B/wH8CPwEAPf8Af/9APr99vsG/AH/Agb/9vz5AAUF+v0B9PkL9fwB9/oF+AD+Bfr9/wUGBf8HAv75BwICBv0HBfwC9f35BwEC/vcHAv79Avv6/gAC9gYCAPsCAgH6APUD9wABCAAD+QEC+Pn2AgP++/n+9vj5+v8AAv35+f77DfgC/PgDAQUC/AwD+vf/AwD+AgUB+AMB9PX4AwP/CAMQBQj/AQMBE/8F/wLz/AT9+fkG8gQE+vv3Bgc="
+      "text": "本サイトの一部機能（AIアシスタントなど）では、応答の生成のために外部のAIサービスを利用することがあります。\n その際も、当社はお客様の情報を必要な範囲に限って取り扱い、安全管理に努めます。\n\n 本サイトの利用状況の把握のため、Cloudflare Web Analytics を利用しています。\n 同サービスは Cookie を使用せず、閲覧者を個人として識別する情報や、\n 端末をまたいで追跡するための識別子を収集しません。\n 取得するのは、閲覧されたページや参照元といった集計のための情報に限られます。\n\n 広告の効果を測るため、一部のページで Meta Platforms, Inc. の Meta ピクセルを利用しています。\n 閲覧したページや Cookie による識別子などが同社へ送信され、\n 広告の効果測定や配信に利用されることがあります。\n フォームに入力された内容は送信しません。\n 広告のための利用は、Meta の広告設定から拒否できます。",
+      "vec": "AwL9/wz5+P4DAgn+Bf8B/fz8/QECCQMBAf8F+gL9Avr/AP37Af79//7/CAT5Bf0CAAX1BwT5+w4IAwQHA/v9Bv0FAgf9/gEA/fz6/gP9AgH7DPP8BPr2BPYK9Af1A/4ABP//Agnx/gT+/P/5/wD6AvQF+f/+Df0A+goH/wX+B/b29wP8AvkC/f/8+gEGBAT+9PsC+v0DAAD7+PcLBf4D/gcC9wH9/wT89QL99QD++/n/+gYE+gT+A/z/+wAABgEFCgb9+Pv1/wIE/gACAPwG//YJDfsL//EEAP7+AvQK/wD+CgD/APwCBvv//fwAAAj5AwMEBAgBAPkCBwUFAPYE+QUGAQMDBvb7AvwJBP35+wQDA/8D/gH7Bvj7+vgAAgb0/wYC+AAA/gMDA/wCBQIC+/4I/QUJ+AIH/fz9+Qj6BvQI+/z7+/8DAP7+CP0CAPkA/gL9Bf779/0E/AL9BAX99/38AQMI/fwC9fsK9QD89foC+AL9A/4B/wYFB/4IA//4BwMDBPsJBv4B9v/8BwEB//kG/gD6Af34/QAC8gcF/P4BAgT5AfYD+/4ACPsC+PkD+/j1/gIA/Pv9+/b7+f8DBP74+/z+DvkA/voE/wYB+gwD+voBB/35AQUE9/8C9Pb4BgIACAAVAQf/AAMDEf4F/QLy+gL9+foH9gIF+fz5Bgc="
     },
     {
       "id": "privacy#5",
@@ -988,8 +988,8 @@
       "id": "privacy#7",
       "title": "7. 本ポリシーの改定｜プライバシーポリシー｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/privacy.html",
-      "text": "本ポリシーの内容は、必要に応じて見直し、改定することがあります。\n 重要な変更がある場合は、本サイト上でお知らせします。\n\n お問い合わせ窓口 \n \n 個人情報の取り扱いに関するお問い合わせは、\n contact@shinai-inc.jp \n までご連絡ください。受付は平日 9:00–18:00 です。\n\n 制定 令和8年8月8日 \n シンアイ株式会社",
-      "vec": "BAD9BAv7/wAA+gsCBQL//AL+APz+CQUFAwP/+wX4//oHAvv6/AQA9wL+BQP9A/4A+wX////1AQYHCQMFA/n2+wD/BgkC+AEG9/75AwD9BwP5DfIGAf30BPoE9QjxB/v+/gD+/wPy9wkA/vkA+/z9+/YI+Pj9BgP9+wEF/gIAAvj0+AT2A/8E/AMA/vQLCfz7+QQB+QQGAP0C//wHBwn9AwUI+AAF/AAB9wL4+f7/AAIF/wAI/wT3/vn4+QQE/P4HDgX/9/j7/ff/+fwN/PkCBv0FBfIDAvwA/vr5CP4GAgUDBQQE/v4BAf37Avn++wP/AQb8AgT+CAP8AQMDAur99wQF/gcFAP34BAMKCQb2/gQB/fwC+QP7C/QD+PoEAQL6AQQC/vr8/gX//vsDCP78+wIF+//9/wT8/fX7+gME/v0G/f7//Qf/+Qr/CfYE9/cGAAf6+/v++/4A9gT9AQf99wX8/fwJ+voH9P4E+/399/8EAQf/AQL+/QoCB/3/BvcDBgAABQYEBAIA/wP8BwUB/fsIAwHxA/j/+QL/8wUFAfsGBf36BPT+9/8A//kC9P8D/PcF+/kAAv0C+v4A+gMFBfwC+gUACfoD+/j6AQX9/Q8A/PoFAgb3AgL8/AMFAvj2BQAHBgoFCgPw/QECCf8EAgrz9wT+AQAB9QIC/AECAAI="
+      "text": "本ポリシーの内容は、必要に応じて見直し、改定することがあります。\n 重要な変更がある場合は、本サイト上でお知らせします。\n\n お問い合わせ窓口 \n \n 個人情報の取り扱いに関するお問い合わせは、\n contact@shinai-inc.jp \n までご連絡ください。受付は平日 9:00–18:00 です。\n\n 制定 令和8年8月8日 \n 改定 令和8年9月18日 \n シンアイ株式会社",
+      "vec": "A/7+Awv8/gD++wsBBQL//QH9//z+CgQFAwL//Ab5/vsHAvr6/AUA9gL+BAL+BP4A+wb/AP/1AAYICQMFA/n3+wD/BggD9wEG9/74AgD9CAP4DfMGAv31BfoE9gfyB/v+/QD9/wTy+An///oA/Pv9+/cI+Pn8BgP/+wIG/wMBBPj0+AX3Bf4D+gMA/PQLCPz6+QQB+AIHAP4B//wHBwr8AwUK+AED/QEA9wH4+f3+AAEEAAAI/wP3//r2+gUD/P8HDgb/9vj9/fj++vwN/PkCBf0EBvECAv0A/vr5CP0GAAYDBQME/v4AAvz7Avn/+gT+AQf7AwT+BwT8AQMDAur99wQF/QcGAf33AwIMCgf3/gQB/fsB+QT8C/YD+PoEAgL6AQQB/vr8/gUA//oDB/77+wIF+v/+/wb+/fT8+wUC/v0G/P4B/ggB+gv/CPYE9/cGAAb7+/z++///9gP+AAf++AT9/fwI+vsH9f8D+/799/8EAAb/AQH+/QoDB/4ABvcEBgAABAUFBQL//gL8CAYC/vwHAwHxA/n/+QMA8wUFAfsFBf76BfT+9v//APoC8wAE+vYF+vr/Af0B+v7/+AMGBfwC+gQACfoE+/f7AQT8/g///PwGAwX4BAL7/gMFAvn2BAAGBwoFCQHw/AMBBv8EAgry9wT+AAEB9QEC/AIDAQI="
     },
     {
       "id": "terms#0",

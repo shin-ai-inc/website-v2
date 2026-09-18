@@ -90,6 +90,23 @@
     if (doneEl.scrollIntoView) doneEl.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  var sending = false;
+  var leadSent = false;
+
+  var newEventId = function () {
+    var c = window.crypto;
+    if (c && c.randomUUID) return "lead-" + c.randomUUID();
+    return "lead-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
+  };
+
+  var trackLead = function () {
+    if (leadSent) return;
+    leadSent = true;
+    try {
+      if (typeof window.fbq === "function") window.fbq("track", "Lead", {}, { eventID: newEventId() });
+    } catch (err) {}
+  };
+
   var setBusy = function (busy) {
     if (submitBtn) submitBtn.disabled = busy;
     if (btnLabel) btnLabel.textContent = busy ? "送信中..." : "無料で相談する";
@@ -97,6 +114,7 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (sending) return;
 
     var hp = form.querySelector("[name='company-website']");
     if (hp && hp.value) return;
@@ -119,6 +137,7 @@
     }
 
     say("");
+    sending = true;
     setBusy(true);
 
     fetch(API + "/api/contact", {
@@ -139,8 +158,10 @@
         setBusy(false);
         if (result === "ok") {
           showDone(payload.email);
+          trackLead();
           return;
         }
+        sending = false;
         tsReset();
         if (result === "verify") {
           say(TS_MSG);
