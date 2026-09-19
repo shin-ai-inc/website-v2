@@ -213,7 +213,8 @@ const shared = Object.fromEntries(LOCALES.map((l) => [l.code, sharedFor(l)]));
 /* 現在地ナビに aria-current を付ける(最初の該当 href へ) */
 const markCurrent = (html, nav) => {
   if (!nav) return html;
-  const needle = `href="${nav}.html"`;
+  /* トップはロゴも ./ を指すため、メニューの項目に絞って探す。 */
+  const needle = nav === "home" ? 'class="site-header__link" href="./"' : `href="${nav}.html"`;
   const i = html.indexOf(needle);
   if (i === -1) return html;
   return html.slice(0, i + needle.length) + ' aria-current="page"' + html.slice(i + needle.length);
@@ -255,7 +256,7 @@ const standalonePages = [
 
 /* ---- 3. ページ定義(sitemap の changefreq/priority もここで一元管理) ---- */
 const pages = [
-  { file: "index.html", part: "index.html", nav: null, hero: true,
+  { file: "index.html", part: "index.html", nav: "home", hero: true,
     changefreq: "monthly", priority: "1.0",
     /* 「シンアイ株式会社」で検索すると、社名をtitleに含む gunma-ai.html が
        トップページより上に出ていた(実際に検索して確認)。正式社名を

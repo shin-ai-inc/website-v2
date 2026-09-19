@@ -169,3 +169,43 @@ test("ホーム画面用アイコンは透過を持たない", () => {
   const { colorType } = pngHead("assets/icons/apple-touch-icon.png");
   assert.equal(colorType, 2, `apple-touch-icon が透過を持っている(色種別 ${colorType})`);
 });
+
+/* ---- メニューからトップへ戻れる(柴田指示 2026-09-20) ----
+   ロゴだけでは「押せばトップへ戻る」と気づかない人がいる。メニューの先頭に置く。
+   行き先は ./ (index.html と書くと、同じページが二つの URL に分かれる)。 */
+test("全ページのメニューの先頭が Home で、トップを指す", () => {
+  for (const p of ["index.html", "services.html", "about.html", "faq.html", "contact.html",
+                   "en/index.html", "en/services.html", "en/about.html"]) {
+    const html = readFileSync(join(ROOT, p), "utf8");
+    const menu = html.match(/<ul class="site-header__menu">([\s\S]*?)<\/ul>/);
+    assert.ok(menu, `${p}: メニューが無い`);
+    const first = menu[1].match(/<a\b[^>]*>([^<]*)<\/a>/);
+    assert.equal(first[1].trim(), "Home", `${p}: 先頭が Home ではない`);
+    assert.match(first[0], /href="\.\/"/, `${p}: Home がトップ(./)を指していない`);
+  }
+});
+
+test("トップでは Home が現在地になり、他のページではならない", () => {
+  const homeLink = (p) => readFileSync(join(ROOT, p), "utf8")
+    .match(/<ul class="site-header__menu">[\s\S]*?(<a\b[^>]*>\s*Home\s*<\/a>)/)[1];
+  assert.match(homeLink("index.html"), /aria-current="page"/, "トップで現在地になっていない");
+  assert.match(homeLink("en/index.html"), /aria-current="page"/, "英語版トップで現在地になっていない");
+  for (const p of ["services.html", "about.html", "en/faq.html"]) {
+    assert.doesNotMatch(homeLink(p), /aria-current/, `${p}: Home が現在地になっている`);
+  }
+});
+
+test("Home はスマホのハンバーガーメニューにだけ出し、PC のヘッダーには出さない", () => {
+  /* 柴田指示は「モバイルのハンバーガーメニューからトップへ飛べるように」。
+     PC はロゴでトップへ戻れ、メニューの幅にも余裕がない(821〜960px で既に窮屈)。 */
+  for (const p of ["index.html", "en/index.html"]) {
+    const html = readFileSync(join(ROOT, p), "utf8");
+    assert.match(html, /<li class="site-header__item--home"><a class="site-header__link" href="\.\/"/, `${p}: Home の項目に目印が無い`);
+  }
+  const css = readFileSync(join(ROOT, "styles", "sections", "header.css"), "utf8");
+  const mobile = css.indexOf("@media (max-width: 820px)");
+  const hide = css.search(/\.site-header__item--home\s*\{\s*display:\s*none;?\s*\}/);
+  const show = css.search(/\.site-header__item--home\s*\{\s*display:\s*block;?\s*\}/);
+  assert.ok(hide >= 0 && hide < mobile, "PC で Home を隠す指定が無い(820px の指定より前に置く)");
+  assert.ok(show > mobile, "ハンバーガーメニューで Home を出す指定が無い");
+});
