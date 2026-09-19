@@ -173,21 +173,22 @@ test("ホーム画面用アイコンは透過を持たない", () => {
 /* ---- メニューからトップへ戻れる(柴田指示 2026-09-20) ----
    ロゴだけでは「押せばトップへ戻る」と気づかない人がいる。メニューの先頭に置く。
    行き先は ./ (index.html と書くと、同じページが二つの URL に分かれる)。 */
-test("全ページのメニューの先頭が Home で、トップを指す", () => {
+test("全ページのメニューの先頭がホーム(英語は Home)で、トップを指す", () => {
   for (const p of ["index.html", "services.html", "about.html", "faq.html", "contact.html",
                    "en/index.html", "en/services.html", "en/about.html"]) {
     const html = readFileSync(join(ROOT, p), "utf8");
     const menu = html.match(/<ul class="site-header__menu">([\s\S]*?)<\/ul>/);
     assert.ok(menu, `${p}: メニューが無い`);
     const first = menu[1].match(/<a\b[^>]*>([^<]*)<\/a>/);
-    assert.equal(first[1].trim(), "Home", `${p}: 先頭が Home ではない`);
+    const label = p.startsWith("en/") ? "Home" : "ホーム";
+    assert.equal(first[1].trim(), label, `${p}: 先頭が ${label} ではない`);
     assert.match(first[0], /href="\.\/"/, `${p}: Home がトップ(./)を指していない`);
   }
 });
 
 test("トップでは Home が現在地になり、他のページではならない", () => {
   const homeLink = (p) => readFileSync(join(ROOT, p), "utf8")
-    .match(/<ul class="site-header__menu">[\s\S]*?(<a\b[^>]*>\s*Home\s*<\/a>)/)[1];
+    .match(/<ul class="site-header__menu">[\s\S]*?(<a\b[^>]*>\s*(?:Home|ホーム)\s*<\/a>)/)[1];
   assert.match(homeLink("index.html"), /aria-current="page"/, "トップで現在地になっていない");
   assert.match(homeLink("en/index.html"), /aria-current="page"/, "英語版トップで現在地になっていない");
   for (const p of ["services.html", "about.html", "en/faq.html"]) {
