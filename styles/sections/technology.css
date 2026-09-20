@@ -74,15 +74,31 @@
     row-gap: var(--space-3);
     /* PC の罫だけの仕様表は良いバランスだが、モバイルでは同じ扱いのまま
        単一色の箇条書きになり、味気なく見えていた(柴田指摘 2026-09-20)。
-       群ごとの識別色を左の帯として戻し、単調さを和らげる。 */
-    border-left: 3px solid var(--group-ink);
+       群ごとの識別色を左の帯として戻し、単調さを和らげる。
+       ただし帯・見出しの地色・丸いアイコンバッジを重ねた最初の案は、
+       量産のSaaSテンプレートに多い型になり「AIっぽさ」が残った
+       (柴田指摘)。色を持たせる場所を一つに絞り、印は控えめにする。 */
+    border-left: 2px solid color-mix(in srgb, var(--group-ink) 55%, var(--line-ink));
     padding-left: var(--space-3);
   }
 
   .tech__group-title {
-    /* 三つ並ぶ短い見出しには --fs-h3 は大きすぎた。一段落とす。 */
+    /* 三つ並ぶ短い見出しには --fs-h3 は大きすぎた。一段落とす。
+       見出し自体は本文と同じ墨色のまま残し、識別色は前の短い罫だけに持たせる
+       (このページの eyebrow と同じ「小さな色線+ラベル」の語彙を流用する)。 */
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     font-size: 1.05rem;
-    color: var(--group-ink);
+    color: var(--ink);
+  }
+
+  .tech__group-title::before {
+    content: "";
+    width: 14px;
+    height: 1px;
+    flex-shrink: 0;
+    background: var(--group-ink);
   }
 
   .tech__chips {
@@ -90,24 +106,10 @@
     gap: var(--space-3);
   }
 
-  .tech__chip {
-    align-items: center;
-  }
-
   .tech__chip-icon {
-    align-items: center;
-    justify-content: center;
-    width: 1.9rem;
-    height: 1.9rem;
-    margin-top: 0;
-    border-radius: var(--r-pill);
-    background: color-mix(in srgb, var(--group-ink) 12%, var(--paper));
+    /* PC と同じ小さな線アイコンのまま、色だけ群の識別色にする。
+       円形の色地バッジは付けない(既製テンプレートの型に寄るため)。 */
     color: var(--group-ink);
-  }
-
-  .tech__chip-icon svg {
-    width: 1.05rem;
-    height: 1.05rem;
   }
 
   .tech__chip-label {

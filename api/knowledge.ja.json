@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "e94c4db",
+  "generatedAt": "bd3b26a",
   "chunks": [
     {
       "id": "index#0",
@@ -554,102 +554,95 @@
       "id": "about#9",
       "title": "会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "ホーム \n › \n 会社情報 \n\n Company \n\n AIの前に、 \n 人がいる。 \n\n 人がもっと人らしく働ける未来—— \n その問いから、 私たちの設計は始まりました。 \n\n Purpose",
-      "vec": "CP35Bw33+wMB/QH6BvT7/v33AvgEB/0ACgEAAQP9+vkAAAH//gQBAQAACwEA/f8KBgj6AQH99QAJAfoJCfsF/wIDAgX7/QsF9wT4+fr/BwX3CPgCBfb7B/QB+QT+AAT/AgMC/wH2AQ73APv8+wH2/PsK9f8AA//7/wf/Bf/9APj29P/8/gEF+/8D9/kL/f/0/Qb++//8/vz79/0I+vv9AAUA+gP+/fr69QL39vsGBPwE/vz+/QX7+Pv7+f8AAvgGDAQE+fn+/v8D+AQE+v0IBv8FCfcBAv7//gD2Bf0CAwX7CgP7A/gDAfr6AP4D+wMB/wILBwoABv3/AAz/B/n///4CBfz/BgD8AwIHCv/+/voFAP0C+AwBC/gAAPz+BP79+gYA//j//gIEAPsFDfwD/gIH+vwH/gMCBvj/+Ab/Bv76/gD59QMD/QP+BPkA//cBAAL5/Pr68QEC+gf8/AkD+QH3+vwG+P0I9/kH/gD8+wQF+Qj5+P4E+Af+/wIHAf/5/wAGBPsCC/n9//v2AQAA/vn8+wH5AvkA+AgA+AMG+PoDAP3//PkG+fwDA/0D9PgEAf73BAH5/fwB/Pr5+wgDB/T+/PsGFP8IA/37BAEE/g/7/vr8/gX5AQn1+AMD+/37/P36CwYD//z/AggAB/8FAQj49wT5/P8N/PkD+P4B/gg="
+      "text": "ホーム \n › \n 会社情報 \n\n Company \n\n Purpose \n\n AIで \n 人間らしい時間を取り戻す。 \n\n 効率化の先にあるのは、 もっと働くことではありません。 \n 人が、人にしかできないことへ還ることです。 \n\n AIが情報処理と定型的な判断を引き受ける。そうして生まれた時間を、人は創造・意思決定・関係構築へ向けることができる。 その状態を目指して、企業のしくみそのものを設計し直します。 \n\n Overview",
+      "vec": "Bf78Bwz3/AYE/wH7BvX+//v4BPz/B/3/CgUCBQL8/PoB/wAB/gIAAP8ACwH+//8JBgr1Bf/59gMKAf4ICfsFAv4E/wj4+ggF+wP7//0DCAX4CPkFB/j8BPYB+Af/AAT+/wECAQH3Aw74Afz8/AL1/PII8vsDBv//+gYCBf78A/j69P///P0D+f8C+vsI/wD4/QcB+f3///z89/4K/Pv6/gcC+AT8/fn79gL39PoEA/sCAPwB+QP3+//39gX+BPwGDgYB/Pn8/f4E9woC/gIIBPsICfgE//v8/gD5AfcF/wH8BwP5A/j///n6AgAC/QIB/wEKCAj/BP3+AQz8Bvj9+wAECP8BBf77AgMGCP/9//0C/PwA+Qn9Dff//vwAAwH++wIB/vr+AgEDAfsFDvsB+gQJ9/oJ/wQCCPb/+gb9CPv++wD/+QEB/wEAAvn9Afb//gH2/vf77QD/+gb+/AoE9/72+QEK+vsH9PoH/QH8+QME+gj4+gED9AYBAAUFAv34AQMGA/oICvn8/P3z/gH//fv//v/4A/oA+wsD+gQE+vkBBP/9/fgE+vsBBAEB+P8DAP37AwP6/f4C/vj7+gYABPX+AP8DFP4FAfwBBAD/+w37/v7++wf9Awv49wYG+/v7AP77CQUEAf39Agj+Cf8FBAj4+AH4/AEK+fsD9/4AAQc="
     },
     {
       "id": "about#10",
-      "title": "AIで \n 人間らしい時間を取り戻す。｜会社情報｜シンアイ株式会社",
-      "url": "https://shinai-inc.jp/about.html",
-      "text": "効率化の先にあるのは、 もっと働くことではありません。 \n 人が、人にしかできないことへ還ることです。 \n\n AIが情報処理と定型的な判断を引き受ける。そうして生まれた時間を、人は創造・意思決定・関係構築へ向けることができる。 その状態を目指して、企業のしくみそのものを設計し直します。 \n\n Overview",
-      "vec": "AwEABQjz/gYFAQL8APQB+/r3Bf39BfsFBwMFB//4/PwB/QME/gD+//3/CP/7//8LBQr0Cf38+gQHBAAJC/wHBfcEAAf49gQF+gH///8ACQf7BfsABfr6APb6+Qv/AAMCBAMBBQP4BQ74/v0B+QX6+vEJ+f0DCAT//QYDAfv7Bfr69wAA//oB9wEE+vsGAQD6/Af/+P7+//v79gEK+/39/QT++QP2//n+9wH19PwDBvv+Af0C+wLz/AH38QD9Af8FCAkCAP/5A/8I+AcAAgQL//4GBvYI/vj6/gL3AfkG/gT6BgT8//n//vz7AgL+/AD9AQAIBf4ABPwAAQj2Bfv8+gMFBQL/BwAAAgMHBv/+/f8C+/z9+gf5DPf9BvwA/vz9/gED/f//BAMAA/wFEPkB+/4M9fgKAgQDCff++gb3Cv3/+v7/+/8DAf//Af3+AvgB+P/5/fT67wQD/QD7AAgG+gH59wMI+vcE8PgH/f/8/gIB+gr3+///+QMEAQb/Av/5AwQDAfkFCv77//3z/QIAAfoA/vv5A/oB/w0G+AcF//oCBv3+/fcB+/sABAAB+QQG//z3BwT8/QH/Afn99Af6Avj7AgMDEf3/AfoBA//8/Qn9BQQG+gj5BQv3+QcI+/f7Aff/BgcKAPwAAQf+Dv4GBQX4+v/6/AMI+fsD+//8/gc="
-    },
-    {
-      "id": "about#11",
       "title": "代表メッセージ｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "Masakuni Shibata \n\n 「真の価値を信じ、 次世代のために新たな未来を創る。」\n\n 目の前の命に向き合う日々のなかで、一人にできることの限界も知りました。\n より多くの人の力になる道はないか。その問いをずっと抱いてきました。\n\n その答えがAIでした。2023年2月に生成AIと出会い、これならより多くの人の力になれると確信しました。\n 人に代わる技術ではなく、人の可能性を広げる手段として。\n\n 私たちが手がけるのは、AIを前提に、企業のしくみそのものを設計し直すことです。\n 効率化ではなく最適化。そこに本質があると考えています。\n\n 技術は目的ではなく手段です。\n その先にあるのは、人が人間らしい時間を取り戻し、より高次の価値創造に没頭できる未来です。\n\n この想いで、私たちは歩み続けます。\n\n 〜 2023 \n 消防士として従事（約7年） \n\n 2023.02 \n 生成AIに可能性を見出し、独学を開始 \n\n 2024–2025 \n 東京のAIシステム開発企業で実務（LLM統合・RAG構築） \n\n 2025.01.01 \n 個人事業主として ShinAI を開業 \n\n 2026.08.08 \n シンアイ株式会社を設立（法人化） \n\n 代表取締役 \n 柴田 昌国\n Masakuni Shibata \n\n Seven Shin",
       "vec": "BPgAAA3y/Qn++Af8A/f+/PP3APr/AAYEBAAF/QP4/fv8/v/9/gf8/gL4CgX++/z/Awb9AgH/9QMEBfcEBvz9BAAAAQv6+wMB/AH7/PgBAQX4CvgCAfv5/fkA9QT8BAP/BgUG8//6BA32CPr7/gXz/voJ8/j+AP8AAQQDBQH8B/n29AL//f8H9/389/oBAP35/gb9/f7//f//+fsE+gAA/AYI9QL6AP/6+AL4+gH+B/kFBf7//QD5///9/fwF+v0JDAkGAAD8Bf0E9wUG/wEIAfn/C/UC//YB+vn7Av0K/wIBBAQFBf8AAP74+QICAgoBAwIMBAv+AgAABQr+Cf3+AAH8AwQCCv36AAQICgj6/AAB/Pr+/Av3EvgCBPcBBgH3+/0C+vz7Af8EA/wIEPsA+QAG9fwIAAICAPoB+wz9Avv+/AEC+gMH+Aj+Cf76/PcBAPn7/fsE8wEA/wT9AQL/+AD8+v8D+/0I8PoCA/v//gMDAQT6AQME+Af//gH+Bfn7+wACAwIKCv39A/z4AP/+AvsDBAD6DP4F9QYE9gYA/P4CBv4A/vID9AH/Bf4L+Pr9/fz/AAH4/AIA+v319gEABP0BAPoFC/n/Bvv4Bf4A/Qj9/AAE/wT9/QD2+/8C+/r+/vr8DAUFAf76BQYBEf4G/An78gQDAvwK+vgA//8I/AU="
     },
     {
-      "id": "about#12",
+      "id": "about#11",
       "title": "七つの「Shin」に込めた精神｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "ShinAIの名に、七つの「しん」が重なります。 \n\n 真 \n Truth \n\n 信 \n Trust \n\n 伸 \n Growth \n\n 心 \n Heart \n\n 新 \n New \n\n 芯 \n Core \n\n 紳 \n Integrity \n\n Truth \n 真",
       "vec": "//39BQ75/Af8+Af8Bfj7//3+Afv9AwYGCwj/+Ab8APwJAfsA+gEB+ggCCP0D+/gBAAj9CP0C9QD/Bf8GBPj8AgYBAAcA+gcJ+AT//fkBBwH2C/v7CPr2APYF+AT8A/wBBQf9/gH8AQ33Bf31/QXz/foL/fv/CP0GAQYGCAEBCgH89AD9/f8H+v0C9/r9/QHzBAb8+/kAAQD8+/sA+wP+/wcJ+wT4/vj7+fn4+/z9A/kGBPgC/gT1BAP8AAEC//0FEwUH+wD+Av/7BAMF9wQD/P0ECPgDAPgEBPb5AwEFAQf6Bwj9CPkHAvn5+/sC/QL+/gQKBQgDAAcCAA4FB/cA+f4EBQIHCAD5APsKBwn4AAP+/AD9+wb8DvoE//0AAAX4/QP/9fv8/vwB//4ACPoA+gAK9/0H/QUDB/gB/AEBBfoG/gUC9wQD/gH8CP7+/fYC/P/1+f0A/gEB/QL9AgX8+Qb9+Pv99/8J9vYJ//z7/AUB/AH+/P0A/wMB+fkEAvr9Av0EBAEJCfv//ff+Bgf7Av4F/QADCf7/9wgH/gQM/gEJAvn+/fT79gP/Af0J9AYAAvoF+v35+vr6/P72+wr9AfkBAQH6DPwA/QMD//wA+g4B+P/+Cf79/wb1/QcCAwP5/vz+BQADAgH/BQX/Cf4IAQvy8v8CBv4J/f4IAQIHBAc="
     },
     {
-      "id": "about#13",
+      "id": "about#12",
       "title": "本質を見抜き、誠実な技術で価値を届ける。｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "表面的な流行に惑わされず、真に必要とされる解決策を追求し続けます。 \n\n Trust \n 信",
       "vec": "BgD6Cg73+gME/Qr+APkE//ry//sDBP8DDv//AQX5/vkB//4G/v///gL9BwMH//0GAwP7BAH9+gEECvoIBPcFAP8EBAf4/wYC+gP7+QH9BwP0B/f+//v1/PUC9wgCAf4C/wT+AwP8Agn/BPX2+wX9/PQM9vz8CAAB/QYCAv79Cf//8wL++f8G+/kH+/79/QT4AAEC/P0D/fv5/vsEAfwC/QQE9//2//v3+QD2+v0BA/sC/fgD+gX4/P76+AEB/vYIDAUB/vkHAgX7+gcD/gQIAPX7Bvv/APgFBAT6Bvn/AAH/CQf9A/cB/v76/f0C/gUBBAAGAAn9BAH6BgkCAPX++//8AQP/CPz0/wQJBwr7/wEB//z2+gv6EPP8/fn+BAb7BAIB/f7/+vz/Av77Bf4E/PoG/PcG/gIBBP4G/QIAA/cE/wcA/QIA+Qj+A//7/vIBAPr8/fsD+QIIAAb6AwwF+gH4+gAG/PoF+Pv/AfYA/wL8+wv9/gMI+AsG//wJAPj7BAMD/v4ICv4A+QL6/gT/BQAE+QEBCvj/+Az8+gUF+vwLAf37BPcA+Qj+BvoF8wMAAfr4Av71/fn5+f35+Af/APL+BAIEDf8JBPr7AAD/ARAC/QUBCQL5+wT0+wkJ/vv5APoACwUMAv71BAn5B/4HAQf8+QIC//wI/P8F/gEHAQk="
     },
     {
-      "id": "about#14",
+      "id": "about#13",
       "title": "信頼を築き、人と技術の絆を深める。｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "透明性と誠実さを持って関係を構築し、「信じられる技術」を提供し続けます。 \n\n Growth \n 伸",
       "vec": "BwL4Bw74+AT//Qj//vYDBfz3/fv+BgMBBwAA/gb4//oDAv8E/v8CAAD9BwIH/fwEAgf5AwAA+gcHBfUJA/UH/gECAAz8/wL99wH7+/wABv72AvQAA/v7/fQF9woHA//9BQYAAQP9BAX6Bvb1AAT5/fYM/Pj+BgEF+AMEBAT7Bv779AH8/QAG+vr9+/4B/gT3AgAA9/wD+Pz0/vsI/wD/AAIK/P/8Avb59v37+P8HAP7//fgB+QX3+Pn89QMDAfQHCAQB+vsFAgX/+AEB/fwFBvkCCP78APcHAwX8APX5A//+CAj8BvcA/Pv7/gIEAQgBAwQKAAgCA//+BQn+/vYA9v36AAECA/31AQUIBgj9BvwC/v32+gn9DvL+/vj/Bwj5AwQA+fv9+gADAfj7AwP9+/oM+foI/AP/AwAD/QX/AfkBAQL+/AEB+Qb9B/39+PoCBv38/vz+9QIL+wX+BA0D+gP7+/8E9wEH8QAAAfsA/wr89gr+AwUD+wgDAAAHAf76Af4DAwAKDPoA/AH6/v4DA/3/+f/+BPr++wn+9gYC9vcG/wD9//kA8QcBAQUD9P4AAff6Af/z/fMA+v33/QL7AfH+BAACDvsKBPn+AAD+AgsD+v8CBAL7/gT5+AkJ/P37+/4ACgULAvz5BAr9DP4GAQX69QIBA/0G/f3/+gABBQI="
     },
     {
-      "id": "about#15",
+      "id": "about#14",
       "title": "潜在力を引き出し、共に進化し続ける。｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "クライアントの成長を支え、私たち自身も常に学び続けることで、共に未来へ伸びていきます。 \n\n Heart \n 心",
       "vec": "B/4CCQ39/gsA+QL7/Pb+A//1Bfn9AgQBDAD/AgT8APn+BPoI/AP8/gP8EQcD+/UDAQr0AgL//AMJBvYLAf0G+QICBAr6AAUH+AP++Pz9DAbzBfz+A/n7/fUA/wP6AP0GBwAAAQL7AQf8//X3+//2/PoP+PgFBAEA/wUDCAH7BgL69AQB/gED+v//8/YAAP/7AQT//fv9AQL3/PsK+/78/wQF9gD5/fQB+AH48vkAAvn++/cIAgn5/vj++QME/fYJCQD++P4BAQQBAAkA/QEDAfsGDPz8+/wFBQD7/fUBAwX8DQb7BPoF//30/f0H/gn7/gUIAggBAQT7BAz6Bv4CAAQAAv0DBgH2AgEEBAP+/v0AAPz9/QkBDPj6APYAAQH2AQEC+vz++QUFA/kFBv/9/v8IAPoJ/wUEB/v/+///Cfz9BAEB+gAEAAUBBvcF/Pn7+vz3/fj9+QEE/AP//wQE/AX//P8D8wEM9vkDA///9wQD+Aj3/wAB/wkD/QcGBfz7AAMH+/8FDP79+f//AwQBA/v/AQMCCfkA/gUG+gcG//wA/gAB+fEB+QX9CQAF9wUG/f0ACQT1BPX++gD7/woB/+v9AAEADvsH/vkB/P36/AoA+QkA////Av/5/AQEAvkAAAH8DQEK//sC+wkDBv8JBQX69QIBA/4HAf0GAAIE/QE="
     },
     {
-      "id": "about#16",
+      "id": "about#15",
       "title": "感性を重んじ、心に触れるAIを創る。｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "技術だけではなく、人の感情や価値観を大切にし、共感を生むソリューションを提供します。 \n\n New \n 新",
       "vec": "B/v6CAvz/QcF+AT4//oBAv73Bfj/BwD8EAABAgD8/vgC/f0F9gMAAQECCgb8AvsH/gT4BQP4+gEDBPoHA/kDAP8C/QP79wcI+wT//vkEB/30Cvf7/vr4APQF/Qn9/wADAgL+Avn1/Qv6Av39/Qb4+vQI+fUAAf/5+gMEBfv9BPj88wQB/gAD+/8C+PgC+f34Af7+/f0DAAH7+/8H/f77+gED+v34A/oC+vz28v4FAPYD//0K/wD1//72+gAB+vsFEAcE+f4FAPkHAAf/AP0IBPcDCvgFAf4CBQX1A/kAAwD7BQn2A/cABPz//AQDAQUCBP8LCAMCBgH/AwsCCvkB/QEGBP4EBgD4A/wFDAgB+/0DAfn/+Qj+Dff4APn8AwT3/gH/+fv8+QYAA/sEDP0C/QUL9PgL/AH/BPr/+wUAB/n+AAT59/4D+wT5Bfz+//b++////P389QED/Aj8AgX/+wH39/8IAAEF9vsG/AX5+gT89gT8/QL/+AkD+wAGCPz2AP8FAvsJB/j5/wP9/wP/A/sDBQL6BfoF/wkB+AMH+//9APz//fYB+gMABP4I9vwC/Pr+BgAAA/sC+/34+Ab7//L/+f4BEPsBAfsBAgUB+g39+PsAAAL8AAL9+P8HAPj7/wL9BggKAPb8Awf/Cf8KBgj39/75/v0L+PwH+/0DBQY="
     },
     {
-      "id": "about#17",
+      "id": "about#16",
       "title": "常に変化に挑み、革新で未来を切り拓く。｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "前例にとらわれず、新しい可能性に挑戦し続けることで、未来の扉を開きます。 \n\n Core \n 芯",
       "vec": "Cvr/BQ7/BAoEAAT4AAD///v4Afz+BgIGCAX2BwMBAfoBBPoE/P8D+wT8CwQE+/UB/wf7AgX48/0GA/cLBPYJ//8C/wX6/wMH+QL0/wH9DwXzAvQCAPv7/vz8+AD+A/4LAAABBQD5Awf8B/j4+wP58vcN//0IBQYB/gMAAwH0Afv7+AD8/QEE/PYC+gIBAQL7Av/9AwUH/v38/v0H/f7+AwgJ9/8A+/oC9P398AEABPv++vkE/Qb+/fv7/AQB+fYHEgAB+AL9BAD/AAb//P8EBPoADfz+Af0ECgb3AfsFAAgECwH7BPoE/vz09wMC+gf+/QIDBQcDAgT4BgwFAvkD+wAHBfoCBP/3AQIHCAP1Avr8/vz7/A8EEPr5+/cABAH+CP389vf5+QQB+/kCCPoC/gUJ/fcB//7+A/gE+gL8Bvv/AgYF+gUK/wz9APgF/vYA//sA+/kB+gUBAAT+Awj+/AMB//sF/AEK9fgCBPv6+/sC+QL9AQH+/AoBBQEHBvz8AAEJAQEFBwX/+/n9AQH9/v0E/f/+A/8E/gQJ/ggH/f4C+v8FCPX+9An/A/wG8/wGAAD+AAL5A/X7/v38+AX+//T5AvsGCgAEAvwEAv7/AQwBBP8A/wADBQD29gP+APj+/AEEDPwO/AH5AQf9//4H/AL78gQIAQAL//0G/wYF+wM="
     },
     {
-      "id": "about#18",
+      "id": "about#17",
       "title": "ぶれない軸を持ち、未来の中心を担う。｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "時代の変化に左右されない強い理念と技術力を軸に、次世代を支える存在となります。 \n\n Integrity \n 紳",
       "vec": "CAT/CQz5+QT7+Qf+/vcCAfr1A/v6BAUICgQGBQb5Af0CAPsFAP8EAP7+DggHAPwHAAf/AQT8+AgCBvwMAPgBAAH+AQr5+gQG9wMB/AD+BgXzB/oCAv8AAfcH/AcB//8BAwX++wL6AwUAAf309gX7++8J9/n9CwYHAwX+AP73AAH39v73+f8I+vsA/f8A/gPvBwsC/wcB/f36/PoN+gIA/gIB9f77//j99v8A+fcABwAA+gII+gL+/fkC+wr8AvYLDwcE+/n9CAD+/wf//P8CBPgBBPsC/P4GBgT3/foE/gn9DQX+AQAF/QL3+wMF/wb//gAG/wL+Bgb3Awn/BvwA+gABCP4ABv/xAAQLCQb39/78AQH8+gv9C/YB//0BCfz/AgMC+Pb++P4BAvsBDQEE/vwF/vgE+AP///38+//6A/oF/wP7+f8E/Av+BAT9//b6BfsH//3/+wMD/P/9/gj/9gT/AvsG+/sG8/kCBPn+/gYA/Ab/9/sI/QUG/fwFBP74BQACBQMEBwMC+f72AwH+/v0C/AL8BP4B+AYE/AUI/f4E+fsB/Pb88wj7Av4B9AcB+fr9/gD3/vX99//5/wkCBu/7BQUEDP0IA/3+BP77/Q3++/7/AQD9Bwf7/wMBAPf4+/r8A/4L/wP+BQQCBv8GAgL39QAEBwgF+voBBfwABQQ="
     },
     {
-      "id": "about#19",
+      "id": "about#18",
       "title": "美しく、敬意あるふるまいで信頼を導く。｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "高い倫理観と品位を持って行動し、社会から尊敬される企業であり続けます。 \n\n Future Vision",
       "vec": "Bvb7Cw33+QQBAQf3APUDA/z5A/r/AwIFAwMABAj4APwF/PoFAP7+/gL/CgEE+f8E/wX3A/779gIJB/gIAfgA/wMB/Qn9/AcB+wL89wT/B/30C+8GBPj7APMF+gr//v4CAgD6AAT+AAb7Av72AAX5+/IR+f/+CgYDAAEABwD2APr77gH59gAG/fz9/f0BAAjzAwIC/f8I/gD4/fwHAPj/AwMH+fwAAPr/9wH1/P3/BPwBAP0G/AT+9gAB8gMAAfgMCQb//PMDAf4A/QP/AfsJBPv+Cv7/AvoDBQT6APsD///7CwQAAvf++Pz59v4DBAoABAIL/wr+AwH9BwcFBff+//7/AQL7B/31BgAEBQf8+P0C//3+/Av+Cvf9APb9BQD1/gMC+fr7+wMFAv3+CwQCAP0J/PgD/QIEBvz8+/76APkB/QIA/AAC/Aj+AgT9/ff9/QIBAvz79gEB/Ab7BA0D+QD7+/cF+PgG9fcAAPz8/wcA+Qf/+gIF+AwC+/4EBPz3/gMF/gMMBvr9/vv7AAP/Bvz9AAH+BfYB9Qj99AID/fwA//j/+/n/9woBA/z/+PwDAvj7/AX2+/j69fz1+gT+B/UC/wP/CQEIAP76/v79AwwF+AAAAf/6BAj8/gQF+P/++wH+CwIMB/v5BAb7Bf8GAgj49/8G/gMH/v8E/PoA/gQ="
     },
     {
-      "id": "about#20",
+      "id": "about#19",
       "title": "人と技術の共創する社会へ｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "ShinAIは、テクノロジーが人間の創造力や優しさと共に歩む未来を目指します。人の感性、社会の多様性、そして地球の持続性と共鳴するAIを通じて、私たちは「信じられる技術」で課題を解決し、「選ばれる存在」として価値を届け続けます。\n\n Team",
       "vec": "CP38BA/1/Qv6+wP8Avn8//r2B/gAAgT/Cv8DAf75+/v8Af8GAP4A/gT+Cgf++vUBAQX9Av/79/8GA/YIBvkIBAIB/wf6+AcI9wT/+/gFCAD3B/oEA/f4/PIE9gcABgUAAgECAAH5Agr3Af/7/gb0//cG9vcBAwQA/gYDB/34B/b49f8C/f8E+vsB9/oD/P34AP8B+/0D/gD3/P8E+QD9+AMD/Qj9APwA+v769fsJCPkJ/fwA+v71//j8+gIB/PoJDgIE9fsAA/8E+wUEAf4E/vr/B/oEAAD//AD1AfYGAAT+BAP5CPYC/vr6BAIG/QP/A/8JBgYCAwQEAQv/CPkD/vsA/wACB/v1AAYFCwn/AQEB+vr8+gn8C/EBAvz/AgL6/gEI/Pn7+/8GAv3/BvcC+/wE9foK+/4CBvz/+QP6BfoB/QIA+QQC/P/+BfwAAfz/AgH5/P378wEE/QP5/goB9/z89gED/P8D9vsKAAEA9wf+9wT9/gT9+AkE/wEEBP/3+wMFAvwEDPX+/wH5AAACBPsB/gD+BfwD/gkD+AYH/AAGAv33/vsB8Af8Af4D+QMC//YBAwL6/v0A+P39/AT6CO//AwEFEP0DAf/8CAD//Ar9/QAE/QT8AQL1+gMI/fb6+vwACQUKCAD8BAv8Df8JAAj29QT7//gN9/8G/P0AAgU="
     },
     {
-      "id": "about#21",
+      "id": "about#20",
       "title": "メンバー紹介｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "専門知識と実績を持つプロフェッショナルが、企業の課題解決に取り組みます。 \n\n Join Us — パートナー募集",
       "vec": "AP0AAg38+gz8/QP4CvwBBfn5AQIHCgACDf/+BAj7AP79Bv0DAgX9+wICCAIE/vgFAwj2BAX8+wMD//oGBP0FB/0DAQn6/An++QX2+/sCBwH0CPgC+Pb4+vkH+gX4AgYAAwEBBAL6/wABA/P8/AIBBPgG8f0HAvz7+QQABP77APv59f37AQEA//n9+vcBAwD4AP8D/P4A+vj6+f4J9fgB/w0A9wH++/0D+P798PQGDPoC+vcB/Af6+vn7AfwF/AIDCQQF+Pz//wX8+AMIAQQICAABDPoB/P8D+wP9AfQC////DAL9CPf8//n6Af7/AgMAAwQIBRD/BAQBBg4ABfoCAAf7AAQDCf79//8FDAf/+gMBAP78AAj2Bvz6+/X/Awj4AAcA+PwB//wD/PwDBf8CAAIB+Pv/+gQF/gUA+QP9Bfv8BP77/wT+/Ab/CPj7/foE/v8BAPr89QcEAAcF+gf/+AD7AP4K9/wE9fv9+vcE+f4B9gf9AAIB+woCAv8HB//9+wACA/wID/oE/Qb7A/wB+/kBA//3Bf0C+f8A9AQI/gMFBf0AAfQB+AP9Bf79+PwD//7z/Ab+Afn9/P/8AAAIBfMGBP8GDAMDAwIB/gEE/gr8/P0D/wv8BAX99P4B//n7/P8BDQgE/wL6AwoCC/8GBgj59An89/kM+vr//fkC/wg="
     },
     {
-      "id": "about#22",
+      "id": "about#21",
       "title": "ShinAIと共に創る未来｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "AIの力で新しい未来を創造するプロジェクトに 参画しませんか。",
       "vec": "Afz+Awn7/wr4+wH1A/n2/vb4BfcABQX/CAIB/gX8/Pr7/vwD/QD9/Ab+EAQBAP0BAgf3CAD29gUEAPgICfsECP0D/wn++QED+AH+/vsEBwH1C/MBAfb5APUG+Qj3AwMJBf4HAgD7Agj6Af39/wj1//kE+PUGAwL6/AYFCAH5Afb59gABA/0C/foC9/wHAQH5/QUD+gD+AP74+vkJ9P77AAQGAAX3AAAB9/369/oBA/wC/P/++wb1Afr+AwQF//4CDAsD+v//Bf0F/gAEAwAK//sCC/UA+//9+wD4/vcH/wMDBwL8A/v+APf/AfsA/QADCAMLBgkBAwUDAAsFCfkB//4BAAQFBvv3CAkFEwgA//0D+v4A+gr5DPv9+fr+//76+gII9/n8AwAGAv8HDPUBAAIO9PwHAQIBAvYB+AP8Cf8AAP7/9gED/gMABP0AAPoA//z8/fr++AUB+AP8AAH/9gP5/gIC//0D7/sD/v799wMF+Qj//gT5+gb++wL7AQD2+gADB/0GDPb8//37BAD9CPYBBAL7Bv4AAQcA/QUCAQH+/fr/AvoF9P/8Bv4C9wICAfv/BAL8//sB+/r89/7+C+7+BP8DEAD/Af78BQP/+Az//v8C/gH6BAL5+QAG+vkA/fsCCQII//0AAAgBDP8E/Qb68wf+/voK+/8H+wIDAwo="
     },
     {
-      "id": "about#23",
+      "id": "about#22",
       "title": "ShinAIのプロジェクトに参画するメリット｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
       "text": "01 \n 最先端技術に触れる機会 \n 常に最新のAI技術にアクセスし、実際のプロジェクトで活用する環境があります。最新LLMやRAG技術を実践的に活用できます。 \n\n 02 \n アイデアを形にする自由 \n 自分のアイデアを提案し、実現できる風土があります。クリエイティブな発想を尊重し、革新的なプロジェクトにチャレンジできます。 \n\n 03 \n 柔軟な働き方 \n リモートワークや業務委託など、ライフスタイルに合わせた多様な協業形態に対応。プロジェクトや成果にフォーカスした関係を構築します。",
