@@ -43,6 +43,21 @@
   color: var(--line);
 }
 
+@media (max-width: 820px) {
+  /* モバイルはハンバーガーメニューが現在地・全ページへの導線を持つため、
+     常時表示のパンくず(ホーム›ページ名)は機能が重複する(柴田指摘 2026-09-20)。
+     ハンバーガーを持たない PC では引き続き表示する。 */
+  .page-hero__breadcrumb {
+    display: none;
+  }
+
+  /* 会社紹介ページの page-hero はパンくずのみで構成されていた(柴田承認 2026-09-20 で
+     見出し・リード文を削除済み)。パンくずを消すと空の帯だけが残るため、帯ごと消す。 */
+  body[data-page="about"] .page-hero {
+    display: none;
+  }
+}
+
 .page-hero__eyebrow {
   margin-bottom: var(--space-3);
 }
