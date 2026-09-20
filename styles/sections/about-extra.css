@@ -7,9 +7,11 @@
 
 /* ---- Purpose 深掘りの静かな一文 ---- */
 .about-purpose__note {
+  /* --fs-body(1rem)と直前の .purpose__support(--fs-lead)は僅差だが、
+     続けて読むと文字サイズが変わって見える(柴田指摘 2026-09-20)。揃える。 */
   max-width: 30em;
   margin: var(--space-6) auto 0;
-  font-size: var(--fs-body);
+  font-size: var(--fs-lead);
   line-height: var(--lh-body);
   color: var(--ink-3);
   text-align: left;
