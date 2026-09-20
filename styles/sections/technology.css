@@ -67,16 +67,15 @@
      見出しの文字そのものに透明感と艶を持たせる(グラデーションのテキスト塗り)。
      背景・縁・影・ぼかしの矩形は一切使わない。群ごとに色を変えることもしない。 */
   .tech__groups {
-    /* group間・title-chips間・chip間の余白が積み重なりスクロールが重い
-       との指摘(柴田指摘 2026-09-20)。見出しが1.4remだった頃の余白のまま
-       残っていたため、1.25remに戻した現状に合わせて詰め直す。 */
+    /* group間・title-chips間・chip間の余白の積み重ねでスクロールが重いと
+       重ねて指摘された(柴田指摘 2026-09-20)。さらに詰める。 */
     border-top: none;
-    gap: var(--space-5);
+    gap: var(--space-4);
   }
 
   .tech__group {
     grid-template-columns: 1fr;
-    row-gap: var(--space-3);
+    row-gap: var(--space-2);
     padding: 0;
     border: none;
     background: none;
@@ -91,8 +90,9 @@
        3) 文字の輪郭に密着する二層のtext-shadow(上辺の光の縁・直下の沈み込みの
           影)のみ。輪郭の外へ滲む大きなぼかしは持たせない。
        backdrop-filterは使わないため矩形の当たり判定を持たず、
-       輪郭は常に文字の形のまま(=カード化しない)。群ごとの色分けもしない。 */
-    font-size: 1.25rem;
+       輪郭は常に文字の形のまま(=カード化しない)。群ごとの色分けもしない。
+       立体感が主張しすぎるとの指摘(柴田指摘 2026-09-20)でさらに一段小さくした。 */
+    font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0.03em;
     background:
@@ -109,7 +109,7 @@
 
   .tech__chips {
     grid-template-columns: 1fr;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 
   .tech__chip-icon {
