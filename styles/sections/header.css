@@ -106,6 +106,7 @@
   font-weight: 500;
   color: var(--ink-2);
   padding-block: var(--space-1);
+  white-space: nowrap;
   transition: color var(--dur-1) var(--ease-out);
 }
 
@@ -132,6 +133,7 @@
 
 .site-header__cta {
   padding: 0.6rem 1.3rem;
+  white-space: nowrap;
 }
 
 /* ---- Language switch ---- */
@@ -198,9 +200,34 @@
   display: block;
 }
 
-/* Home はハンバーガーメニューにだけ置く(柴田指示 2026-09-20)。PC はロゴでトップへ戻れる。 */
-.site-header__item--home {
-  display: none;
+/* 821〜1023px は PC のメニューを並べるには狭く、項目が途中で折れ(日本語)、
+   右へはみ出していた(英語)。切替点 820px は JS・フッターと連動していて動かせないため、
+   この幅だけ間隔を詰め、言語切替をアイコンに畳む。英語はタグラインが長く(262px)、
+   それでも収まらないため畳む。 */
+@media (min-width: 821px) and (max-width: 1023px) {
+  .site-header__inner,
+  .site-header__nav,
+  .site-header__menu {
+    gap: var(--space-3);
+  }
+
+  .site-header__lang-label {
+    display: none;
+  }
+
+  :lang(en) .site-header__tagline {
+    display: none;
+  }
+}
+
+/* 英語は項目名と「Free consultation」が長く、1024〜1059px でも右端の余白が 7px まで詰まる。
+   ここでは間隔だけを詰める(言語切替とタグラインはそのまま)。 */
+@media (min-width: 1024px) and (max-width: 1059px) {
+  :lang(en) .site-header__inner,
+  :lang(en) .site-header__nav,
+  :lang(en) .site-header__menu {
+    gap: var(--space-3);
+  }
 }
 
 /* ---- Responsive ---- */
@@ -280,10 +307,6 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-  }
-
-  .site-header__item--home {
-    display: block;
   }
 
   /* 罫で仕切ったコンパクトな一覧。字は本文サイズ・行間を締め、面積を抑えつつ

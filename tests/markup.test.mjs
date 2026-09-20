@@ -196,17 +196,20 @@ test("トップでは Home が現在地になり、他のページではなら�
   }
 });
 
-test("Home はスマホのハンバーガーメニューにだけ出し、PC のヘッダーには出さない", () => {
-  /* 柴田指示は「モバイルのハンバーガーメニューからトップへ飛べるように」。
-     PC はロゴでトップへ戻れ、メニューの幅にも余裕がない(821〜960px で既に窮屈)。 */
-  for (const p of ["index.html", "en/index.html"]) {
-    const html = readFileSync(join(ROOT, p), "utf8");
-    assert.match(html, /<li class="site-header__item--home"><a class="site-header__link" href="\.\/"/, `${p}: Home の項目に目印が無い`);
-  }
+test("ホームは PC のメニューにも出す(柴田指示 2026-09-20)", () => {
   const css = readFileSync(join(ROOT, "styles", "sections", "header.css"), "utf8");
-  const mobile = css.indexOf("@media (max-width: 820px)");
-  const hide = css.search(/\.site-header__item--home\s*\{\s*display:\s*none;?\s*\}/);
-  const show = css.search(/\.site-header__item--home\s*\{\s*display:\s*block;?\s*\}/);
-  assert.ok(hide >= 0 && hide < mobile, "PC で Home を隠す指定が無い(820px の指定より前に置く)");
-  assert.ok(show > mobile, "ハンバーガーメニューで Home を出す指定が無い");
+  assert.doesNotMatch(css, /\.site-header__item--home\s*\{\s*display:\s*none/, "PC で隠す指定が残っている");
+});
+
+test("PC のメニューが狭い幅でも一行に収まる指定がある", () => {
+  /* 項目が5つになると 821〜1023px で足りない。日本語は項目が折り返し、英語は右へはみ出していた。
+     切替点 820px は JS・フッターと連動していて動かせないため、この幅だけ詰める。
+     実際の寸法は目視ではなく計測で確認する(scratchpad/shotkit/navcheck.mjs)。 */
+  const css = readFileSync(join(ROOT, "styles", "sections", "header.css"), "utf8");
+  const band = css.match(/@media \(min-width: 821px\) and \(max-width: 1023px\) \{[\s\S]*?\n\}/);
+  assert.ok(band, "821〜1023px の指定が無い");
+  assert.match(band[0], /\.site-header__menu/, "項目の間隔を詰めていない");
+  assert.match(band[0], /\.site-header__lang-label\s*\{\s*display:\s*none/, "言語切替をアイコンに畳んでいない");
+  assert.match(band[0], /:lang\(en\) \.site-header__tagline\s*\{\s*display:\s*none/, "英語のタグラインを畳んでいない");
+  assert.match(css, /\.site-header__cta \{[^}]*white-space: nowrap/, "ボタンの折り返しを止めていない");
 });
