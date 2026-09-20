@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "f55e42c",
+  "generatedAt": "2ce88ad",
   "chunks": [
     {
       "id": "index#0",
@@ -182,8 +182,8 @@
       "id": "services#3",
       "title": "事業内容｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "ホーム \n › \n 事業内容 \n \n Solutions \n \n 試し深め、 \n 自走する組織へ。 \n\n ShinAIは三つの段階で、AIを組織に根づかせます。 \n 小さく試し、知識を深く組み込みながら 現場で使いこなせる仕組みを整えます。 \n\n What We Offer",
-      "vec": "/v8B/g7w/QkE/wf6APX9A//6Av0EAwX/DAEB/f/0Bfz8A/0EAgf/AQT+BAIBBPoEAQn3BQHz+AYGAvcFA/cAAgEJAwn6+gAB+P/+//UBBQb5CPgCA/n3/fUA+QP8AQP/AgEBCQX9Bgr8AP3+/wL6+wEG9/0G/wAAAAgEA/oACPr29wD//f8D+PYC9/4I/wH5/AAC/AAC/fv8/fwH9/38/wYF9gL9/vz8+f3z/f4IB/4D/foA+v/1//z5/P/9/v0BDgoF+wD9//8D+AkL/f8BCfz/CvsDAfgA+gH8BgAAAwEBBv/5BvYCBPr9/gAB+gD7/gQHBAn9BP8D/Qv8B/L//QIDAAEAC/v5AQAKCwb6+QIC/PsC+//+C/r/+/v7/wT2+wYC/Pz8Avn/AwICDf4D/QMD+AQJ/AQCB/z69wX4Bvj/AgD5+wUG//3+BAP/9/YDAf77+/gA9gYAAg3/AgYB9AT3+/8B+wIG8vwJAv0B+QAC/gz//wL/+w0G+f8DBfb+AAIDA/sFDfr//AP2AgcBA/r7/QD8/gUD9wAA+AcG+P8H/QECA/QE+gEADQEC+v8H9/75B//6//4D/fr++P/9Cff4Bfr8Dv4ABPz9BgIHAQr9A//+BQL5/wX49gYG/vb8/QL+CgsK/AT9AQT/C/4JAwr18gYB//4O//kE/gEA+gc="
+      "text": "ホーム \n › \n 事業内容 \n \n Solutions \n \n 小さく試し、 \n 社内で使い続けられる形に。 \n\n ShinAIは三つの段階で、AIを組織に根づかせます。 \n 小さく試し、知識を深く組み込みながら 現場で使いこなせる仕組みを整えます。 \n\n What We Offer",
+      "vec": "//8A/w/x/AkD/gf5/vb9A//8Af0EBwb/DgEC/AD0Bfv8Av4EAgb/AQP/AwIABfkDAQr2BQHz+QQHAfgDBPgDA/8JAwv6+gAA9//+APYCBgf4CPgEBPn3/PUB+AT8AAQBAwABDAX8BAn8AP79/wT4+/8G9f4DAgAAAQgEA/v/B/v39/7//f4D9vkB+f4J/QL5/AIC+v8D/vz7/foI+f78/gUH9QL7AP76+P32/gAHBv4E+/wC+v/1AP33+//8/vwBDAkF+//7//8D+QgK/v//Cfr/CP4EAfcA+gL+BP8AAwIABv35B/UBAvr9/gIC+//6/wYFBQj+AwAE/Qr8CvEA/QMGAQD/Cfz7AQALCwf6+/8C/vsB/AD9DPr//Pz8/wP4/AUD/f39Avr/AwEBC/8B/gEF+AII/gMBB/r6+Qf3B/cBAP/4+gYF//v+BAP/+fUDAPz5+vn/9AYAAAwBAwYC9gT1/f8E+gAG8f0IAf3/+QAC/wwA/wH9+gwG+fwEBPYBAAEDBfsFDfr/+wX4AAgBAvr6/QL8/QUC9wEA+AcH+v4H/gEBAvQD+gIBCv8A+f4G9fr7B/79/v0A/vr99QH+Cvf2BPr+Df0ABvv9BwMG/wr+AQEABAH6/gX59wcG//b9/QP8CAsM/gP+AQT+C/4JBAn08gYBAv0P/vkG/QD++gQ="
     },
     {
       "id": "services#4",
@@ -271,10 +271,10 @@
     },
     {
       "id": "services#16",
-      "title": "小さく試し本番まで、 \n そして自走へ｜事業内容｜シンアイ株式会社",
+      "title": "小さく試してから、 \n 本番へ進みます。｜事業内容｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/services.html",
       "text": "いきなり大きく作らず、 効果を確かめながら前に進めます。 \n 下の期間はあくまで目安で、 規模や目的によって変わります。 \n\n 1 \n 課題整理・要件仮説 \n 目安 1〜2週間 \n\n 2 \n 動作プロトタイプ \n 目安 2〜4週間 \n\n 3 \n 業務データによる検証 \n 目安 2〜6週間 \n\n 4 \n 本番システム構築 \n 目安 1〜3か月以上 \n\n 5 \n 内製化・継続改善 \n 継続 \n\n 期間は目安です。各段階の結果を見ながら、次へ進むかどうかを一緒に判断します。 \n\n Get Started",
-      "vec": "AgQG+wD3Bv8IAAr++PMCAPv5/AICA/3+A/j+Agf0APz5/vwEAQP+/f8B//wD//sGBgv5Bv74AgIFBP4HB/sC/PoAAAn6+/0AAf77AAH/Cwnz/PwE//v5APn9+Qj/CQ37/gH+AwQABAP7//cG+/r//vUG/AYG+f/8AQYBAAD+C/0B/Qb5B/4A+vwA+AUB/P0B+ggAA/z9APz6/goJ9f/7/gMB+AD9AP4B9gIF+Qb9Bvv+/wAG/v72A/z2/AAE9QACAAYG+gL6BwQA+wADBAD5Af8DCQICAvT/AAX6AQUCAfwDEgQDCfP8//39/AX/+f/1Awb8+wH+//j5AQP2B/gE+gcBAwP8BgH/AwQLBgb0/P//Avj6+AL0Bfb8+/4FAAT8AQkGAvz6APj5BfwCCQMEBPoC/P79AgYCBPsD+wr7B/r99/8DAgEE+wQA//sB//4DAPsGCvb99gYMBAf9CAAF+QP+BPgG+/v/+AEFAfsDAvv3AhUB+v71/AQK/wkGAPoDAQUFBP7//v8H/wD8BAj8Af79+f4A/P0A+gEE8wkBAv4CAgT//O3++ff9AwAC+/0DAAbyBQL7A//9AgID9QL6/vj4/v79BPv6BfYAAvoGAQsFBQkDAgX+/wT8+Qn9AvQCAAAICQgd/QL4/QQHBv4J/Qb89gYC/f4J/fUFAQgE+AQ="
+      "vec": "AgQF+gH6Bf4GAQn+9/MCAfr6+gECA/3/BPn+Awf1APz5AP0E/wT8/AAC/foE//kIBgv5Bf76AgEIBP4FCfr//Pn/AAn/+/wBAv79AAH+DAvz/PsFAfr4Afr9+Qj9CAr8/AH+BAb+AgH6/PkG+vv//fUI/AYE/QD7AgYB/wH/C/wA/QX5Bv8A+/0B9wMC/v8A+gkABPz///36/QkI9f38/QMB+f//Af0D9gIC+Ab/B/z//AIF/f/4Avz1+QAE9gABAgcG+gD7CAMA+QECBf/6Af8DBwICAfb//wT7/wQCAfwBEQUEDPP8/f38/gX++Pz2BAb++//+Afn3AgH1BfYB+AgDAAT8BQH+BAINBwb1/v8BBPn6+QP1BPX6/v4FAAT7AgsFAvv7/Pf4Bv0DCwQFA/sE+/39AwcCBvsB+gz7B/n+9/0AAgID/gMA//sCAPwD/v0GB/b79gYKAQj8CgAF+wP9AfgG+/r/9QAEAfsEAfr4AhUB+v71/AQJ/woG/voDAQUEA/4AAQEHAP/7Bgf8AgD9+Pz//P4B+wEB8QoDA/4DAwL//+wB+fn+AwAD+v0CAAT0BAL8A//5AgQB9gX7/fn6///9Bfz6BfYABPsFAQwDBQgEAQf+AQf8+gj/APUBAf4GCQcc/wH6/gQGBf4J/gT79gUC/QAK/fYHAQYC+QY="
     },
     {
       "id": "services#17",
