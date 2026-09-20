@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "4cb0302",
+  "generatedAt": "b0e732b",
   "chunks": [
     {
       "id": "index#0",
@@ -175,15 +175,15 @@
       "id": "services#2",
       "title": "事業内容｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "ホーム \n › \n 事業内容 \n \n Solutions \n \n 小さく試し、 \n 社内で使い続けられる形に。 \n\n ShinAIは三つの段階で、AIを組織に根づかせます。 \n 小さく試し、知識を深く組み込みながら 現場で使いこなせる仕組みを整えます。 \n\n What We Offer",
-      "vec": "//8A/w/x/AkD/gf5/vb9A//8Af0EBwb/DgEC/AD0Bfv8Av4EAgb/AQP/AwIABfkDAQr2BQHz+QQHAfgDBPgDA/8JAwv6+gAA9//+APYCBgf4CPgEBPn3/PUB+AT8AAQBAwABDAX8BAn8AP79/wT4+/8G9f4DAgAAAQgEA/v/B/v39/7//f4D9vkB+f4J/QL5/AIC+v8D/vz7/foI+f78/gUH9QL7AP76+P32/gAHBv4E+/wC+v/1AP33+//8/vwBDAkF+//7//8D+QgK/v//Cfr/CP4EAfcA+gL+BP8AAwIABv35B/UBAvr9/gIC+//6/wYFBQj+AwAE/Qr8CvEA/QMGAQD/Cfz7AQALCwf6+/8C/vsB/AD9DPr//Pz8/wP4/AUD/f39Avr/AwEBC/8B/gEF+AII/gMBB/r6+Qf3B/cBAP/4+gYF//v+BAP/+fUDAPz5+vn/9AYAAAwBAwYC9gT1/f8E+gAG8f0IAf3/+QAC/wwA/wH9+gwG+fwEBPYBAAEDBfsFDfr/+wX4AAgBAvr6/QL8/QUC9wEA+AcH+v4H/gEBAvQD+gIBCv8A+f4G9fr7B/79/v0A/vr99QH+Cvf2BPr+Df0ABvv9BwMG/wr+AQEABAH6/gX59wcG//b9/QP8CAsM/gP+AQT+C/4JBAn08gYBAv0P/vkG/QD++gQ="
+      "text": "ホーム \n › \n 事業内容 \n \n Solutions \n \n 小さく試し、 \n 社内で使い続けられる形に。 \n\n ShinAIは小さく試し、知識を深く組み込みながら 現場で使いこなせる仕組みを整えます。 \n\n What We Offer",
+      "vec": "////AA7y+wgD/Qb5//j+A//7AP0EBwYADwAA+wH0Bfv9Av8EBQX/AAH+BAP/BvkEAgn2BALy+gIIAvgEA/gCBP8IAwz5+wH/9v/8APcABwf4CfgFA/n3/fYB+gX9/wQCAf4BDAb8BAn+//37/wX6+v4G9f4CAgEBAQgCAvz/Bvz29v7+/v8E9vgC+f8J/QP5/AID+gEDAPz6/PoH+v37/gcI9QP9//769/31/wEIBf4G+/sD+QD4AP31+/78/PoCDQgE+/77/QAC+ggK/f//Cvr/CAAD//oB/AP+A/4BAwP/B/36BvUBAfv9/gEC+//6/gUGAwj+Af8E/gv9CvAA/AIGAgD/B/z7AAAMCwj8+/8B//v/+gH8Dfr++fz7AAP4/AUD/Pz9Avn+AwEAC/8C/QEE+QII/gIBBvr6+gf4B/YA/wD4+wgF/vv/BQP/+/UCAPr6+voA9AUC/w4BAAcB9gL0//4G+P8G8f0IAf7/+gIC/wwC/wH9+QsF+vsEB/cCAgADB/sEC/n++gb6/wYBAvn6/AX7/gMC9gAB+QYH+v0H/wAAAvMD+gICCP0A+P8F9vv7Bf/+//0A//z/9QD/Cfj2Bfr/C/4BBPr9BwMF/gr/AAP/BQH6/QX69gcGAfb8/QL7CAoM/wP9AAP9Cv4KAwn08gb/BP0PAPoG+wD++gQ="
     },
     {
       "id": "services#3",
       "title": "提供する二つの価値｜事業内容｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "得られる成果で二つに分けています。 \n 自社の課題に近いところから、無理なく始められます。 \n\n Physical AI \n 新サービス",
-      "vec": "BgAABQv1AAgH/wX8/vX9Avf6A/sDAP4ABvoD/v33AvoE/v4D+gkA/wP+BAX9A/wEAAP2AwHx+wMBCfUDA/kHAvwDAQUA+v4E/gT9/vL7BgX1CP0EAfv3+/v9/QD+AQcGBQECB//6/w79Bf0B/AH++/4G+vz9/wL8/QYG/wH+A/j7+AMD/gUD+vQC+fsB+wP6/f0A8/4B/Pn7+voG/vwA+wAA9/sAB/0D8v3z+v/+//cA/fr6AwP4AP/8+wEE/QAHDgoD+gACAf4I/AcE//4DAPj/CPz+APj/BAICBvoGAQH9BwT2B/UACPn7/AL/AQP6AwAHAQj8BP8C/ggCBvv9/wMCAwMCDfv3AP8ICQgC+/4DAvr/9wf6C/n9//MB/QL1+wAD/wH4APoC/QEGDgEE/vwG9wUC/QQBBvn+9gn3Bv0K/QL8+wUD/Ab8BgcA/Pf8//v/+/z+9QUI/g4DAwUH9wj3+PwE+foI8f4JBP4A+gkA/QT//wL+/QQL+/kFBfj9AAMKBfoJCPv3Af78BP8FBvf9+fz+Bv4C/AEF+gkG+/oFAwACCPYF+gABCAkC+P4B/ff8Cv8B/v/9/Pj++AAEBvT8AAD7C/oBBPb8CAIFBAkGAv8E+f77/gX59QkJ/fn//wD+DAcWAwAB/Qr/EP4EBQf98gP//AAD//kE/PsDBAg="
+      "text": "得られる成果で二つに分けています。 \n 自社の課題に近いところからお選びいただけます。 \n\n Physical AI \n 新サービス",
+      "vec": "Bf4AAwz1/ggG/wT8/vf+Avj7AvwAAgAABvsC/v/6APoE/PwC+wv//wL/Awb/Af0DAAL3BAHw/QQBCPoCAvgGBf0D/wb+9wAF/gT+//L6BgT1Cf0FAPn4+vsA/P//AQQHBf/+CAD5/Qz+BAEA/AP8/P4J+Pv9AAH8/wUG/wEAA/j6+AEE/gUD+fQC+P0A+wL6/P0A8v8E+/j6+PgG//oA+wIA9f0ABf0D8wDz+wAAAfcC/vr8AQL4AAH++wEC/QAHDgsC+/4D//4I/AkE//4CAvj/Cv3+Avn/BAICBvsGAgH8BgX1BvIACPn7+wEAAAP4Af8IAwn8Bf4D/wgCB/r+/gIEAQICDf31/gAJCAcA+vwDA/r/9Qf5Cvj9//MB/AT1/AIE/gD3//wC/f8GDAAD/v0H9wYB/QUBB/n99gj2B/0M/QH8+wUB/Ab8Bwj+/vf9/vz9+f3+9gMG+w0DAQMH9wf2+PwF+/sI8f0KA/0A+ggB/QT+/wL//QUN+vgEBPf8AgIJBfsJCPz2AP/9BP8GBvf8+v7+Bv4B/gAE+QgF/PsGBQAACPcF+v8ACAgB9/8B//X9CAEB///9/Pj9+AEHB/L9/wP5DPsDBPf9BwQDAwgGAgAD+//+AAX79gcH/fn///79DAYTBQEA/Qv9Df4EBgX+8wMA+wAE/vsD+/wEBAc="
     },
     {
       "id": "services#4",
