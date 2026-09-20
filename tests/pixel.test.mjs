@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
-const PIXEL_ID = "1098828016030545";
+const PIXEL_ID = "1060030986770128";
 const MEASURE = "start/measure.js";
 
 /* ---- 読み込みと宣言 ---- */
