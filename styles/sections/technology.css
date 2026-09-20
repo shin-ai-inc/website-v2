@@ -73,23 +73,44 @@
 
   .tech__group {
     grid-template-columns: 1fr;
-    row-gap: var(--space-3);
+    row-gap: var(--space-4);
     padding: 0;
     border: none;
     background: none;
   }
 
   .tech__group-title {
-    /* 三つ並ぶ短い見出しには --fs-h3 は大きすぎた。一段落とす。
-       文字が2〜6字と短いため、藍青→墨(近い色相)では階調が見えない。
-       藍青→青緑という色相の異なる二色にし、短い文字数でも艶が見えるようにする。 */
-    font-size: 1.05rem;
-    background: linear-gradient(100deg, var(--brand) 0%, var(--teal) 100%);
+    /* 第一原理からの見直し(柴田指摘 2026-09-20「根本的に」「革新的」)。
+       これまでの失敗の芯は色や影の足し引きではなく、見出しが --fs-h3(約18px)
+       止まりで、ガラスの階調・ハイライト・影を乗せる面積が足りなかったこと。
+       文字を主役として一段階大きくし(親のセクション見出し var(--fs-h2) は
+       モバイルで最小1.55remのため、それを超えない1.4remに収める)、
+       三つの技法を面で重ねる:
+       1) 藍青→青緑のグラデーション塗り(色そのものに深みを持たせる)
+       2) 斜めに走る白い光の帯(ガラス面に反射が走る質感。screen等の
+          blend-modeを使わず、半透明の白レイヤーを色レイヤーの手前に
+          重ねるだけで自然に馴染む)
+       3) 文字の輪郭に沿う四層のtext-shadow(上辺の光の縁・直下の沈み込みの
+          影・藍青と青緑の淡い光暈)で立体感を作る
+       backdrop-filterを一切使わないため矩形の当たり判定を持たず、
+       輪郭は常に文字の形のまま(=カード化しない)。群ごとの色分けもしない。 */
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    /* グラデーションの発色を78%に抑え、地の白を透かして見せることで
+       透明感を際立たせる(柴田指摘 2026-09-20)。 */
+    background:
+      linear-gradient(115deg, transparent 25%, rgba(255, 255, 255, 0.75) 45%, rgba(255, 255, 255, 0.75) 55%, transparent 75%),
+      linear-gradient(100deg, color-mix(in srgb, var(--brand) 78%, transparent) 0%, color-mix(in srgb, var(--teal) 78%, transparent) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 1px 3px color-mix(in srgb, var(--brand) 16%, transparent);
+    text-shadow:
+      0 -1px 0 rgba(255, 255, 255, 0.75),
+      0 2px 2px color-mix(in srgb, var(--ink) 30%, transparent),
+      0 6px 14px color-mix(in srgb, var(--brand) 35%, transparent),
+      0 12px 26px color-mix(in srgb, var(--teal) 22%, transparent);
   }
 
   .tech__chips {
