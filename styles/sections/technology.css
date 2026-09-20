@@ -57,48 +57,54 @@
   color: var(--ink-2);
 }
 
-/* 各群の識別色。カード(solutions.css)と同じ三色を、値を増やさず流用する。 */
-.tech__group--build {
-  --group-ink: var(--c-tacit-ink);
-}
-.tech__group--protect {
-  --group-ink: var(--c-agent-ink);
-}
-.tech__group--human {
-  --group-ink: var(--c-enable-ink);
-}
-
 @media (max-width: 960px) {
+  /* PC の罫だけの仕様表は良いバランス(柴田評価)。モバイルでは同じ扱いのまま
+     単一色の箇条書きになり味気なかった。次に群ごとの識別色(帯・バッジ・見出し)
+     を試みたが、量産のSaaSテンプレートに多い型に近く「AIっぽさ」が残ると
+     重ねて指摘された(柴田指摘 2026-09-20)。
+     色分けそのものをやめ、半透明の板が淡い光の上に浮くガラスの質感に置き換える。
+     ガラスは「何かの上に乗る」ことで初めて透明に見えるため、板の下に
+     ブランドの一枚(藍青→青緑)だけを淡く敷く。群ごとに色を変えることはしない。
+     blur/saturate の値はヘッダー(header.css)の磨りガラスと揃える。 */
+  #technology {
+    position: relative;
+  }
+
+  #technology::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(46% 32% at 12% 6%, color-mix(in srgb, var(--brand) 20%, transparent), transparent 70%),
+      radial-gradient(42% 30% at 90% 68%, color-mix(in srgb, var(--teal) 18%, transparent), transparent 70%);
+    pointer-events: none;
+  }
+
+  #technology .container {
+    position: relative;
+  }
+
+  .tech__groups {
+    border-top: none;
+    gap: var(--space-4);
+  }
+
   .tech__group {
     grid-template-columns: 1fr;
     row-gap: var(--space-3);
-    /* PC の罫だけの仕様表は良いバランスだが、モバイルでは同じ扱いのまま
-       単一色の箇条書きになり、味気なく見えていた(柴田指摘 2026-09-20)。
-       群ごとの識別色を左の帯として戻し、単調さを和らげる。
-       ただし帯・見出しの地色・丸いアイコンバッジを重ねた最初の案は、
-       量産のSaaSテンプレートに多い型になり「AIっぽさ」が残った
-       (柴田指摘)。色を持たせる場所を一つに絞り、印は控えめにする。 */
-    border-left: 2px solid color-mix(in srgb, var(--group-ink) 55%, var(--line-ink));
-    padding-left: var(--space-3);
+    padding: var(--space-4);
+    border: none;
+    border-radius: var(--r-lg);
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.22));
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    box-shadow: 0 12px 32px rgba(20, 30, 60, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   .tech__group-title {
-    /* 三つ並ぶ短い見出しには --fs-h3 は大きすぎた。一段落とす。
-       見出し自体は本文と同じ墨色のまま残し、識別色は前の短い罫だけに持たせる
-       (このページの eyebrow と同じ「小さな色線+ラベル」の語彙を流用する)。 */
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+    /* 三つ並ぶ短い見出しには --fs-h3 は大きすぎた。一段落とす。 */
     font-size: 1.05rem;
     color: var(--ink);
-  }
-
-  .tech__group-title::before {
-    content: "";
-    width: 14px;
-    height: 1px;
-    flex-shrink: 0;
-    background: var(--group-ink);
   }
 
   .tech__chips {
@@ -107,9 +113,7 @@
   }
 
   .tech__chip-icon {
-    /* PC と同じ小さな線アイコンのまま、色だけ群の識別色にする。
-       円形の色地バッジは付けない(既製テンプレートの型に寄るため)。 */
-    color: var(--group-ink);
+    color: var(--ink-2);
   }
 
   .tech__chip-label {
