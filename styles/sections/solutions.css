@@ -153,10 +153,14 @@
 
 /* 事業内容ページは二つに絞ったため二列で組む(柴田指示 2026-09-20)。トップと群馬は三つのまま。
    属性の指定は .solutions__grid より強いので、広い幅だけに限って効かせる
-   (限らないと、狭い幅の1カラム指定に勝って二列のまま崩れる)。 */
+   (限らないと、狭い幅の1カラム指定に勝って二列のまま崩れる)。
+   二枚を器いっぱい(--container, 1360px)に広げると、写真(5:3)の高さが三列時の
+   約1.5倍まで膨らみ、圧迫感が出ていた(柴田指摘 2026-09-20)。見出し(.section__head)
+   と同じ幅(--container-heading)に揃え、写真の大きさをほぼ元へ戻し、右に余白を持たせる。 */
 @media (min-width: 961px) {
   [data-page="services"] .solutions__grid {
     grid-template-columns: repeat(2, 1fr);
+    max-width: var(--container-heading);
   }
 }
 

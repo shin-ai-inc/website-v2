@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "b0e732b",
+  "generatedAt": "baab0cc",
   "chunks": [
     {
       "id": "index#0",
@@ -161,8 +161,8 @@
       "id": "services#0",
       "title": "企業専用AIエージェント開発｜事業内容｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/services.html",
-      "text": "企業専用AIエージェント開発 \n \n 汎用AIは自社の文脈を知らないため、現場で使われず、やがて形骸化します。\n 社内知識と既存システムを接続し、回答だけでなく業務の実行まで支援する専用エージェントをつくります。\n 問い合わせ対応や定型業務を任せ、人は判断と対話に集中できます。\n\n 社内知識を踏まえた応答・判断支援 \n 既存システム・APIとの連携 \n 検索から業務実行までの支援",
-      "vec": "/AQFAQz4+QsD/Af5Avv+//71+f4HCQYDAQYBAAD7AP8EAgQEAQb9AwD8BwP6Av0FAwbzBgT4+QQG/v0IBv/9CPcGAgz2+gQAAv/5/wEFAwn6BvX/Bfz8/vUC8wn+/QUGBwcFCQH8AgX89/r7BAL6/fUD9/sBBv0BAgsCAwD/Afr69vsB//0B+fn++PwEAf/99f3++AIE/Pj0+/wI+/z/+QMF9wL9/wUG+gTz+AAIBf0D/f/++Ab1Afz4+gP9BAEADgsGAP77//0J+wUHAAEFAvkDDPgCA/f5/QL5AfoEAP/9BAH5B/j9Afv5AP/5AQf8/wIIAAIABf8DAwb2B/j89f8HAQYFCvoCAvoKCAH//QT///f7+PsBBvv7/PwBA/72/AYF/wD7AgECBAMGCgAE+/oH+v0C+AYHA/wB8gn6BvgA/v709/8HAfwGBwP9AvsC9/8B//oD9AIBAQQHAQH//P339/wA/Pz/9fgE/vj/AQUE+wcA/wb/9QAK/wUHAfr1AQUFA/gHC/sD9gH7/wEBAPz4Avz8Afz++gUF9wYH/f8ABwUBBfII/gD9CgH/+v0B/fn0Agj9AP8BAP3++AT7A/b+/v0FDgD9A/3/CAL/AggAAgAGAwj9BQP/+PwH9vj6Avv/AQUP/v0DBAYAEP8LBgT18QP89v8G+PwD/wT8BQU="
+      "text": "企業専用AIエージェント開発 \n \n 既製のAIだけでは、自社ならではの業務の勘所までは拾いきれません。\n 社内知識と既存システムを接続し、回答だけでなく業務の実行まで支援する専用エージェントをつくります。\n 問い合わせ対応や定型業務を任せ、人は判断と対話に集中できます。\n\n 社内知識を踏まえた応答・判断支援 \n 既存システム・APIとの連携 \n 検索から業務実行までの支援",
+      "vec": "/QQF/wz5+wsD/gb6A/r9AP31+v8GBwYAAgQA///7AP4FAQMGAAb+A//8BwT5AP0GAgbzBwb4+QYD/v0KBP//CfgGBAr3+QIAAPz6AQEEBgf5BfX/A/v7/fUB8wn+/gUGBggFCgD6AQb8+fv9BQT7/fUC9/oABfwAAgwDBAEAA/n49vsBAf4A+Pn9+P0DAf389/z99gAE+/n1+vwJ/P0A9wQE9gH+AAYF+QHz+f8IBvwB//7++AX4Af75+gP9AgD+DAsG//36//0I+wQIAQAFA/kEDPgDBPj4/AP4AvoD///9BwP4Bvb9Afv5AP/7AQf8AQMI/QH+Bf4BAgj2CPf88wEIAAgDC/kAA/sKCQH/+gQA/vf7+fv/Bvz6/PwDAgD2/AQF/v/6A/4BBQMICwEE/PsG+vwD+QYDA/sC8Qj6B/gCAfv3+P8EAf4FCQH+AvoC+P4B/PsB8wICAAUHAgP/+//49voA/PsA9vcG/foBAwQE+wgB/gb+9P4K/QQHAfj4AAMFAvgICvsC9wL8/QMA//35Av/8A/z8+AQF9QUH/AD/BwT/A/II//79CwP9+v0C/fr0AgX7Av8A/P38+AP8A/j+/f4CDf79BP7/CAMAAQn/Av8HBAj9BAL++PwF+fj7Afv/AwYN//wCBQYBEf8KBgT37gX69/0I+fsEAAP8BAM="
     },
     {
       "id": "services#1",
