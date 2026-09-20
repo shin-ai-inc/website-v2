@@ -57,14 +57,61 @@
   color: var(--ink-2);
 }
 
+/* 各群の識別色。カード(solutions.css)と同じ三色を、値を増やさず流用する。 */
+.tech__group--build {
+  --group-ink: var(--c-tacit-ink);
+}
+.tech__group--protect {
+  --group-ink: var(--c-agent-ink);
+}
+.tech__group--human {
+  --group-ink: var(--c-enable-ink);
+}
+
 @media (max-width: 960px) {
   .tech__group {
     grid-template-columns: 1fr;
     row-gap: var(--space-3);
+    /* PC の罫だけの仕様表は良いバランスだが、モバイルでは同じ扱いのまま
+       単一色の箇条書きになり、味気なく見えていた(柴田指摘 2026-09-20)。
+       群ごとの識別色を左の帯として戻し、単調さを和らげる。 */
+    border-left: 3px solid var(--group-ink);
+    padding-left: var(--space-3);
+  }
+
+  .tech__group-title {
+    /* 三つ並ぶ短い見出しには --fs-h3 は大きすぎた。一段落とす。 */
+    font-size: 1.05rem;
+    color: var(--group-ink);
   }
 
   .tech__chips {
     grid-template-columns: 1fr;
-    gap: var(--space-2);
+    gap: var(--space-3);
+  }
+
+  .tech__chip {
+    align-items: center;
+  }
+
+  .tech__chip-icon {
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    margin-top: 0;
+    border-radius: var(--r-pill);
+    background: color-mix(in srgb, var(--group-ink) 12%, var(--paper));
+    color: var(--group-ink);
+  }
+
+  .tech__chip-icon svg {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .tech__chip-label {
+    /* --fs-body(1rem) は項目が9個並ぶ一覧としてはやや大きかった。一段落とす。 */
+    font-size: var(--fs-sm);
   }
 }
