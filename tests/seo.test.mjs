@@ -90,7 +90,7 @@ test("サービスは本文の見出しから申告される", () => {
   for (const loc of ["", "en/"]) {
     const [list] = typed(loc + "services.html", "ItemList");
     assert.ok(list, "ItemList がない");
-    assert.equal(list.itemListElement.length, 3, "提供する三つの価値と一致しない");
+    assert.equal(list.itemListElement.length, 2, "提供する二つの価値と一致しない");
     for (const { item } of list.itemListElement) {
       assert.equal(item["@type"], "Service");
       assert.ok(item.name.length > 0 && item.description.length > 10, item.name);

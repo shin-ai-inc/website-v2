@@ -51,7 +51,7 @@ new THREE.MeshBasicMaterial({color:0x00c9a7,transparent:true,opacity:isMobile?0.
 );
 scene.add(innerCore);
 var lowSpec=typeof navigator.hardwareConcurrency==="number"?navigator.hardwareConcurrency<=2:false;
-var particlesCount=isMobile?1100:lowSpec?900:2000;
+var particlesCount=isMobile?1650:lowSpec?900:2000;
 var particles=[];
 var geometries=[
 new THREE.BoxGeometry(0.15,0.15,0.15),

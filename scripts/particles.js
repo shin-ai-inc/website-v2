@@ -62,7 +62,7 @@
   scene.add(innerCore);
 
   var lowSpec = typeof navigator.hardwareConcurrency === "number" ? navigator.hardwareConcurrency <= 2 : false;
-  var particlesCount = isMobile ? 1100 : lowSpec ? 900 : 2000;
+  var particlesCount = isMobile ? 1650 : lowSpec ? 900 : 2000;
   var particles = [];
 
   var geometries = [

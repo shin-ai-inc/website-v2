@@ -1,88 +1,49 @@
 /*
   Section: Technology & Security (#technology)
-  能力を三つの構え(つくる/まもる/ゆだねすぎない)に束ね、小さな線画チップで示す。
-  各群はソリューションと響き合う淡色を --group-bg / --group-ink として受け取る。
-  紙白・薄陰どちらの地でも成立するよう、群の地は淡色、チップは白を地とする。
+  能力を三つの構え(つくる/まもる/委ねすぎない)に束ね、会社概要と同じ「仕様表」の形で示す。
+  左に構え、右に項目。罫だけで区切り、色の地・影・浮き上がりは使わない。
+  以前は淡色の箱の中に白い箱を並べる二重の囲みで、生成AIが作るSaaSの型に見えていた(柴田指摘 2026-09-20)。
   色・余白・型はトークンのみ参照。
 */
 
 .tech__groups {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  align-items: start;
+  border-top: 1px solid var(--line-ink);
 }
 
 .tech__group {
-  padding: var(--space-5);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--group-bg);
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform var(--dur-1) var(--ease-out),
-    box-shadow var(--dur-1) var(--ease-out),
-    border-color var(--dur-1) var(--ease-out);
-}
-
-.tech__group:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: color-mix(in srgb, var(--group-ink) 20%, var(--line));
-}
-
-.tech__group--build {
-  --group-bg: var(--c-tacit-bg);
-  --group-ink: var(--c-tacit-ink);
-}
-
-.tech__group--protect {
-  --group-bg: var(--c-agent-bg);
-  --group-ink: var(--c-agent-ink);
-}
-
-.tech__group--human {
-  --group-bg: var(--c-enable-bg);
-  --group-ink: var(--c-enable-ink);
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  column-gap: var(--space-5);
+  align-items: baseline;
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--line);
 }
 
 .tech__group-title {
   font-size: var(--fs-h3);
-  color: var(--group-ink);
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid color-mix(in srgb, var(--group-ink) 30%, transparent);
+  color: var(--ink);
 }
 
 .tech__chips {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-5);
 }
 
 .tech__chip {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--r-md);
-  background: var(--paper);
-  border: 1px solid var(--line);
-  transition: border-color var(--dur-1) var(--ease-out);
-}
-
-.tech__chip:hover {
-  border-color: color-mix(in srgb, var(--group-ink) 30%, var(--line));
+  align-items: flex-start;
+  gap: var(--space-2);
 }
 
 .tech__chip-icon {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  width: 1.6rem;
-  height: 1.6rem;
-  color: var(--group-ink);
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.2em;
+  color: var(--ink-3);
 }
 
 .tech__chip-icon svg {
@@ -91,13 +52,19 @@
 }
 
 .tech__chip-label {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-body);
   line-height: var(--lh-snug);
-  color: var(--charcoal);
+  color: var(--ink-2);
 }
 
 @media (max-width: 960px) {
-  .tech__groups {
+  .tech__group {
     grid-template-columns: 1fr;
+    row-gap: var(--space-3);
+  }
+
+  .tech__chips {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
   }
 }

@@ -1157,17 +1157,17 @@ writeFileSync(
 const PIN_DL_PAGES = new Set(["about.html"]);
 
 /* サービスの目次に添える前置きと結び。一覧そのものは見出しから自動生成する。
-   フィジカルAIを落とさず、しかし三つの柱より先には出さない。
+   フィジカルAIを落とさず、しかし二つの柱より先には出さない。
    訪問者が最初に受け取る順序が、そのまま会社の印象になる。 */
 const CATALOG_TEXT = {
   ja: {
     title: "提供サービス一覧",
-    lead: "ShinAIが法人向けに提供しているサービスは、次の三つです。",
+    lead: "ShinAIが法人向けに提供しているサービスは、次の二つです。",
     tail: "このほかに研究開発領域として、フィジカルAI（現場の動作や判断をAIが扱える形にする取り組み）のPoCを行っています。"
   },
   en: {
     title: "Services offered",
-    lead: "ShinAI offers three services to companies.",
+    lead: "ShinAI offers two services to companies.",
     tail: "Alongside these, we carry out physical AI research and development (PoC) on the skill that documents never captured."
   }
 };

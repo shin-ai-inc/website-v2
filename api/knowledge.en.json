@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "a053287",
+  "generatedAt": "a99047a",
   "chunks": [
     {
       "id": "index#0",
@@ -153,131 +153,124 @@
       "id": "services#catalog",
       "title": "Services offered｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
-      "text": "ShinAI offers three services to companies.\n1. Unlocking tacit knowledge｜Collecting and structuring your internal knowledge / RAG systems that put your internal data to work / LLM optimisation and tuning\n2. Private AI agent development｜Answers and decision support grounded in your own knowledge / Integration with existing systems and APIs / Support from search all the way to execution\n3. Hands-on support for AI-driven transformation｜PoC design and evaluation design / Operating rules and guidelines / Team development and technical handover\nAlongside these, we carry out physical AI research and development (PoC) on the skill that documents never captured.",
+      "text": "ShinAI offers two services to companies.\n1. Private AI agent development｜Answers and decision support grounded in your own knowledge / Integration with existing systems and APIs / Support from search all the way to execution\n2. Hands-on support for AI-driven transformation｜PoC design and evaluation design / Operating rules and guidelines / Team development and technical handover\nAlongside these, we carry out physical AI research and development (PoC) on the skill that documents never captured.",
       "pinFor": "services",
-      "vec": "+wEJ/Aj5+wwA/Qf5A/j5Avv+Af0GBQkECP4BAPv1Bv35AgUGBQT//wMAAgT//vz7+gP3Afr/+QIDAAEFAvwACvgB+Av18wYBAf7/AvoPAAL8AvkAAvz3/vAB+Qb9AwEFBwYEDf/3AgkCAf77/gDx+/4B+vsD+wEC/AIFA/wABvz6/P0DBfX+9v3+9wAHAP0B8vv8+f4B+//7AvsE+gf/9wEE9wX3/f4A9fr8/PoIBfsDAvP+9wHyAgD/AwH9Bf8DDQQLAP77/v0E/gUAAf8DAvz8CPkEBPb/+QD9Av3//gUABv/1BvMECPsDAP0BAQP2B/0FAwMCAf4M/Ab5BPEE/gL+/wQCDP79A/kBCgkCAAID/vYAAf4ACvv+APz//Qf78wMH+AT7BfwHAgQDB////wEH9v0L+gIBBvv79Qr8Cff+/AH6+foFA/r6A/0D/fcEBf74+vYA8wYBAwMFBAUB+QL7+QX5/P4C9f0MAf4E9gAJ+wX9AAH6/AQEAQQHAPwBBAUBAf4GDPr+/QD8AQQIBPz8A/3/BQQB/AID9wYG//4KBwf/AfsC8gMDCQAD+gQF/Pr8Bv8B/gAD//UC9/33BPb7A/sCDPv5Af0BCQIB/wn//vwAAgT5Av/79wIA+Pr7/vn9BQwD/wIFAQH8E/0IAAj08Af+/PwE/P8G/wUCAQQ="
+      "vec": "+wAN/Qf6/AsBAQX2A/f3A/3+BfsGBAgDB/4A/vz2B/z5AQMFBQT//gMBBAX8//z9+wP2Bfz7+wMEAP8HA/z/DPoD+Qj29QUBAQABBPkPAQP7A/cAA/z4/fD/+Qf8AgQFCAYEC/74/w0C/gH+AgPz/f4C+vsE/QIC/gQFA/wBBPr3/PwCBPf9+fv+9wEHAfoA8/v8+PwA/f75AfkH/AX7+AEC9QT4+v4B9Pr8/vsJB/kC/vX++wL0AgL+AgH9BAEDDwIJ/wH6//4G/QQF//wCAP39CvcGA/X79wH9AvoA/gT/Bv/1BPMDCfwDAP0CAwH0BP8FBAIAAv4M/gb5BPIF+gX+/gUADAD8AvoCCgcB/gEF/vYAAf78Cfn9APsA/gX69AII+QX5BvwHAgUCCwAB//8E9QIJ+QIBBPr98wr7Cfn//f789/sIBP37BP8B/vcFBf75+/j+9AUCAAUFAQUA+gH8+QX6+/0C9f0LAv0B9gAH+wf/AAP5/QIF/gUFBfn/AQX/Av4FDfn9/gEABAQGBPr6Bf3+BAD//gUA+AYG/QEIBwcBA/kB9gABBgIA/QAE/vn7CAL//gMC/PcB+P75B/X9BPsADf37Av8BCAIA/wn+/f7/AAT5BPz69gIB+vn+/Pn9BgsG/gQEAQP7FP4IAAj57wj9/PoH/vsIAAQB/gU="
     },
     {
       "id": "services#0",
-      "title": "Unlocking tacit knowledge｜Solutions | ShinAI",
-      "url": "https://shinai-inc.jp/en/services.html",
-      "text": "Unlocking tacit knowledge \n \n A veteran's instinct and criteria for judgment live only in their head, and they leave when that person retires.\n We convert conversations, documents and work records into a form you can search, teach from, and lean on when deciding.\n \"Only one person knows that\" becomes knowledge anyone in the organisation can draw on.\n\n Collecting and structuring your internal knowledge \n RAG systems that put your internal data to work \n LLM optimisation and tuning",
-      "vec": "AggCAAf6/g37+Ar+A/sBAP34+wIDAQYIB/3+Bv39BPv8AwIKCgEA//79AgcH+/0C/QP9+P4H9fr5BgAH/vsBBfz+9wr49gUE+//9//4PAAEEAP78+wL3//j1+ggAAf8DAwMBCP75CAEDA/T79QDq9/8C+fr4/QQF/foB/f7+BgL++gP6CPP6+P4D/fsC/wEB8f4AAf0G+/8CAgL6/AQB/fwJ/wf9AwD+9fr39vwEBf0EBPX/8v32AQH4AQX7//sEDAQO/wH++/7++QD2AQYFB/j5CP7+BvkDAgL6BAL7Av8AA//5AvkEA/38Bf8A+gH+AP4B/vwE+/wI/QP8B/r++/39BP4DAPz+/vv9BAkE/gH+//P6/v4BA/UFA/kFAAIF//4E9wMC/wUCAAAABf3/AwIDAfsLBf8CBQL49wn8Dvb5+wb5AAP7AQL7A///BPf8AQL6+/YD8gIDBwEGBQED9v35/P37+QEC+fgMBv4G+/0DAP77+wD7+wQIAwcI/fz/CwYG/PsCBQAAAgL7/AQKAP4E/wAGAgED/PwE+gcFBPkJCAX++/v/7gcKD/kO8AMG9P76A/wDAPkDAvcF8QP7+vr5AgELBv38AgMCB/wB/AYE+wL+CQQA/AL8+gAC+Pz2BfoB/wUOAv0HA//5CfwGAQbz/AID/vwC+AYC/QYC//8="
-    },
-    {
-      "id": "services#1",
       "title": "Private AI agent development｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Private AI agent development \n \n General-purpose AI does not know your context, so it goes unused on the floor and quietly becomes a formality.\n We connect your internal knowledge to your existing systems and build a private agent that not only answers but carries the work through.\n Hand it enquiries and routine tasks, and people are free to concentrate on judgment and conversation.\n\n Answers and decision support grounded in your own knowledge \n Integration with existing systems and APIs \n Support from search all the way to execution",
       "vec": "/wIMAwb5/goE/gD6A/j++//9A/wKBQUCAf0CBfv8CPz+AgUEBgH/AwT9Awf8AP8F+wL4BPsA9QP6//4J+/37EfkB+Qr6+AEB/QH+BQMN/QQBAvb/AP32APj3+QX+/QUGBgYGEfz4/gT++v4D+gHs+vz/+fgEAQf+AAQFBP8ABfv5+f0BBfv6+f79+f0H/vsC9AL9+voD+v37BP4F/gP7+P8G9gH5AQL+9v3+APsHBPsD/vb7+AT8/QD7/ggAAP8CDAgLAAL7AP4F+QIEAv8I//sDC/gK//P4/gP7BfsBAgT9/wXz//sCCvT8B/0E/gT9/QD//v0BAv0M/gP7Avf/AAEC+wD/BwD+BfoHBwQJAv8B+PEF/v37Bfb/BgAG/vz99wAIAgcCBwAGCQIDCwMB/gMD+/0H+QEIBPr78gj8DPr5+vv59f4JAwH9BPz+/fcA/wH7/Pv/8wUDBP8HAwAC+QH7+P/7/f0A9/oJAv0E/v0EAwYD/gH3+fwG/AQEA/b+BAYDAPYHDvX/AAH+/wEH/vn+BgH/BQD9/QQG/AYCAf8BAgoCAvcA/QEDCwP99AMI9/j9BgD+/gUA8vkB9gL3Afz7+/oEEAH7BgP/Bwb8/An7/f///wT+AwH59wABAff/A/wCAwoJ/wIDAf/6E/0O/wD78gH+/foE+PoGAAMBAQY="
     },
     {
-      "id": "services#2",
+      "id": "services#1",
       "title": "Hands-on support for AI-driven transformation｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Hands-on support for AI-driven transformation \n \n We do not treat go-live as the end of the job.\n We stay alongside you through PoC design, accuracy evaluation, operating rules, and growing your internal team.\n In time you will run and improve it without us. We hand over the technology and let it take root.\n\n PoC design and evaluation design \n Operating rules and guidelines \n Team development and technical handover",
       "vec": "BQQN/QD0AQgD/wb7+vP8BP0AAwIFBQcDAvz/Av71B/n1+gQHBQf+/wX/AAQBBAb9AQb6BP79+gUMBvcDAfcDB/oC+AP19wUD9vz/A/UNAv37/vwBBPz0+PQAAwv+Av8ECAQHCgX2AwwA+gH+/wTs9v8E+AYB+AL7/f4A/Pn+A/z3/AL9AvT+AfgD9gUH+PL99QD+APgH//30BP8H+wj++gYG+wH3+/z78/r5+vkJBv0D+fn8/wD4APn6AQX5AvwECgII/An/AwMD/AYDAf/9BPn+Bf4FBfb/+wb/AgH7Af0CBQb8AvP7CfsB//oD/AH1/wQE/QH/AvwNAQL3BvgB/wL8+/3+Bvz8AgEHCgUAAAIFBfv/AAL9//v8Bf/+AwD/+wQA/Aj/AAIGAPsCCgD9/QP++PsF/v/+CAIA/gv/A/n6+fv+/P8JAAL/A/oA/vgFA//+//T89QEAAwH7AwQI/AMC+wH9/AIB8/sM/vsE/QAF/goA/v7z/wcA+wQDAvoCAgYCAAEBCfn+BAUFAwYFAgH4+wH8A/oC+QkE+gYA//wH/wIE+/3+9foECPwD+P8C+v77Cv/+A/0G+v4C+fr2AvD7AgELC/n7BgEFCQD+/w4B/gH/AP7+Avr/9wEC+fb7/vj6CwwN+wD7BAP+CP0FAQf78AkD/v0JAPsEBAYA+gQ="
     },
     {
-      "id": "services#3",
+      "id": "services#2",
       "title": "Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Home \n › \n Solutions \n \n Solutions \n \n Try it, deepen it, \n then run it yourselves. \n\n Start with a small proof, embed the knowledge deeply, and finish with something your own team can run. \n ShinAI roots AI in your organisation across three stages. \n Beyond them, we research physical AI — the skill on a floor that documents never captured. \n\n What We Offer",
       "vec": "/AIF+wT2/Qf9Bgf5+vX8Af77BgAEAAcECf8DAv72BvvzAAIGAgT4/wYAAAX/Af/6/Af3BvsC+QMBAvsAAfkDDf4F+wf/+QH9/v4B+vYLBgAAAfz/Afj3AvP6/AP6AgYHCAIFB//5BQoBAP8C+wLu+AYA/fsG/wT9/gQFAf/9B/n4+/sDA/7/+vgC+gMG/vwB+P78/wACAf/6BP0F+Qf7+gIH9QD8APr/9PX8/f8ICP79//f6+wDyAgT/BP78AvsEDwgO+Qf/AwAC/wMG/v8FAvr9DPwH//oB/P//Cvz9BwIBAQT3CfcFBfsBBP0E+wL1/wMHBQQCAAMKAAb8CPQH+v/+Af7/Bvv6Af0BDQj9AgID9vYBAwH5CPsDBPz7AAD7+gID/AP9APkEBQT9B/wC/wAD+QMQAf79B/369Q37CPkA/gD/+AECAgD6AgL9+vX/BP39Aff6/Ab/Av4ABQL9/QH8AgL7+QP/8/4KBQED+v0G/wMBAAP3/AkH+wcBBfv9AAYAAfsGDvf+/gn/BQIHBvr6/QABAQkD/gH9/gf+/QAGAwEHAff+9AEFCfwB+QQHAP35CAH+/f8C/vr+8/72Bfb4B/QBCfr9Cf4FCQAF/QwDBgMAA/77/Pz0+QED+/b9+fsCBwgK+/8EAQH8Dv0J/Qf59gj9/fYO/vsM/ggH/f8="
     },
     {
-      "id": "services#4",
-      "title": "Three kinds of value we deliver｜Solutions | ShinAI",
+      "id": "services#3",
+      "title": "Two kinds of value we deliver｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "We divide our work by the outcome it produces. \n Begin wherever sits closest to the problem you actually have. \n\n Physical AI \n New service",
-      "vec": "AQMJ+wn0/QgB/wf+9vT9/vr6Cf0E/gH/B/0EBfj2APj+/QIJAAwB/gAGAgb8AP7/+AD3Av78/f0AAPv+AvYEC/4J9wD/9AIIAAMB+/EFAv78Bv0E/AH2+Pf8/v/9AAAIBgUBA/74ARADAgcC+f7x+f4A/AH8/QL5/gYG+/n/Avf5/gEGAfz++/gD+gX/9gD7/fv6/v3+/P/8Af8FBAX++vwB9v37/fr99/f6+v0DB/YBBfj6AgP0/wX+/QD6BP8ECwgMAQEABf8IAwgAAQD/Afr6B/3/Avb//Ab/BgADAwP+AgTxB/UGCf3//AIEAQL7BPwDBwMAAv8HAQj9CPYDCAMAAwL8Cf78AP8FBwb/Av0I+vj8AgP8B/L7Bvj7/QL/+QD++/70BPwH+wUFCwACAf399AgG+QD/Cfn49g79BvcE+gP++gECAvr5BgP9+/cE//n9+vb3+gIGBAcBBwUB+gr1/v8A/fgE9/sJBQIE/PwCAwL2AwP7/gQL/f8DBvz8/wcDA/oDCvr5Awz8BQYI/wECAAL9BQEC/gAI+gkE/QEKAQQGAvn9+AMCCgIG8AEI//b8CP8DAgX4+vYC8wL/B/r8APr/DfsCBfoGBwAEAQYGAAL++v7/AP/9+QcB/Pj9//n3BAUN/f0FAAb8D/0J/AH99AUC/v4DAfoK/gEG/wc="
+      "vec": "AgII/Aj2/QgAAQb99vX8//r6CP0E/QMCB/wCB/r3Afj//QIJAgsC/v4FAgn7Af38+f/2AP38/f0AAfv/AfcEDP8H9QD+9QIHAAUA+/IGBP/7Bv0C/QH2+fb8/wD+AAEKBQMBA/73AQ4CAQgD+P3w+P8B/P/8/gP6/gQD+vf+APj4/gEFAP78+/YD+wcA9//8/Pz7/v3+/f39Af4CBQT++vwA9/77/fv99vj4/P4ECPb/A/f6AgL2AAT9/QD7Av8FDAcMAgEBA/8IAQcBAQH/A/v5Bv//Aff9/QYBBQAFAwT9AwTwBfYFCf39/AEDAgL7AvoEBgL/Af8JAQj8CPYDBAQAAwH9Cf/8AP4EBwYAAf0I+/j7AQT7B/L7Bvf7/QH++AD//P70A/wJ+wYFDP8CAP779QsF+//+CPv39w38CPUD+QH++wICAv35BgT9/vYDAPj9+fj3+QIGBAkDBQUA+Qj2/QAD/fgE+PsJBgIF/P0DAgP5AgX8/gIK/v4ECPz7AAcDA/kCCvv5Awz9BAUIAAEAAAL7Bf8B/gIH+gkE/QEKAwQFA/n7+AQBCgMH8QEH//T8Cf8DAgP4+vYA8wEBCPn8AfoADPsDBfsHCP4CAQUHAQL8+P/+AQD7+AcD/fj9//n4BAUO/v4GAAX7EP0J/AL+9gQA/f0CAfoM/QEG/wc="
     },
     {
-      "id": "services#5",
+      "id": "services#4",
       "title": "On-site skill, into AI.｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "How a hand moves, how much pressure to apply, what a glance decides. We capture the on-site skill that lives in no document — through sensors and video — and put it into a form AI can work with.\n\n A new service that extends tacit-knowledge AI into the physical floor. We start from a small trial and design it around your site.\n\n Talk to us about this service \n\n ShinAI Method",
       "vec": "AAgE/gT2+wb+/wT3//f/Avn7BPoGAAH/CPoFAPz+Bvn2/P8FAAYA/QEAAwT6/v3//gn7A/gA+fsBBgEDBvcGB/cD9gn29Aj/Av8D+vQOAAMBAPX/+fv3+/EB/QgEAAUKAgQFCQH1BgwGAv4D/v70+///BP0H+wD7/gMEAP78Av709/r7AvT/+/oD9v0C/vsE9QD+/gEG/QD5/v3/+Qb7+vsE/QP4A/v79/j6AAILB/0GAvcB+P/7BP76Awn+APwBDQQM/wX+B/8CAwIHAQICBvr8Bv4JBPYAAv/3Bf3/BAL7Agb7B/YEBv8BBQMC/gH6AwMH/wH8/f4QAQn3BvkEAfkC/gECBf74APgFBQYD/QQB/PUB/gH4Avn/A/34/Pv5+wMC/Ab9BAAFA/8EB/wG/AAJ+QIM/vsFBPn8/Q0FAPb+Agb38f0IAP37AwUCAPkGAfj///X69QcKAAQEBQP/+/z++f/6+fz78v4KAwEG+QAD+wX/BP71+wUF/QUCA/78BAQDAfgBBvP7AggCBwECAAL6//79BAP++QMC8gcA//8GAAIF/fwB9wAHCP0K+gUDAf35Cf4C/gL+//gB+P/6Aff5Af0BEfr6AgEDBwED/g3/A/8A/gD+/wT6+wEH+PoA+fb6BgsI/QMCAP39EP0L/Qn88QUB/fgJ9gMFAgUC+gQ="
     },
     {
-      "id": "services#6",
+      "id": "services#5",
       "title": "How knowledge starts moving｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Gather what is scattered, connect it by meaning, give it grounding, put it to work. \n Five stages, and at the end it moves in-house. \n\n 01 \n \n Capture",
       "vec": "/gUCAAL5AAT4Awv9+vX+/f77BAAG+gQCCPwCBvz8Afr3/gIG+wX4AwT9AQQC/vb+/wj9Avf5+PcBAfsAAvoGA/8E9QP59wQF/AH8/PULAgD7+fz0/f37AfHz/wj4AAcABQMDCAHvBAQA+PsB9vry9QEGAvsD/QQF/AT+APr9DAH5/gX/Af3//fgA9gT89/oC+v76CP79A//7BQIA+gn6//4J/gL7Bvn+8ff8+/gKCP78+vn9+gHy/AP/Agj6AvwGCwQN/wUBBf4A/wAA+gMBBPj7CvkE/vYC9wP3BQL+CAH/AAT2Av4ECPz4Af7/+wAD/QEEAwEBAAEM/Qr9A/n/AwH4/gEGA/78A/sAAwX//P4B+vT++gD+Afr4Cfj9/gAB+wQC/AEEBP8DAwT+DvYGAf4A/P0QAf38Bff5/RABAff5/Aj9+v8AAf75AAD8+/r+/Pj+//b2+QX+CQUEAQUFAAH/A/75+f8E+v0NCPsF+vj+BAP1+//6+wgG+QcE//n8Bv0CAP8DCvr9BQv+BgEHBwL4/P7//AQB+/kD/QcE+AAC/f4K/vn99QEGDP8M+AAM/QADBwD9A/gBAP0A9gX6Afv7+fUDC/f6BP0JAvsJAQsEAf76AQUB/P3/+wcA+/r+/Pz+AwMK+wYG/wD/CP0NAQf39wEDAfoH//0FBQMBAf4="
     },
     {
-      "id": "services#7",
+      "id": "services#6",
       "title": "Collect｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Gather conversations, documents and work history, bringing scattered knowledge into one place. \n\n 02 \n \n Structure",
       "vec": "//0GAAX6+gX2+QD4Afn9Bvz6BgMGAgoCCAH8Cf31//r9BgIJAQH6AAIDBgcB+Pn+Awv4/fgD+/b6Av8DB/oHBwL/+wQB+QIE+P4G/fkE/v0A//n7APb8AfT4+QL6AA3/AP/7CgPy//4AAvz49/ro+PwD/fsDAAEB/gT++/4BAP/x+gH7CvID+fcH9f0D/f8E+wH6/v/9+/wABQMB/gX5/gMD9wH+BPn+8vn6+vsMBPv2+vQGAAH2+Pv4AgD8AfwKDQgG/AT9AAD7/vwB+wEECPjxDP7/A/oA+gH+AAIEDAQEBQf1A/cCBfX8BP8CAgEC/AAGDAP+/f0KBwkDBPcB+/n+/QUDBP4D//8BA/0BAAEHAPb++Pv/BfkAA/4AAgIDAwcD+gIB+/oHBAYBBwAEAv4F+f8IAv72/vz9+Q0ACf0E9gf++gH6//75//r5AgP9/wL8/fn39gEDAgQJ/QIC//z8/fr49wID9/kJAQII9wEA/wP7Af/6AAcJAQsE+v37BgQCBvoDB/wG/Qr+AwIIBAT/AAAGAAECBfcA+wQB/v/9Bv8B//n79gQBDvoD9voABf/+BAEF//7+AfwD9v8BAPr+A/0JD/z9AwEHAAYG/woF+vv5BAIC///9+gIA//X+Avr7BAkNAwEOAgEECPwLAP/q/f8AAfwFAP39/Ab/BQM="
     },
     {
-      "id": "services#8",
+      "id": "services#7",
       "title": "Organise｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Sort the knowledge, the conditions behind decisions, and the relationships, then connect them by meaning. \n\n 03 \n \n Ground",
       "vec": "/QIF/Af6+wH2BP77A/gB/vsECQID/AsCCwAKCQP8B/j3Av0A/wP7AP/8/QUBAfn/AAj6Avn//f37BAMFAf0FEP78+QEA+wAH/P4C/vwHAv78APr2Bfv6APL2+P75BAIABwT8B/zuAwX/Af4F9fju+vwEAPkBAAX//vsCAvkEBf/6/gEDBfj6+/UE+wABAP0C+/32AfkA//sAAwX8/AX8/gYFAAH5B/f78PL3+f0IAwD6/fYE/wf1/gACAQH9AfwFDQsN/wQFBQP9+wP9+gH+Av/7DfgF//z68wH1BAEBCf/6AQr4BfgIC/v9/wEF+QIC//0DCQX/AgUBAxL/APD9//35AgD8BAD/+/z/DP7+//8A+vQB/wP5A/kBDPf8Av4A/AEF/QYGAQIGAQkEDfkCAv0H/v4LA///BPr59hIBAvr9+gv++QIAAfr+//76AvgAAQX6+f/5+AD5BP/9AQIB/foC+/z9Av4F9fwKBP0F9/z/AgH8Afv4+AII+wgF+fr6CAMCAv7/DvsFAQb8BwQDBP/++AYB/gIA/vkB+AYF/fwC/gAA/v7/8gIHDfsK8QAEAf4CBgX9//0D/f0C9wH/Afr6B/0DDvoFBf4LAvsG+gkB/v/9AQf+AgX7+wP/+vj+/fUD/gYKAQIDAQD/CP0HAQD2+vz+/v0G/v4HAAcHAAA="
     },
     {
-      "id": "services#9",
+      "id": "services#8",
       "title": "Give evidence｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Connect to RAG so sources can be traced, and every answer carries something behind it. \n\n 04 \n \n Act",
       "vec": "BAEBBAj49wL+/gr/AP/59gL9/gUBAAkACPv+AwD0BPj7AQAHAfv4+gb3/gH6/Pj6AgL/AQQB9Qf8Bvz8//r7CP8C+wUCCAIDBgD7/wAHBf8B//j7Af/uAfH2/Qj9AwsEAf8DBAP1CwIECQH/+AP7/P0B/v/59Qv/9wUF/wkBBfv9/v4ABPz5BgL9+Af/BP8H+vkABAT//QP6A//9/wj5/QID/AH/A/z+9Pr8/PsFBPz8+/z6/gr1+gX3BAMA+QIJCwUEAQb9AQD+AgH78fsGBwT8DfgDBPkK+QIFBPwCAv//Cwf6BPcLCfr9Bv/+AgP8/v0HBgD+/f8GAwcGBvD+/Qb9+QABAgAFAQEIBwME+wED9fACBAIBCPgBBwb7/fsHAQMK9AAC/f0IAAIABf0A/fwD+wAGAP30/gMB9BH8Bvv+/Qj99QEC/foA/vz8Af78AQH9/vf3AQb6BgIBBAQBAvz/A//79/0F9v8HAwIL+AAI/wUB/gT9BgUHAgoDAQH5BQACAv0CB/8E+wX8CwYGCAD69gcEB/0DBv//+QoEAf0ABPz8Afn59wP/BQAV9QMG+f39CQYG/foC/fQC8fz9/fwGA/cBBgIDBP4GAv4GAwoF+QP8Bgj1+gL5+QAA9gL3+voGAgUGBgP/AwL/DfwF/gj1/gD+BvUB/v4JAQEHAf8="
     },
     {
-      "id": "services#10",
+      "id": "services#9",
       "title": "Execute｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Agents support search, judgment, and the work itself. \n\n 05 \n \n Transfer",
       "vec": "AQUEAAUA+wwA/Qr6/vj5/v33CgMJAAkCB/4EBgD3BvgA/QIEAAb7/f78/gH2Avj3Awr9BvoA/P8CCAMB+v4ACv7++gv8+PsAAf78AP8IAgL6APz7A//y/fvy+ggBAw0BBP8CCvzxBQYA/vn+/P/t9/wBA/kKAAMC/QL+/fwECPv3+gD/APn7//f+9gX+/voF9QD///4DA/n4Af8D9wP+//0F/AH+/vwF8/0E9fkKBfj8+fMA/AX7/wH5/wD6BP0HDgUA/gT9AfoFAAMF9vsCBP/7DPv+/vD9AAf/BvoBAv78BAT6AvYIBfv6BPwC/P//+/sI+v8CA/wM/wQBA/UC/QP9/QMCBwEA/fsKAgIEAgIE/fb+AQb9CfQDA/f9APz8/wUC+wb8/wMB/wkADAP+AgIF9f8JAfsHAf/79Qz/EPj+/QT9/f8B/v39AwD8/QAE+wL7Afn5+P/8BQsE/QIF/f0D+Pr3+vkG9v0GBfwFAQAE/woA+gn7/AMC/gkBAvQBAwEDBQQFCPn9AAYBDQcEAAD5/QH4BAQFAP8I/gUE/PwC/vwE/PUA+AEBCf0I+P8C9wECBwQC+/n9+/4E9v37A/8EBvT8EfcABf0JDP8BAwMDAQb8BAMA/gD6/P4F//T5AfYCAgkKAv4CBAgAC/0L/gX09QT+/PYB/v0LAAMEAfs="
     },
     {
-      "id": "services#11",
+      "id": "services#10",
       "title": "Hand over｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Pass it to a team that can operate and improve it from the inside. \n\n Technology & Security",
       "vec": "BQIJAQb2+AkA+wL8+vv8+P37BgL/BwkCBwAB/QP5Bvj9/wMIAwL8AP///gT6/ff5/gT//wAB+wAGBfgHAPwDBwAC+QcB/AAG9f0D+/oGCgH9/P39/wDu/vfz/g38AgEDAgEBCgT3/QP8//0A/QD0+gH/+f0E/Aj5+/4F+/v+Avf2+wX9B/8GAf4E/P4F/fv9+/38/PgJ//32Af8EAAz6A/8I9P/9AAD/8/n8+gALAPf/+/X6/QL6/fr1BAD2APoIEP8DAgH4B/j//wEB/P8AA/n3BwEE//oAAgH/A/4EBfsCCgX9CfUBBPX9BAAF+f/8Af4FAwb7AQUIAAYACPIFAfr7+P4BAPn8/fsLCwoBBQYEAPIAAf33CfX8BPkA/gH+/QUHAgEE+QICAv/8BP7/AfwB+v8H/vf8BAT8+A/0C/j/+vv/AQIC/gL9BfwB+fr9BAb7+fr89QcCAAUBBgcA/P3+/P///f4B8v0L/wEH/P8A/gj//gP2+gcG+QMHAvkCAwcBAQX+C/kB/wb/BQcEAAAB/gf6BQQG/gID+An+BPwF/fr+Av/8+gcEBPoN9QH+/Pj9CQMH/vr8+PsC//v5BPb9APsHDvv7BQL9CQD9AwgCAgD//gj/Cv369vsBAfn8+P3+BA0PBAMAAAoADv0K/wP39wAF+/gE/PwK/gMA+v0="
     },
     {
-      "id": "services#12",
+      "id": "services#11",
       "title": "Build it, guard it, never hand over too much｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "We build while measuring accuracy, protect data and permissions, and leave the final call to a person. \n Three stances hold together a design you can trust with your work.",
       "vec": "CQcJAQX5/QD8/gz9APP8/Pr3BQIACAgABP8GBAH6BPr3AAgIA/v+AgD+BgMG/QEC/AnzAgED+v8AA/cK/vgDBgD99wQC/AgC/AMA9/oOB/r+Afv8+wL2Avn1/wn+/gEEDA4BAQf9+wD9/QEG9v7t/P0G/v7/BgX/BAEK+wb+//z6/AP/DvoD/fwA9PsD+fv5///8Bv4G/gH5AwL+Awf6AwMG9wL8//v59/79BPoHB/v//Pz5/v33/f4BAAX5AfcGBvwJ9fwBBPz8Af36AQMBAvT5BvsB//kG+wH6AvgFCPr8BQr9B/oAA/v3//8G+gT+///9AAIB/gAHAgUBAfv++wH/BP34CPj5/wsEAAv6Av/9//j8AQP2APD4Bf8EAwUB/gMD/QIB/f/++/wABwQBAfz7/gL/Av77+/z59A37//b9+foA/AUBAAH5//z++AH+AwYC/P31+wMG+gD9AwL+/Pr1/wEE+PsA/f8M//sG+wH8/QEC+QH6BAgGB/3////8AwcCBQD6CAIDBAb8CQwGAwMC+QgB/gH+/wQF/AoBAP0H9wIF+fj67goDCQAF7QED/fv5CP37+wIA+PcL+P/4APz3+vYHEf0FBgD/CQcA/ggE/fwG/P3//AP6/gH6//789/z+BwENAAYA/wH8EPwK+gXy+gUI+/sG9/oH/wEA//8="
     },
     {
-      "id": "services#13",
+      "id": "services#12",
       "title": "Build｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "RAG and internal search \n\n LLM optimisation and tuning \n\n Evaluation design that measures accuracy",
       "vec": "AgMH/QX6/gQA/gX5/P/9/f/6AwkG/Aj/DP4MBgP1Bfj7/v8EAQD8//n7AAL//AH+Agf4CP0B+Ab7AQYGAv8BBP369AT++gD7//oD/QcNCwL9AwH4BPz3/vb59AT8BwkEBAAFCAT9Dv4D+v38+QPz/fMAAPsBA/sC+QIF+wIAB/X7Bf8CB/b7+vkE9gEGAvsC9QX/+/0B+/3zAfz8+gP//AUI/wkFAfoG8/0H+gH/BQEB+PQA9f/4BAb6Af7+/P4KDwUFAQP/+/8A/wT9/AD9CPz7BwAEA/sC/QYA//4CAwT8Cwn8CPMEA/4CAQID+gP3//4A/v4C+v0LAv/8B/L+/vkB//76BgAB+fwCDAD5/fcB//8BAQQA/vcECf8CBAX++wMC+gP9+wUB/AQCCgIBAf0J+/sFAP0AAgH39An9CvT89wL9+/8E//n7BgD+//YC/wH7BPX9+gQG/gAFAwMD+QP6/vr/APoC+P4H/wMLAAEG/gII+AH3/wYGBQoD//77BQIGCPoFAPn++QP/BwcICvj5/AP+BQQHAgAF9wb/+/oKAgIF+/f+9AcCCvsH+P8B/P34AP8HAfv/Af0C8fv5AgH5BPUGBQb8CvgIBggEAQQFAAEBCAH5+AD2+gT/9/v6/fsK/wgVAP/7Av78D/wF/gPy/wL+/PgJ//sF/wUCAAI="
     },
     {
-      "id": "services#14",
+      "id": "services#13",
       "title": "Protect｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "On-premise and private cloud \n\n Access control \n\n Logging and audit",
       "vec": "AwQJ/Qv9+QwB+gn6Bfr3/v0BBgYDCAUCAQIC/gH3Cff8/QUEAv79+/z6/wX4/vz7+gL3Afz+/gH8CwAIAfv+BwID+P8B9gQA+P7+APwGCP3/CPv/BAHwAvj+/wb3/wYCBQL5Bvzt/Pz7AAgEAAD19PsFAfwKBwj/AwME9v8B/fn0+QP9CvYBBgID+/4J/wMA9fj7+P8E/Pv7CAABAgj3BAEJ9gAD+gL98vn+AgEHBP0AAPb+/AT4AwH6AQX8CvoICgMI+v77/Pv/AAMDAwH/Avn7CAIF//cE/wICBPsEBwABCgUDAPX7C/v9CAIK/QX5/gD3AAQAAQUIBQMBCvMB/wb//QUBBPr5BAAFBAACAQEF/fcFAvr3CPv+AvwFBgT8+gP+/fv/AAAC//7/CAf7/QUC/AEE+PryAf/79gz5APcB9fv6/QT/AAb2Bv4C+/n7CQH3/f359QX+/wIGBAYA/f76/wAA/v4A+wMM+wcD8/0K+ggCAv3yBQQFBwEFAwEB+wr5BP0DB/n4/v/6CAMJBfoA+wf6AAH+/QEC/wUAAv4C/vv/A/z5+/8BB/sF9Qf8+AH+Avz8/AD/9P8A8/36/fsBBfkCBgH9BgL+BwX/AQ8A+wD9AgEABvv1+PwD/vj7Av38BAcRBQsCAv0BEf0H9wPv/AgB/PMD+QAG/wT+AgA="
     },
     {
-      "id": "services#15",
+      "id": "services#14",
       "title": "Keep people in charge｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Final approval rests with a person \n\n Reasoning shown, not hidden \n\n Authority delegated in stages \n\n How We Work",
       "vec": "BgQDAQT89QX7AxL++Pz9/Pr9BgAABA8JAwIEBAL9CPr5BvoFBP38+//6/QYC/vn/BAX+CAED9wUD/vkAAPgDDgD/+QII/QIN/PwD+AYIAgL+Bvj6AAL4/vbs9gv2Bf8IAg0BAQn5/QQABPsJ9P3u+AAD/fgGBgUEBv8C+wMB+/z4/AX3B/X3Av7++wYG/Pz//QT6A/kF/QD9A/79AQoCBP8H/P7/AAP99vv1APwECv7/BQD//QL0+P4AAAj+/f4GDAYE+Qb/BgH6/AIF/P0E/PnzDfcDBPb+/P78BAAF//7+CQT8/v4DBv78A/kK/AX/AgIF+gT/AAIDAQj8CPz6/gT6AAT4AP3//QQJBQn//gH+/vYAAwH1AfH9BgD9Bv4EAQYC/wIC/P8A9wIACgD//wP7/gEDAP4D+f4C9An8A/YB9gL+AQEABv3+AAgAA/n8AAsA/AT3+/7/BAH6DQb5/vn8+f3//foF+P0HBPkC/PkCAwf3/An9AgQGAP8B//v8BQkD/wP8CgAECwX/Ag8IAQIF/Ab6/vr5/wQF9wYC/vwK/wAC+fX+8Aj+BfoJ9QAI+f/7AgX6+fkC+/wA+f//+v0ABfwDB/oGBwb8AwIDAgb7+AAE/AMB///5//3+9//5/P0BBggEAQb+DAT/BvwG9gT79/8F//kC+QMDAQj+8gM="
     },
     {
-      "id": "services#16",
+      "id": "services#15",
       "title": "Small trial to production, \n then over to you｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "We do not build big at the start. We move on as the effect is confirmed. \n The durations below are guides only and vary with scale and purpose. \n\n 1 \n Framing the problem and requirements \n approx. 1–2 weeks \n\n 2 \n Working prototype \n approx. 2–4 weeks \n\n 3 \n Validation on real operational data \n approx. 2–6 weeks \n\n 4 \n Production build \n approx. 1–3 months or more \n\n 5 \n In-house capability and ongoing improvement \n ongoing \n\n These durations are estimates. We look at the result of each stage together and decide whether to go on. \n\n Get Started",
       "vec": "AgEO+vv4Bv4EBQj7+PAB/fz8/wQCA/8CCP0DBQH3/fv2AwAABwH8/P0B//4B//v//An5AvUD//sAAgECBP8GAP3++gr++f/8Av/+AwAMBv76/AAB/fv7/fv6/gT9BAn+AwYGBQX+BQT+/f8F+vv4+voAAQIC/AP9/QQCBAb9C/gDAQAACP76+f4E9gP/+PoE+Af8B/r8Av36Agz99gr7+AAG+P7+APn88f4G/P4ADfwB9v78+/z4BQH5/gEC/AUABgEN+Qj7CQP/AAT+Cf4A/foABAAE//H7/Aj8AQACAv79DwX/CvQCAfsB/fwG/QHyA/79AgAA+fcG/ADzBPkH+AEA/wL9AgD9BgMJCQT3BPwC/Pf///7y/vf9/vf8/gsC/gcDAAX/Avz+A/0DCf8IAPkD9AMEBQD/Bfr7/Q/9Bvb48QAC/gAG/AT5/foC/vwB/vgDBfb29wcLAgT+CAAF/P78A/0H//j9+gYCCfoB/gH9AA0B/QLv+gIF+wQBAff//wT/BPf/BPn+AwIABwwEBAD3+f4I/gH++gUF+AgCBAMCBAQJ/vYA9vf/DAD9+/wJBwX7Df79AAYCAAcA8wTz/vf0//3/BPr5CP4DBvkD/QsA/QsCBP8B/AD2+wn//PwFAP8DBAUS/wD7/AL+Cv0E/AP+9wgCAvwF+vYDAwIE+gU="
     },
     {
-      "id": "services#17",
+      "id": "services#16",
       "title": "Talk to us about your tacit knowledge｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
       "text": "Even when requirements are still vague, we can work it out together. \n We will find the first move from the knowledge you already hold. \n\n Book a free consultation \n\n Contact \n contact@shinai-inc.jp \n\n Hours \n Weekdays 9:00–18:00 JST \n\n Consultation \n 30–45 min, no preparation needed",

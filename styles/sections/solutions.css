@@ -151,6 +151,15 @@
   color: var(--card-ink);
 }
 
+/* 事業内容ページは二つに絞ったため二列で組む(柴田指示 2026-09-20)。トップと群馬は三つのまま。
+   属性の指定は .solutions__grid より強いので、広い幅だけに限って効かせる
+   (限らないと、狭い幅の1カラム指定に勝って二列のまま崩れる)。 */
+@media (min-width: 961px) {
+  [data-page="services"] .solutions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* タブレット: 1カラム化。過剰な横伸びを防ぐため最大幅を制限 */
 @media (max-width: 960px) {
   .solutions__grid {

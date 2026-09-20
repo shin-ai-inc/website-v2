@@ -181,7 +181,7 @@ test("番地から先が知識ベースに入らない(日英とも)", () => {
   }
 });
 
-test("サービスの目次が三つの柱を名指しし、公開HTMLと一致する", () => {
+test("サービスの目次が二つの柱を名指しし、公開HTMLと一致する", () => {
   /* 「サービスを紹介してください」で研究領域だけを返した誤りを構造で止める。
      目次が消える・古びる・柱を落とすのいずれも、静かに同じ誤りへ戻す。 */
   for (const locale of ["ja", "en"]) {
@@ -199,8 +199,8 @@ test("サービスの目次が三つの柱を名指しし、公開HTMLと一致�
       assert.ok(catalog.text.includes(line),
         `${locale}: 目次が公開HTMLと一致しない。node _build/build.mjs を実行すること`);
     }
-    assert.equal(fresh.text.split("\n").filter(Boolean).length, 3,
-      `${locale}: 提供価値は三つ。増減したら文言も見直す`);
+    assert.equal(fresh.text.split("\n").filter(Boolean).length, 2,
+      `${locale}: 提供価値は二つ(柴田指示 2026-09-20)。増減したら文言も見直す`);
   }
 });
 
@@ -222,13 +222,13 @@ test("公開する知識ベースが全チャンクのベクトルを備えて�
   }
 });
 
-test("日本語の目次が三つの柱を名指しする", () => {
+test("日本語の目次が二つの柱を名指しする", () => {
   const catalog = loadKb("ja").chunks.find((c) => c.pinFor === "services");
-  for (const pillar of ["暗黙知の解消支援", "企業専用AIエージェント開発", "AI化伴走支援"]) {
+  for (const pillar of ["企業専用AIエージェント開発", "AI化伴走支援"]) {
     assert.ok(catalog.text.includes(pillar), `${pillar} が目次にある`);
   }
   /* 研究領域は落とさない。ただし柱より先には出さない。 */
   const iPhysical = catalog.text.indexOf("フィジカルAI");
   assert.ok(iPhysical > catalog.text.indexOf("AI化伴走支援"),
-    "フィジカルAIは三つの柱の後に置く");
+    "フィジカルAIは二つの柱の後に置く");
 });
