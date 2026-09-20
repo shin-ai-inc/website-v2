@@ -59,34 +59,13 @@
 
 @media (max-width: 960px) {
   /* PC の罫だけの仕様表は良いバランス(柴田評価)。モバイルでは同じ扱いのまま
-     単一色の箇条書きになり味気なかった。次に群ごとの識別色(帯・バッジ・見出し)
-     を試みたが、量産のSaaSテンプレートに多い型に近く「AIっぽさ」が残ると
-     重ねて指摘された(柴田指摘 2026-09-20)。
-     色分けそのものをやめ、半透明の板が淡い光の上に浮くガラスの質感に置き換える。
-     ガラスは「何かの上に乗る」ことで初めて透明に見えるため、板の下に
-     ブランドの一枚(藍青→青緑)だけを淡く敷く。群ごとに色を変えることはしない。
-     blur/saturate の値はヘッダー(header.css)の磨りガラスと揃える。 */
-  #technology {
-    position: relative;
-  }
-
-  #technology::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(46% 32% at 12% 6%, color-mix(in srgb, var(--brand) 20%, transparent), transparent 70%),
-      radial-gradient(42% 30% at 90% 68%, color-mix(in srgb, var(--teal) 18%, transparent), transparent 70%);
-    pointer-events: none;
-  }
-
-  #technology .container {
-    position: relative;
-  }
-
-  /* 板でグループを囲む案は「カードで区切る」形が残っていると指摘された
-     (柴田指摘 2026-09-20)。カードそのものをやめ、項目名の文字部分だけを
-     透明感のあるガラスの札にする。周囲は罫も影も持たず、地の光彩へ直接続く。 */
+     単一色の箇条書きになり味気なかった。以後、群ごとの色分け(帯・バッジ・見出し)、
+     ガラスの板(カード)、ガラスのピル(見出しを囲む半透明の窓)と試みたが、
+     いずれも「項目名が結局カードの役割を担っているだけ」と指摘された
+     (柴田指摘 2026-09-20)。backdrop-filter は必ず矩形の当たり判定を持つため、
+     何かを敷いた瞬間に縁が見えてしまう。囲む・敷くという発想自体をやめ、
+     見出しの文字そのものに透明感と艶を持たせる(グラデーションのテキスト塗り)。
+     背景・縁・影・ぼかしの矩形は一切使わない。群ごとに色を変えることもしない。 */
   .tech__groups {
     border-top: none;
     gap: var(--space-6);
@@ -101,18 +80,16 @@
   }
 
   .tech__group-title {
-    /* 三つ並ぶ短い見出しには --fs-h3 は大きすぎた。一段落とす。 */
-    display: inline-flex;
-    width: fit-content;
-    padding: 0.5em 1.1em;
-    border-radius: var(--r-pill);
+    /* 三つ並ぶ短い見出しには --fs-h3 は大きすぎた。一段落とす。
+       文字が2〜6字と短いため、藍青→墨(近い色相)では階調が見えない。
+       藍青→青緑という色相の異なる二色にし、短い文字数でも艶が見えるようにする。 */
     font-size: 1.05rem;
-    color: var(--ink);
-    background: linear-gradient(155deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.1));
-    backdrop-filter: blur(14px) saturate(150%);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 6px 18px rgba(20, 30, 60, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    background: linear-gradient(100deg, var(--brand) 0%, var(--teal) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 1px 3px color-mix(in srgb, var(--brand) 16%, transparent);
   }
 
   .tech__chips {
