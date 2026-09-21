@@ -8,20 +8,22 @@
 /* ---- Purpose 深掘りの静かな一文 ---- */
 .about-purpose__note {
   /* --fs-body(1rem)と直前の .purpose__support(--fs-lead)は僅差だが、
-     続けて読むと文字サイズが変わって見える(柴田指摘 2026-09-20)。揃える。 */
+     続けて読むと文字サイズが変わって見える(柴田指摘 2026-09-20)。揃える。
+     左揃えだと、自然な折り返しで生じる行ごとの長さの差(禁則处理の結果)が
+     右側の不自然な余白に見え、H1・支える一文(いずれも中央揃え)と噛み合わない
+     との指摘(柴田指摘 2026-09-21・PC実機のスクリーンショットより)。
+     セクション全体の中央揃えに揃える。 */
   max-width: 30em;
   margin: var(--space-6) auto 0;
   font-size: var(--fs-lead);
   line-height: var(--lh-body);
   color: var(--ink-3);
-  text-align: left;
+  text-align: center;
 }
 
 @media (max-width: 640px) {
-  /* スマホは中央揃えに(柴田指示 2026-09-21。右揃え→中央揃えへ再修正)。
-     文字サイズは現状よりやや小さめにする(柴田指摘 2026-09-21)。 */
+  /* 文字サイズは現状よりやや小さめにする(柴田指摘 2026-09-21)。 */
   .about-purpose__note {
-    text-align: center;
     font-size: var(--fs-sm);
   }
 }
