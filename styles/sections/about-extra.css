@@ -244,10 +244,14 @@
     grid-template-columns: 1fr;
   }
   .about-message__portrait {
-    /* サイズは縦長(4:5)・幅58%のまま、整列だけ中央揃えに戻す
-       (柴田確認 2026-09-21「今のサイズ感であれば中央揃えで構わない」)。 */
+    /* 58%は小さすぎたとの指摘(柴田指摘 2026-09-21)で70%へ拡大。
+       縦長(4:5)・中央揃えは変更しない。
+       widthを明示しないと、1列グリッドでも意図した70%まで伸びず
+       小さいまま描画された(実測で判明)。width:100%を土台にしたうえで
+       max-widthで上限を掛ける。 */
+    width: 100%;
     aspect-ratio: 4 / 5;
-    max-width: 58%;
+    max-width: 70%;
     margin-inline: auto;
     max-height: none;
   }
