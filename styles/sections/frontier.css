@@ -123,3 +123,10 @@
     margin-top: var(--space-4);
   }
 }
+
+/* PC でも他の見出しと揃え2.2remに(柴田指摘 2026-09-21)。 */
+@media (min-width: 641px) {
+  .frontier__headline {
+    font-size: 2.2rem;
+  }
+}

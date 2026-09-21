@@ -261,4 +261,21 @@
   [data-page="services"] #cta-title {
     font-size: 1.35rem;
   }
+
+  /* 「得られる成果で二つに分けています。」もモバイルでやや小さめに(柴田指摘 2026-09-21)。
+     #solutions はトップページとも共有のIDのため事業内容ページに限定する。 */
+  [data-page="services"] #solutions .section__lead {
+    font-size: var(--fs-sm);
+  }
+}
+
+/* PC でも見出しをやや小さめに(柴田指摘 2026-09-21。モバイルだけでなくPCも)。 */
+@media (min-width: 641px) {
+  [data-page="services"] #solutions-title,
+  [data-page="services"] #tech-title,
+  [data-page="services"] #method-title,
+  [data-page="services"] #process-title,
+  [data-page="services"] #cta-title {
+    font-size: 2.2rem;
+  }
 }
