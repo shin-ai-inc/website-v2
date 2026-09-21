@@ -169,6 +169,9 @@
     grid-template-columns: repeat(2, 1fr);
     max-width: var(--container-heading);
     margin-inline: auto;
+    /* 二列だとカード自体が大きく、共通のgap(24px)では距離が近すぎて
+       窮屈に見えた(柴田指摘 2026-09-21)。カードを広げた分、間も広げる。 */
+    gap: var(--space-6);
   }
 }
 
