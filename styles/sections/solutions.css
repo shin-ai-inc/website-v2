@@ -248,3 +248,12 @@
     margin-bottom: var(--space-3);
   }
 }
+
+/* 事業内容ページの見出し「ShinAIが提供するサービス」はモバイルでやや大きい印象
+   との指摘(柴田指摘 2026-09-21)。#solutions-title はトップページ(3カード)にもある
+   共有IDのため、事業内容ページに限定する。 */
+@media (max-width: 640px) {
+  [data-page="services"] #solutions-title {
+    font-size: 1.35rem;
+  }
+}

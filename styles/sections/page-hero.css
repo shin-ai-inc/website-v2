@@ -76,6 +76,14 @@
   }
 }
 
+/* 事業内容ページの見出しはモバイルでやや大きい印象との指摘(柴田指摘 2026-09-21)。
+   このページに限って一段小さくする(他ページの見出しは変えない)。 */
+@media (max-width: 640px) {
+  [data-page="services"] .page-hero__title {
+    font-size: 1.5rem;
+  }
+}
+
 .page-hero__title-line {
   display: block;
   white-space: nowrap;
