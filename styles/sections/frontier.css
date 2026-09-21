@@ -112,8 +112,9 @@
 }
 
 @media (max-width: 640px) {
+  /* 他の見出し(#solutions-title等)と揃え1.35remに統一(柴田指摘 2026-09-21)。 */
   .frontier__headline {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
   /* 本文と同寸(16px)では、見出し(1.4rem)との差が小さく、4行に渡る説明文が
      節の主役に見えていた。一段落として見出し > リード > 注記の順を保つ。 */

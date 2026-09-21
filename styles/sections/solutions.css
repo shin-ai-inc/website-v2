@@ -250,10 +250,15 @@
 }
 
 /* 事業内容ページの見出し「ShinAIが提供するサービス」はモバイルでやや大きい印象
-   との指摘(柴田指摘 2026-09-21)。#solutions-title はトップページ(3カード)にもある
-   共有IDのため、事業内容ページに限定する。 */
+   との指摘(柴田指摘 2026-09-21)。#solutions-title・#cta-title は他ページ(トップ・
+   群馬)にもある共有IDのため、事業内容ページに限定する。ページ内の他の見出し
+   (#tech-title・#method-title・#process-title)も同じ大きさへ揃える(柴田指摘)。 */
 @media (max-width: 640px) {
-  [data-page="services"] #solutions-title {
+  [data-page="services"] #solutions-title,
+  [data-page="services"] #tech-title,
+  [data-page="services"] #method-title,
+  [data-page="services"] #process-title,
+  [data-page="services"] #cta-title {
     font-size: 1.35rem;
   }
 }
