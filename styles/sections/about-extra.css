@@ -21,16 +21,31 @@
   text-align: center;
 }
 
+/* モバイルは自然な折り返しでは行ごとの長さの差が目立ち、中央揃え・左揃え・
+   justifyのいずれでも「不自然・読みにくい」と繰り返し指摘された
+   (柴田指摘 2026-09-21、複数回)。PCとモバイルで別のDOMを持たせ、
+   モバイルは柴田指定の行で確定的に改行する(柴田指示 2026-09-21)。
+   --lines 側は2グループに分け、間を1行分あける。 */
+.about-purpose__note--lines {
+  display: none;
+}
+
 @media (max-width: 640px) {
-  /* 文字サイズは現状よりやや小さめにする(柴田指摘 2026-09-21)。
-     中央揃え・左揃えのどちらも、行ごとの長さの差が右側の余白として
-     目立ち「不自然・読みにくい」と指摘された(柴田指摘 2026-09-21、二度)。
-     justify で各行(最終行を除く)を両端まで均等に伸ばし、右側の
-     余白そのものをなくす。文字の途中で折り返る問題はnobrで別途対処済み。 */
+  /* 文字サイズは現状よりやや小さめにする(柴田指摘 2026-09-21)。 */
   .about-purpose__note {
     font-size: var(--fs-sm);
-    text-align: justify;
-    text-align-last: left;
+  }
+
+  .about-purpose__note--flow {
+    display: none;
+  }
+
+  .about-purpose__note--lines {
+    display: block;
+  }
+
+  .about-purpose__note--lines p + p {
+    margin-top: var(--space-5);
   }
 }
 
