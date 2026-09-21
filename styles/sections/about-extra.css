@@ -47,6 +47,23 @@
   .about-purpose__note--lines p + p {
     margin-top: var(--space-5);
   }
+
+  /* 「人は創造・意思決定・関係構築へ向けることができる。」(25字)は、
+     var(--fs-sm、14px)のままだと375〜390px幅でも一行に収まらず、
+     指定した5行の構成が崩れる(柴田指示 2026-09-21)。5行の統一感を保つため
+     ブロック全体を13pxへわずかに詰め、このうえで対象の一文だけ
+     折り返しを禁じて確実に一行へ収める。body の overflow-x: hidden により、
+     万一のごく狭い機種でも横スクロールは発生せず、はみ出しは見えない。
+     .nobrは400px以下で保護を解除する安全弁を持つため、ここでは
+     専用クラスを使い折り返し禁止を常に効かせる。 */
+  .about-purpose__note--lines {
+    font-size: 0.8125rem;
+  }
+
+  .about-purpose__note-keep {
+    display: inline-block;
+    white-space: nowrap;
+  }
 }
 
 /* ---- 会社概要の連絡先リンク ---- */
@@ -227,17 +244,20 @@
     grid-template-columns: 1fr;
   }
   .about-message__portrait {
-    /* 4:3でも胸元が見切れたため、肩から胸まで収まる1:1へ。
-       全幅だと肖像の主張が強すぎるとの指摘(柴田指摘 2026-09-21)。
-       幅を絞り中央へ寄せ、ひとまわり小さくする。 */
-    aspect-ratio: 1 / 1;
-    max-width: 65%;
-    margin-inline: auto;
-    max-height: 20rem;
+    /* 全幅だと肖像の主張が強すぎるとの指摘(柴田指摘 2026-09-21)で一度65%・
+       中央寄せへ絞ったが、正方形+中央配置は「小さすぎる・宙に浮いて見える」
+       と再指摘された(柴田指摘 2026-09-21)。見出し・本文はいずれも左揃えの
+       ため、写真だけ中央に浮くと構成が揃わないのが根本原因と判断(判断は
+       柴田より一任)。PCと同じ縦長(4:5)に戻し、見出しと同じ左揃えに変更。
+       幅は58%とし、小さすぎず・全幅ほど主張しない中間値にする。 */
+    aspect-ratio: 4 / 5;
+    max-width: 58%;
+    margin-inline: 0;
+    max-height: none;
   }
   /* 頭頂部が切れないよう基準を上寄りに。 */
   .about-message__portrait img {
-    object-position: 50% 6%;
+    object-position: 50% 10%;
   }
 }
 
