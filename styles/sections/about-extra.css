@@ -22,9 +22,13 @@
 }
 
 @media (max-width: 640px) {
-  /* 文字サイズは現状よりやや小さめにする(柴田指摘 2026-09-21)。 */
+  /* 文字サイズは現状よりやや小さめにする(柴田指摘 2026-09-21)。
+     中央揃えのままだと、実機幅によっては(nobrで保護していない箇所が)
+     語の途中で折り返ることがあり読みにくいとの指摘(柴田指摘 2026-09-21)。
+     左揃えなら禁則处理の結果が右側のみに出るため、読み手には自然に見える。 */
   .about-purpose__note {
     font-size: var(--fs-sm);
+    text-align: left;
   }
 }
 
@@ -43,8 +47,10 @@
 
 /* ---- 代表メッセージ ---- */
 .about-message__grid {
+  /* 肖像の主張が強すぎるとの指摘(柴田指摘 2026-09-21)。列比率を絞り、
+     写真をひとまわり小さくする。 */
   display: grid;
-  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.55fr);
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.55fr);
   gap: clamp(var(--space-5), 5vw, var(--space-7));
   align-items: start;
 }
@@ -204,9 +210,13 @@
     grid-template-columns: 1fr;
   }
   .about-message__portrait {
-    /* 4:3でも胸元が見切れたため、肩から胸まで収まる1:1へ。 */
+    /* 4:3でも胸元が見切れたため、肩から胸まで収まる1:1へ。
+       全幅だと肖像の主張が強すぎるとの指摘(柴田指摘 2026-09-21)。
+       幅を絞り中央へ寄せ、ひとまわり小さくする。 */
     aspect-ratio: 1 / 1;
-    max-height: 24rem;
+    max-width: 65%;
+    margin-inline: auto;
+    max-height: 20rem;
   }
   /* 頭頂部が切れないよう基準を上寄りに。 */
   .about-message__portrait img {
