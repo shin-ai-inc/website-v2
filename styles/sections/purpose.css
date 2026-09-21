@@ -68,3 +68,13 @@
 .purpose__support-line {
   display: block;
 }
+
+@media (max-width: 640px) {
+  /* 後段の深掘り文(.about-purpose__note、var(--fs-sm))とサイズを
+     統一する(柴田指摘 2026-09-21)。従来はvar(--fs-lead)のままだった。
+     .purpose__support の定義より後ろに置かないと、ソース順で負けて
+     効かない(等しい詳細度のため)。 */
+  .purpose__support {
+    font-size: var(--fs-sm);
+  }
+}
