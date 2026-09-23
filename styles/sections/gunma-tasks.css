@@ -47,6 +47,12 @@
   text-wrap: pretty;
 }
 
+/* 一文だけの短い説明は、末尾の「です。」「ます。」だけが次の行へ落ちていた。
+   文節で折る。長い段落ではないため、狭い画面でも行末に空白は溜まらない。 */
+:lang(ja) .gunma-tasks__desc {
+  word-break: auto-phrase;
+}
+
 @media (max-width: 640px) {
   .gunma-tasks {
     grid-template-columns: 1fr;
