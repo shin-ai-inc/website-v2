@@ -4,23 +4,21 @@
     群馬発のAIシステム開発。トップの title はブランドの表現として据え置くと決めたため、
     地域クエリの受け皿はこのページが担う。
 
-    読者は群馬県内だけではない。「群馬の会社が群馬の会社を助ける」と書くと、
-    県外の読み手はその時点で自分の話ではなくなる。
-    ものづくりの集積地で鍛えた設計を全国へ、という向きで書くこと。
-    地域語は残しつつ、内容は土地を選ばない話にする。
+    読者は「群馬 AI 会社」で探し、候補を見比べている経営者・管理職。
+    技術の知識は前提にしない。読む順は、何の会社か → 自社のどの仕事に効くか →
+    なぜ止まらないか → 実在する会社か → 相談。
 
-    背景のリズムは既存ページ（services.html）に合わせる:
-      hero → 明 → 暗 → 明alt → 明 → 暗(CTA)
-    capability は暗地専用の部品（白文字・白枠）であり、
-    明地に置くと読めなくなる。必ず section--ink と組で使うこと。
+    地域語は title・h1・所在地・対応地域・地元での活動という構造的な位置に置く。
+    本文で群馬を語り続けると「群馬の会社が群馬の会社を相手にする話」と読まれ、
+    県外の読み手が離れる（2026-08-25 の判断）。
 
-    カードに写真は置かない。トップと同じ写真を再掲すると誌面が重複し、
-    かつ写真は語より雄弁なので、内容より先に既視感を与える。
-    solution-card の色バリアント（--tacit / --agent / --enable）で差をつける。
+    色分けしたカード（--tacit / --agent / --enable）は使わない。
+    写真のない淡色の箱が三枚並ぶ形は、量産されたSaaSの型に見えた（柴田指摘 2026-09-23）。
+    箱で囲まず、罫で区切る。
   -->
 
   <!-- ============================================================
-       Page Hero
+       Page Hero — 何の会社か、次に何をすればよいかまでを一画面で
   ============================================================ -->
   <section class="page-hero" aria-labelledby="hero-title">
     <div class="container">
@@ -35,167 +33,178 @@
           <span class="page-hero__title-line">群馬発、</span>
           <span class="page-hero__title-line page-hero__title-accent">現場で使われるAIを。</span>
         </h1>
-        <p class="page-hero__lead page-hero__lead--grouped">
-          <span class="page-hero__lead-line">シンアイ株式会社は、群馬県高崎市を<br class="br-sp">拠点とするAIシステム開発会社です。</span>
-          <span class="page-hero__lead-line">生成AIの業務活用、社内知識を扱うRAGの構築、企業専用AIエージェントの開発。</span>
-          <span class="page-hero__lead-line">企画から運用まで一気通貫でご支援します。</span>
+        <p class="page-hero__lead">
+          <span class="page-hero__lead-line">シンアイ株式会社は、<br class="br-sp">群馬県高崎市のAIシステム開発会社です。</span>
+          <span class="page-hero__lead-line">御社の仕事に合わせてAIを設計し、<br class="br-sp">現場で使われるまでご一緒します。</span>
         </p>
+        <div class="gunma-hero__actions">
+          <a class="btn btn-primary" href="contact.html">
+            無料相談を申し込む
+            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="btn btn-ghost" href="services.html">事業内容を見る</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       止まる理由 — 相談の入口はほぼここに集まる
-  ============================================================ -->
-  <section class="section" id="where-it-stops" aria-labelledby="stops-title">
-    <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Where It Stops</p>
-        <h2 id="stops-title" class="section__title">
-          <span class="section__title-line">導入したのに、</span>
-          <span class="section__title-line">使われない。</span>
-        </h2>
-        <p class="section__lead">
-          <span class="section__lead-line">研修を受け、ツールを契約し、試しに使うところまでは進んだが、それでも仕事は変わらない。</span>
-          <span class="section__lead-line">ご相談の多くはここから始まります。</span>
-        </p>
-      </div>
-
-      <div class="why__list">
-        <article class="why__row reveal">
-          <span class="why__num" aria-hidden="true">01</span>
-          <div>
-            <h3 class="why__title">判断が言葉になっていない</h3>
-            <p class="why__line">ベテランの勘どころは、その方の中にあるまま。AIへ渡せる形になっていません。</p>
-          </div>
-        </article>
-        <hr class="why__rule" aria-hidden="true">
-        <article class="why__row reveal" data-delay="1">
-          <span class="why__num" aria-hidden="true">02</span>
-          <div>
-            <h3 class="why__title">任せる範囲が決まっていない</h3>
-            <p class="why__line">どこまでAIに任せ、どこから人が判断するか。線引きのないまま導入されています。</p>
-          </div>
-        </article>
-        <hr class="why__rule" aria-hidden="true">
-        <article class="why__row reveal" data-delay="2">
-          <span class="why__num" aria-hidden="true">03</span>
-          <div>
-            <h3 class="why__title">いまの仕事につながっていない</h3>
-            <p class="why__line">単独で動くツールは手順の外側に置かれ、忙しい日から順に使われなくなります。</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       AIに任せられる仕事 — capability は暗地専用。section--ink と必ず組で使う。
+       AIに任せられる仕事 — 「自社のこれに使えそうだ」と像が結ぶ場所。
        見出し語は具体名詞にする。抽象名詞(技能の継承・問い合わせ)では何の話か
-       像が結ばなかった(柴田指摘)。2列格子のため見出し語は7文字前後に収める。
+       像が結ばなかった(柴田指摘)。
   ============================================================ -->
   <section class="section section--ink" id="where-to-start" aria-labelledby="start-title">
     <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">In Practice</p>
+      <div class="section__head section__head--center reveal">
+        <p class="eyebrow eyebrow--center">In Practice</p>
         <h2 id="start-title" class="section__title">AIに任せられる仕事</h2>
+        <p class="section__lead">
+          <span class="section__lead-line">毎日、人の手で繰り返している仕事から始めます。</span>
+          <span class="section__lead-line">たとえば、次のような仕事です。</span>
+        </p>
       </div>
 
-      <ul class="capability__grid">
-        <li class="capability__item reveal">
-          <span class="capability__num" aria-hidden="true">01</span>
-          <h3 class="capability__term">ベテランの<wbr>判断</h3>
-          <p class="capability__desc">聞き取りと作業記録をAIに読ませ、「この場合どうするか」を誰でも引けるようにします。</p>
+      <ul class="gunma-tasks">
+        <li class="gunma-tasks__item reveal">
+          <span class="gunma-tasks__num" aria-hidden="true">01</span>
+          <div>
+            <h3 class="gunma-tasks__term">ベテランの判断</h3>
+            <p class="gunma-tasks__desc">聞き取りと作業記録をAIに読ませ、「この場合どうするか」を誰でも引けるようにします。</p>
+          </div>
         </li>
-        <li class="capability__item reveal" data-delay="1">
-          <span class="capability__num" aria-hidden="true">02</span>
-          <h3 class="capability__term">見積の<wbr>下書き</h3>
-          <p class="capability__desc">過去の見積と単価表をAIが調べ、金額の根拠を添えた下書きを出します。</p>
+        <li class="gunma-tasks__item reveal" data-delay="1">
+          <span class="gunma-tasks__num" aria-hidden="true">02</span>
+          <div>
+            <h3 class="gunma-tasks__term">見積の下書き</h3>
+            <p class="gunma-tasks__desc">過去の見積と単価表をAIが調べ、金額の根拠を添えた下書きを出します。</p>
+          </div>
         </li>
-        <li class="capability__item reveal" data-delay="2">
-          <span class="capability__num" aria-hidden="true">03</span>
-          <h3 class="capability__term">日報と<wbr>申し送り</h3>
-          <p class="capability__desc">手書きのメモや口頭の報告をAIが文字にし、決まった書式へ整えます。</p>
+        <li class="gunma-tasks__item reveal" data-delay="2">
+          <span class="gunma-tasks__num" aria-hidden="true">03</span>
+          <div>
+            <h3 class="gunma-tasks__term">日報と申し送り</h3>
+            <p class="gunma-tasks__desc">手書きのメモや口頭の報告をAIが文字にし、決まった書式へ整えます。</p>
+          </div>
         </li>
-        <li class="capability__item reveal" data-delay="3">
-          <span class="capability__num" aria-hidden="true">04</span>
-          <h3 class="capability__term">規程の<wbr>探し物</h3>
-          <p class="capability__desc">社内の規程や手順書をAIが探し、どこに書いてあるかを添えて答えます。</p>
+        <li class="gunma-tasks__item reveal" data-delay="3">
+          <span class="gunma-tasks__num" aria-hidden="true">04</span>
+          <div>
+            <h3 class="gunma-tasks__term">規程の探し物</h3>
+            <p class="gunma-tasks__desc">社内の規程や手順書をAIが探し、どこに書いてあるかを添えて答えます。</p>
+          </div>
         </li>
       </ul>
     </div>
   </section>
 
   <!-- ============================================================
-       立ち位置 — 研修・ツール導入との違いを、比較ではなく事実で示す。
-       写真は置かない。色面（--tacit / --agent / --enable）で三枚を分ける。
+       止まる理由と進め方 — 問題と、それへの答えを同じ行に並べる。
+       以前は「止まる理由」と「立ち位置(色付きカード三枚)」が別の節にあり、
+       どの答えがどの問題に対応するのか読み手が組み合わせる必要があった。
   ============================================================ -->
-  <section class="section section--alt" id="stance" aria-labelledby="stance-title">
+  <section class="section section--alt" id="where-it-stops" aria-labelledby="stops-title">
     <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Our Stance</p>
-        <h2 id="stance-title" class="section__title">
-          <span class="section__title-line">研修と試験導入で、</span>
-          <span class="section__title-line">終わらせない。</span>
+      <div class="section__head section__head--center reveal">
+        <p class="eyebrow eyebrow--center">Our Approach</p>
+        <h2 id="stops-title" class="section__title">
+          <span class="section__title-line">導入したのに、</span>
+          <span class="section__title-line">使われない。</span>
         </h2>
         <p class="section__lead">
-          <span class="section__lead-line">要件をまとめて他社へ渡すのではなく、<span class="nobr">動くものをつくり、</span><span class="nobr">仕事に組み込み、</span></span>
-          <span class="section__lead-line">回り続ける状態まで見届けます。</span>
+          <span class="section__lead-line">ご相談の多くはここから始まります。</span><br class="br-sp">
+          <span class="section__lead-line">止まる理由は、おおむね三つです。</span>
         </p>
       </div>
 
-      <div class="solutions__grid">
-        <article class="solution-card solution-card--tacit reveal" data-delay="1">
-          <h3 class="solution-card__title">現場から設計する</h3>
-          <p class="solution-card__lead">
-            技術の話より先に、
-            いまの手順と困りごとをうかがいます。
-          </p>
-          <hr class="solution-card__divider" aria-hidden="true">
-          <ul class="solution-card__items">
-            <li class="solution-card__item">現場を見てから範囲を決める</li>
-            <li class="solution-card__item">小さく試して効果を確かめる</li>
-            <li class="solution-card__item">合わなければ広げない判断も</li>
-          </ul>
+      <div class="gunma-pairs">
+        <article class="gunma-pair reveal">
+          <span class="gunma-pair__num" aria-hidden="true">01</span>
+          <div class="gunma-pair__problem">
+            <p class="gunma-pair__label">よくある止まり方</p>
+            <h3 class="gunma-pair__title">判断が言葉になっていない</h3>
+            <p class="gunma-pair__text">ベテランの勘どころが、その方の中にあるままです。</p>
+          </div>
+          <div class="gunma-pair__answer">
+            <p class="gunma-pair__label">私たちの進め方</p>
+            <p class="gunma-pair__title">聞き取りから始める</p>
+            <p class="gunma-pair__text">技術の話より先に、いまの手順と判断をうかがい、AIへ渡せる言葉にします。</p>
+          </div>
         </article>
-
-        <article class="solution-card solution-card--agent reveal" data-delay="2">
-          <h3 class="solution-card__title">データを社外に出さない</h3>
-          <p class="solution-card__lead">
-            GPUを備えた開発機を社内に置いています。
-            学習を外部に預けずに行えます。
-          </p>
-          <hr class="solution-card__divider" aria-hidden="true">
-          <ul class="solution-card__items">
-            <li class="solution-card__item">自社設備でのファインチューニング</li>
-            <li class="solution-card__item">機密・個人情報を含む仕事も対象</li>
-            <li class="solution-card__item">取り扱いの範囲は着手前に文書化</li>
-          </ul>
+        <article class="gunma-pair reveal" data-delay="1">
+          <span class="gunma-pair__num" aria-hidden="true">02</span>
+          <div class="gunma-pair__problem">
+            <p class="gunma-pair__label">よくある止まり方</p>
+            <h3 class="gunma-pair__title">任せる範囲が決まっていない</h3>
+            <p class="gunma-pair__text">どこまでAIに任せるか、線引きのないまま導入されています。</p>
+          </div>
+          <div class="gunma-pair__answer">
+            <p class="gunma-pair__label">私たちの進め方</p>
+            <p class="gunma-pair__title">小さく試して線を引く</p>
+            <p class="gunma-pair__text">範囲を絞って効果を確かめます。合わなければ広げない判断もいたします。</p>
+          </div>
         </article>
-
-        <article class="solution-card solution-card--enable reveal" data-delay="3">
-          <h3 class="solution-card__title">社内で回せるまで移す</h3>
-          <p class="solution-card__lead">
-            運用の決まりごとを整え、
-            ご担当の方へ技術をお渡しします。
-          </p>
-          <hr class="solution-card__divider" aria-hidden="true">
-          <ul class="solution-card__items">
-            <li class="solution-card__item">運用ルールと体制づくり</li>
-            <li class="solution-card__item">社内チームへの技術移転</li>
-            <li class="solution-card__item">私たちがいなくても続く状態へ</li>
-          </ul>
+        <article class="gunma-pair reveal" data-delay="2">
+          <span class="gunma-pair__num" aria-hidden="true">03</span>
+          <div class="gunma-pair__problem">
+            <p class="gunma-pair__label">よくある止まり方</p>
+            <h3 class="gunma-pair__title">いまの仕事につながっていない</h3>
+            <p class="gunma-pair__text">単独で動くツールは、忙しい日から順に使われなくなります。</p>
+          </div>
+          <div class="gunma-pair__answer">
+            <p class="gunma-pair__label">私たちの進め方</p>
+            <p class="gunma-pair__title">手順に組み込み、社内へ移す</p>
+            <p class="gunma-pair__text">普段の手順の中で動く形にし、運用の決まりごとと技術をご担当の方へお渡しします。</p>
+          </div>
         </article>
       </div>
+    </div>
+  </section>
 
-      <div class="section__more reveal" data-delay="3">
-        <a class="btn btn-ghost" href="services.html">
-          事業内容の詳細を見る
-          <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+  <!-- ============================================================
+       会社概要 — 候補を見比べる読み手が最後に確かめる「実在する会社か」。
+       値は会社情報ページ(about.html)の会社概要と同じものだけを置く。
+       無い値(電話番号・実績件数)は置かない。
+  ============================================================ -->
+  <section class="section" id="company" aria-labelledby="company-title">
+    <div class="container gunma-company">
+      <div class="section__head reveal">
+        <p class="eyebrow">Company</p>
+        <h2 id="company-title" class="section__title">会社概要</h2>
+        <p class="section__lead">
+          <span class="section__lead-line">高崎市に拠点を置き、</span>
+          <span class="section__lead-line">群馬県を中心に全国のご相談を承っています。</span>
+        </p>
+        <a class="text-link gunma-company__more" href="about.html">会社情報を詳しく見る</a>
       </div>
+
+      <dl class="company__facts reveal" data-delay="1">
+        <div>
+          <dt class="company__fact-term">商号</dt>
+          <dd class="company__fact-desc">シンアイ株式会社</dd>
+        </div>
+        <div>
+          <dt class="company__fact-term">所在地</dt>
+          <dd class="company__fact-desc">群馬県高崎市井野町360-7 <span class="nobr">オークスアベニューD201</span></dd>
+        </div>
+        <div>
+          <dt class="company__fact-term">代表取締役</dt>
+          <dd class="company__fact-desc">柴田 昌国</dd>
+        </div>
+        <div>
+          <dt class="company__fact-term">事業内容</dt>
+          <dd class="company__fact-desc"><span class="nobr">企業専用AIエージェント開発／</span><br><span class="nobr">企業構造の変革支援／</span><br><span class="nobr">フィジカルAIの研究開発（PoC）</span></dd>
+        </div>
+        <div>
+          <dt class="company__fact-term">開発環境</dt>
+          <dd class="company__fact-desc">学習用のGPU機材を社内に保有<br><span class="gunma-company__note">データを外部に預けずにAIを調整できます</span></dd>
+        </div>
+        <div>
+          <dt class="company__fact-term">地域での活動</dt>
+          <dd class="company__fact-desc"><a class="text-link" href="news-20251205-takasaki-press.html">高崎商工会議所 第9回合同プレス発表会に登壇</a><br><span class="gunma-company__note">2025年12月</span></dd>
+        </div>
+      </dl>
     </div>
   </section>
 
@@ -222,7 +231,6 @@
             <p>承っております。節目の打ち合わせだけ現地でご一緒するなど、ご都合に合わせた組み立ても可能です。</p>
           </div>
         </details>
-
 
         <details class="faq-item">
           <summary class="faq-item__q">

@@ -41,7 +41,7 @@ const allPages = () => {
 /* 暗い地を前提に白で描く部品。styles/sections/<名前>.css が
    `color: #FFFFFF` または白の rgba を地の指定なしで持つものが該当する。
    部品を足したときは、その CSS が白を使うかを確かめてここへ加える。 */
-const DARK_ONLY = ["capability", "frontier"];
+const DARK_ONLY = ["capability", "frontier", "gunma-tasks"];
 
 /** <section ...> の開きタグを、その中身とともに取り出す。 */
 const sectionsOf = (html) => {

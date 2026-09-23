@@ -246,29 +246,34 @@
    意図した構成(.is-home が節を透過させている)。
 
    PC では下層ページに出さない。広い画面では本文の面積が大きく、読み物の
-   後ろで粒が動くと目が滑る。トップの演出はトップのものとして残す。 */
+   後ろで粒が動くと目が滑る。トップの演出はトップのものとして残す。
+   例外は事業内容ページと群馬ページ。群馬ページは地域検索から直接入る
+   もう一つの入口で、トップと同じ見え方で迎える(柴田指摘 2026-09-23)。 */
 @media (min-width: 641px) {
-  body:not(.is-home):not([data-page="services"]) .site-particles {
+  body:not(.is-home):not([data-page="services"]):not([data-page="gunma-ai"]) .site-particles {
     display: none;
   }
 
-  /* 事業内容ページはトップと同じ見え方にする。
+  /* 事業内容ページ・群馬ページはトップと同じ見え方にする。
      節ごとに地の持ち方が違うため、素のままだと粒子が現れる節と消える節が
      交互になる(実測 1280px: solutions=見える / frontier=見えない /
      method=見えない / technology=見える / process=見えない / contact=見えない)。
      節をまたいで途切れる背景は、演出ではなく描画の失敗に見える。
      .is-home と同じ三点を与えて全節で通す——器を前面(z:1)へ上げ、
      alt の地を透過にし、ink を非配置へ落として地を粒子の下へ送る。 */
-  body[data-page="services"] main .container {
+  body[data-page="services"] main .container,
+  body[data-page="gunma-ai"] main .container {
     position: relative;
     z-index: 1;
   }
 
-  body[data-page="services"] .section--alt {
+  body[data-page="services"] .section--alt,
+  body[data-page="gunma-ai"] .section--alt {
     background: transparent;
   }
 
-  body[data-page="services"] .section--ink {
+  body[data-page="services"] .section--ink,
+  body[data-page="gunma-ai"] .section--ink {
     position: static;
   }
 
@@ -277,7 +282,8 @@
      の節)。地を外すと固定canvas がそのまま透ける。
      文字は .page-hero 自身の stacking context(isolation: isolate)の中にあり、
      canvas より前に描かれるので読みやすさは変わらない。 */
-  body[data-page="services"] .page-hero {
+  body[data-page="services"] .page-hero,
+  body[data-page="gunma-ai"] .page-hero {
     background: transparent;
   }
 }

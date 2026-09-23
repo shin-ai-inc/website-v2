@@ -1,0 +1,69 @@
+/*
+  Section: 群馬ページの「AIに任せられる仕事」(暗地専用)。
+  自前の地を持たずに白で描くため、section--ink の中にしか置けない
+  (tests/markup.test.mjs の DARK_ONLY で固定)。色・余白・型はトークンのみ参照。
+*/
+
+/* ---- AIに任せられる仕事(暗地専用) ----
+   以前は枠付きの箱を四つ並べていた。モバイルでは箱の余白で一枚ずつが重く、
+   四枚で一画面半を使っていた。罫だけで区切る二列の一覧にする。 */
+.gunma-tasks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--space-7);
+  max-width: 960px;
+  margin-inline: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.gunma-tasks__item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  column-gap: var(--space-3);
+  padding-block: var(--space-5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.gunma-tasks__num {
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  padding-top: 0.5em;
+  color: var(--teal-2);
+  user-select: none;
+}
+
+.gunma-tasks__term {
+  font-size: var(--fs-h3);
+  color: #FFFFFF;
+  margin-bottom: var(--space-2);
+}
+
+.gunma-tasks__desc {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: rgba(255, 255, 255, 0.72);
+  text-wrap: pretty;
+}
+
+@media (max-width: 640px) {
+  .gunma-tasks {
+    grid-template-columns: 1fr;
+  }
+  .gunma-tasks__item {
+    grid-template-columns: 2rem 1fr;
+    padding-block: var(--space-4);
+  }
+  .gunma-tasks__num {
+    padding-top: 0.3em;
+  }
+  .gunma-tasks__term {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+  }
+  .gunma-tasks__desc {
+    font-size: var(--fs-sm);
+  }
+}
