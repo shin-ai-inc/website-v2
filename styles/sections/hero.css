@@ -316,4 +316,23 @@
     position: relative;
     z-index: 1;
   }
+
+  /* 群馬ページは地域検索から直接入るもう一つの入口で、狭い画面でも
+     トップと同じく全節で粒子を通す(柴田指摘 2026-09-23)。
+     PCの事業内容ページと同じ三点——節を非配置へ落として地を粒子の下へ送り、
+     地を透過にし、器(.container)を前面(z:1)へ上げて文字を粒子の前に保つ。
+     上の汎用規則より詳細度を上げるため :not(.is-home) を重ねている。 */
+  body[data-page="gunma-ai"]:not(.is-home) main > * {
+    position: static;
+  }
+
+  body[data-page="gunma-ai"]:not(.is-home) main > *:not(.section--ink):not(.section--alt),
+  body[data-page="gunma-ai"]:not(.is-home) main > .section--alt {
+    background: transparent;
+  }
+
+  body[data-page="gunma-ai"] main .container {
+    position: relative;
+    z-index: 1;
+  }
 }
