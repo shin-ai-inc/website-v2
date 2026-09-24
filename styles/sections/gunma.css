@@ -3,23 +3,12 @@
   箱で囲まず罫で区切る。色分けはしない。色・余白・型はトークンのみ参照。
 */
 
-/* ---- 見出し直下の行動 ----
-   検索から来た読み手が、何の会社かを知ったその場で次へ進めるようにする。 */
-.gunma-hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-top: var(--space-5);
-}
-
+/* ---- 見出し ----
+   見出し帯に行動ボタンは置かない(柴田指示 2026-09-24)。相談の導線は末尾のCTAが担う。
+   モバイルのリードは一段小さくする(同)。 */
 @media (max-width: 640px) {
-  .gunma-hero__actions {
-    flex-direction: column;
-    align-items: stretch;
-    margin-top: var(--space-4);
-  }
-  .gunma-hero__actions .btn {
-    justify-content: center;
+  body[data-page="gunma-ai"] .page-hero__lead {
+    font-size: var(--fs-sm);
   }
 }
 
