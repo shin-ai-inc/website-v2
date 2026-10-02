@@ -869,7 +869,11 @@ const shell = (page, loc) => {
     loc.code === "ja" ? ldJson : ldJsonEn,
     page.file === "index.html" ? websiteLd(loc) : null,
     webPageLd(loc, page, canonical, lastModOf(loc.src + "/" + page.part)),
-    page.part === "services.html" ? serviceLdFor(loc) : null,
+    /* 群馬ページにも同じ役務を申告する(柴田指示 2026-10-03「AIO対策」)。
+       「群馬 AI エージェント開発」のような地域×役務のクエリは、役務の実体
+       (Service)を名乗るページでなければ拾えない。事業内容ページと同じ
+       内容を provider の @id 参照で結び、重複でなく同一組織の役務として示す。 */
+    (page.part === "services.html" || page.part === "gunma-ai.html") ? serviceLdFor(loc) : null,
     page.part === "news.html" ? newsListLd(loc) : null,
     /* 代表individualの実体は about.html にのみ置く(重複申告を避ける)。
        他ページの founder/employee は @id 参照でここへ解決される。 */
@@ -1006,6 +1010,21 @@ const companyFacts = () => {
   return rows;
 };
 
+/* よくあるご質問をそのまま渡す。FAQPage構造化データ(faqLdFor)と同じ本文を
+   唯一の出所とし、AIがHTMLを解析しなくても直接引用できる形で渡す
+   (AIO対策・柴田指示 2026-10-03)。faq.htmlが最も網羅的なため、そこだけを使う。 */
+const faqMarkdown = () => {
+  const raw = read("partials/faq.html");
+  const re = /<span class="faq-item__q-text">([\s\S]*?)<\/span>[\s\S]*?<div class="faq-item__a">([\s\S]*?)<\/div>/g;
+  const rows = [];
+  let m;
+  while ((m = re.exec(raw)) !== null) {
+    rows.push(`- **${stripTags(m[1])}**\n  ${stripTags(m[2])}`);
+  }
+  if (!rows.length) throw new Error("FAQを抽出できない。faq-item の構造を確認する。");
+  return rows;
+};
+
 const llmsTxt = [
   "# ShinAI（シンアイ株式会社）",
   "",
@@ -1028,6 +1047,10 @@ const llmsTxt = [
 ).concat(
   standalonePages.map((p) => `- [${p.title}](${SITE_URL}/${p.dir}): ${p.desc}`)
 ).concat([
+  "",
+  "## よくあるご質問",
+  ""
+]).concat(faqMarkdown()).concat([
   "",
   "## English",
   ""
