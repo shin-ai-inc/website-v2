@@ -281,14 +281,17 @@
      不透明な地を持つため、ここだけ粒子が消えていた(「試し深め、自走する組織へ。」
      の節)。地を外すと固定canvas がそのまま透ける。
      文字は .page-hero 自身の stacking context(isolation: isolate)の中にあり、
-     canvas より前に描かれるので読みやすさは変わらない。
-     群馬ページはここに含めない(柴田指摘 2026-10-03)。地球儀はシーン中央
-     (ビューポート中央)に固定で、帯の高さに連動しない。群馬ページの page-hero は
-     事業内容ページより低く、特にCTAボタンを外した後は中央より上で終わるため、
-     地球儀が次節(暗地)へはみ出し、白地での淡い発色と暗地での鮮やかな発色が
-     帯の境目でぶつかって見えた。帯は不透明に戻し、地球儀は次節以降でのみ見せる。 */
+     canvas より前に描かれるので読みやすさは変わらない。 */
   body[data-page="services"] .page-hero {
     background: transparent;
+  }
+
+  /* 群馬ページは透過にせず、section--ink と同じ「地を持ったまま static で
+     canvas の下へ送る」方式にする(柴田指摘 2026-10-03)。地色は page-hero.css で
+     section--ink と同じ var(--ink)+var(--grad-dark) に揃えてあるため、白地を
+     透過させて隠す必要がない。地球儀は帯の中でも欠けずに全体が見える。 */
+  body[data-page="gunma-ai"] .page-hero {
+    position: static;
   }
 }
 
@@ -307,8 +310,12 @@
   /* 地を敷くのは、自前の地を持たない節だけ。--ink(暗い帯・白文字)と
      --alt(薄いグラデ)は既に不透明な地を持っており、ここで --paper に
      上書きすると白地に白文字になって読めなくなる。
-     実際に群馬ページの「改善の共通項」(section--ink)が全文消えた。 */
-  body:not(.is-home) main > *:not(.section--ink):not(.section--alt) {
+     実際に群馬ページの「改善の共通項」(section--ink)が全文消えた。
+     .page-hero も対象外にする。page-hero.css の既定(var(--paper-2))で
+     十分不透明なうえ、群馬ページでは data-page 限定で var(--ink) に
+     上書きしており(柴田指摘 2026-10-03)、この汎用規則の方が詳細度で勝って
+     白に戻ってしまっていた(白文字が白地に沈んで見えなくなった)。 */
+  body:not(.is-home) main > *:not(.section--ink):not(.section--alt):not(.page-hero) {
     background: var(--paper);
   }
 
@@ -325,12 +332,16 @@
      トップと同じく全節で粒子を通す(柴田指摘 2026-09-23)。
      PCの事業内容ページと同じ三点——節を非配置へ落として地を粒子の下へ送り、
      地を透過にし、器(.container)を前面(z:1)へ上げて文字を粒子の前に保つ。
-     上の汎用規則より詳細度を上げるため :not(.is-home) を重ねている。 */
+     上の汎用規則より詳細度を上げるため :not(.is-home) を重ねている。
+     page-hero は section--ink と同じ地(page-hero.css で var(--ink)+
+     var(--grad-dark) に揃えた)を持つため、section--ink と同様に static だけ
+     与えて地色は保つ(柴田指摘 2026-10-03。白地のまま透過させると地球儀の上側が
+     隠れ、実際の大きさは変わらないのに見える範囲が減って見えた)。 */
   body[data-page="gunma-ai"]:not(.is-home) main > * {
     position: static;
   }
 
-  body[data-page="gunma-ai"]:not(.is-home) main > *:not(.section--ink):not(.section--alt),
+  body[data-page="gunma-ai"]:not(.is-home) main > *:not(.page-hero):not(.section--ink):not(.section--alt),
   body[data-page="gunma-ai"]:not(.is-home) main > .section--alt {
     background: transparent;
   }

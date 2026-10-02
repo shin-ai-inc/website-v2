@@ -43,6 +43,54 @@
   color: var(--line);
 }
 
+/* 群馬ページの見出し帯は、地球儀をそのまま見せるため section--ink と同じ地
+   (var(--ink) + var(--grad-dark))にする(柴田指摘 2026-10-03)。
+   白地のまま地球儀を隠すと、実際の大きさは変わらないのに帯の中で見える分が
+   減り「小さくなった」ように見える。白から急に暗くなる帯の境目自体が
+   地球儀の発色とぶつかる原因でもあったため、地色を section--ink と揃えて
+   境目を消す(柴田の提案どおり、地色の変更で解決する)。文字は白系に変える。 */
+body[data-page="gunma-ai"] .page-hero {
+  background: var(--ink);
+  background-image: var(--grad-dark);
+  border-bottom: none;
+}
+
+/* 白文字は background: var(--ink) を持つ .page-hero(上で宣言済み)の中でしか
+   出ないが、tests/markup.test.mjs の DARK_ONLY 判定はルール単位で地の有無を
+   見るため、各ルールにも明示しておく(実質は親の地を透かすだけで無害)。 */
+body[data-page="gunma-ai"] .page-hero__breadcrumb,
+body[data-page="gunma-ai"] .page-hero__breadcrumb-sep {
+  background: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body[data-page="gunma-ai"] .page-hero__breadcrumb a {
+  background: none;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+body[data-page="gunma-ai"] .page-hero__breadcrumb a:hover {
+  color: var(--teal-2);
+}
+
+body[data-page="gunma-ai"] .page-hero__eyebrow {
+  color: var(--teal);
+}
+
+/* title-accent(「現場で使われるAIを。」)はグラデーションの文字塗りを
+   background で実装している。:not() で除外しないと、この規則の
+   background:none がグラデーションを消してしまい、-webkit-text-fill-color:
+   transparent だけが残って文字が完全に見えなくなる(実際に発生・修正済み)。 */
+body[data-page="gunma-ai"] .page-hero__title-line:not(.page-hero__title-accent) {
+  background: none;
+  color: #FFFFFF;
+}
+
+body[data-page="gunma-ai"] .page-hero__lead {
+  background: none;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 @media (max-width: 820px) {
   /* モバイルはハンバーガーメニューが現在地・全ページへの導線を持つため、
      常時表示のパンくず(ホーム›ページ名)は機能が重複する(柴田指摘 2026-09-20)。
