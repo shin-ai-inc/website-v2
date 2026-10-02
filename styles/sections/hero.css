@@ -281,17 +281,23 @@
      不透明な地を持つため、ここだけ粒子が消えていた(「試し深め、自走する組織へ。」
      の節)。地を外すと固定canvas がそのまま透ける。
      文字は .page-hero 自身の stacking context(isolation: isolate)の中にあり、
-     canvas より前に描かれるので読みやすさは変わらない。 */
-  body[data-page="services"] .page-hero {
+     canvas より前に描かれるので読みやすさは変わらない。
+     群馬ページも同じ扱いに戻す(柴田指摘 2026-10-03。地色を暗くする案は
+     地球儀が同系色の地に溶けて見えなくなったため撤回)。白地のまま透かし、
+     地球儀と帯の境目がぶつからないよう、帯の高さを下の min-height で広げる。 */
+  body[data-page="services"] .page-hero,
+  body[data-page="gunma-ai"] .page-hero {
     background: transparent;
   }
 
-  /* 群馬ページは透過にせず、section--ink と同じ「地を持ったまま static で
-     canvas の下へ送る」方式にする(柴田指摘 2026-10-03)。地色は page-hero.css で
-     section--ink と同じ var(--ink)+var(--grad-dark) に揃えてあるため、白地を
-     透過させて隠す必要がない。地球儀は帯の中でも欠けずに全体が見える。 */
+  /* 地球儀はビューポート中央に固定で、画面の高さの約27%(半径)を占める
+     (実測・理論値ともに desktop camZ=58/radius=9/fov=60 から算出: 直径は
+     ビューポート高の約26.9%)。帯の下端がビューポート中央+半径(約63.5%)より
+     下にないと、次節との境目が地球儀にかかる。ヘッダー分を差し引いたうえで
+     安全を見て68%を帯の最低高さにする(柴田指示 2026-10-03「次節の位置を
+     ずらして境目を地球儀にかぶらせない」)。 */
   body[data-page="gunma-ai"] .page-hero {
-    position: static;
+    min-height: calc(68svh - var(--header-h));
   }
 }
 
@@ -310,12 +316,8 @@
   /* 地を敷くのは、自前の地を持たない節だけ。--ink(暗い帯・白文字)と
      --alt(薄いグラデ)は既に不透明な地を持っており、ここで --paper に
      上書きすると白地に白文字になって読めなくなる。
-     実際に群馬ページの「改善の共通項」(section--ink)が全文消えた。
-     .page-hero も対象外にする。page-hero.css の既定(var(--paper-2))で
-     十分不透明なうえ、群馬ページでは data-page 限定で var(--ink) に
-     上書きしており(柴田指摘 2026-10-03)、この汎用規則の方が詳細度で勝って
-     白に戻ってしまっていた(白文字が白地に沈んで見えなくなった)。 */
-  body:not(.is-home) main > *:not(.section--ink):not(.section--alt):not(.page-hero) {
+     実際に群馬ページの「改善の共通項」(section--ink)が全文消えた。 */
+  body:not(.is-home) main > *:not(.section--ink):not(.section--alt) {
     background: var(--paper);
   }
 
@@ -333,15 +335,14 @@
      PCの事業内容ページと同じ三点——節を非配置へ落として地を粒子の下へ送り、
      地を透過にし、器(.container)を前面(z:1)へ上げて文字を粒子の前に保つ。
      上の汎用規則より詳細度を上げるため :not(.is-home) を重ねている。
-     page-hero は section--ink と同じ地(page-hero.css で var(--ink)+
-     var(--grad-dark) に揃えた)を持つため、section--ink と同様に static だけ
-     与えて地色は保つ(柴田指摘 2026-10-03。白地のまま透過させると地球儀の上側が
-     隠れ、実際の大きさは変わらないのに見える範囲が減って見えた)。 */
+     page-hero も白地を透過させる(柴田指摘 2026-10-03。地を暗くする案は
+     地球儀が同系色の地に溶けて見えなくなったため撤回)。地球儀と帯の境目が
+     ぶつからないよう、帯の高さは下の min-height で広げる。 */
   body[data-page="gunma-ai"]:not(.is-home) main > * {
     position: static;
   }
 
-  body[data-page="gunma-ai"]:not(.is-home) main > *:not(.page-hero):not(.section--ink):not(.section--alt),
+  body[data-page="gunma-ai"]:not(.is-home) main > *:not(.section--ink):not(.section--alt),
   body[data-page="gunma-ai"]:not(.is-home) main > .section--alt {
     background: transparent;
   }
@@ -349,5 +350,13 @@
   body[data-page="gunma-ai"] main .container {
     position: relative;
     z-index: 1;
+  }
+
+  /* モバイルの地球儀は画面の高さの約19.7%(半径9.85%)を占める(camZ=72/
+     radius=8.2/fov=60 から算出)。中央50%±9.85%=40.15〜59.85%のため、
+     帯の下端が59.85%より下にあれば境目は地球儀にかからない。
+     安全を見て65%を帯の最低高さにする。 */
+  body[data-page="gunma-ai"] .page-hero {
+    min-height: calc(65svh - var(--header-h));
   }
 }
