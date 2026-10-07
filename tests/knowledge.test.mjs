@@ -130,13 +130,10 @@ test("人物の役職を取り違えない(語をまたぐ偶然の一致に負�
   }
 });
 
-test("CTOを尋ねたら該当者のチャンクが選ばれる", () => {
-  const index = buildIndex(loadKb().chunks);
-  const hits = hybridSearch("CTOはどなたですか", null, index, { k: 6 });
-  const top = hits.find((c) => !c.pin);
-  assert.match(top.text, /最高技術責任者/);
-  assert.ok(!/柴田/.test(top.text), "代表の記述を返してはいけない");
-});
+/* 2026-10-07 柴田指示でabout.htmlの「メンバー紹介」(CTO紹介を含む)を削除した。
+   以後サイトにCTOの記述が無いため、このチャンクを前提にした検証は成立しない。
+   人物の役職を取り違えないことは引き続き下のテストと tests/chunk.test.mjs の
+   合成フィクスチャで検証する。 */
 
 test("公開HTMLと知識ベースが乖離していない(ビルド忘れの検知)", () => {
   /* 知識ベースは生成物だが、リポジトリに入っている。ページを直して
