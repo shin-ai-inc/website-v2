@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "e4ae58c",
+  "generatedAt": "40cb0c4",
   "chunks": [
     {
       "id": "index#0",
@@ -76,8 +76,8 @@
       "id": "index#10",
       "title": "会社概要｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "Consultation: Free, 30–45 minutes, no preparation needed\nContact: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST",
-      "vec": "/AAFAAn3+QoA/gf4Dvf7BPH6AvgAAgQIBAMAAQL4A/v8APsDBwcB/wL+CAQD/PgEBAP3//f88v8FAwQIA/0FBPwC/wn79AQI+/8G/v0KAgH8A/j/AfX1/PcA+Aj8BgMEAQcIAQD9BQoAB/n8AQP0//0C+PsDAPv7/AIAB/3/A/38/P78Bvf9+P4D/voBAvn99AQA+/wCAP36+P8G+wP49AYI+gD3AgAG9vn6/f8FCPwHAfcA9/33Avv5BgQB/AEADgEJ/gL5AwAD9fwCBQIJ//YCDfX9A/b9/PwA//39Af/9Cfr5BvQFAvgABP8I/v3/CQII/f79APsEAAP9BvQC+v8AAAUEBfz4A/kACQsD/fsE//b/+/76CPsC/PsAAgD7+AMJ/QP8//8I/wECBvoB/wIK9P0L//wFA/799wsABvz/+QT+9P0A/wX5BP0D//cEAwD8APn+7P0FBQIEBgL+9v35/f8B9v0A8fwIAP4D9/4A+gUB+v379gYGAgEC/PsE/wEEAf/7Dfr7/gX/BAQB//cC/wH8BP3//AUE7QQGBP8DCAL8/vsC9fv/B/0E9QMB+v78BQMC/AL9APj99gH5A/b+AwMGDPwA/v4AC/8D+wn/+/0DBAX9BAL49v8G+Pf9AfcCBw4G/wQJ/wn/Ef4FAQX8+AT7/P4J+AAF/P8DAAU="
+      "text": "Consultation: Free, 30–60 minutes, no preparation needed\nContact: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST",
+      "vec": "/QAEAAj3+QoA/gf5Dvf7A/H6AvkAAQQIBQIAAQH4BPv8APoDBwcA/gP/CAQC/PgFBAP2APb88gAFAwQIA/0FBPwCAAn79AQI+/8F/f4JAgP9A/j/AvX1/PcA+An7BQMEAQYHAgD+BAsAB/n8AAP0//0C9/sDAPz7/AIBB/3+BP38/P79Bvj9+P4D/foBAvn99AT/+/wDAf76+P4H+wP49QYI+gD2AQAG9/n6/P8FCfwGAfcA9/33Afv5BQQB/AEADgEJ/gH5BP8D9vwCBAEJ//UCDfX8A/b9/P3///3+AAD9Cfr5B/MEA/gAA/8J/f3/CQEI/f/9APsDAQP+BvQC+QAAAQYEBfz4A/kACQsD/fsF//f/+v76CPsC/fsAAQD7+AIJ/QL8AP8H/wECBfkB/wML9PwLAP0GAv799woABvz/+QX99P0B/wT5BP0D//YDAwD8APr+6/4FBQIDBQL+9v35/f8B9/4A8fwIAP4C9v4A+gUB+v389gcGAQEC/PwDAAEDAP/8Dfr7/gX+BAUCAPcC/wH9BP0A/QUE7AQGBP8DCAH8/vsC9fv/Bv4E9QQB+v78BQQC/AL9APj99gH6BPb+AwIGDfwA/v4AC/8D+wn/+/4DBAT8BAP49gAH+Pj+AfcCBw4F/wQJ/wn/Ef4FAAb8+AP7+/4J9wAF/P8D/wU="
     },
     {
       "id": "index#11",
@@ -273,8 +273,8 @@
       "id": "services#16",
       "title": "Talk to us about AI adoption｜Solutions | ShinAI",
       "url": "https://shinai-inc.jp/en/services.html",
-      "text": "Even when requirements are still vague, we will work it out together with you. \n\n Book a free consultation \n\n Contact \n contact@shinai-inc.jp \n\n Hours \n Weekdays 9:00–18:00 JST \n\n Consultation \n 30–45 min, no preparation needed",
-      "vec": "/P4J/wv0+gYA/AP7A/v3A/cBB/wGCQgEBAIFAwL7//34/gAECQf7/AEBBAb9Bf7//gH2Avv8+gEHAgQBAvYC//sEAgf38AIB+AABAPQMAgP2CPD9APz4APX//gj3AAUEBgcJAv/5CQsCBAH+/gPx+/4A+fwC/f36+wYCAgL8Avnz/v36C/T9+P8C/AAJAvUB9wP+/PsDAP31/QEIAAP9+QQJ/QD5AP3/9vr/9/0GC/8GA/sE/wTz+/3zAP7//wEDCwsQ/wL9/////AIFA/4DA/r+DPQECfn7/P75/v3/Av8CBf76AvYABf7/B/sHAAD/Cv4EA/39//0HBAn2CPME/gQB/AMDBfn+A/4DCgQB/P0I/PX9/v38CvX9//n8Avz5+QIE/gL9AfwJBwACCPsD/QAG+AIF//kFAvz5+A0DBfwA+f77+gIC/wD9//0D+PgGBf36APz68v4CAQMCBgL++QH9+wEC+vn8+P0E//8A+fz8+wj9/gD2/AYFBggEAf4A///7AAD7Dfz/AQsABgoB/vj9AwP/BPz7AAkB8QUA/wQEAv3+BPgD9/39Cfr+8///APr/DAMDAQj9+/r+9wD8Cfr8AvkECf0A/vsACAMA/Av9+gEEAwgABQD/9wEE+/L9//oABg0DAQMCAQT/Ef4H/Qf6+Qj8+QAE/f0H+QIC/Qc="
+      "text": "Even when requirements are still vague, we will work it out together with you. \n\n Book a free consultation \n\n Contact \n contact@shinai-inc.jp \n\n Hours \n Weekdays 9:00–18:00 JST \n\n Consultation \n 30–60 min, no preparation needed",
+      "vec": "/f4J/wv0+gYA/AP7A/v3A/cBB/wGCQgEBAIFAwL7//34/gAECQf7/AEBBAf8Bf7//gH2Afv8+gEHAgQBAvYC//sEAgf38AIB+AABAPQMAgP2CPD9Afz4APX//gj3AAUEBgcJAv/5CQsCBAH+/gPx+/4A+fwC/f36+wYCAgL8Avnz/v36C/T9+AAC/AAJAvQB9wP+/PsDAP31/QEIAAP9+QQJ/QD5AP3+9vr/9/0GCgAGA/sE/wTz+/3zAP7//wADCwwQ/wL9/////AIFA/4DA/r+DPQECfn6/P75/v3/Av8CBf76AvYABf7/B/sHAAAACv4EA/39//0HBAn3CPME/gQB/AMDBfn+Av4DCgQB/P0I/fX9/v38CvX9//n9Avz5+QIE/gL9AfwJBwACCPsD/QAG+AIF//kFAvz5+A0DBfz/+f77+gIC/wD9//4D+PgGBf36APz68v4CAQMCBgL++QH9+wEC+vr8+P0E//8A+Pz8+gj9/gD2/AYGBggEAf4A///7AAD7Dfz/AQsABgoB/vj9AgT/BPz7AAkB8QUA/wQEAv3+BPgD9/79Cfr+8///APr/DAMDAQf9+/n+9wD8Cfr8AvkECf3//voACAMA/Qv9+gEEAwgABQD/9wEE+/L9//oABg0DAAMCAQP/Ef4H/Qf6+Qj8+QAE/f0H+QIC/gc="
     },
     {
       "id": "industries#0",
@@ -603,8 +603,8 @@
       "id": "faq#13",
       "title": "How does the free consultation work?｜FAQ | ShinAI",
       "url": "https://shinai-inc.jp/en/faq.html",
-      "text": "How does the free consultation work?\nOnline, around 30 to 45 minutes. We begin by listening to your current difficulties and the state you want to reach. No preparation is needed. \n On the call we set out a direction for using AI and how it would proceed.",
-      "vec": "+wELAQT1+gcGBgX4A/j5A/D+A/8EBgUBBvwFBwL3/f35//8EAQP69wEGAAIC/f0F///3B/gD9QIBAf8GCPkAA/oBBAT79QICAAD/AgELAwb+A/MFA/37Avn7+wP3AAQCBAsEAgX5BwkEBf3+/QH3/f7++/0C/P36+gYECQP6APz4AAMCCfX5+f0CAP4A/fP9/wgA//wAA//6/QUL+wD9+AMD/Pf5AAEC/P/6Av8DC/oHBAQE//v6BPj7AvgA+gf9CAgIBQf9/QQD9v8DBQEG/vwICvcJAfL/+/z5Af34AwMBAQH8APIEBvj+BvkF/gT6BP4G//j6/vQNAv37CPcB/wH//wIIAf39Cfz/Bfr8/PgDAfcCAAP7BfoC/PsAAvn++gUAAAT9AfsHCP4KCAIG/wUL9QgK/v0JBAMC9wb+BP3+9gEB+fsEAfz7A/YB+AAQAf38Bfv57Qj+BP0FBgEA/AH/AgP9+Pr4+PYCBPsB+Pr89wj8AQD0AAMD/wcE//j/AwX8AP35Cvj7/wwJBQ3/9AH+AAICB/n6/AYI8QYB/wcJ/gX+BPoB+Pr9BgAF8gIC/gL+CAUFAQX//Pr89gb7BPv9Af0CBwT9//oEC/wB/AsAAQAE/Qr4BQL79/8AAPv8//kFAw0H/QMEAgYCDf0C9wIB+AUABwEIAvwB/wYC/Qc="
+      "text": "How does the free consultation work?\nOnline, around 30 to 60 minutes. We begin by listening to your current difficulties and the state you want to reach. No preparation is needed. \n On the call we set out a direction for using AI and how it would proceed.",
+      "vec": "+wELAQT1+gcGBgT4A/n5A/D+AwAEBgUCBvwGBwL3/vz5//8EAQT69wAGAAIC/f0FAP/3B/gD9QIBAf8GCPkBA/oBBAT79QICAAD/AgILAgb+A/IFA/38Avn7+wP3AAUDBAsEAgT5BgkEBf3+/gH2/f7++/0C/P75+gYDCQP6APz4AAMCCfX5+f0CAP4A/fP9/wgA//wAA/76/QUM+wD8+AMD/Pf4AAEC/P76Av4DC/oHBAQE//v6BPj7AvgA+wf9CAgIBQf9/QQC9v4DBQEG/vwICvcIAPL++/z5Af34BAMBAgH8AfIEB/j+BvkF/gT6BP8F//j6/vQNA/37B/cB/gH//wIIAvz9Cfz+Bfr8+/gDAfYCAAP7BfoC/PsAAvn++wUAAAT9AfsHCP4KCAIG/wUK9QgK/v0JBAMC9wb+BP3+9wEB+fsEAf37A/YB+AAQAv38Bfv57Qj+BP0GBgH//AH/AgL9+Pv4+PYCBPsB+Pr89gj7AQD0AAQDAAcE/vj+AwX8Af35C/j7/wwKBQ0A9AH/AAMDBvn6/AYI8QYB/wcJ/gX+BPkC+fv9BgAF8QID/gL+CAUEAQX+/fr89Qb6BPv9Af0CBwX9//oEC/wA/AsAAQAE/Qr4BQL79/8AAPv8/voFAw4H/QIDAwYCDf0C9wMB+AYACAEIAvwB/wYC/Ac="
     },
     {
       "id": "faq#14",
@@ -666,8 +666,8 @@
       "id": "faq#22",
       "title": "会社概要｜FAQ | ShinAI",
       "url": "https://shinai-inc.jp/en/faq.html",
-      "text": "Mail: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST\nConsultation: Online, 30–45 min, no preparation",
-      "vec": "/AAGBQj7+AUC/gX4C/34A/T/AvoFBAcCBQIAAAf1A/v/BfYECgb//AEACAH/BPoJBQP7Av36+AUJAgEGBvj9AwD//wj+9wIG/f4B/f0GAwT2B/UAA/T2A/QB9AX3CQYDAAcEAAX2AggBBvb8/QH1+f0B+///Af76/AsBBwECA/73/f78Bfj8/AD/+/8FBf75/AX7+AD6APv39v8L/gP7+AoI+P74//8B+QD9+v0DCPkHA/oD+wP7//f6BgD//QMADgID+f76/AH99wAH/v4HAf4DDfUCA/z6+v38+/v9/QMADP7/CPEJBfwABP4I+//+AwYGAgL7APoEAgP+B/L/+gEDAf8GAAD9AvwBCQgDAP4G/vwAAAH6CvgD/fkCAAP7/QQH/QH5/voI+wIBAPsA/P0M9AMHAgEC/v//9wcAB/wF+gL9+QIB/gL9B/UE/PkJCQL1//378gP9+AIBAwT5+gL+/P8J9vwB9v8E//wG9P8C+AkC+v/89wkDAgEHAvoEA/8BCAAADP3+/AQCCAcC+/gBAgD7Avv8/AT97QIJAfsGB/74A/n+9fj5APgB8wX99QH/AP//+QD9/Pn+9AP6BvcABgAEBPwGAP38CQID/Qz/9/8GAQj8BgD4+AD/+Pj6/vgABwwHBAsB/gcDCv4D+wX4+AX5//wG/QAG/QIE/wk="
+      "text": "Mail: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST\nConsultation: Online, 30–60 min, no preparation",
+      "vec": "/QAGBQj6+AQC/wb4C/34A/T/A/oFBAcCBQIAAAf0A/v/BvUECgb//AEACAH+BPoJBQP7Av36+AUIAgEGBvj+AwAA/wj++AEG/P4B/f4GAwT2B/UAA/T2A/QB9AX3CQYEAAcEAAX2AggCBvX8/QH1+f0B+///Af76/AoBBwECA/73/f78Bfj7/P//+/8GBf75/AX7+AD6APr39f8K/gP7+AoJ+P74//4B+QD8+/0DCPkHA/oD+wT6//f6BQD//QMBDQID+f76/AH99wEH/v4HAv4DDvUCAvz6+v38+/r9/gMADP7/CfEJBfwABP4I+/7+AwYFAgL6APoEAQT/CPL/+gEDAf8HAP/9AvwBCQgDAP4F/vwAAAH7CvgD/fkCAAP7/QQH/AH4/voI/AIAAPsA/P0M9AMHAgEC/v//9wcAB/wE+gL9+QIB/gL+BvUE/PkKCQL0//z68gL9+AIBBAT4+gL+/f8K9vwB9v4E/vwG9P8C+QkC+wD89wkDAwEHAvsEA/8BCQAADfz+/QQDBwcC+vgCAQH7Afv8/AT97QIJAfsGBv75A/n/9vn5APgA8wX+9QL/AP//+QH9/Pn+9AP6BvcABgAEBPwFAP38CAID/Qz/9wAGAQj8BgD4+AD/+Pj6/vgABw0HAwoB/gcDCv4C+wT49wb5APwG/QAF/QIE/wo="
     },
     {
       "id": "faq#23",
@@ -708,8 +708,8 @@
       "id": "contact#2",
       "title": "How the free consultation goes｜Contact & Free Consultation | ShinAI",
       "url": "https://shinai-inc.jp/en/contact.html",
-      "text": "Online, around 30 to 45 minutes. \n No preparation or documents needed. \n\n 01",
-      "vec": "+/8H/wT3/AgCAQb5Cfz5AvACAwACAwcBCP8E/QLyAPv6APsIAQP58/8CAv8D//oB/wL4B/MA9QMABAIBCfkCAgAABgb/9QAFAAL/B/8GAQj+A/X+Av/5Avv//AT7/wcBAAoE/wf2BgUCCPz+AAL++/sD//8D+Pr7AAIEAwAA///7/AH7CvP5/v0B+/wB/vcDAA79/fv8AwD5/QUH/P/6+wYC/fb+BQQC+f79AQQBCvsHBAUJA/38B/j5BvoC/Qj8CAQGAQP4/QgB9P0DCAADAf0ECvYGAvP//P38/P/6BgUABPwA/O8CBvb+B/oI/QT4CP4C/f31+/MNBfv7B/ED/gH8AAUDAf74CP//CP3//PgEAPME/wD4BfgD+voBAf79+QYF/wX8Av0FAwIFCAMF//8P+AoI/vQI/wAA+wMEAPsH9AYB9/sDAAH5AvYE9/8OAP/8Bv787wb/AQIKBQD9/QAAAwMC+fz99/YD//wD9gD9+wf+AwL1+gEIAQIBAPoCAQb7AgL2Bfb8/woIDAv8+fsAAv0CCPb3/QEI8gMCAgIHAQX6BPz++vX7CfwA9wH//QMACQUF/Qr8/fv7+gP/BPsDBv8DAf7+/PwBCv8A+goA/QAFAAb5AgIA+Pz8/vz/A/kGAwsJBAcC/wkFDf4C/QD89Ab+AP8B//7//wIE/Qo="
+      "text": "Online, around 30 to 60 minutes. \n No preparation or documents needed. \n\n 01",
+      "vec": "/P8I/wP2/AkDAQb4CPz6AvECAwACAwYCCP8F/QHxAfv5APsIAgT48/8CAgAD/vsBAAL4CPT/9AP/BAIBCPkDAgAABgUA9f8F/wL/BwEGAQj/BPT+Av/6Afv+/AT7/wcB/woE/wb3BQUBCPz+AAL++/sC/wAD+Pv6AQIDAwAA/wD7/AH7CvP4/v4C+/wB/vYDAA79/fv8AwD5/QUH/AD5+wUC/fb9BAMC+f39AAMACfoGBAUIA/z8B/j5BvoB/Qj8CAQHAQP5/QgA9fwDCAADAf0FC/YFAfP+/P77/P/6BwUBBPsA/O8CBvb+B/oJ/gX4Cf4B/f31+/MNBfv8B/ED/QL8/wUEAv34CP7+CP3//PgEAPME/wD3BfgE+voBAf7++gYF/wX8Av0FAwIFCAIG//8P+AkI/fQH/wEA+wMFAPsH9AYB9/wDAAH6A/gE+P8OAP/8Bv787wUAAQIKBQD9/f8ABAMC+fz9+PUE//wD9gD9+gf+AwH1+gEIAQIBAPoBAQb7AgP1Bvb8/wkICwv8+PsAAv4CB/b3/gEI8gIDAgIIAQX6BPz/+vb7Cf0A9wH//QMACQYF/Qr8/fv7+gP+BPsCBv8DAf79/fwBCv8A+woA/AAFAAf5AwIA+P38//wAA/kGAwwKBAYB/wkGDP4C/AH88wb+Af8C//7//wIE/Ao="
     },
     {
       "id": "contact#3",
@@ -722,8 +722,8 @@
       "id": "contact#4",
       "title": "Talk it through online｜Contact & Free Consultation | ShinAI",
       "url": "https://shinai-inc.jp/en/contact.html",
-      "text": "For 30 to 45 minutes we listen to your current work and its difficulties. No jargon, starting from what you are trying to achieve. \n\n 03",
-      "vec": "+QMH/AL4+gYAAgT3AP74Afb8CgIGBQcJCAAEAgX3+vr3Af4C/AL+9gEHAgMDA/0DBv/4CPsB+QACBQD/B/0CAfcE/QL99gUB+wH8//oFBQD+BfMAAPv2Avz5+wL8AAcAAgoJCQT5BwkCAgAC/P3x/Pv9/vsB+v34+gUEBgL3/wL2/wX7BPP0+wEE+PwH//j//gn6A/gA//n3/gYGAAT6+gYB//r6BgIB+fr5+f0ICPgL/PkIAP/7//r2B/wB/AD+BgQJ/wb++gj99/8E/wIDBwIEC/gCBPr8/wL8AgH5BAcFCAn7AfQHAvf/BwAI/gQAA/sIAff8/PQFBgT5BPoF+wT9AwIH///+CPoCBwD8/PgFBPr+AQL5APkD//77AwEC/QcB/gP//P0J/AADCQIDAgEI+AMJ//0FAAIC+QoEBvsB9gT7/AEFA/z+//cB/wQIAP39/fb58AcEAQQDCQL9/f75Af8A9/z9+fv9A/8I+P/69Av+AAL0/woFAAQC//j//QUAAPz4Cfr9ABECBxAC+/wB/QMDCvj9/wIE8AYAAf4O/wUDAvwF+wH/BwAB9AAI/AH+CP4IAQX4/vn79wb9BPn6BPsGCfz5APsCCAL//QkC/AIFAQoBAwH17wQA/fr6+/kCBgsN/wMA/wEBD/0B9foA9wT7AP0GAP0D/QQE/gY="
+      "text": "For 30 to 60 minutes we listen to your current work and its difficulties. No jargon, starting from what you are trying to achieve. \n\n 03",
+      "vec": "+gQI/QL5+wcBAQT3AP74Afb8CwMFBQcJCQAEAgT3+/r3Af0C/AL99QEHAwQDAv0DB//4CfsD+AADBv//B/0CAfcD/QH99gYB+wH9//sFBgD+BfMA//z1A/v5+wL8/wf/AgsICgP4BgkCAgAB/P3x+/z9/vsA+v33+wUEBgL3/gL2/gT8A/T0+gIE+fwG//cA/gn5A/r///j3/gYHAQX6+gYB//r5BQEC+fr5+P0JB/gL/PkHAP78APr2B/sB/AD9BgQJ/wX/+wj9+P8D/gIECAIECvgCBPr8/wL8AgD5AwcFCQn7AvQIAvcABwEI/wMBAvoHAPj7/PQGBgP5BPkD+gT8AwEH//7+CPkCBwD9/PkFA/r9AQH6AfoE//37AgIB/QgB/gP//P0I/QADCQIEAgEJ+AMJ//0E/wIC+QkEB/sB9gX6+wIHBPz+APgCAAQJAf39/Pb58AgFAAUDCQH8/f76//8A9/z9+Pv9Av8H+P769Az+/wL0/woFAAMC//cA/gUAAPz4Cfr9ABACBg8C+/wB/gMECvj8/wID8QQAAv8O/gUDAvwG+wEABwAB9AAI/AD9CP4HAAX4/vn79wb9A/n5BfsGCfz5APwBCQL+/QkD+wIFAQsABAH27wQB/fv7+/kCBgsO/gIAAAECDv0A9vv/9wT6Af0GAf0D/QQE/gU="
     },
     {
       "id": "contact#5",

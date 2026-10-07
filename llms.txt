@@ -24,7 +24,7 @@
 - [シンアイ株式会社 群馬のAI導入支援・AIシステム開発（高崎市）](https://shinai-inc.jp/gunma-ai.html): 群馬県高崎市のAIシステム開発会社。生成AIの業務活用、RAG構築、企業専用AIエージェント開発、技能継承まで。研修や試験導入で終わらせず、企画から運用まで一気通貫してご支援します。群馬県を中心に全国対応・オンライン相談可。
 - [会社情報｜シンアイ株式会社](https://shinai-inc.jp/about.html): 技術より先に、人を見る。群馬県高崎市を拠点とするシンアイ株式会社の目的、代表メッセージ、七つのShin、体制と会社概要。
 - [よくあるご質問｜シンアイ株式会社](https://shinai-inc.jp/faq.html): はじめての方へ、費用と導入、開発の進め方、業界別の活用、サービス、そのほか。群馬県高崎市のAI開発会社ShinAIへのよくある質問。
-- [お問い合わせ・無料相談｜シンアイ株式会社](https://shinai-inc.jp/contact.html): まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜45分、事前準備は不要です。群馬県高崎市のAI開発会社が承ります。
+- [お問い合わせ・無料相談｜シンアイ株式会社](https://shinai-inc.jp/contact.html): まだ要件が決まっていなくても構いません。現在の業務と知識資産から、AIの適用可能性を一緒に整理します。無料相談は30〜60分、事前準備は不要です。群馬県高崎市のAI開発会社が承ります。
 - [お知らせ｜シンアイ株式会社](https://shinai-inc.jp/news.html): シンアイ株式会社の登壇・発表・活動のお知らせ。群馬県高崎市を拠点に、暗黙知のAI化と企業専用AIエージェント開発に取り組んでいます。
 - [高崎商工会議所 第9回合同プレス発表会に登壇しました｜シンアイ株式会社](https://shinai-inc.jp/news-20251205-takasaki-press.html): 2025年12月5日、高崎商工会議所の第9回合同プレス発表会にShinAI代表 柴田昌国が登壇し、「AIで人間らしい時間を取り戻す」という想いのもと、群馬県高崎市を拠点とする取り組みを発表しました。
 - [新規事業 × AI｜オーダーメイドAIシステム開発](https://shinai-inc.jp/ai-business/): 自社の技術・経験・現場のデータを出発点に、新しいサービスをAIで組み立てる。構想の技術的な整理から開発、導入後の運用改善まで一貫して支援する。ものづくり補助金・新事業進出補助金の活用も相談できる。
@@ -59,7 +59,7 @@
 - **自社の業務に合うか分かりません。**
   具体的な業務をうかがいながら、適用できそうな範囲を見極めていきます。合わないと判断した場合は、その旨も率直にお伝えします。
 - **無料相談はどのように進みますか。**
-  オンラインで30〜45分ほど。まず現状の課題と目指したい状態をうかがいます。事前準備は不要です。 その場でAI活用の方向性と進め方を整理してお伝えします。
+  オンラインで30〜60分ほど。まず現状の課題と目指したい状態をうかがいます。事前準備は不要です。 その場でAI活用の方向性と進め方を整理してお伝えします。
 - **どのようなソリューションがありますか。**
   企業専用AIエージェント開発とAI化伴走支援の二つを軸に目的へ合わせて組み合わせます。あわせて、フィジカルAIの研究開発にも取り組んでいます。 それぞれの中身と進め方は事業内容ページをご覧ください。
 - **フィジカルAIとは何ですか。**
@@ -84,6 +84,6 @@
 - [Industries | ShinAI](https://shinai-inc.jp/en/industries.html): Manufacturing, construction, care and professional services, retail, healthcare, education, finance, and real estate. What breaks in each, and how tacit-knowledge AI changes it.
 - [About | ShinAI](https://shinai-inc.jp/en/about.html): People before technology. Our purpose, a message from the founder, the Seven Shin principles, and company facts.
 - [FAQ | ShinAI](https://shinai-inc.jp/en/faq.html): Getting started, cost and rollout, how we build, industry use, our services, and more. Common questions about working with ShinAI.
-- [Contact & Free Consultation | ShinAI](https://shinai-inc.jp/en/contact.html): You do not need defined requirements to talk to us. We map where AI can apply from your current operations and knowledge assets. Free consultation, 30-45 minutes, no preparation needed.
+- [Contact & Free Consultation | ShinAI](https://shinai-inc.jp/en/contact.html): You do not need defined requirements to talk to us. We map where AI can apply from your current operations and knowledge assets. Free consultation, 30-60 minutes, no preparation needed.
 - [News | ShinAI](https://shinai-inc.jp/en/news.html): Talks, announcements, and activities from ShinAI Inc. Based in Takasaki, Gunma, working on tacit-knowledge AI and private enterprise AI agents.
 - [Talk at the 9th Takasaki CCI Joint Press Conference | ShinAI](https://shinai-inc.jp/en/news-20251205-takasaki-press.html): On 5 December 2025, ShinAI founder Masakuni Shibata spoke at the 9th joint press conference of the Takasaki Chamber of Commerce and Industry, presenting the company's work under the idea of using AI to give people their human hours back.
