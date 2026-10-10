@@ -1,0 +1,105 @@
+
+.brand small, .eyebrow, .hero-note, .visual-overline, .visual-no, .conversation-label, .conversation-label small,
+.flow-connector small, .summary-heading small, .summary-card dt, .gentle-check span, .summary-foot, .gentle-visual figcaption,
+.feature-label, .experience-heading > p, .demo-disclaimer, .demo-steps small, .window-top, .sample-badge, .window-title small,
+.transcript-label, .status, .suggestion-heading small, .data-row > span, .evidence, .window-bottom, .enlarge, .flow-note,
+.care-footnote, .form-intro, .form-label, .phase, .roadmap small, .footer small, .footer nav, .principle-grid p,
+#primary-nav a:not(.button), .text-link, .contact-context, .contact-context p, .contact-context span, .contact-steps, .contact-steps b {
+  font-size: 12px;
+}
+.eyebrow { font-size: 13px; }
+.hero-category { font-size: 16px; }
+.hero-intro { font-size: 15px; }
+.principle-grid p { font-size: 13px; }
+.pain article p { font-size: 14px; }
+.summary-card dl > div, .gentle-check p { font-size: 13px; }
+.flow-pair article > p, .care article p, .future-grid > div > p:not(.eyebrow), .contact-layout > div > p, .section-heading p:not(.eyebrow) { font-size: 15px; }
+.faq-list p { font-size: 14px; }
+.pain h3 { line-height: 1.6; }
+.pain-after {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: #fff;
+  border-left: 3px solid #52755c;
+  color: #2f4a37;
+  font-weight: 500;
+}
+.pain article p.pain-after { font-size: 14px; line-height: 1.8; }
+
+.footer nav a, .footer small, .footer .brand small { font-size: 12px; }
+@media (max-width: 1050px) {
+.brand small, .eyebrow, .hero-note, .visual-overline, .visual-no, .conversation-label, .conversation-label small,
+  .flow-connector small, .summary-heading small, .summary-card dt, .gentle-check span, .summary-foot, .gentle-visual figcaption,
+  .feature-label, .experience-heading > p, .demo-disclaimer, .demo-steps small, .window-top, .sample-badge, .window-title small,
+  .transcript-label, .status, .suggestion-heading small, .data-row > span, .evidence, .window-bottom, .enlarge, .flow-note,
+  .care-footnote, .form-intro, .form-label, .phase, .roadmap small, .footer small, .footer nav, .principle-grid p,
+  #primary-nav a:not(.button), .text-link, .contact-context, .contact-context p, .contact-context span, .contact-steps, .contact-steps b {
+    font-size: 12px;
+  }
+  .eyebrow { font-size: 13px; }
+  .hero-category { font-size: 16px; }
+  .hero-intro { font-size: 15px; }
+  .principle-grid p { font-size: 13px; }
+  .pain article p { font-size: 14px; }
+  .summary-card dl > div, .gentle-check p { font-size: 13px; }
+  .flow-pair article > p, .care article p, .future-grid > div > p:not(.eyebrow), .contact-layout > div > p, .section-heading p:not(.eyebrow) { font-size: 15px; }
+  .faq-list p { font-size: 14px; }
+  .pain h3 { line-height: 1.6; }
+  .pain-after {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    background: #fff;
+    border-left: 3px solid #52755c;
+    color: #2f4a37;
+    font-weight: 500;
+  }
+  .pain article p.pain-after { font-size: 14px; line-height: 1.8; }
+  
+}
+@media (max-width: 760px) {
+  .brand-name { font-size: 14px; }
+  .menu-toggle { font-size: 13px; }
+  .hero .eyebrow { font-size: 12px; }
+  .hero-category { font-size: 15px; }
+  .hero-intro { font-size: 14px; }
+  .hero-actions .button { font-size: 14px; }
+  .hero-note, .visual-overline { font-size: 12px; }
+  .footer nav a, .footer small, .footer .brand small { font-size: 12px; }
+.brand small, .eyebrow, .hero-note, .visual-overline, .visual-no, .conversation-label, .conversation-label small,
+  .flow-connector small, .summary-heading small, .summary-card dt, .gentle-check span, .summary-foot, .gentle-visual figcaption,
+  .feature-label, .experience-heading > p, .demo-disclaimer, .demo-steps small, .window-top, .sample-badge, .window-title small,
+  .transcript-label, .status, .suggestion-heading small, .data-row > span, .evidence, .window-bottom, .enlarge, .flow-note,
+  .care-footnote, .form-intro, .form-label, .phase, .roadmap small, .footer small, .footer nav, .principle-grid p,
+  #primary-nav a:not(.button), .text-link, .contact-context, .contact-context p, .contact-context span, .contact-steps, .contact-steps b {
+    font-size: 12px;
+  }
+  .eyebrow { font-size: 13px; }
+  .hero-category { font-size: 16px; }
+  .hero-intro { font-size: 15px; }
+  .principle-grid p { font-size: 13px; }
+  .pain article p { font-size: 14px; }
+  .summary-card dl > div, .gentle-check p { font-size: 13px; }
+  .flow-pair article > p, .care article p, .future-grid > div > p:not(.eyebrow), .contact-layout > div > p, .section-heading p:not(.eyebrow) { font-size: 15px; }
+  .faq-list p { font-size: 14px; }
+  .pain h3 { line-height: 1.6; }
+  .pain-after {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    background: #fff;
+    border-left: 3px solid #52755c;
+    color: #2f4a37;
+    font-weight: 500;
+  }
+  .pain article p.pain-after { font-size: 14px; line-height: 1.8; }
+  
+}
+
+.footer-inner > small, .wrap.footer-inner > small { font-size: 12px; }
+@media (max-width: 760px) {
+  .mid-cta p, .data-row strong, .summary-card dd, .summary-card dl > div, .principle-grid p, .principle-grid b, .suggestion-heading, .footer-inner > small { font-size: 13px; }
+}
+
+.hero-category, .hero-intro, .section-heading p, .pain article p, .flow-pair article > p { text-wrap: pretty; }

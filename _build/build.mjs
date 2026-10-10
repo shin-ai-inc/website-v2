@@ -231,6 +231,11 @@ const normalizeMain = (raw) =>
    2026-09-13: /lp/ は社内用語がURLに出ていたため /start/ へ移した。 */
 const REDIRECT_DIRS = ["lp/"];
 
+/* 検索に載せない独立ページ(noindex)。URL を直接渡して使う。
+   dist へ写して圧縮はするが、sitemap と llms.txt には載せない。
+   2026-10-10: 歯科受付コパイロットの LP(医院のヒアリング用・柴田判断)。 */
+const NOINDEX_DIRS = ["dental-copilot/"];
+
 const standalonePages = [
   {
     dir: "ai-business/",
@@ -1158,6 +1163,12 @@ for (const p of standalonePages) {
    sitemap にも llms.txt にも載せない(正規の場所は移転先だけ)。 */
 for (const dir of REDIRECT_DIRS) {
   cpSync(join(ROOT, dir), join(DIST, dir), { recursive: true });
+}
+for (const dir of NOINDEX_DIRS) {
+  const html = readFileSync(join(ROOT, dir, "index.html"), "utf8");
+  if (!/<meta name="robots" content="noindex[^"]*">/.test(html)) throw new Error(`${dir} に noindex が無い(検索に載せない前提のページ)`);
+  cpSync(join(ROOT, dir), join(DIST, dir), { recursive: true });
+  minifyTree(join(DIST, dir));
 }
 for (const loc of LOCALES) toDist(loc.dir + "site.webmanifest");
 toDist(".well-known/security.txt");
