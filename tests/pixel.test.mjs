@@ -118,11 +118,16 @@ function formPage({ fbq = "spy", responses }) {
   };
   const button = { disabled: false, querySelector: () => ({ textContent: "" }) };
   let submitHandler = null;
+  /* 人間確認(Turnstile)の枠と部品。サイトキーが入っている form.js は、部品の札(token)が無いと
+     送信を止める(2026-10-10 に鍵を入れたとき、この土台に部品が無く 6 件が落ちた)。
+     本物の部品の代わりに、描画で札を返す模擬の部品を置く。 */
+  const tsSlot = { hidden: true };
   const form = {
     hidden: false,
     addEventListener: (type, fn) => { if (type === "submit") submitHandler = fn; },
     querySelector: (sel) => {
       if (sel === "[type='submit']") return button;
+      if (sel === "[data-turnstile]") return tsSlot;
       const m = sel.match(/\[name='([^']+)'\]/);
       return m ? fields[m[1]] || null : null;
     },
@@ -149,9 +154,15 @@ function formPage({ fbq = "spy", responses }) {
   };
   if (fbq === "spy") window.fbq = (...args) => tracked.push(args);
   if (fbq === "throws") window.fbq = () => { throw new Error("pixel broken"); };
+  window.turnstile = {
+    render: () => "widget-1",
+    getResponse: () => "test-turnstile-token",
+    reset() {}
+  };
   window.window = window;
   const context = vm.createContext(window);
   vm.runInContext(read("start/form.js"), context, { filename: "start/form.js" });
+  if (typeof window.shinaiTurnstileReady === "function") window.shinaiTurnstileReady();
   const submit = () => submitHandler({ preventDefault() {} });
   const settle = () => new Promise((r) => setTimeout(r, 0));
   const leads = () => tracked.filter((a) => a[0] === "track" && a[1] === "Lead");
