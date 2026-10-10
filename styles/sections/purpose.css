@@ -78,3 +78,16 @@
     font-size: var(--fs-sm);
   }
 }
+
+/* 会社情報ページはこの節がpage-hero(パンくずのみ)の直後に来るため、通常の
+   --section-py(最大8rem)とeyebrowの余白をそのまま使うと見出しが沈み、
+   直後の写真(.about-photo-break)が最初の画面に入らない(柴田指摘 2026-10-10)。
+   ホーム(index.html)側の.purposeはそのまま維持し、会社情報ページだけ詰める。 */
+@media (min-width: 821px) {
+  body[data-page="about"] .purpose {
+    padding-block: var(--space-6);
+  }
+  body[data-page="about"] .purpose__eyebrow {
+    margin-bottom: var(--space-4);
+  }
+}

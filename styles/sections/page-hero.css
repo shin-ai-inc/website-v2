@@ -64,6 +64,16 @@
   }
 }
 
+/* 会社情報ページはPCでもパンくず1行だけの軽い内容なのに、通常のpage-heroと同じ
+   余白を取っていたため帯だけが間延びして見えていた(柴田指摘 2026-10-10・PC表示の
+   トップビューで見出し「AIで人間らしい時間を取り戻す。」が沈み、直後の写真が
+   最初の画面に入らない)。この帯に限って上下の余白を詰める。 */
+@media (min-width: 821px) {
+  body[data-page="about"] .page-hero {
+    padding-block: var(--space-5) var(--space-4);
+  }
+}
+
 .page-hero__eyebrow {
   margin-bottom: var(--space-3);
 }
