@@ -3,6 +3,6 @@
   window.SHINAI_CONFIG = {
     chatbotApiBase: "https://api.shinai-inc.jp",
     contactPath: "contact.html",
-    turnstileSiteKey: ""
+    turnstileSiteKey: "0x4AAAAAAFTI-1DcWcB0RTwD"
   };
 })();
