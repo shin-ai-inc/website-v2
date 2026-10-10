@@ -14,6 +14,8 @@
   "assets": {
     "directory": "./dist",
     "html_handling": "none",
-    "not_found_handling": "none"
+    // 無い URL は dist/404.html を返す(none だと本文 0 バイト)。single-page-application にはしない
+    // (存在しない URL まで 200 になり、偽の 404 で検索の評価が濁る・2026-10-10 セキュリティ点検)。
+    "not_found_handling": "404-page"
   }
 }

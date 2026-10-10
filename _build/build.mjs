@@ -1172,15 +1172,37 @@ for (const dir of NOINDEX_DIRS) {
 }
 for (const loc of LOCALES) toDist(loc.dir + "site.webmanifest");
 toDist(".well-known/security.txt");
+/* 404 のページ。Workers の静的配信は not_found_handling が "404-page" のとき dist/404.html を返す。
+   無いと本文 0 バイトの 404 になる(2026-10-10 の点検で確認)。 */
+toDist("404.html");
 /* 応答ヘッダ(Netlify/Cloudflare Pages形式)。CSPは上の単一定義から差し込み、
-   deploy/_headers 側の {{CSP}} を置換する。二重管理をここで断つ。 */
+   deploy/_headers 側の {{CSP}} を置換する。二重管理をここで断つ。
+   /start/ は自分の meta に別の CSP(Meta Pixel・Turnstile)を持ち、全体の CSP が重なると
+   connect.facebook.net が落ちて計測が止まる(2026-10-10 の点検)。/start/ の meta から
+   生成して {{START_CSP}} に差し込み、手書きの二重管理をしない。 */
+const startCsp = (read("start/index.html").match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/) || [])[1];
+if (!startCsp) throw new Error("start/index.html に CSP の meta が無い");
 writeFileSync(
   join(DIST, "_headers"),
   /* replaceAll: 最初の1箇所だけ置くと、説明コメント側が先に当たって規則行が
      "{{CSP}}" のまま公開される(2026-09-11 に実際にそうなっていた)。 */
-  read("deploy/_headers").replaceAll("{{CSP}}", CSP_HEADER),
+  read("deploy/_headers").replaceAll("{{CSP}}", CSP_HEADER).replaceAll("{{START_CSP}}", `${startCsp}; frame-ancestors 'none'`),
   "utf8"
 );
+/* URL の書き換え(Workers の静的配信)。html_handling を none にしているため、
+   ディレクトリ形式の URL(/ ・/start/ など)は index.html に写す規則が無いと 404 になる
+   (2026-10-10 の点検で、トップ・/start/・/en/・/ai-business/ が 404 だった)。
+   末尾スラッシュ無しは 301 で寄せる(GitHub Pages と同じ動き)。 */
+const dirUrls = [
+  ...LOCALES.map((l) => "/" + l.dir),
+  ...standalonePages.map((p) => "/" + p.dir),
+  ...REDIRECT_DIRS.map((d) => "/" + d),
+  ...NOINDEX_DIRS.map((d) => "/" + d),
+];
+const redirects = dirUrls.flatMap((u) => (u === "/"
+  ? ["/ /index.html 200"]
+  : [`${u.slice(0, -1)} ${u} 301`, `${u} ${u}index.html 200`]));
+writeFileSync(join(DIST, "_redirects"), redirects.join("\n") + "\n", "utf8");
 
 /* ---- 8. チャットボットの知識ベース ----
    公開ページの本文だけを抜き出し、AIが参照する唯一の事実源とする。

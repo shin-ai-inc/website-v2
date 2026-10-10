@@ -6,7 +6,9 @@
 
 /*
   Content-Security-Policy: {{CSP}}
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  # HSTS は段階的に上げる(2026-10-10 セキュリティ点検)。まず 1 日。全サブドメインの https を確かめてから
+  # includeSubDomains を足し、2 年にしてから preload を申請する(柴田の判断待ち)。
+  Strict-Transport-Security: max-age=86400
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
@@ -23,9 +25,12 @@
 /js/*
   Cache-Control: public, max-age=31536000, immutable
 
+# `*` はスラッシュもまたぐので、/en/*.html もここに当たる(別の規則を足すと値が二重に連結される)
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
-# `/*.html` は直下しか一致しないため、英語版(/en/)にも同じ再検証を明示する
-/en/*.html
-  Cache-Control: public, max-age=0, must-revalidate
+# /start/ は自分の meta の CSP(Meta Pixel・Turnstile)を持つ。全体の CSP を外して、
+# meta と同じ値に frame-ancestors を足したものを付け直す(値は build.mjs が start/index.html から生成)。
+/start/*
+  ! Content-Security-Policy
+  Content-Security-Policy: {{START_CSP}}

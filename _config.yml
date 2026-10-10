@@ -29,6 +29,10 @@ exclude:
   # 検証・開発ツール
   - tests
   - tools
+  # 社内の検証ページ。?server= で外部の住所(*.trycloudflare.com)から台本を読み込めるため、
+  # 第三者が shinai-inc.jp 上で自分の JavaScript を動かす URL を作れる(2026-10-10 セキュリティ点検・P1)。
+  # 続けて使うなら、許可する住所を特定のホスト名に絞ってから戻す
+  - lab
   # 他ホスティング向けの設定
   - netlify.toml
   - wrangler.jsonc
