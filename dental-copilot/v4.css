@@ -85,3 +85,23 @@
   
   .principle-grid p:first-child { font-size: 13px; }
 }
+
+.consult-box { display: grid; }
+.consult-form .field { display: grid; gap: 6px; }
+.consult-form .field > label { font-weight: 800; font-size: 15px; }
+.consult-form .field small, .consult-form legend small { font-weight: 500; font-size: 13px; color: var(--text-sub); margin-left: 6px; }
+.consult-form .req { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: #3d644f; color: #fff; font-size: 12px; font-weight: 700; vertical-align: 1px; }
+.consult-form input[type="text"], .consult-form input[type="email"] { font: inherit; font-size: 16px; color: var(--text); width: 100%; border: 1px solid var(--line-strong); border-radius: 10px; padding: 12px 14px; background: #fff; }
+.consult-form input[aria-invalid="true"] { border-color: #b45309; }
+.consult-form fieldset { border: 0; margin: 6px 0 0; padding: 0; display: grid; gap: 8px; }
+.consult-form .consent { margin-top: 4px; }
+.consult-form .consent a { color: #2c4a3b; text-decoration: underline; }
+.form-error { margin: 0; padding: 10px 14px; border-radius: 10px; background: #fff5df; border: 1px solid #e8c47a; color: #5f4310; font-size: 14px; font-weight: 700; line-height: 1.7; }
+.turnstile-slot { min-height: 66px; }
+.consult-form button[disabled] { opacity: .6; cursor: progress; }
+.lp-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.consult-done { text-align: center; justify-items: center; }
+.consult-done .done-mark { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #e7f0eb; color: #2f6b4f; font-size: 26px; font-weight: 800; }
+.consult-done h3:focus { outline: none; }
+
+.consult-box [hidden] { display: none !important; }
