@@ -11,6 +11,8 @@
   // 同じ内容が別の URL でも読めてしまう(柴田判断 2026-09-16)。
   "workers_dev": false,
   "preview_urls": false,
+  // 本番のドメイン。custom_domain で DNS と証明書を Cloudflare が作る(2026-10-10 に GitHub Pages から移行)。
+  "routes": [{ "pattern": "shinai-inc.jp", "custom_domain": true }],
   "assets": {
     "directory": "./dist",
     "html_handling": "none",
