@@ -3,7 +3,7 @@
 
   var API = "https://api.shinai-inc.jp";
   var MAIL = "support@shinai-inc.jp";
-  var TURNSTILE_SITE_KEY = "0x4AAAAAAFTI-1DcWcB0RTwD";
+  var TURNSTILE_SITE_KEY = "0x4AAAAAAFTJZdr2_RyakUSL";
   var TS_MSG = "人間確認が完了していません。数秒待ってから、もう一度お試しください。"
     + "解消しない場合は " + MAIL + " へ直接お送りください。";
 
