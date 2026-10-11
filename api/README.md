@@ -65,7 +65,15 @@ FAQは `<details>`、会社概要は `<dl>` と、意味の境界が既にマー
 | 構造分離 | `index.mjs` | 知識は system、入力は user。連結しないことで指示への昇格を防ぐ |
 | 話題スコープ | `lib/guard.mjs` のシステムプロンプト | 資料に根拠のない事柄（競合評価・法律相談・時事）を一括で抑止 |
 | 日次予算 | `lib/budget.mjs` + Durable Object | 低速分散攻撃による課金枯渇 |
-| 出力ゲート | `lib/outgate.mjs` | 金額・納期・保証の約束生成 |
+| 同一IP上限 | `index.mjs`（`CHAT_PER_IP_LIMIT`・同じ Durable Object） | 1台の機械が日次総量を使い切ること |
+| 本文の大きさ | `lib/contract.mjs` の `bodyTooLarge` | 16KB 超の本文を読む前に 413 で止める |
+| 出力ゲート | `lib/outgate.mjs` | 金額（漢数字・外貨含む）・納期・保証の約束生成 |
+| 監査 | `lib/audit.mjs` + D1 `audit_events`（90日） | 統制の作動を Worker の再起動をまたいで残す |
+
+**秘密の既定は「無い」なら止める側に倒す。** `IP_SALT`（`lib/iphash.mjs`・HMAC-SHA256）が未設定なら
+IP 単位の統制が要る要求を定型応答で止め、`TURNSTILE_SECRET` が未設定なら問い合わせを受理せず控えへ落とす。
+設定済みで形式が弱い（短い）値は、監査に一度記録して続行する（本番は設定済み）。
+Slack への通知は利用者の入力を `lib/slack.mjs` で逃がし、`parse:"none"` を付ける。
 
 クライアント側（`scripts/chatbot.js`）にも同種の検証があるが、あれは
 体験のための早期フィードバックであり統制ではない（curlで迂回される）。
@@ -100,7 +108,7 @@ FAQは `<details>`、会社概要は `<dl>` と、意味の境界が既にマー
    ```
 3. `wrangler.toml` の `CONTACT_FROM_EMAIL` を、2で認証したドメインの実アドレスへ
    置き換える（プレースホルダのままだと送信できず、控えとSlack通知だけが動く）。
-4. 控え用テーブルを作成する（`voices` と同じD1データベースを使い回す。初回のみ）。
+4. 控え用と監査用のテーブルを作成する（`voices` と同じD1データベースを使い回す。初回のみ・再実行も安全）。
    ```bash
    cd api && npx wrangler d1 execute shinai-voices --remote --file=schema.sql
    ```
@@ -122,7 +130,8 @@ cd api && npx wrangler login
 
 # 3. 秘密を投入（コードにも設定ファイルにも書かない）
 npx wrangler secret put OPENAI_API_KEY
-npx wrangler secret put IP_SALT        # 任意の長いランダム文字列
+npx wrangler secret put IP_SALT        # 32文字以上のランダム文字列(未設定だと IP 単位の統制が止める側に倒れる)
+npx wrangler secret put TURNSTILE_SECRET  # 人間確認の秘密鍵(未設定だと問い合わせは受理せず控えへ落ちる)
 
 # 4. デプロイ
 npx wrangler deploy
@@ -178,7 +187,8 @@ python tools/audit_replies.py  # 公開中のAPIへ18問を投げ、機械が書
 | `tests/retrieve.test.mjs` | 字面検索・pin・順位 |
 | `tests/vector.test.mjs` | 量子化・コサイン・順位融合 |
 | `tests/knowledge.test.mjs` | 生成物と実データでの検索精度 |
-| `tests/contact-api.test.mjs` | 問い合わせフォームの受理契約・送信/通知の組み立て |
+| `tests/contact-api.test.mjs` | 問い合わせフォームの受理契約・送信/通知の組み立て・人間確認の鍵の状態 |
+| `tests/audit.test.mjs` | 監査の行・IP の塩と HMAC・本文の大きさ・Slack の表記 |
 
 ## 変えてはいけないこと
 

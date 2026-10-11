@@ -18,6 +18,20 @@
    人に伝える上限は guard.MAX_MESSAGE_CHARS が持つ。 */
 export const MAX_PAYLOAD_CHARS = 4000;
 
+/* 本文の大きさの絶対上限(バイト)。request.json() は全文を読んで構文解析するため、
+   巨大な本文は読む前に Content-Length で落とす。問い合わせの最大(2000字×4バイト+
+   Turnstile の 2048 字)でも 16KB に収まる。 */
+export const MAX_BODY_BYTES = 16384;
+
+/**
+ * Content-Length が上限を超えているか。ヘッダが無い・読めないときは false
+ * (ここは早期拒否であり受理契約ではない。小さな正当な要求を巻き込まない)。
+ */
+export function bodyTooLarge(contentLength) {
+  if (typeof contentLength !== "string" || !/^\d+$/.test(contentLength.trim())) return false;
+  return Number(contentLength) > MAX_BODY_BYTES;
+}
+
 /* 受理する鍵はこれだけ。増やすときは脅威を再評価する。 */
 const ALLOWED_KEYS = new Set(["message", "sessionId"]);
 

@@ -6,7 +6,9 @@
 #
 # 秘密は絶対にここへ書かない。投入は次のコマンドのみ:
 #   npx wrangler secret put OPENAI_API_KEY
-#   npx wrangler secret put IP_SALT
+#   npx wrangler secret put IP_SALT             32文字以上のランダム文字列。未設定だと IP 単位の統制が「止める側」に倒れ、
+#                                               チャットと問い合わせが定型応答(busy)になる(公開の既定値は持たない)
+#   npx wrangler secret put TURNSTILE_SECRET    人間確認の秘密鍵。未設定だと問い合わせは受理せず控え(D1)へ落ちる
 #   npx wrangler secret put SLACK_WEBHOOK_URL   お客様の声・問い合わせ送信失敗の通知先
 #   npx wrangler secret put ADMIN_TOKEN         記録の閲覧に使う鍵(32文字以上)
 #   npx wrangler secret put RESEND_API_KEY      問い合わせフォームのメール送信(Resend)
@@ -22,6 +24,10 @@ compatibility_date = "2026-08-01"
 # このゾーンはWAF・レート制限が適用されないため、開けたままだと
 # カスタムドメイン側に敷いた統制をすべて迂回されうる。
 workers_dev = false
+
+# 版ごとのプレビューURL(*.workers.dev 配下)も切る。workers_dev と同じ理由で、
+# カスタムドメイン側の統制を迂回する入口になる。
+preview_urls = false
 
 # 公開先。custom_domain にすると、CloudflareがDNSレコード(AAAA)も自動作成する。
 # pattern 形式(custom_domain = false)ではルートだけが張られ、DNSは別途手当てが必要になる。
@@ -48,12 +54,15 @@ CONTACT_TO_EMAIL = "contact@shinai-inc.jp"
 CONTACT_FROM_EMAIL = "ShinAI サイト <noreply@send.shinai-inc.jp>"
 # 日次上限。実勢の相談件数を大きく超えつつ、フォーム連投は止められる値。
 # 人間確認(Turnstile)の秘密鍵は vars ではなく secret: `npx wrangler secret put TURNSTILE_SECRET`
-# 未設定のあいだは要求しない(contact.mjs turnstileRequired)。サイトキーは scripts/config.js 等に置く。
+# 未設定のあいだは受理せず控えへ落とす(contact.mjs turnstileSecretStatus)。サイトキーは scripts/config.js 等に置く。
 CONTACT_DAILY_LIMIT = "30"
 # 同一IP・同一日の上限。総量(30)を1台に使い切らせない
 CONTACT_PER_IP_LIMIT = "3"
 # 同一IPが乗っ取りを試みた回数の上限。超えたらその日は定型応答のみ
 CHAT_FLAG_LIMIT = "5"
+# 同一IP・同一日にチャットの生成へ進める回数の上限。1台の機械に日次総量(800)を
+# 使い切らせない。正当な訪問者が1日に40問を超えることは実務上ない。超えたら busy の定型応答
+CHAT_PER_IP_LIMIT = "40"
 
 # 日次予算メーター。単一インスタンスで全体を数え、
 # IP単位の制限では止まらない低速分散を捕捉する。

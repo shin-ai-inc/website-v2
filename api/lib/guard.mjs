@@ -73,7 +73,15 @@ const OFFTASK_PATTERNS = [
   /訳して\s*[:：]/,
   /(コード|プログラム|関数|スクリプト|sql|python|javascript)[\s\S]{0,12}(書い|作っ|生成|実装)/i,
   /(詩|小説|俳句|川柳|作文|物語|歌詞)[\s\S]{0,8}(書い|作っ|考え)/,
-  /(計算して|を計算|の\s*[0-9０-９]+\s*乗)/
+  /(計算して|を計算|の\s*[0-9０-９]+\s*乗)/,
+  /* 復唱・転記・言い換え・要約の依頼。規範の持ち出しを「作業」として頼む形で、
+     会社案内と重ならない。「要約資料はありますか」のような名詞の使い方は含めない。 */
+  /(復唱して|そのまま(書いて|出力して|返して|表示して)|言い換えて|丁寧に直して|要約して)/,
+  /* 「丁寧な日本語に」「敬語に」と語を挟む書式変換の依頼。目的語を文章に限り、
+     「業務の手順を直して」のような相談は巻き込まない。 */
+  /(文|文章|テキスト|以下|上記)[^。]{0,8}を[^。]{0,12}(直して|書き換えて|書き直して|変換して)/,
+  /\b(summari[sz]e|rephrase|paraphrase)\b/i,
+  /\brepeat\b[^.?\n]{0,12}\b(this|that|it|after me|back|the (text|message|following|above))\b/i
 ];
 
 /* 人につないでほしい、という依頼。
@@ -352,6 +360,19 @@ const LEAK_PATTERNS = [
   // 役割定義の宣言 ―「あなたは〜のアシスタント/AIです」
   /あなたは[\s\S]{0,20}(アシスタント|案内AI|AI)[\s\S]{0,4}です/,
   /\byou are (the|a|an) [\s\S]{0,30}(assistant|guide ai|ai)\b/i,
+  /* 現行の規範文(RULES_JA / RULES_EN)の冒頭 2 文の特徴語。
+     上の型は旧い規範の言い方を見ており、いまの規範を言い換えた復唱を取り逃がしていた
+     (2026-10-11 監査)。名乗り(「ShinAIサポートAIです。ご案内を担当しています」)は
+     応対例そのものなので当てない。規範にしか現れない組み合わせだけを見る。 */
+  /あなたの名前は/,
+  /訪問者の質問に対し/,
+  /該当する記述を探/,
+  /その内容を使って[\s\S]{0,8}答え/,
+  /\byour name is\b/i,
+  /\blook through the company material\b/i,
+  /\bfind the relevant passages\b/i,
+  /\banswer in english using what you find\b/i,
+  /\bwhen a visitor asks a question\b/i,
   // 参照範囲の指示 ―「以下の〜だけを使って/根拠に」
   /(以下|下記)の[\s\S]{0,12}(だけ|のみ)[\s\S]{0,10}(使っ|用い|根拠)/,
   /\b(only|solely)[\s\S]{0,20}(based on|grounded in)[\s\S]{0,20}(material|context|below)\b/i,

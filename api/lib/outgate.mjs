@@ -16,19 +16,33 @@
     資料に実在する事実の言及は通す。
 */
 
-/* 断定・保証の語。単独では判定せず、金額や納期と組んだときに効かせる場合もある。 */
-const ASSERTION_JA = /(必ず|確実に|保証(いた)?し|お約束(いた)?し|間違いなく)/;
-const ASSERTION_EN = /\b(guarantee|guaranteed|we promise|certainly will|definitely will)\b/i;
+/* 断定・保証の語。会社を代表した約束にあたるため単独で止める。
+   2026-10-11 の監査で「絶対に」「確約」「100%」「断言」「必ずや」「お約束できます」が
+   素通りした。活用を数え上げず語幹で見る。 */
+const ASSERTION_JA = /(必ず|確実に|絶対に|確約|断言|保証(いた)?し|お約束|間違いなく|100\s*[%％]|１００\s*[%％])/;
+const ASSERTION_EN = /\b(guarantee|guaranteed|we promise|certainly will|definitely will|absolutely certain|absolutely guaranteed|without fail|rest assured|we assure|i assure)\b|\b100\s*%/i;
 
 /* 金額。資料に無い数値を当社の口として言わせないため、具体的な額は一律で止める。
-   「無料相談」は資料にある事実なので誤検知しないよう、金額の形だけを見る。 */
-const MONEY_JA = /([0-9０-９,，]+\s*(円|万円|億円)|[¥￥]\s*[0-9０-９,，]+)/;
-const MONEY_EN = /(\$\s*[0-9,]+|\b[0-9,]+\s*(yen|usd|dollars)\b)/i;
+   「無料相談」は資料にある事実なので誤検知しないよう、金額の形だけを見る。
+   数字は算用数字(全角含む)と漢数字の両方。単位は円系(百円・千円・万円・億円)と
+   外貨(ドル・ユーロ・USD・JPY・EUR・$・€・¥)。「円滑」のような語は数字が先行しないため当たらない。 */
+const NUMERAL = "(?:[0-9０-９][0-9０-９,，.．]*|[一二三四五六七八九十百千万億〇零数]+)";
+const MONEY_JA = new RegExp(
+  NUMERAL + "\\s*(?:百|千|万|億)*円"
+  + "|[¥￥€＄$]\\s*" + NUMERAL
+  + "|" + NUMERAL + "\\s*(?:ドル|ユーロ|(?:USD|JPY|EUR)\\b)", "i"
+);
+const MONEY_EN = /([$€¥]\s*[0-9][0-9,.]*|\b[0-9][0-9,.]*\s*(yen|usd|jpy|eur|euros?|dollars?)\b|\bcosts?\s+(about|around|roughly|approximately|only|just)?\s*[0-9])/i;
 
 /* 納期。期間そのものは資料にもあるため(例: 最短2週間ほど)、
    断定と組んだときだけ止める。「ほど」「目安」等の緩衝がある表現は通す。 */
 const DURATION_JA = /[0-9０-９]+\s*(日|週間|ヶ月|カ月|か月|年)/;
 const DURATION_EN = /\b[0-9]+\s*(days?|weeks?|months?|years?)\b/i;
+
+/* 納期の言い切り。「で完成します」「納品可能です」「以内に導入」のように、
+   期間に完了の動詞が結びついた形。「〜ほどで形にできる場合があります」は当たらない。 */
+const DEADLINE_JA = /(で(完成|納品|導入|リリース)(でき|し|させ|可能|いたし)|(納品|完成|導入|リリース)(可能|いたします|します|させます)|以内に(納品|完成|導入|リリース|必ず|確実))/;
+const DEADLINE_EN = /\b(deliver(ed|y)?|complete[ds]?|completion|launch(ed)?|finish(ed)?|implement(ed)?|go live|ready)\b[^.]{0,20}\b(in|within)\s+[0-9]+\s*(days?|weeks?|months?)\b/i;
 
 /* 起きたか分からない出来事への謝罪。
    苦情を受けると、経緯を何も知らないまま会社を代表して詫び、
@@ -91,7 +105,7 @@ export function screenAnswer(raw, locale) {
 
   /* 期間は断定と組んだときのみ止める。
      「最短2週間ほど」(資料の事実)は通し、「2週間で完成します」は止める。 */
-  if (duration.test(text) && /(で(完成|納品|導入)(でき|し)|以内に(必ず|確実))/.test(text)) {
+  if (duration.test(text) && (en ? DEADLINE_EN : DEADLINE_JA).test(text)) {
     return { blocked: true, text: fallback, reason: "deadline_claim" };
   }
 

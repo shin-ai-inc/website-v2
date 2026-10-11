@@ -8,7 +8,7 @@
   Content-Security-Policy: {{CSP}}
   # HSTS は段階的に上げる(2026-10-10 セキュリティ点検)。まず 1 日。全サブドメインの https を確かめてから
   # includeSubDomains を足し、2 年にしてから preload を申請する(柴田の判断待ち)。
-  Strict-Transport-Security: max-age=86400
+  Strict-Transport-Security: max-age=2592000
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()

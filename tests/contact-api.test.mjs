@@ -17,7 +17,7 @@ import {
   deadLetterRow,
   MAX_CHARS
 } from "../api/lib/contact.mjs";
-import { turnstileRequired, turnstileVerdict } from "../api/lib/contact.mjs";
+import { turnstileSecretStatus, turnstileVerdict } from "../api/lib/contact.mjs";
 
 const valid = () => ({
   company: "シンアイ株式会社",
@@ -176,13 +176,6 @@ test("確認トークンは受け取り、無ければ空として通す(要る�
   assert.equal(r.reason, "turnstile_malformed");
 });
 
-test("秘密鍵が無い環境では確認を要求しない。あれば必ず要求する", () => {
-  assert.equal(turnstileRequired({}), false);
-  assert.equal(turnstileRequired({ TURNSTILE_SECRET: "" }), false);
-  assert.equal(turnstileRequired({ TURNSTILE_SECRET: "short" }), false, "短すぎる値は未設定扱い");
-  assert.equal(turnstileRequired({ TURNSTILE_SECRET: "0x0000000000000000000000000000000000" }), true);
-});
-
 test("照会の応答から判定を出す", () => {
   assert.equal(turnstileVerdict({ success: true, hostname: "shinai-inc.jp" }, { hostname: "shinai-inc.jp" }).ok, true);
   assert.equal(turnstileVerdict({ success: true }, { hostname: "shinai-inc.jp" }).ok, true, "hostname 無しの応答は通す");
@@ -192,3 +185,31 @@ test("照会の応答から判定を出す", () => {
   assert.equal(turnstileVerdict("yes").reason, "turnstile_unreadable");
 });
 
+
+/* ---- 通知の表記(利用者の入力を Slack の記法として解釈させない) ---- */
+
+test("送信失敗の通知も利用者の入力を逃がし、記法の解釈を切る", () => {
+  const parsed = parseContactBody({
+    ...valid(),
+    company: "<https://evil.example/x|https://shinai-inc.jp/admin> 株式会社",
+    name: "<!channel> 山田"
+  });
+  assert.equal(parsed.ok, true, parsed.reason);
+  const payload = contactSlackPayload(parsed.value, "resend_500 & more");
+  assert.equal(payload.parse, "none");
+  assert.ok(!payload.text.includes("<!channel>"), payload.text);
+  assert.ok(!payload.text.includes("<https://evil.example"), payload.text);
+  assert.ok(payload.text.includes("&lt;!channel&gt;"), payload.text);
+  assert.ok(payload.text.includes("&amp; more"), "理由も逃がす");
+});
+
+/* ---- 人間確認の鍵の状態(未設定は拒否側・弱い形式は記録して続行) ---- */
+
+test("秘密鍵が未設定なら unconfigured、短ければ weak、足りていれば ok", () => {
+  assert.equal(turnstileSecretStatus({}), "unconfigured");
+  assert.equal(turnstileSecretStatus({ TURNSTILE_SECRET: "" }), "unconfigured");
+  assert.equal(turnstileSecretStatus({ TURNSTILE_SECRET: "  " }), "unconfigured");
+  assert.equal(turnstileSecretStatus(undefined), "unconfigured");
+  assert.equal(turnstileSecretStatus({ TURNSTILE_SECRET: "short" }), "weak");
+  assert.equal(turnstileSecretStatus({ TURNSTILE_SECRET: "0x0000000000000000000000000000000000" }), "ok");
+});

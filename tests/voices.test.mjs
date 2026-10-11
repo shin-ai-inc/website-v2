@@ -115,3 +115,19 @@ test("保存期間を過ぎた記録は消える境界を持つ", () => {
   const cutoff = new Date(purgeCutoff(now));
   assert.equal(Math.round((now - cutoff) / 86400000), 180);
 });
+
+/* ---- 通知の表記(利用者の入力を Slack の記法として解釈させない) ---- */
+
+test("通知は利用者の入力を逃がし、記法の解釈を切る", () => {
+  /* <!channel> は全員呼び出し、<url|label> は表示とリンク先が食い違う偽装。
+     どちらも利用者が本文に書くだけで効いていた。 */
+  const payload = slackPayload(voiceRecord({
+    message: "<!channel> <https://evil.example/x|https://shinai-inc.jp/admin>",
+    locale: "ja", verdict: "allow", sessionHash: "s1",
+    at: new Date("2026-10-11T03:00:00Z")
+  }));
+  assert.equal(payload.parse, "none");
+  assert.ok(!payload.text.includes("<!channel>"), payload.text);
+  assert.ok(!payload.text.includes("<https://evil.example"), payload.text);
+  assert.ok(payload.text.includes("&lt;!channel&gt;"), payload.text);
+});

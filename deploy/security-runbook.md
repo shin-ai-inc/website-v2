@@ -79,3 +79,40 @@
 - 右クリック禁止・開発者ツール封じ・JS難読化: 防げないうえに、読み上げ・検索・速度を確実に損なう。
 - `X-Robots-Tag: noindex` の一括付与: 検索から消える。防御ではない。
 - 本体サイトへの JS チャレンジ（人間確認）: Googlebot は通るが、AI クローラと一部の SNS プレビューが落ちる。
+
+## 2026-10-11 点検の追記（API Worker）
+
+### 秘密の設定状況（名前のみ・値は見ていない）
+`cd api && npx wrangler secret list` で 2026-10-11 に確認。本番には `IP_SALT` と `TURNSTILE_SECRET` が
+**設定済み**。この事実を前提に、コード側の既定を次のとおり変えた。
+
+- `IP_SALT`: 未設定時の公開既定値（`"shinai"`）を廃止。未設定なら `ip_salt_unconfigured` を監査に残し、
+  IP 単位の統制が要る要求（チャット・問い合わせ）を定型応答（busy）で止める。
+  設定済みでも 32 文字未満なら `ip_salt_weak` を記録して続行する。ハッシュは HMAC-SHA256 に変えた。
+- `TURNSTILE_SECRET`: 未設定なら人間確認を省いて受理するのをやめ、`turnstile_unconfigured` を監査に残して
+  控え（`contact_deadletter`）へ落とし `success:false` を返す（`RESEND_API_KEY` 未設定時と同じ型）。
+  設定済みで 16 文字未満なら `turnstile_secret_weak` を記録して続行する。
+
+秘密を入れ替えたら `npx wrangler deploy` は不要（secret は即時反映）。ただし `IP_SALT` を変えると
+同一 IP の数え上げがその日だけ分かれる（翌日にそろう）。
+
+### コード側で足した統制（デプロイが要る）
+- チャットの同一 IP 上限 `CHAT_PER_IP_LIMIT`（`api/wrangler.toml`・既定 40/日）。生成へ進む直前に数え、
+  超えたら busy の定型応答。危機・取次ぎ・拒否の定型応答は上限に関わらず返る。
+- `Content-Length` が 16,384 バイトを超える本文は、チャット・問い合わせともに読む前に 413 で返す。
+- 監査ログを D1 の `audit_events`（90 日保存）へも書く。表の作成は
+  `cd api && npx wrangler d1 execute shinai-voices --remote --file=schema.sql`（再実行しても安全）。
+  **デプロイ前にこれを一度実行すること。** 表が無くても Worker は止まらない（console に `audit_store_failed` が出るだけ）。
+- Slack 通知は利用者の入力を `&lt; &gt; &amp;` へ逃がし、`parse:"none"` を付ける（`<!channel>`・リンク偽装の遮断）。
+- `preview_urls = false`（版ごとのプレビュー URL を切る）。
+- apex の HSTS を `max-age=2592000`（30 日）へ。`includeSubDomains` と `preload` はまだ付けない（段階引き上げの途中）。
+  SEOへの影響: 無し。
+
+### 要・柴田の操作（ダッシュボード・未実施）
+Cloudflare WAF のレート制限（無料プランで 1 本）。上の「2. API のレート制限」の案を次に置き換える。
+
+- Security → WAF → Rate limiting rules → 式 `(http.host eq "api.shinai-inc.jp")`
+  → 同一 IP から **1 分で 20 回**を超えたら Block（10 秒〜1 分）。
+- 根拠: Worker 側の上限（chat 40/日・contact 3/日）は「日」の粒度で、分単位の連打は D1・Durable Object への
+  到達そのものを止められない。縁（WAF）で分単位、中（Worker）で日単位、の二段にする。
+- SEOへの影響: 無し（api.* はクロール対象外）。

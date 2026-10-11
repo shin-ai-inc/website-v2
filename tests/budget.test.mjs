@@ -157,3 +157,96 @@ test("段階遮断と同一IP上限は shouldBlockByBudget と同じ境界で止
   assert.equal(shouldBlockByBudget({ count: 3, limit: 3 }), true, "4件目は止める");
 });
 
+
+/* ---- 出力ゲートの網目(2026-10-11 の監査で素通りした形) ---- */
+
+test("漢数字・千円百円・外貨の金額を止める", () => {
+  for (const bad of [
+    "初期費用は五十万円ほどです。",
+    "月額は三万円から承ります。",
+    "費用は一千万円を見込んでください。",
+    "導入費は 50千円です。",
+    "一回あたり 500百円で承れます。",
+    "費用は 5,000ドルです。",
+    "価格は 5000 USD です。",
+    "お見積りは 700,000 JPY となります。",
+    "費用は 3,000 EUR 前後です。",
+    "料金は €3,000 です。",
+    "料金は $5,000 です。"
+  ]) {
+    const r = screenAnswer(bad, "ja");
+    assert.equal(r.blocked, true, `止まらない: ${bad}`);
+    assert.equal(r.reason, "money_claim", bad);
+  }
+});
+
+test("「絶対に」「確約」「100%」「断言」「必ずや」「お約束」を止める", () => {
+  for (const bad of [
+    "絶対に成果が出ます。",
+    "成果を確約いたします。",
+    "100%業務が効率化されます。",
+    "１００％削減できると断言できます。",
+    "効果が出ると断言します。",
+    "必ずや成果につながります。",
+    "ご満足いただけることをお約束できます。"
+  ]) {
+    const r = screenAnswer(bad, "ja");
+    assert.equal(r.blocked, true, `止まらない: ${bad}`);
+    assert.equal(r.reason, "guarantee_claim", bad);
+  }
+});
+
+test("納期の言い切りを止める(可能・いたします・させます・以内に)", () => {
+  for (const bad of [
+    "2週間で納品可能です。",
+    "1ヶ月で導入いたします。",
+    "3週間でリリースします。",
+    "2か月で完成させます。",
+    "3週間以内に納品いたします。",
+    "1ヶ月以内に導入が終わります。",
+    "2週間以内に完成する見込みです。"
+  ]) {
+    const r = screenAnswer(bad, "ja");
+    assert.equal(r.blocked, true, `止まらない: ${bad}`);
+    assert.equal(r.reason, "deadline_claim", bad);
+  }
+});
+
+test("英語の金額・納期・断定も止める", () => {
+  for (const [bad, reason] of [
+    ["It costs about 5,000 dollars.", "money_claim"],
+    ["The fee is €3,000.", "money_claim"],
+    ["Pricing starts at 300,000 JPY.", "money_claim"],
+    ["Expect around 2,000 USD per month.", "money_claim"],
+    ["It costs 5000 to start.", "money_claim"],
+    ["We can deliver in 2 weeks.", "deadline_claim"],
+    ["We will complete it within 3 weeks.", "deadline_claim"],
+    ["I am absolutely certain this will work.", "guarantee_claim"],
+    ["This will 100% reduce your costs.", "guarantee_claim"]
+  ]) {
+    const r = screenAnswer(bad, "en");
+    assert.equal(r.blocked, true, `止まらない: ${bad}`);
+    assert.equal(r.reason, reason, bad);
+  }
+});
+
+test("資料にある期間の目安と、通常の案内は通す(網を広げても営業機会を殺さない)", () => {
+  for (const good of [
+    "規模と目的にもよりますが、小規模なプロトタイプであれば最短2週間ほどで形にできる場合があります。",
+    "目安として、課題の整理に1〜2週間、動くものをお見せするまで2〜4週間です。",
+    "無料相談で状況をうかがってから、進め方を一緒に整理します。",
+    "円滑な引き継ぎのため、判断の根拠を言葉にして残します。",
+    "2026年8月に法人化しました。",
+    "最終的な判断は人が行う運用を前提に設計しています。",
+    "費用は目的と規模で大きく変わります。ご予算に合わせた見立ては無料相談でお伝えしています。"
+  ]) {
+    assert.equal(screenAnswer(good, "ja").blocked, false, `過剰検知: ${good}`);
+  }
+  for (const good of [
+    "A small prototype can sometimes take shape in as little as two weeks.",
+    "It varies a great deal with purpose and scale. We put a figure to it after a free consultation.",
+    "Validation on real operational data takes approximately 2-6 weeks."
+  ]) {
+    assert.equal(screenAnswer(good, "en").blocked, false, `過剰検知: ${good}`);
+  }
+});

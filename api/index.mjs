@@ -12,15 +12,17 @@
 
   秘密はコードに置かない。OPENAI_API_KEY は wrangler secret でのみ投入する。
 */
-import { parseRequestBody, resolveOrigin } from "./lib/contract.mjs";
+import { parseRequestBody, resolveOrigin, bodyTooLarge } from "./lib/contract.mjs";
 import { classifyInput, buildSystemPrompt, sanitizeAnswer, pickOffer, greetingUsed, greetingOnly, pickGreetingClose, pickEmojiReply } from "./lib/guard.mjs";
 import { isWorthKeeping, voiceRecord, slackPayload, isAuthorizedAdmin, purgeCutoff }
   from "./lib/voices.mjs";
 import { jstDayKey, shouldBlockByBudget, estimateCostUsd, advanceMeter } from "./lib/budget.mjs";
 import { parseContactBody, contactMailPayload, contactSlackPayload, deadLetterRow, deadLetterPurgeCutoff,
-         turnstileRequired, turnstileVerdict }
+         turnstileSecretStatus, turnstileVerdict }
   from "./lib/contact.mjs";
 import { screenAnswer } from "./lib/outgate.mjs";
+import { auditRow, auditPurgeCutoff } from "./lib/audit.mjs";
+import { saltStatus, hashIp } from "./lib/iphash.mjs";
 import { buildIndex, hybridSearch } from "./lib/retrieve.mjs";
 import { normalizeVector } from "./lib/vector.mjs";
 import { JSON_SECURITY_HEADERS } from "./lib/headers.mjs";
@@ -121,10 +123,50 @@ const json = (body, status, origin) => {
   return new Response(JSON.stringify(body), { status, headers });
 };
 
-/* 監査ログ。本文・生IP・鍵は残さない。傾向と統制の作動だけを残す。 */
-const audit = (fields) => {
-  console.log(JSON.stringify({ at: new Date().toISOString(), ...fields }));
+/* 監査ログ。本文・生IP・鍵は残さない。傾向と統制の作動だけを残す。
+   console と D1(audit_events)の両方へ書く。console だけでは Worker のインスタンスが
+   入れ替わると消え、「いつ・どの統制が効いたか」を後から追えない。
+   D1 への書き込みは応答の後ろで走らせ、失敗しても console に理由を残すだけで止めない。 */
+const makeAudit = (env, ctx) => (fields) => {
+  const row = auditRow(fields);
+  console.log(JSON.stringify({ at: row.ts, ...fields }));
+  if (!env || !env.VOICES) return;
+  const write = (async () => {
+    try {
+      await env.VOICES.prepare(
+        "INSERT INTO audit_events (ts, event, ip_hash, session, detail) VALUES (?, ?, ?, ?, ?)"
+      ).bind(row.ts, row.event, row.ip_hash, row.session, row.detail).run();
+      /* 保存期間を過ぎた行は、書き込みのついでに時々掃く(voices と同じ作法)。 */
+      if (Math.random() < 0.02) {
+        await env.VOICES.prepare("DELETE FROM audit_events WHERE ts < ?")
+          .bind(auditPurgeCutoff()).run();
+      }
+    } catch (e) {
+      console.log(JSON.stringify({ at: new Date().toISOString(), event: "audit_store_failed", name: e && e.name }));
+    }
+  })();
+  if (ctx && typeof ctx.waitUntil === "function") ctx.waitUntil(write);
 };
+
+/* 設定済みだが形式が弱い秘密は、インスタンスごとに一度だけ記録する。
+   毎要求で書くと監査が同じ行で埋まり、本来見るべき事象が沈む。 */
+const weakSecretAudited = { ipSalt: false, turnstile: false };
+
+/* 塩の状態を見てから IP をハッシュする。
+   未設定なら null を返し、呼び出し側は IP 単位の統制を「止める側」に倒す
+   (以前は公開の既定値で代用していた。公開された塩は塩ではない)。 */
+async function resolveIpHash(request, env, audit) {
+  const status = saltStatus(env);
+  if (status === "unconfigured") {
+    audit({ event: "ip_salt_unconfigured" });
+    return null;
+  }
+  if (status === "weak" && !weakSecretAudited.ipSalt) {
+    weakSecretAudited.ipSalt = true;
+    audit({ event: "ip_salt_weak" });
+  }
+  return hashIp(request.headers.get("CF-Connecting-IP"), env.IP_SALT);
+}
 
 /* 名前付きメーターを読む/進める。失敗は null(呼び出し側が「止める側」に倒す)。
    BudgetMeter は日次総量のために作られたが、名前を変えれば同一IP・同一日の
@@ -164,21 +206,12 @@ async function verifyTurnstile(env, token, request, origin) {
   }
 }
 
-/* IPは個人情報。相関に足る一方向ハッシュだけを残す。 */
-const hashIp = async (ip, salt) => {
-  if (!ip) return "unknown";
-  const data = new TextEncoder().encode(salt + ":" + ip);
-  const digest = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(digest).slice(0, 8))
-    .map((b) => b.toString(16).padStart(2, "0")).join("");
-};
-
 /*
   お客様の声を残し、届ける。
   応答の後ろで走らせる(ctx.waitUntil)。記録も通知も、失敗して構わない仕事であり、
   利用者を待たせたり、答えを返せなくしたりしてはならない。
 */
-async function rememberVoice({ message, locale, verdict, sessionId, ipHash, env }) {
+async function rememberVoice({ message, locale, verdict, sessionId, ipHash, env, audit }) {
   if (!isWorthKeeping(message, verdict)) return;
   const record = voiceRecord({
     message, locale, verdict, sessionHash: sessionId, ipHash
@@ -216,7 +249,7 @@ async function rememberVoice({ message, locale, verdict, sessionId, ipHash, env 
 
 /* 記録の閲覧。鍵を持たない相手には、存在ごと伏せて 404 を返す
    (401 は「ここに何かある」と教えることになる)。 */
-async function readVoices(request, env) {
+async function readVoices(request, env, audit) {
   if (!isAuthorizedAdmin(request, env) || !env.VOICES) {
     audit({ event: "voices_denied" });
     return new Response("Not Found", { status: 404 });
@@ -243,7 +276,7 @@ async function readVoices(request, env) {
   控え(D1)と通知(Slack)へ落とす。個人情報を扱う分、成功時は何も溜めない
   (Resend側の送信ログのみが残り、当社の側には残さない)。
 */
-async function handleContact(request, env, ctx, origin) {
+async function handleContact(request, env, ctx, origin, audit) {
   let body;
   try {
     body = await request.json();
@@ -261,9 +294,18 @@ async function handleContact(request, env, ctx, origin) {
     return json({ success: false, reason: parsed.reason }, parsed.status, origin);
   }
 
-  /* --- 人間確認(Turnstile)。鍵があるときだけ要求する。
-     同一IP上限より前に置く。確認をやり直す人が、上限を使い切らないように。 --- */
-  if (turnstileRequired(env)) {
+  /* --- 人間確認(Turnstile)。
+     同一IP上限より前に置く。確認をやり直す人が、上限を使い切らないように。
+     鍵が未設定なら確認を省いて受理するのではなく、上限を通したうえで控えへ落とす
+     (RESEND_API_KEY 未設定時と同じ型。「届いた」と嘘をつかない)。 --- */
+  const secret = turnstileSecretStatus(env);
+  if (secret === "unconfigured") {
+    audit({ event: "turnstile_unconfigured" });
+  } else {
+    if (secret === "weak" && !weakSecretAudited.turnstile) {
+      weakSecretAudited.turnstile = true;
+      audit({ event: "turnstile_secret_weak" });
+    }
     const verdict = await verifyTurnstile(env, parsed.value.turnstile, request, origin);
     if (!verdict.ok) {
       audit({ event: "contact_turnstile_rejected", reason: verdict.reason });
@@ -273,16 +315,18 @@ async function handleContact(request, env, ctx, origin) {
       }
       return json({ success: false, reason: "turnstile_failed" }, 400, origin);
     }
-  } else {
-    audit({ event: "contact_turnstile_unconfigured" });
   }
 
   const dayKey = jstDayKey(new Date());
 
   /* --- 濫用対策1: 同一IPの上限。1台の機械が1日の総量(30件)を使い切ると、
      その日の問い合わせが全員ぶん止まる。総量より先に、個別で止める。
-     正当な相手が1日に3件以上送ることは実務上ない。 --- */
-  const ipHash = await hashIp(request.headers.get("CF-Connecting-IP"), env.IP_SALT || "shinai");
+     正当な相手が1日に3件以上送ることは実務上ない。
+     塩が無く IP を数えられないときも、素通りではなく止める側に倒す。 --- */
+  const ipHash = await resolveIpHash(request, env, audit);
+  if (ipHash === null) {
+    return json({ success: false, reason: "busy" }, 200, origin);
+  }
   const perIpLimit = Number(env.CONTACT_PER_IP_LIMIT || 3);
   const perIp = await meterOf(env, "contact-ip:" + ipHash, dayKey, "consume");
   if (perIp === null || perIp >= perIpLimit) {
@@ -311,6 +355,13 @@ async function handleContact(request, env, ctx, origin) {
     return json({ success: false, reason: "busy" }, 200, origin);
   }
 
+  if (secret === "unconfigured") {
+    /* 人間確認ができない以上、機械の投稿かもしれないものを送信経路へ流さない。
+       相談そのものは失わないよう控えに残す。 */
+    ctx.waitUntil(recordDeadLetter(parsed.value, "turnstile_unconfigured", env, audit));
+    return json({ success: false, reason: "unconfigured" }, 200, origin);
+  }
+
   const to = env.CONTACT_TO_EMAIL || "contact@shinai-inc.jp";
   const from = env.CONTACT_FROM_EMAIL;
 
@@ -318,7 +369,7 @@ async function handleContact(request, env, ctx, origin) {
     /* 送信手段が未設定。相談そのものを失わないよう控えに残し、通知だけ試みる。
        利用者へは「届いた」と嘘をつかない。 */
     audit({ event: "contact_unconfigured" });
-    ctx.waitUntil(recordDeadLetter(parsed.value, "unconfigured", env));
+    ctx.waitUntil(recordDeadLetter(parsed.value, "unconfigured", env, audit));
     return json({ success: false, reason: "unconfigured" }, 200, origin);
   }
 
@@ -335,7 +386,7 @@ async function handleContact(request, env, ctx, origin) {
     if (!res.ok) {
       /* Resend のエラー本文は転送しない(内部事情を利用者へ渡さない)。 */
       audit({ event: "contact_send_failed", status: res.status });
-      ctx.waitUntil(recordDeadLetter(parsed.value, `resend_${res.status}`, env));
+      ctx.waitUntil(recordDeadLetter(parsed.value, `resend_${res.status}`, env, audit));
       return json({ success: false, reason: "send_failed" }, 200, origin);
     }
 
@@ -343,13 +394,13 @@ async function handleContact(request, env, ctx, origin) {
     return json({ success: true }, 200, origin);
   } catch (e) {
     audit({ event: "contact_send_error", name: e && e.name });
-    ctx.waitUntil(recordDeadLetter(parsed.value, "network_error", env));
+    ctx.waitUntil(recordDeadLetter(parsed.value, "network_error", env, audit));
     return json({ success: false, reason: "send_failed" }, 200, origin);
   }
 }
 
 /** 送れなかった相談を控えに残し、Slackへ気づきだけを送る(本文は載せない)。 */
-async function recordDeadLetter(value, reason, env) {
+async function recordDeadLetter(value, reason, env, audit) {
   if (env.VOICES) {
     try {
       const row = deadLetterRow(value, reason);
@@ -382,6 +433,7 @@ async function recordDeadLetter(value, reason, env) {
 
 export default {
   async fetch(request, env, ctx) {
+    const audit = makeAudit(env, ctx);
     const allowlist = (env.ALLOWED_ORIGINS || "").split(",").map((s) => s.trim()).filter(Boolean);
     const origin = resolveOrigin(request.headers.get("Origin"), allowlist);
 
@@ -411,7 +463,7 @@ export default {
     /* 記録の閲覧。ブラウザからではなく手元から鍵を添えて叩くためのもので、
        サイトのオリジン検査(CORS)は通さない。 */
     if (request.method === "GET" && new URL(request.url).pathname === "/api/voices") {
-      return readVoices(request, env);
+      return readVoices(request, env, audit);
     }
 
     if (request.method !== "POST") {
@@ -429,8 +481,16 @@ export default {
       return json({ success: false }, 415, origin);
     }
 
+    /* 本文の大きさは読む前に止める。request.json() は全文を読んで構文解析するため、
+       巨大な本文をそのまま渡すと、受理契約に届く前に計算資源を取られる。
+       チャットと問い合わせの両方に効く位置に置く。 */
+    if (bodyTooLarge(request.headers.get("Content-Length"))) {
+      audit({ event: "rejected_body_size", path: url.pathname });
+      return json({ success: false }, 413, origin);
+    }
+
     if (url.pathname === "/api/contact") {
-      return handleContact(request, env, ctx, origin);
+      return handleContact(request, env, ctx, origin, audit);
     }
 
     if (url.pathname !== "/api/chatbot") {
@@ -454,7 +514,12 @@ export default {
       return json({ success: false }, parsed.status, origin);
     }
 
-    const ipHash = await hashIp(request.headers.get("CF-Connecting-IP"), env.IP_SALT || "shinai");
+    /* 塩が無く IP を数えられないときは、IP 単位の統制(段階遮断・同一IP上限)を
+       素通りさせず、止める側に倒す。 */
+    const ipHash = await resolveIpHash(request, env, audit);
+    if (ipHash === null) {
+      return json({ success: true, response: reply.busy }, 200, origin);
+    }
 
     /* --- 統制0: 段階遮断。同じ相手が同じ日に乗っ取りを何度も試みたら、
        その日はもう分類にも生成にも進ませない。入力の型は言い換えで
@@ -496,7 +561,7 @@ export default {
       /* 人に会いたいと言われた瞬間は、最も関心が高まっている。取りこぼさない。 */
       ctx.waitUntil(rememberVoice({
         message: parsed.value.message, locale, verdict: "human",
-        sessionId: parsed.value.sessionId, ipHash, env
+        sessionId: parsed.value.sessionId, ipHash, env, audit
       }));
       return json({ success: true, response: reply.human }, 200, origin);
     }
@@ -513,8 +578,20 @@ export default {
       return json({ success: true, response: reply.refused }, 200, origin);
     }
 
-    /* --- 統制2: 日次予算(グローバル上限) --- */
     const dayKey = jstDayKey(new Date());
+
+    /* --- 統制1.5: 同一IPの上限。日次総量(800)を1台の機械に使い切らせない。
+       定型で返す分類(危機・取次ぎ・拒否)の後、生成へ進む直前に数える。
+       危機の案内が上限で塞がれてはならないし、拒否は段階遮断が別に数えている。
+       メーターが読めないときは止める側に倒す。 --- */
+    const perIpLimit = Number(env.CHAT_PER_IP_LIMIT || 40);
+    const perIp = await meterOf(env, "chat-ip:" + ipHash, dayKey, "consume");
+    if (perIp === null || perIp >= perIpLimit) {
+      audit({ event: perIp === null ? "chat_ip_meter_unavailable" : "chat_ip_exceeded", ip: ipHash, count: perIp });
+      return json({ success: true, response: reply.busy }, 200, origin);
+    }
+
+    /* --- 統制2: 日次予算(グローバル上限) --- */
     const limit = Number(env.DAILY_LIMIT || 300);
     let meter;
     try {
@@ -623,7 +700,7 @@ export default {
 
       ctx.waitUntil(rememberVoice({
         message: parsed.value.message, locale, verdict: "allow",
-        sessionId: parsed.value.sessionId, ipHash, env
+        sessionId: parsed.value.sessionId, ipHash, env, audit
       }));
 
       return json({ success: true, response: screened.text || reply.error }, 200, origin);

@@ -38,3 +38,21 @@ CREATE TABLE IF NOT EXISTS contact_deadletter (
 );
 
 CREATE INDEX IF NOT EXISTS idx_contact_deadletter_created_at ON contact_deadletter (created_at);
+
+-- 監査ログ。統制の作動(拒否・上限・未設定・応答)を、Worker の再起動をまたいで残す。
+-- 適用: cd api && npx wrangler d1 execute shinai-voices --remote --file=schema.sql
+--
+-- 本文・生IP・鍵は入れない(index.mjs の audit() が渡す項目に、そもそも含めない)。
+-- ip_hash は同一人物の連続した事象をまとめて読むためだけに使う。
+-- 保存期間は lib/audit.mjs の AUDIT_RETENTION_DAYS(90日)と一致させる。
+
+CREATE TABLE IF NOT EXISTS audit_events (
+  id       INTEGER PRIMARY KEY AUTOINCREMENT,
+  ts       TEXT NOT NULL,                -- ISO8601(UTC)
+  event    TEXT NOT NULL,                -- 事象名(answered / contact_sent / ip_blocked など)
+  ip_hash  TEXT NOT NULL DEFAULT '',     -- HMAC-SHA256 の前方 8 バイト。生IPは持たない
+  session  TEXT NOT NULL DEFAULT '',     -- 同一の対話をまとめて読むため
+  detail   TEXT NOT NULL DEFAULT '{}'    -- 残りの項目(JSON)
+);
+
+CREATE INDEX IF NOT EXISTS idx_audit_events_ts ON audit_events (ts);

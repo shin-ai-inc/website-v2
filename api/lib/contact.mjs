@@ -8,6 +8,8 @@
   テストから固定できるようにする。fetch を投げる側(実際の送信)は index.mjs。
 */
 
+import { escapeSlackText } from "./slack.mjs";
+
 /* 上限は人が書く量の常識から。制限が目的ではなく、
    件名やログを不自然に膨らませる入力を弾くための線。 */
 export const MAX_CHARS = {
@@ -82,21 +84,30 @@ export function parseContactBody(body) {
 
   const locale = body.locale === "en" ? "en" : "ja";
 
-  /* 人間確認(Turnstile)の応答トークン。要るかどうかは鍵の有無で決まる(turnstileRequired)ので、
-     ここでは形だけを見る。空は「無い」として通し、判定は index.mjs 側で行う。 */
+  /* 人間確認(Turnstile)の応答トークン。ここでは形だけを見る。
+     空は「無い」として通し、照会と判定は index.mjs 側で行う。 */
   const turnstile = typeof body.turnstile === "string" ? body.turnstile.trim() : "";
   if (turnstile.length > MAX_CHARS.turnstile) return { ok: false, status: 400, reason: "turnstile_malformed" };
 
   return { ok: true, value: { company, name, email, phone, message, locale, turnstile } };
 }
 
+/* Cloudflare が発行する秘密鍵は "0x" に続く 32 文字以上。これより短い値は
+   設定済みだが形式が弱い。本番は設定済みの事実が確認されているため、
+   ここで止めると動いている確認を止めることになる。記録して続行する。 */
+const MIN_TURNSTILE_SECRET_CHARS = 16;
+
 /**
- * 人間確認を要求するか。鍵が無い環境では要求しない。
- * 鍵の設定忘れで問い合わせが全滅するより、機械の投稿が混じる方がまだ良い
- * (ハニーポットと同一IP上限は残る)。鍵があるときは必ず検証する。
+ * 人間確認の秘密鍵の状態。
+ * 以前は鍵が無ければ確認を要求しなかった(fail-open)。鍵の設定忘れがそのまま
+ * 「機械の投稿を受理する」に化けるため、未設定は受理せず控えへ落とす側に倒す
+ * (RESEND_API_KEY 未設定時と同じ型)。判断は index.mjs 側。
+ * @returns {"unconfigured"|"weak"|"ok"}
  */
-export function turnstileRequired(env) {
-  return !!(env && typeof env.TURNSTILE_SECRET === "string" && env.TURNSTILE_SECRET.length >= 16);
+export function turnstileSecretStatus(env) {
+  const secret = env && typeof env.TURNSTILE_SECRET === "string" ? env.TURNSTILE_SECRET.trim() : "";
+  if (!secret) return "unconfigured";
+  return secret.length < MIN_TURNSTILE_SECRET_CHARS ? "weak" : "ok";
 }
 
 /**
@@ -144,14 +155,16 @@ export function contactMailPayload(value, { to, from }) {
   };
 }
 
-/** 送れなかったときの通知。相談の中身は載せない(通知先は別サービスのため)。 */
+/** 送れなかったときの通知。相談の中身は載せない(通知先は別サービスのため)。
+    利用者の入力は逃がし、記法の解釈(parse)を切る。 */
 export function contactSlackPayload(value, reason) {
   const when = new Date().toISOString().slice(0, 16).replace("T", " ");
   return {
+    parse: "none",
     text: [
       "問い合わせメールが届いていません(送信失敗)",
-      `${value.company} / ${value.name} / ${value.email}`,
-      `理由: ${reason} / ${when} UTC`,
+      `${escapeSlackText(value.company)} / ${escapeSlackText(value.name)} / ${escapeSlackText(value.email)}`,
+      `理由: ${escapeSlackText(reason)} / ${when} UTC`,
       "本文は控え(D1)を確認してください。"
     ].join("\n")
   };

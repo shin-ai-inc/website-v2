@@ -10,6 +10,8 @@
   - 外部I/Oを持たない純粋関数だけを置く(判断をテストから固定できるようにするため)。
 */
 
+import { escapeSlackText } from "./slack.mjs";
+
 /** 記録の保存期間。プライバシーポリシーに明記する値と一致させること。 */
 export const RETENTION_DAYS = 180;
 
@@ -69,14 +71,16 @@ export function voiceRecord({ message, locale, verdict, sessionHash, ipHash, at 
   };
 }
 
-/** 通知の本文。投稿先URLなどの内部情報は載せない。 */
+/** 通知の本文。投稿先URLなどの内部情報は載せない。
+    利用者の入力は逃がし、記法の解釈(parse)を切る。 */
 export function slackPayload(record) {
   const label = record.kind === "handoff" ? "担当者への取次ぎ希望" : "サイトのチャットに質問";
   return {
+    parse: "none",
     text: [
       `${label}（${record.locale === "en" ? "英語" : "日本語"}）`,
-      record.message,
-      `${record.created_at.slice(0, 16).replace("T", " ")} UTC`
+      escapeSlackText(record.message),
+      `${escapeSlackText(record.created_at.slice(0, 16).replace("T", " "))} UTC`
     ].join("\n\n")
   };
 }
