@@ -107,13 +107,13 @@
     if (fields.hidden) return;
     status.hidden = true;
     const data = new FormData(form);
-    confirmedPayload = {company: String(data.get('company')).trim(), name: String(data.get('name')).trim(), email: String(data.get('email')).trim(), theme: String(data.get('theme')), message: String(data.get('message')).trim(), website: String(data.get('website') || ''), privacyConsent: data.has('privacyConsent'), updatesOptIn: data.has('updatesOptIn')};
-    const rows = [['会社名・屋号',confirmedPayload.company],['お名前',confirmedPayload.name],['メールアドレス',confirmedPayload.email],['気になっている日報の手間',topics[confirmedPayload.theme].label],['ひとこと',confirmedPayload.message || '未記入'],['個人情報の取り扱い','同意する'],['事例・イベントの案内',confirmedPayload.updatesOptIn ? '希望する' : '希望しない']];
+    confirmedPayload = {company: String(data.get('company')).trim(), name: String(data.get('name')).trim(), email: String(data.get('email')).trim(), theme: String(data.get('theme')), message: String(data.get('message')).trim(), website: String(data.get('website') || ''), privacyConsent: data.has('privacyConsent')};
+    const rows = [['会社名・屋号',confirmedPayload.company],['お名前',confirmedPayload.name],['メールアドレス',confirmedPayload.email],['気になっている日報の手間',topics[confirmedPayload.theme].label],['ひとこと',confirmedPayload.message || '未記入'],['個人情報の取り扱い','同意する']];
     $('confirmation-list').replaceChildren(...rows.map(([label,value]) => { const div = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd'); dt.textContent = label; dd.textContent = value; div.append(dt,dd); return div; }));
     fields.hidden = true; confirmation.hidden = false;  $('selected-note').hidden = true; confirmation.focus();
   });
   edit.addEventListener('click', () => { if (pending || completed) return; fields.hidden = false; confirmation.hidden = true; status.hidden = true;  $('selected-note').hidden = !theme.value; $('company').focus(); });
-  /* ---- 人間確認(Turnstile)。確認の画面を開いたときに読み込む(読まない人に通信させない) ---- */
+  
   const siteKey = typeof config.turnstileSiteKey === 'string' ? config.turnstileSiteKey : '';
   const tsSlot = form.querySelector('[data-turnstile]');
   let tsWidget = null;
@@ -132,21 +132,27 @@
   const tsToken = () => (tsWidget !== null && window.turnstile ? window.turnstile.getResponse(tsWidget) : '');
   const tsReset = () => { if (tsWidget !== null && window.turnstile) window.turnstile.reset(tsWidget); };
 
-  /* 会社サイトの問い合わせの窓口(contact.mjs の受理契約)へ渡す本文。選んだ手間は内部の値ではなく、
-     画面の言葉で書く(内部の値は汎用 LP の名残で、運送業の内容と合わない)。窓口の上限 2000 字に収める。 */
   const MESSAGE_LIMIT = 2000;
   function composeMessage(p) {
     const utm = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term']
       .map(k => [k, (params.get(k) || '').slice(0, 150)]).filter(([, v]) => v).map(([k, v]) => k + '=' + v);
     const head = [
-      '【運送業 LP・20分無料相談のお申し込み】',
+      '【運送業 LP・無料相談のお申し込み】',
       '気になっている日報の手間: ' + (topics[p.theme] ? topics[p.theme].label : '（未選択）'),
-      '事例・イベントの案内: ' + (p.updatesOptIn ? '希望する' : '希望しない'),
       '流入: ' + (utm.length ? utm.join(' / ') : '（指定なし）'),
       'ひとこと:'
     ].join('\n');
     const room = MESSAGE_LIMIT - head.length - 1;
     return head + '\n' + (p.message ? p.message.slice(0, room) : '（記入なし）');
+  }
+
+  const leadEventId = () => (window.crypto && window.crypto.randomUUID
+    ? 'lead-' + window.crypto.randomUUID()
+    : 'lead-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10));
+  function trackLead() {
+    try {
+      if (typeof window.fbq === 'function') window.fbq('track', 'Lead', {}, {eventID: leadEventId()});
+    } catch (_) {  }
   }
 
   send.addEventListener('click', async () => {
@@ -170,7 +176,7 @@
       const response = await fetch(endpoint, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:controller.signal});
       const result = await response.json().catch(() => ({}));
       if (!response.ok || result.success !== true) { const e = new Error('受付エラー'); e.reason = result.reason || ''; throw e; }
-      completed = true; confirmation.hidden = true;  setStatus('お申し込みを受け付けました。ご入力のメールアドレスへ、候補日時をご案内します。日程が決まるまで予約は確定しません。','success'); track('consultation_lead_success',{topic:confirmedPayload.theme}); form.reset(); confirmedPayload = null; choose('');
+      completed = true; confirmation.hidden = true;  setStatus('お申し込みを受け付けました。ご入力のメールアドレスへ、候補日時をご案内します。日程が決まるまで予約は確定しません。','success'); track('consultation_lead_success',{topic:confirmedPayload.theme}); trackLead(); form.reset(); confirmedPayload = null; choose('');
     } catch (error) {
       tsReset();
       const message = error.name === 'AbortError' ? '送信結果を確認できませんでした。再送信の前に、contact@shinai-inc.jp へ受付状況をご確認ください。入力内容は保持しています。'

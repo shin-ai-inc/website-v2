@@ -1183,11 +1183,15 @@ toDist("404.html");
    生成して {{START_CSP}} に差し込み、手書きの二重管理をしない。 */
 const startCsp = (read("start/index.html").match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/) || [])[1];
 if (!startCsp) throw new Error("start/index.html に CSP の meta が無い");
+/* /logistics/(運送業の LP)も同じ理由で、自分の meta から生成する(2026-10-12)。 */
+const logisticsCsp = (read("logistics/index.html").match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/) || [])[1];
+if (!logisticsCsp) throw new Error("logistics/index.html に CSP の meta が無い");
 writeFileSync(
   join(DIST, "_headers"),
   /* replaceAll: 最初の1箇所だけ置くと、説明コメント側が先に当たって規則行が
      "{{CSP}}" のまま公開される(2026-09-11 に実際にそうなっていた)。 */
-  read("deploy/_headers").replaceAll("{{CSP}}", CSP_HEADER).replaceAll("{{START_CSP}}", `${startCsp}; frame-ancestors 'none'`),
+  read("deploy/_headers").replaceAll("{{CSP}}", CSP_HEADER).replaceAll("{{START_CSP}}", `${startCsp}; frame-ancestors 'none'`)
+    .replaceAll("{{LOGISTICS_CSP}}", `${logisticsCsp}; frame-ancestors 'none'`),
   "utf8"
 );
 /* URL の書き換え(Workers の静的配信)。html_handling を none にしているため、

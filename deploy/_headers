@@ -34,3 +34,8 @@
 /start/*
   ! Content-Security-Policy
   Content-Security-Policy: {{START_CSP}}
+
+# /logistics/ も自分の meta の CSP(Meta Pixel・Turnstile)を持つ。/start/ と同じ理由で置き換える。
+/logistics/*
+  ! Content-Security-Policy
+  Content-Security-Policy: {{LOGISTICS_CSP}}
