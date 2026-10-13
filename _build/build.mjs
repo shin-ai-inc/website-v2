@@ -233,8 +233,9 @@ const REDIRECT_DIRS = ["lp/"];
 
 /* 検索に載せない独立ページ(noindex)。URL を直接渡して使う。
    dist へ写して圧縮はするが、sitemap と llms.txt には載せない。
-   2026-10-10: 歯科受付コパイロットの LP(医院のヒアリング用・柴田判断)。 */
-const NOINDEX_DIRS = ["dental-copilot/"];
+   2026-10-10: 歯科受付コパイロットの LP(医院のヒアリング用・柴田判断)。
+   2026-10-13: 華｜心のパーソナルトレーニングの LP(柴田個人のサービス・ホームページには載せない)。 */
+const NOINDEX_DIRS = ["dental-copilot/", "hana/"];
 
 const standalonePages = [
   {

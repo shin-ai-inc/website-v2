@@ -27,7 +27,7 @@ const PUBLIC = [
   /^[^/]+\.html$/,
   /^en\/[^/]+\.html$/,
   /^en\/site\.webmanifest$/,
-  /^(start|lp|ai-business|dental-copilot)\//,
+  /^(start|lp|ai-business|dental-copilot|hana)\//,
   /^assets\//,
   /^js\//,
   /^styles\/app\.css$/,
