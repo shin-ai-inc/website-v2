@@ -1,4 +1,3 @@
-/** 公開前にここへ公式LINEの正しいURLを入力してください。例：'https://lin.ee/xxxxxxxx'（例の文字列は使用しない） */
 const OFFICIAL_LINE_URL = 'https://lin.ee/SRkMBnO';
 (function(){
  const header=document.getElementById('header');
