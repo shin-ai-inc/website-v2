@@ -132,3 +132,14 @@ test("Lead は申し込みが受け付けられたときだけ、入力内容を
   assert.ok(success !== -1 && call > success, "成功の判定の後で送る");
   assert.equal((js.match(/trackLead\(\);/g) || []).length, 1, "送るのは成功の分岐の一か所だけ");
 });
+
+test("ロゴは正式なもの(/start/ と同じ SVG)を使い、文字で組んだ代わりのロゴを置かない(柴田 2026-10-14 指摘)", () => {
+  const official = read("start/assets/logo/shinai-logo.svg");
+  assert.equal(read("logistics/assets/shinai-logo.svg"), official);
+  /* 紺の下地(フッター)では黒の文字が読めないため、文字だけを白にした版を使う。マークの色と形は変えない。 */
+  assert.equal(read("logistics/assets/shinai-logo-white.svg"), official.replace('fill="#000"', 'fill="#fff"'));
+  const html = read("logistics/index.html");
+  assert.equal((html.match(/<img src="assets\/shinai-logo\.svg"[^>]*alt="ShinAI"/g) || []).length, 1);
+  assert.equal((html.match(/<img src="assets\/shinai-logo-white\.svg"[^>]*alt="ShinAI"/g) || []).length, 1);
+  assert.doesNotMatch(html, /brand-name/);
+});
