@@ -73,7 +73,7 @@ test("外のサーバーから読み込むのは、人間確認と Meta Pixel(�
 
 test("重さ: 挿絵は軽い形式で、LP の公開物は合計 1MB 未満", () => {
   const files = walk(join(DIST, "logistics"));
-  assert.equal(files.some((f) => f.endsWith(".png")), false, "元の 1.9MB の PNG を公開しない");
+  assert.equal(files.some((f) => /work-to-people\.png$/.test(f)), false, "挿絵の元の 1.9MB の PNG を公開しない");
   const total = files.reduce((n, f) => n + statSync(join(DIST, f)).size, 0);
   assert.ok(total < 1024 * 1024, `合計 ${total} バイト`);
 });
@@ -133,13 +133,18 @@ test("Lead は申し込みが受け付けられたときだけ、入力内容を
   assert.equal((js.match(/trackLead\(\);/g) || []).length, 1, "送るのは成功の分岐の一か所だけ");
 });
 
-test("ロゴは正式なもの(/start/ と同じ SVG)を使い、文字で組んだ代わりのロゴを置かない(柴田 2026-10-14 指摘)", () => {
-  const official = read("start/assets/logo/shinai-logo.svg");
-  assert.equal(read("logistics/assets/shinai-logo.svg"), official);
-  /* 紺の下地(フッター)では黒の文字が読めないため、文字だけを白にした版を使う。マークの色と形は変えない。 */
-  assert.equal(read("logistics/assets/shinai-logo-white.svg"), official.replace('fill="#000"', 'fill="#fff"'));
+test("ロゴは正式な透過していない画像を使い、文字で組んだ代わりのロゴを置かない(柴田 2026-10-14 指摘)", () => {
+  /* 透過した版は縁が粗く見えるため、白地の正式なロゴ(柴田提供・1500x468)を使う。
+     透過していないので、上部もフッターも白の下地に置く。白抜きなどの別の版は作らない。 */
+  const png = readFileSync(join(ROOT, "logistics/assets/shinai-logo.png"));
+  assert.equal(png.readUInt32BE(16), 1500);
+  assert.equal(png.readUInt32BE(20), 468);
+  assert.equal(png[25], 2, "色の形式が RGB(透過なし)であること");
+  assert.ok(readdirSync(join(ROOT, "logistics/assets")).every((f) => !/logo/.test(f) || f === "shinai-logo.png"));
   const html = read("logistics/index.html");
-  assert.equal((html.match(/<img src="assets\/shinai-logo\.svg"[^>]*alt="ShinAI"/g) || []).length, 1);
-  assert.equal((html.match(/<img src="assets\/shinai-logo-white\.svg"[^>]*alt="ShinAI"/g) || []).length, 1);
+  assert.equal((html.match(/<img src="assets\/shinai-logo\.png" width="1500" height="468"[^>]*alt="ShinAI"/g) || []).length, 2);
+  const footerBg = [read("logistics/styles.css"), read("logistics/clean.css")]
+    .flatMap((css) => [...css.matchAll(/\.footer\{[^}]*background:([^;}]+)/g)].map((m) => m[1].trim()));
+  assert.equal(footerBg.at(-1), "#fff");
   assert.doesNotMatch(html, /brand-name/);
 });
