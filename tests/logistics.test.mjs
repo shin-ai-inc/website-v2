@@ -143,7 +143,9 @@ test("ロゴは正式な透過していない画像を使い、文字で組ん�
   assert.ok(readdirSync(join(ROOT, "logistics/assets")).every((f) => !/logo/.test(f) || f === "shinai-logo.png"));
   const html = read("logistics/index.html");
   assert.equal((html.match(/<img src="assets\/shinai-logo\.png" width="1500" height="468"[^>]*alt="ShinAI"/g) || []).length, 2);
-  const footerBg = [read("logistics/styles.css"), read("logistics/clean.css")]
+  /* 全体の img{max-width:100%} が囲みの幅で横だけを詰め、円のマークが楕円に見えた(柴田 2026-10-14 指摘)。 */
+  assert.match(read("logistics/styles.css"), /\.brand-logo\{[^}]*max-width:none[^}]*aspect-ratio:1500\/468/);
+  const footerBg =[read("logistics/styles.css"), read("logistics/clean.css")]
     .flatMap((css) => [...css.matchAll(/\.footer\{[^}]*background:([^;}]+)/g)].map((m) => m[1].trim()));
   assert.equal(footerBg.at(-1), "#fff");
   assert.doesNotMatch(html, /brand-name/);
