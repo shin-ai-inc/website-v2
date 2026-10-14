@@ -14,7 +14,7 @@ const DIST = join(ROOT, "dist");
 const ALLOWED_PATH = [
   /^[^/]+\.html$/,
   /^en\/[^/]+\.html$/,
-  /^(start|lp|ai-business|dental-copilot|logistics)\//,
+  /^(start|lp|ai-business|dental-copilot|logistics|hana)\//,
   /^assets\//,
   /^js\//,
   /^styles\/app\.css$/,
@@ -65,7 +65,7 @@ test("サイトマップの全 URL が dist にある(ディレクトリ形式�
 
 test("ディレクトリ形式の URL は _redirects で index.html に写す(html_handling none のため)", () => {
   const rules = readFileSync(join(DIST, "_redirects"), "utf8").split("\n").filter(Boolean);
-  for (const dir of ["/", "/en/", "/start/", "/ai-business/", "/dental-copilot/", "/logistics/", "/lp/"]) {
+  for (const dir of ["/", "/en/", "/start/", "/ai-business/", "/dental-copilot/", "/logistics/", "/hana/", "/lp/"]) {
     assert.ok(rules.includes(`${dir} ${dir}index.html 200`), `${dir} の内部書き換えが無い`);
     if (dir !== "/") assert.ok(rules.includes(`${dir.slice(0, -1)} ${dir} 301`), `${dir} の末尾スラッシュ無しの転送が無い`);
   }
