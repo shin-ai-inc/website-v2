@@ -26,6 +26,8 @@ exclude:
   # サーバー側(Cloudflare Worker)の実装・設定。鍵は含まないが、
   # 防御の中身と内部識別子を相手に渡さない
   - api
+  # 映像の範囲指定に応える Worker(wrangler が同梱する。配信物ではない)
+  - worker
   # 検証・開発ツール
   - tests
   - tools

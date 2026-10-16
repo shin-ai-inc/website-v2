@@ -78,7 +78,7 @@ test("サーバー側の実装・検証・生成元は配信されない", () =>
   for (const p of ["api/index.mjs", "api/lib/guard.mjs", "api/wrangler.toml", "api/schema.sql",
                    "tests/seo.test.mjs", "tools/check_overflow.py", "_build/build.mjs",
                    "partials/_footer.html", "deploy/_headers", "netlify.toml", "README.md",
-                   "scripts/chatbot.js", "scripts/config.js"]) {
+                   "scripts/chatbot.js", "scripts/config.js", "worker/media.mjs"]) {
     assert.equal(served(p, rules), false, `${p} は配信されない`);
   }
 });
@@ -116,7 +116,11 @@ test("Cloudflare の配信設定は dist をそのまま返し、URL を書き�
   const config = JSON.parse(read("wrangler.jsonc").replace(/^\s*\/\/.*$/gm, ""));
   assert.equal(config.assets.directory, "./dist", "配信するのは dist");
   assert.equal(config.assets.html_handling, "none", ".html を外す転送を止める");
-  assert.equal(config.main, undefined, "静的配信だけにする(処理を足すと無料枠の数え方が変わる)");
+  /* 処理を足すと無料枠の数え方が変わるので、Worker を先に通す経路は映像の置き場所だけに限る
+     (2026-10-17: 静的配信が Range を扱わず、映像が Safari で再生できないため)。 */
+  const first = config.assets.run_worker_first;
+  assert.ok(config.main === undefined || (Array.isArray(first) && first.length > 0 && first.every((p) => p.startsWith("/studio-mark/assets/"))),
+    "Worker を全経路の前に置かない");
 });
 
 test("dist には公開してよいものだけを置く(知識ベースは Worker が同梱する)", () => {

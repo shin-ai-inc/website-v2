@@ -15,8 +15,14 @@
   "routes": [{ "pattern": "shinai-inc.jp", "custom_domain": true }],
   // 配備の前に検査と組み立てを必ず走らせる。古い版から配備して本番の /hana/ を消した(2026-10-14)。
   "build": { "command": "node tools/predeploy-check.mjs && node _build/build.mjs" },
+  // 映像の範囲指定(Range)だけ Worker で応える。静的配信は Range を扱わず、Safari が映像を再生せず、
+  // Chrome は途中へ飛べなかった(2026-10-17 実測)。Worker を先に通すのは映像の置き場所だけで、
+  // ほかの経路は静的配信のまま(無料・回数無制限の数え方を変えない)。
+  "main": "worker/media.mjs",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/studio-mark/assets/*"],
     "html_handling": "none",
     // 無い URL は dist/404.html を返す(none だと本文 0 バイト)。single-page-application にはしない
     // (存在しない URL まで 200 になり、偽の 404 で検索の評価が濁る・2026-10-10 セキュリティ点検)。
