@@ -235,8 +235,10 @@ const REDIRECT_DIRS = ["lp/"];
    dist へ写して圧縮はするが、sitemap と llms.txt には載せない。
    2026-10-10: 歯科受付コパイロットの LP(医院のヒアリング用・柴田判断)。
    2026-10-12: 運送業の日報の LP(広告から直接渡す・ホームページからつながない・柴田)。
-   2026-10-13: 華｜心のパーソナルトレーニングの LP(柴田個人のサービス・ホームページには載せない)。 */
-const NOINDEX_DIRS = ["dental-copilot/", "logistics/", "hana/"];
+   2026-10-13: 華｜心のパーソナルトレーニングの LP(柴田個人のサービス・ホームページには載せない)。
+   2026-10-16: STUDIO Mark(AI映像制作)の LP。Vercel の別アドレスで公開していたものを会社ドメインへ移した
+   (柴田 2026-10-10 の指示: LP は会社のドメインだけで公開する)。製品は検証中のため検索には載せない。 */
+const NOINDEX_DIRS = ["dental-copilot/", "logistics/", "hana/", "studio-mark/"];
 
 const standalonePages = [
   {

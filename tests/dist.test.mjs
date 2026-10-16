@@ -14,7 +14,7 @@ const DIST = join(ROOT, "dist");
 const ALLOWED_PATH = [
   /^[^/]+\.html$/,
   /^en\/[^/]+\.html$/,
-  /^(start|lp|ai-business|dental-copilot|logistics|hana)\//,
+  /^(start|lp|ai-business|dental-copilot|logistics|hana|studio-mark)\//,
   /^assets\//,
   /^js\//,
   /^styles\/app\.css$/,
@@ -22,7 +22,9 @@ const ALLOWED_PATH = [
   /^en\/site\.webmanifest$/,
   /^\.well-known\/security\.txt$/,
 ];
-const ALLOWED_EXT = new Set([".html", ".css", ".js", ".svg", ".png", ".webp", ".jpg", ".ico", ".txt", ".xml", ".webmanifest", ".woff2"]);
+/* .mp4 は 2026-10-16 に追加。STUDIO Mark の LP が制作サンプルの映像を自社で配信するため
+   （以前は外部のストレージを指しており、そこが消えて再生できなくなった）。 */
+const ALLOWED_EXT = new Set([".html", ".css", ".js", ".svg", ".png", ".webp", ".jpg", ".ico", ".txt", ".xml", ".webmanifest", ".woff2", ".mp4"]);
 
 function walk(dir) {
   const out = [];
