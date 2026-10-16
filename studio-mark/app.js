@@ -46,6 +46,34 @@
     video.addEventListener('ended', function () { track('sm_view_demo_complete'); });
   }
 
+  var pair = Array.prototype.slice.call(document.querySelectorAll('.compare-video'));
+  var toggle = document.getElementById('compare-toggle');
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (pair.length === 2 && toggle) {
+    var paused = still, seen = false;
+    function playPair() {
+      pair.forEach(function (v) { v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); });
+    }
+    function setPaused(next) {
+      paused = next;
+      toggle.textContent = paused ? '並べて再生' : '一時停止';
+      if (paused) pair.forEach(function (v) { v.pause(); }); else playPair();
+    }
+    toggle.hidden = false;
+    toggle.textContent = paused ? '並べて再生' : '一時停止';
+    toggle.addEventListener('click', function () { setPaused(!paused); });
+    var block = document.querySelector('.compare');
+    if (block && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        var e = es[0];
+        if (!e.isIntersecting) { pair.forEach(function (v) { v.pause(); }); return; }
+        if (e.intersectionRatio < 0.3) return;
+        if (!seen) { seen = true; track('sm_view_revision'); }
+        if (!paused && pair[0].paused) playPair();
+      }, { threshold: [0, 0.3] }).observe(block);
+    }
+  }
+
   var sticky = document.getElementById('sticky-cta');
   var hero = document.getElementById('top');
   var consult = document.getElementById('consult');
