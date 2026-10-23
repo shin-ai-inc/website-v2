@@ -34,17 +34,13 @@
   --energy-2: #FFA533;         /* 明るいオレンジ */
   --energy-soft: #FFF3E0;      /* オレンジの淡 */
 
-  /* ---- Color: section coding (3ソリューションの色分け) ----
-     初期の #EBF0FF・#E0FAF5・#FFF3E0 は彩度が高く平坦で、生成AIの既定の配色に見えた
-     (柴田指摘 2026-10-23)。業種別の色と同じ考え方で、彩度を落とした和の淡色へ寄せる。
-     面は solutions.css で上から紙の白へ溶かす。ink は淡地と白地の両方で 4.5:1 以上
-     (tests/palette.test.mjs が守る)。 */
-  --c-tacit-bg: #EEF1F7;       /* 暗黙知AI化 — 藍鼠 */
-  --c-tacit-ink: #2E4A93;      /* 藍 */
-  --c-agent-bg: #EAF3EF;       /* 企業専用エージェント — 青磁 */
-  --c-agent-ink: #1F6A5C;      /* 深い青磁 */
-  --c-enable-bg: #F6F1EA;      /* 内製化・運用支援 — 生成り */
-  --c-enable-ink: #97521F;     /* 琥珀 */
+  /* ---- Color: section coding (3ソリューションの色分け) ---- */
+  --c-tacit-bg: #EBF0FF;       /* 暗黙知AI化 — 藍青の淡 */
+  --c-tacit-ink: #2044CC;
+  --c-agent-bg: #E0FAF5;       /* 企業専用エージェント — 青緑の淡 */
+  --c-agent-ink: #007A67;
+  --c-enable-bg: #FFF3E0;      /* 内製化・運用支援 — オレンジの淡 */
+  --c-enable-ink: #B55300;     /* 淡橙地で 4.5:1 を満たす濃度(旧 #CC5E00 は 3.70:1) */
 
   /* ---- Industry palette (業種別の色分け) ----
      AIが多用しがちな原色の青×ティールを脱し、落ち着いたエディトリアル調の8色で業種を識別する。

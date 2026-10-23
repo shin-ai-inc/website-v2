@@ -1,7 +1,7 @@
 /*
   Section: Solutions (#solutions)
-  得られる成果で三つに色分け。各カードがセクションコーディングの淡色と
-  アクセント色を --card-bg / --card-ink として受け取り、アイコン・罫・箇条書きへ波及させる。
+  得られる成果で三つに色分け。面は純白のまま、各カードがセクションコーディングの
+  アクセント色を --card-ink として受け取り、枠・見出し・罫・箇条書きへ波及させる。
   色・余白・型はトークンのみ参照。
 */
 
@@ -15,20 +15,21 @@
   display: flex;
   flex-direction: column;
   padding: var(--space-5);
-  /* 一色で塗ると面が平坦に見える。上半分は写真が覆うため、本文の始まる辺りで
-     淡色をいちばん濃くし、下へ向けて紙の白へ半分ほど溶かす。右下にだけ
-     文字色をごく薄く返して、面に奥行きと接地感を持たせる。 */
-  border: 1px solid color-mix(in srgb, var(--card-ink) 12%, var(--line));
+  /* 面は純白にし、色分けは枠で行う(柴田指示 2026-10-23)。淡色を面いっぱいに塗ると
+     初期の生成AIの配色に見えた。枠は役割の色を白へ溶かした細い線にし、
+     影にも同じ色をごく薄く含ませて、白い面どうしでも見分けられるようにする。 */
+  border: 1px solid color-mix(in srgb, var(--card-ink) 38%, var(--paper));
   border-radius: var(--r-lg);
-  background:
-    radial-gradient(75% 45% at 100% 100%, color-mix(in srgb, var(--card-ink) 6%, transparent), transparent 70%),
-    linear-gradient(180deg, var(--card-bg) 40%, color-mix(in srgb, var(--card-bg) 45%, var(--paper)) 100%);
-  box-shadow: var(--shadow-sm);
+  background: var(--paper);
+  box-shadow:
+    0 1px 2px rgba(12, 26, 54, 0.04),
+    0 14px 32px -22px color-mix(in srgb, var(--card-ink) 45%, transparent);
   position: relative;
   overflow: hidden;
   transition:
     transform var(--dur-1) var(--ease-out),
-    box-shadow var(--dur-1) var(--ease-out);
+    box-shadow var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
 }
 
 .solution-card::before {
@@ -43,7 +44,10 @@
 
 .solution-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--card-ink) 60%, var(--paper));
+  box-shadow:
+    0 1px 2px rgba(12, 26, 54, 0.05),
+    0 20px 40px -22px color-mix(in srgb, var(--card-ink) 55%, transparent);
 }
 
 .solution-card:hover::before {
@@ -51,17 +55,14 @@
 }
 
 .solution-card--tacit {
-  --card-bg: var(--c-tacit-bg);
   --card-ink: var(--c-tacit-ink);
 }
 
 .solution-card--agent {
-  --card-bg: var(--c-agent-bg);
   --card-ink: var(--c-agent-ink);
 }
 
 .solution-card--enable {
-  --card-bg: var(--c-enable-bg);
   --card-ink: var(--c-enable-ink);
 }
 
