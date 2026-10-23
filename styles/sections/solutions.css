@@ -17,13 +17,17 @@
   padding: var(--space-5);
   /* 面は純白にし、色分けは枠で行う(柴田指示 2026-10-23)。淡色を面いっぱいに塗ると
      初期の生成AIの配色に見えた。枠は役割の色を白へ溶かした細い線にし、
-     影にも同じ色をごく薄く含ませて、白い面どうしでも見分けられるようにする。 */
-  border: 1px solid color-mix(in srgb, var(--card-ink) 38%, var(--paper));
+     影にも同じ色をごく薄く含ませて、白い面どうしでも見分けられるようにする。
+     枠の色(--card-frame)は文字の色(--card-ink)と分けて持つ。文字用の濃い色を
+     白へ溶かすと、橙は茶色に濁って見えた(柴田指摘 2026-10-23)。
+     明るい色ほど白へ溶かすと消えるため、溶かす割合(--card-frame-mix)で
+     三枚の枠の見え方の強さをそろえる。 */
+  border: 1px solid color-mix(in srgb, var(--card-frame) var(--card-frame-mix, 38%), var(--paper));
   border-radius: var(--r-lg);
   background: var(--paper);
   box-shadow:
     0 1px 2px rgba(12, 26, 54, 0.04),
-    0 14px 32px -22px color-mix(in srgb, var(--card-ink) 45%, transparent);
+    0 14px 32px -22px color-mix(in srgb, var(--card-frame) 45%, transparent);
   position: relative;
   overflow: hidden;
   transition:
@@ -37,17 +41,17 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--card-ink);
+  background: var(--card-frame);
   opacity: 0;
   transition: opacity var(--dur-1) var(--ease-out);
 }
 
 .solution-card:hover {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--card-ink) 60%, var(--paper));
+  border-color: color-mix(in srgb, var(--card-frame) 60%, var(--paper));
   box-shadow:
     0 1px 2px rgba(12, 26, 54, 0.05),
-    0 20px 40px -22px color-mix(in srgb, var(--card-ink) 55%, transparent);
+    0 20px 40px -22px color-mix(in srgb, var(--card-frame) 55%, transparent);
 }
 
 .solution-card:hover::before {
@@ -56,14 +60,18 @@
 
 .solution-card--tacit {
   --card-ink: var(--c-tacit-ink);
+  --card-frame: var(--c-tacit-ink);
 }
 
 .solution-card--agent {
   --card-ink: var(--c-agent-ink);
+  --card-frame: var(--c-agent-ink);
 }
 
 .solution-card--enable {
   --card-ink: var(--c-enable-ink);
+  --card-frame: var(--energy);
+  --card-frame-mix: 62%;
 }
 
 /* カード写真 — 上端からブリードして視覚的なアンカーを作る */

@@ -43,6 +43,10 @@ test("事業カードの面は純白で、淡色を塗らない", () => {
 
 test("事業カードの色分けは、役割の色の枠で行う", () => {
   const card = rule(".solution-card");
-  assert.match(card, /border:[^;]*var\(--card-ink\)/);
+  assert.match(card, /border:[^;]*var\(--card-frame\)/);
   assert.match(rule(".solution-card__title"), /color:\s*var\(--card-ink\)/);
+});
+
+test("伴走支援の枠はオレンジで、文字用の濃い橙(白に溶かすと茶色に見える)を使わない(柴田 2026-10-23)", () => {
+  assert.match(rule(".solution-card--enable"), /--card-frame:\s*var\(--energy\)/);
 });
