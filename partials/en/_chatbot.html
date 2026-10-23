@@ -4,7 +4,7 @@
   chatbot-messages / chat-input / chat-send)。インラインJS/ハンドラは書かない。
   表示文言は chatbot.js が documentElement.lang を見て切り替える。
 -->
-<div class="chatbot" data-chatbot>
+<div class="chatbot" data-chatbot data-aito-presence="here">
   <button
     type="button"
     id="chatbot-button"
@@ -14,7 +14,7 @@
     aria-label="Ask the AI assistant"
   >
     <!-- 案内役キャラクター「アイト」(標準モデルの全体像)。JA版と同一の図形。 -->
-    <span class="aito aito--launcher" aria-hidden="true">
+    <span class="aito aito--launcher" data-aito-state="idle" aria-hidden="true">
       <svg viewBox="0 0 66 52" width="66" height="52" fill="none" focusable="false">
         <g class="aito-block">
           <rect x="4" y="23" width="15" height="15" rx="3" class="ab-box"/>
@@ -25,8 +25,10 @@
           <rect x="25" y="11" width="36" height="30" rx="9" class="ab-face"/>
           <path d="M43 11 v-5" class="ab-ant"/>
           <circle cx="43" cy="4" r="2.6" class="ab-antdot"/>
-          <circle cx="37" cy="24" r="2.5" class="aito-eye"/>
-          <circle cx="50" cy="24" r="2.5" class="aito-eye"/>
+          <g class="aito-eyes-wander"><g class="aito-eyes">
+            <circle cx="37" cy="24" r="2.5" class="aito-eye"/>
+            <circle cx="50" cy="24" r="2.5" class="aito-eye"/>
+          </g></g>
           <path d="M39.5 31 q4 3.4 8 0" class="aito-mouth"/>
           <rect x="32" y="41" width="6" height="4" rx="2" class="ab-foot"/>
           <rect x="47" y="41" width="6" height="4" rx="2" class="ab-foot"/>
