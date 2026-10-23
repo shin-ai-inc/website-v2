@@ -30,6 +30,11 @@
 
   var CRISIS = /死にたい|しにたい|消えたい|生きるのが(つらい|辛い|嫌)|自殺|自傷|リストカット|誰も助けて|kill myself|suicide|want to die|end my life|self[ -]harm/i;
 
+  /* 案内役(アイト)へ、会話の開閉を出来事で知らせる。相手の実装は知らない(js/aito-roam.js が聞く) */
+  function tellAito(kind) {
+    document.dispatchEvent(new CustomEvent("aito", { detail: { kind: kind } }));
+  }
+
   var Chatbot = {
     button: null,
     panel: null,
@@ -98,6 +103,7 @@
       var willOpen = !this.panel.classList.contains("is-open");
       this.panel.classList.toggle("is-open", willOpen);
       this.button.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      tellAito(willOpen ? "open" : "close");
       if (willOpen) {
         this.lockBackground();
         this.fitToViewport();
@@ -112,6 +118,7 @@
     },
 
     close: function () {
+      tellAito("close");
       this.panel.classList.remove("is-open");
       this.button.setAttribute("aria-expanded", "false");
       this.unlockBackground();

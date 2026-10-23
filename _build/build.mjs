@@ -848,7 +848,8 @@ const shell = (page, loc) => {
     `<script src="${p}${JS_OUT}/config.js${v}" defer></script>`,
     `<script src="${p}${JS_OUT}/nav.js${v}" defer></script>`,
     `<script src="${p}${JS_OUT}/main.js${v}" defer></script>`,
-    `<script src="${p}${JS_OUT}/chatbot.js${v}" defer></script>`
+    `<script src="${p}${JS_OUT}/chatbot.js${v}" defer></script>`,
+    `<script src="${p}${JS_OUT}/aito-roam.js${v}" defer></script>`
   ];
   /* 施主が愛する流動パーティクル。Three.js は自己ホスト(CDNではない)で script-src 'self' を維持。
      全ページで読む。トップだけの演出だったが、フッターの地としても使うため
