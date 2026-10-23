@@ -15,9 +15,14 @@
   display: flex;
   flex-direction: column;
   padding: var(--space-5);
-  border: 1px solid var(--line);
+  /* 一色で塗ると面が平坦に見える。上半分は写真が覆うため、本文の始まる辺りで
+     淡色をいちばん濃くし、下へ向けて紙の白へ半分ほど溶かす。右下にだけ
+     文字色をごく薄く返して、面に奥行きと接地感を持たせる。 */
+  border: 1px solid color-mix(in srgb, var(--card-ink) 12%, var(--line));
   border-radius: var(--r-lg);
-  background: var(--card-bg);
+  background:
+    radial-gradient(75% 45% at 100% 100%, color-mix(in srgb, var(--card-ink) 6%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--card-bg) 40%, color-mix(in srgb, var(--card-bg) 45%, var(--paper)) 100%);
   box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
