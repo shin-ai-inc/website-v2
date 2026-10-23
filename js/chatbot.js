@@ -27,9 +27,6 @@ cues:["お問い合わせ","無料相談","ご相談ください","導入","御�
 "料金","費用","期間","詳しく","具体的","ご提案"]
 };
 var CRISIS=/死にたい|しにたい|消えたい|生きるのが(つらい|辛い|嫌)|自殺|自傷|リストカット|誰も助けて|kill myself|suicide|want to die|end my life|self[ -]harm/i;
-function tellAito(kind){
-document.dispatchEvent(new CustomEvent("aito",{detail:{kind:kind}}));
-}
 var Chatbot={
 button:null,
 panel:null,
@@ -91,7 +88,6 @@ toggle:function(){
 var willOpen=!this.panel.classList.contains("is-open");
 this.panel.classList.toggle("is-open",willOpen);
 this.button.setAttribute("aria-expanded",willOpen?"true":"false");
-tellAito(willOpen?"open":"close");
 if(willOpen){
 this.lockBackground();
 this.fitToViewport();
@@ -105,7 +101,6 @@ this.input.focus();
 }
 },
 close:function(){
-tellAito("close");
 this.panel.classList.remove("is-open");
 this.button.setAttribute("aria-expanded","false");
 this.unlockBackground();
