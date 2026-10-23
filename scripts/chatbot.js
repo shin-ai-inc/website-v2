@@ -15,7 +15,7 @@
     cues: ["contact", "consultation", "get in touch", "adopt", "your company", "price",
            "pricing", "cost", "how long", "timeline", "more detail", "specific", "proposal", "quote"]
   } : {
-    greet: "こんにちは。ShinAI のアシスタントです。暗黙知の解消や業務への適用についてお気軽にお尋ねください。",
+    greet: "こんにちは。ShinAI のアシスタントです。\n業務のAI化について、ご質問をどうぞ。",
     tooLong: "メッセージが長すぎます。500文字以内でお願いします。",
     refused: "申し訳ありません。その内容には回答できません。具体的なご相談はお問い合わせフォームをご利用ください。",
     tooFast: "送信が続いています。少しだけお待ちください。",
