@@ -4,30 +4,24 @@
   ローディングのドットはCSSで描く(FontAwesome等の外部依存なし)。
 */
 
-/* 起動UIは画面に居る(fixed)。ただし「居座らない」。
-   2026-08-27 に fixed をやめた理由は二つ: 読んでいる間ずっと右下で本文を隠し続けること、
-   こちらの都合で話しかけているように見えること。2026-10-23 柴田の指示(常時活動)で画面へ戻すにあたり、
-   その二つは居場所の層(data-aito-presence)で解く。
-   読み進めている(下へスクロール)間は端へ引いて顔だけ覗かせ(peek)、読んでいる間もそのまま。
-   戻る・終わりまで来る・触れる・会話が動く、で出てくる(here)。引いている間も生きている(まばたき・浮遊)。
-   居場所の切り替えは js/aito-life.js が出来事で書く。時計は持たない。 */
+/* 起動UIは画面に貼りつけない(position:fixed をやめた)。読んでいる間ずっと右下に
+   居座ると、本文の一部を隠し続けるうえ、こちらの都合で話しかけているように見える。
+   ページの終わりまで下りてきた人の脇に、フッターと並んで待つ。
+   フッターの中へ入れる方法は取らない。帯の高さを一切変えないことが、そもそも
+   この配置に移した理由だから。高さを持たない絶対配置なら、フッターは元の寸法のまま
+   で、アイトはその上に重なるだけで済む。
+   body を包含ブロックにして文書の最下部へ置く。この一行はチャット起動UIのためだけ
+   にあるので、base.css ではなくここに置く(fixed へ戻すときは一緒に消すこと)。 */
+body {
+  position: relative;
+}
 
 .chatbot {
-  position: fixed;
+  position: absolute;
   right: clamp(1rem, 3vw, 2rem);
   bottom: clamp(1rem, 3vw, 2rem);
   z-index: var(--z-overlay);
-  transition: transform 0.55s var(--ease-out), opacity 0.55s var(--ease-out);
 }
-
-/* 覗く: 下端へ身を沈め、目とアンテナだけを出す(正本の peek の姿勢: bottom を負にして下から覗く)。
-   横へ引くと図形の左にある荷物だけが残って顔が消えるので、縦に沈める。本文の行末の上に顔が居座らない */
-.chatbot[data-aito-presence="peek"] {
-  transform: translateY(46%);
-  opacity: 0.92;
-}
-.chatbot[data-aito-presence="peek"] .aito-eyes { transform: translate(0, -1.2px); }
-.chatbot[data-aito-presence="peek"] .chatbot__launcher { transform: none; }
 
 /* スクロール進捗ライン(.scroll-progress・base.css)は --z-overlay を共有し、
    DOM挿入順で.chatbotより後に来る(main.jsがbodyの末尾へ追加するため)ため、
@@ -125,72 +119,6 @@ body.chat-open .scroll-progress {
 @keyframes aito-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 @keyframes aito-blink { 0%, 91%, 100% { transform: scaleY(1); } 94% { transform: scaleY(0.12); } }
 @keyframes aito-carry { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-3deg) translateY(-1px); } }
-
-/* ---- 常時の生きた動き(状態の層) ----
-   上の三つの動き(浮遊・まばたき・荷物)は正本のまま触らない。その上に、相手に応じて変わる層を重ねる。
-   状態は js/aito-life.js が data-aito-state に書き、視線の量は CSS 変数(--aito-gx/--aito-gy・-1〜1)で受ける。
-   動きの時計は全部 CSS が持つ。JS は出来事で状態を替えるだけ。
-   量はすべて小さく(瞳 1.6px・体 2〜4 度)。賢く見えるのは、大きく動くからではなく、相手に気づいているからである。 */
-.aito--launcher .aito-body {
-  transform-box: fill-box;
-  transform-origin: 50% 88%;
-  transition: transform 0.45s var(--ease-out);
-  transform: rotate(calc(var(--aito-gx, 0) * 2deg));
-}
-
-/* 視線: 二層。外の層(wander)は手持ち無沙汰のときに時々あたりを見る。内の層(eyes)は指す先へ向く。
-   向く動きは速く(サッケード)、戻りは同じ速さでよい。まばたきは瞳の方に残る。 */
-.aito--launcher .aito-eyes-wander {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: aito-wander 17s ease-in-out infinite;
-}
-.aito--launcher .aito-eyes {
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.14s var(--ease-out);
-  transform: translate(calc(var(--aito-gx, 0) * 1.6px), calc(var(--aito-gy, 0) * 1.2px));
-}
-
-/* 聞いている: 入力欄(自分のすぐ上)へ目をやり、少し身を乗り出す */
-[data-aito-state="attentive"] .aito-body { transform: translateY(-1px) rotate(-2deg); }
-[data-aito-state="attentive"] .aito-eyes { transform: translate(0, -1.4px); }
-[data-aito-state="attentive"] .aito-eyes-wander { animation: none; }
-
-/* 考えている: ゆっくり首をかしげ、アンテナの玉が脈を打つ */
-[data-aito-state="thinking"] .aito-body { animation: aito-ponder 2.2s ease-in-out infinite; }
-[data-aito-state="thinking"] .ab-antdot { animation: aito-pulse 1.1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-[data-aito-state="thinking"] .aito-eyes { transform: translate(1px, -1.2px); }
-[data-aito-state="thinking"] .aito-eyes-wander { animation: none; }
-
-/* 話している: 口が字の速さで開く。体は浮遊のまま */
-[data-aito-state="speaking"] .aito-mouth { animation: aito-speak 0.26s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 0; }
-[data-aito-state="speaking"] .aito-eyes-wander { animation: none; }
-
-/* 喜ぶ: 開いたとき・案内を出したとき。一度だけ跳ねて戻る(終わりは animationend で idle へ) */
-[data-aito-state="joy"] svg { animation: aito-float 3.4s ease-in-out infinite, aito-joy 0.9s var(--ease-out) 1; }
-[data-aito-state="joy"] .aito-block { animation: none; transform: translateY(-4px) rotate(-6deg); }
-[data-aito-state="joy"] .aito-mouth { d: path("M39.5 30 q4 4.6 8 0"); }
-
-/* スクロールの向きへ一瞬だけ目をやる(量は符号で決める) */
-[data-aito-glance="down"] .aito-eyes-wander { --aito-glance-dir: 1; animation: aito-glance 0.9s ease-out 1; }
-[data-aito-glance="up"] .aito-eyes-wander { --aito-glance-dir: -1; animation: aito-glance 0.9s ease-out 1; }
-
-/* 休む: 画面が隠れている間は全部止める(描画の無駄を出さない)。戻れば続きから */
-[data-aito-state="rest"] svg,
-[data-aito-state="rest"] .aito-eye,
-[data-aito-state="rest"] .aito-block,
-[data-aito-state="rest"] .aito-body,
-[data-aito-state="rest"] .aito-mouth,
-[data-aito-state="rest"] .ab-antdot,
-[data-aito-state="rest"] .aito-eyes-wander { animation-play-state: paused; }
-
-@keyframes aito-ponder { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(2.5deg) translateY(-1px); } }
-@keyframes aito-pulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.35); opacity: 1; } }
-@keyframes aito-speak { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.9); } }
-@keyframes aito-joy { 0% { transform: translateY(0) rotate(0deg); } 35% { transform: translateY(-7px) rotate(-4deg); } 70% { transform: translateY(1px) rotate(1deg); } 100% { transform: translateY(0) rotate(0deg); } }
-@keyframes aito-glance { 0% { transform: translateY(0); } 25%, 65% { transform: translateY(calc(var(--aito-glance-dir, 1) * 1.6px)); } 100% { transform: translateY(0); } }
-@keyframes aito-wander { 0%, 27%, 36%, 68%, 77%, 100% { transform: translate(0, 0); } 30%, 33% { transform: translate(-1.3px, 0.3px); } 71%, 74% { transform: translate(1.2px, -0.4px); } }
 
 /* ---- ウィンドウ ---- */
 /* 会話面の書体はここで一度だけ決め、中の要素は継承させる。入力欄と吹き出しに
