@@ -27,6 +27,9 @@ cues:["お問い合わせ","無料相談","ご相談ください","導入","御�
 "料金","費用","期間","詳しく","具体的","ご提案"]
 };
 var CRISIS=/死にたい|しにたい|消えたい|生きるのが(つらい|辛い|嫌)|自殺|自傷|リストカット|誰も助けて|kill myself|suicide|want to die|end my life|self[ -]harm/i;
+function tellAito(kind){
+document.dispatchEvent(new CustomEvent("aito",{detail:{kind:kind}}));
+}
 var Chatbot={
 button:null,
 panel:null,
@@ -64,9 +67,11 @@ window.visualViewport.addEventListener("resize",syncSheet);
 window.visualViewport.addEventListener("scroll",syncSheet);
 }
 this.input.addEventListener("focus",function(){
+tellAito("attentive");
 window.setTimeout(function(){self.scrollToEnd();},250);
 });
-this.input.addEventListener("input",function(){self.growInput();});
+this.input.addEventListener("blur",function(){if(!self.input.value.trim()){tellAito("idle");}});
+this.input.addEventListener("input",function(){tellAito("attentive");self.growInput();});
 this.sendBtn.addEventListener("click",function(){self.send();});
 this.input.addEventListener("keydown",function(e){
 if(e.key==="Enter"&&!e.shiftKey){
@@ -88,6 +93,7 @@ toggle:function(){
 var willOpen=!this.panel.classList.contains("is-open");
 this.panel.classList.toggle("is-open",willOpen);
 this.button.setAttribute("aria-expanded",willOpen?"true":"false");
+tellAito(willOpen?"joy":"idle");
 if(willOpen){
 this.lockBackground();
 this.fitToViewport();
@@ -101,6 +107,7 @@ this.input.focus();
 }
 },
 close:function(){
+tellAito("idle");
 this.panel.classList.remove("is-open");
 this.button.setAttribute("aria-expanded","false");
 this.unlockBackground();
@@ -278,6 +285,7 @@ var self=this;
 var el=document.createElement("div");
 el.className="chatbot__message chatbot__message--bot";
 var finish=function(){
+tellAito("idle");
 el.removeAttribute("aria-hidden");
 if(self.shouldShowCta(text)){
 window.setTimeout(function(){self.addContactCta();},280);
@@ -291,6 +299,7 @@ return;
 }
 el.setAttribute("aria-hidden","true");
 this.mountRow(el,"bot");
+tellAito("speaking");
 var i=0;
 var timer=window.setInterval(function(){
 if(i<text.length){
@@ -319,6 +328,7 @@ return true;
 return false;
 },
 addContactCta:function(){
+tellAito("joy");
 var path=(window.SHINAI_CONFIG&&window.SHINAI_CONFIG.contactPath)||"contact.html";
 var wrap=document.createElement("div");
 wrap.className="chatbot__message chatbot__message--bot chatbot__cta";
@@ -330,6 +340,7 @@ wrap.appendChild(link);
 this.mountRow(wrap,"bot");
 },
 showTyping:function(){
+tellAito("thinking");
 this.isTyping=true;
 var el=document.createElement("div");
 el.className="chatbot__message chatbot__message--bot chatbot__typing";
@@ -343,6 +354,7 @@ el.appendChild(dot);
 this.mountRow(el,"bot").id="chatbot-typing";
 },
 hideTyping:function(){
+tellAito("idle");
 this.isTyping=false;
 var el=document.getElementById("chatbot-typing");
 if(el){
