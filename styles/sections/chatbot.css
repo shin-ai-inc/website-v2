@@ -4,30 +4,24 @@
   ローディングのドットはCSSで描く(FontAwesome等の外部依存なし)。
 */
 
-/* 起動UIは画面の中を動き回る(柴田 2026-10-23: 位置を与えて画面の中を動き回る遊びの要素)。
-   定位置は右下(fixed)。js/aito-roam.js が格子(緯度・経度)の目的地を --aito-x/--aito-y に書き、
-   移動は transition、着いてからの休みは animation(aito-rest)が時計を持つ。JS は時計を持たない。
-   図形と三つの基本の動きは正本のまま。部位は動かさない(2026-10-23 に部位を動かす案は不採用)。
-   会話を開いたら定位置へ戻る(会話面は .chatbot を基準に開くため)。reduced-motion と狭い画面では定位置のまま。 */
+/* 起動UIは画面に貼りつけない(position:fixed をやめた)。読んでいる間ずっと右下に
+   居座ると、本文の一部を隠し続けるうえ、こちらの都合で話しかけているように見える。
+   ページの終わりまで下りてきた人の脇に、フッターと並んで待つ。
+   フッターの中へ入れる方法は取らない。帯の高さを一切変えないことが、そもそも
+   この配置に移した理由だから。高さを持たない絶対配置なら、フッターは元の寸法のまま
+   で、アイトはその上に重なるだけで済む。
+   body を包含ブロックにして文書の最下部へ置く。この一行はチャット起動UIのためだけ
+   にあるので、base.css ではなくここに置く(fixed へ戻すときは一緒に消すこと)。 */
+body {
+  position: relative;
+}
+
 .chatbot {
-  position: fixed;
+  position: absolute;
   right: clamp(1rem, 3vw, 2rem);
   bottom: clamp(1rem, 3vw, 2rem);
   z-index: var(--z-overlay);
 }
-
-.chatbot[data-aito-roam="roam"],
-.chatbot[data-aito-roam="held"] {
-  transform: translate3d(var(--aito-x, 0px), var(--aito-y, 0px), 0);
-  transition: transform var(--aito-ms, 1200ms) cubic-bezier(0.45, 0.05, 0.3, 1);
-}
-.chatbot[data-aito-roam="home"] {
-  transform: translate3d(0, 0, 0);
-  transition: transform 600ms var(--ease-out);
-}
-/* 休み: 着いたら、決めた時間だけ何もしない(見た目は変えない)。終わりの出来事で次の目的地へ */
-.chatbot[data-aito-rest] { animation: aito-rest var(--aito-rest-ms, 4000ms) linear 1; }
-@keyframes aito-rest { from { opacity: 1; } to { opacity: 1; } }
 
 /* スクロール進捗ライン(.scroll-progress・base.css)は --z-overlay を共有し、
    DOM挿入順で.chatbotより後に来る(main.jsがbodyの末尾へ追加するため)ため、
