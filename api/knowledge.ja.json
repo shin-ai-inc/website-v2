@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "1883e73",
+  "generatedAt": "593bc86",
   "chunks": [
     {
       "id": "index#0",
@@ -118,8 +118,8 @@
       "id": "index#16",
       "title": "最適なモデルを選ぶ｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "ChatGPT \n Claude \n ローカルLLM \n \n 「ChatGPT」「Claude」などの フロンティアモデルから、 社内で動かせるローカルLLM （オープンウェイトモデル）まで。 用途と機密性に合わせて選び、 データを社外に出さない構成にも 対応します。 \n\n 02 \n アプリ層",
-      "vec": "/QUE/g31+wb/+wD9/v39/f/5+gT+CwP6CP3++AT9//39//r4/gP/BAABCAYEA/4BAATzB/7+9gL/AAcH/f4AAwL++An4APj7+v7++/8FCAD5C/8BA/f6//P4+/36AgAFDP3/AwX/CAcA/fkB+Ar2/fUA9vn/Cvv6AAoHBAQEBv36+fwABP0F+fgA/vkB//oE8gL7/fsI/Pz9//oHAwMF9wII/QX8Bf4F9AP6/QEA/fsA/fz++QT4/vr8Avz//gYEChADAAH8AQcD/wP7AAMICfX/DP3+APf8BPkEDfoGAPv8BAP3CPwFAf7zBvwBAAD5+wUH+Qz8BfgGBgEGB/v//f3+/fsBCvv+/v36BQD9AgL+Bfn6/AD6BfgAA/4CBAb3+/8G+fv1AQT8BQAACAD//fwL/f4G/P4IB/4B+QP7Bv4B/Pn/+AcC9wb7CgL8/wD69Qb+/fUD+gQB/QUCBwAA9gD//AAH+f8G8wII+v8A/PsA+Qf//QQB9/8K/wQFAwL4BwIDA/sKCwMEAP3+BAAD//r8/QIDBP4GAQgG9wUAAAAHBQEBAe8A9P4ADAEA9f0ABPL6+gT/Avn///z9/fz8+/f7/P4FBgT7Bv4CBAUC/wj/Awf/CAMB+wP6AP8J+/r7Af8DBQMcBgL/CAP+C/4P/wTx9wD/9vgF9wEC/QEBBAU="
+      "text": "ChatGPT \n Claude \n Gemini \n ローカルLLM \n \n 「ChatGPT」「Claude」「Gemini」などの フロンティアモデルから、 社内で動かせるローカルLLM （オープンウェイトモデル）まで。 用途と機密性に合わせて選び、 データを社外に出さない構成にも 対応します。 \n\n 02 \n アプリ層",
+      "vec": "/gYF/wz1+gb/+//+/vv9/f/5+gX/DAL8CP/9+AT9Av0A/vj6/gP/BP4DCAUDA/3/AQL0CP8A9wD+AAYG/f8ABAL/9gj4APj7/f3+/P8FCAD6DAIBAvj6/vP2/Pz6BAAEDP3+BAQABgcB/PkB+Av0/PX/9/n+Cvr5AAoGAgQFBf36+v3/BP4F+foB//oB/fsD9AL7/voH/Pv8//sHAgMD9wEI/QX8B/0F9AP8+wD+/PsC/fv9+QT4/fj8Avv+/gUFCREEAAH6AAgE/gX8/wQJCPb/DP7+Afb8A/kEDPkGAPz8BAP4CP4DAv/zBPwBAAD4+gUF+gv7BPcGBAEGB/wB/fwA/fz/Cfv//f37BP/8AQH+BPj6+gH8BvkAA/4DBAX4/P8G+Pz1AQT9BgABCgD++vsK/f4F/P0IB/0A+AH7Bv4D+fkB+AYD9QX7CgD8AQD49gT9/vUE+wUB/QUEBgAA9wD//P4F9/8G8gEJ/AAA/Pn/+gcA+wQB+f4JAAQEAgD4BgICA/sJCgIC/vz8BAMC/vr6/gIEA/4HAgYH+QYA/gAHBAEDAO//8///CQEB9PwBBfP6+gT+APr///3+/vz6+/f5/f0GBgX6BfwEAwUBAAYAAggABwQD+gP7AP8J+/z8//8DBAMcBwMACAT9Cv4R/wPv9///9fkG9gEC/AABBAU="
     },
     {
       "id": "index#17",
