@@ -29,6 +29,16 @@ test("身近なモデルの名前を入口にし、基盤 → アプリ層 → �
   assert.deepEqual([...order].sort((a, b) => a - b), order, "基盤 → アプリ層 → 支援の順でない");
 });
 
+test("見出しは読む人の立場で「自社専用」と呼び、本文は主語がシンアイなので「会社ごと」と書く(柴田 2026-10-25 案A)", () => {
+  /* 「御社」「貴社」は相手を取引先として呼ぶ語で、自分ごととして読みにくい。
+     本文で「自社」と書くと、主語のシンアイの会社と読まれるおそれがある。 */
+  const s = section("partials/index.html");
+  assert.match(s, /<span class="section__title-line">自社専用のAIへ。<\/span>/);
+  assert.match(s, /会社ごとの専用AIを開発し/);
+  assert.match(s, /<h3 class="capability__term">会社ごとの専用AIをつくる<\/h3>/);
+  assert.doesNotMatch(s, /御社|貴社/);
+});
+
 test("一般の人に届かない専門用語を、項目の名前に並べない", () => {
   const s = section("partials/index.html");
   for (const word of ["強化学習", "RAG", "ベクトル検索", "LLM最適化", "オンプレミス"]) {
