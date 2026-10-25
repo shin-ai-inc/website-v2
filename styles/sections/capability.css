@@ -181,6 +181,15 @@
   .capability__term {
     font-size: var(--fs-body);
   }
+  /* 四つの札は一行に収まらず、流し込むと「ローカルLLM」だけが二行目に取り残された。
+     二つずつ同じ幅で並べる。 */
+  .capability__chips {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .capability__chip {
+    text-align: center;
+  }
   /* 二列だと本文の幅が足りず、語の途中で折れる。縦に積む。 */
   .capability__apps {
     grid-template-columns: 1fr;
