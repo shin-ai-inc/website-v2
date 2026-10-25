@@ -1,98 +1,200 @@
 /*
-  Section: capability — 企業AI開発に特化した、技術の芯。
-  既製品の組み合わせではなく、モデル最適化から運用基盤まで自分たちで設計できる主体性を示す濃色帯。
-  アイコン+番号モチーフで各領域を視覚的に区別する。
+  Section: capability — 何を土台に、何をつくり、どこまで支えるか。
+  専門用語の四項目(LLM最適化・強化学習・RAG・オンプレミス)は、一般の人には「AI = ChatGPT」と
+  結びつかず自分ごとにならなかった(柴田指摘 2026-10-25)。身近なモデルの名前を入口に置き、
+  基盤のモデル → アプリ層 → 企画から運用までの支援、を積み重なる三枚の層として見せる。
+  濃色帯の粒子が透けるよう、面は半透明のガラスにする。
 */
-.capability__grid {
+.capability__layers {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-5);
   margin-top: var(--space-6);
 }
 
-.capability__item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+.capability__layer {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(15rem, 30%) 1fr;
+  gap: var(--space-5);
+  align-items: start;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--r-lg);
-  background: rgba(255, 255, 255, 0.04);
-  transition:
-    background var(--dur-1) var(--ease-out),
-    border-color var(--dur-1) var(--ease-out),
-    transform var(--dur-1) var(--ease-out);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.025) 100%);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
-.capability__item:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.18);
-  transform: translateY(-3px);
+/* 層と層をつなぐ縦の線。下の層の上に次の層が載ることを示す。 */
+.capability__layer + .capability__layer::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--space-6) + 0.55rem);
+  top: calc(-1 * var(--space-5) - 1px);
+  width: 1px;
+  height: var(--space-5);
+  background: linear-gradient(180deg, rgba(0, 201, 167, 0.15), rgba(0, 201, 167, 0.7));
 }
 
-.capability__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: var(--r-md);
-  background: linear-gradient(135deg, rgba(58, 95, 235, 0.18) 0%, rgba(0, 201, 167, 0.14) 100%);
-  color: var(--teal);
+/* 番号と層の名前は一行に並べ、見出しの直上に置く。 */
+.capability__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: var(--space-2);
+  row-gap: var(--space-1);
 }
 
-.capability__icon svg {
-  width: 1.6rem;
-  height: 1.6rem;
-}
-
-.capability__body {
-  flex: 1;
-  min-width: 0;
+.capability__term {
+  grid-column: 1 / -1;
 }
 
 .capability__num {
-  display: block;
   font-family: var(--font-label);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--tracking-latin);
   color: var(--teal);
-  margin-bottom: var(--space-1);
+}
+
+.capability__kicker {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .capability__term {
   font-size: var(--fs-h3);
   color: #FFFFFF;
-  margin-bottom: var(--space-2);
+}
+
+.capability__body {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.capability__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.capability__chip {
+  padding: 0.35em 1.05em;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  font-family: var(--font-label);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+}
+
+/* 社内で動かせるモデルは、外のサービスと別の選択肢であることを色で分ける。 */
+.capability__chip--local {
+  border-color: rgba(0, 201, 167, 0.6);
+  background: rgba(0, 201, 167, 0.1);
+  color: var(--teal-2);
 }
 
 .capability__desc {
   font-size: var(--fs-sm);
   line-height: var(--lh-body);
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.capability__apps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.capability__app {
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--teal);
+}
+
+.capability__app-name {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: var(--space-1);
+}
+
+.capability__app-note {
+  font-weight: 400;
+  font-size: var(--fs-sm);
   color: rgba(255, 255, 255, 0.62);
 }
 
-@media (max-width: 640px) {
-  .capability__grid {
-    /* 2列のままだと本文の幅が129pxしかなく、「用途に合わせて大/規模言語モデルを」のように
-       語の途中で折れる。文が左に詰まり、カードの右だけが空いて見える。縦に積む。 */
+.capability__app-desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.capability__flow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.capability__step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.capability__step + .capability__step::before {
+  content: "";
+  width: 3rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), var(--teal));
+}
+
+@media (max-width: 960px) {
+  .capability__layer {
     grid-template-columns: 1fr;
     gap: var(--space-3);
+    padding: var(--space-4);
+  }
+  .capability__layer + .capability__layer::before {
+    left: calc(var(--space-4) + 0.55rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .capability__layers {
+    gap: var(--space-4);
     margin-top: var(--space-4);
   }
-  .capability__item {
+  .capability__layer {
     padding: var(--space-3);
-    /* 縦に積むと番号と見出しが離れて見えるため、横並びのときより間隔を詰める。 */
-    flex-direction: column;
-    gap: var(--space-2);
+  }
+  .capability__layer + .capability__layer::before {
+    top: calc(-1 * var(--space-4) - 1px);
+    height: var(--space-4);
+    left: calc(var(--space-3) + 0.55rem);
   }
   .capability__term {
     font-size: var(--fs-body);
-    margin-bottom: var(--space-1);
-    word-break: keep-all;
-    /* keep-all は長い連なりを1行に伸ばし画面外へはみ出させる。
-       収まらない時だけ折り返せるようにする安全弁。 */
-    overflow-wrap: anywhere;
+  }
+  /* 二列だと本文の幅が足りず、語の途中で折れる。縦に積む。 */
+  .capability__apps {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .capability__step + .capability__step::before {
+    width: 1.5rem;
+  }
+}
+
+/* base.css は 400px 以下で .nobr の保護を外す。この区画の語塊は最長でも15字(約210px)で
+   390px 幅に収まり、外すと「オープンウェ/イトモデル」のように語の途中で割れた。 */
+@media (max-width: 400px) {
+  .capability .nobr {
+    white-space: nowrap;
   }
 }
