@@ -189,6 +189,12 @@
   color: var(--teal-2);
 }
 
+/* 最後の行に一語だけ残る(「it.」など)のを避ける。 */
+.capability__desc,
+.capability__app-desc {
+  text-wrap: pretty;
+}
+
 .capability__desc {
   font-size: var(--fs-sm);
   line-height: var(--lh-body);
@@ -284,9 +290,23 @@
   .capability__term {
     font-size: var(--fs-body);
   }
+  /* 左右の線があると一文が入りきらず、360px 幅で「組み立て/る」と割れた。線を外し、文を中央に置く。 */
   .capability__seam {
-    gap: var(--space-2);
+    justify-content: center;
+    text-align: center;
     font-size: 0.78rem;
+  }
+  .capability__seam::before,
+  .capability__seam::after {
+    content: none;
+  }
+  .capability__seam-text {
+    text-wrap: balance;
+  }
+  /* 括弧書きは名前の後ろに続けると「(domain-/specialised AI)」と割れた。名前の下の行へ逃がす。 */
+  .capability__app-note {
+    display: block;
+    white-space: nowrap;
   }
   /* 四つの札は一行に収まらず、流し込むと「ローカルLLM」だけが二行目に取り残された。
      二つずつ同じ幅で並べる。 */
