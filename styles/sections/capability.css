@@ -1,18 +1,62 @@
 /*
   Section: capability — 何を土台に、何をつくり、どこまで支えるか。
   専門用語の四項目(LLM最適化・強化学習・RAG・オンプレミス)は、一般の人には「AI = ChatGPT」と
-  結びつかず自分ごとにならなかった(柴田指摘 2026-10-25)。身近なモデルの名前を入口に置き、
-  基盤のモデル → アプリ層 → 企画から運用までの支援、を積み重なる三枚の層として見せる。
+  結びつかず自分ごとにならなかった(柴田指摘 2026-10-25)。身近なモデルの名前を入口に置く。
+
+  シンアイが「基盤レイヤーの上の、アプリレイヤーを開発する会社」だと見て分かるようにする(柴田指示 2026-10-25)。
+  - 層の図の慣例どおり、上にアプリ、下に基盤を積む。
+  - シンアイの領域(支援とアプリレイヤー)だけを左の括弧で括り、基盤は括弧の外に置く。
+  - アプリレイヤーは色と光で最も強く、基盤は破線の枠で控えめにして「各社のもの」と区別する。
   濃色帯の粒子が透けるよう、面は半透明のガラスにする。
 */
-.capability__layers {
+.capability__diagram {
+  /* 左の括弧の列の幅。括弧の外にある基盤も、この幅だけ右へ寄せて層の左端をそろえる。 */
+  --bracket: 2.75rem;
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-3);
   margin-top: var(--space-6);
 }
 
-.capability__layer {
+.capability__ours {
+  display: grid;
+  grid-template-columns: var(--bracket) 1fr;
+  gap: var(--space-3);
+}
+
+.capability__bracket {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.capability__bracket::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 0.8rem;
+  border: 2px solid var(--teal);
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+.capability__bracket-label {
+  writing-mode: vertical-rl;
+  font-family: var(--font-label);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--teal-2);
+  white-space: nowrap;
+}
+
+.capability__ours-layers {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.capability__layer {
   display: grid;
   grid-template-columns: minmax(15rem, 30%) 1fr;
   gap: var(--space-5);
@@ -25,35 +69,31 @@
   backdrop-filter: blur(6px);
 }
 
-/* 層と層をつなぐ縦の線。下の層の上に次の層が載ることを示す。 */
-.capability__layer + .capability__layer::before {
-  content: "";
-  position: absolute;
-  left: calc(var(--space-6) + 0.55rem);
-  top: calc(-1 * var(--space-5) - 1px);
-  width: 1px;
-  height: var(--space-5);
-  background: linear-gradient(180deg, rgba(0, 201, 167, 0.15), rgba(0, 201, 167, 0.7));
+.capability__layer--support {
+  padding-block: var(--space-4);
+  border-color: rgba(0, 201, 167, 0.28);
 }
 
-/* 番号と層の名前は一行に並べ、見出しの直上に置く。 */
+/* シンアイがつくる層。図の中で最も強く見せる。 */
+.capability__layer--app {
+  border-color: rgba(0, 201, 167, 0.6);
+  background: linear-gradient(120deg, rgba(58, 95, 235, 0.26) 0%, rgba(0, 201, 167, 0.12) 100%);
+  box-shadow:
+    0 0 0 1px rgba(0, 201, 167, 0.12),
+    0 26px 60px -30px rgba(0, 201, 167, 0.65);
+}
+
+/* 各社が提供するモデルの層。破線と淡い面で、シンアイの領域と分ける。 */
+.capability__layer--base {
+  margin-left: calc(var(--bracket) + var(--space-3));
+  border: 1px dashed rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.025);
+}
+
 .capability__head {
   display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: baseline;
-  column-gap: var(--space-2);
-  row-gap: var(--space-1);
-}
-
-.capability__term {
-  grid-column: 1 / -1;
-}
-
-.capability__num {
-  font-family: var(--font-label);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--tracking-latin);
-  color: var(--teal);
+  gap: var(--space-1);
+  justify-items: start;
 }
 
 .capability__kicker {
@@ -61,9 +101,62 @@
   color: rgba(255, 255, 255, 0.58);
 }
 
+.capability__layer--app .capability__kicker {
+  color: var(--teal-2);
+}
+
 .capability__term {
   font-size: var(--fs-h3);
   color: #FFFFFF;
+}
+
+.capability__layer--base .capability__term {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.capability__badge {
+  margin-top: var(--space-1);
+  padding: 0.3em 0.9em;
+  border-radius: 999px;
+  background: var(--grad-brand);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+}
+
+.capability__badge--base {
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: transparent;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 基盤とアプリの継ぎ目。上へ向かう矢印で「基盤の上に組み立てる」を示す。 */
+.capability__seam {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: calc(var(--bracket) + var(--space-3));
+  font-size: var(--fs-sm);
+  color: var(--teal-2);
+}
+
+.capability__seam::before,
+.capability__seam::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 201, 167, 0.55));
+}
+
+.capability__seam::after {
+  background: linear-gradient(90deg, rgba(0, 201, 167, 0.55), transparent);
+}
+
+.capability__seam-text::before {
+  content: "\2191";
+  margin-right: 0.5em;
 }
 
 .capability__body {
@@ -129,7 +222,7 @@
 .capability__app-desc {
   font-size: var(--fs-sm);
   line-height: var(--lh-body);
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .capability__flow {
@@ -160,26 +253,40 @@
     gap: var(--space-3);
     padding: var(--space-4);
   }
-  .capability__layer + .capability__layer::before {
-    left: calc(var(--space-4) + 0.55rem);
-  }
 }
 
 @media (max-width: 640px) {
-  .capability__layers {
-    gap: var(--space-4);
+  .capability__diagram {
+    --bracket: 1.6rem;
+    gap: var(--space-2);
     margin-top: var(--space-4);
+  }
+  .capability__ours {
+    gap: var(--space-2);
+  }
+  .capability__ours-layers {
+    gap: var(--space-2);
+  }
+  .capability__layer--base,
+  .capability__seam {
+    margin-left: calc(var(--bracket) + var(--space-2));
+  }
+  .capability__bracket::after {
+    width: 0.55rem;
+  }
+  .capability__bracket-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
   }
   .capability__layer {
     padding: var(--space-3);
   }
-  .capability__layer + .capability__layer::before {
-    top: calc(-1 * var(--space-4) - 1px);
-    height: var(--space-4);
-    left: calc(var(--space-3) + 0.55rem);
-  }
   .capability__term {
     font-size: var(--fs-body);
+  }
+  .capability__seam {
+    gap: var(--space-2);
+    font-size: 0.78rem;
   }
   /* 四つの札は一行に収まらず、流し込むと「ローカルLLM」だけが二行目に取り残された。
      二つずつ同じ幅で並べる。 */

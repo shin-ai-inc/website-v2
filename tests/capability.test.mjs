@@ -1,8 +1,9 @@
 /*
   トップの Engineering の区画(#capability)。柴田指示 2026-10-25:
   専門用語(LLM最適化・強化学習・RAG・オンプレミス)が並び、一般の人には「AI = ChatGPT」と結びつかず、
-  自分ごととして読めなかった。身近なモデルの名前を入口にし、
-  基盤のモデル → アプリ層 → 企画から運用までの支援、の順で何をするかを示す。
+  自分ごととして読めなかった。身近なモデルの名前を入口にし、何をするかを示す。
+  続けて柴田指示 2026-10-25: シンアイが「基盤レイヤーの上の、アプリレイヤーを開発する会社」だと
+  見て分かるようにする。上から、シンアイの領域(支援・アプリレイヤー) → 基盤レイヤー、と積む。
 */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -18,15 +19,41 @@ const section = (rel) => {
   return m[0];
 };
 
-test("身近なモデルの名前を入口にし、基盤 → アプリ層 → 一貫した支援の順で並べる", () => {
+test("身近なモデルの名前を入口にし、つくるものと支援の範囲を示す", () => {
   const s = section("partials/index.html");
   for (const word of ["ChatGPT", "Claude", "Gemini", "フロンティアモデル", "ローカルLLM", "オープンウェイトモデル",
                       "AIエージェント", "バーティカルAI", "専門特化型AI", "企画", "開発", "運用"]) {
     assert.ok(s.includes(word), word);
   }
-  const order = ["基盤のモデル", "アプリ層", "一貫した支援"].map((w) => s.indexOf(w));
-  assert.ok(order.every((i) => i > 0), "三つの層の名前がそろっていない");
-  assert.deepEqual([...order].sort((a, b) => a - b), order, "基盤 → アプリ層 → 支援の順でない");
+});
+
+/** 開きタグから、対応する閉じタグまでを取り出す(同名の入れ子を数える)。 */
+const block = (html, cls) => {
+  const start = html.search(new RegExp(`<div class="[^"]*\\b${cls}\\b`));
+  assert.ok(start >= 0, `${cls} が無い`);
+  const re = /<(\/?)div\b[^>]*>/g;
+  re.lastIndex = start;
+  let depth = 0, m;
+  while ((m = re.exec(html)) !== null) {
+    depth += m[1] ? -1 : 1;
+    if (depth === 0) return html.slice(start, re.lastIndex);
+  }
+  assert.fail(`${cls} が閉じていない`);
+};
+
+test("シンアイの領域(支援とアプリレイヤー)を括り、その下に基盤レイヤーを置く", () => {
+  for (const [rel, ours, app, base] of [["partials/index.html", "ShinAI", "アプリレイヤー", "基盤レイヤー"],
+                                        ["partials/en/index.html", "ShinAI", "Application layer", "Foundation layer"]]) {
+    const s = section(rel);
+    const region = block(s, "capability__ours");
+    assert.ok(region.includes(ours), `${rel}: 括りに会社の名前が無い`);
+    assert.ok(region.includes(app), `${rel}: アプリレイヤーが括りの外にある`);
+    assert.ok(/capability__flow/.test(region), `${rel}: 企画から運用までの支援が括りの外にある`);
+    assert.equal(region.includes("capability__chip"), false, `${rel}: 基盤のモデルを自社の領域に含めている`);
+    const baseLayer = block(s, "capability__layer--base");
+    assert.ok(baseLayer.includes(base) && baseLayer.includes("Gemini"), `${rel}: 基盤レイヤーにモデルが無い`);
+    assert.ok(s.indexOf("capability__layer--base") > s.indexOf("capability__ours"), `${rel}: 基盤がアプリより上にある`);
+  }
 });
 
 test("見出しは読む人の立場で「自社専用」と呼び、本文は主語がシンアイなので「会社ごと」と書く(柴田 2026-10-25 案A)", () => {
