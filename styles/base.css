@@ -172,6 +172,27 @@ h1, h2, h3 {
   white-space: nowrap;
 }
 
+/* 番号・札・タグのような短い語は折り返さない。iPhone の Safari で初めて開くと、書体が届く前の
+   幅で列が決まり、差し替わった後も計り直されず、「02」が「0/2」と割れた(柴田指摘 2026-10-28)。
+   検査: tests/short-labels.test.mjs */
+.why__num,
+.process__num,
+.method__num,
+.join__num,
+.contact-flow__num,
+.gunma-tasks__num,
+.gunma-pair__num,
+.join__tag,
+.article__tag,
+.news__tag,
+.capability__num,
+.capability__kicker,
+.capability__badge,
+.capability__chip,
+.capability__step {
+  white-space: nowrap;
+}
+
 /* nobr は意味単位を守る指定だが、塊が画面幅を超えると横スクロールが発生し
    レイアウト全体が破綻する。狭幅では収まりを優先し、折り返しを許可する。
    (語の途中で割れることより、画面内に収まることを優先する判断) */
