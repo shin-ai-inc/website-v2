@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "ec28ade",
+  "generatedAt": "464379a",
   "chunks": [
     {
       "id": "index#0",
@@ -39,104 +39,97 @@
     },
     {
       "id": "index#5",
-      "title": "Understanding the work｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "title": "Start small, and decide once you see the effect.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "01 \n \n Understanding the work \n We learn the operation before we reach for the technology.",
-      "vec": "AAP7/A74/Qv7+gf/APQBAfz0A/kAAAQHB/oAB/z6/Pn8AAYAAQX+A/z//wQA//UDBAX6/vb88/8BAwAH/v0EA/n9+wL1+AgC+QIG/PgKAP3+///5/Pn6/fj0+wv9BQAGAgcIAwD9CAT9APf7+//o+PwDAP3/BQb9//37//cBBQD9+QX+A/YC+f4K/QAA+/sD9AEC//wH/vz7+wAD/Qr/+gMI+wL1APwA9/f3+/8CBfsD/ff59v71AP/xAwX9+/kGDP4L/AIABvwA/wMDAgUFAvUBBfoB/vj//AP+AwT/AgP9BAL1C/UHBwD6A/0F+P/9AAAE/v4FAwAHAQoAAv7+AP4DBQT+BP8AAv8ACQv//QcF/vT6+QP+BPn9Bv8AAf36+/0G/gP+/wIK/wMBBPsDAQAF9/cIA/8FCPv6+Q39BfX4+/8B/P///gX1A/oC/fcC+wP++vn78/8FCf/8CQcC+QD7+/7/+AL+7/gIBf8C//4B/QP9+f769wYB/QcGAQH+//8E/f78Dfn+AwEAAQYKAv78/QMAAQIB+AcD9wcBA/4DBAMC+vn8+f8DBf0E7QUD+/r1BP0BA/wB/Pj++gX1APf1Af0HDvv9AfoDDPoB/QYABAH+Bf/9AwLy+QIE/Pv9/vkCBAcK/wQH/gT5Ev0MAwX3+QUB/f8F/PwK/wQCAwM="
+      "text": "01 \n \n Will it pay off? \n Start small, and decide once you see the effect.",
+      "vec": "/v4EAAL5/Qb8Agv5/vYB/fb3B/kBB/8JDAD/CAD4BPnz/foCAQgD/wIABwT/+fr9AQj3/PYF9/78AgQJAP4NBv0D+gEDAf8AAv8A+vwKB/7+AQD8/PT7/Pf5AQr6/wgIBwUEBAP/BwX+BvwF/P7x/v4G+vr+AQf2/AIAAv37A/8E+gMEBvr99/0F/P4C9Pn+8QL9//sBA//5/AEG+f73+PsJ+v71CP3+8/v4+Qf6BwH69gP7+v/4AgP4/v799/oBC/4LAAkEAAEBBP/8/wABA/j+Bvj8APL++wT/BwX9BP35BAb1CfoF/////gAB+v38AgEE+vkB/f79BAX/A/4B9v0BBwAACvz+Av0CBwT9Af39/vv//QD2CPj/BPoD/P78/gP//QT7/vwAAP3/DAD/BgcE/PwIBQEECfn8/BD8CPrz+f//+AEF+v/5/gj9BfL6+/0FBPP+9v4DBQABDQEB+vz5Awb88f399QEKBgAF9/3+BAcB/AD0+wYHAgcAAPr+/v8IAPf8Cvb8AQIGAwcFBPv/+v4EA/kA/QUG9gsF+wX+BAEE+/cD9wIGBAAC9AEFA/z9AQH9B/4IBfoC9/35//z3/vkFDPv+BvsFDv4BAAoCBQX+A/79/AL6/gQGAPn7A/wEAQINAP3//QL+DvwLAQn7+wQE/vgL+/4G/wEF+AA="
     },
     {
       "id": "index#6",
-      "title": "Small-scale proof｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "title": "Confidential data never has to leave your company.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "02 \n \n Small-scale proof \n We try it small, confirm the effect, then widen it.",
-      "vec": "Bf0A/QT6+Qf4/Qr8+/r///3/AfkBAQcID/sBAQX6BPb4/PgEBQYCAQH9BQIFAvoBAQf2Afn/9f4AAgADAPwMCvcB+gICAAQA//4I+fkNBQEA//78/fX7/PX7AgQBAQgDBQUHCAQABwH9Bv0C+//x/AQG/f0H/QH9//4CAQL+BPv++/0CBf/7+/sEAAEA9voD8QAAAP0G/v/3/f4F+wT6+AMM9wL4BwAA7vf4/AEDAwIA9v759gD4AQH2AgIC9/sDCwEL9ggEAgP+AQEDAv8FAfb/BvwBAvUA+gIADgD/Bvz5CgX1CvYIBP3+AP8F+/v2AgYH+v8D/gYBAQj9//T8+v4BAgYAAvX/A/kICQgCAQL7+vT+/P36CPwEBfwE/wH7//4G/AP9/v4DAQL9CAH/AQAC9/kIBf4AAfn8+gz5Bfr0+gP/+AIB/gT7AQMBAfT8/AUBBPYB+AQFBgX/DgAAAP75AP//9QL+8wIHAwQG9/sEAwIF/P74+gcIAwEGAPkD/f0KBPYACPj8AAoDBQgECv389wYBBv8E/wQB9wgAAwABCQMA+fr/9QEDBAIC7gEEAPz3AgABA/wDAfv++v71///6AvcCCfb9A/wFCQAG+ggFBwj/Bf4A+AL8+QII/P3+BfsFBQcN+gEHAgH8DP0LAw32+gQEBvoI+f4G/AQG+gE="
+      "text": "02 \n \n Will our information stay safe? \n Confidential data never has to leave your company.",
+      "vec": "AwAHAwz8/Av6+Qb8Bvr2/fj4//r5DgIAB/3/AgP6Bfr9AQAGCAIC/P8BBgQC//j/AwL4AvYD9QAAAf4E/v0CBwP+/gb++QQG/gEF+fcIB/v+B//+/f3uBfEH+w77AP4HCQb+BQH3/gcGAvYA9wD7/AUK9f3/BAMBAQADAQAAAv758wL7Cfj//gAC//b+Afz+9QD9/wIF+wL7A/0GAgj8+/kN+fz4AQX/8/z8APwFBP4H/fsD9P39/f/3BQT9//wEDP8G/PwAAfwGAPcAAAMJBvP/Bv/8BPUD/gEDAwEDAv/9Bf35BfkFAP74BPwF/QIBAgEGAAH6A/0J/wACBvD79wD9CwoCA/r1AwD+BAkA/f8B//YE/P36CPX//fQE/gD/+vkL/P8C/gMFBfj8BQH8AAIE+f0BA/r/Afz69gr/C/n9+v/59gT9AQT2A/gEAPj9/wb7/Pv/9AIB/gAECgL+9/z8+QD+9wH/9/kOAAH+8P8H/Ab5+fz+/AIGCgEFAfgEBAMDBP/6Cv4BAv3//AMC//z7/QEEBgD9AgYD/AYDAAP//Pb4/P76+AT+DQAB7wIB+Pv8B/39/PwF/PQC+wD6Avn+APsEDvr4/P3+CgP8+wn99v77Bvz9/wf8AAECAf/+Bv/6AwcIAwQIAwf8Fv0NAwHy/gIEAAEE/P8A/gH/BQc="
     },
     {
       "id": "index#7",
-      "title": "Data protection｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "title": "Built in to make your company's work easier.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "03 \n \n Data protection \n Encryption, access control, and on-premise options.",
-      "vec": "AAMH/w/7+g369gj8Cfn2/v38AgD5CQIGBwACAAX4//j8/QH9Bv4A/P79BAr8/Pr7/QD8AfcB9QP/AwIG/fsDCf4B+gX5+QgD/QMF//YJAfwBB/79/Pv2AvYD/Qb6Av8ECQT8BP3z+gICAf3+/QH1+gAA+P0EBwQB//8IAf8EA/n59/8BDvIE/QIF//kF//0B9P38/P8I+gD+AvwC/wn6/AAN9wD4AgH/8/j++QAHBP0IA/b89wD1/v73AwX7BP0GC/0I+Pj4APsEAP0BAAIDAfX8B/sAAfcD/f0BBv8C/gD+A/74B/cEA/0A//0K+AX7/wH//wQABf0E/AMCCPL/+QIAAgb/CPr5BwMABwf8/gIA/vkE//f/B/n7/foCAQP49/oD9///BAQGA/wCBAD9Af8F+PsJAP79BPv5+g3/BvX8+f74+AH7/gj0Av4B/vf+Agb3+/388P8B/wEIBgX++fr7AAAD9f/++AAP/QT+8fwE/AH+/P38/AYGBvwFAPgFBAf9Av8ACPz///v8AQQGAPj+/wP+AAMCAQL/+gUAAwEAAvn9/f758/sEC/0F8QgB9wH/Bvz+/f/+Afn/+Pv6APj3AQABC/j8Avz9CwT9/gz7+AL9AwP7BQT6/QMGAP7/AgL8BwQRAgYIAwL+FP4O/gHv+wQC/P4D9QEF/gIFAwQ="
+      "text": "03 \n \n Will people actually use it? \n Built in to make your company's work easier.",
+      "vec": "AQD/Agn0+QkA+wD8Bvf//ffzBPcADAICBfz6Bfv5/Pj9AQH+BAUAAv0BBwT8/fYCBAf3Avb+9v78AAAEAf8ECvgA/Qn4+QYD/f4E9/oMAwEEAvj7/Pj3/fL7+wn/BQAIAwYCBwL6BAYG//35+wHt/P0F/fcFBv77/gABAvkA/vv59/wBCvsB+/wH/PsA+fz98QP++P0E+gH8+P4B/gX8+f4F+wT3A/3/8fv7/P8FBP0C+ff89/71/PzxAAX8/vcGDgAL/QT9B/oE//r/AQUFBPgAB/oABPn++wP9AwAABf/9Bf3zB/oAAPn7AgQIAAIA/QAHAv0BAf8F/Qj9Cvr//fwGCAEACPv/BfsBCwoEBAAC/vn++Pz9CfoDB/0A+f/++AEF/wMAAwQFAgQDDPwAAQQG8/gGBf8EBvn99gwAC/n7/QT6+P4A//z5BAD7Avn6/gH6/vv/7f8ABP0ECAQC+//2/QX+9QIB8f0IA/wC//8CAgT8/Pv3+wUE/gMD//39AQIGAPz7Cfj6+gL/BAgEAfgAAgAC/gH9/AoI9AcCAwEBBAP+/f399gMFA/0C8AgDAfz7AgX/BQUBAvj/+AD2A/X8/f8GDvsBA/z+CwP/+wT+/vwDAwL8AgT3+v4B/Pf5BgD+BwgIA/0E/QX+Ev0NBgX7+wL8/vsIAAIGAP/7+P8="
     },
     {
       "id": "index#8",
-      "title": "Production, not demos｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
+      "title": "We see it through until your team can run it with confidence.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "04 \n \n Production, not demos \n We do not stop at a prototype. We build it into the work.",
-      "vec": "BAQD/g73AAsA+AT5A/L8Afry+vkEBAQDDPz5BP/8Aff9/wQCCgEBAf8ABAcFBPkAAgb1BPv+9fr6Av0B//0HCPv/+wT5+gsB9AIH+vkLA/76Bfv9/vT2+/r9/QYHBQMHCAoHBwf//ggCA/v++P3u9v4E/wADAf78AQP7AP8BBwAB+/8ABPj+/P4C/AAB/vsC+AT+/AQHAPv0AQME/Ab7+wIH9wDvAP7+8fr+/vkFB/8D/fT9+Pv2A/70AAUE/f7/CgMO8wMEBPwBBAP/AwwD//b+BQQE/vr7/wr6BgH8/gIBCv75BPoEBf/9/QII+/z+/vsE+wEF/gEEAAT+A/v9/PsD/wH9Cfv/BgcDBhD+/wH/A/b7+AMBAPv6/Pv9AAUE/QEH/Qb8Bf4HAP38CfkDAP4C8/0I/AH+Av0D+Q0BCPT4/gAA9f4B/gbz9/wBAPkEAf8A/fj+9wAGBwf/AAAB+wL8A/cD//7/9wIEBPsGAP4E/ggB+wH1+QcEAP37AvoB/wQDBPb+DvcC/wH//wgDCfgB+wEF/wEFAAgE9gYCAQQEAAID+fr39wABCP7/+P4CAP/4Bf39/wAC/fv98wD4A/f4/gADC/r6AwQBAv0D/Av/+wEGDff7+/3x+QMDAf37//v9CAUN+f8EAAj6Df0I/QX8+QMD//oL+/oFAQED/wQ="
+      "text": "04 \n \n Will we depend on a vendor forever? \n We see it through until your team can run it with confidence.",
+      "vec": "AAIH/gj5/Ab//wj4/vEAAPj4/AACBAMAAf79BQL5Afn6/QAFBgMAAAD+BAcIAPgBBAP4Av4H9v8EBgAE//4HCPn++gT7+/wEAAQF+foHCAD+Afv8/fvyBPYFAw7/Af8HBgQFBAT+AgYF//4B/P/r/AAG+gD+AwP8AgIC/vv+Av/4+AL9Bfz8+PcB+gMA9vv//Qj8+vsF//v4/wD/+gj7+voK+gD2/QAA8vj6+/sFEAEG+wH79wT5A/b4/Qn6+/MGCwEN/QL/Cv0CBAUBAgECAvUFBP0BAvf6/AwABgP/A/r8CQP6B/kD+//6/wAD/AH4AQEJ/gH/AP0JAwj8Bv0B/P4BBfz7CPj9/wAHAgv/AwMABPP8/AH3B/f9APsA/vwA/gAEAgUE/wAKAv38B/77AQAF+f0EBP0GAwX49g/5Cfr5/f4A9/wD+wb//v0C+/L7/QEF+/f78/sDAvX8CgAE+f/6/fsC+AL78/wJA/oD/QEAAwgA+Pz4/gcEAwIEAPsD/AP+//33DPj8/gX9AgcHAv3++wQBBfwA+wkG+Qr+/gEBAAEH/Pv+9AQACff/8AQDAv79CQP7A/sF+fkB+f7y//r9APwEC/b9AvsCCgEA/wT/BAf+Bf/+AP/z/AMBAfj7AAH5BwUR/wP8BAX/D/wGAwj58gL8/v0E/f0HBgkB/QU="
     },
     {
       "id": "index#9",
-      "title": "Technical handover｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
-      "url": "https://shinai-inc.jp/en/",
-      "text": "05 \n \n Technical handover \n In the end, your own team can carry it.",
-      "vec": "CAf//AT3/wgD+Af+//UAAfX0APsABAsGBPr7Av3+AfcA/QMJBAUCAAP/AQH+BPoCBAUCAf4B+P4FCP0A//wMAvz8+QT9+AMF9v4D/PMHAwH9/f77/PTu+fz7/A0BBQABBAQECAUAAAUDAvX9+wDp+QMH9/sJ+wT3/P3+/PcAAvz19QT6AvkB/vgH/P8B9/T9/AcA/v0H/f35/AQF+QX+/AAI+AL2AAIF8/z1+f0HBP0I+voA+gL7//P1BAX7APsDCv4H/AT8CfoDAf4C////Cfb8BP//BfL/AAYABgD7Afz6BAT3CvMCCPz6BP4I+f77AgML9/0BAgEK+wb9B/r+Afr6AQACAfoAAgEGCgcH/AIFBfT/+wL4AfgBA/v///0CAv8E/gX+/gkAAP3/Av7+AgT+9/cHAv0CAQD6+wz5Cvb7+/z++wIB/wX/Av8B//wCAAIE+fr87wIACAQABQID+///+fv9+/8B8v0M/vsI/gEDAQj9/AD3+QUC/PwB+/wA/gYDAgD9BPb+BAYBAwUE/wH+/v3/BP4C+QIH+gb/AvsCAwD7+wP9+AAAB/4I9QT8+v/6CP0EAvr///n7/f70AvP/APwIE/f9AwP7Cv/+/gkAAQMAA/4CBf73+/wHAPb6Af35Bg0OAPwDBAgADv0KBgj79gME+QIA+P0BAwH/+wA="
-    },
-    {
-      "id": "index#10",
       "title": "会社概要｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Company-specific AI agents: AI that moves work forward using your own documents and procedures.\nVertical AI (domain-specialised AI): AI focused on one industry or task, with accuracy raised for it.",
       "vec": "+gMDAAf9+gf8/QH5A/j3A/r3BPQBAwUHAAAABf/8BfkD/vwDBgkEAgMEBQT+//oD/Ab5Afj+9gQDAQgG/v4EDfz/+Af68ggC/v8E+P0LAQT+A/b8APP6+/QA9QsABwQHBgQEBQD9AwgAAPr+//70/fwH9/wFBP7//AQBBP4BB/769v0BAPn8+AAI/v0CAP/89AL7+fwF/P38+/sG/AH+9v8F+QP3/QAG9fn3+fwDBfkEAvn/9gL3Af36BAj8/gEDDf8J/f7+BvwG+f0E/QELAfn9CPoFAfP5/AEBBQAD/AD5B/vxB/YEBfv//v0G/vwABAQK/f0AAvwEAQb+BfkC/P0A/wgBCAD7BfwDCg4G/QQC+vgC+/79DPwEA/0EAAD5+fwM/Pz6/wIHAQP/B/n/AwgI9vkI/gIICPv49gn7DPz5AwP68/0DAgT6BgACAff7AAH4+vgB8AcCAQIEBAX/9wH7+gH6+PwB8fwKAf4B+/wE/wT/9QD9+wEF/gL/BPsCAAQFAvsHDfv/Afz5BP0DBvsBAP79/wUB+gQE9AQIAQABCgEB//cA9gACCwIA9wYB+/f5A/8A/AH7//j79wD6BPv+AAEGC/j+B/39BwIF/AX8AgH/AP7+BAT1+gQI+f39APf/BAwG+wUHBAT8EP4MAQb49QT/+/wM9wAEAgUEAQM="
     },
     {
-      "id": "index#11",
+      "id": "index#10",
       "title": "会社概要｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Consultation: Free, 30–60 minutes, no preparation needed\nContact: contact@shinai-inc.jp\nHours: Weekdays 9:00–18:00 JST",
       "vec": "/QAEAAj3+QoA/gf5Dvf7A/H6AvkAAQQIBQIAAQH4BPv8APoDBwcA/gP/CAQC/PgFBAP2APb88gAFAwQIA/0FBPwCAAn79AQI+/8F/f4JAgP9A/j/AvX1/PcA+An7BQMEAQYHAgD+BAsAB/n8AAP0//0C9/sDAPz7/AIBB/3+BP38/P79Bvj9+P4D/foBAvn99AT/+/wDAf76+P4H+wP49QYI+gD2AQAG9/n6/P8FCfwGAfcA9/33Afv5BQQB/AEADgEJ/gH5BP8D9vwCBAEJ//UCDfX8A/b9/P3///3+AAD9Cfr5B/MEA/gAA/8J/f3/CQEI/f/9APsDAQP+BvQC+QAAAQYEBfz4A/kACQsD/fsF//f/+v76CPsC/fsAAQD7+AIJ/QL8AP8H/wECBfkB/wML9PwLAP0GAv799woABvz/+QX99P0B/wT5BP0D//YDAwD8APr+6/4FBQIDBQL+9v35/f8B9/4A8fwIAP4C9v4A+gUB+v389gcGAQEC/PwDAAEDAP/8Dfr7/gX+BAUCAPcC/wH9BP0A/QUE7AQGBP8DCAH8/vsC9fv/Bv4E9QQB+v78BQQC/AL9APj99gH6BPb+AwIGDfwA/v4AC/8D+wn/+/4DBAT8BAP49gAH+Pj+AfcCBw4F/wQJ/wn/Ef4FAAb8+AP7+/4J9wAF/P8D/wU="
     },
     {
-      "id": "index#12",
+      "id": "index#11",
       "title": "ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Your company's tacit knowledge, \n rebuilt as working AI. \n\n Years of judgment. Skill the hands remember. Documents no one has time to read. \n We put the knowledge sleeping inside your company back to work.",
       "vec": "/QMB/Qb4+wn7+gT3A/YDA/z0AfkAAAIFCAH9/wD4BPn7//8CBAcAAQP9CAMA/vsBBgb4APQG9/3/BQEFAPwCCfj9+gf39AcE/f4G+PsNAwD+Avr7/fb1/fX6/wv8AwIEAgUFBAD9BQwABP38/P7u+f4E+/cEAgEA/f4AA/z+AgD5+Pz8CvX9+/0F+/4BAPr+8P8A+fsJ/wEA/v0C+gL4+v0I/Qb6Bv4D8ff6/AEDAwAGAPP+9fv0Afz1/wsD/vkEDAMK/QEABQAD/fv8AQgHAvT+DfoAAvf7/QH7BQH9AAD+Bf/3B/kCA/r/BAIG/gH/AgIF/vwC+wAI/Af+DPr/AfsBBQUBCP76AvkDBg0F/QMD+/X++v3+CPsCA/7//wH7+v4F+AX+AwQAAQMBCvn+/wEJ+PYNA/8ECvf3+Qv6EPT9/Ab99P0AAAD1AQP9A/n8/wD9/fX/8v8KA/0FBQAB/v75/Pv/+gAC9f4LBQIA/P4FAAL++f769wYE/wQBAPoBBQMGAvsDB/f6AQL7AAAFBAADAP79AwQC/QIH9ggDAwIEBwED+/z/9P8GCvsE9QQC//r6Bf0A/AAFAvb/9f/4APb3BQAFDfcAA/4CBwUC+QgB/gAEB//9APz2+wMG+f78AfwAAwkI+f4HAAYAEf0IAAj39/8C/f4I+AIGAAICAAE="
     },
     {
-      "id": "index#13",
+      "id": "index#12",
       "title": "\"Believe in true value, and build a new future for the next generation.\"｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Our Purpose \n \n Use AI to give people \n their human hours back. \n\n Research, analysis, the widening of thought. \n When AI carries these, people turn to creating and deciding. \n\n Solutions",
       "vec": "Bf78BAjy+Q7+/Qb9/fT+AvT1Bfj+Af4ABwEAB/z1//n8Af4DAQEC/AD7CwcB/vgAAQb6APcA9AP+A/oJAfsIC/sC+wX7+QYE+gUA9vsKAPv/BfcCAv71+/r/+gL/AwMGAwgH/AD5Bg38CAD8+wTo+/4E+Pn8AAP//QQDAfr+BAD4+f0EAvwC9/0C/P8A+Pj2+QH+9gMI/v/8AQH//gT49gEG9Qb6AP758vT3+f4FDP8ABfj9+QD1/P/8/QT/APoIDQILAAP/BgED+QH6/wQK//f+B/r/APn9/wH7C/4AAAb/AwL6BPwFAvz6AgQF+wL9A/0FAwEEAwAJAgUBCfoF/fz/Bv4BB/z8BgQBBwr9/QEB9/n9/AX+D/P9CP7/AgL8+P0C/P72AAQKAAAFDgAB+gQC9vwIAgMACPb8/Qr5Bfz9+QQA+/wE/QL5/f7/APQABfz99/r79P4BAv/9BwkA+wP19/8E+/0F8v4OAAAA+QMG/gH7/AH++QkF/wIC//v+/QMH/vkACPj7AAb5AQMFBAEC+f79Bf4E/QUF+AkBAQEDBPoB+/3+9QQCCf4B8QH+//f8BwH6BP7//vf9+QD8BvX7AP0EC/YG/voACQL//AcD+v8AAP3/AQD5+QQF/Pz7/P34BAX/APoA/gj7Df0EAAb99AX/AfsJ+/wK/wEI/gM="
     },
     {
-      "id": "index#14",
+      "id": "index#13",
       "title": "Three stages that turn tacit \n knowledge into an asset.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "We design the whole path, from first concept to live operation. \n\n Explore our solutions\n\n Engineering",
       "vec": "AwMD+wn3/gf9/Ar8AvED//v6AvoA/wAJBAL/Avf+Avj4AwYFBQb+AwIEAgYI//kDAgT9/PsE8f7//vwE/f8HBf0C9gf39QQF+P4G/PUMA/4G//f6+fr3+fX3AA3/Bf8JBgcFBAL8Awz/APn++/zv+QcF/f3/+wMA+/0EAv0ABf/7+v7+Cvf/9/0G+fwC9/v89P38B/oE/QQDAAAD+gX++v0F/AL5//gD8/P7+fsCAwD+/fX79//yAP76AAoAAPwFBv4O/AP9CgAFAQH+/QgBBvj+CPz9BfQC/wYAAQH7A/7/CPv4CfcCAvz//v4E+P/5AgIB//sDAwEG/Qj8BfsHBAD7AgIHCfv6Bf3/Bw3//v8A/PQCAAD/BPf7A/j9/wMA/fsKAAL9BQcCAP//BvYAAgMC/fgPAv8DC/X3/Qn9Bvb5+wL9+QD9AgX4/gH/+fkBAP0B/fL98wIJCgEBBwUB+QL6//r9+f0J+gAGAQEC+/r//wIA/gD++AwHAQIG+fkCBQP//f8CDPn+AQL6AQcEAP/7/v4E/gL//gED+AoCBP8DAgMC+AD88v4GDgIF9QMH+fv4Bv39/fsAB/sA+QL4/vj7//8ICvgAAgIDCAEFAQUB/AX7Bv3//gD3/wcK+vz8/wAAAAcS9/8B/gX9Dv0K/wL6+AAF/wUG+/0KAgf/AP0="
     },
     {
-      "id": "index#15",
+      "id": "index#14",
       "title": "The AI you know, \n made for your company.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "On the right model, we build AI made for your company and support you from planning to operation. \n\n 01 \n Foundation models",
       "vec": "APsH/wP3+wn1/wD5AvL9B/34APkDAgD/BwP8BPv9BPn5APz+AQX/Awb9CAoC/PwC/QP3BvkG+QEDAAQD//0CCfn59wX4+gMA+gID9/4OAv7+Bf/7/fT3A/b4/gP+AAYIBgQEBQH5BAr//QH++wry+QAB+f0CBAD+/wQEA/8DBfr0/v4ABPsA9PoA+/0F+vf/8wL59vwF/Pr+/f8C///++gYH9wP3A/gE7/X8Af3/A/4A+vb7+v/1/v79BQoE/fv/CwUL9gD/CwQD//7/AQMGCvgCCPYCA+/7/P//BgL+BAL6AwH5BvcFA/79+/8H/wX8//8HAAYBBP0GAw4ACvwA/fcA//37BwAA/vf/CQgCAAEA+voE+gP9BP39Af78AgL59/0J+v/6AgYHAwIBCv4B/wMI+/kNAQMACfj6+Ar6BwD1+P/+8v8C/QP5AwEC/Pv8+wMBAPn48AYCAv4AAgEC+wD9/f0D+QEF9AEOAf7++gAF/QP99v739QYDAP0I/f/8BP0F/voCD/sB//4BBQIBBvz+/AH5AQMD/gUF7wcDAAUBAgEB+/kC9vwCC/798wYIAfj8/wL8BAAGAfv7+QT5BvP/A/8CEAD/A/8GCAUB/Qb9AP8CBQD//wP1/wED+wEA/v/9BwUP+gAFAwEBD/0MAgX38wL+//8G+fz+BAECAAU="
     },
     {
-      "id": "index#16",
+      "id": "index#15",
       "title": "Choose the right model｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "ChatGPT \n Claude \n Gemini \n Local LLM \n \n From frontier models such as ChatGPT, Claude and Gemini to a local LLM (open-weight model) that runs inside your walls. We choose by purpose and confidentiality, including setups where no data leaves your company. \n\n 02 \n Application layer",
       "vec": "/AQM+wf3+wj7/f7+/Pz5/P76/gMBCf4ACAP7Av/7Bfv7//r9/wgCA/4BBQIB/f3+/gD4B/0I+Pr+/wcD/vwCCvz+8gL4//z+/P4B//oKBP37BQH/APf0//X3Af/5AwYFDf0CBwP7BAYG/v0G+Qbr+/wB+fwD/wD5AwcC/v8GAv38+/78CPgC+/oC/Pn//PUF8QD2/vQJ//z9AfkCAwX99/0F/AL6Bv0H8vsC/v0A//0C+vj6+QX7+vb+BwD6+v0GDg0K/gf+BAMCAAL5/QEIBff6C/kABfL+/f0CCv0DAQH7BgP2Bf0FA/zz/foI/gD49wEF/Aj9AvgHAgMDBfkFAPv9/v4ACQP//fr6AQD7AP8A//X8/v//BPT8AwAABAT6/wIJ+fn4AwQHBgEACQT8+f8L/f0J+/oDCPj6+AYAB/z+9/8B8gcA9wL7BgD9Af79+gX8//MD+AYCAAUIA/8B9vv9+/sB9v4F9AAHAAQC+fj/+wb/+gP6/gEFAAUEAfz8BAP+AfgEC/wAAgD+CQAFAf77/gD9AAADAgEK9wUE/v0GAgIG//T59f8CC/wB9f8DA/X+/QL+/QMDAv4C/P75/fj7/vkJDAD6CwIFBgUB/Ab9/woABwEB/QL5/gMG/QIAAP0CAgIV/wIEBwD8C/wR/gPx9wH7+foH+AADAAH/AAA="
     },
     {
-      "id": "index#17",
+      "id": "index#16",
       "title": "From planning to operation｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "Plan \n Build \n Operate \n \n We decide together what to hand to AI, build it, and keep improving it in use. \n\n Why ShinAI",
       "vec": "AAEF/Az4/Qz6+QT8BfP++/f4BvYBAgUDAwEAAv34BPr3/wH+BAIABP4BBAQD/Pn9AgT6AvX/9gIA/v4IAgEECP79+wn78wUD9v8G+/UKAf78Avv9//T0/vP6/Q37BQQJBgcGBAL4Bwn7APwEAP/s+f8E+/wGBAL7/v4BAvkBBf36/AL9BPL/+fwH+/4B+vj+9wH+9foE/v/9/AIC9wb++wYH+wb2APcB8/n3+/wDBPkC//X9+P/xAf3+AQj/AvoICwUO/AP/B/8D/QICAQMIBff9CPgCAvL8+wL7AAD7Av7+CQb4CPkAAfkB/f0G+QP/AQUB/QMBBP4GBAkBBfgCAv3+/gUACfz9Af4FCQn7/QMC/fj//v74A/j6AfwBAAH79wAF/f/9/wIG/wEHCPoD/gEG9fsLAv8ECvn9+wv/Cfb69v/++wID/gH7Afz+//cG/gAA/fr97wECCgAABQcA+v/7+/0B/PwC9fwKA/0A/QIE/Qr+9wD1+gcF/gMGAPr9AAQHA/8AD/T+BAL7BAcFBv3+/gD+/QAA+gYG9An+Bv8D/wUC+/v+9f4GCwD/8gYD/wD5A////wMD//wB+P/2Avb8AwIEEfwAAvwECgL//gX//wMAAP3/AQL2/wEH+fkA+/4DBAsI/gIAAQYADP0I/wX38gX/AP4I9/0I/QIB/gE="
     },
     {
-      "id": "index#18",
+      "id": "index#17",
       "title": "It only becomes value \n once it takes root.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "Delivery is not the finish line. \n We stay with you until it is rooted in the work and runs under your own power. \n\n News",
-      "vec": "BwQI/Qr3/wn/AQkB/PIFAPf2Av0G/wYAB/36BgP3+/n+AQEGCAUBAvn+AAsG+/oD/gf6A/v/9PYFAPj6/vcDAvwC9QP29wEE+AIB/PkHCP3+Afz3/Pvw+Pb8BAIGBf0G/wb9AAT2BQYDA/79/Pzq9P0E/vz9+wQBAQT4APoACAQB+AIBBfz69vgC/QD68P37+QH8A/wAAAD3AgEF/Af4+voG/P37A/z68ff6+f7+Avr/Bf75AwD2/gH5/gn+//kFBgENAAEABAMDBQIB/gX5A/X/CPz1APcA/QX7CAX/AgQABAT0A/kEBP71+gUB/QED/vwGAP4E/v8D/QkCB/kAAQH7DvwGCvz9BP4HARD+APsGAvj6+gUCBfn8Afz9/gQA/Af/+Qf+Af4G/wIACfz7//77/vsEA/sJBPv6/A8ACP0C+f8D/f//+wP4//38/vYBAPkE//n5/v0FBv///ggD+gr9Af0C/QQD9PwGCP0E+/wFBAL8/gD4+ggJAAECAfQK/QID/f/+Cfr5AQn//QMIAvf5/QP/Bf8C+QYE+gv+//kEAf4E+/z88/kFDAP/8QMH+/kBAPz+/PkC//n+9Qn8Avb5//wFB/YD//3/CPgB/wQDAAYDAfn+Afr2AAUD+/r8/wL9BAETAPv9+Qr8CvwIBAP8+gD/AQD+/PgDAQcB+QQ="
+      "text": "Before you decide, we answer the concerns that come first. \n\n News",
+      "vec": "Bv8HAwr2/gkAAQ3/+/cEAPP1APwCBAEACf38AwD2/fj8A/wEBgYBAPkEAgwF+fn/+wX5//sA9fcA//sBAPcDAv0F9AL59wEB+wQB/fYJCQEBBfz2/v329/H5AgMBAv8IAQj8AP74AwsDCvn+AP/x9fsC9/j6/Ab+///7APsACgMB9wAECvz49vkE//z88/789gD9AfsEAgH8/QIC/QL3+PkF+vr/Cfz88fj6+gP6A/v9AgT7Af/3/QD2/gUA/PwFCf0PAAID/wMGAv8B/gj9Avb9Cfr4APoA+wX4CQUCAwT7AAT2BPYDBQD4+wQB/f4DAvoFBP0E/v0DAwcECf7//f/8B/0FCfz8/vwGAAwA/vkE/vP4/AP/Cfj6Bv0A/Qb8/QIC+gkAAgAGAQEDDfj8/wH9/foFCP0HCfj7/BABCP3/9wH/+f7/+gb1/v/6/vUAAP4AAfr6+QAECf7+/wYD+gT8A//8/AMD9PoIB/0D+/4CAv76/vz5+gcKAAIC/vIG/AIE/vr+CPz2/QYC+wIHAPj8/P8ABP8C9wIE9wsBAv/+BP4BAPz99PsDBwEC7gEI+vYBA/8A/v7///v/9gb+AvT2//0HB/n+/wL9CvgA/gcB/QEEAvz8Af/6BAIB+/76AgD/AQUT//3//Qj8DPwLAwX6/f/9Af8B+vkD/gUF/AM="
     },
     {
-      "id": "index#19",
+      "id": "index#18",
       "title": "Let us build what comes next, together.｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
       "text": "You do not need defined requirements to start. \n We take stock of how your work runs today and propose the measures that move it forward. \n\n Book a free consultation",
