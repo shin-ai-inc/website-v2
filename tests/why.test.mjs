@@ -18,8 +18,8 @@ const rows = (rel) => {
   return [...sec[0].matchAll(/<article class="why__row[\s\S]*?<\/article>/g)].map((m) => ({
     worry: strip(m[0].match(/<p class="why__worry">([\s\S]*?)<\/p>/)?.[1] ?? ""),
     promise: strip(m[0].match(/<h3 class="why__title">([\s\S]*?)<\/h3>/)?.[1] ?? ""),
-    line: strip(m[0].match(/<p class="why__line">([\s\S]*?)<\/p>/)?.[1] ?? ""),
     all: strip(m[0]),
+    raw: m[0],
   }));
 };
 
@@ -29,7 +29,7 @@ test("依頼を決める人の不安を四つ、問いの形で置き、それ�
     assert.equal(r.length, 4, `${rel}: 不安は四つ`);
     for (const x of r) {
       assert.match(x.worry, ending, `${rel}: 不安が問いの形でない: ${x.worry}`);
-      assert.ok(x.promise.length > 0 && x.line.length > 0, `${rel}: 約束が欠けている: ${x.worry}`);
+      assert.ok(x.promise.length > 0, `${rel}: 約束が欠けている: ${x.worry}`);
     }
   }
 });
@@ -45,6 +45,12 @@ test("依存の不安には、社内で回せることと、その先も共に�
   assert.ok(last.includes("社内で回せる") && last.includes("共に"), last);
   const en = rows("partials/en/index.html")[3].all.toLowerCase();
   assert.ok(en.includes("in-house") && en.includes("with you"), en);
+});
+
+test("約束は一文で言い切り、根拠の一行を添えない(回りくどい・柴田 2026-10-30)", () => {
+  for (const rel of ["partials/index.html", "partials/en/index.html"]) {
+    for (const x of rows(rel)) assert.equal(x.raw.includes("why__line"), false, `${rel}: ${x.worry}`);
+  }
 });
 
 test("提供側の言葉と専門用語を、読む人の前に出さない", () => {

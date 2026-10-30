@@ -1,7 +1,7 @@
 /*
   Section: Why ShinAI (#why)
   依頼を決める人の四つの不安に、約束で答える(柴田 2026-10-30)。番号付きの横並びリスト、アイコンなし。
-  不安は小さく淡く問いの形で置き、約束を太く置く。余白と水平罫で静かに区切る。
+  不安は小さく淡く問いの形で置き、約束を太く一文で置く(根拠の一行は回りくどいので置かない)。余白と水平罫で静かに区切る。
   色・余白・型はトークンのみ参照。
 */
 
@@ -59,12 +59,6 @@
   font-size: var(--fs-h3);
   color: var(--ink);
   margin-bottom: var(--space-1);
-}
-
-.why__line {
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  color: var(--ink-3);
 }
 
 @media (max-width: 640px) {
