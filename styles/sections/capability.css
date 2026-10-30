@@ -36,8 +36,9 @@
   background: #0E1F3F;
   font-family: var(--font-label);
   font-size: var(--fs-sm);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  /* 「ShinAIが開発」の札と同じく、600 は日本語の書体に無く 700 で太く出る。500 にそろえる。 */
+  font-weight: 500;
+  letter-spacing: 0.1em;
   color: var(--teal-2);
   white-space: nowrap;
 }
