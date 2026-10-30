@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "f3a92d7",
+  "generatedAt": "dd5cf6d",
   "chunks": [
     {
       "id": "index#0",
@@ -533,15 +533,15 @@
       "id": "about#8",
       "title": "代表メッセージ｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "Masakuni Shibata \n\n 「真の価値を信じ、 次世代のために新たな未来を創る。」\n\n 目の前の命に向き合う日々のなかで、一人にできることの限界も知りました。\n より多くの人の力になる道はないか。その問いをずっと抱いてきました。\n\n その答えがAIでした。2023年2月に生成AIと出会い、これならより多くの人の力になれると確信しました。\n 人に代わる技術ではなく、人の可能性を広げる手段として。\n\n 私たちが手がけるのは、AIを前提に、企業のしくみそのものを設計し直すことです。\n 効率化ではなく最適化。そこに本質があると考えています。\n\n 技術は目的ではなく手段です。\n その先にあるのは、人が人間らしい時間を取り戻し、より高次の価値創造に没頭できる未来です。\n\n この想いで、私たちは歩み続けます。",
-      "vec": "Cvr+Aw7y/gkC+wj4/fP+/fX0Bfj/AQEABgIEAQH2+fv7/PkB/gT+/QP5DgkB//0CAgb4BQH++AEJA/YGBvkEBf4DAQr5+wQD+QX6+PoABwP2CfcDAfz6+/sC+QT+BAMCBgQB9gH8Bgz3BP34/AX0+/cL+Pr8BgEDAwT/BAH5BPv79AEB+QAG+/wB/gD//Pz3/wX+/wIB/v79+/0H+v0A/gQF9AH8/gD8+P71+f3/C/kCAv0C+gL5//z9+gEB+v0ICQkC/vz7Bv4G9QgBAwMJAPf/CPYC+/gB/v/4AvkEAAMABgQAA/4A///2/AMA/ggBBQAMBQf+AwH/Bwr+CPz////+BQECC/n4/wkICAn6+/7//fr9+Q78Eff9BvUAAgT6/f8B+vz8/wIDBfwHEfkF+v4C+P0I/wQFAvr+/Qj7BPz8/wQE+wEI+Qn/BAD7/fQA/fv9+voB8v4C/QH7AwUD+wb4/gEH/v0D8fkCAfj+/QID/wb5/QMC+AUB/gUABPn5/AIEAgAHCv36/wT5/v//APwE/wL6CPoF+AsD/QYA+/8FCP39/vUD9AP+Bv4H9vr///r8BQH4APv/9fn29gT/Cfr+//oCC/oABPr6Bv///Aj+/QIB/gP+//73+f8G/vv9/vz7Df8GAvn8CAj9Cv8EAAn68QQAAv8K/fsFAP4G/gU="
+      "text": "Masakuni Shibata \n\n 「真の価値を信じ、 次世代のために新たな未来を創る。」\n\n 目の前の命に向き合う日々のなかで、一人にできることの限界も知りました。\n より多くの人の力になる道はないか。その問いをずっと抱いてきました。\n\n その答えがAIでした。2023年2月に生成AIと出会い、これならより多くの人の力になれると確信しました。\n 人に代わる技術ではなく、人の可能性を広げる手段として。\n\n 未来を創る側で貢献したい。\n その一心でPythonを独学で身につけ、AIシステム開発の実務を経て、独立しました。\n\n 私たちが手がけるのは、AIを前提に、企業のしくみそのものを設計し直すことです。\n 効率化ではなく最適化。そこに本質があると考えています。\n\n 技術は目的ではなく手段です。\n その先にあるのは、人が人間らしい時間を取り戻し、より高次の価値創造に没頭できる未来です。\n\n この想いで、私たちは歩み続けます。",
+      "vec": "Cvn+Aw7x/gkC/Aj4/PT+/fX1BPgAAAEABwEEAQD2+fr7/vkA/gP+/QT4DggBAP0DAQb3BQH++QEIBPUFBvoDBf0DAQn4+gQE+QT6+PsCBQP1CPgEAfv5+/wB+QT9BQMBBgQB9QH8BQz4BP74/QX0+/gL9/r8BQECAwQABAH5A/n79QEB+gEG+vwA/gD//fv4/gX9/wIA///9+vwI+/0B/gMF9gH9/wH7+P32+Pz/C/gCA/0B+QL5/v39+QIC+v4ICQkD/vz7BP8G9ggBAwMJAfb9CPUB+/j//v/3AfkE/wP/BQQAA/4AAP/2/QIA/gcBBAAMBQj+AwL+CAr/CPz+/f79BgECCvn4AAgHCQr5+/4A/vv9+g/8EPb9BfUBAgT6/f4B+/z8/wEEBf0IEvoF+v0B+fwI/wQFAfr//Qj7Avz7/wME+gEI+gv/Bf/7/fQA/vv8+vkB8v4C/QP7AwQE+wf5/QAG/v0D8fkCAff//QICAAb5/AID9wUC/QUABPr6+wEFAgAICvz7/wT5/v//APsDAAH6CPsF9wsD/Af/+/8DCP7+//YC8wP+Bf0H+Pz/APn9BQD5Afz/9fn39QP+Cfv+AfkCC/z/Bfr6Bv//+wj//AEB/wL/AP34+f8F/vr+/vz7Dv8GAfr8Bwf9Cv8DAAn58QMBAgAK/PoE//8I/wQ="
     },
     {
       "id": "about#9",
       "title": "代表の経歴｜会社情報｜シンアイ株式会社",
       "url": "https://shinai-inc.jp/about.html",
-      "text": "〜 2023 \n 消防士として従事（約7年） \n\n 2023.02 \n ChatGPT公開から2ヶ月、可能性を確信しプログラミングを独学で習得 \n\n 2024–2025 \n 東京のAIシステム開発企業で実務（LLM統合・RAG構築） \n\n 2025.01.01 \n 個人事業主として ShinAI を開業 \n\n 2026.08.08 \n シンアイ株式会社を設立（法人化） \n\n 代表取締役 / AIエンジニア \n 柴田 昌国\n Masakuni Shibata \n\n Seven Shin",
-      "vec": "//sD/gv4/wj8+gT+Cvz9/fb6/v7/BgcFBwAC/QD9A/37AQb8/wj6/QP5AwP9/PkDAgj+AQMA9gQGAvsEBQD7AQH/AQz99wIB/v39Avn/AAf3Cff/A/b7/Pj+9AP5AgP8CQMG9/z8Agj6B/f+AAD3A/cI8PkCAP77AQYEBv/7BPX29f/3AP0H+v/59/cFBvz9/gUB/v8A/gMB+fwF9wAC+QIG9AH8/Pz8+AP6+wMABPsKBv7+/AP1Af77A/sE/AAHDQoEAQH5A/sE+/8K/wAIAvwCDfgCAfYC+/P+AvwH/QH+BgQDBwD8//r5/AAEAgUCAAUMAAz+BPz/AAj/C/v9AAP+/AMGCwD8Bf8GDQj3/QAA//0B/wfzDvwF//YACP/5+wIG/Pr4//sGBP4FDv/7/AMM9/sG/gD+//3/9gn9AvoB+/3++gUF+gMACP/8+voF/vv+/vYD8gEABgH9AP778/oB+P0B9QAK8vkAAfkD+AEDAAf7BgAC+gj+AAP6B/36+wH/AgQGCf0BBfn3Af7+AfoABvr8CgQD9QED9QUC+/7/BAIB/vIF8v7+BAEK+/n///7//gT3+AQA+//69/8CAf0BA/sGDvv8B/34BwIA/gb6//4FAgX5AQT2+wIA+vr++/sCBgsF/QP6BAQFEP4K+wn59QYB/vwK+/n9/gAG+wI="
+      "text": "〜 2023 \n 消防士として従事（約7年） \n\n 2023.02 \n ChatGPT公開から2ヶ月、可能性を確信しPythonを独学で習得 \n\n 2024–2025 \n 東京のAIシステム開発企業で実務（LLM統合・RAG構築） \n\n 2025.01.01 \n AIシステム領域で独立し、個人事業主として ShinAI を開業 \n\n 2026.08.08 \n シンアイ株式会社を設立（法人化） \n\n 代表取締役 / AIエンジニア \n 柴田 昌国\n Masakuni Shibata \n\n Seven Shin",
+      "vec": "APoE/gv4AAj9+wT9Cf39/fb6/f7/BgcGBwAC/v/8BP37AQT7/gj6/AT5AgP9/PoEAgj9AQMA9gUGA/sCBAD7AQD+AAz99wEC/v79AfoA/wf2CfgAA/b7/fn+9AT5AQT8CgMF9/z8Agn7Bvf+AAH3AvcI7/gCAP36AQUEBv/8A/T19f/2AP0H+f74+PcEB/z9/gUB/v8A/gQB+fwG9wAD+QIG9AH9+/38+AL6+wP/BPoKBv7+/AP1Af77A/wE/QEIDAoEAAH5A/sE+/8KAAAIA/sBDfgDAPYA+/X+AvwI/gL+BgQDBgD7//v5/P8FAwUCAAUMAQz9A/z+AAj/C/z9/wL9/QQGCwD8A/8HDQj3/QAA//wC/wb0DvwE//YAB/75/AIG/fn5/vsHBf8EEP/7/AIL9vsG/gD9/v4A9wn9A/oB+/z++gUE+gQACf/8+vsF//z//vYC8wEABgL9AP798/sA+P0B9QAJ8fkAAvkE+AAEAQj7Bf8D+gj+AAP7B/78+gH/AQMHCPwCBfr2AQD/AvoBBvr9CgQD9QAE9QYC+/7/BAMC//IF8v7/BAEK/Pn+AP///wT3+AMA+wD6+P8CAf0CBPwFDfz8CP34BwIB/wb6/v4FAgX5AgT2+wIA+vn++/sCBgsE/AP6BAQEEf4J+wn49QQB/vwJ+vj8/gAH/AM="
     },
     {
       "id": "about#10",
