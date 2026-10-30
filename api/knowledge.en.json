@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "generatedAt": "464379a",
+  "generatedAt": "3b78d20",
   "chunks": [
     {
       "id": "index#0",
@@ -20,8 +20,8 @@
       "id": "index#2",
       "title": "Unlocking tacit knowledge｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "Unlocking tacit knowledge \n \n The day-to-day judgments in your work become easy to check at any time,\n without having to recall them or search for them.\n\n Collecting and structuring your internal knowledge \n RAG systems built on your internal data \n LLM fine-tuning",
-      "vec": "/gMBAQn4/gr79gX8BvkB/fv0/P4BAQUIBP3/Bfz7Avr+AQEGBgX/AP/9BQQE+/wCAQL5+PUC9fz6BgEI+/0CBfn89gn2+AYA/v8C+wEMAgIC/v36/fj2APT5/Qn8Bv4DAgUHBgH7CQQCBPb99v7v9/oC/Pr9AgID/PsCAP3/BgH7+f79CPT9+P4F+vsCAQEB8gED/fsH+gAB/wH++AgA+P4MAQb8CP4E9fj49wABBQAEA/L/8vv2AQD4AwcA/vkHDAQO/gABAfwB+/74AQUDBfX8Cv3/BfcBAP/9BQT7BAP+AgD2CPkEA/sBBP4E+QP/A/4D/fwE/P4J/gT+Bvn+APwBAgABBfz9BPcBBgoG/QL+/vj9/PoABvgCBf0D/wX/+/8G9gUB/gYEAQECB/r/AwQJ/PYKA/4CCvz6+Ab+DfX5/Af6+////AH4BAAABPj6AP/8//YD8P0ECP8FBQIG9v35+/z99/8A9/0MAwED+f0DAAH9+f78/AYGBwcG/fwACAQI/foEBPz/AQD8/wMJBv4A/wMBBQIG//8F9QgDBf4ECAP9/PsB8AQHDfoJ8AYD+v37Af4EAfsEBfQC9P/1/vT6AQEHCfr+AP8CCgAC+QgE/v//CwD8/AX5+gAI9v74A/0D/gkNAP8H/v/8D/0GAAX1/f4D+/8D9wQD/QUDAQA="
+      "text": "Unlocking tacit knowledge \n \n The day-to-day judgments in your work become easy to check at any time,\n without having to recall them or search for them.\n\n Collecting and structuring your internal knowledge \n Making your documents something AI can answer from \n Tuning the AI to fit how your business works",
+      "vec": "/wICAAn5/Qz69wX9BfUC//n1/voAAQIJA//9BPz6Afv8AgAEBAT//wH9BgUC+/wCAAT5+/QB9vv7Bf8J/fwBB/n9+An39AgC/P8D+/wLAAL///v8/fj3AfT4/An+BP4EAwYHBAL6BQYABPf8+f7u+P0E+/n/AQIB+/0BA/v9BwP5+fz8CPL/9wAH+/0EAAAA8P4C+/oI/P4B/gAB+gf++/0K/gX5BwED9fb2+gACBf0DAvIA8vr1AgD2/wn+//gECwEO/QIBA/4B+vz7AQMDA/b8CvwAA/f+AP/8BQP9BQEBAf72BfoDA/oBBPwG+gH/Av8D//oD/P0H/gX9Bfv//vwCBQMDBvr7BPgABQ0E/wQB/ff9+vn/BvkDBfwE/QT8+/0G9wQBAgUEBAEDCff/BAUI+fkNAQACCPr8+Ab+Dff4AAf6+gD+AAH3AwH/A/b9AQD6/fYD7/8DBwAGBgEE+P/4+gL7+f7/9vsNBQD/+/0FA//+/P76+AQGBAYG/PgABQII/PwCB/r+AQD8/gMIBv0AAQEBAwED/QAG9QgCBf4ECAT8/f0A9AAHDPsJ8AYC+Pv6Av0DAf0CA/QC9QH2APP6Av8ECvr+AQACCgAB+QcC/gEABwH9/Qb4+QAK+fz5AvwBAQkK//4J/wH9Dv0J/wT4+wMD+/8F9gMG/QUBAf4="
     },
     {
       "id": "index#3",
@@ -34,8 +34,8 @@
       "id": "index#4",
       "title": "Hands-on support for AI-driven transformation｜ShinAI | Turn Your Company's Tacit Knowledge into Working AI",
       "url": "https://shinai-inc.jp/en/",
-      "text": "Hands-on support for AI-driven transformation \n \n From designing the evaluation to running it and growing the team.\n We leave you able to carry it forward yourselves.\n\n PoC design and accuracy evaluation \n Operating rules and team structure \n Technical handover to your own engineers",
-      "vec": "BAMN/QP1AAsC/gf5APP+A/76AQABBAgDBP7/A/31BPnz/AADBAj8AQL9AwcBAAP9AgX6BPv/+QUFBfwE/fgFBvkB+QP39wgC+f0GAfUM/////f8AAvjz+/f8AQv+BgAFBgYLBwX5BA0B/wAA/gHu+gEC9gEF9//9+/z/APj6Bvn3/v/8BfT//PoE+AEG+vL+9AH///oKAf/4//0G+Aj99AcG+AX3/v0B8fr29/0HBQAE9/X8+f72Afj5Agj6//sFCAEJ+wkBBAIE+gMCBAMB//f+CPoDBff++wL/AwH7Av0ABgP6BfH7BvwD/vwG+wD3AQAH/gIB//sOAAP6BvkE+//8/wABCfv9Af4FCQX+/wYCBvv+/gD//vr+A/7+AwX6/AEF+gf/AQEFAf4ECv8B/AYB+vkH/v8ABP79/AwABfr2+wD9+f4FAAT9Af0AAPcEAgL+APP99P0FCQEABwUB+P4A/gD69v/+9P0P/v8C/gAF/AcC+/74+wgDAAIF//cEAwQF/QADDPr+AQMGBQMFB/v5/P/8AwAC+gYC8gUCAf8IAAEB+vwB8/gFCQAB+QEB///8BAECBAAGAf4C/f33//L9AwQKDPz5AQMGCwL+/AoB/AD/A/v+Avz7+gAI+Pr+/vf/CAwO+f4AAwMCDf0JAwf99AgB+QEM/PoEAwYD+wM="
+      "text": "Hands-on support for AI-driven transformation \n \n From designing the evaluation to running it and growing the team.\n We leave your team able to use it with confidence.\n\n Small trials that confirm the effect \n Operating rules and team structure \n Hand-off until your team can use it with confidence",
+      "vec": "AAMK/gT0/w0AAAf4AfT9BPz6AgEABAcFBgD9Av74BPr1/P8DBAgBAQL+AggA/gD+AAX5Avr/+AYEBfwE//oEB/gB9wT49gj++/4EAPYOAf7//P0CAfj0/Pb+BAz+BAAFBgQKBwX4BA0AAAD//wLt+gIB9f8H/P/9/Pz/Afr8BPv2/f//A/T/+/kC+wMF+fP+8gH+//kJAP73//4F9wf98wcI9wb4AP0C8fr59P4HB/4C+Pf9+vz1Avn5/wb8/fkDCQQN/QgCBAQE+wMAAQMBAfUACPgDBfX++wICBgL8Afr9BwX3BfT+A/oC/fwG+gL5AwAG/gIB/v0MAwT8BvgD+//+/wMCB/r+AP8ICAUBAAUABfr+/wH+BPv/A/z/AgX4+gMD+wj/AAIIAf0DCP///AYC9voKAAECCP/9AAv/Bfz3+gD8/v8FAAP9AP7///cBA/37Afb98v4DCf8BCAYC+Pz//AH69QL+8v8P/v4C/AMG/ggB/v75+QoDAQME/vYEAgUF/gAEDfv9AAQHBAQEBP34+wD/AwAC+QYC8wYBAAEGAgEE+fwB9PkHCQAD+QECAQD+BAAABP8FAPwA+v70AvD8AwMHCfn7AgAHDAEC+wgB/AL+A/sAA//7+QAH9vv8/vsACAsK+Pv/AwMCDP0JBAn89QYC/QAM/foFAAUE+QA="
     },
     {
       "id": "index#5",

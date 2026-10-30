@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "464379a",
+  "generatedAt": "3b78d20",
   "chunks": [
     {
       "id": "index#0",
@@ -20,22 +20,22 @@
       "id": "index#2",
       "title": "暗黙知の解消支援｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "暗黙知の解消支援 \n \n 社内業務の細かな判断を、 思い出す・探す手間なく、 いつでも楽に確かめられる 状態にします。 \n\n 社内ナレッジの収集・構造化 \n RAG構築・社内データ活用 \n LLMのファインチューニング",
-      "vec": "//77AQz9AAn9+gQA/v7/Bvz+/AYDDgX+CQMC+wD8//4AA/wDAgH9AgYABwUHBPcBBAb3A/3/+QQDCQII//kABvr+/g709/r+/vz9AQgBBwL8Bvf+Cff1BfH+/Ab3/v0DBwAADQP7CgL7BPb6+wT4+vUB+fz6BwID+wIEB/z7Bfn7/QD/Af0E/P3/9/oIBQQD9gIA9gID/Pz9+fkG/QID+AUH+wL8Bf8B+AHz+QX+/AID/Pj+9gL6/fr2+P8EBQAICQwC/wL9/gH9+wcBAgkKBvcHDAP/AfkFAAMBAv4C/AECCQT5B/sHAPYACP39AAT6B/8I/QYCA/4DAgcCCPf4+P8AAAMAAvv9AvsFC/8E/AEAAfv8+gb+CfkE/wD+Bgj6+/4C+wX++/78AgAECv369wIP9/YF/gT/BgEE9QP3CfgC/gH7+gAC/P77Cf4B/vf0/P39+voF9QIB/AAACQYC9QD5+wH/+f8G7/wE/AEA/QEG/Aj8A///+AMGAgQH+vv8CAIF//0NCP8C+vj5/QQDAf78+gAACgQD/wUC+gUCAv8FAwH6AfAE8wMCCAQI8f4D//n8/AIA/vYC/vb/+/72//f5Af0KCPz4Cf//Bv8B/g4B//0BCgX4/gb59wUD+f77Af8FBQkKAQD/AAT9Dv4GBQby/v///AAC9v0A+wEDBQk="
+      "text": "暗黙知の解消支援 \n \n 社内業務の細かな判断を、 思い出す・探す手間なく、 いつでも楽に確かめられる 状態にします。 \n\n 社内ナレッジの収集・構造化 \n 社内の資料を、AIが答えに使える形に \n 自社の業務に合わせたAIの調整",
+      "vec": "Af78AQz8/wv8+gP+APsABvz//QECDwT+BwQB+wD9/v7/AvwCAgH9AwcACAcDA/YAAwj1BP38+QEECQEJAfgAB/v/Ag/18/sB+/z+AAYCBgH7B/X9Cfb4BPH++wX5/fsEBwEBDQP6BgX4BPj7/AT5/PYD+Pr7CQMD/AQFCvv8Bfn5+vz/AfsD+v3/+PwGAgIC9gAB8wEE/vv++vgH/wQB+gQF+QD7BgMA9/7y+wQC/AIA/PoA9//6//r19gEDBf8ECgwC/AH+AAD++QYEBAgLBPcIDAAAAfoDAgICA/4E/f8DBQP5BfsFAvYAB/3/AQP7BgEJAAMAA/0BAQj/C/f59v8D/gYCBPr8Av0ICwAC/gEB/vr++Ab8CfoEAP7/AgX5+v0E+wL//vz8BAAFDPr8+gIN8/sH/AX+Bv4E9wT1CvcCAP/7+gAB/f39BwAC/vn3+/38+fkF9QH+/gEBBwUB9QH4+AT++f8E8PwG/P/9/AIG/An/BAD99QEHAAMI+/j7BgEE//sKCf8A+fn7+wMBAv79+wAACQIBAAYE/AYCAgEDAwH4AfAD9QADBwUH8P4B//b8AQL+/vkB/PX+/AD3AfX5A/wHCvr6Bv3+B/8A/Q0AAf4BBwX6AAj4+AQE/Pv9//4CBAoIAQAB/wb9Dv8KBAX0/QEA+wIF9vwE/AEABQk="
     },
     {
       "id": "index#3",
       "title": "企業専用AIエージェント開発｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "企業専用AIエージェント開発 \n \n 社内知識と既存システムをつなぎ\n 業務を実行するAIをつくります。\n\n 社内知識を踏まえた応答と判断支援 \n 既存システムとの連携・実行 \n 業務フローへの自然な組み込み",
-      "vec": "/gQEAQz8+gv/+wr8A/YAAP73+vwBBgcCBAQA/v/8Af4GAgQF/wb/BwD9CQX8APoABgb1BQL69AME//8LA/7/C/kCBQ33+vwDAP79/wQGBgT9BPX8Bfr4/vL++Aj9/wEJBgQFCQL6/wb7+ff9AQL4/fcB+ff+BwIB/QoCBQH9Bf369v0BAP0D+P3/+vsCAwH/9/8C8/sC/fj2/fwI+v8B9wIG+AL9AQIG+P/x+gEIA/4A+/z99wf1BP75+QEBAwEBCwsIAAD9Av8G+gcCAgUKAfcGDfoDBPf5/wX7BPwBAP//BQD2BPv///n3BQD8AQb5BAYJ+wAABf0EAQn4BPv99v4FAQcACPf+BvwHBv0B/wcA/vX7+P/+Bf38/vsD/v/2/AIC//78BgH7BwQEDPwA//4I9voC+gQCBf4C9AT5Bvb+Af/2+/0E//0ECAH9//j89wEB/PgC9f8AAQUDBgQB+QH49fsB/PwC8/oI/fn/AwQG/woD/wP+9v0J/QcHAPj4AwIGAPoJC/wC+Pz8/wADAfz3/v76Avz/+QcE9wYC/wH+BgQABfAH/v/9CgcF9QAC//n3Agb5Af4C/f7/+P/3//n9/v0CCv7+BgECBgT+AAz/AgQEAgb+AgP9+wAI+Pv9AvkCBAQLAPsGBQgBFP8NBAf08QL99/4D9/sF/QP7BwQ="
+      "text": "企業専用AIエージェント開発 \n \n 社内知識と既存システムをつなぎ、 業務を実行するAIをつくります。 \n\n 社内知識を踏まえた応答と判断支援 \n 既存システムとの連携・実行 \n 業務フローへの自然な組み込み",
+      "vec": "/QMEAQ38+gv//An8A/YAAP/3+v0CBQYCBAQA/v79AP4HAgMF/wb/BwD9CAX8//r/Bgb1BQL59QMF/wAKA/7+C/gCBQ32+vwEAP7+/wQGBgT9BPX8BPr4/vL9+Af9/wEJBgUFCQL6AAb7+fb9AgL4/PYB+ff+BwIB/QoDBAD9Bf359f0BAPwC+P3++fsCAwH/9/8C8/sC/Pn2/fwI+gAB9wEG+AL9AQMG9//x+gEHA/4A+/z99wf1BP75+AEBAwEBCwsIAAH9Av8G+gcCAQULAfcFDfoDBPf5/wX7A/wBAP//Bf/3BPv///n3BP/8AQf5BAcI+wAABP0EAQr4Bfv99v4FAQcACPf+BvwHBv0B/wcA/vX7+P//Bv38/vwD/v/3/AIC/v78BgH8BwUEC/wA//4I9voC+gQDBf4C9AT5B/b+Af/2+/0EAP0EBwH8//j89wEA/PgC9P4AAAUDBgQB+QD49vsA/PwD8/oH/fn+AgQH/wkDAAP+9f0J/QcIAPn4AwIFAPoJC/wD+fv9/wADAf33/v/6Avv/+QcE9wYC/wH/BQQABPAH/f/9CgYF9QAB//n3Agf6Af8C/f7++P/3APn+/v0CCv3+BgACBwT+AAv+AgQEAgf+AgP++v8H9/v+AvkCBAQKAPsGBgkBFP8NBQf18QL8+P4E9/sF/QP7BgQ="
     },
     {
       "id": "index#4",
       "title": "AI化伴走支援｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "AI化伴走支援 \n \n 検証の設計から運用・チーム育成まで。\n 御社が自走できる状態をつくります。\n\n PoC設計・精度の評価 \n 運用ルールと体制づくり \n 社内チームへの技術移転",
-      "vec": "BgEFBgb4/QME9gX9APkB//73//wCCQH5Bvz++vz4/Pz7+P0BAgb+BAf/BggCCAMA/QX1Cf39/QQNBf8I/foEAv78/wf5/P8E/QAB/vkFCAT4CPn8CfX2+/X8/gf5AwUDCAIEBgXxAQv7+v3+/gb4APsH+PkIAAEB+gYG/vj5Bvf1+f/5BAP++vn/9v8FAvoB+fsA+QMDAvr3/f4L+QUE+gEH9f75/wIG8gH3+PkJBPv+/Pf9+wH6A/b3/gMBBQIDCQEA+AT7Bf0G+QUH/wQEBvoBBvkDBfwB/Af8Afz/AQH+D//9BPL9Avf+A/oABAL4/wIN+wL9AQAD/wP/Bvz+/v79Af7+Bvn7Av8IC//++wcB/vwB9wj7BvcB/f8BA//5/v0C/QH/AAP8BwABDAD++gYC/foC/gUAAgAC+gT7B/r6Afz++P8I+AT9CPoC//v1+gUC/e0E9gX//wH/AwYG+Qf8/P4B+P4B+/wN/QAF/QMF/AcC+v8B/AoH/wYE/fz7AQMFAPgDBPcA/Pr8A/sDBP729gD6Bf4G/AwFAAn+//3+AAMBBPIC9fz8CwYB+P4BA/n+AgT9AP0D/fv+/fz8AfL+BgIGDP73Bvb+CAMGAgoAAP//BQD8+/379wEH+vX7/vsFBwsR/gH7AQICEf4IBQv88gr8+/4J9/cABAb+AgU="
+      "text": "AI化伴走支援 \n \n 検証の設計から運用・チーム育成まで。 社内で使いこなせる状態をつくります。 \n\n 小さく試し、効果を確かめる \n 運用ルールと体制づくり \n 社内で使いこなすまでの引き継ぎ",
+      "vec": "AwEEBAb3/QYC/Af4APgB//v8/f0DDAT/CPz9+v72/vz7+voDAwMABAcBBggCBv8C/Qf1B//9/AUJAQAJ//oDBP3+AAf5+/4A/QEB/v0DBwL2B/X+CfX2/vT5AAf5AQMFCQECCQX1BAn5/f38/wf6/fsG+vsGBAL/+wUIAfv6CPr1+f76AwMA+Pn/+AADAPwA9v0B+gMAA/r4/f8I9gUE+AMG9gD2AAEE9AH3+f4GA/r9+/z/+//5BPf2/P8BAwADCgQB+wD8BQAG+AcC/gYEB/j+BfkCBfcAAAT9A/oAAP7+DgP5BPQAAPf8Avr+AwT5AgQL/AL/AQADAQT9Cff9/PsCBAD8Bvf9AgANC/79/Qb+//n/+Qn5CvgA/vsCAgD2/AIB/QL9AQL+BwAAC//++AQD+/oDAgcDBv4B/AT4Cv36APn++P8I+gD+BvsC/vn1+gIA/u4E9gX7/gD/BAcG+AT5/AH+9P7/+fwP+wED/gEH/AoB/QAD+goG/wYG/vz9AwIDAvoGBvkA+/z+Bv8DBQD29wD9Bv0F/A0FAAj+Av3+AgIAAPAD9/39CQgB9f0CAPv7AgT8//0F/Pr8+f/7AfL9Af8ECf74BPUACgIHAA3/AQAABgH8/P77+QIF+fX7/f0GBgwP//z9AgIBEP4MBgz69Af9//0M+PcBAAQA/wM="
     },
     {
       "id": "index#5",
