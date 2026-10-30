@@ -249,14 +249,14 @@
 @media (max-width: 640px) {
   /* 旧公開サイト同様、カードを画面端いっぱいに広げず左右にゆとりを持たせる。
      コンテナのガター内でさらに内側へ寄せ、圧迫感を和らげる。 */
-  /* カードの間(16px)が、カードの中の箇条書きの行の間(32px 刻み)より狭く、
-     カードの切れ目が行の切れ目より弱く見えた。高さも本文の行数でばらついた(柴田指摘 2026-10-30)。
-     間を行の刻みより広げ、三枚を最も高いカードにそろえる。 */
+  /* カードの間が中の行の間より狭いと、切れ目が弱く見える。高さは三枚をそろえる(柴田指摘 2026-10-30)。
+     間を48pxへ広げると間延びしたため(同日)、中の行の間を詰めたうえで、間を24pxにする。
+     間は中の行の空き(8px)より常に広く保つ。 */
   .solutions__grid {
     grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
     max-width: 100%;
-    gap: var(--space-6);
+    gap: var(--space-4);
     padding-inline: var(--space-2);
   }
   /* 画面への圧迫を抑えるため、余白・画像・字を一段引き締めてスマートにする。 */
@@ -270,10 +270,18 @@
   }
   .solution-card__title {
     font-size: var(--fs-body);
+    margin-bottom: var(--space-1);
   }
   .solution-card__lead {
     font-size: var(--fs-sm);
+    line-height: 1.7;
     margin-bottom: var(--space-3);
+  }
+  .solution-card__divider {
+    margin-bottom: var(--space-3);
+  }
+  .solution-card__items {
+    gap: var(--space-1);
   }
 }
 
