@@ -299,6 +299,13 @@
   .capability__chip {
     padding-block: 0.25em;
   }
+  /* スマホでは本文の行の間(行の高さ約1.9)が空きすぎ、文がばらけて見えた(柴田指摘 2026-10-30)。
+     この区画の本文だけ行を詰める。 */
+  .capability .section__lead,
+  .capability__desc,
+  .capability__app-desc {
+    line-height: 1.65;
+  }
   /* 左右の線があると一文が入りきらず、360px 幅で「組み立て/る」と割れた。線を外し、文を中央に置く。 */
   .capability__seam {
     justify-content: center;

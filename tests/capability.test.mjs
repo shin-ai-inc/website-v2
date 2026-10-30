@@ -101,6 +101,8 @@ test("話の起点を業務の課題に置く。AIは課題に合わせて選ぶ
   const s = section("partials/index.html");
   const lead = s.match(/<p class="section__lead">([\s\S]*?)<\/p>/)[1].replace(/<[^>]+>/g, "");
   assert.ok(lead.startsWith("まず業務の課題を伺い"), lead);
+  /* 「選んで」より、課題に照らして見極める姿勢が伝わる「判断し」にする(柴田 2026-10-30)。 */
+  assert.ok(lead.includes("解決に合うモデルを判断し"), lead);
   assert.ok(lead.indexOf("課題") < lead.indexOf("モデル"), "課題より先にモデルが来ている");
   const steps = [...s.matchAll(/<li class="capability__step">([^<]*)<\/li>/g)].map((m) => m[1]);
   assert.deepEqual(steps, ["課題の整理", "開発", "運用"]);
