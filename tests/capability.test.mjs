@@ -22,7 +22,7 @@ const section = (rel) => {
 test("身近なモデルの名前を入口にし、つくるものと支援の範囲を示す", () => {
   const s = section("partials/index.html");
   for (const word of ["ChatGPT", "Claude", "Gemini", "フロンティアモデル", "ローカルLLM", "オープンウェイトモデル",
-                      "AIエージェント", "バーティカルAI", "専門特化型AI", "企画", "開発", "運用"]) {
+                      "AIエージェント", "バーティカルAI", "専門特化型AI", "課題の整理", "開発", "運用"]) {
     assert.ok(s.includes(word), word);
   }
 });
@@ -75,7 +75,7 @@ test("一般の人に届かない専門用語を、項目の名前に並べな�
 
 test("英語版も同じ構成にそろえる", () => {
   const s = section("partials/en/index.html");
-  for (const word of ["ChatGPT", "Claude", "Gemini", "frontier models", "local LLM", "open-weight", "AI agents", "Vertical AI", "Plan", "Build", "Operate"]) {
+  for (const word of ["ChatGPT", "Claude", "Gemini", "frontier models", "local LLM", "open-weight", "AI agents", "Vertical AI", "Clarify", "Build", "Operate"]) {
     assert.ok(s.includes(word), word);
   }
   for (const word of ["Reinforcement learning", "RAG", "vector search", "On-premise"]) {
@@ -93,4 +93,21 @@ test("シンアイの範囲は、枠と横書きの見出しで示す(縦書き�
   }
   const css = readFileSync(join(ROOT, "styles/sections/capability.css"), "utf8");
   assert.equal(/writing-mode/.test(css), false, "縦書きが残っている");
+});
+
+test("話の起点を業務の課題に置く。AIは課題に合わせて選ぶ手段として書く(柴田 2026-10-30)", () => {
+  /* 依頼する人の目的はAIを入れることではなく、業務の課題を解くこと。図の構造は保ち、
+     見出しの下の一文・支援の流れ・継ぎ目の一文を、課題から始まる順番にする。 */
+  const s = section("partials/index.html");
+  const lead = s.match(/<p class="section__lead">([\s\S]*?)<\/p>/)[1].replace(/<[^>]+>/g, "");
+  assert.ok(lead.startsWith("まず業務の課題を伺い"), lead);
+  assert.ok(lead.indexOf("課題") < lead.indexOf("モデル"), "課題より先にモデルが来ている");
+  const steps = [...s.matchAll(/<li class="capability__step">([^<]*)<\/li>/g)].map((m) => m[1]);
+  assert.deepEqual(steps, ["課題の整理", "開発", "運用"]);
+  const seam = s.match(/<p class="capability__seam[\s\S]*?<\/p>/)[0].replace(/<[^>]+>/g, "");
+  assert.match(seam, /^課題に合うモデルを選び/);
+  const en = section("partials/en/index.html");
+  const enSteps = [...en.matchAll(/<li class="capability__step">([^<]*)<\/li>/g)].map((m) => m[1]);
+  assert.deepEqual(enSteps, ["Clarify", "Build", "Operate"]);
+  assert.match(en, /challenge/);
 });
