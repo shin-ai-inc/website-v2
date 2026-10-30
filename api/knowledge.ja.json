@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "dd5cf6d",
+  "generatedAt": "ec28ade",
   "chunks": [
     {
       "id": "index#0",
@@ -20,8 +20,8 @@
       "id": "index#2",
       "title": "暗黙知の解消支援｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "暗黙知の解消支援 \n \n ベテランにしか分からなかった判断を、\n 誰もが引き出せる状態にします。\n\n 社内ナレッジの収集・構造化 \n RAG構築・社内データ活用 \n LLMのファインチューニング",
-      "vec": "Av/9Agr+/gv79wX//f7/BwD/+AkCCgT9CAIG/AH9//0BAvwCAgIAAwQCBwYGAvv/AgX3A/wA9wQDCAMFAPsBB/z9/g309vj+/v39/wkDCAH/Bfj+Cvb0A/H9+QT1AP0EB/7/CQT9CgL9AvX6/AX3+/b9+vr5BwIE/AMFBf3+Bvr6/AD/A/4D+/r/+fgEAwUD8gD++AEC+/78+fkD+gQF9wcH/QP+A/0D9wD2+wf6+AIC+/j79QT6//r4+gIGAwAJCg4CAQT+/gH++QYAAAkLBPcFDAL7AvYE/gEDA/8A+wMBBwH6BvwH/vj+CAH9AAX2BgEH/AUCA/wDAggDCfn5+QD/AAH+BPn7//oDCQAD/gH/AP37+wb/CfkG/wEABAb8/AAC/QX8+////wECCf76+AQN+vYD/QP/AwEC9gH3CfgC/f/8/AAA/f/7CP4C/fX1/QH9+/kF+QIE/gD/Cgb/8wP7+v//+AAG8PwH+wID/f8G+wj7Av0A9gMIAAQH9/r8CQMEAvwNCwMC+vr5/QIDBPv6+v4ACQQFAAQB+QQAAgAGAv/8AO8E9QUACgUI8f4D/vn9/AMA/PUB/fX8+vv4/fn6Av0KB/z3CQAAAwAD/gwAAP0ACwP4/QX3+gUC+f37A/oEBQcPAv7/AAX+D/4GBgXxAP4B+gAC9/7//wICAgc="
+      "text": "暗黙知の解消支援 \n \n 社内業務の細かな判断を、 思い出す・探す手間なく、 いつでも楽に確かめられる 状態にします。 \n\n 社内ナレッジの収集・構造化 \n RAG構築・社内データ活用 \n LLMのファインチューニング",
+      "vec": "//77AQz9AAn9+gQA/v7/Bvz+/AYDDgX+CQMC+wD8//4AA/wDAgH9AgYABwUHBPcBBAb3A/3/+QQDCQII//kABvr+/g709/r+/vz9AQgBBwL8Bvf+Cff1BfH+/Ab3/v0DBwAADQP7CgL7BPb6+wT4+vUB+fz6BwID+wIEB/z7Bfn7/QD/Af0E/P3/9/oIBQQD9gIA9gID/Pz9+fkG/QID+AUH+wL8Bf8B+AHz+QX+/AID/Pj+9gL6/fr2+P8EBQAICQwC/wL9/gH9+wcBAgkKBvcHDAP/AfkFAAMBAv4C/AECCQT5B/sHAPYACP39AAT6B/8I/QYCA/4DAgcCCPf4+P8AAAMAAvv9AvsFC/8E/AEAAfv8+gb+CfkE/wD+Bgj6+/4C+wX++/78AgAECv369wIP9/YF/gT/BgEE9QP3CfgC/gH7+gAC/P77Cf4B/vf0/P39+voF9QIB/AAACQYC9QD5+wH/+f8G7/wE/AEA/QEG/Aj8A///+AMGAgQH+vv8CAIF//0NCP8C+vj5/QQDAf78+gAACgQD/wUC+gUCAv8FAwH6AfAE8wMCCAQI8f4D//n8/AIA/vYC/vb/+/72//f5Af0KCPz4Cf//Bv8B/g4B//0BCgX4/gb59wUD+f77Af8FBQkKAQD/AAT9Dv4GBQby/v///AAC9v0A+wEDBQk="
     },
     {
       "id": "index#3",
