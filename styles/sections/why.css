@@ -1,7 +1,7 @@
 /*
   Section: Why ShinAI (#why)
-  現場で続くための五つの姿勢。番号付きの横並びリスト、アイコンなし。
-  余白と水平罫で静かに区切る。
+  依頼を決める人の四つの不安に、約束で答える(柴田 2026-10-30)。番号付きの横並びリスト、アイコンなし。
+  不安は小さく淡く問いの形で置き、約束を太く置く。余白と水平罫で静かに区切る。
   色・余白・型はトークンのみ参照。
 */
 
@@ -44,6 +44,17 @@
   margin: 0;
 }
 
+.why__worry {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--mist);
+  margin-bottom: var(--space-1);
+}
+
+.why__worry::before {
+  content: "\2014\00a0";
+}
+
 .why__title {
   font-size: var(--fs-h3);
   color: var(--ink);
@@ -65,5 +76,12 @@
   .why__title {
     font-size: var(--fs-body);
     font-weight: 600;
+  }
+}
+
+/* base.css は 400px 以下で .nobr の保護を外す。語塊は最長14字で列に収まり、外すと語の途中で割れる。 */
+@media (max-width: 400px) {
+  .why .nobr {
+    white-space: nowrap;
   }
 }
