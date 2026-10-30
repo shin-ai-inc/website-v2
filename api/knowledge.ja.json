@@ -1,6 +1,6 @@
 {
   "locale": "ja",
-  "generatedAt": "7142931",
+  "generatedAt": "b3af119",
   "chunks": [
     {
       "id": "index#0",
@@ -104,32 +104,39 @@
       "id": "index#14",
       "title": "身近なAIを、 \n 自社専用のAIへ。｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "最適なモデルを基盤に、 会社ごとの専用AIを開発し、 企画から運用まで 一貫してご支援します。 \n\n 01 \n 基盤のモデル",
-      "vec": "Af0EAAz3+wX7/P/5A/f7AAD8/fv/CwP+CAEB/f/9/Pv7/foBAQX8CAT+CA3+AP7+/QX1Bv77+AcFAwAHAAH9BwP+AQj2+fsC/P8B+wAHBQX7CPn+APb2Bfb9/AX5/QAGB/8CBAL9AQj7+v/++Qz6+/7+9fv+DP7+AgoJAgX/Cf349gD//v4E9vv++/gD/f8B+QT+9v4D/fn7/PoK+v0C/AQD+AP8A/wB8fz4/AABAPwA+fr9+wP2A/v6+wQBAAECDBAI+/v/CAAD+gIDAQQNBfgHB/wC//f8Av79CvsEAwT9BgP5BvkFAPz6AAEDAgT5AAEJAQb9BfwEAwoDB/v9/P4F+wD+B/j/Bf4CCQUBAv8F+/n9+Qf7B/r/Av/+BQT49/wH/f34/wL+CAQBDwH//v0F+vsG+wL+B/8C9QD/C/78APz79wQD+wAABwAE+f74+QD//vUC9AYA/P4DAwQB9wX1/P4H+QAD8fsO/P79/v8E+gcB/AH99gUH/gMH/v72BfwGAfoHDPz//f35BAD+Cvr+/QD+A/4G/QkE9AYD/AIDAgL8BO4D9/n+DQIB9AID/vT7/AT+Af0F+fb4+wD7BvH7APkCDgD9AP7+AwQD/gYA/wAEAgP+/QT5/gAG+/n+/fwACAURAgEFAwL+Df8PAgT88wUB+/0I8vsAAQABAQk="
+      "text": "最適なモデルを基盤に、 会社ごとの専用AIを開発し、 企画から運用まで一貫してご支援します。 \n\n ShinAIの領域 \n\n 一貫した支援",
+      "vec": "AP0FAw33+wf7+//8Avf6APz9APsBCQX+BgAB/v/7/vv7/vsCAgP+BgUABQr+//v8/wX1B/v3+QoGA/4E/gD8BgL/AAn39v0A+v0C/P8IAwb7B/f/AvX1BPT//Af3//0HCAAFBQL7Agj9/P/8/Qz6/P8B9vj/C/4AAQkJBAH/Cv729gH+/vwC9vj++fgD/gAA+wP89v8F/Pr5/fgK+P4B+wUD9wX7Avv/8vz2/f8FAv0E/fn+/QP2BPv9/QQAAQAEDhAI+v3/Bv4B+gMGAAUMBPoDBvkF//f8A/39B/wFAgT/BgP5BvkFAvn7//4EAAT4AwEJAQX9BP8FAAkCCfj//f4E/AL/B/j+B/4FCwcCAQAD+/n9+QT7Cvr/Av/9AwL39/wG/f35///+CAMDDf4A/f8D9/sG/AEAB/8B9wEADP3+APz7+QQE/v4ACv8E+/z8/Pz+/vYD9QYB/f8DAwL99wL0+gAC+QAC7/oN/f7+//0F+wgC/QL8+QQF/AMF//z6BP4DA/gHDPr+/f75Av/+C/v9//8ABP4F/ggD9QYE/gEEAQL8BfEE9vwADgAB9AIC/fX8/QT9/v0E+fX7+gD5B/H9AvkDDf7/AgD8BgYE/Ab+/AADAgP//gH4+wAH9/f9/f3/BwkOBAMEAQH/Ef8NAQT78QUB/P4K8/4C/wEBAAo="
     },
     {
       "id": "index#15",
-      "title": "最適なモデルを選ぶ｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
+      "title": "企画から運用まで｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "ChatGPT \n Claude \n Gemini \n ローカルLLM \n \n 「ChatGPT」「Claude」「Gemini」などの フロンティアモデルから、 社内で動かせるローカルLLM （オープンウェイトモデル）まで。 用途と機密性に合わせて選び、 データを社外に出さない構成にも 対応します。 \n\n 02 \n アプリ層",
-      "vec": "/gYF/wz1+gb/+//+/vv9/f/5+gX/DAL8CP/9+AT9Av0A/vj6/gP/BP4DCAUDA/3/AQL0CP8A9wD+AAYG/f8ABAL/9gj4APj7/f3+/P8FCAD6DAIBAvj6/vP2/Pz6BAAEDP3+BAQABgcB/PkB+Av0/PX/9/n+Cvr5AAoGAgQFBf36+v3/BP4F+foB//oB/fsD9AL7/voH/Pv8//sHAgMD9wEI/QX8B/0F9AP8+wD+/PsC/fv9+QT4/fj8Avv+/gUFCREEAAH6AAgE/gX8/wQJCPb/DP7+Afb8A/kEDPkGAPz8BAP4CP4DAv/zBPwBAAD4+gUF+gv7BPcGBAEGB/wB/fwA/fz/Cfv//f37BP/8AQH+BPj6+gH8BvkAA/4DBAX4/P8G+Pz1AQT9BgABCgD++vsK/f4F/P0IB/0A+AH7Bv4D+fkB+AYD9QX7CgD8AQD49gT9/vUE+wUB/QUEBgAA9wD//P4F9/8G8gEJ/AAA/Pn/+gcA+wQB+f4JAAQEAgD4BgICA/sJCgIC/vz8BAMC/vr6/gIEA/4HAgYH+QYA/gAHBAEDAO//8///CQEB9PwBBfP6+gT+APr///3+/vz6+/f5/f0GBgX6BfwEAwUBAAYAAggABwQD+gP7AP8J+/z8//8DBAMcBwMACAT9Cv4R/wPv9///9fkG9gEC/AABBAU="
+      "text": "企画 \n 開発 \n 運用 \n \n 何をAIに任せるかを一緒に決め、 つくり、使いながら育てます。 \n\n アプリレイヤー",
+      "vec": "BP8B/wz0/gX8/QP8BPX9+vr3//wFCwP+BwAEBP0BAPz/AP/9Av39BQMFAgYBCPcCAgj3Bv75/AMCAvwHBQEDBPoE/wz8+/79+f8D/foDBgL7A/37APX7+/b++wP7/f4LBQQHCAP4Agz9/vcG/AP4/f4D/fwCAwT9/gcCB//+CP78+/7+A/0D9/sE/fkG//v9+/8B9gMBBP76/QEF+QMA+gED+AL3APwD9gHw9P0F/vwEAvv++QPt/wD++vz9AgIFCg0G/gH+BgEG/AgHAAQLA/4DC/oCAPX6BAT6A/n//fwBCAX4A/3+Afv3BPz6+wP7BwkJ/QYABvwFAwn/Cv//+v0BAgABBvcACAUFC/78/gAAA/3+/gP4CPb8//f+Bgb4+wAFAf32Agb+BP0GDP0B/vwJ/PgHAAYICff/9gT5Bvr7/Pn79wID/QD+Cf76APj8+QAF/PQA9P38AAD6BQcB+gT3+/0G9voB9fwI//sA/gYE9xD8/QIB9wMH+QUCA/v1/gAFBP0IEPsB/QL7/P4AAv35/v/7AwEA/AsG+QgBAgABAgMBAe4F9wMBDggF9gECAvj6AQUA//4D+f0A+AL4AvX5//4FDgX8A/79BwIE/Av/BgcBAAL9AQT8+wMH+fr6/vwCBAQS/P7+AwUBDP8KAAP48wUB+f4J9/kG/wD/Agk="
     },
     {
       "id": "index#16",
-      "title": "企画から運用まで｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
+      "title": "会社ごとの専用AIをつくる｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
-      "text": "企画 \n 開発 \n 運用 \n \n 何をAIに任せるかを一緒に決め、 つくり、使いながら育てます。 \n\n Why ShinAI",
-      "vec": "Af8E/w/z/Af7+gb8A/X9+/b1APgEDAX+BgEF//79APz7AAD+A//9BgIBBQYBBfn+AQf4CP77+QMC//oHBP4CBwADAAv69/4A+P4D/foGBAL5B/j9A/P2/vH9+Qb5AAALBgYGBgP5Bg77/voD/QP2+/wF+PgBCAX9/QcEBf/+CP/6+wD8AvoB9vwF+/sE/gH8/QEB9gEDAfv7+wIG9QIB+gUG/AP3AfkA9//x9wAEAvoBAP3++ATuAfz9/f8AAgEFDwwI/AIABgEE+wQG/gYNBv3/CPgEA/f9AQD7A/wA/f8DBwL4BPoC/vj6//z/+QP7CQcI/wUBA/8CAQn9CvsB/P8BAgIDBPkABgIGCgP7/wABAfv8+gP1Cff8//r/BAP5+/8E/gD4AgL+Bv4GDvkB+/8H9/4HAwMEBvkC+QL8Cvj9+fn6+gQG//0ABf79/vkA/P4B/PQB9QEAAwD/BAcA+AL5+v8B+fsB8foH/f39/wYE+g78/gP8+wUE+wUCAvr6/gAIBf0GDvcDAP79//8BBPr7AP3+AgD//AgE+gf9Av8CAAL/AvID+AICDgYD9QQA/vn7/wP8/P4D+/wA9QH3A/L4BP0ECwQBAP79CQEB+gz9AQUBAgL8AQP6/wIF9/n8/fwEBgUL/gABAQb+Dv4J/wP38AQB/P8K9PoH/QL+AQo="
+      "text": "ShinAIが開発 \n\n 最適なモデルを選び、 その上に組み立てる \n\n 基盤レイヤー",
+      "vec": "//4A/w33+gX7+wH5BPf8/P/5/fr+CAX+CAMD/f/8APz///n8AwL9BwYCCAgBAvj/AAP0Cfn49wQAAgQIAgMBBgP9/Qr3/v39/gAC+f4JCAP6CP3+A/P5A/X7+QL6AP0HBwMEAwT+Awz7/voA+gv8//z+9vMADv//AQgGBgj+C/v6+f4AAf8C9fz//vgC/v79+AL98PwA+vf6//wF+QED+wQJ9wL8A/4G8/z7/QIA/foE//r7+gD0Bfv7/gAE/gABDQ0I/v4ABgQF+wAEAgQMBPoFCfsEAPf6Af3/B/sF/gL+BgP4B/sC/v35AwL//gP6AAEH/Qf9Av0DAgkFCv3+//0C//v9Bvn+BP0ABgf8AAEA/fz9+QH6CvkABP0CAwT19vsK+vv3/gH+CAQEDPwC/vwG9fkI/gQEB/sB9QH4Cfz8/fv++QMD+P/+CAQC/P34+gL///gD+AYA/QICAAT/9QT3+/0H+/0C8gENAP7/+gYC+wkE+QEA9wUI/QEGAPz2AfwFA/cHCv4A+/76AwH+DPsA/AH9AgIC/gwF9QgAAAP/BAD8A+4B9f/8CAEA+QL/APX+AAP+//0C//z5+f/5BPL9Afv/CgT6BAH/BgUC/wr+AgICAQH6/gX2AAMI+vr9/fsABAISAP0DAAYADv8P/Qf59QP++fwI8f8E/v0DAwg="
     },
     {
       "id": "index#17",
+      "title": "最適なモデルを選ぶ｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
+      "url": "https://shinai-inc.jp/",
+      "text": "各社が提供するAIモデル \n\n ChatGPT \n Claude \n Gemini \n ローカルLLM \n \n 「ChatGPT」「Claude」「Gemini」などの フロンティアモデルから、 社内で動かせるローカルLLM （オープンウェイトモデル）まで。 用途と機密性に合わせて選び、 データを社外に出さない 構成にも対応します。 \n\n Why ShinAI",
+      "vec": "/AMF/g32+Af++//8/vv7/f/4+gEADQL7CP/++AP7Af39/vr9/wT+BAABBwcDAP77AAD0Cf/++QEB/wYE/v7/BgP9+Aj1/Pn7/f3//f4GCAH5DfwAA/b4APH6+f36BAAGC/4BAwQCBwoB/v0A+A32/PYB9Pf9DPv7AAsIAQQEBfz5+vz/AvwD+foB/fr//vsC8wT8+vkG+/r9/voI/wID9gYL+gX8B/sE9QD9/gP+//oC/vz8+QP3Afr9Avz+/gQGDBIGAAL9AwcE/gP9/wMKCfb/CfwBAvb+APkDCvsGAQD9AgT4B/oEAP74AvsE/wD4/QMG/Ar7AvgGAwMFCvkC//sB+/0BCv0A//37BQL+BAIA//f6+wL6Cfj+Av4CAgb3+f4H9vv1AQD/CAADDP3++vwJ+f4I//4ICP3/+QH5CfwB+PoA+AcD9gH+BwMA/wD89gL8/PUE/AgB/gUEA/4A9QH+/QAE+/8E8QAJ/AD/+vwA+wcA+gX++gEHAAMDAgL6BAICAvsHC/8AAP38BQMAA/r8/wADBP8HAQYI+gX9AAIHBAEAAu7+9fz/CQH99QEBBvP8+wb+/v0BAP39/P37APX6Af4EBAT9Bv0EBQX+/gj/AAgBBwP/+AT7A/8J+vr9/v4EBAQVBgIABQT8Df4RAAby9gD99/kI8wAE+wECAAY="
+    },
+    {
+      "id": "index#18",
       "title": "根づいてはじめて \n 価値になる。｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "ご依頼の前に抱かれる不安に、 先にお答えします。 \n\n News",
       "vec": "Bvn+Awv0/wgC/QX///P+/fj5/vn/BvwBCP0D+gL6/PoEBPoE/wH/AP4AAwQAAfj9/gf6BP388/0DB/wI//b9AQIAAQv6+wAC/gT9//oBCAT5BfX6BPv4BfX69wH4BPwEBAX+BAH4BAn7B/n8/QX6+fcH/P33AQQA+wMDBf/+BPz/9gH/AQAD+/sB/vsC9wX49gL9+fsAAPz6/QIJ/P/+/v4J+Pj9AgD99f71+wQEAfwCAf/9/AX5/v33+AAC/wQFCgYC//8AAQAD/gUJ/wcIA/kAD/3+APX/AAD6BgEDAgIBAwn8BvsIBAD4/wAB/wL+Bv4JAQYABPgCCAUGDPr++gICAv0CB/j6Af8LAwQA+vwF/fX49gn8EfX7/fsAAgb2/wAB+wT+//0DBwEBDfgF/v8E9fv+AQMCCPwB+Af9Cvz9AQD99gEF+Ab8AP/+9/T++wD+/PoA9gQC/wX8AgP/+wf5/foA/gAF7vcFAQD+/f0F/gr+/vz/+wQI+wUJ+/b9//wIAAMHCwH7+/39AAMBA/f7+v7/BPwD9wQB9gv++gACAvv9BvMC/Pv+CAEK7v0E/PgAAgAB/f38+/n69gH+AvL2AvkFCPsBAv79BvsF/w4EAPwCAQX4AAL0+QYF+vb8//4DBQUTAgH//wb8Dv4OBQL0+QD9/P4E9PkG+wIEAQk="
     },
     {
-      "id": "index#18",
+      "id": "index#19",
       "title": "ご一緒に未来を創ります。｜シンアイ株式会社｜企業の暗黙知を、使えるAI資産へ",
       "url": "https://shinai-inc.jp/",
       "text": "まだ要件が決まっていなくても構いません。 \n 業務の現状を棚卸しし、効果的な施策をご提案します。 \n\n 無料相談を申し込む",
