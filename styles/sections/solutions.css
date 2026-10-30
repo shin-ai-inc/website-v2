@@ -140,9 +140,11 @@
   white-space: nowrap;
 }
 
+/* 本文の行数が違っても、罫と箇条書きを三枚で同じ高さにそろえる。余りは本文の下に出す。 */
 .solution-card__divider {
   height: 1px;
   border: 0;
+  margin-top: auto;
   margin-bottom: var(--space-4);
   background: var(--card-ink);
   opacity: 0.18;
@@ -151,7 +153,6 @@
 .solution-card__items {
   display: grid;
   gap: var(--space-2);
-  margin-top: auto;
 }
 
 .solution-card__item {
@@ -248,10 +249,14 @@
 @media (max-width: 640px) {
   /* 旧公開サイト同様、カードを画面端いっぱいに広げず左右にゆとりを持たせる。
      コンテナのガター内でさらに内側へ寄せ、圧迫感を和らげる。 */
+  /* カードの間(16px)が、カードの中の箇条書きの行の間(32px 刻み)より狭く、
+     カードの切れ目が行の切れ目より弱く見えた。高さも本文の行数でばらついた(柴田指摘 2026-10-30)。
+     間を行の刻みより広げ、三枚を最も高いカードにそろえる。 */
   .solutions__grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
     max-width: 100%;
-    gap: var(--space-3);
+    gap: var(--space-6);
     padding-inline: var(--space-2);
   }
   /* 画面への圧迫を抑えるため、余白・画像・字を一段引き締めてスマートにする。 */
