@@ -32,3 +32,14 @@ test("暗黙知のカードで、人と人を比べたり、判断を人から�
   for (const word of ["veteran", "anyone can", "replace"]) assert.equal(en.includes(word), false, word);
   for (const word of ["recall", "search", "check"]) assert.ok(en.includes(word), word);
 });
+
+test("トップの三つのカードに、手法の名前と提供側の言葉を並べない(柴田 2026-10-30)", () => {
+  /* 「RAG構築」「ファインチューニング」「PoC」は経営者に伝わらず、同業他社にだけ手の内を見せる。
+     「技術移転」「自走」「御社」は、下の #why で避けた言葉とそろえる。 */
+  const cards = (rel) => readFileSync(join(ROOT, rel), "utf8").match(/<div class="solutions__grid">[\s\S]*?<\/section>/)[0];
+  const ja = cards("partials/index.html");
+  for (const word of ["RAG", "ファインチューニング", "PoC", "技術移転", "自走", "御社", "貴社"]) assert.equal(ja.includes(word), false, word);
+  for (const word of ["AIが答えに使える形", "業務に合わせたAIの調整", "小さく試し", "社内で使いこなす"]) assert.ok(ja.includes(word), word);
+  const en = cards("partials/en/index.html");
+  for (const word of ["RAG", "fine-tuning", "PoC", "handover"]) assert.equal(en.includes(word), false, word);
+});
