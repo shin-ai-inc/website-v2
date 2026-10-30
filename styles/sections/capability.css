@@ -285,10 +285,38 @@
     letter-spacing: 0.12em;
   }
   .capability__layer {
+    gap: var(--space-2);
     padding: var(--space-3);
+  }
+  .capability__body {
+    gap: var(--space-2);
   }
   .capability__term {
     font-size: var(--fs-body);
+  }
+  /* スマホでは図が縦に長く、ページ全体が約190px伸びた(柴田指摘 2026-10-30 スクロール負荷)。
+     札を層の名前と同じ行の右に置き、支援の層は「企画・開発・運用」の流れが名前を兼ねるので名前を出さない。 */
+  .capability__head {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: var(--space-2);
+  }
+  .capability__kicker {
+    grid-row: 1;
+  }
+  .capability__badge {
+    grid-row: 1;
+    grid-column: 2;
+    margin-top: 0;
+  }
+  .capability__term {
+    grid-column: 1 / -1;
+  }
+  .capability__layer--support .capability__term {
+    display: none;
+  }
+  .capability__chip {
+    padding-block: 0.25em;
   }
   /* 左右の線があると一文が入りきらず、360px 幅で「組み立て/る」と割れた。線を外し、文を中央に置く。 */
   .capability__seam {
