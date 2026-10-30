@@ -91,3 +91,21 @@
     margin-bottom: var(--space-4);
   }
 }
+
+/* トップでは、目的の帯の下の余白と、次の区画(三つの支援)の上の余白が重なり、
+   広い画面で文と次の見出しの間が約 300px 空いていた。「暗黙知を三段階で」が出るまでが長く、
+   釣り合いが悪い(柴田指摘 2026-10-30)。帯の下と罫の上下を詰め、間を一つ分の余白にする。 */
+body.is-home .purpose {
+  padding-bottom: var(--space-4);
+}
+body.is-home .purpose__rule {
+  margin-block: var(--space-5);
+}
+@media (max-width: 640px) {
+  body.is-home .purpose {
+    padding-bottom: var(--space-2);
+  }
+  body.is-home .purpose__rule {
+    margin-block: var(--space-3);
+  }
+}
