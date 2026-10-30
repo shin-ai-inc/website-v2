@@ -39,12 +39,16 @@ test("四つの不安は、費用・情報・現場・依存の順で並ぶ", ()
   for (const [i, word] of ["成果", "情報", "現場", "頼り続け"].entries()) assert.ok(r[i].worry.includes(word), `${i + 1}: ${word}`);
 });
 
-test("依存の不安には、社内で回せることと、その先も共に担うことの両方で答える", () => {
-  /* 「開発は私たちが、運用は社内で」と役割を切り分けると、作って離れる会社に見え、提供し続ける価値が消える(柴田 2026-10-30)。 */
+test("依存の不安には、社内で使いこなせる到達点と、そこまで仕上げる責任で答える(柴田 2026-10-30 案A)", () => {
+  /* 「開発は私たちが、運用は社内で」と役割を切り分けると、作って離れる会社に見え、提供し続ける価値が消える。
+     「その先も共に歩みます」と関わり続けることを約束すると、売り込みのいやらしさが出た。
+     価値は関わりの長さではなく、仕上がりへの責任で示す。 */
   const last = rows("partials/index.html")[3].all;
-  assert.ok(last.includes("社内で回せる") && last.includes("共に"), last);
+  assert.ok(last.includes("社内で使いこなせる") && last.includes("責任を持って"), last);
+  assert.equal(last.includes("共に"), false, last);
   const en = rows("partials/en/index.html")[3].all.toLowerCase();
-  assert.ok(en.includes("in-house") && en.includes("with you"), en);
+  assert.ok(en.includes("your team") && en.includes("see it through"), en);
+  assert.equal(en.includes("with you"), false, en);
 });
 
 test("約束は一文で言い切り、根拠の一行を添えない(回りくどい・柴田 2026-10-30)", () => {
