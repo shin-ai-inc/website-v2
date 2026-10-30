@@ -5,47 +5,39 @@
 
   シンアイが「基盤レイヤーの上の、アプリレイヤーを開発する会社」だと見て分かるようにする(柴田指示 2026-10-25)。
   - 層の図の慣例どおり、上にアプリ、下に基盤を積む。
-  - シンアイの領域(支援とアプリレイヤー)だけを左の括弧で括り、基盤は括弧の外に置く。
+  - シンアイが担う範囲(支援とアプリレイヤー)だけを枠で囲み、枠の上辺に横書きで見出しを置く。基盤は枠の外。
+    左の縦書きの括弧は、何を括っているのかが読み取れなかった(柴田指摘 2026-10-30)。
   - アプリレイヤーは色と光で最も強く、基盤は破線の枠で控えめにして「各社のもの」と区別する。
   濃色帯の粒子が透けるよう、面は半透明のガラスにする。
 */
 .capability__diagram {
-  /* 左の括弧の列の幅。括弧の外にある基盤も、この幅だけ右へ寄せて層の左端をそろえる。 */
-  --bracket: 2.75rem;
   display: grid;
   gap: var(--space-3);
   margin-top: var(--space-6);
 }
 
 .capability__ours {
-  display: grid;
-  grid-template-columns: var(--bracket) 1fr;
-  gap: var(--space-3);
-}
-
-.capability__bracket {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  margin-top: var(--space-3);
+  padding: var(--space-5) var(--space-3) var(--space-3);
+  border: 1.5px solid rgba(0, 201, 167, 0.55);
+  border-radius: calc(var(--r-lg) + 6px);
 }
 
-.capability__bracket::after {
-  content: "";
+/* 枠の上辺に重ねる見出し。地の濃紺で罫を切り、枠の名前として読ませる。 */
+.capability__scope {
   position: absolute;
-  inset: 0 0 0 auto;
-  width: 0.8rem;
-  border: 2px solid var(--teal);
-  border-right: 0;
-  border-radius: 10px 0 0 10px;
-}
-
-.capability__bracket-label {
-  writing-mode: vertical-rl;
+  top: 0;
+  left: var(--space-5);
+  transform: translateY(-50%);
+  padding: 0.35em 1em;
+  border: 1.5px solid rgba(0, 201, 167, 0.55);
+  border-radius: 999px;
+  background: #0E1F3F;
   font-family: var(--font-label);
   font-size: var(--fs-sm);
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   color: var(--teal-2);
   white-space: nowrap;
 }
@@ -61,7 +53,7 @@
   grid-template-columns: minmax(15rem, 30%) 1fr;
   gap: var(--space-5);
   align-items: start;
-  padding: var(--space-5) var(--space-6);
+  padding: var(--space-4) var(--space-6);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--r-lg);
   background: linear-gradient(120deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.025) 100%);
@@ -85,7 +77,6 @@
 
 /* 各社が提供するモデルの層。破線と淡い面で、シンアイの領域と分ける。 */
 .capability__layer--base {
-  margin-left: calc(var(--bracket) + var(--space-3));
   border: 1px dashed rgba(255, 255, 255, 0.26);
   background: rgba(255, 255, 255, 0.025);
 }
@@ -137,7 +128,6 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  margin-left: calc(var(--bracket) + var(--space-3));
   font-size: var(--fs-sm);
   color: var(--teal-2);
 }
@@ -263,26 +253,17 @@
 
 @media (max-width: 640px) {
   .capability__diagram {
-    --bracket: 1.6rem;
     gap: var(--space-2);
     margin-top: var(--space-4);
   }
   .capability__ours {
-    gap: var(--space-2);
+    padding: var(--space-4) var(--space-2) var(--space-2);
+  }
+  .capability__scope {
+    left: var(--space-3);
   }
   .capability__ours-layers {
     gap: var(--space-2);
-  }
-  .capability__layer--base,
-  .capability__seam {
-    margin-left: calc(var(--bracket) + var(--space-2));
-  }
-  .capability__bracket::after {
-    width: 0.55rem;
-  }
-  .capability__bracket-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
   }
   .capability__layer {
     gap: var(--space-2);

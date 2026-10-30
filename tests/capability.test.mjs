@@ -82,3 +82,15 @@ test("英語版も同じ構成にそろえる", () => {
     assert.equal(s.includes(word), false, word);
   }
 });
+
+test("シンアイの範囲は、枠と横書きの見出しで示す(縦書きの括弧は分かりにくい・柴田 2026-10-30)", () => {
+  /* 縦書きの小さな文字と細い括弧では、何を括っているのかが読み取れなかった。
+     上の二段を枠で囲み、枠の上辺に「ShinAIが担う範囲」を横書きで置く。 */
+  for (const [rel, label] of [["partials/index.html", "ShinAIが担う範囲"], ["partials/en/index.html", "What ShinAI takes on"]]) {
+    const region = block(section(rel), "capability__ours");
+    assert.match(region, new RegExp(`<p class="capability__scope">${label}</p>`), rel);
+    assert.equal(region.includes("capability__bracket"), false, `${rel}: 括弧が残っている`);
+  }
+  const css = readFileSync(join(ROOT, "styles/sections/capability.css"), "utf8");
+  assert.equal(/writing-mode/.test(css), false, "縦書きが残っている");
+});
