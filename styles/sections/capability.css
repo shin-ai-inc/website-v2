@@ -277,21 +277,25 @@
   }
   /* スマホでは図が縦に長く、ページ全体が約190px伸びた(柴田指摘 2026-10-30 スクロール負荷)。
      札を層の名前と同じ行の右に置き、支援の層は「企画・開発・運用」の流れが名前を兼ねるので名前を出さない。 */
+  /* 札は層の名前と同じ行の右に置く。英語は名前と札が長く一行に入らないので、入らなければ札を次の行へ送る
+     (横に並べたままだと、幅360で図が11px はみ出した)。 */
   .capability__head {
-    grid-template-columns: 1fr auto;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    column-gap: var(--space-2);
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-2);
   }
   .capability__kicker {
-    grid-row: 1;
+    order: 1;
   }
   .capability__badge {
-    grid-row: 1;
-    grid-column: 2;
+    order: 2;
     margin-top: 0;
   }
   .capability__term {
-    grid-column: 1 / -1;
+    order: 3;
+    flex-basis: 100%;
   }
   .capability__layer--support .capability__term {
     display: none;
@@ -341,6 +345,15 @@
   .capability__step + .capability__step::before {
     width: 1.5rem;
   }
+  /* 英語の「Clarify — Build — Operate」は語が長く、日本語と同じ線の長さだと狭い幅で窮屈になる。
+     英語だけ、つなぎの線と間を詰める。 */
+  html[lang="en"] .capability__flow,
+  html[lang="en"] .capability__step {
+    gap: var(--space-1);
+  }
+  html[lang="en"] .capability__step + .capability__step::before {
+    width: 0.75rem;
+  }
 }
 
 /* base.css は 400px 以下で .nobr の保護を外す。この区画の語塊は最長でも15字(約210px)で
@@ -348,5 +361,41 @@
 @media (max-width: 400px) {
   .capability .nobr {
     white-space: nowrap;
+  }
+}
+
+/* 見出しの下の一文は、ほかの区画より一段小さくして締める(柴田指摘 2026-10-30 スマートに)。 */
+.capability .section__lead {
+  font-size: var(--fs-body);
+}
+
+/* PC では層の名前の側が本文の側より背が高く、本文が上に寄って下が空いた(柴田指摘 2026-10-30)。
+   名前と本文を上下の中央でそろえる。 */
+@media (min-width: 961px) {
+  .capability__layer {
+    align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .capability .section__lead {
+    font-size: var(--fs-sm);
+  }
+  /* スマホでは左の縦線より、名前の下線のほうが区切りとして締まって見える(柴田指摘 2026-10-30)。
+     下線は名前の幅だけに引く。 */
+  .capability__app {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .capability__app-name {
+    display: table;
+    padding-bottom: 0.3em;
+    margin-bottom: var(--space-1);
+    border-bottom: 2px solid var(--teal);
+  }
+  /* 日本語の括弧書きは名前と一行に収まるので、下線を名前と括弧書きの下にそろえて引く。
+     英語は長く割れるため、名前の下の行に置いたままにする。 */
+  html[lang="ja"] .capability__app-note {
+    display: inline;
   }
 }
