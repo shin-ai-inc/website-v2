@@ -134,6 +134,12 @@
   margin-bottom: var(--space-4);
 }
 
+/* base.css は 400px 以下で .nobr の保護を外す。本文の語塊は最長12字でカードの幅に収まり、
+   外すと「探/す」「手間/なく」のように語の途中で割れた。 */
+.solution-card__lead .nobr {
+  white-space: nowrap;
+}
+
 .solution-card__divider {
   height: 1px;
   border: 0;
